@@ -10,11 +10,12 @@ app:
   workDir: /app
   stationConfigFile: stations_cfg.json
   eodagConfigFile: adgs_ws_config.yaml
-  endpoint:
-    url: http://127.0.0.1:5000/Products
-    secret:
-      username: dGVzdA==
-      password: dGVzdA==
+  station:
+    endpoint:
+      url: http://127.0.0.1:5000/Products
+      secret:
+        username: dGVzdA==
+        password: dGVzdA==
 
 probe:
   liveness:
