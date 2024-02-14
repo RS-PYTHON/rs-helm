@@ -1,0 +1,15 @@
+apiVersion: v1
+entries:
+  rs-server-adgs:
+  - apiVersion: v1
+    appVersion: "1"
+    created: "2024-02-14T14:57:57.223128837Z"
+    description: RS SERVER ADGS
+    digest: 23cd9b03643173929161878791064b6dadbdb4c62bf53ced88c3ee922ee75973
+    maintainers:
+    - name: CS GROUP
+    name: rs-server-adgs
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-adgs-1/rs-server-adgs-1.tgz
+    version: "1"
+generated: "2024-02-14T14:57:57.223138826Z"
