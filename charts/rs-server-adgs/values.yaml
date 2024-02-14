@@ -8,8 +8,8 @@ service:
 app:
   port:
   workDir: /app
-  stationConfigFile: stations_cfg.json
-  eodagConfigFile: adgs_ws_config.yaml
+  stationConfigFile: /app/config/stations_cfg.json
+  eodagConfigFile: /app/config/adgs_ws_config.yaml
   station:
     endpoint:
       url: http://127.0.0.1:5000/Products
