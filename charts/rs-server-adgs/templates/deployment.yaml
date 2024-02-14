@@ -65,32 +65,32 @@ spec:
           valueFrom:
             secretKeyRef:
               name: {{ .Release.Name }}-postgres
-              key: {{ .Values.postgres.secret.user }}
+              key: user
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
               name: {{ .Release.Name }}-postgres
-              key: {{ .Values.postgres.secret.pass }}
+              key: pass
         - name: S3_ACCESSKEY
           valueFrom:
             secretKeyRef:
               name: {{ .Release.Name }}-obs
-              key: {{ .Values.obs.secret.ak }}
+              key: ak
         - name: S3_SECRETKEY
           valueFrom:
             secretKeyRef:
               name: {{ .Release.Name }}-obs
-              key: {{ .Values.obs.secret.sk }}
+              key: sk
         - name: STATION_USER
           valueFrom:
             secretKeyRef:
               name: {{ .Release.Name }}-endpoint
-              key: {{ .Values.app.station.endpoint.secret.username }}
+              key: user
         - name: STATION_PASS
           valueFrom:
             secretKeyRef:
               name: {{ .Release.Name }}-endpoint
-              key: {{ .Values.app.station.endpoint.secret.password }}
+              key: pass
         securityContext:
           privileged: false
         #livenessProbe:

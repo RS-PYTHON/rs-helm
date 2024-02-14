@@ -6,7 +6,7 @@ service:
   port: 8080
 
 app:
-  port:
+  port: 8000
   workDir: /app
   stationConfigFile: stations_cfg.json
   eodagConfigFile: adgs_ws_config.yaml
