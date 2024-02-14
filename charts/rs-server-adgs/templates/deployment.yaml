@@ -39,7 +39,7 @@ spec:
             cpu: {{ .Values.resources.limit.cpu }}
         volumeMounts:
         - name: service-config-volume
-          mountPath: {{ .Values.app.confDir }}/config
+          mountPath: {{ .Values.app.confDir }}
         ports:
         - name: web
           protocol: TCP
@@ -48,9 +48,9 @@ spec:
         - name: RSPY_WORKING_DIR
           value: {{ .Values.app.workDir }}
         - name: RSPY_STATION_CONFIG
-          value: {{ .Values.app.workDir }}/config/{{ .Values.app.stationConfigFile }}
+          value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
         - name: EODAG_ADGS_CONFIG
-          value: {{ .Values.app.workDir }}/config/{{ .Values.app.eodagConfigFile }}
+          value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
         - name: POSTGRES_PORT
           value: {{ .Values.postgres.port | quote }}
         - name: POSTGRES_DB

@@ -8,6 +8,7 @@ service:
 app:
   port: 8000
   workDir: /app
+  confDir: /app/conf
   stationConfigFile: stations_cfg.json
   eodagConfigFile: adgs_ws_config.yaml
   station:
