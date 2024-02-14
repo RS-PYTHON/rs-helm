@@ -32,7 +32,7 @@ probe:
     timeoutSeconds: 5
 
 postgres:
-  port: 5432
+  port: "5432"
   db: rspy-demo
   host: cluster-example-rw.database.svc.cluster.local
   secret:
