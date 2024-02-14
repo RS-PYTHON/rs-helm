@@ -46,21 +46,21 @@ spec:
           containerPort: {{ .Values.app.port }}
         env:
         - name: RSPY_WORKING_DIR
-          value: {{ .Values.app.workDir | quote }}
+          value: {{ .Values.app.workDir }}
         - name: RSPY_STATION_CONFIG
-          value: {{ .Values.app.stationConfigFile | quote }}
+          value: {{ .Values.app.workDir }}/config/{{ .Values.app.stationConfigFile }}
         - name: EODAG_ADGS_CONFIG
-          value: {{ .Values.app.eodagConfigFile | quote }}
+          value: {{ .Values.app.workDir }}/config/{{ .Values.app.eodagConfigFile }}
         - name: POSTGRES_PORT
           value: {{ .Values.postgres.port | quote }}
         - name: POSTGRES_DB
-          value: {{ .Values.postgres.db | quote }}
+          value: {{ .Values.postgres.db }}
         - name: POSTGRES_HOST
-          value: {{ .Values.postgres.host | quote }}
+          value: {{ .Values.postgres.host }}
         - name: S3_ENDPOINT
-          value: {{ .Values.obs.endpoint | quote }}
+          value: {{ .Values.obs.endpoint }}
         - name: S3_REGION
-          value: {{ .Values.obs.region | quote }}
+          value: {{ .Values.obs.region }}
         - name: POSTGRES_USER
           valueFrom:
             secretKeyRef:
