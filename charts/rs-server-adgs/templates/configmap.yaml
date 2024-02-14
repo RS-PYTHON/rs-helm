@@ -71,7 +71,7 @@ data:
         metadata_mapping:
             uid: '$.Id'
             downloadLink: '{{ .Values.app.station.endpoint.url }}({uid})/$value'
-  {{ .Values.app.stationConfigFile }}: -|
+  {{ .Values.app.stationConfigFile }}: |-
     {
       "ADGS": "{{ .Values.app.station.endpoint.url }}"
     }
