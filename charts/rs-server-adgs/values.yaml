@@ -34,8 +34,8 @@ probe:
 
 postgres:
   port: "5432"
-  db: rspy-demo
-  host: cluster-example-rw.database.svc.cluster.local
+  db: rspydemo
+  host: postgresql-cluster-rw.database.svc.cluster.local
   secret:
     user: test
     pass: test
