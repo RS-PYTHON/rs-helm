@@ -15,8 +15,8 @@ app:
     endpoint:
       url: http://127.0.0.1:5000/Products
       secret:
-        username: dGVzdA==
-        password: dGVzdA==
+        username: test
+        password: test
 
 probe:
   liveness:
@@ -37,15 +37,15 @@ postgres:
   db: rspy-demo
   host: cluster-example-rw.database.svc.cluster.local
   secret:
-    user: dGVzdA==
-    pass: dGVzdA==
+    user: test
+    pass: test
 
 obs:
   endpoint: http://minio.minio.svc.cluster.local:9000
   region: sbg
   secret:
-    ak: VERyOGZvSnFTeWdCUTlZRm1XRHk=
-    sk: ejJSYXFqRnR0blZaUlRzTExxbXk0UEU2UHpKT0t6UHNFNDdhbERCcw==
+    ak: TDr8foJqSygBQ9YFmWDy
+    sk: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
 
 image:
   registry: ghcr.io
