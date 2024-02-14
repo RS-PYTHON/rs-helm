@@ -42,7 +42,7 @@ jobs:
 
           echo "RSSERVER_VERSION=$(\
               git ls-remote --tags --refs --sort="v:refname" \
-              https://github.com/RS-PYTHON/rs-server.git '*.*.*' | tail -n1 | sed 's/.*\///' \
+              https://github.com/RS-PYTHON/rs-server.git 'v*.*' | tail -n1 | sed 's/.*\///' \
           )" >> $GITHUB_OUTPUT
 
       - name: Update version number in chart.yaml
