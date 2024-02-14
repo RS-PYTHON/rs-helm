@@ -1,0 +1,54 @@
+name: Publish Helm charts
+
+# TODO: is it possible to run this workflow only if the check-code-quality workflow has completed successfully ?
+# I've tried workflow_run but see:
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_run
+# Note: This event will only trigger a workflow run if the workflow file is on the default branch.
+
+# Run workflow only for new git tags (including hierarchical tags like v1.0/beta), or manually
+on:
+  push:
+    tags:
+      - '**'
+  workflow_dispatch:
+
+env:
+  DOCKER_REGISTRY: ghcr.io
+
+jobs:
+
+  #######################
+  # Publish Helm charts #
+  #######################
+
+  rs-server-adgs:
+    runs-on: ubuntu-latest
+    name: "rs-server-adgs Helm chart"
+    permissions: write-all
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # fetch all history for all branches and tags.
+
+      - name: Get the rs-server version tag
+        id: get_version
+        shell: bash
+        run: |
+          # Enable pipefail so git command failures do not result in null versions downstream
+          set -x
+
+          echo "RSSERVER_VERSION=$(\
+              git ls-remote --tags --refs --sort="v:refname" \
+              https://github.com/RS-PYTHON/rs-server.git '*.*.*' | tail -n1 | sed 's/.*\///' \
+          )" >> $GITHUB_OUTPUT
+
+      - name: Update version number in chart.yaml
+        shell: bash
+        run: |
+          sed -i "s,{{CHART_VERSION}},${{ steps.get_version.outputs.RSSERVER_VERSION }}," charts/rs-server-adgs/Chart.yaml
+
+      - id: publish-chart
+        uses: ./.github/actions/publish-chart
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

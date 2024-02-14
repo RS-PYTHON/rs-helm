@@ -1,0 +1,62 @@
+namespace: processing
+
+replicaCount: 1
+
+service:
+  port: 8080
+
+app:
+  port:
+  workDir: /app
+  stationConfigFile: stations_cfg.json
+  eodagConfigFile: adgs_ws_config.yaml
+  endpoint:
+    url: http://127.0.0.1:5000/Products
+    secret:
+      username: dGVzdA==
+      password: dGVzdA==
+
+probe:
+  liveness:
+    path: /app/ping
+    port: 8080
+    initialDelaySeconds: 30
+    periodSeconds: 30
+    timeoutSeconds: 5
+  readiness:
+    path: /app/ping
+    port: 8080
+    initialDelaySeconds: 30
+    periodSeconds: 30
+    timeoutSeconds: 5
+
+postgres:
+  port: 5432
+  db: rspy-demo
+  host: cluster-example-rw.database.svc.cluster.local
+  secret:
+    user: dGVzdA==
+    pass: dGVzdA==
+
+obs:
+  endpoint: http://minio.minio.svc.cluster.local:9000
+  region: sbg
+  secret:
+    ak: VERyOGZvSnFTeWdCUTlZRm1XRHk=
+    sk: ejJSYXFqRnR0blZaUlRzTExxbXk0UEU2UHpKT0t6UHNFNDdhbERCcw==
+
+image:
+  registry: ghcr.io
+  repository: rs-python
+  name: rs-server-adgs
+  tag: latest
+  PullPolicy: Always
+  imagePullSecrets: regcred
+
+resources:
+  request: 
+    ram: "256Mi"
+    cpu: "100m"
+  limit:
+    ram: "1000Mi"
+    cpu: "500m"
