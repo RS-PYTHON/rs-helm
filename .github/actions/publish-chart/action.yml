@@ -29,7 +29,5 @@ runs:
 
     - name: Run chart-releaser
       uses: helm/chart-releaser-action@v1.6.0
-      with:
-        charts_dir: ${{ inputs.charts_dir }}
       env:
         CR_TOKEN: ${{ inputs.github_token }}
