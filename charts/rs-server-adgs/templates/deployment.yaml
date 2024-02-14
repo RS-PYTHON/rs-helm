@@ -107,8 +107,8 @@ spec:
           #initialDelaySeconds: {{ .Values.probe.readiness.initialDelaySeconds }}
           #periodSeconds: {{ .Values.probe.readiness.periodSeconds }}
           #timeoutSeconds: {{ .Values.probe.readiness.timeoutSeconds }}
-      imagePullSecrets:
-      - name:  {{ .Values.image.imagePullSecrets }}
+      #imagePullSecrets:
+      #- name:  {{ .Values.image.imagePullSecrets }}
       restartPolicy: Always
       securityContext: {}
       volumes:

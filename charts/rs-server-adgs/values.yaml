@@ -52,7 +52,7 @@ image:
   name: rs-server-adgs
   tag: latest
   PullPolicy: Always
-  imagePullSecrets: regcred
+  #imagePullSecrets: regcred
 
 resources:
   request: 
