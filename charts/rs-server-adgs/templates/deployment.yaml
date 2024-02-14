@@ -38,6 +38,8 @@ spec:
             memory: {{ .Values.resources.limit.ram }}
             cpu: {{ .Values.resources.limit.cpu }}
         volumeMounts:
+        - name: workdir
+          mountPath: {{ .Values.app.workDir }}
         - name: service-config-volume
           mountPath: {{ .Values.app.confDir }}
         ports:
@@ -112,6 +114,9 @@ spec:
       restartPolicy: Always
       securityContext: {}
       volumes:
+        - name: workdir
+          emptyDir:
+            sizeLimit: 10Gi
         - name: service-config-volume
           configMap:
             name: {{ .Release.Name }}-service-config
