@@ -11,7 +11,7 @@ on:
     tags:
       - '**'
     branches:
-      - '**'  
+      - 'feat134/helm-chart-releaser'  
   workflow_dispatch:
 
 env:
