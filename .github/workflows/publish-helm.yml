@@ -50,6 +50,7 @@ jobs:
         run: |
           sed -i "s,{{CHART_VERSION}},${{ steps.get_version.outputs.RSSERVER_VERSION }}," charts/rs-server-adgs/Chart.yaml
           sed -i "s,{{CHART_VERSION}},${{ steps.get_version.outputs.RSSERVER_VERSION }}," charts/rs-server-cadip/Chart.yaml
+          sed -i "s,{{CHART_VERSION}},${{ steps.get_version.outputs.RSSERVER_VERSION }}," charts/mockup-station-adgs/Chart.yaml
           sed -i "s,{{CHART_VERSION}},${{ steps.get_version.outputs.RSSERVER_VERSION }}," charts/mockup-station-cadip/Chart.yaml
 
       - id: publish-chart
