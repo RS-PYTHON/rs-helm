@@ -1,5 +1,17 @@
 apiVersion: v1
 entries:
+  mockup-station-cadip:
+  - apiVersion: v1
+    appVersion: "1"
+    created: "2024-02-15T14:37:52.525597498Z"
+    description: MOCKUP STATION CADIP
+    digest: b2d25069eab8b488115c7b41c51fcd4d89af71d43de1772d5b39347ca1cd5450
+    maintainers:
+    - name: CS GROUP
+    name: mockup-station-cadip
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/mockup-station-cadip-1/mockup-station-cadip-1.tgz
+    version: "1"
   rs-server-adgs:
   - apiVersion: v1
     appVersion: "1"
@@ -24,4 +36,4 @@ entries:
     urls:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-cadip-1/rs-server-cadip-1.tgz
     version: "1"
-generated: "2024-02-15T14:06:33.628461691Z"
+generated: "2024-02-15T14:37:52.814898051Z"
