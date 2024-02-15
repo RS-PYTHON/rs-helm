@@ -20,14 +20,14 @@ app:
 
 probe:
   liveness:
-    path: /app/ping
-    port: 8080
+    path: /health
+    port: 8000
     initialDelaySeconds: 30
     periodSeconds: 30
     timeoutSeconds: 5
   readiness:
-    path: /app/ping
-    port: 8080
+    path: /health
+    port: 8000
     initialDelaySeconds: 30
     periodSeconds: 30
     timeoutSeconds: 5
