@@ -54,3 +54,35 @@ jobs:
         uses: ./.github/actions/publish-chart
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+  rs-server-cadip:
+    runs-on: ubuntu-latest
+    name: "rs-server-cadip Helm chart"
+    permissions: write-all
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # fetch all history for all branches and tags.
+
+      - name: Get the rs-server version tag
+        id: get_version
+        shell: bash
+        run: |
+          # Enable pipefail so git command failures do not result in null versions downstream
+          set -x
+
+          echo "RSSERVER_VERSION=$(\
+              git ls-remote --tags --refs --sort="v:refname" \
+              https://github.com/RS-PYTHON/rs-server.git 'v*.*' | tail -n1 | sed 's/.*\///' | sed 's/^v//' | cut -d '.' -f 1 \
+          )" >> $GITHUB_OUTPUT
+
+      - name: Update version number in chart.yaml
+        shell: bash
+        run: |
+          sed -i "s,{{CHART_VERSION}},${{ steps.get_version.outputs.RSSERVER_VERSION }}," charts/rs-server-cadip/Chart.yaml
+
+      - id: publish-chart
+        uses: ./.github/actions/publish-chart
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
