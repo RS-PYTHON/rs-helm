@@ -55,6 +55,13 @@ image:
   PullPolicy: Always
   #imagePullSecrets: regcred
 
+ingress:
+  issuer:
+    type: cluster-issuer
+    name: letsencrypt-prod
+  host: subdomain.example.com
+  path: /adgs
+
 resources:
   request: 
     ram: "256Mi"
