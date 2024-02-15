@@ -1,0 +1,48 @@
+namespace: processing
+
+replicaCount: 1
+
+service:
+  port: 8080
+
+app:
+  port: 5000
+  workDir: /app
+  confDir: /opt/adgs/config
+  authConfigFile: auth.json
+  station:
+    endpoint:
+      url: http://127.0.0.1:5000/Files
+      secret:
+        username: test
+        password: test
+
+probe:
+  liveness:
+    path: /app/ping
+    port: 8080
+    initialDelaySeconds: 30
+    periodSeconds: 30
+    timeoutSeconds: 5
+  readiness:
+    path: /app/ping
+    port: 8080
+    initialDelaySeconds: 30
+    periodSeconds: 30
+    timeoutSeconds: 5
+
+image:
+  registry: ghcr.io
+  repository: rs-python
+  name: rs-testmeans_adgs-station-mock
+  tag: latest
+  PullPolicy: Always
+  #imagePullSecrets: regcred
+
+resources:
+  request: 
+    ram: "256Mi"
+    cpu: "100m"
+  limit:
+    ram: "1000Mi"
+    cpu: "500m"
