@@ -8,7 +8,7 @@ service:
 app:
   port: 5000
   workDir: /app
-  confDir: /opt/cadip/config
+  confDir: /opt/adgs/config
   authConfigFile: auth.json
 
 probe:
@@ -28,7 +28,7 @@ probe:
 image:
   registry: ghcr.io
   repository: rs-python
-  name: rs-testmeans_cadip-station-mock
+  name: rs-testmeans_adgs-station-mock
   tag: latest
   PullPolicy: Always
   #imagePullSecrets: regcred

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-service-config
+  namespace: {{ .Values.namespace }}
+  
+data:
+  {{ .Values.app.authConfigFile }}: |-
+    {
+        "test": "$2b$12$MfKwr.11KN7OjCqLLwh/yuLhXasqSzTTdsz71YlnoeZdqlELqlyQi",
+        "ovidiu": "$2b$12$KNiiNLAIbJDj/ftcVidt1.mVxSn4rttIByudz9GAx5IqPEsWg38jW"
+    }
