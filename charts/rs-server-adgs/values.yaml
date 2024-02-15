@@ -13,7 +13,7 @@ app:
   eodagConfigFile: adgs_ws_config.yaml
   station:
     endpoint:
-      url: http://mockup-station-adgs.processing.svc.cluster.local:8080/Products
+      url: http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/Products
       secret:
         username: test
         password: test

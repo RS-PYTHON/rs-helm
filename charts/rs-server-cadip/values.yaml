@@ -13,7 +13,7 @@ app:
   eodagConfigFile: cadip_ws_config.yaml
   station:
     endpoint:
-      url: http://mockup-station-cadip.processing.svc.cluster.local:8080/Files
+      url: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files
       secret:
         username: test
         password: test
