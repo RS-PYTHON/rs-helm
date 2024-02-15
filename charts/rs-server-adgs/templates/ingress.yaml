@@ -21,4 +21,4 @@ spec:
   tls:
   - hosts:
     - {{ .Values.ingress.host }}
-    secretName: {{ .Values.ingress.host | replace(".", "-") }}
+    secretName: {{ .Values.ingress.host | replace "." "-" }}
