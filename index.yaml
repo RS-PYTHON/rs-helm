@@ -12,4 +12,16 @@ entries:
     urls:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-adgs-1/rs-server-adgs-1.tgz
     version: "1"
-generated: "2024-02-14T14:57:57.223138826Z"
+  rs-server-cadip:
+  - apiVersion: v1
+    appVersion: "1"
+    created: "2024-02-15T14:06:33.628451381Z"
+    description: RS SERVER CADIP
+    digest: 44f93fc5058179c3fe8ea08dc3accee1ce5bd621f88acfa2f2c5c5fa2c4db1bf
+    maintainers:
+    - name: CS GROUP
+    name: rs-server-cadip
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-cadip-1/rs-server-cadip-1.tgz
+    version: "1"
+generated: "2024-02-15T14:06:33.628461691Z"
