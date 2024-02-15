@@ -83,12 +83,12 @@ spec:
             secretKeyRef:
               name: {{ .Release.Name }}-obs
               key: sk
-        - name: STATION_USER
+        - name: EODAG__cadip__auth__credentials__username
           valueFrom:
             secretKeyRef:
               name: {{ .Release.Name }}-endpoint
               key: user
-        - name: STATION_PASS
+        - name: EODAG__cadip__auth__credentials__password
           valueFrom:
             secretKeyRef:
               name: {{ .Release.Name }}-endpoint

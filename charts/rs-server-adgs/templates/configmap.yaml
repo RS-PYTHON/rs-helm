@@ -6,13 +6,10 @@ metadata:
   
 data:
   {{ .Values.app.eodagConfigFile }}: |-
-    ADGS:
+    adgs:
       auth:
         type: GenericAuth
         method: basic
-        credentials:
-            username: {{ .Values.app.station.endpoint.secret.username }}
-            password: {{ .Values.app.station.endpoint.secret.password }}
       products:
         GENERIC_PRODUCT_TYPE:
           productType: '{productType}'
@@ -73,5 +70,5 @@ data:
             downloadLink: '{{ .Values.app.station.endpoint.url }}({uid})/$value'
   {{ .Values.app.stationConfigFile }}: |-
     {
-      "ADGS": "{{ .Values.app.station.endpoint.url }}"
+      "adgs": "{{ .Values.app.station.endpoint.url }}"
     }
