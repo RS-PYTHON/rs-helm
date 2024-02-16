@@ -48,4 +48,16 @@ entries:
     urls:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-cadip-1/rs-server-cadip-1.tgz
     version: "1"
-generated: "2024-02-15T15:03:09.843241709Z"
+  rs-server-frontend:
+  - apiVersion: v1
+    appVersion: "1"
+    created: "2024-02-16T13:58:32.884408539Z"
+    description: RS SERVER FRONTEND
+    digest: 2f2ef71d5b098ef7f53c6ce1c96969afaed9a8477b3db9f9e4490a00508fa69a
+    maintainers:
+    - name: CS GROUP
+    name: rs-server-frontend
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-frontend-1/rs-server-frontend-1.tgz
+    version: "1"
+generated: "2024-02-16T13:58:32.884417375Z"
