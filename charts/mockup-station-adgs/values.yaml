@@ -13,14 +13,14 @@ app:
 
 probe:
   liveness:
-    path: /app/ping
-    port: 8080
+    path: /health
+    port: 5000
     initialDelaySeconds: 30
     periodSeconds: 30
     timeoutSeconds: 5
   readiness:
-    path: /app/ping
-    port: 8080
+    path: /health
+    port: 5000
     initialDelaySeconds: 30
     periodSeconds: 30
     timeoutSeconds: 5
@@ -30,7 +30,7 @@ image:
   repository: rs-python
   name: rs-testmeans_adgs-station-mock
   tag: latest
-  PullPolicy: Always
+  PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
 
 resources:

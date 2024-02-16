@@ -15,7 +15,7 @@ spec:
           service:
             name: {{ .Release.Name }}-svc
             port:
-              number: 8080
+              number: {{ .Values.service.port }}
         path: {{ .Values.ingress.path }}
         pathType: Prefix
   tls:

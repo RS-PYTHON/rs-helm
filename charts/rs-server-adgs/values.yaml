@@ -52,7 +52,7 @@ image:
   repository: rs-python
   name: rs-server-adgs
   tag: latest
-  PullPolicy: Always
+  PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
 
 ingress:

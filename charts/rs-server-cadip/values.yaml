@@ -52,7 +52,7 @@ image:
   repository: rs-python
   name: rs-server-cadip
   tag: latest
-  PullPolicy: Always
+  PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
 
 ingress:
