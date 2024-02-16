@@ -16,7 +16,7 @@ data:
 
       search:
         type: ODataV4Search
-        api_endpoint: 'http://127.0.0.1:5000/Files'
+        api_endpoint: '{{ .Values.app.station.endpoint.url }}'
         need_auth: true
         results_entry: responses | $
         metadata_mapping:
@@ -58,7 +58,7 @@ data:
                 - null
                 - '$.PublicationDate'
             geometry: 'POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))'
-            downloadLink: 'http://127.0.0.1:5000/Files({id})/$value'
+            downloadLink: '{{ .Values.app.station.endpoint.url }}({id})/$value'
             title: '$.Name'
 
         free_text_search_operations:
@@ -77,10 +77,10 @@ data:
 
       download:
         type: HTTPDownload
-        base_uri: 'https://127.0.0.1:5000/Files'
+        base_uri: '{{ .Values.app.station.endpoint.url }}'
         metadata_mapping:
             uid: '$.Id'
-            downloadLink: 'http://127.0.0.1:5000/Files({uid})/$value'
+            downloadLink: '{{ .Values.app.station.endpoint.url }}({uid})/$value'
   {{ .Values.app.stationConfigFile }}: |-
     {
       "cadip": "{{ .Values.app.station.endpoint.url }}"
