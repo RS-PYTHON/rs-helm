@@ -41,6 +41,9 @@ spec:
         - name: web
           protocol: TCP
           containerPort: {{ .Values.app.port }}
+        env:
+        - name: RSPY_DOCS_URL
+          value: {{ .Values.app.docsUrl }}
         securityContext:
           privileged: false
         livenessProbe:

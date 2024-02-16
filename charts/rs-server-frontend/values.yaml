@@ -7,9 +7,8 @@ service:
 
 app:
   port: 8000
-  workDir: /app
-  confDir: /opt/adgs/config
-  authConfigFile: auth.json
+  # app.docsUrl must be the same value as ingress.path
+  docsUrl: /docs
 
 probe:
   liveness:
@@ -32,6 +31,14 @@ image:
   tag: latest
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
+
+ingress:
+  issuer:
+    type: cluster-issuer
+    name: letsencrypt-prod
+  host: subdomain.example.com
+  # ingress.path must be the same value as app.docsUrl
+  path: /docs
 
 resources:
   request: 
