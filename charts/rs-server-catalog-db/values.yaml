@@ -1,0 +1,47 @@
+namespace: database
+
+service:
+  port: 5432
+
+#probe:
+#  liveness:
+#    path: /health/_mgmt/ping
+#    port: 8000
+#    initialDelaySeconds: 30
+#    periodSeconds: 30
+#    timeoutSeconds: 5
+#  readiness:
+#    path: /health/_mgmt/ping
+#    port: 8000
+#    initialDelaySeconds: 30
+#    periodSeconds: 30
+#    timeoutSeconds: 5
+
+postgres:
+  port: "5432"
+  db: catalog
+  host: catalog-db.database.svc.cluster.local
+  secret:
+    user: postgres
+    pass: password
+
+image:
+  registry: ghcr.io
+  repository: stac-utils
+  name: pgstac
+  tag: v0.7.10
+  PullPolicy: IfNotPresent
+  #imagePullSecrets: regcred
+
+resources:
+  request: 
+    ram: "256Mi"
+    cpu: "100m"
+  limit:
+    ram: "1000Mi"
+    cpu: "500m"
+
+volume:
+  size: "20Gi"
+  accessModes: ReadWriteOnce
+  storageClassName: csi-cinder-sc-retain
