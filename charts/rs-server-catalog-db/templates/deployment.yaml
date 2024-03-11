@@ -51,6 +51,8 @@ spec:
           value: {{ .Values.postgres.db }}
         - name: POSTGRES_HOST
           value: {{ .Values.postgres.host }}
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
         - name: PGDATABASE
           value: {{ .Values.postgres.db }}
         - name: POSTGRES_USER
