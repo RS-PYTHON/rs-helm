@@ -75,22 +75,6 @@ spec:
               key: pass
         securityContext:
           privileged: false
-        #livenessProbe:
-        #  httpGet:
-        #    path: {{ .Values.probe.liveness.path }}
-        #    port: {{ .Values.probe.liveness.port }}
-        #  initialDelaySeconds: {{ .Values.probe.liveness.initialDelaySeconds }}
-        #  periodSeconds: {{ .Values.probe.liveness.periodSeconds }}
-        #  timeoutSeconds: {{ .Values.probe.liveness.timeoutSeconds }}
-        #readinessProbe:
-        #  httpGet:
-        #    path: {{ .Values.probe.readiness.path }}
-        #    port: {{ .Values.probe.readiness.port }}
-        #  initialDelaySeconds: {{ .Values.probe.readiness.initialDelaySeconds }}
-        #  periodSeconds: {{ .Values.probe.readiness.periodSeconds }}
-        #  timeoutSeconds: {{ .Values.probe.readiness.timeoutSeconds }}
-      #imagePullSecrets:
-      #- name:  {{ .Values.image.imagePullSecrets }}
       restartPolicy: Always
       securityContext: {}
       volumes:
