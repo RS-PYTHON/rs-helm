@@ -58,7 +58,7 @@ spec:
           value: "YES"
         - name: GDAL_DISABLE_READDIR_ON_OPEN
           value: EMPTY_DIR
-        - name: EMPTY_DIR
+        - name: DB_MIN_CONN_SIZE
           value: "1"
         - name: DB_MAX_CONN_SIZE
           value: "1"
