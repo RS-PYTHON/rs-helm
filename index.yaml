@@ -48,6 +48,18 @@ entries:
     urls:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-cadip-1/rs-server-cadip-1.tgz
     version: "1"
+  rs-server-catalog:
+  - apiVersion: v1
+    appVersion: "1"
+    created: "2024-03-12T17:26:34.405088408Z"
+    description: RS SERVER CATALOG
+    digest: 2a3672643293a1c0b788f842db21dc06d16771c25776a03f39f7fbde52d614b2
+    maintainers:
+    - name: CS GROUP
+    name: rs-server-catalog
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-catalog-1/rs-server-catalog-1.tgz
+    version: "1"
   rs-server-catalog-db:
   - apiVersion: v1
     appVersion: "1"
@@ -72,4 +84,4 @@ entries:
     urls:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-frontend-1/rs-server-frontend-1.tgz
     version: "1"
-generated: "2024-03-11T15:37:45.892925146Z"
+generated: "2024-03-12T17:26:34.631300316Z"
