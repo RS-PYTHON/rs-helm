@@ -31,3 +31,4 @@ runs:
       uses: helm/chart-releaser-action@v1.6.0
       env:
         CR_TOKEN: ${{ inputs.github_token }}
+        CR_SKIP_EXISTING: true
