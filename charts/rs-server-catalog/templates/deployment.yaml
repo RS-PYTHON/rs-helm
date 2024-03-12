@@ -45,9 +45,9 @@ spec:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}
         - name: APP_HOST
-          value: 0.0.0.0
+          value: "0.0.0.0"
         - name: APP_PORT
-          value: 8000
+          value: "8000"
         - name: POSTGRES_HOST_READER
           value: {{ .Values.postgres.host.ro }}
         - name: POSTGRES_HOST_WRITER
@@ -59,11 +59,11 @@ spec:
         - name: GDAL_DISABLE_READDIR_ON_OPEN
           value: EMPTY_DIR
         - name: EMPTY_DIR
-          value: 1
+          value: "1"
         - name: DB_MAX_CONN_SIZE
-          value: 1
+          value: "1"
         - name: USE_API_HYDRATE
-          value: false
+          value: "false"
         - name: POSTGRES_HOST
           value: {{ .Values.postgres.host.rw }}
         - name: POSTGRES_PORT
