@@ -7,6 +7,7 @@ service:
 
 app:
   port: 8000
+  uacURL: http://apikeymanager.processing.svc.cluster.local:8000/check/api_key
   
 probe:
   liveness:
@@ -26,8 +27,8 @@ postgres:
   port: "5432"
   db: catalog
   host:
-    rw: postgresql-cluster-rw.database.svc.cluster.local
-    ro: postgresql-cluster-ro.database.svc.cluster.local
+    rw: rs-server-catalog-db-svc.database.svc.cluster.local
+    ro: rs-server-catalog-db-svc.database.svc.cluster.local
   secret:
     user: postgres
     pass: password
