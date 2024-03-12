@@ -16,12 +16,6 @@ probe:
     initialDelaySeconds: 30
     periodSeconds: 30
     timeoutSeconds: 5
-  readiness:
-    path: /health
-    port: 8000
-    initialDelaySeconds: 30
-    periodSeconds: 30
-    timeoutSeconds: 5
 
 postgres:
   port: "5432"
