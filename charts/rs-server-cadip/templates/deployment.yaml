@@ -47,6 +47,8 @@ spec:
           protocol: TCP
           containerPort: {{ .Values.app.port }}
         env:
+        - name: RSPY_UAC_CHECK_URL
+          value: {{ .Values.app.uacURL }}
         - name: RSPY_WORKING_DIR
           value: {{ .Values.app.workDir }}
         - name: RSPY_STATION_CONFIG

@@ -17,6 +17,7 @@ app:
       secret:
         username: test
         password: test
+  uacURL: http://apikeymanager.processing.svc.cluster.local:8000/check/api_key
 
 probe:
   liveness:
