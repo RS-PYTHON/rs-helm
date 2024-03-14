@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}-service-config
+  name: {{ .Release.Name }}-{{ .Values.app.stationName }}-service-config
   namespace: {{ .Values.namespace }}
   
 data:

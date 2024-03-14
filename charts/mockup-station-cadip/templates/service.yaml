@@ -1,14 +1,14 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: {{ .Release.Name }}-svc
+  name: {{ .Release.Name }}-{{ .Values.app.stationName }}-svc
   labels:
-    app: {{ .Release.Name }}-svc
+    app: {{ .Release.Name }}-{{ .Values.app.stationName }}-svc
 spec:
   selector:
-    app: {{ .Release.Name }}
+    app: {{ .Release.Name }}-{{ .Values.app.stationName }}
   ports:
-  - name: {{ .Release.Name }}-service
+  - name: {{ .Release.Name }}-{{ .Values.app.stationName }}-service
     protocol: TCP
     port: {{ .Values.service.port }}
     targetPort: {{ .Values.app.port }}

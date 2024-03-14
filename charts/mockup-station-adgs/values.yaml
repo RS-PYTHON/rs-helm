@@ -30,7 +30,7 @@ image:
   repository: rs-python
   name: rs-testmeans_adgs-station-mock
   tag: latest
-  PullPolicy: IfNotPresent
+  PullPolicy: Always
   #imagePullSecrets: regcred
 
 resources:

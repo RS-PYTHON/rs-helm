@@ -12,11 +12,24 @@ app:
   stationConfigFile: stations_cfg.json
   eodagConfigFile: cadip_ws_config.yaml
   station:
-    endpoint:
-      url: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files
-      secret:
-        username: test
-        password: test
+    cadip:
+      endpoint:
+        url: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files
+        secret:
+          username: test
+          password: test
+    sgs:
+      endpoint:
+        url: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files
+        secret:
+          username: test
+          password: test
+    mti:
+      endpoint:
+        url: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files
+        secret:
+          username: test
+          password: test
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/check/api_key
 
 probe:
@@ -53,7 +66,7 @@ image:
   repository: rs-python
   name: rs-server-cadip
   tag: latest
-  PullPolicy: IfNotPresent
+  PullPolicy: Always
   #imagePullSecrets: regcred
 
 ingress:

@@ -24,7 +24,7 @@ image:
   repository: rs-python
   name: rs-server-catalog
   tag: auth
-  PullPolicy: IfNotPresent
+  PullPolicy: Always
   #imagePullSecrets: regcred
 
 ingress:

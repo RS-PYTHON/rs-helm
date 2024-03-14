@@ -30,7 +30,7 @@ image:
   repository: rs-python
   name: rs-server-frontend
   tag: latest
-  PullPolicy: IfNotPresent
+  PullPolicy: Always
   #imagePullSecrets: regcred
 
 ingress:

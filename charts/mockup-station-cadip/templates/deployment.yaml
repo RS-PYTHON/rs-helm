@@ -1,17 +1,17 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: {{ .Release.Name }}
+  name: {{ .Release.Name }}-{{ .Values.app.stationName }}
   namespace: {{ .Values.namespace }}
   generation: 1
   labels:
-    app: {{ .Release.Name }}
+    app: {{ .Release.Name }}-{{ .Values.app.stationName }}
   annotations:
     deployment.kubernetes.io/revision: '1'
 spec:
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      app: {{ .Release.Name }}-{{ .Values.app.stationName }}
   replicas: {{ .Values.replicaCount }}
   strategy:
     type: RollingUpdate
@@ -20,14 +20,14 @@ spec:
       maxUnavailable: 50%
   template:
     metadata:
-      name: {{ .Release.Name }}
+      name: {{ .Release.Name }}-{{ .Values.app.stationName }}
       labels:
-        app: {{ .Release.Name }}
+        app: {{ .Release.Name }}-{{ .Values.app.stationName }}
         type: {{ .Values.namespace }}
     spec:
       terminationGracePeriodSeconds: 30
       containers:
-      - name: {{ .Release.Name }}
+      - name: {{ .Release.Name }}-{{ .Values.app.stationName }}
         image: {{ .Values.image.registry }}/{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}
         imagePullPolicy: {{ .Values.image.PullPolicy }}
         resources:
@@ -68,5 +68,5 @@ spec:
       volumes:
         - name: service-config-volume
           configMap:
-            name: {{ .Release.Name }}-service-config
+            name: {{ .Release.Name }}-{{ .Values.app.stationName }}-service-config
   revisionHistoryLimit: 10

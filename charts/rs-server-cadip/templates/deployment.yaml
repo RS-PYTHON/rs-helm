@@ -51,8 +51,8 @@ spec:
           value: {{ .Values.app.uacURL }}
         - name: RSPY_WORKING_DIR
           value: {{ .Values.app.workDir }}
-        - name: RSPY_STATION_CONFIG
-          value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
+        #- name: RSPY_STATION_CONFIG
+        #  value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
         - name: EODAG_CADIP_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
         - name: POSTGRES_PORT
@@ -88,12 +88,32 @@ spec:
         - name: EODAG__cadip__auth__credentials__username
           valueFrom:
             secretKeyRef:
-              name: {{ .Release.Name }}-endpoint
+              name: {{ .Release.Name }}-cadip-endpoint
               key: user
         - name: EODAG__cadip__auth__credentials__password
           valueFrom:
             secretKeyRef:
-              name: {{ .Release.Name }}-endpoint
+              name: {{ .Release.Name }}-cadip-endpoint
+              key: pass
+        - name: EODAG__sgs__auth__credentials__username
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-sgs-endpoint
+              key: user
+        - name: EODAG__sgs__auth__credentials__password
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-sgs-endpoint
+              key: pass
+        - name: EODAG__mti__auth__credentials__username
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-mti-endpoint
+              key: user
+        - name: EODAG__mti__auth__credentials__password
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-mti-endpoint
               key: pass
         securityContext:
           privileged: false

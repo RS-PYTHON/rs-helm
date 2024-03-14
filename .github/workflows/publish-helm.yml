@@ -44,12 +44,13 @@ jobs:
               git ls-remote --tags --refs --sort="v:refname" \
               https://github.com/RS-PYTHON/rs-server.git 'v*.*' | tail -n1 | sed 's/.*\///' | sed 's/^v//' | cut -d '.' -f 1 \
           )" >> $GITHUB_OUTPUT
+          echo "SHA_SHORT=$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_OUTPUT
 
       - name: Update version number in chart.yaml
         shell: bash
         run: |
           for chart in $(find charts -name Chart.yaml); do
-            sed -i "s,{{CHART_VERSION}},${{ steps.get_version.outputs.RSSERVER_VERSION }}," $chart
+            sed -i "s,{{CHART_VERSION}},${{ steps.get_version.outputs.RSSERVER_VERSION }}.0.0-${{ steps.get_version.outputs.SHA_SHORT }}," $chart
           done
 
       - id: publish-chart
