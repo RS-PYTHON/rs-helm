@@ -44,6 +44,8 @@ spec:
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}
+        - name: RSPY_CATALOG_BUCKET
+          value: {{ .Values.app.catalogBucket }}
         - name: APP_HOST
           value: "0.0.0.0"
         - name: APP_PORT

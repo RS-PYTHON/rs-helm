@@ -8,6 +8,7 @@ service:
 app:
   port: 8000
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/check/api_key
+  catalogBucket: rs-cluster-catalog
 
 obs:
   endpoint: http://minio.minio.svc.cluster.local:9000
