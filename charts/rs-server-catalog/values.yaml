@@ -9,6 +9,13 @@ app:
   port: 8000
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/check/api_key
 
+obs:
+  endpoint: http://minio.minio.svc.cluster.local:9000
+  region: sbg
+  secret:
+    ak: TDr8foJqSygBQ9YFmWDy
+    sk: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
+
 postgres:
   port: "5432"
   db: catalog
