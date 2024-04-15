@@ -1,0 +1,59 @@
+name: Publish Helm charts
+
+# TODO: is it possible to run this workflow only if the check-code-quality workflow has completed successfully ?
+# I've tried workflow_run but see:
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_run
+# Note: This event will only trigger a workflow run if the workflow file is on the default branch.
+
+# Run workflow only for new git tags (including hierarchical tags like v1.0/beta), or manually
+on:
+  push:
+    tags:
+      - '**'
+#     branches:
+#       - 'feat134/helm-chart-releaser'  
+  workflow_dispatch:
+
+env:
+  DOCKER_REGISTRY: ghcr.io
+
+jobs:
+
+  #######################
+  # Publish Helm charts #
+  #######################
+
+  rs-server-helm-chart:
+    runs-on: ubuntu-latest
+    name: "rs-server Helm chart"
+    permissions: write-all
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # fetch all history for all branches and tags.
+
+      - name: Get the rs-server version tag
+        id: get_version
+        shell: bash
+        run: |
+          # Enable pipefail so git command failures do not result in null versions downstream
+          set -x
+
+          echo "RSSERVER_VERSION=$(\
+              git ls-remote --tags --refs --sort="v:refname" \
+              https://github.com/RS-PYTHON/rs-server.git 'v*.*' | tail -n1 | sed 's/.*\///' | sed 's/^v//' | cut -d '.' -f 1 \
+          )" >> $GITHUB_OUTPUT
+          echo "SHA_SHORT=$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_OUTPUT
+
+      - name: Update version number in chart.yaml
+        shell: bash
+        run: |
+          for chart in $(find charts -name Chart.yaml); do
+            sed -i "s,{{CHART_VERSION}},${{ steps.get_version.outputs.RSSERVER_VERSION }}.0.0-${{ steps.get_version.outputs.SHA_SHORT }}," $chart
+          done
+
+      - id: publish-chart
+        uses: ./.github/actions/publish-chart
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

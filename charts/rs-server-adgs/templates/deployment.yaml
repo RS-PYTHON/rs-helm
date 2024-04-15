@@ -1,0 +1,125 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Values.namespace }}
+  generation: 1
+  labels:
+    app: {{ .Release.Name }}
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 50%
+  template:
+    metadata:
+      name: {{ .Release.Name }}
+      labels:
+        app: {{ .Release.Name }}
+        type: {{ .Values.namespace }}
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: {{ .Release.Name }}
+        image: {{ .Values.image.registry }}/{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.PullPolicy }}
+        resources:
+          requests:
+            memory: {{ .Values.resources.request.ram }}
+            cpu: {{ .Values.resources.request.cpu }}
+          limits:
+            memory: {{ .Values.resources.limit.ram }}
+            cpu: {{ .Values.resources.limit.cpu }}
+        volumeMounts:
+        - name: workdir
+          mountPath: {{ .Values.app.workDir }}
+        - name: service-config-volume
+          mountPath: {{ .Values.app.confDir }}
+        ports:
+        - name: web
+          protocol: TCP
+          containerPort: {{ .Values.app.port }}
+        env:
+        - name: RSPY_UAC_CHECK_URL
+          value: {{ .Values.app.uacURL }}
+        - name: RSPY_WORKING_DIR
+          value: {{ .Values.app.workDir }}
+        - name: RSPY_STATION_CONFIG
+          value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
+        - name: EODAG_ADGS_CONFIG
+          value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
+        - name: POSTGRES_PORT
+          value: {{ .Values.postgres.port | quote }}
+        - name: POSTGRES_DB
+          value: {{ .Values.postgres.db }}
+        - name: POSTGRES_HOST
+          value: {{ .Values.postgres.host }}
+        - name: S3_ENDPOINT
+          value: {{ .Values.obs.endpoint }}
+        - name: S3_REGION
+          value: {{ .Values.obs.region }}
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-postgres
+              key: user
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-postgres
+              key: pass
+        - name: S3_ACCESSKEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-obs
+              key: ak
+        - name: S3_SECRETKEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-obs
+              key: sk
+        - name: EODAG__adgs__auth__credentials__username
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-endpoint
+              key: user
+        - name: EODAG__adgs__auth__credentials__password
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-endpoint
+              key: pass
+        securityContext:
+          privileged: false
+        livenessProbe:
+          httpGet:
+            path: {{ .Values.probe.liveness.path }}
+            port: {{ .Values.probe.liveness.port }}
+          initialDelaySeconds: {{ .Values.probe.liveness.initialDelaySeconds }}
+          periodSeconds: {{ .Values.probe.liveness.periodSeconds }}
+          timeoutSeconds: {{ .Values.probe.liveness.timeoutSeconds }}
+        readinessProbe:
+          httpGet:
+            path: {{ .Values.probe.readiness.path }}
+            port: {{ .Values.probe.readiness.port }}
+          initialDelaySeconds: {{ .Values.probe.readiness.initialDelaySeconds }}
+          periodSeconds: {{ .Values.probe.readiness.periodSeconds }}
+          timeoutSeconds: {{ .Values.probe.readiness.timeoutSeconds }}
+      #imagePullSecrets:
+      #- name:  {{ .Values.image.imagePullSecrets }}
+      restartPolicy: Always
+      securityContext: {}
+      volumes:
+        - name: workdir
+          emptyDir:
+            sizeLimit: 10Gi
+        - name: service-config-volume
+          configMap:
+            name: {{ .Release.Name }}-service-config
+  revisionHistoryLimit: 10

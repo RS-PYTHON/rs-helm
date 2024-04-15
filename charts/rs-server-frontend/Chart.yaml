@@ -1,0 +1,7 @@
+apiVersion: v1
+appVersion: {{CHART_VERSION}}
+description: RS SERVER FRONTEND
+name: rs-server-frontend
+version: {{CHART_VERSION}}
+maintainers:
+  - name: CS GROUP

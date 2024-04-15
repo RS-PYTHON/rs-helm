@@ -1,0 +1,50 @@
+namespace: processing
+
+replicaCount: 1
+
+service:
+  port: 8080
+
+app:
+  port: 8000
+  # app.docsUrl must be the same value as ingress.path
+  docsUrl: /docs
+  uacURL: http://apikeymanager.processing.svc.cluster.local:8000/check/api_key
+
+probe:
+  liveness:
+    path: /health
+    port: 8000
+    initialDelaySeconds: 30
+    periodSeconds: 30
+    timeoutSeconds: 5
+  readiness:
+    path: /health
+    port: 8000
+    initialDelaySeconds: 30
+    periodSeconds: 30
+    timeoutSeconds: 5
+
+image:
+  registry: ghcr.io
+  repository: rs-python
+  name: rs-server-frontend
+  tag: latest
+  PullPolicy: Always
+  #imagePullSecrets: regcred
+
+ingress:
+  issuer:
+    type: cluster-issuer
+    name: letsencrypt-prod
+  host: subdomain.example.com
+  # ingress.path must be the same value as app.docsUrl
+  path: /docs
+
+resources:
+  request: 
+    ram: "256Mi"
+    cpu: "100m"
+  limit:
+    ram: "1000Mi"
+    cpu: "500m"

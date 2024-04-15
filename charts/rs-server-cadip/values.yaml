@@ -1,0 +1,85 @@
+namespace: processing
+
+replicaCount: 1
+
+service:
+  port: 8080
+
+app:
+  port: 8000
+  workDir: /app
+  confDir: /app/conf
+  stationConfigFile: stations_cfg.json
+  eodagConfigFile: cadip_ws_config.yaml
+  station:
+    cadip:
+      endpoint:
+        url: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files
+        secret:
+          username: test
+          password: test
+    sgs:
+      endpoint:
+        url: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files
+        secret:
+          username: test
+          password: test
+    mti:
+      endpoint:
+        url: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files
+        secret:
+          username: test
+          password: test
+  uacURL: http://apikeymanager.processing.svc.cluster.local:8000/check/api_key
+
+probe:
+  liveness:
+    path: /health
+    port: 8000
+    initialDelaySeconds: 30
+    periodSeconds: 30
+    timeoutSeconds: 5
+  readiness:
+    path: /health
+    port: 8000
+    initialDelaySeconds: 30
+    periodSeconds: 30
+    timeoutSeconds: 5
+
+postgres:
+  port: "5432"
+  db: rspydemo
+  host: postgresql-cluster-rw.database.svc.cluster.local
+  secret:
+    user: test
+    pass: test
+
+obs:
+  endpoint: http://minio.minio.svc.cluster.local:9000
+  region: sbg
+  secret:
+    ak: TDr8foJqSygBQ9YFmWDy
+    sk: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
+
+image:
+  registry: ghcr.io
+  repository: rs-python
+  name: rs-server-cadip
+  tag: latest
+  PullPolicy: Always
+  #imagePullSecrets: regcred
+
+ingress:
+  issuer:
+    type: cluster-issuer
+    name: letsencrypt-prod
+  host: subdomain.example.com
+  path: /cadip
+
+resources:
+  request: 
+    ram: "256Mi"
+    cpu: "100m"
+  limit:
+    ram: "1000Mi"
+    cpu: "500m"

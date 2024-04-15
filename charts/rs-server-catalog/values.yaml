@@ -1,0 +1,51 @@
+namespace: processing
+
+replicaCount: 1
+
+service:
+  port: 8080
+
+app:
+  port: 8000
+  uacURL: http://apikeymanager.processing.svc.cluster.local:8000/check/api_key
+  catalogBucket: rs-cluster-catalog
+
+obs:
+  endpoint: http://minio.minio.svc.cluster.local:9000
+  region: sbg
+  secret:
+    ak: TDr8foJqSygBQ9YFmWDy
+    sk: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
+
+postgres:
+  port: "5432"
+  db: catalog
+  host:
+    rw: rs-server-catalog-db-svc.database.svc.cluster.local
+    ro: rs-server-catalog-db-svc.database.svc.cluster.local
+  secret:
+    user: postgres
+    pass: password
+
+image:
+  registry: ghcr.io
+  repository: rs-python
+  name: rs-server-catalog
+  tag: auth
+  PullPolicy: Always
+  #imagePullSecrets: regcred
+
+ingress:
+  issuer:
+    type: cluster-issuer
+    name: letsencrypt-prod
+  host: subdomain.example.com
+  path: /catalog
+
+resources:
+  request: 
+    ram: "256Mi"
+    cpu: "100m"
+  limit:
+    ram: "1000Mi"
+    cpu: "500m"
