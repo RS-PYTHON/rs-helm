@@ -10,8 +10,8 @@ on:
   push:
     tags:
       - '**'
-    branches:
-      - 'feat134/helm-chart-releaser'  
+#     branches:
+#       - 'feat134/helm-chart-releaser'  
   workflow_dispatch:
 
 env:
