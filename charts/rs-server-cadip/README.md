@@ -1,6 +1,6 @@
 # rs-server-cadip
 
-![Version: 3.0.0-3de77f1](https://img.shields.io/badge/Version-3.0.0--3de77f1-informational?style=flat-square) ![AppVersion: 3.0.0-3de77f1](https://img.shields.io/badge/AppVersion-3.0.0--3de77f1-informational?style=flat-square)
+![Version: 3.0.0-287f7aa](https://img.shields.io/badge/Version-3.0.0--287f7aa-informational?style=flat-square) ![AppVersion: 3.0.0-287f7aa](https://img.shields.io/badge/AppVersion-3.0.0--287f7aa-informational?style=flat-square)
 
 RS SERVER CADIP
 
@@ -14,56 +14,51 @@ RS SERVER CADIP
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| app.confDir | string | `"/app/conf"` |  |
-| app.eodagConfigFile | string | `"cadip_ws_config.yaml"` |  |
-| app.port | int | `8000` |  |
-| app.station.cadip.endpoint.secret.password | string | `"test"` |  |
-| app.station.cadip.endpoint.secret.username | string | `"test"` |  |
-| app.station.cadip.endpoint.url | string | `"http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files"` |  |
-| app.station.mti.endpoint.secret.password | string | `"test"` |  |
-| app.station.mti.endpoint.secret.username | string | `"test"` |  |
-| app.station.mti.endpoint.url | string | `"http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files"` |  |
-| app.station.sgs.endpoint.secret.password | string | `"test"` |  |
-| app.station.sgs.endpoint.secret.username | string | `"test"` |  |
-| app.station.sgs.endpoint.url | string | `"http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files"` |  |
-| app.stationConfigFile | string | `"stations_cfg.json"` |  |
-| app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` |  |
-| app.workDir | string | `"/app"` |  |
-| image.PullPolicy | string | `"Always"` |  |
-| image.name | string | `"rs-server-cadip"` |  |
-| image.registry | string | `"ghcr.io"` |  |
-| image.repository | string | `"rs-python"` |  |
-| image.tag | string | `"latest"` |  |
-| ingress.host | string | `"subdomain.example.com"` |  |
-| ingress.issuer.name | string | `"letsencrypt-prod"` |  |
-| ingress.issuer.type | string | `"cluster-issuer"` |  |
-| ingress.path | string | `"/cadip"` |  |
-| namespace | string | `"processing"` |  |
-| obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` |  |
-| obs.region | string | `"sbg"` |  |
-| obs.secret.ak | string | `"TDr8foJqSygBQ9YFmWDy"` |  |
-| obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` |  |
-| postgres.db | string | `"rspydemo"` |  |
-| postgres.host | string | `"postgresql-cluster-rw.database.svc.cluster.local"` |  |
-| postgres.port | string | `"5432"` |  |
-| postgres.secret.pass | string | `"test"` |  |
-| postgres.secret.user | string | `"test"` |  |
-| probe.liveness.initialDelaySeconds | int | `30` |  |
-| probe.liveness.path | string | `"/health"` |  |
-| probe.liveness.periodSeconds | int | `30` |  |
-| probe.liveness.port | int | `8000` |  |
-| probe.liveness.timeoutSeconds | int | `5` |  |
-| probe.readiness.initialDelaySeconds | int | `30` |  |
-| probe.readiness.path | string | `"/health"` |  |
-| probe.readiness.periodSeconds | int | `30` |  |
-| probe.readiness.port | int | `8000` |  |
-| probe.readiness.timeoutSeconds | int | `5` |  |
-| replicaCount | int | `1` |  |
-| resources.limit.cpu | string | `"500m"` |  |
-| resources.limit.ram | string | `"1000Mi"` |  |
-| resources.request.cpu | string | `"100m"` |  |
-| resources.request.ram | string | `"256Mi"` |  |
-| service.port | int | `8080` |  |
+| app.confDir | string | `"/app/conf"` | Config directory for the application |
+| app.eodagConfigFile | string | `"cadip_ws_config.yaml"` | EODAG configuration file for the application |
+| app.port | int | `8000` | Port for the application |
+| app.station.cadip | object | `{"endpoint":{"secret":{"password":"test","username":"test"},"url":"http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files"}}` | CADIP station name |
+| app.station.cadip.endpoint.secret.password | string | `"test"` | Password to authenticate with the CADIP station |
+| app.station.cadip.endpoint.secret.username | string | `"test"` | Username to authenticate with the CADIP station |
+| app.station.cadip.endpoint.url | string | `"http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files"` | CADIP station URL |
+| app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
+| app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` | URL of the API Key Manager service |
+| app.workDir | string | `"/app"` | Working directory for the application |
+| image.PullPolicy | string | `"Always"` | Image pull policy |
+| image.name | string | `"rs-server-cadip"` | Image name |
+| image.registry | string | `"ghcr.io"` | Image registry |
+| image.repository | string | `"rs-python"` | Image repository |
+| image.tag | string | `"latest"` | Image tag version |
+| ingress.host | string | `"subdomain.example.com"` | Ingress host name |
+| ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
+| ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
+| ingress.limit.cpu | string | `"500m"` | Pod CPU limit |
+| ingress.limit.ram | string | `"1000Mi"` | Pod memory limit |
+| ingress.path | string | `"/cadip"` | Ingress path |
+| ingress.request.cpu | string | `"100m"` | Pod CPU request |
+| ingress.request.ram | string | `"256Mi"` | Pod memory request |
+| namespace | string | `"processing"` | Namespace for the deployment |
+| obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
+| obs.region | string | `"sbg"` | Region of the object storage service |
+| obs.secret.ak | string | `"TDr8foJqSygBQ9YFmWDy"` | Access Key to authenticate with the object storage service |
+| obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service |
+| postgres.db | string | `"rspydemo"` | PostgreSQL database name |
+| postgres.host | string | `"postgresql-cluster-rw.database.svc.cluster.local"` | PostgreSQL service URL |
+| postgres.port | string | `"5432"` | PostgreSQL port |
+| postgres.secret.pass | string | `"test"` | Password to authenticate with the PostgreSQL service |
+| postgres.secret.user | string | `"test"` | Username to authenticate with the PostgreSQL service |
+| probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
+| probe.liveness.path | string | `"/health"` | Path for the liveness probe |
+| probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |
+| probe.liveness.port | int | `8000` | Port for the liveness probe |
+| probe.liveness.timeoutSeconds | int | `5` | timeoutSeconds for the liveness probe |
+| probe.readiness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the readiness probe |
+| probe.readiness.path | string | `"/health"` | Path for the readiness probe |
+| probe.readiness.periodSeconds | int | `30` | periodSeconds for the readiness probe |
+| probe.readiness.port | int | `8000` | Port for the readiness probe |
+| probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
+| replicaCount | int | `1` | Number of replicas for the deployment |
+| service.port | int | `8080` | Port for the service |
 
 ----------------------------------------------
 Autogenerated from chart metadata using [helm-docs v1.12.0](https://github.com/norwoodj/helm-docs/releases/v1.12.0)

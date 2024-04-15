@@ -1,6 +1,6 @@
 # mockup-station-adgs
 
-![Version: 3.0.0-3de77f1](https://img.shields.io/badge/Version-3.0.0--3de77f1-informational?style=flat-square) ![AppVersion: 3.0.0-3de77f1](https://img.shields.io/badge/AppVersion-3.0.0--3de77f1-informational?style=flat-square)
+![Version: 3.0.0-287f7aa](https://img.shields.io/badge/Version-3.0.0--287f7aa-informational?style=flat-square) ![AppVersion: 3.0.0-287f7aa](https://img.shields.io/badge/AppVersion-3.0.0--287f7aa-informational?style=flat-square)
 
 MOCKUP STATION ADGS
 
@@ -14,40 +14,31 @@ MOCKUP STATION ADGS
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| app | object | `{"authConfigFile":"auth.json","confDir":"/opt/adgs/config","port":5000,"workDir":"/app"}` | Configuration for the application |
-| app.authConfigFile | string | `"auth.json"` | Auth file configuration for the application |
+| app.authConfigFile | string | `"auth.json"` | Auth configuration file for the application |
 | app.confDir | string | `"/opt/adgs/config"` | Config directory for the application |
 | app.port | int | `5000` | Port for the application |
 | app.workDir | string | `"/app"` | Working directory for the application |
-| image | object | `{"PullPolicy":"Always","name":"rs-testmeans_adgs-station-mock","registry":"ghcr.io","repository":"rs-python","tag":"latest"}` | Image details |
 | image.PullPolicy | string | `"Always"` | Image pull policy |
 | image.name | string | `"rs-testmeans_adgs-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
 | image.tag | string | `"latest"` | Image tag version |
 | namespace | string | `"processing"` | Namespace for the deployment |
-| probe | object | `{"liveness":{"initialDelaySeconds":30,"path":"/health","periodSeconds":30,"port":5000,"timeoutSeconds":5},"readiness":{"initialDelaySeconds":30,"path":"/health","periodSeconds":30,"port":5000,"timeoutSeconds":5}}` | Kubernetes probes configuration |
-| probe.liveness | object | `{"initialDelaySeconds":30,"path":"/health","periodSeconds":30,"port":5000,"timeoutSeconds":5}` | Liveness probe configuration |
 | probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/health"` | Path for the liveness probe |
 | probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |
 | probe.liveness.port | int | `5000` | Port for the liveness probe |
 | probe.liveness.timeoutSeconds | int | `5` | timeoutSeconds for the liveness probe |
-| probe.readiness | object | `{"initialDelaySeconds":30,"path":"/health","periodSeconds":30,"port":5000,"timeoutSeconds":5}` | Readiness probe configuration |
 | probe.readiness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the readiness probe |
 | probe.readiness.path | string | `"/health"` | Path for the readiness probe |
 | probe.readiness.periodSeconds | int | `30` | periodSeconds for the readiness probe |
 | probe.readiness.port | int | `5000` | Port for the readiness probe |
 | probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
 | replicaCount | int | `1` | Number of replicas for the deployment |
-| resources | object | `{"limit":{"cpu":"500m","ram":"1000Mi"},"request":{"cpu":"100m","ram":"256Mi"}}` | Pod resources details |
-| resources.limit | object | `{"cpu":"500m","ram":"1000Mi"}` | Pod limit resources details |
 | resources.limit.cpu | string | `"500m"` | Pod CPU limit |
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
-| resources.request | object | `{"cpu":"100m","ram":"256Mi"}` | Pod request resources details |
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
-| service | object | `{"port":8080}` | Configuration for the service |
 | service.port | int | `8080` | Port for the service |
 
 ----------------------------------------------
