@@ -4,6 +4,7 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
     - uses: actions/checkout@v4
       with:
