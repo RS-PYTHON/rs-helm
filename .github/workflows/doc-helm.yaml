@@ -31,7 +31,7 @@ jobs:
         done
 
     - name: Run helm-docs
-      uses: losisin/helm-docs-github-action@v1
+      uses: losisin/helm-docs-github-action@v1.1.4
       with:
         git-push: true
         chart-search-root: ./charts
