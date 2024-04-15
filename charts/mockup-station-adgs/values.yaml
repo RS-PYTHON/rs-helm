@@ -1,42 +1,76 @@
+# -- Namespace for the deployment
 namespace: processing
 
+# -- Number of replicas for the deployment
 replicaCount: 1
 
+# -- Configuration for the service
 service:
+  # -- Port for the service
   port: 8080
 
+# -- Configuration for the application
 app:
+  # -- Port for the application
   port: 5000
+  # -- Working directory for the application
   workDir: /app
+  # -- Config directory for the application
   confDir: /opt/adgs/config
+  # -- Auth file configuration for the application
   authConfigFile: auth.json
 
+# -- Kubernetes probes configuration
 probe:
+  # -- Liveness probe configuration
   liveness:
+    # -- Path for the liveness probe
     path: /health
+    # -- Port for the liveness probe
     port: 5000
+    # -- InitialDelaySeconds for the liveness probe
     initialDelaySeconds: 30
+    # -- periodSeconds for the liveness probe
     periodSeconds: 30
+    # -- timeoutSeconds for the liveness probe
     timeoutSeconds: 5
+  # -- Readiness probe configuration
   readiness:
+    # -- Path for the readiness probe
     path: /health
+    # -- Port for the readiness probe
     port: 5000
+    # -- InitialDelaySeconds for the readiness probe
     initialDelaySeconds: 30
+    # -- periodSeconds for the readiness probe
     periodSeconds: 30
-    timeoutSeconds: 5
+    # -- timeoutSeconds for the readiness probe
 
+# -- Image details
 image:
+  # -- Image registry
   registry: ghcr.io
+  # -- Image repository
   repository: rs-python
+  # -- Image name
   name: rs-testmeans_adgs-station-mock
+  # -- Image tag version
   tag: latest
+  # -- Image pull policy
   PullPolicy: Always
   #imagePullSecrets: regcred
 
+# -- Pod resources details
 resources:
-  request: 
+  # -- Pod request resources details
+  request:
+    # -- Pod memory request
     ram: "256Mi"
+    # -- Pod CPU request
     cpu: "100m"
+  # -- Pod limit resources details
   limit:
+    # -- Pod memory limit
     ram: "1000Mi"
+    # -- Pod CPU limit
     cpu: "500m"
