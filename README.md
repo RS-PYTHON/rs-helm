@@ -1,3 +1,5 @@
+[![Generate Helm documentation](https://github.com/RS-PYTHON/rs-helm/actions/workflows/doc-helm.yaml/badge.svg)](https://github.com/RS-PYTHON/rs-helm/actions/workflows/doc-helm.yaml) [![pages-build-deployment](https://github.com/RS-PYTHON/rs-helm/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/RS-PYTHON/rs-helm/actions/workflows/pages/pages-build-deployment) [![Publish Helm charts](https://github.com/RS-PYTHON/rs-helm/actions/workflows/publish-helm.yml/badge.svg)](https://github.com/RS-PYTHON/rs-helm/actions/workflows/publish-helm.yml)
+
 # RS-Server Helm Charts
 
 This repository contains the official RS-Server Helm charts for installing and configuring `rs-server` on Kubernetes.
