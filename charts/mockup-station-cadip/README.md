@@ -1,6 +1,6 @@
 # mockup-station-cadip
 
-![Version: 3.0.0-dbfdec8](https://img.shields.io/badge/Version-3.0.0--dbfdec8-informational?style=flat-square) ![AppVersion: 3.0.0-dbfdec8](https://img.shields.io/badge/AppVersion-3.0.0--dbfdec8-informational?style=flat-square)
+![Version: 3.0.0-a33fb00](https://img.shields.io/badge/Version-3.0.0--a33fb00-informational?style=flat-square) ![AppVersion: 3.0.0-a33fb00](https://img.shields.io/badge/AppVersion-3.0.0--a33fb00-informational?style=flat-square)
 
 MOCKUP STATION CADIP
 
