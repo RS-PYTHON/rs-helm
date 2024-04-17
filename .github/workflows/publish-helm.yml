@@ -57,8 +57,7 @@ jobs:
 
             echo "CHART_VERSION=0.$(\
                 git ls-remote --tags --refs --sort="v:refname" \
-                https://github.com/RS-PYTHON/rs-server.git 'v0.*a*' | tail -n1 | sed 's/.*\///' | sed 's/^v//' | sed 's/.\{3\}/&-/' \
-            )-${SHA_SHORT}" >> $GITHUB_OUTPUT
+                https://github.com/RS-PYTHON/rs-server.git 'v0.*a*' | tail -n1 | sed 's/.*\///' | sed 's/^v//' | sed 's/.\{3\}/&-/')-${SHA_SHORT}" >> $GITHUB_OUTPUT
             # 0.0.1-a7-1tr5hrt
 
           fi
