@@ -46,7 +46,7 @@ helm install my-release rs-server/<chart>
 
 ### Installing
 
-Find below an example on how to install the `rs-server-cadip` component and set some values:
+Find below an example on how to install the `rs-server-frontend` component and set some values:
 
 ```bash
 helm install rs-server-frontend rs-server/rs-server-frontend --namespace=processing --set ingress.host=dev-rspy.esa-copernicus.eu --set image.tag=latest --set image.PullPolicy=Always  
