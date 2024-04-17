@@ -24,7 +24,9 @@ app:
     cadip:
       endpoint:
         # -- CADIP station URL
-        url: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files
+        url:
+          file: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files
+          session: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Session
         secret:
           # -- Username to authenticate with the CADIP station
           username: test
@@ -33,14 +35,18 @@ app:
     # @ignored
     sgs:
       endpoint:
-        url: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files
+        url: 
+          file: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files
+          session: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Session
         secret:
           username: test
           password: test
     # @ignored
     mti:
       endpoint:
-        url: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files
+        url: 
+          file: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Files
+          session: http://mockup-station-cadip-svc.processing.svc.cluster.local:8080/Session
         secret:
           username: test
           password: test
