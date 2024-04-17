@@ -16,7 +16,7 @@ data:
 
       search:
         type: ODataV4Search
-        api_endpoint: '{{ .Values.app.station.cadip.endpoint.url }}'
+        api_endpoint: '{{ .Values.app.station.cadip.endpoint.url.file }}'
         need_auth: true
         results_entry: responses | $
         metadata_mapping:
@@ -58,7 +58,7 @@ data:
                 - null
                 - '$.PublicationDate'
             geometry: 'POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))'
-            downloadLink: '{{ .Values.app.station.cadip.endpoint.url }}({id})/$value'
+            downloadLink: '{{ .Values.app.station.cadip.endpoint.url.file }}({id})/$value'
             title: '$.Name'
 
         free_text_search_operations:
@@ -77,10 +77,10 @@ data:
 
       download:
         type: HTTPDownload
-        base_uri: '{{ .Values.app.station.cadip.endpoint.url }}'
+        base_uri: '{{ .Values.app.station.cadip.endpoint.url.file }}'
         metadata_mapping:
             uid: '$.Id'
-            downloadLink: '{{ .Values.app.station.cadip.endpoint.url }}({uid})/$value'
+            downloadLink: '{{ .Values.app.station.cadip.endpoint.url.file }}({uid})/$value'
     mti:
       auth:
         type: GenericAuth
@@ -91,7 +91,7 @@ data:
 
       search:
         type: ODataV4Search
-        api_endpoint: '{{ .Values.app.station.mti.endpoint.url }}'
+        api_endpoint: '{{ .Values.app.station.mti.endpoint.url.file }}'
         need_auth: true
         results_entry: responses | $
         metadata_mapping:
@@ -133,7 +133,7 @@ data:
                 - null
                 - '$.PublicationDate'
             geometry: 'POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))'
-            downloadLink: '{{ .Values.app.station.mti.endpoint.url }}({id})/$value'
+            downloadLink: '{{ .Values.app.station.mti.endpoint.url.file }}({id})/$value'
             title: '$.Name'
 
         free_text_search_operations:
@@ -152,10 +152,10 @@ data:
 
       download:
         type: HTTPDownload
-        base_uri: '{{ .Values.app.station.mti.endpoint.url }}'
+        base_uri: '{{ .Values.app.station.mti.endpoint.url.file }}'
         metadata_mapping:
             uid: '$.Id'
-            downloadLink: '{{ .Values.app.station.mti.endpoint.url }}({uid})/$value'
+            downloadLink: '{{ .Values.app.station.mti.endpoint.url.file }}({uid})/$value'
     sgs:
       auth:
         type: GenericAuth
@@ -166,7 +166,7 @@ data:
 
       search:
         type: ODataV4Search
-        api_endpoint: '{{ .Values.app.station.sgs.endpoint.url }}'
+        api_endpoint: '{{ .Values.app.station.sgs.endpoint.url.file }}'
         need_auth: true
         results_entry: responses | $
         metadata_mapping:
@@ -208,7 +208,7 @@ data:
                 - null
                 - '$.PublicationDate'
             geometry: 'POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))'
-            downloadLink: '{{ .Values.app.station.sgs.endpoint.url }}({id})/$value'
+            downloadLink: '{{ .Values.app.station.sgs.endpoint.url.file }}({id})/$value'
             title: '$.Name'
 
         free_text_search_operations:
@@ -227,7 +227,340 @@ data:
 
       download:
         type: HTTPDownload
-        base_uri: '{{ .Values.app.station.sgs.endpoint.url }}'
+        base_uri: '{{ .Values.app.station.sgs.endpoint.url.file }}'
         metadata_mapping:
             uid: '$.Id'
-            downloadLink: '{{ .Values.app.station.sgs.endpoint.url }}({uid})/$value'
+            downloadLink: '{{ .Values.app.station.sgs.endpoint.url.file }}({uid})/$value'
+
+    cadip_session:
+      auth:
+        type: GenericAuth
+        method: basic
+      products:
+        GENERIC_PRODUCT_TYPE:
+          productType: '{productType}'
+      search:
+        type: ODataV4Search
+        api_endpoint: '{{ .Values.app.station.cadip.endpoint.url.session }}'
+        need_auth: true
+        results_entry: responses | $
+        metadata_mapping:
+          id:
+            - null
+            - "$.Id"
+          SessionIds:
+            - null
+            - "$.SessionId"
+          SessionId:
+            - null
+            - "$.SessionId"
+          NumChannels:
+            - null
+            - "$.NumChannels"
+          PublicationDate:
+            - null
+            - "$.PublicationDate"
+          platform:
+            - null
+            - "$.Satellite"
+          platforms:
+            - null
+            - "$.Satellite"
+          StationUnitId:
+            - null
+            - "$.StationUnitId"
+          DownlinkOrbit:
+            - null
+            - "$.DownlinkOrbit"
+          AcquisitionId:
+            - null
+            - "$.AcquisitionId"
+          AntennaId:
+            - null
+            - "$.AntennaId"
+          FrontEndId:
+            - null
+            - "$.FrontEndId"
+          Retransfer:
+            - null
+            - "$.Retransfer"
+          AntennaStatusOK:
+            - null
+            - "$.AntennaStatusOK"
+          FrontEndStatusOK:
+            - null
+            - "$.FrontEndStatusOK"
+          PlannedDataStart:
+            - null
+            - "$.PlannedDataStart"
+          PlannedDataStop:
+            - null
+            - "$.PlannedDataStop"
+          DownlinkStart:
+            - null
+            - "$.DownlinkStart"
+          DownlinkStop:
+            - null
+            - "$.DownlinkStop"
+          DownlinkStatusOK:
+            - null
+            - "$.DownlinkStatusOK"
+          DeliveryPushOK:
+            - null
+            - "$.DeliveryPushOK"
+          # Eodag Specific map
+          startTimeFromAscendingNode:
+            - null
+            - "$.PublicationDate"
+          completionTimeFromAscendingNode:
+            - null
+            - "$.PublicationDate"
+          geometry: "POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))"
+          title: "$.Name"
+
+        free_text_search_operations:
+          $filter:
+            union: " OR "
+            wrapper: '"{}"'
+            operations:
+              and:
+                - "SessionId in {SessionIds}"
+                - "SessionId eq {SessionId}"
+                - "Satellite eq {platform}"
+                - "Satellite in {platforms}"
+                - "PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}"
+                - "PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}"
+
+        pagination:
+          max_items_per_page: 1000
+          next_page_url_tpl: "{url}?{search}&$top={items_per_page}"
+          total_items_nb_key_path: "$.total"
+
+      download:
+        type: HTTPDownload
+        base_uri: '{{ .Values.app.station.cadip.endpoint.url.session }}'
+        metadata_mapping:
+          uid: "$.Id"
+          downloadLink: '{{ .Values.app.station.cadip.endpoint.url.session }}({uid})/$value'
+
+    mti_session:
+      auth:
+        type: GenericAuth
+        method: basic
+      products:
+        GENERIC_PRODUCT_TYPE:
+          productType: '{productType}'
+      search:
+        type: ODataV4Search
+        api_endpoint: '{{ .Values.app.station.mti.endpoint.url.session }}'
+        need_auth: true
+        results_entry: responses | $
+        metadata_mapping:
+          id:
+            - null
+            - "$.Id"
+          SessionIds:
+            - null
+            - "$.SessionId"
+          SessionId:
+            - null
+            - "$.SessionId"
+          NumChannels:
+            - null
+            - "$.NumChannels"
+          PublicationDate:
+            - null
+            - "$.PublicationDate"
+          platform:
+            - null
+            - "$.Satellite"
+          platforms:
+            - null
+            - "$.Satellite"
+          StationUnitId:
+            - null
+            - "$.StationUnitId"
+          DownlinkOrbit:
+            - null
+            - "$.DownlinkOrbit"
+          AcquisitionId:
+            - null
+            - "$.AcquisitionId"
+          AntennaId:
+            - null
+            - "$.AntennaId"
+          FrontEndId:
+            - null
+            - "$.FrontEndId"
+          Retransfer:
+            - null
+            - "$.Retransfer"
+          AntennaStatusOK:
+            - null
+            - "$.AntennaStatusOK"
+          FrontEndStatusOK:
+            - null
+            - "$.FrontEndStatusOK"
+          PlannedDataStart:
+            - null
+            - "$.PlannedDataStart"
+          PlannedDataStop:
+            - null
+            - "$.PlannedDataStop"
+          DownlinkStart:
+            - null
+            - "$.DownlinkStart"
+          DownlinkStop:
+            - null
+            - "$.DownlinkStop"
+          DownlinkStatusOK:
+            - null
+            - "$.DownlinkStatusOK"
+          DeliveryPushOK:
+            - null
+            - "$.DeliveryPushOK"
+          # Eodag Specific map
+          startTimeFromAscendingNode:
+            - null
+            - "$.PublicationDate"
+          completionTimeFromAscendingNode:
+            - null
+            - "$.PublicationDate"
+          geometry: "POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))"
+          title: "$.Name"
+
+        free_text_search_operations:
+          $filter:
+            union: " OR "
+            wrapper: '"{}"'
+            operations:
+              and:
+                - "SessionId in {SessionIds}"
+                - "SessionId eq {SessionId}"
+                - "Satellite eq {platform}"
+                - "Satellite in {platforms}"
+                - "PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}"
+                - "PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}"
+
+        pagination:
+          max_items_per_page: 1000
+          next_page_url_tpl: "{url}?{search}&$top={items_per_page}"
+          total_items_nb_key_path: "$.total"
+
+      download:
+        type: HTTPDownload
+        base_uri: '{{ .Values.app.station.mti.endpoint.url.session }}'
+        metadata_mapping:
+          uid: "$.Id"
+          downloadLink: '{{ .Values.app.station.mti.endpoint.url.session }}({uid})/$value'
+
+    sgs_session:
+      auth:
+        type: GenericAuth
+        method: basic
+      products:
+        GENERIC_PRODUCT_TYPE:
+          productType: '{productType}'
+      search:
+        type: ODataV4Search
+        api_endpoint: '{{ .Values.app.station.sgs.endpoint.url.session }}'
+        need_auth: true
+        results_entry: responses | $
+        metadata_mapping:
+          id:
+            - null
+            - "$.Id"
+          SessionIds:
+            - null
+            - "$.SessionId"
+          SessionId:
+            - null
+            - "$.SessionId"
+          NumChannels:
+            - null
+            - "$.NumChannels"
+          PublicationDate:
+            - null
+            - "$.PublicationDate"
+          platform:
+            - null
+            - "$.Satellite"
+          platforms:
+            - null
+            - "$.Satellite"
+          StationUnitId:
+            - null
+            - "$.StationUnitId"
+          DownlinkOrbit:
+            - null
+            - "$.DownlinkOrbit"
+          AcquisitionId:
+            - null
+            - "$.AcquisitionId"
+          AntennaId:
+            - null
+            - "$.AntennaId"
+          FrontEndId:
+            - null
+            - "$.FrontEndId"
+          Retransfer:
+            - null
+            - "$.Retransfer"
+          AntennaStatusOK:
+            - null
+            - "$.AntennaStatusOK"
+          FrontEndStatusOK:
+            - null
+            - "$.FrontEndStatusOK"
+          PlannedDataStart:
+            - null
+            - "$.PlannedDataStart"
+          PlannedDataStop:
+            - null
+            - "$.PlannedDataStop"
+          DownlinkStart:
+            - null
+            - "$.DownlinkStart"
+          DownlinkStop:
+            - null
+            - "$.DownlinkStop"
+          DownlinkStatusOK:
+            - null
+            - "$.DownlinkStatusOK"
+          DeliveryPushOK:
+            - null
+            - "$.DeliveryPushOK"
+          # Eodag Specific map
+          startTimeFromAscendingNode:
+            - null
+            - "$.PublicationDate"
+          completionTimeFromAscendingNode:
+            - null
+            - "$.PublicationDate"
+          geometry: "POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))"
+          title: "$.Name"
+
+        free_text_search_operations:
+          $filter:
+            union: " OR "
+            wrapper: '"{}"'
+            operations:
+              and:
+                - "SessionId in {SessionIds}"
+                - "SessionId eq {SessionId}"
+                - "Satellite eq {platform}"
+                - "Satellite in {platforms}"
+                - "PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}"
+                - "PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}"
+
+        pagination:
+          max_items_per_page: 1000
+          next_page_url_tpl: "{url}?{search}&$top={items_per_page}"
+          total_items_nb_key_path: "$.total"
+
+      download:
+        type: HTTPDownload
+        base_uri: '{{ .Values.app.station.sgs.endpoint.url.session }}'
+        metadata_mapping:
+          uid: "$.Id"
+          downloadLink: '{{ .Values.app.station.sgs.endpoint.url.session }}({uid})/$value'
