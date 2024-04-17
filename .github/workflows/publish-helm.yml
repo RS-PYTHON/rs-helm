@@ -10,8 +10,8 @@ on:
   push:
     tags:
       - '**'
-#     branches:
-#       - 'feat134/helm-chart-releaser'  
+    branches:
+      - 'feat**'  
   workflow_dispatch:
 
 env:
@@ -40,17 +40,35 @@ jobs:
           # Enable pipefail so git command failures do not result in null versions downstream
           set -x
 
-          echo "RSSERVER_VERSION=$(\
-              git ls-remote --tags --refs --sort="v:refname" \
-              https://github.com/RS-PYTHON/rs-server.git 'v*.*' | tail -n1 | sed 's/.*\///' | sed 's/^v//' | cut -d '.' -f 1 \
-          )" >> $GITHUB_OUTPUT
           echo "SHA_SHORT=$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_OUTPUT
+
+          echo "APP_VERSION=$(\
+            git ls-remote --tags --refs --sort="v:refname" \
+            https://github.com/RS-PYTHON/rs-server.git 'v0.*a*' | tail -n1 | sed 's/.*\///' \
+          )" >> $GITHUB_OUTPUT
+          # v0.1a7
+
+          if [ "$GITHUB_REF_TYPE" == "tag" ]; then
+
+            echo "CHART_VERSION=0.$(echo $GITHUB_REF_NAME | sed 's/.*\///' | sed 's/^v//' | sed 's/^v//' | sed 's/.\{3\}/&-/')" >> $GITHUB_OUTPUT
+            # v0.1a7 => 0.0.1-a7
+
+          elif [ "$GITHUB_REF_TYPE" == "branch" ]; then
+
+            echo "CHART_VERSION=0.$(\
+                git ls-remote --tags --refs --sort="v:refname" \
+                https://github.com/RS-PYTHON/rs-server.git 'v0.*a*' | tail -n1 | sed 's/.*\///' | sed 's/^v//' | sed 's/.\{3\}/&-/' \
+            )-${{ steps.get_version.outputs.SHA_SHORT }}" >> $GITHUB_OUTPUT
+            # 0.0.1-a7-1tr5hrt
+
+          fi
 
       - name: Update version number in chart.yaml
         shell: bash
         run: |
-          for chart in $(find charts -name Chart.yaml); do
-            sed -i "s,{{CHART_VERSION}},${{ steps.get_version.outputs.RSSERVER_VERSION }}.0.0-${{ steps.get_version.outputs.SHA_SHORT }}," $chart
+          for chart in $(find charts -name Chart.yaml); do          
+            sed -i "s,{{APP_VERSION}},${{ steps.get_version.outputs.APP_VERSION }}," $chart
+            sed -i "s,{{CHART_VERSION}},${{ steps.get_version.outputs.CHART_VERSION }}," $chart
           done
 
       - id: publish-chart
