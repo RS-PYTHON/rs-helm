@@ -115,6 +115,36 @@ spec:
             secretKeyRef:
               name: {{ .Release.Name }}-mti-endpoint
               key: pass
+        - name: EODAG__cadip_session__auth__credentials__username
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-cadip-endpoint
+              key: user
+        - name: EODAG__cadip_session__auth__credentials__password
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-cadip-endpoint
+              key: pass
+        - name: EODAG__sgs_session__auth__credentials__username
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-sgs-endpoint
+              key: user
+        - name: EODAG__sgs_session__auth__credentials__password
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-sgs-endpoint
+              key: pass
+        - name: EODAG__mti_session__auth__credentials__username
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-mti-endpoint
+              key: user
+        - name: EODAG__mti_session__auth__credentials__password
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-mti-endpoint
+              key: pass
         securityContext:
           privileged: false
         livenessProbe:

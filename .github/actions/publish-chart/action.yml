@@ -23,7 +23,7 @@ runs:
       shell: bash
 
     - name: Install Helm
-      uses: azure/setup-helm@v3
+      uses: azure/setup-helm@v4
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
 
