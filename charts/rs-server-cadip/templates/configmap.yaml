@@ -81,6 +81,7 @@ data:
         metadata_mapping:
           uid: '$.Id'
           downloadLink: '{{ .Values.app.station.cadip.endpoint.url.file }}({uid})/$value'
+
     mti:
       auth:
         type: GenericAuth
@@ -156,6 +157,7 @@ data:
         metadata_mapping:
           uid: '$.Id'
           downloadLink: '{{ .Values.app.station.mti.endpoint.url.file }}({uid})/$value'
+
     sgs:
       auth:
         type: GenericAuth
@@ -231,6 +233,7 @@ data:
         metadata_mapping:
           uid: '$.Id'
           downloadLink: '{{ .Values.app.station.sgs.endpoint.url.file }}({uid})/$value'
+
     cadip_session:
       auth:
         type: GenericAuth
@@ -341,6 +344,7 @@ data:
         metadata_mapping:
           uid: "$.Id"
           downloadLink: "{{ .Values.app.station.cadip.endpoint.url.session }}({uid})/$value"
+
     mti_session:
       auth:
         type: GenericAuth
@@ -351,6 +355,7 @@ data:
       search:
         type: ODataV4Search
         api_endpoint: "{{ .Values.app.station.mti.endpoint.url.session }}"
+
         need_auth: true
         results_entry: responses | $
         metadata_mapping:
@@ -451,6 +456,7 @@ data:
         metadata_mapping:
           uid: "$.Id"
           downloadLink: "{{ .Values.app.station.mti.endpoint.url.session }}({uid})/$value"
+
     sgs_session:
       auth:
         type: GenericAuth
@@ -461,6 +467,7 @@ data:
       search:
         type: ODataV4Search
         api_endpoint: "{{ .Values.app.station.sgs.endpoint.url.session }}"
+
         need_auth: true
         results_entry: responses | $
         metadata_mapping:

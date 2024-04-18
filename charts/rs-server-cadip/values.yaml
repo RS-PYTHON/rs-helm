@@ -27,6 +27,7 @@ app:
         url:
           file: http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Files
           session: http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Sessions
+
         secret:
           # -- Username to authenticate with the CADIP station
           username: test
@@ -38,6 +39,7 @@ app:
         url: 
           file: http://mockup-station-cadip-sgs-svc.processing.svc.cluster.local:8080/Files
           session: http://mockup-station-cadip-sgs-svc.processing.svc.cluster.local:8080/Sessions
+
         secret:
           username: test
           password: test
@@ -47,6 +49,7 @@ app:
         url: 
           file: http://mockup-station-cadip-mti-svc.processing.svc.cluster.local:8080/Files
           session: http://mockup-station-cadip-mti-svc.processing.svc.cluster.local:8080/Sessions
+
         secret:
           username: test
           password: test
