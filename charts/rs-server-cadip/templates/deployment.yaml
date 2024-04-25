@@ -65,6 +65,8 @@ spec:
           value: {{ .Values.obs.endpoint }}
         - name: S3_REGION
           value: {{ .Values.obs.region }}
+        - name: LOKI_ENDPOINT
+          value: {{ .Values.loki.endpoint }}
         - name: POSTGRES_USER
           valueFrom:
             secretKeyRef:

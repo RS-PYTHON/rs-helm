@@ -101,6 +101,8 @@ spec:
             secretKeyRef:
               name: {{ .Release.Name }}-obs
               key: sk
+        - name: LOKI_ENDPOINT
+          value: {{ .Values.loki.endpoint }}
         securityContext:
           privileged: false
       #imagePullSecrets:

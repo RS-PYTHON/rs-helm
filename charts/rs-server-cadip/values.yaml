@@ -104,6 +104,10 @@ obs:
     # -- Secret Key to authenticate with the object storage service
     sk: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
 
+loki:
+  # -- URL of the endpoint used to send log entries to Loki
+  endpoint: http://loki-distributed-gateway.logging.svc.cluster.local/loki/api/v1/push
+
 image:
   #imagePullSecrets: regcred
   # -- Image registry
