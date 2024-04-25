@@ -32,6 +32,7 @@ RS SERVER ADGS
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
 | ingress.path | string | `"/adgs"` | Ingress path |
+| loki.endpoint | string | `"http://loki-distributed-gateway.logging.svc.cluster.local/loki/api/v1/push"` | URL of the endpoint used to send log entries to Loki |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
 | obs.region | string | `"sbg"` | Region of the object storage service |
