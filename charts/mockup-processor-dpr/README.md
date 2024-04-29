@@ -1,8 +1,8 @@
-# rs-server-catalog
+# mockup-processor-dpr
 
 ![Version: 0.0.1-a7](https://img.shields.io/badge/Version-0.0.1--a7-informational?style=flat-square) ![AppVersion: v0.1a7](https://img.shields.io/badge/AppVersion-v0.1a7-informational?style=flat-square)
 
-RS SERVER CATALOG
+MOCKUP PROCESSOR DPR
 
 ## Maintainers
 
@@ -14,29 +14,17 @@ RS SERVER CATALOG
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
 | app.port | int | `8000` | Port for the application |
-| app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` | URL of the API Key Manager service |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
-| image.name | string | `"rs-server-catalog"` | Image name |
+| image.name | string | `"rs-testmeans_dpr-processor-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"0.1a8"` | Image version, can be a tag or a digest |
-| ingress.host | string | `"subdomain.example.com"` | Ingress host name |
-| ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
-| ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
-| ingress.path | string | `"/catalog"` | Ingress path |
+| image.version | string | `"sha256:ca35e365887bbdf227fce05f3be5b312009819994611493eeddeff6b7bdeee16"` | Image version, can be a tag or a digest |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
 | obs.region | string | `"sbg"` | Region of the object storage service |
 | obs.secret.ak | string | `"TDr8foJqSygBQ9YFmWDy"` | Access Key to authenticate with the object storage service |
 | obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service |
-| postgres.db | string | `"catalog"` | PostgreSQL database name |
-| postgres.host.ro | string | `"rs-server-catalog-db-svc.database.svc.cluster.local"` | PostgreSQL service URL for Read Only |
-| postgres.host.rw | string | `"rs-server-catalog-db-svc.database.svc.cluster.local"` | PostgreSQL service URL for Read Write |
-| postgres.port | string | `"5432"` | PostgreSQL port |
-| postgres.secret.pass | string | `"password"` | Password to authenticate with the PostgreSQL service |
-| postgres.secret.user | string | `"postgres"` | Username to authenticate with the PostgreSQL service |
 | replicaCount | int | `1` | Number of replicas for the deployment |
 | resources.limit.cpu | string | `"500m"` | Pod CPU limit |
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |

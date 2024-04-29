@@ -87,10 +87,10 @@ image:
   repository: rs-python
   # -- Image name
   name: rs-server-adgs
-  # -- Image tag version
-  tag: latest
+  # -- Image version, can be a tag or a digest
+  version: 0.1a8
   # -- Image pull policy
-  PullPolicy: Always
+  PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
 
 ingress:

@@ -14,20 +14,20 @@ RS SERVER CATALOG DB
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| image.PullPolicy | string | `"Always"` | Image pull policy |
-| image.limit.cpu | string | `"500m"` | Pod CPU limit |
-| image.limit.ram | string | `"1000Mi"` | Pod memory limit |
+| image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"pgstac"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"stac-utils"` | Image repository |
-| image.request.cpu | string | `"100m"` | Pod CPU request |
-| image.request.ram | string | `"256Mi"` | Pod memory request |
-| image.tag | string | `"v0.7.10"` | Image tag version |
+| image.version | string | `"v0.7.10"` | Image version, can be a tag or a digest |
 | namespace | string | `"database"` | Namespace for the deployment |
 | postgres.db | string | `"catalog"` | PostgreSQL database name |
 | postgres.port | string | `"5432"` | PostgreSQL port |
 | postgres.secret.pass | string | `"password"` | Password to authenticate with the PostgreSQL service |
 | postgres.secret.user | string | `"postgres"` | Username to authenticate with the PostgreSQL service |
+| resources.limit.cpu | string | `"500m"` | Pod CPU limit |
+| resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
+| resources.request.cpu | string | `"100m"` | Pod CPU request |
+| resources.request.ram | string | `"256Mi"` | Pod memory request |
 | service.port | int | `5432` | Port for the service |
 | volume.accessModes | string | `"ReadWriteOnce"` | AccessMode of the database volume |
 | volume.size | string | `"20Gi"` | Size of the database volume |

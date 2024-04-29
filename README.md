@@ -24,6 +24,18 @@ The catalog's database is a PostgreSQL database with the PostGIS extension. It i
 
 The frontend is a simple FastAPI interface based on Swagger exposing the endpoints. A user can use it to interact with the rs-server backends (CADIP, ADGS, catalog, etc).
 
+## [mockup-station-adgs](charts/mockup-station-adgs)
+
+A simple mock for ADGS station.
+
+## [mockup-station-cadip](charts/mockup-station-cadip)
+
+A simple mock for CADIP station.
+
+## [mockup-processor-dpr](charts/mockup-processor-dpr)
+
+A simple mock for DPR processor.
+
 ---
 
 Find more documentation on the [rs-server repository](https://github.com/RS-PYTHON/rs-server).
@@ -49,7 +61,7 @@ helm install my-release rs-server/<chart>
 Find below an example on how to install the `rs-server-frontend` component and set some values:
 
 ```bash
-helm install rs-server-frontend rs-server/rs-server-frontend --namespace=processing --set ingress.host=dev-rspy.esa-copernicus.eu --set image.tag=latest --set image.PullPolicy=Always  
+helm install rs-server-frontend rs-server/rs-server-frontend --namespace=processing --set ingress.host=dev-rspy.esa-copernicus.eu --set image.version=latest --set image.PullPolicy=Always  
 ```
 
 ### Upgrading

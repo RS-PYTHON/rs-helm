@@ -11,10 +11,6 @@ service:
 app:
   # -- Port for the application
   port: 8000
-  # -- URL of the API Key Manager service
-  uacURL: http://apikeymanager.processing.svc.cluster.local:8000/check/api_key
-  # -- Object Storage bucket for the catalog
-  catalogBucket: rs-cluster-catalog
 
 obs:
   # -- URL of the object storage service endpoint
@@ -27,45 +23,19 @@ obs:
     # -- Secret Key to authenticate with the object storage service
     sk: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
 
-postgres:
-  # -- PostgreSQL port
-  port: "5432"
-  # -- PostgreSQL database name
-  db: catalog
-  host:
-    # -- PostgreSQL service URL for Read Write
-    rw: rs-server-catalog-db-svc.database.svc.cluster.local
-    # -- PostgreSQL service URL for Read Only
-    ro: rs-server-catalog-db-svc.database.svc.cluster.local
-  secret:
-    # -- Username to authenticate with the PostgreSQL service
-    user: postgres
-    # -- Password to authenticate with the PostgreSQL service
-    pass: password
-
 image:
+  #imagePullSecrets: regcred
   # -- Image registry
   registry: ghcr.io
   # -- Image repository
   repository: rs-python
   # -- Image name
-  name: rs-server-catalog
+  name: rs-testmeans_dpr-processor-mock
   # -- Image version, can be a tag or a digest
-  version: 0.1a8
+  version: sha256:ca35e365887bbdf227fce05f3be5b312009819994611493eeddeff6b7bdeee16
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
-
-ingress:
-  issuer:
-    # -- Ingress Issuer type
-    type: cluster-issuer
-    # -- Ingress Issuer name
-    name: letsencrypt-prod
-  # -- Ingress host name
-  host: subdomain.example.com
-  # -- Ingress path
-  path: /catalog
 
 resources:
   request:

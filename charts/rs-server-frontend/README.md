@@ -17,19 +17,15 @@ RS SERVER FRONTEND
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. Must be the same value as ingress.path |
 | app.port | int | `8000` | Port for the application |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` | URL of the API Key Manager service |
-| image.PullPolicy | string | `"Always"` | Image pull policy |
+| image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-frontend"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.tag | string | `"latest"` | Image tag version |
+| image.version | string | `"0.1a8"` | Image version, can be a tag or a digest |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
-| ingress.limit.cpu | string | `"500m"` | Pod CPU limit |
-| ingress.limit.ram | string | `"1000Mi"` | Pod memory limit |
 | ingress.path | string | `"/docs"` | Ingress path for the application. Must be the same value as app.docsUrl. |
-| ingress.request.cpu | string | `"100m"` | Pod CPU request |
-| ingress.request.ram | string | `"256Mi"` | Pod memory request |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/health"` | Path for the liveness probe |
@@ -42,6 +38,10 @@ RS SERVER FRONTEND
 | probe.readiness.port | int | `8000` | Port for the readiness probe |
 | probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
 | replicaCount | int | `1` | Number of replicas for the deployment |
+| resources.limit.cpu | string | `"500m"` | Pod CPU limit |
+| resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
+| resources.request.cpu | string | `"100m"` | Pod CPU request |
+| resources.request.ram | string | `"256Mi"` | Pod memory request |
 | service.port | int | `8080` | Port for the service |
 
 ----------------------------------------------

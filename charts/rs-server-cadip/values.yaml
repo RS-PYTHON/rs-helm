@@ -112,10 +112,10 @@ image:
   repository: rs-python
   # -- Image name
   name: rs-server-cadip
-  # -- Image tag version
-  tag: latest
+  # -- Image version, can be a tag or a digest
+  version: 0.1a8
   # -- Image pull policy
-  PullPolicy: Always
+  PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
 
 ingress:
@@ -129,6 +129,7 @@ ingress:
   # -- Ingress path
   path: /cadip
 
+resources:
   request:
     # -- Pod memory request
     ram: "256Mi"

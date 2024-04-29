@@ -37,36 +37,29 @@ spec:
           limits:
             memory: {{ .Values.resources.limit.ram }}
             cpu: {{ .Values.resources.limit.cpu }}
-        volumeMounts:
-        - name: service-config-volume
-          mountPath: {{ .Values.app.confDir }}/{{ .Values.app.authConfigFile }}
-          subPath: {{ .Values.app.authConfigFile }}
         ports:
         - name: web
           protocol: TCP
           containerPort: {{ .Values.app.port }}
+        env:
+        - name: S3_ENDPOINT
+          value: {{ .Values.obs.endpoint }}
+        - name: S3_REGION
+          value: {{ .Values.obs.region }}
+        - name: S3_ACCESSKEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-obs
+              key: ak
+        - name: S3_SECRETKEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-obs
+              key: sk
         securityContext:
           privileged: false
-        #livenessProbe:
-          #httpGet:
-            #path: {{ .Values.probe.liveness.path }}
-            #port: {{ .Values.probe.liveness.port }}
-          #initialDelaySeconds: {{ .Values.probe.liveness.initialDelaySeconds }}
-          #periodSeconds: {{ .Values.probe.liveness.periodSeconds }}
-          #timeoutSeconds: {{ .Values.probe.liveness.timeoutSeconds }}
-        #readinessProbe:
-          #httpGet:
-            #path: {{ .Values.probe.readiness.path }}
-            #port: {{ .Values.probe.readiness.port }}
-          #initialDelaySeconds: {{ .Values.probe.readiness.initialDelaySeconds }}
-          #periodSeconds: {{ .Values.probe.readiness.periodSeconds }}
-          #timeoutSeconds: {{ .Values.probe.readiness.timeoutSeconds }}
       #imagePullSecrets:
       #- name:  {{ .Values.image.imagePullSecrets }}
       restartPolicy: Always
       securityContext: {}
-      volumes:
-        - name: service-config-volume
-          configMap:
-            name: {{ .Release.Name }}-service-config
   revisionHistoryLimit: 10
