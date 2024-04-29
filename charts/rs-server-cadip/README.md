@@ -24,19 +24,15 @@ RS SERVER CADIP
 | app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` | URL of the API Key Manager service |
 | app.workDir | string | `"/app"` | Working directory for the application |
-| image.PullPolicy | string | `"Always"` | Image pull policy |
+| image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-cadip"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.tag | string | `"latest"` | Image tag version |
+| image.version | string | `"0.1a8"` | Image version, can be a tag or a digest |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
-| ingress.limit.cpu | string | `"500m"` | Pod CPU limit |
-| ingress.limit.ram | string | `"1000Mi"` | Pod memory limit |
 | ingress.path | string | `"/cadip"` | Ingress path |
-| ingress.request.cpu | string | `"100m"` | Pod CPU request |
-| ingress.request.ram | string | `"256Mi"` | Pod memory request |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
 | obs.region | string | `"sbg"` | Region of the object storage service |
@@ -58,6 +54,10 @@ RS SERVER CADIP
 | probe.readiness.port | int | `8000` | Port for the readiness probe |
 | probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
 | replicaCount | int | `1` | Number of replicas for the deployment |
+| resources.limit.cpu | string | `"500m"` | Pod CPU limit |
+| resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
+| resources.request.cpu | string | `"100m"` | Pod CPU request |
+| resources.request.ram | string | `"256Mi"` | Pod memory request |
 | service.port | int | `8080` | Port for the service |
 
 ----------------------------------------------

@@ -23,11 +23,11 @@ RS SERVER ADGS
 | app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` | URL of the API Key Manager service |
 | app.workDir | string | `"/app"` | Working directory for the application |
-| image.PullPolicy | string | `"Always"` | Image pull policy |
+| image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-adgs"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.tag | string | `"latest"` | Image tag version |
+| image.version | string | `"0.1a8"` | Image version, can be a tag or a digest |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
