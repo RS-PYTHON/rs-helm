@@ -67,6 +67,7 @@ ingress:
   # -- Ingress path
   path: /catalog
 
+resources:
   request:
     # -- Pod memory request
     ram: "256Mi"

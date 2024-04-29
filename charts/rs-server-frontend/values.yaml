@@ -64,6 +64,7 @@ ingress:
   # -- Ingress path for the application. Must be the same value as app.docsUrl.
   path: /docs
 
+resources:
   request:
     # -- Pod memory request
     ram: "256Mi"

@@ -129,6 +129,7 @@ ingress:
   # -- Ingress path
   path: /cadip
 
+resources:
   request:
     # -- Pod memory request
     ram: "256Mi"
