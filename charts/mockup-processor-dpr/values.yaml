@@ -31,10 +31,10 @@ image:
   repository: rs-python
   # -- Image name
   name: rs-testmeans_dpr-processor-mock
-  # -- Image tag version
-  tag: latest
+  # -- Image version, can be a tag or a digest
+  version: sha256:ca35e365887bbdf227fce05f3be5b312009819994611493eeddeff6b7bdeee16
   # -- Image pull policy
-  PullPolicy: Always
+  PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
 
 resources:

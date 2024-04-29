@@ -51,8 +51,8 @@ image:
   repository: rs-python
   # -- Image name
   name: rs-testmeans_cadip-station-mock
-  # -- Image tag version
-  tag: latest
+  # -- Image version, can be a tag or a digest
+  version: sha256:be03086ee3f383bd1ce41c8b7e0b3168e8f9a9491306324850544a74b7de1810
   # -- Image pull policy
   PullPolicy: Always
   #imagePullSecrets: regcred

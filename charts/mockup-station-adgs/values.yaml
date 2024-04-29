@@ -49,8 +49,8 @@ image:
   repository: rs-python
   # -- Image name
   name: rs-testmeans_adgs-station-mock
-  # -- Image tag version
-  tag: latest
+  # -- Image version, can be a tag or a digest
+  version: sha256:799a08cd9f4f1ef386db2105adca1a1d48eda4463fb15a33cd705ed1a2312cc5
   # -- Image pull policy
   PullPolicy: Always
   #imagePullSecrets: regcred

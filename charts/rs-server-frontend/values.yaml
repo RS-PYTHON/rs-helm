@@ -47,10 +47,10 @@ image:
   repository: rs-python
   # -- Image name
   name: rs-server-frontend
-  # -- Image tag version
-  tag: latest
+  # -- Image version, can be a tag or a digest
+  version: 0.1a8
   # -- Image pull policy
-  PullPolicy: Always
+  PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
 
 ingress:

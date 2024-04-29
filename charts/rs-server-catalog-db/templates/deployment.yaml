@@ -28,7 +28,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: {{ .Release.Name }}
-        image: {{ .Values.image.registry }}/{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}
+        image: "{{ template "mychart.image" .Values.image }}"
         imagePullPolicy: {{ .Values.image.PullPolicy }}
         resources:
           requests:
