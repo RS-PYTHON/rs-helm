@@ -40,8 +40,6 @@ jobs:
           # Enable pipefail so git command failures do not result in null versions downstream
           set -x
 
-          echo "SHA_SHORT=$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_ENV
-
           echo "APP_VERSION=$(\
             git ls-remote --tags --refs --sort="v:refname" \
             https://github.com/RS-PYTHON/rs-server.git 'v0.*a*' | tail -n1 | sed 's/.*\///' \
@@ -57,7 +55,7 @@ jobs:
 
             echo "CHART_VERSION=0.$(\
                 git ls-remote --tags --refs --sort="v:refname" \
-                https://github.com/RS-PYTHON/rs-server.git 'v0.*a*' | tail -n1 | sed 's/.*\///' | sed 's/^v//' | sed 's/.\{3\}/&-/')" >> $GITHUB_OUTPUT
+                https://github.com/RS-PYTHON/rs-server.git 'v0.*a*' | tail -n1 | sed 's/.*\///' | sed 's/^v//' | sed 's/.\{3\}/&-/')-$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_OUTPUT
             # 0.0.1-a7-1tr5hrt
 
           fi
@@ -67,7 +65,7 @@ jobs:
         run: |
           for chart in $(find charts -name Chart.yaml); do          
             sed -i "s,{{APP_VERSION}},${{ steps.get_version.outputs.APP_VERSION }}," $chart
-            sed -i "s,{{CHART_VERSION}},${{ steps.get_version.outputs.CHART_VERSION }}-${SHA_SHORT}," $chart
+            sed -i "s,{{CHART_VERSION}},${{ steps.get_version.outputs.CHART_VERSION }}," $chart
           done
 
       - id: publish-chart
