@@ -1,6 +1,6 @@
 # mockup-station-adgs
 
-![Version: 0.0.1-a7](https://img.shields.io/badge/Version-0.0.1--a7-informational?style=flat-square) ![AppVersion: v0.1a7](https://img.shields.io/badge/AppVersion-v0.1a7-informational?style=flat-square)
+![Version: 0.0.1-a8](https://img.shields.io/badge/Version-0.0.1--a8-informational?style=flat-square) ![AppVersion: v0.1a8](https://img.shields.io/badge/AppVersion-v0.1a8-informational?style=flat-square)
 
 MOCKUP STATION ADGS
 
