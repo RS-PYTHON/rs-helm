@@ -23,6 +23,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 - Set tag from `latest` to `0.1a8` to match rs-server latest version.
 
+### Removed
+
+- `image.tag` in favor of `image.version`
+
 ## [0.1a7] - 2024-04-16
 
 ### Added
