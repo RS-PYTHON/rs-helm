@@ -71,3 +71,11 @@ Find below an example on how to upgrade the `rs-server-cadip` component, re-use 
 ```bash
 helm upgrade rs-server-cadip rs-server/rs-server-cadip --namespace=processing --reuse-values --set obs.endpoint=https://oss.eu-west-0.prod-cloud-ocb.orange-business.com --set obs.region=eu-west-0 --set obs.secret.ak=XXXXXXXXXXXXXX --set obs.secret.sk=YYYYYYYYYYYYYYYYYYYYY --force --version 0.0.0-f9c864f
 ```
+
+<br> <br>
+<p align="center">
+ <img src="/.github/assets/banner_logo.jpg" width="71%" height="71%" />
+</p>
+<p align="center">This project is funded by the EU and ESA.</p>
+<br> <br>
+
