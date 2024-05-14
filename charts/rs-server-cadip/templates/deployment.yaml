@@ -175,8 +175,10 @@ spec:
           initialDelaySeconds: {{ .Values.probe.readiness.initialDelaySeconds }}
           periodSeconds: {{ .Values.probe.readiness.periodSeconds }}
           timeoutSeconds: {{ .Values.probe.readiness.timeoutSeconds }}
-      #imagePullSecrets:
-      #- name:  {{ .Values.image.imagePullSecrets }}
+    {{- if .Values.image.imagePullSecrets }}  
+      imagePullSecrets:
+      - name:  {{ .Values.image.imagePullSecrets }}
+    {{- end }}
       restartPolicy: Always
       securityContext: {}
       volumes:

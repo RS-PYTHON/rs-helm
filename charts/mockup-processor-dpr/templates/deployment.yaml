@@ -72,8 +72,10 @@ spec:
               key: sk
         securityContext:
           privileged: false
-      #imagePullSecrets:
-      #- name:  {{ .Values.image.imagePullSecrets }}
+    {{- if .Values.image.imagePullSecrets }}  
+      imagePullSecrets:
+      - name:  {{ .Values.image.imagePullSecrets }}
+    {{- end }}
       restartPolicy: Always
       securityContext: {}
   revisionHistoryLimit: 10

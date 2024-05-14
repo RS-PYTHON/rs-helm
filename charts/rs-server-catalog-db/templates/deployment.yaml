@@ -91,6 +91,10 @@ spec:
               key: pass
         securityContext:
           privileged: false
+    {{- if .Values.image.imagePullSecrets }}  
+      imagePullSecrets:
+      - name:  {{ .Values.image.imagePullSecrets }}
+    {{- end }}
       restartPolicy: Always
       securityContext: {}
       volumes:
