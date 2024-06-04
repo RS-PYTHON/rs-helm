@@ -73,7 +73,7 @@ helm upgrade rs-server-cadip rs-server/rs-server-cadip --namespace=processing --
 ```
 
 <br> <br>
-![](.docs/_static/banner_logo.jpg)
+![](./docs/_static/banner_logo.jpg)
 <!---
 Centering the banner logo image is not rendered with mkdocs in rs-documentation repository
 -->
