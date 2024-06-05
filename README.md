@@ -4,35 +4,35 @@
 
 This repository contains the official RS-Server Helm charts for installing and configuring `rs-server` on Kubernetes.
 
-## [rs-server-adgs](charts/rs-server-adgs)
+## [rs-server-adgs](charts/rs-server-adgs/README.md)
 
 The Auxiliary Data Gathering Service (ADGS) is a pick-up point for Sentinel auxiliary files. This service allows clients to discover and retrieve available auxiliary data files through a standard OData RESTful API. The following endpoints have been implemented in RS-Server to interact with ADGS RESTful API.
 
-## [rs-server-cadip](charts/rs-server-cadip)
+## [rs-server-cadip](charts/rs-server-cadip/README.md)
 
 The CADU Interface delivery Point (CADIP) is a pick-up point for Sentinel CADU data. The CADIP allows clients to straightforwardly discover and retrieve available data files through a standard OData RESTful API. The following endpoints have been implemented in RS-Server to interact with CADIP RESTful API.
 
-## [rs-server-catalog](charts/rs-server-catalog)
+## [rs-server-catalog](charts/rs-server-catalog/README.md)
 
 The catalog is a STAC catalog that contains the medatadata of the products. It is organized in collections and items. It is based on [STAC FastAPI](https://github.com/stac-utils/stac-fastapi).
 
-## [rs-server-catalog-db](charts/rs-server-catalog-db)
+## [rs-server-catalog-db](charts/rs-server-catalog-db/README.md)
 
 The catalog's database is a PostgreSQL database with the PostGIS extension. It is based on [PgSTAC](https://github.com/stac-utils/pgstac).
 
-## [rs-server-frontend](charts/rs-server-frontend)
+## [rs-server-frontend](charts/rs-server-frontend/README.md)
 
 The frontend is a simple FastAPI interface based on Swagger exposing the endpoints. A user can use it to interact with the rs-server backends (CADIP, ADGS, catalog, etc).
 
-## [mockup-station-adgs](charts/mockup-station-adgs)
+## [mockup-station-adgs](charts/mockup-station-adgs/README.md)
 
 A simple mock for ADGS station.
 
-## [mockup-station-cadip](charts/mockup-station-cadip)
+## [mockup-station-cadip](charts/mockup-station-cadip/README.md)
 
 A simple mock for CADIP station.
 
-## [mockup-processor-dpr](charts/mockup-processor-dpr)
+## [mockup-processor-dpr](charts/mockup-processor-dpr/README.md)
 
 A simple mock for DPR processor.
 
@@ -73,9 +73,15 @@ helm upgrade rs-server-cadip rs-server/rs-server-cadip --namespace=processing --
 ```
 
 <br> <br>
+![](./docs/_static/banner_logo.jpg)
+<!---
+Centering the banner logo image is not rendered by the mkdocs inside the rs-documentation repository
+-->
+<!---
 <p align="center">
- <img src="/.github/assets/banner_logo.jpg" width="71%" height="71%" />
+ <img src="/docs/_static/banner_logo.jpg" width="71%" height="71%" />
 </p>
+-->
 <p align="center">This project is funded by the EU and ESA.</p>
 <br> <br>
 
