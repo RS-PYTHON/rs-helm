@@ -17,7 +17,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ### Added
 
-- Grafana Tempo for CADIP, AUXIP
+- Grafana Tempo for rs-server-cadip, rs-server-auxip, rs-server-catalog
+- Liveness/Readiness probes for rs-server-catalog, mockup-station-cadip, mockup-station-adgs and mockup-processor-dpr
+
+### Changed
+
+- Ingress : added a parameter to enabled or not in the value file. Enabled is set to true by default.
 
 ## [0.1a8] - 2024-04-30
 
