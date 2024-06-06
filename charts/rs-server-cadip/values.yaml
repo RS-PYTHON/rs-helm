@@ -133,6 +133,8 @@ image:
   #imagePullSecrets: regcred
 
 ingress:
+  # -- Enabled/Disable ingress
+  enabled: true
   issuer:
     # -- Ingress Issuer type
     type: cluster-issuer
@@ -154,3 +156,6 @@ resources:
     ram: "1000Mi"
     # -- Pod CPU limit
     cpu: "500m"
+
+tempo:
+  endpoint: http://grafana-tempo-distributor.logging.svc.cluster.local:4317
