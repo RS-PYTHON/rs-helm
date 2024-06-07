@@ -54,6 +54,26 @@ resources:
     # -- Pod CPU limit
     cpu: "500m"
 
+probe:
+  liveness:
+    # -- Command for the liveness probe
+    command: ["pg_isready", "-d", "catalog"]
+    # -- InitialDelaySeconds for the liveness probe
+    initialDelaySeconds: 30
+    # -- periodSeconds for the liveness probe
+    periodSeconds: 30
+    # -- timeoutSeconds for the liveness probe
+    timeoutSeconds: 5
+  readiness:
+    # -- Command for the liveness probe
+    command: ["pg_isready", "-d", "catalog"]
+    # -- InitialDelaySeconds for the readiness probe
+    initialDelaySeconds: 30
+    # -- periodSeconds for the readiness probe
+    periodSeconds: 30
+    # -- timeoutSeconds for the readiness probe
+    timeoutSeconds: 5
+
 volume:
   # -- Size of the database volume
   size: "20Gi"
