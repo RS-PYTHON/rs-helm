@@ -1,6 +1,6 @@
 # rs-server-frontend
 
-![Version: 0.0.1-a9](https://img.shields.io/badge/Version-0.0.1--a9-informational?style=flat-square) ![AppVersion: v0.1a9](https://img.shields.io/badge/AppVersion-v0.1a9-informational?style=flat-square)
+![Version: 0.0.1-a10](https://img.shields.io/badge/Version-0.0.1--a10-informational?style=flat-square) ![AppVersion: v0.1a10](https://img.shields.io/badge/AppVersion-v0.1a10-informational?style=flat-square)
 
 RS SERVER FRONTEND
 
@@ -22,6 +22,7 @@ RS SERVER FRONTEND
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
 | image.version | string | `"0.1a8"` | Image version, can be a tag or a digest |
+| ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |

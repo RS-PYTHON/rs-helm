@@ -1,6 +1,6 @@
 # rs-server-catalog-db
 
-![Version: 0.0.1-a9](https://img.shields.io/badge/Version-0.0.1--a9-informational?style=flat-square) ![AppVersion: v0.1a9](https://img.shields.io/badge/AppVersion-v0.1a9-informational?style=flat-square)
+![Version: 0.0.1-a10](https://img.shields.io/badge/Version-0.0.1--a10-informational?style=flat-square) ![AppVersion: v0.1a10](https://img.shields.io/badge/AppVersion-v0.1a10-informational?style=flat-square)
 
 RS SERVER CATALOG DB
 
@@ -24,6 +24,14 @@ RS SERVER CATALOG DB
 | postgres.port | string | `"5432"` | PostgreSQL port |
 | postgres.secret.pass | string | `"password"` | Password to authenticate with the PostgreSQL service |
 | postgres.secret.user | string | `"postgres"` | Username to authenticate with the PostgreSQL service |
+| probe.liveness.command | list | `["pg_isready","-d","catalog"]` | Command for the liveness probe |
+| probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
+| probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |
+| probe.liveness.timeoutSeconds | int | `5` | timeoutSeconds for the liveness probe |
+| probe.readiness.command | list | `["pg_isready","-d","catalog"]` | Command for the liveness probe |
+| probe.readiness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the readiness probe |
+| probe.readiness.periodSeconds | int | `30` | periodSeconds for the readiness probe |
+| probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
 | resources.limit.cpu | string | `"500m"` | Pod CPU limit |
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
