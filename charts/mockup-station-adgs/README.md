@@ -15,6 +15,7 @@ MOCKUP STATION ADGS
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | app.authConfigFile | string | `"auth.json"` | Auth configuration file for the application |
+| app.catalogConfigFile | string | `"GETFileResponse.json"` | catalog configuration file for the application |
 | app.confDir | string | `"/opt/adgs/config"` | Config directory for the application |
 | app.port | int | `5000` | Port for the application |
 | app.workDir | string | `"/app"` | Working directory for the application |

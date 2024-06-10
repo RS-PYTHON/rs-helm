@@ -1,6 +1,6 @@
 # mockup-station-cadip
 
-![Version: 0.0.1-a10](https://img.shields.io/badge/Version-0.0.1--a10-informational?style=flat-square) ![AppVersion: v0.1a10](https://img.shields.io/badge/AppVersion-v0.1a10-informational?style=flat-square)
+![Version: 0.0.1-a9](https://img.shields.io/badge/Version-0.0.1--a9-informational?style=flat-square) ![AppVersion: v0.1a9](https://img.shields.io/badge/AppVersion-v0.1a9-informational?style=flat-square)
 
 MOCKUP STATION CADIP
 
@@ -15,15 +15,18 @@ MOCKUP STATION CADIP
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | app.authConfigFile | string | `"auth.json"` | Auth configuration file for the application |
+| app.catalogConfigFile | string | `"FileResponse.json"` | catalog configuration file for the application |
 | app.confDir | string | `"/opt/cadip/config"` | Config directory for the application |
 | app.port | int | `5000` | Port for the application |
+| app.qualityConfigFile | string | `"QualityInfoResponse.json"` | quality configuration file for the application |
+| app.sessionIDConfigFile | string | `"SPJ.json"` | sessionID configuration file for the application |
 | app.stationName | string | `"cadip"` | Name of the station for the application |
 | app.workDir | string | `"/app"` | Working directory for the application |
 | image.PullPolicy | string | `"Always"` | Image pull policy |
 | image.name | string | `"rs-testmeans_cadip-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"sha256:be03086ee3f383bd1ce41c8b7e0b3168e8f9a9491306324850544a74b7de1810"` | Image version, can be a tag or a digest |
+| image.version | string | `"sha256:c3b6060c6963c8336cf42b9c665b1efb004055f47cccd6eb16f061512258d0f0"` | Image version, can be a tag or a digest |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/health"` | Path for the liveness probe |
