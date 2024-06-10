@@ -14,6 +14,7 @@ RS SERVER CATALOG DB
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| helmResourcePolicy | string | `"keep"` |  |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"pgstac"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
