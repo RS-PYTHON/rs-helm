@@ -19,7 +19,7 @@ MOCKUP STATION ADGS
 | app.confDir | string | `"/opt/adgs/config"` | Config directory for the application |
 | app.port | int | `5000` | Port for the application |
 | app.workDir | string | `"/app"` | Working directory for the application |
-| helmResourcePolicy | string | `"keep"` |  |
+| helmResourcePolicy | string | `"keep"` | Keep the ressources for PVC and ConfigMap. Default is to keep. |
 | image.PullPolicy | string | `"Always"` | Image pull policy |
 | image.name | string | `"rs-testmeans_adgs-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |

@@ -22,7 +22,7 @@ MOCKUP STATION CADIP
 | app.sessionIDConfigFile | string | `"SPJ.json"` | sessionID configuration file for the application |
 | app.stationName | string | `"cadip"` | Name of the station for the application |
 | app.workDir | string | `"/app"` | Working directory for the application |
-| helmResourcePolicy | string | `"keep"` |  |
+| helmResourcePolicy | string | `"keep"` | Keep the ressources for PVC and ConfigMap. Default is to keep. |
 | image.PullPolicy | string | `"Always"` | Image pull policy |
 | image.name | string | `"rs-testmeans_cadip-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
