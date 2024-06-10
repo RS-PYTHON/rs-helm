@@ -13,10 +13,10 @@
 # limitations under the License.
 
 apiVersion: v1
-appVersion: {{APP_VERSION}}
+appVersion: v0.1a9
 description: MOCKUP STATION CADIP
 name: mockup-station-cadip
-version: {{CHART_VERSION}}
+version: 0.0.1-a9
 maintainers:
   - name: CS GROUP
     url: https://github.com/RS-PYTHON/rs-helm

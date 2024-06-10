@@ -55,6 +55,17 @@ spec:
         - name: service-config-volume
           mountPath: {{ .Values.app.confDir }}/{{ .Values.app.authConfigFile }}
           subPath: {{ .Values.app.authConfigFile }}
+        - name: quality-config-volume
+          mountPath: {{ .Values.app.confDir }}/Catalogue/{{ .Values.app.qualityConfigFile }}
+          subPath: {{ .Values.app.qualityConfigFile }}
+        - name: sessionid-config-volume
+          mountPath: {{ .Values.app.confDir }}/Catalogue/{{ .Values.app.sessionIDConfigFile }}
+          subPath: {{ .Values.app.sessionIDConfigFile }}
+        - name: catalog-config-volume
+          mountPath: {{ .Values.app.confDir }}/Catalogue/{{ .Values.app.catalogConfigFile }}
+          subPath: {{ .Values.app.catalogConfigFile }}
+        - mountPath: /opt/cadip/config/S3Mock
+          name: opt-cadip
         ports:
         - name: web
           protocol: TCP
@@ -77,17 +88,21 @@ spec:
           timeoutSeconds: {{ .Values.probe.readiness.timeoutSeconds }}
       #imagePullSecrets:
       #- name:  {{ .Values.image.imagePullSecrets }}
-        volumeMounts:
-        - mountPath: /opt/cadip/config/S3Mock
-          name: opt-cadip
-      #imagePullSecrets:
-      #- name:  {{ .Values.image.imagePullSecrets }}
       restartPolicy: Always
       securityContext: {}
       volumes:
       - name: service-config-volume
         configMap:
           name: {{ .Release.Name }}-service-config
+      - name: quality-config-volume
+        configMap:
+          name: {{ .Release.Name }}-quality-config
+      - name: sessionid-config-volume
+        configMap:
+          name: {{ .Release.Name }}-sessionid-config
+      - name: catalog-config-volume
+        configMap:
+          name: {{ .Release.Name }}-catalog-config
       - name: opt-cadip
         persistentVolumeClaim:
           claimName: {{ .Release.Name }}-pvc

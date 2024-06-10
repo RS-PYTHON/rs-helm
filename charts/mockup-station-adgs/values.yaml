@@ -31,6 +31,8 @@ app:
   confDir: /opt/adgs/config
   # -- Auth configuration file for the application
   authConfigFile: auth.json
+  # -- catalog configuration file for the application
+  catalogConfigFile: GETFileResponse.json
 
 probe:
   liveness:
