@@ -17,8 +17,10 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-service-config
   namespace: {{ .Values.namespace }}
+  {{ if .Values.helmResourcePolicy }}
   annotations:
-    helm.sh/resource-policy: keep
+    helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}
+  {{ end }}
 
 data:
   {{ .Values.app.authConfigFile }}: |-
@@ -34,8 +36,10 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-catalog-config
   namespace: {{ .Values.namespace }}
+  {{ if .Values.helmResourcePolicy }}
   annotations:
-    helm.sh/resource-policy: keep
+    helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}
+  {{ end }}
 
 data:
   {{ .Values.app.catalogConfigFile }}: |-

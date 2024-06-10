@@ -12,11 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+kind: PersistentVolumeClaim
 apiVersion: v1
-appVersion: {{APP_VERSION}}
-description: MOCKUP STATION CADIP
-name: mockup-station-cadip
-version: {{CHART_VERSION}}
-maintainers:
-  - name: CS GROUP
-    url: https://github.com/RS-PYTHON/rs-helm
+metadata:
+  name: {{ .Release.Name }}-pvc
+  namespace: {{ .Values.namespace }}
+  {{ if .Values.helmResourcePolicy }}
+  annotations:
+    helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}
+  {{ end }}
+spec:
+  accessModes:
+  - {{ .Values.volume.accessModes }}
+  resources:
+    requests:
+      storage: {{ .Values.volume.size }}
+  storageClassName: {{ .Values.volume.storageClassName }}

@@ -81,3 +81,5 @@ volume:
   accessModes: ReadWriteOnce
   # -- StorageClass of the database volume
   storageClassName: csi-cinder-sc-retain
+
+helmResourcePolicy: keep

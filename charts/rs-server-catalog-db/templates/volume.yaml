@@ -16,6 +16,10 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ .Release.Name }}-pvc
+  {{ if .Values.helmResourcePolicy }}
+  annotations:
+    helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}
+  {{ end }}
 spec:
   accessModes:
   - {{ .Values.volume.accessModes }}

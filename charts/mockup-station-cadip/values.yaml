@@ -88,3 +88,13 @@ resources:
     ram: "1000Mi"
     # -- Pod CPU limit
     cpu: "500m"
+
+volume:
+  # -- Size of the database volume
+  size: "50Gi"
+  # -- AccessMode of the database volume
+  accessModes: ReadWriteOnce
+  # -- StorageClass of the database volume
+  storageClassName: csi-cinder-sc-retain
+
+helmResourcePolicy: keep
