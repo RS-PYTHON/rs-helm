@@ -77,10 +77,18 @@ spec:
           timeoutSeconds: {{ .Values.probe.readiness.timeoutSeconds }}
       #imagePullSecrets:
       #- name:  {{ .Values.image.imagePullSecrets }}
+        volumeMounts:
+        - mountPath: /opt/cadip/config/S3Mock
+          name: opt-cadip
+      #imagePullSecrets:
+      #- name:  {{ .Values.image.imagePullSecrets }}
       restartPolicy: Always
       securityContext: {}
       volumes:
-        - name: service-config-volume
-          configMap:
-            name: {{ .Release.Name }}-service-config
+      - name: service-config-volume
+        configMap:
+          name: {{ .Release.Name }}-service-config
+      - name: opt-cadip
+        persistentVolumeClaim:
+          claimName: {{ .Release.Name }}-pvc
   revisionHistoryLimit: 10

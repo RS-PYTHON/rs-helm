@@ -75,12 +75,18 @@ spec:
           initialDelaySeconds: {{ .Values.probe.readiness.initialDelaySeconds }}
           periodSeconds: {{ .Values.probe.readiness.periodSeconds }}
           timeoutSeconds: {{ .Values.probe.readiness.timeoutSeconds }}
+        volumeMounts:
+        - mountPath: /opt/adgs/config/Storage
+          name: opt-adgs
       #imagePullSecrets:
       #- name:  {{ .Values.image.imagePullSecrets }}
       restartPolicy: Always
       securityContext: {}
       volumes:
-        - name: service-config-volume
-          configMap:
-            name: {{ .Release.Name }}-service-config
+      - name: service-config-volume
+        configMap:
+          name: {{ .Release.Name }}-service-config
+      - name: opt-adgs
+        persistentVolumeClaim:
+          claimName: {{ .Release.Name }}-pvc
   revisionHistoryLimit: 10
