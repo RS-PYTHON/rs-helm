@@ -19,6 +19,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 - Grafana Tempo for rs-server-cadip, rs-server-auxip, rs-server-catalog
 - Liveness/Readiness probes for rs-server-catalog, mockup-station-cadip, mockup-station-adgs and mockup-processor-dpr
+- PVC for mockup-station-cadip and mockup-station-adgs
+- ConfigMap for mockup-station-cadip and mockup-station-adgs
 
 ### Changed
 
