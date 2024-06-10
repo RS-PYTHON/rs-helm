@@ -127,7 +127,7 @@ image:
   # -- Image name
   name: rs-server-cadip
   # -- Image version, can be a tag or a digest
-  version: sha256:c3b6060c6963c8336cf42b9c665b1efb004055f47cccd6eb16f061512258d0f0
+  version: 0.1a10
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
