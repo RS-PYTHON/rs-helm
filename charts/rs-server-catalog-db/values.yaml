@@ -82,4 +82,5 @@ volume:
   # -- StorageClass of the database volume
   storageClassName: csi-cinder-sc-retain
 
+# -- Keep the ressources for PVC and ConfigMap. Default is to keep.
 helmResourcePolicy: keep

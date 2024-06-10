@@ -133,4 +133,5 @@ resources:
     cpu: "500m"
 
 tempo:
+  # -- Grafana tempo endpoint.
   endpoint: http://grafana-tempo-distributor.logging.svc.cluster.local:4317
