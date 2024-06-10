@@ -102,12 +102,14 @@ image:
   # -- Image name
   name: rs-server-adgs
   # -- Image version, can be a tag or a digest
-  version: 0.1a8
+  version: 0.1a10
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
 
 ingress:
+  # -- Enabled/Disable ingress
+  enabled: true
   issuer:
     # -- Ingress Issuer type
     type: cluster-issuer
@@ -129,3 +131,7 @@ resources:
     ram: "1000Mi"
     # -- Pod CPU limit
     cpu: "500m"
+
+tempo:
+  # -- Grafana tempo endpoint.
+  endpoint: http://grafana-tempo-distributor.logging.svc.cluster.local:4317

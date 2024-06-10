@@ -55,32 +55,43 @@ spec:
         - name: service-config-volume
           mountPath: {{ .Values.app.confDir }}/{{ .Values.app.authConfigFile }}
           subPath: {{ .Values.app.authConfigFile }}
+        - name: catalog-config-volume
+          mountPath: {{ .Values.app.confDir }}/Catalog/{{ .Values.app.catalogConfigFile }}
+          subPath: {{ .Values.app.catalogConfigFile }}
+        - mountPath: /opt/adgs/config/Storage
+          name: opt-adgs
         ports:
         - name: web
           protocol: TCP
           containerPort: {{ .Values.app.port }}
         securityContext:
           privileged: false
-        #livenessProbe:
-          #httpGet:
-            #path: {{ .Values.probe.liveness.path }}
-            #port: {{ .Values.probe.liveness.port }}
-          #initialDelaySeconds: {{ .Values.probe.liveness.initialDelaySeconds }}
-          #periodSeconds: {{ .Values.probe.liveness.periodSeconds }}
-          #timeoutSeconds: {{ .Values.probe.liveness.timeoutSeconds }}
-        #readinessProbe:
-          #httpGet:
-            #path: {{ .Values.probe.readiness.path }}
-            #port: {{ .Values.probe.readiness.port }}
-          #initialDelaySeconds: {{ .Values.probe.readiness.initialDelaySeconds }}
-          #periodSeconds: {{ .Values.probe.readiness.periodSeconds }}
-          #timeoutSeconds: {{ .Values.probe.readiness.timeoutSeconds }}
+        livenessProbe:
+          httpGet:
+            path: {{ .Values.probe.liveness.path }}
+            port: {{ .Values.probe.liveness.port }}
+          initialDelaySeconds: {{ .Values.probe.liveness.initialDelaySeconds }}
+          periodSeconds: {{ .Values.probe.liveness.periodSeconds }}
+          timeoutSeconds: {{ .Values.probe.liveness.timeoutSeconds }}
+        readinessProbe:
+          httpGet:
+            path: {{ .Values.probe.readiness.path }}
+            port: {{ .Values.probe.readiness.port }}
+          initialDelaySeconds: {{ .Values.probe.readiness.initialDelaySeconds }}
+          periodSeconds: {{ .Values.probe.readiness.periodSeconds }}
+          timeoutSeconds: {{ .Values.probe.readiness.timeoutSeconds }}
       #imagePullSecrets:
       #- name:  {{ .Values.image.imagePullSecrets }}
       restartPolicy: Always
       securityContext: {}
       volumes:
-        - name: service-config-volume
-          configMap:
-            name: {{ .Release.Name }}-service-config
+      - name: service-config-volume
+        configMap:
+          name: {{ .Release.Name }}-service-config
+      - name: catalog-config-volume
+        configMap:
+          name: {{ .Release.Name }}-catalog-config
+      - name: opt-adgs
+        persistentVolumeClaim:
+          claimName: {{ .Release.Name }}-pvc
   revisionHistoryLimit: 10

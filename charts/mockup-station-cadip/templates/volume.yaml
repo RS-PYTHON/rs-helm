@@ -12,10 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: v1
 kind: PersistentVolumeClaim
+apiVersion: v1
 metadata:
   name: {{ .Release.Name }}-pvc
+  namespace: {{ .Values.namespace }}
   {{ if .Values.helmResourcePolicy }}
   annotations:
     helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}

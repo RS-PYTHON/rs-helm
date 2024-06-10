@@ -31,6 +31,12 @@ app:
   confDir: /opt/cadip/config
   # -- Auth configuration file for the application
   authConfigFile: auth.json
+  # -- quality configuration file for the application
+  qualityConfigFile: QualityInfoResponse.json
+  # -- sessionID configuration file for the application
+  sessionIDConfigFile: SPJ.json
+  # -- catalog configuration file for the application
+  catalogConfigFile: FileResponse.json
   # -- Name of the station for the application
   stationName: cadip
 
@@ -66,7 +72,7 @@ image:
   # -- Image name
   name: rs-testmeans_cadip-station-mock
   # -- Image version, can be a tag or a digest
-  version: sha256:be03086ee3f383bd1ce41c8b7e0b3168e8f9a9491306324850544a74b7de1810
+  version: sha256:c3b6060c6963c8336cf42b9c665b1efb004055f47cccd6eb16f061512258d0f0
   # -- Image pull policy
   PullPolicy: Always
   #imagePullSecrets: regcred
@@ -82,3 +88,14 @@ resources:
     ram: "1000Mi"
     # -- Pod CPU limit
     cpu: "500m"
+
+volume:
+  # -- Size of the database volume
+  size: "50Gi"
+  # -- AccessMode of the database volume
+  accessModes: ReadWriteOnce
+  # -- StorageClass of the database volume
+  storageClassName: csi-cinder-sc-retain
+
+# -- Keep the ressources for PVC and ConfigMap. Default is to keep.
+helmResourcePolicy: keep

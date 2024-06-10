@@ -13,6 +13,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [0.1a10] - 2024-06-06
+
+### Added
+
+- Grafana Tempo for rs-server-cadip, rs-server-auxip, rs-server-catalog
+- Liveness/Readiness probes for rs-server-catalog, mockup-station-cadip, mockup-station-adgs and mockup-processor-dpr
+- PVC for mockup-station-cadip and mockup-station-adgs
+- ConfigMap for mockup-station-cadip and mockup-station-adgs
+
+### Changed
+
+- Ingress : added a parameter to enabled or not in the value file. Enabled is set to true by default.
+
 ## [0.1a8] - 2024-04-30
 
 ### Added

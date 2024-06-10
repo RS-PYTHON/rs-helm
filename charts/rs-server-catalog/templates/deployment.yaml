@@ -115,8 +115,28 @@ spec:
             secretKeyRef:
               name: {{ .Release.Name }}-obs
               key: sk
+        {{ if .Values.tempo }}
+        {{ if .Values.tempo.endpoint }}
+        - name: TEMPO_ENDPOINT
+          value: {{ .Values.tempo.endpoint }}
+        {{ end }}
+        {{ end }}
         securityContext:
           privileged: false
+        livenessProbe:
+          httpGet:
+            path: {{ .Values.probe.liveness.path }}
+            port: {{ .Values.probe.liveness.port }}
+          initialDelaySeconds: {{ .Values.probe.liveness.initialDelaySeconds }}
+          periodSeconds: {{ .Values.probe.liveness.periodSeconds }}
+          timeoutSeconds: {{ .Values.probe.liveness.timeoutSeconds }}
+        readinessProbe:
+          httpGet:
+            path: {{ .Values.probe.readiness.path }}
+            port: {{ .Values.probe.readiness.port }}
+          initialDelaySeconds: {{ .Values.probe.readiness.initialDelaySeconds }}
+          periodSeconds: {{ .Values.probe.readiness.periodSeconds }}
+          timeoutSeconds: {{ .Values.probe.readiness.timeoutSeconds }}
       #imagePullSecrets:
       #- name:  {{ .Values.image.imagePullSecrets }}
       restartPolicy: Always
