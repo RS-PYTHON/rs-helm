@@ -50,10 +50,10 @@ Please refer to Helm's [documentation](https://helm.sh/docs/) to get started.
 ### TL;DR
 
 ```bash
-helm repo add rs-server https://rs-python.github.io/rs-helm
-helm repo update rs-server
-helm search repo rs-server --versions --devel
-helm install my-release rs-server/<chart>
+helm repo add rs-python https://home.rs-python.eu/rs-helm
+helm repo update rs-python
+helm search repo rs-python --versions --devel
+helm install my-release rs-python/<chart>
 ```
 
 ### Installing
@@ -61,7 +61,7 @@ helm install my-release rs-server/<chart>
 Find below an example on how to install the `rs-server-frontend` component and set some values:
 
 ```bash
-helm install rs-server-frontend rs-server/rs-server-frontend --namespace=processing --set ingress.host=dev-rspy.esa-copernicus.eu --set image.version=latest --set image.PullPolicy=Always  
+helm install rs-server-frontend rs-python/rs-server-frontend --namespace=processing --set ingress.host=dev-rspy.esa-copernicus.eu --set image.version=latest --set image.PullPolicy=Always  
 ```
 
 ### Upgrading
@@ -69,7 +69,7 @@ helm install rs-server-frontend rs-server/rs-server-frontend --namespace=process
 Find below an example on how to upgrade the `rs-server-cadip` component, re-use previously set values, and set some values:
 
 ```bash
-helm upgrade rs-server-cadip rs-server/rs-server-cadip --namespace=processing --reuse-values --set obs.endpoint=https://oss.eu-west-0.prod-cloud-ocb.orange-business.com --set obs.region=eu-west-0 --set obs.secret.ak=XXXXXXXXXXXXXX --set obs.secret.sk=YYYYYYYYYYYYYYYYYYYYY --force --version 0.0.0-f9c864f
+helm upgrade rs-server-cadip rs-python/rs-server-cadip --namespace=processing --reuse-values --set obs.endpoint=https://oss.eu-west-0.prod-cloud-ocb.orange-business.com --set obs.region=eu-west-0 --set obs.secret.ak=XXXXXXXXXXXXXX --set obs.secret.sk=YYYYYYYYYYYYYYYYYYYYY --force --version 0.0.0-f9c864f
 ```
 
 <br> <br>
