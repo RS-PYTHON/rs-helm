@@ -167,6 +167,8 @@ spec:
               key: pass
         securityContext:
           privileged: false
+        {{ if .Values.probe }}
+        {{ if .Values.probe.liveness }}
         livenessProbe:
           httpGet:
             path: {{ .Values.probe.liveness.path }}
@@ -174,6 +176,8 @@ spec:
           initialDelaySeconds: {{ .Values.probe.liveness.initialDelaySeconds }}
           periodSeconds: {{ .Values.probe.liveness.periodSeconds }}
           timeoutSeconds: {{ .Values.probe.liveness.timeoutSeconds }}
+        {{ end }}
+        {{ if .Values.probe.readiness }}
         readinessProbe:
           httpGet:
             path: {{ .Values.probe.readiness.path }}
@@ -181,8 +185,14 @@ spec:
           initialDelaySeconds: {{ .Values.probe.readiness.initialDelaySeconds }}
           periodSeconds: {{ .Values.probe.readiness.periodSeconds }}
           timeoutSeconds: {{ .Values.probe.readiness.timeoutSeconds }}
-      #imagePullSecrets:
-      #- name:  {{ .Values.image.imagePullSecrets }}
+        {{ end }}
+        {{ end }}
+      {{ if .Values.image }}
+      {{ if .Values.image.imagePullSecrets }}
+      imagePullSecrets:
+      - name:  {{ .Values.image.imagePullSecrets }}
+      {{ end }}
+      {{ end }}
       restartPolicy: Always
       securityContext: {}
       volumes:

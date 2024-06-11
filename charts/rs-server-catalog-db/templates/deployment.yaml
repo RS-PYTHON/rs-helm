@@ -91,18 +91,24 @@ spec:
               key: pass
         securityContext:
           privileged: false
+        {{ if .Values.probe }}
+        {{ if .Values.probe.liveness }}
         livenessProbe:
           exec:
             command: {{ .Values.probe.liveness.command }}
           initialDelaySeconds: {{ .Values.probe.liveness.initialDelaySeconds }}
           periodSeconds: {{ .Values.probe.liveness.periodSeconds }}
           timeoutSeconds: {{ .Values.probe.liveness.timeoutSeconds }}
+        {{ end }}
+        {{ if .Values.probe.readiness }}
         readinessProbe:
           exec:
             command: {{ .Values.probe.readiness.command }}
           initialDelaySeconds: {{ .Values.probe.readiness.initialDelaySeconds }}
           periodSeconds: {{ .Values.probe.readiness.periodSeconds }}
           timeoutSeconds: {{ .Values.probe.readiness.timeoutSeconds }}
+        {{ end }}
+        {{ end }}
       restartPolicy: Always
       volumes:
         - name: pgstac-pgdata

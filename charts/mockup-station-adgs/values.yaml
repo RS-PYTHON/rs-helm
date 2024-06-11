@@ -34,29 +34,29 @@ app:
   # -- catalog configuration file for the application
   catalogConfigFile: GETFileResponse.json
 
-probe:
-  liveness:
-    # -- Path for the liveness probe
-    path: /health
-    # -- Port for the liveness probe
-    port: 5000
-    # -- InitialDelaySeconds for the liveness probe
-    initialDelaySeconds: 30
-    # -- periodSeconds for the liveness probe
-    periodSeconds: 30
-    # -- timeoutSeconds for the liveness probe
-    timeoutSeconds: 5
-  readiness:
-    # -- Path for the readiness probe
-    path: /health
-    # -- Port for the readiness probe
-    port: 5000
-    # -- InitialDelaySeconds for the readiness probe
-    initialDelaySeconds: 30
-    # -- periodSeconds for the readiness probe
-    periodSeconds: 30
-    # -- timeoutSeconds for the readiness probe
-    timeoutSeconds: 5
+#probe:
+#  liveness:
+#    # -- Path for the liveness probe
+#    path: /health
+#    # -- Port for the liveness probe
+#    port: 5000
+#    # -- InitialDelaySeconds for the liveness probe
+#    initialDelaySeconds: 30
+#    # -- periodSeconds for the liveness probe
+#    periodSeconds: 30
+#    # -- timeoutSeconds for the liveness probe
+#    timeoutSeconds: 5
+#  readiness:
+#    # -- Path for the readiness probe
+#    path: /health
+#    # -- Port for the readiness probe
+#    port: 5000
+#    # -- InitialDelaySeconds for the readiness probe
+#    initialDelaySeconds: 30
+#    # -- periodSeconds for the readiness probe
+#    periodSeconds: 30
+#    # -- timeoutSeconds for the readiness probe
+#    timeoutSeconds: 5
 
 image:
   # -- Image registry
