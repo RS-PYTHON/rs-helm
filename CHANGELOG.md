@@ -13,12 +13,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
-## [0.1a10] - 2024-06-06
+## [0.1a10] - 2024-06-12
 
 ### Added
 
 - Grafana Tempo for rs-server-cadip, rs-server-auxip, rs-server-catalog
-- Liveness/Readiness probes for rs-server-catalog, mockup-station-cadip, mockup-station-adgs and mockup-processor-dpr
 - PVC for mockup-station-cadip and mockup-station-adgs
 - ConfigMap for mockup-station-cadip and mockup-station-adgs
 
