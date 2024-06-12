@@ -40,29 +40,29 @@ app:
   # -- Name of the station for the application
   stationName: cadip
 
-probe:
-  liveness:
-    # -- Path for the liveness probe
-    path: /health
-    # -- Port for the liveness probe
-    port: 5000
-    # -- InitialDelaySeconds for the liveness probe
-    initialDelaySeconds: 30
-    # -- periodSeconds for the liveness probe
-    periodSeconds: 30
-    # -- timeoutSeconds for the liveness probe
-    timeoutSeconds: 5
-  readiness:
-    # -- Path for the readiness probe
-    path: /health
-    # -- Port for the readiness probe
-    port: 5000
-    # -- InitialDelaySeconds for the readiness probe
-    initialDelaySeconds: 30
-    # -- periodSeconds for the readiness probe
-    periodSeconds: 30
-    # -- timeoutSeconds for the readiness probe
-    timeoutSeconds: 5
+#probe:
+#  liveness:
+#    # -- Path for the liveness probe
+#    path: /health
+#    # -- Port for the liveness probe
+#    port: 5000
+#    # -- InitialDelaySeconds for the liveness probe
+#    initialDelaySeconds: 30
+#    # -- periodSeconds for the liveness probe
+#    periodSeconds: 30
+#    # -- timeoutSeconds for the liveness probe
+#    timeoutSeconds: 5
+#  readiness:
+#    # -- Path for the readiness probe
+#    path: /health
+#    # -- Port for the readiness probe
+#    port: 5000
+#    # -- InitialDelaySeconds for the readiness probe
+#    initialDelaySeconds: 30
+#    # -- periodSeconds for the readiness probe
+#    periodSeconds: 30
+#    # -- timeoutSeconds for the readiness probe
+#    timeoutSeconds: 5
 
 image:
   # -- Image registry
@@ -72,7 +72,7 @@ image:
   # -- Image name
   name: rs-testmeans_cadip-station-mock
   # -- Image version, can be a tag or a digest
-  version: sha256:c3b6060c6963c8336cf42b9c665b1efb004055f47cccd6eb16f061512258d0f0
+  version: sha256:345d4471e04c2b94f50945ea3b9edd5d3eed16bdba7913443b1e4e2526962e84
   # -- Image pull policy
   PullPolicy: Always
   #imagePullSecrets: regcred
