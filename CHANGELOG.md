@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Changed
 
 - Ingress : added a parameter to enabled or not in the value file. Enabled is set to true by default.
+- Image version for mockup
 
 ## [0.1a8] - 2024-04-30
 
