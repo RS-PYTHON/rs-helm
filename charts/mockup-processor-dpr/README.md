@@ -19,22 +19,12 @@ MOCKUP PROCESSOR DPR
 | image.name | string | `"rs-testmeans_dpr-processor-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"sha256:549ddb6ffc9daf836364616ee65f234b2805477410fa4a051f5ed3af2fd00179"` | Image version, can be a tag or a digest |
+| image.version | string | `"sha256:3d467b918a40e61a84bdefa3433871490ec0ab26709dc5f5a00d549260814e92"` | Image version, can be a tag or a digest |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
 | obs.region | string | `"sbg"` | Region of the object storage service |
 | obs.secret.ak | string | `"TDr8foJqSygBQ9YFmWDy"` | Access Key to authenticate with the object storage service |
 | obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service |
-| probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
-| probe.liveness.path | string | `"/health"` | Path for the liveness probe |
-| probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |
-| probe.liveness.port | int | `8000` | Port for the liveness probe |
-| probe.liveness.timeoutSeconds | int | `5` | timeoutSeconds for the liveness probe |
-| probe.readiness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the readiness probe |
-| probe.readiness.path | string | `"/health"` | Path for the readiness probe |
-| probe.readiness.periodSeconds | int | `30` | periodSeconds for the readiness probe |
-| probe.readiness.port | int | `8000` | Port for the readiness probe |
-| probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
 | replicaCount | int | `1` | Number of replicas for the deployment |
 | resources.limit.cpu | string | `"500m"` | Pod CPU limit |
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
