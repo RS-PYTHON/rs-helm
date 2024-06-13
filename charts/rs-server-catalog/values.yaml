@@ -29,6 +29,8 @@ app:
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/check/api_key
   # -- Object Storage bucket for the catalog
   catalogBucket: rs-cluster-catalog
+  # -- Presigned URL expiration time in seconds. 30 min by default
+  presignedUrlExpirationTime: 1800
 
 obs:
   # -- URL of the object storage service endpoint

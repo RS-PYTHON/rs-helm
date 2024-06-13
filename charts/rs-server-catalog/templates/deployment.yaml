@@ -60,6 +60,8 @@ spec:
           value: {{ .Values.app.uacURL }}
         - name: RSPY_CATALOG_BUCKET
           value: {{ .Values.app.catalogBucket }}
+        - name: RSPY_PRESIGNED_URL_EXPIRATION_TIME
+          value: {{ .Values.app.presignedUrlExpirationTime }}
         - name: APP_HOST
           value: "0.0.0.0"
         - name: APP_PORT
