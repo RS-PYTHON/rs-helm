@@ -13,6 +13,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [0.1a11] - 2024-06-27
+
+### Added
+
+- rs-server-frontend `values.yaml`
+  - added parameter `uacHomeUrl`
+
+### Changed
+
+- rs-server-frontend `values.yaml`
+  - renamed parameter `uacURL` to `uacCheckUrl`
+
 ## [0.1a10] - 2024-06-12
 
 ### Added
