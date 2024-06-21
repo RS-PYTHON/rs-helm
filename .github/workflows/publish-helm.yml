@@ -86,7 +86,7 @@ jobs:
 
             CHART_VERSION=$(echo $GITHUB_REF_NAME | sed 's/.*\///' | sed 's/^v//')
             while [[ ${#CHART_VERSION} -lt 5 ]]; do
-              echo CHART_VERSION+=".0"
+              CHART_VERSION+=".0"
             done
             if [[ ${#CHART_VERSION} -eq 5 ]]; then
               echo "CHART_VERSION=$CHART_VERSION" >> $GITHUB_OUTPUT
