@@ -84,4 +84,3 @@ Centering the banner logo image is not rendered by the mkdocs inside the rs-docu
 -->
 <p align="center">This project is funded by the EU and ESA.</p>
 <br> <br>
-

@@ -54,24 +54,44 @@ jobs:
           # Enable pipefail so git command failures do not result in null versions downstream
           set -x
 
-          echo "APP_VERSION=$(\
-            git ls-remote --tags --refs --sort="v:refname" \
-            https://github.com/RS-PYTHON/rs-server.git 'v0.*a*' | tail -n1 | sed 's/.*\///' \
-          )" >> $GITHUB_OUTPUT
-          # v0.1a7
+          if [[ "$GITHUB_REF_NAME" =~ v[0-9].[0-9][ab] ]] ; then
+            # Sprint release
+            # v0.1a10
+            echo "APP_VERSION=$(\
+              git ls-remote --tags --refs --sort="v:refname" \
+              https://github.com/RS-PYTHON/rs-server.git | grep -E 'v[0-9](.)?([0-9])?[ab]' | tail -n1 | sed 's/.*\///' \
+            )" >> $GITHUB_OUTPUT
+            # v0.1a10
 
-          if [ "$GITHUB_REF_TYPE" == "tag" ]; then
+            if [ "$GITHUB_REF_TYPE" == "tag" ]; then
+              # TO DO : After v1, replace 0 with 1 below just after CHART_VERSION
+              echo "CHART_VERSION=0.$(echo $GITHUB_REF_NAME | sed 's/.*\///' | sed 's/^v//' | sed 's/.\{3\}/&-/')" >> $GITHUB_OUTPUT
+              # v0.1a7 => 0.0.1-a7
+            elif [ "$GITHUB_REF_TYPE" == "branch" ]; then
+              # TO DO : After v1, replace 0 with 1 below just after CHART_VERSION
+              echo "CHART_VERSION=0.$(\
+                  git ls-remote --tags --refs --sort="v:refname" \
+                  https://github.com/RS-PYTHON/rs-server.git | grep -E 'v[0-9](.)?([0-9])?[ab]' | tail -n1 | sed 's/.*\///' | sed 's/^v//' | sed 's/.\{3\}/&-/')-$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_OUTPUT
+              # 0.0.1-a7-1tr5hrt
+            fi
 
-            echo "CHART_VERSION=0.$(echo $GITHUB_REF_NAME | sed 's/.*\///' | sed 's/^v//' | sed 's/^v//' | sed 's/.\{3\}/&-/')" >> $GITHUB_OUTPUT
-            # v0.1a7 => 0.0.1-a7
+          else
+            # Checkpoint release
+            # v0.1
+            echo "APP_VERSION=$(\
+              git ls-remote --tags --refs --sort="v:refname" \
+              https://github.com/RS-PYTHON/rs-server.git | grep -E 'v[0-9](.)?([0-9])?$' | tail -n1 | sed 's/.*\///' \
+            )" >> $GITHUB_OUTPUT
+            # v0.1
 
-          elif [ "$GITHUB_REF_TYPE" == "branch" ]; then
-
-            echo "CHART_VERSION=0.$(\
-                git ls-remote --tags --refs --sort="v:refname" \
-                https://github.com/RS-PYTHON/rs-server.git 'v0.*a*' | tail -n1 | sed 's/.*\///' | sed 's/^v//' | sed 's/.\{3\}/&-/')-$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_OUTPUT
-            # 0.0.1-a7-1tr5hrt
-
+            CHART_VERSION=$(echo $GITHUB_REF_NAME | sed 's/.*\///' | sed 's/^v//')
+            while [[ ${#CHART_VERSION} -lt 5 ]]; do
+              echo CHART_VERSION+=".0"
+            done
+            if [[ ${#CHART_VERSION} -eq 5 ]]; do
+              echo "CHART_VERSION=$CHART_VERSION" >> $GITHUB_OUTPUT
+            done
+            # v0.1 => 0.1.0
           fi
 
       - name: Update version number in chart.yaml
