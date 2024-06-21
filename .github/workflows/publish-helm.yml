@@ -90,7 +90,7 @@ jobs:
             done
             if [[ ${#CHART_VERSION} -eq 5 ]]; then
               echo "CHART_VERSION=$CHART_VERSION" >> $GITHUB_OUTPUT
-            done
+            fi
             # v0.1 => 0.1.0
           fi
 
