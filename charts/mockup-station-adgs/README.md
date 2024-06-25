@@ -26,6 +26,16 @@ MOCKUP STATION ADGS
 | image.repository | string | `"rs-python"` | Image repository |
 | image.version | string | `"sha256:02de047a9fb093b835e1420300ca8fe09a4c298311639bd90540e982e2034c4c"` | Image version, can be a tag or a digest |
 | namespace | string | `"processing"` | Namespace for the deployment |
+| probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
+| probe.liveness.path | string | `"/health"` | Path for the liveness probe |
+| probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |
+| probe.liveness.port | int | `5000` | Port for the liveness probe |
+| probe.liveness.timeoutSeconds | int | `5` | timeoutSeconds for the liveness probe |
+| probe.readiness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the readiness probe |
+| probe.readiness.path | string | `"/health"` | Path for the readiness probe |
+| probe.readiness.periodSeconds | int | `30` | periodSeconds for the readiness probe |
+| probe.readiness.port | int | `5000` | Port for the readiness probe |
+| probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
 | replicaCount | int | `1` | Number of replicas for the deployment |
 | resources.limit.cpu | string | `"500m"` | Pod CPU limit |
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
