@@ -76,8 +76,7 @@ jobs:
               fi
               # v0.1a7 => 0.1.0-a7
               # v1a7 => 1.0.0-a7
-
-            elif [[ "$GITHUB_REF_NAME" = v[0-9].[0-9] || "$GITHUB_REF_NAME" = v[0-9] ]]
+            elif [[ "$GITHUB_REF_NAME" = v[0-9].[0-9] || "$GITHUB_REF_NAME" = v[0-9] ]] ; then
               # Checkpoint release
               # v0.1 or v1
               echo "APP_VERSION=$(\
@@ -116,7 +115,6 @@ jobs:
             fi
             # v0.1a7 => 0.1.0-a7-1tr5hrt
             # v1a7 => 1.0.0-a7-1tr5hrt
-
           fi
 
       - name: Update version number in chart.yaml
