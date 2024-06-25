@@ -54,44 +54,67 @@ jobs:
           # Enable pipefail so git command failures do not result in null versions downstream
           set -x
 
-          if [[ "$GITHUB_REF_NAME" =~ v[0-9].[0-9][ab] ]] ; then
-            # Sprint release
-            # v0.1a10
+          if [ "$GITHUB_REF_TYPE" == "tag" ]; then
+            if [[ "$GITHUB_REF_NAME" =~ v[0-9].[0-9][ab] || "$GITHUB_REF_NAME" =~ v[0-9][ab] ]] ; then
+              # Sprint release
+              # v0.1a10
+              echo "APP_VERSION=$(\
+                git ls-remote --tags --refs --sort="v:refname" \
+                https://github.com/RS-PYTHON/rs-server.git | grep -E 'v[0-9](.)?([0-9])?[ab]' | tail -n1 | sed 's/.*\///' \
+              )" >> $GITHUB_OUTPUT
+              # v0.1a10
+
+              # Ugly workaround to transform the chart_version into SemVer 2, required by Helm
+              CHART_VERSION_TMP=$(echo $GITHUB_REF_NAME | sed 's/.*\///' | sed 's/^v//')
+              CHART_VERSION_PREFIX=${CHART_VERSION_TMP%[ab]*}
+              CHART_VERSION_SUFFIX=${CHART_VERSION_TMP/#$CHART_VERSION_PREFIX}
+              while [[ ${#CHART_VERSION_PREFIX} -lt 5 ]]; do
+                CHART_VERSION_PREFIX+=".0"
+              done
+              if [[ ${#CHART_VERSION_PREFIX} -eq 5 ]]; then
+                echo "CHART_VERSION=$CHART_VERSION_PREFIX-$CHART_VERSION_SUFFIX" >> $GITHUB_OUTPUT
+              fi
+              # v0.1a7 => 0.1.0-a7
+              # v1a7 => 1.0.0-a7
+            elif [[ "$GITHUB_REF_NAME" = v[0-9].[0-9] || "$GITHUB_REF_NAME" = v[0-9] ]] ; then
+              # Checkpoint release
+              # v0.1 or v1
+              echo "APP_VERSION=$(\
+                git ls-remote --tags --refs --sort="v:refname" \
+                https://github.com/RS-PYTHON/rs-server.git | grep -E 'v[0-9](.)?([0-9])?$' | tail -n1 | sed 's/.*\///' \
+              )" >> $GITHUB_OUTPUT
+              # v0.1
+
+              CHART_VERSION=$(echo $GITHUB_REF_NAME | sed 's/.*\///' | sed 's/^v//')
+              while [[ ${#CHART_VERSION} -lt 5 ]]; do
+                CHART_VERSION+=".0"
+              done
+              if [[ ${#CHART_VERSION} -eq 5 ]]; then
+                echo "CHART_VERSION=$CHART_VERSION" >> $GITHUB_OUTPUT
+              fi
+              # v0.1 => 0.1.0
+              # v1   => 1.0.0 
+            fi
+          elif [ "$GITHUB_REF_TYPE" == "branch" ]; then
             echo "APP_VERSION=$(\
               git ls-remote --tags --refs --sort="v:refname" \
               https://github.com/RS-PYTHON/rs-server.git | grep -E 'v[0-9](.)?([0-9])?[ab]' | tail -n1 | sed 's/.*\///' \
             )" >> $GITHUB_OUTPUT
             # v0.1a10
 
-            if [ "$GITHUB_REF_TYPE" == "tag" ]; then
-              # TO DO : After v1, replace 0 with 1 below just after CHART_VERSION
-              echo "CHART_VERSION=0.$(echo $GITHUB_REF_NAME | sed 's/.*\///' | sed 's/^v//' | sed 's/.\{3\}/&-/')" >> $GITHUB_OUTPUT
-              # v0.1a7 => 0.0.1-a7
-            elif [ "$GITHUB_REF_TYPE" == "branch" ]; then
-              # TO DO : After v1, replace 0 with 1 below just after CHART_VERSION
-              echo "CHART_VERSION=0.$(\
-                  git ls-remote --tags --refs --sort="v:refname" \
-                  https://github.com/RS-PYTHON/rs-server.git | grep -E 'v[0-9](.)?([0-9])?[ab]' | tail -n1 | sed 's/.*\///' | sed 's/^v//' | sed 's/.\{3\}/&-/')-$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_OUTPUT
-              # 0.0.1-a7-1tr5hrt
-            fi
-
-          else
-            # Checkpoint release
-            # v0.1
-            echo "APP_VERSION=$(\
-              git ls-remote --tags --refs --sort="v:refname" \
-              https://github.com/RS-PYTHON/rs-server.git | grep -E 'v[0-9](.)?([0-9])?$' | tail -n1 | sed 's/.*\///' \
-            )" >> $GITHUB_OUTPUT
-            # v0.1
-
-            CHART_VERSION=$(echo $GITHUB_REF_NAME | sed 's/.*\///' | sed 's/^v//')
-            while [[ ${#CHART_VERSION} -lt 5 ]]; do
-              CHART_VERSION+=".0"
+            # Ugly workaround to transform the chart_version into SemVer 2, required by Helm
+            CHART_VERSION_TMP=$(git ls-remote --tags --refs --sort="v:refname" \
+                https://github.com/RS-PYTHON/rs-server.git | grep -E 'v[0-9](.)?([0-9])?[ab]' | tail -n1 | sed 's/.*\///' | sed 's/^v//')
+            CHART_VERSION_PREFIX=${CHART_VERSION_TMP%[ab]*}
+            CHART_VERSION_SUFFIX=${CHART_VERSION_TMP/#$CHART_VERSION_PREFIX}
+            while [[ ${#CHART_VERSION_PREFIX} -lt 5 ]]; do
+              CHART_VERSION_PREFIX+=".0"
             done
-            if [[ ${#CHART_VERSION} -eq 5 ]]; then
-              echo "CHART_VERSION=$CHART_VERSION" >> $GITHUB_OUTPUT
+            if [[ ${#CHART_VERSION_PREFIX} -eq 5 ]]; then
+              echo "CHART_VERSION=$CHART_VERSION_PREFIX-$CHART_VERSION_SUFFIX-$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_OUTPUT
             fi
-            # v0.1 => 0.1.0
+            # v0.1a7 => 0.1.0-a7-1tr5hrt
+            # v1a7 => 1.0.0-a7-1tr5hrt
           fi
 
       - name: Update version number in chart.yaml
