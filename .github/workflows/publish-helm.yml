@@ -72,7 +72,7 @@ jobs:
                 CHART_VERSION_PREFIX+=".0"
               done
               if [[ ${#CHART_VERSION_PREFIX} -eq 5 ]]; then
-                echo "CHART_VERSION=$CHART_VERSION_PREFIX$CHART_VERSION_SUFFIX" >> $GITHUB_OUTPUT
+                echo "CHART_VERSION=$CHART_VERSION_PREFIX-$CHART_VERSION_SUFFIX" >> $GITHUB_OUTPUT
               fi
               # v0.1a7 => 0.1.0-a7
               # v1a7 => 1.0.0-a7
@@ -111,7 +111,7 @@ jobs:
               CHART_VERSION_PREFIX+=".0"
             done
             if [[ ${#CHART_VERSION_PREFIX} -eq 5 ]]; then
-              echo "CHART_VERSION=$CHART_VERSION_PREFIX$CHART_VERSION_SUFFIX-$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_OUTPUT
+              echo "CHART_VERSION=$CHART_VERSION_PREFIX-$CHART_VERSION_SUFFIX-$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_OUTPUT
             fi
             # v0.1a7 => 0.1.0-a7-1tr5hrt
             # v1a7 => 1.0.0-a7-1tr5hrt
