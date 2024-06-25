@@ -39,6 +39,8 @@ app:
   catalogConfigFile: FileResponse.json
   # -- Name of the station for the application
   stationName: cadip
+  # -- Support for expand option, default true
+  cadipSessionExpand: true
 
 probe:
   liveness:

@@ -70,6 +70,13 @@ spec:
         - name: web
           protocol: TCP
           containerPort: {{ .Values.app.port }}
+        env:
+        {{ if .Values.app }}
+        {{ if kindIs "bool" .Values.app.cadipSessionExpand }}
+        - name: CADIP_SESSION_EXPAND
+          value: "{{ .Values.app.cadipSessionExpand }}"
+        {{ end }}
+        {{ end }}
         securityContext:
           privileged: false
         {{ if .Values.probe }}
