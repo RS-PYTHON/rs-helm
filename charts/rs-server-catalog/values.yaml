@@ -97,29 +97,29 @@ resources:
     # -- Pod CPU limit
     cpu: "500m"
 
-#probe:
-#  liveness:
-#    # -- Path for the liveness probe
-#    path: /health
-#    # -- Port for the liveness probe
-#    port: 8000
-#    # -- InitialDelaySeconds for the liveness probe
-#    initialDelaySeconds: 30
-#    # -- periodSeconds for the liveness probe
-#    periodSeconds: 30
-#    # -- timeoutSeconds for the liveness probe
-#    timeoutSeconds: 5
-#  readiness:
-#    # -- Path for the readiness probe
-#    path: /health
-#    # -- Port for the readiness probe
-#    port: 8000
-#    # -- InitialDelaySeconds for the readiness probe
-#    initialDelaySeconds: 30
-#    # -- periodSeconds for the readiness probe
-#    periodSeconds: 30
-#    # -- timeoutSeconds for the readiness probe
-#    timeoutSeconds: 5
+probe:
+  liveness:
+    # -- Path for the liveness probe
+    path: /health
+    # -- Port for the liveness probe
+    port: 8000
+    # -- InitialDelaySeconds for the liveness probe
+    initialDelaySeconds: 30
+    # -- periodSeconds for the liveness probe
+    periodSeconds: 30
+    # -- timeoutSeconds for the liveness probe
+    timeoutSeconds: 5
+  readiness:
+    # -- Path for the readiness probe
+    path: /health
+    # -- Port for the readiness probe
+    port: 8000
+    # -- InitialDelaySeconds for the readiness probe
+    initialDelaySeconds: 30
+    # -- periodSeconds for the readiness probe
+    periodSeconds: 30
+    # -- timeoutSeconds for the readiness probe
+    timeoutSeconds: 5
 
 tempo:
   # -- Grafana tempo endpoint.
