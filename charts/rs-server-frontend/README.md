@@ -1,6 +1,6 @@
 # rs-server-frontend
 
-![Version: 0.0.1-a10](https://img.shields.io/badge/Version-0.0.1--a10-informational?style=flat-square) ![AppVersion: v0.1a10](https://img.shields.io/badge/AppVersion-v0.1a10-informational?style=flat-square)
+![Version: 0.0.2-a1](https://img.shields.io/badge/Version-0.0.2--a1-informational?style=flat-square) ![AppVersion: v0.2a1](https://img.shields.io/badge/AppVersion-v0.2a1-informational?style=flat-square)
 
 RS SERVER FRONTEND
 
@@ -16,12 +16,13 @@ RS SERVER FRONTEND
 |-----|------|---------|-------------|
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. Must be the same value as ingress.path |
 | app.port | int | `8000` | Port for the application |
-| app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` | URL of the API Key Manager service |
+| app.uacCheckUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` | URL of the API Key Manager service (internal) |
+| app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-frontend"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"0.1a10"` | Image version, can be a tag or a digest |
+| image.version | string | `"0.2a1"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
