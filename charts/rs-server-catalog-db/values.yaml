@@ -56,8 +56,6 @@ resources:
 
 probe:
   liveness:
-    # -- Command for the liveness probe
-    command: ["pg_isready", "-d", "catalog"]
     # -- InitialDelaySeconds for the liveness probe
     initialDelaySeconds: 30
     # -- periodSeconds for the liveness probe
@@ -65,8 +63,6 @@ probe:
     # -- timeoutSeconds for the liveness probe
     timeoutSeconds: 5
   readiness:
-    # -- Command for the liveness probe
-    command: ["pg_isready", "-d", "catalog"]
     # -- InitialDelaySeconds for the readiness probe
     initialDelaySeconds: 30
     # -- periodSeconds for the readiness probe

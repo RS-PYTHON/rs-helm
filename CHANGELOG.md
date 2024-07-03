@@ -29,6 +29,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 - ConfigMap for mockup-station-cadip
 - Bumped Image version of docker images
 
+### Changed
+
+- Liveness and Readiness probes for rs-server-catalog-db
+
 ## [0.1a10] - 2024-06-12
 
 ### Added

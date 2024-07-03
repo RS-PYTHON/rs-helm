@@ -25,11 +25,9 @@ RS SERVER CATALOG DB
 | postgres.port | string | `"5432"` | PostgreSQL port |
 | postgres.secret.pass | string | `"password"` | Password to authenticate with the PostgreSQL service |
 | postgres.secret.user | string | `"postgres"` | Username to authenticate with the PostgreSQL service |
-| probe.liveness.command | list | `["pg_isready","-d","catalog"]` | Command for the liveness probe |
 | probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |
 | probe.liveness.timeoutSeconds | int | `5` | timeoutSeconds for the liveness probe |
-| probe.readiness.command | list | `["pg_isready","-d","catalog"]` | Command for the liveness probe |
 | probe.readiness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the readiness probe |
 | probe.readiness.periodSeconds | int | `30` | periodSeconds for the readiness probe |
 | probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
