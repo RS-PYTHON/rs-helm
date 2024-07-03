@@ -95,7 +95,10 @@ spec:
         {{ if .Values.probe.liveness }}
         livenessProbe:
           exec:
-            command: {{ .Values.probe.liveness.command }}
+            command:
+              - pg_isready
+              - -d
+              - {{ .Values.postgres.db }}
           initialDelaySeconds: {{ .Values.probe.liveness.initialDelaySeconds }}
           periodSeconds: {{ .Values.probe.liveness.periodSeconds }}
           timeoutSeconds: {{ .Values.probe.liveness.timeoutSeconds }}
@@ -103,7 +106,10 @@ spec:
         {{ if .Values.probe.readiness }}
         readinessProbe:
           exec:
-            command: {{ .Values.probe.readiness.command }}
+            command:
+              - pg_isready
+              - -d
+              - {{ .Values.postgres.db }}
           initialDelaySeconds: {{ .Values.probe.readiness.initialDelaySeconds }}
           periodSeconds: {{ .Values.probe.readiness.periodSeconds }}
           timeoutSeconds: {{ .Values.probe.readiness.timeoutSeconds }}
