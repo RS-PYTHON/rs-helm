@@ -67,7 +67,7 @@ image:
   # -- Image name
   name: rs-server-catalog
   # -- Image version, can be a tag or a digest
-  version: 0.1a10
+  version: 0.2a1
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
