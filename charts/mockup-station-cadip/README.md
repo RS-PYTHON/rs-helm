@@ -1,6 +1,6 @@
 # mockup-station-cadip
 
-![Version: 0.0.1-a10](https://img.shields.io/badge/Version-0.0.1--a10-informational?style=flat-square) ![AppVersion: v0.1a10](https://img.shields.io/badge/AppVersion-v0.1a10-informational?style=flat-square)
+![Version: 0.0.2-a1](https://img.shields.io/badge/Version-0.0.2--a1-informational?style=flat-square) ![AppVersion: v0.2a1](https://img.shields.io/badge/AppVersion-v0.2a1-informational?style=flat-square)
 
 MOCKUP STATION CADIP
 
@@ -28,7 +28,7 @@ MOCKUP STATION CADIP
 | image.name | string | `"rs-testmeans_cadip-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"sha256:345d4471e04c2b94f50945ea3b9edd5d3eed16bdba7913443b1e4e2526962e84"` | Image version, can be a tag or a digest |
+| image.version | string | `"sha256:4803a989ef66f6371645690ac9aa7e2fbdb1c146d19ffd937b01d0663d331811"` | Image version, can be a tag or a digest |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/health"` | Path for the liveness probe |
