@@ -2,18 +2,6 @@ apiVersion: v1
 entries:
   mockup-processor-dpr:
   - apiVersion: v1
-    appVersion: v0.2a1
-    created: "2024-07-03T09:55:09.006241151Z"
-    description: MOCKUP PROCESSOR DPR
-    digest: cc3ee6fc747132798c789fb5d8122818c00906fe8f21e9524f4eb246c0fcdc07
-    maintainers:
-    - name: CS GROUP
-      url: https://github.com/RS-PYTHON/rs-helm
-    name: mockup-processor-dpr
-    urls:
-    - https://github.com/RS-PYTHON/rs-helm/releases/download/mockup-processor-dpr-0.2.0-a1/mockup-processor-dpr-0.2.0-a1.tgz
-    version: 0.2.0-a1
-  - apiVersion: v1
     appVersion: v0.1
     created: "2024-06-21T16:20:39.591014756Z"
     description: MOCKUP PROCESSOR DPR
@@ -346,18 +334,6 @@ entries:
     urls:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/mockup-station-adgs-1.0.0-08bb804/mockup-station-adgs-1.0.0-08bb804.tgz
     version: 1.0.0-08bb804
-  - apiVersion: v1
-    appVersion: v0.2a1
-    created: "2024-07-03T09:55:09.098628515Z"
-    description: MOCKUP STATION ADGS
-    digest: 3eb82210a6d08f8b593c412b28030b98b4c37c8eae18e2fc2e222b08b4af494d
-    maintainers:
-    - name: CS GROUP
-      url: https://github.com/RS-PYTHON/rs-helm
-    name: mockup-station-adgs
-    urls:
-    - https://github.com/RS-PYTHON/rs-helm/releases/download/mockup-station-adgs-0.2.0-a1/mockup-station-adgs-0.2.0-a1.tgz
-    version: 0.2.0-a1
   - apiVersion: v1
     appVersion: v0.1
     created: "2024-06-21T16:20:39.685631844Z"
@@ -786,18 +762,6 @@ entries:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/mockup-station-cadip-1.0.0-08bb804/mockup-station-cadip-1.0.0-08bb804.tgz
     version: 1.0.0-08bb804
   - apiVersion: v1
-    appVersion: v0.2a1
-    created: "2024-07-03T09:55:09.213276374Z"
-    description: MOCKUP STATION CADIP
-    digest: 98b5f00dcb617a81ebb3838bdca16b7b3ed9983608afd4fe90a228bbcc077660
-    maintainers:
-    - name: CS GROUP
-      url: https://github.com/RS-PYTHON/rs-helm
-    name: mockup-station-cadip
-    urls:
-    - https://github.com/RS-PYTHON/rs-helm/releases/download/mockup-station-cadip-0.2.0-a1/mockup-station-cadip-0.2.0-a1.tgz
-    version: 0.2.0-a1
-  - apiVersion: v1
     appVersion: v0.1
     created: "2024-06-21T16:20:39.787522686Z"
     description: MOCKUP STATION CADIP
@@ -1224,18 +1188,6 @@ entries:
     urls:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-adgs-1.0.0-08bb804/rs-server-adgs-1.0.0-08bb804.tgz
     version: 1.0.0-08bb804
-  - apiVersion: v1
-    appVersion: v0.2a1
-    created: "2024-07-03T09:55:09.315192105Z"
-    description: RS SERVER ADGS
-    digest: 6516c624ffd6c6be449b406965c6148e3f15e3cdb91b0ce57bdbd32144c45999
-    maintainers:
-    - name: CS GROUP
-      url: https://github.com/RS-PYTHON/rs-helm
-    name: rs-server-adgs
-    urls:
-    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-adgs-0.2.0-a1/rs-server-adgs-0.2.0-a1.tgz
-    version: 0.2.0-a1
   - apiVersion: v1
     appVersion: v0.1
     created: "2024-06-21T16:20:39.891321978Z"
@@ -1664,18 +1616,6 @@ entries:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-cadip-1.0.0-08bb804/rs-server-cadip-1.0.0-08bb804.tgz
     version: 1.0.0-08bb804
   - apiVersion: v1
-    appVersion: v0.2a1
-    created: "2024-07-03T09:55:09.430554468Z"
-    description: RS SERVER CADIP
-    digest: f1fc0a4675d18661f3b5225429e0f76ca6d7ad28199939ff86932a74884d9e68
-    maintainers:
-    - name: CS GROUP
-      url: https://github.com/RS-PYTHON/rs-helm
-    name: rs-server-cadip
-    urls:
-    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-cadip-0.2.0-a1/rs-server-cadip-0.2.0-a1.tgz
-    version: 0.2.0-a1
-  - apiVersion: v1
     appVersion: v0.1
     created: "2024-06-21T16:20:39.991493999Z"
     description: RS SERVER CADIP
@@ -2102,18 +2042,6 @@ entries:
     urls:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-catalog-1.0.0-08bb804/rs-server-catalog-1.0.0-08bb804.tgz
     version: 1.0.0-08bb804
-  - apiVersion: v1
-    appVersion: v0.2a1
-    created: "2024-07-03T09:55:09.531139321Z"
-    description: RS SERVER CATALOG
-    digest: 87a58bd1c032a3180071f4787aa7238788de8f0fc7187b136728dd3ee933485c
-    maintainers:
-    - name: CS GROUP
-      url: https://github.com/RS-PYTHON/rs-helm
-    name: rs-server-catalog
-    urls:
-    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-catalog-0.2.0-a1/rs-server-catalog-0.2.0-a1.tgz
-    version: 0.2.0-a1
   - apiVersion: v1
     appVersion: v0.1
     created: "2024-06-21T16:20:40.091302971Z"
@@ -2542,18 +2470,6 @@ entries:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-catalog-db-1.0.0-08bb804/rs-server-catalog-db-1.0.0-08bb804.tgz
     version: 1.0.0-08bb804
   - apiVersion: v1
-    appVersion: v0.2a1
-    created: "2024-07-03T09:55:09.632713855Z"
-    description: RS SERVER CATALOG DB
-    digest: b988951cbe892760f05cdceb9089a09a2de51e550ca9648a38eeec5518cad568
-    maintainers:
-    - name: CS GROUP
-      url: https://github.com/RS-PYTHON/rs-helm
-    name: rs-server-catalog-db
-    urls:
-    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-catalog-db-0.2.0-a1/rs-server-catalog-db-0.2.0-a1.tgz
-    version: 0.2.0-a1
-  - apiVersion: v1
     appVersion: v0.1
     created: "2024-06-21T16:20:40.198723791Z"
     description: RS SERVER CATALOG DB
@@ -2980,18 +2896,6 @@ entries:
     urls:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-frontend-1.0.0-08bb804/rs-server-frontend-1.0.0-08bb804.tgz
     version: 1.0.0-08bb804
-  - apiVersion: v1
-    appVersion: v0.2a1
-    created: "2024-07-03T09:55:09.739293054Z"
-    description: RS SERVER FRONTEND
-    digest: 9a455a307239b82e829648d0a06b543f577bccdc67b0af6eca69ec4a40719da7
-    maintainers:
-    - name: CS GROUP
-      url: https://github.com/RS-PYTHON/rs-helm
-    name: rs-server-frontend
-    urls:
-    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-frontend-0.2.0-a1/rs-server-frontend-0.2.0-a1.tgz
-    version: 0.2.0-a1
   - apiVersion: v1
     appVersion: v0.1
     created: "2024-06-21T16:20:40.309980223Z"
