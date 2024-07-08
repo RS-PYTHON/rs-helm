@@ -32,6 +32,10 @@ A simple mock for ADGS station.
 
 A simple mock for CADIP station.
 
+## [mockup-station-lta](charts/mockup-station-lta/README.md)
+
+A simple mock for LTA station.
+
 ## [mockup-processor-dpr](charts/mockup-processor-dpr/README.md)
 
 A simple mock for DPR processor.
