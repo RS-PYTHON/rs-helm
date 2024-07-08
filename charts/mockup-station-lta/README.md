@@ -1,8 +1,8 @@
-# mockup-station-adgs
+# mockup-station-lta
 
 ![Version: 0.0.2-a1](https://img.shields.io/badge/Version-0.0.2--a1-informational?style=flat-square) ![AppVersion: v0.2a1](https://img.shields.io/badge/AppVersion-v0.2a1-informational?style=flat-square)
 
-MOCKUP STATION ADGS
+MOCKUP STATION LTA
 
 ## Maintainers
 
@@ -12,39 +12,39 @@ MOCKUP STATION ADGS
 
 ## Values
 
-| Key | Type | Default                                                                     | Description |
-|-----|------|-----------------------------------------------------------------------------|-------------|
-| app.authConfigFile | string | `"auth.json"`                                                               | Auth configuration file for the application |
-| app.catalogConfigFile | string | `"GETQueryResponse.json"`                                                   | catalog configuration file for the application |
-| app.confDir | string | `"/opt/lta/config"`                                                         | Config directory for the application |
-| app.port | int | `5000`                                                                      | Port for the application |
-| app.workDir | string | `"/app"`                                                                    | Working directory for the application |
-| helmResourcePolicy | string | `"keep"`                                                                    | Keep the ressources for PVC and ConfigMap. Default is to keep. |
-| image.PullPolicy | string | `"Always"`                                                                  | Image pull policy |
-| image.name | string | `"rs-testmeans_lta-station-mock"`                                           | Image name |
-| image.registry | string | `"ghcr.io"`                                                                 | Image registry |
-| image.repository | string | `"rs-python"`                                                               | Image repository |
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| app.authConfigFile | string | `"auth.json"` | Auth configuration file for the application |
+| app.catalogConfigFile | string | `"GETQueryResponse.json"` | catalog configuration file for the application |
+| app.confDir | string | `"/opt/lta/config"` | Config directory for the application |
+| app.port | int | `5000` | Port for the application |
+| app.workDir | string | `"/app"` | Working directory for the application |
+| helmResourcePolicy | string | `"keep"` | Keep the ressources for PVC and ConfigMap. Default is to keep. |
+| image.PullPolicy | string | `"Always"` | Image pull policy |
+| image.name | string | `"rs-testmeans_lta-station-mock"` | Image name |
+| image.registry | string | `"ghcr.io"` | Image registry |
+| image.repository | string | `"rs-python"` | Image repository |
 | image.version | string | `"sha256:47dc5b474865644e0f577008e21b498ddb4ed5143faabf15df238f1da5dcc3b4"` | Image version, can be a tag or a digest |
-| namespace | string | `"processing"`                                                              | Namespace for the deployment |
-| probe.liveness.initialDelaySeconds | int | `30`                                                                        | InitialDelaySeconds for the liveness probe |
-| probe.liveness.path | string | `"/health"`                                                                 | Path for the liveness probe |
-| probe.liveness.periodSeconds | int | `30`                                                                        | periodSeconds for the liveness probe |
-| probe.liveness.port | int | `5000`                                                                      | Port for the liveness probe |
-| probe.liveness.timeoutSeconds | int | `5`                                                                         | timeoutSeconds for the liveness probe |
-| probe.readiness.initialDelaySeconds | int | `30`                                                                        | InitialDelaySeconds for the readiness probe |
-| probe.readiness.path | string | `"/health"`                                                                 | Path for the readiness probe |
-| probe.readiness.periodSeconds | int | `30`                                                                        | periodSeconds for the readiness probe |
-| probe.readiness.port | int | `5000`                                                                      | Port for the readiness probe |
-| probe.readiness.timeoutSeconds | int | `5`                                                                         | timeoutSeconds for the readiness probe |
-| replicaCount | int | `1`                                                                         | Number of replicas for the deployment |
-| resources.limit.cpu | string | `"500m"`                                                                    | Pod CPU limit |
-| resources.limit.ram | string | `"1000Mi"`                                                                  | Pod memory limit |
-| resources.request.cpu | string | `"100m"`                                                                    | Pod CPU request |
-| resources.request.ram | string | `"256Mi"`                                                                   | Pod memory request |
-| service.port | int | `8080`                                                                      | Port for the service |
-| volume.accessModes | string | `"ReadWriteOnce"`                                                           | AccessMode of the database volume |
-| volume.size | string | `"10Gi"`                                                                    | Size of the database volume |
-| volume.storageClassName | string | `"csi-cinder-sc-retain"`                                                    | StorageClass of the database volume |
+| namespace | string | `"processing"` | Namespace for the deployment |
+| probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
+| probe.liveness.path | string | `"/health"` | Path for the liveness probe |
+| probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |
+| probe.liveness.port | int | `5000` | Port for the liveness probe |
+| probe.liveness.timeoutSeconds | int | `5` | timeoutSeconds for the liveness probe |
+| probe.readiness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the readiness probe |
+| probe.readiness.path | string | `"/health"` | Path for the readiness probe |
+| probe.readiness.periodSeconds | int | `30` | periodSeconds for the readiness probe |
+| probe.readiness.port | int | `5000` | Port for the readiness probe |
+| probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
+| replicaCount | int | `1` | Number of replicas for the deployment |
+| resources.limit.cpu | string | `"500m"` | Pod CPU limit |
+| resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
+| resources.request.cpu | string | `"100m"` | Pod CPU request |
+| resources.request.ram | string | `"256Mi"` | Pod memory request |
+| service.port | int | `8080` | Port for the service |
+| volume.accessModes | string | `"ReadWriteOnce"` | AccessMode of the database volume |
+| volume.size | string | `"10Gi"` | Size of the database volume |
+| volume.storageClassName | string | `"csi-cinder-sc-retain"` | StorageClass of the database volume |
 
 ----------------------------------------------
 Autogenerated from chart metadata using [helm-docs v1.12.0](https://github.com/norwoodj/helm-docs/releases/v1.12.0)
