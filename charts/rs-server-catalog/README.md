@@ -18,6 +18,7 @@ RS SERVER CATALOG
 | app.port | int | `8000` | Port for the application |
 | app.presignedUrlExpirationTime | int | `1800` | Presigned URL expiration time in seconds. 30 min by default |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` | URL of the API Key Manager service |
+| app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-catalog"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |

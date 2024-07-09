@@ -27,6 +27,8 @@ app:
   port: 8000
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/check/api_key
+  # -- URL of the API Key Manager home page (public)
+  uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
   # -- Object Storage bucket for the catalog
   catalogBucket: rs-cluster-catalog
   # -- Presigned URL expiration time in seconds. 30 min by default

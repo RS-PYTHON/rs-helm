@@ -58,6 +58,8 @@ spec:
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}
+        - name: RSPY_UAC_HOMEPAGE
+          value: {{ .Values.app.uacHomeUrl }}
         - name: RSPY_CATALOG_BUCKET
           value: {{ .Values.app.catalogBucket }}
         - name: RSPY_PRESIGNED_URL_EXPIRATION_TIME
