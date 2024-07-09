@@ -124,3 +124,9 @@ probe:
 tempo:
   # -- Grafana tempo endpoint.
   endpoint: http://grafana-tempo-distributor.logging.svc.cluster.local:4317
+
+catalog:
+  metadata:
+    id: "rs-python"
+    title: "RS-PYTHON STAC Catalog"
+    description: "STAC catalog of Copernicus Reference System Python"
