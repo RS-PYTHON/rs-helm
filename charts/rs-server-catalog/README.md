@@ -15,9 +15,10 @@ RS SERVER CATALOG
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
-| app.metadata.description | string | `"STAC catalog of Copernicus Reference System Python"` |  |
-| app.metadata.id | string | `"rs-python"` |  |
-| app.metadata.title | string | `"RS-PYTHON STAC Catalog"` |  |
+| app.metadata | object | `{"description":"STAC catalog of Copernicus Reference System Python","id":"rs-python","title":"RS-PYTHON STAC Catalog"}` | values used to update the catalog stac metadata |
+| app.metadata.description | string | `"STAC catalog of Copernicus Reference System Python"` | update the catalog metadata description parameter over the default one received from the pystac client |
+| app.metadata.id | string | `"rs-python"` | update the catalog metadata id parameter over the default one received from the pystac client |
+| app.metadata.title | string | `"RS-PYTHON STAC Catalog"` | update the catalog metadata title parameter over the default one received from the pystac client |
 | app.port | int | `8000` | Port for the application |
 | app.presignedUrlExpirationTime | int | `1800` | Presigned URL expiration time in seconds. 30 min by default |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` | URL of the API Key Manager service |
