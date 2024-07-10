@@ -31,10 +31,13 @@ app:
   catalogBucket: rs-cluster-catalog
   # -- Presigned URL expiration time in seconds. 30 min by default
   presignedUrlExpirationTime: 1800
-  # values used to update the catalog stac metadata
+  # -- values used to update the catalog stac metadata
   metadata:
+    # -- update the catalog metadata id parameter over the default one received from the pystac client
     id: "rs-python"
+    # -- update the catalog metadata title parameter over the default one received from the pystac client
     title: "RS-PYTHON STAC Catalog"
+    # -- update the catalog metadata description parameter over the default one received from the pystac client
     description: "STAC catalog of Copernicus Reference System Python"
 
 obs:
