@@ -83,7 +83,7 @@ spec:
         - name: USE_API_HYDRATE
           value: "false"
         - name: CATALOG_METADATA_ID
-          value: "rs-python"
+          value: "{{ .Values.catalog.metadata.id }}"
         - name: CATALOG_METADATA_TITLE
           value: {{ .Values.catalog.metadata.title }}
         - name: CATALOG_METADATA_DESCRIPTION
