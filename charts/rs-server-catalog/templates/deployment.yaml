@@ -83,11 +83,11 @@ spec:
         - name: USE_API_HYDRATE
           value: "false"
         - name: CATALOG_METADATA_ID
-          value: "{{ .Values.catalog.metadata.id }}"
+          value: "{{ .Values.app.metadata.id }}"
         - name: CATALOG_METADATA_TITLE
-          value: "{{ .Values.catalog.metadata.title }}"
+          value: "{{ .Values.app.metadata.title }}"
         - name: CATALOG_METADATA_DESCRIPTION
-          value: "{{ .Values.catalog.metadata.description }}"
+          value: "{{ .Values.app.metadata.description }}"
         - name: POSTGRES_HOST
           value: {{ .Values.postgres.host.rw }}
         - name: POSTGRES_PORT
