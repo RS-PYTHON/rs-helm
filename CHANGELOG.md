@@ -13,6 +13,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [0.2a2] - 2024-07-18
+
+### Added
+
+- RSPY-40 : LTA mockup
+- RSPY-273 : add `app.uacHomeUrl` on rs-server-catalog
+- RSPY-282 : add `app.metadata.description`, `app.metadata.id` and `app.metadata.title` on rs-server-catalog
+
 ## [0.2a1] - 2024-06-26
 
 ### Added
