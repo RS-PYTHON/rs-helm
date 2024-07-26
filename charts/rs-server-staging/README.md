@@ -14,20 +14,20 @@ RS SERVER STAGING
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| app.docsUrl | string | `"/docs"` | URL suffix for the application. Must be the same value as ingress.path |
+| app.docsUrl | string | `"/docs"` | URL suffix for the application. The same value should also be included into ingress.path |
 | app.port | int | `8000` | Port for the application |
 | app.uacCheckUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` | URL of the API Key Manager service (internal) |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
-| image.name | string | `"rs-server-staging"` | Image name |
+| image.name | string | `"rs-server-frontend"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"0.2a1"` | Image version, can be a tag or a digest |
+| image.version | string | `"0.2a2"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
-| ingress.path | string | `"/docs"` | Ingress path for the application. Must be the same value as app.docsUrl. |
+| ingress.path | list | `["/docs","/processes","/jobs"]` | Ingress path for the application |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/health"` | Path for the liveness probe |
