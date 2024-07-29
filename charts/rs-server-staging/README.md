@@ -19,7 +19,7 @@ RS SERVER STAGING
 | app.uacCheckUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` | URL of the API Key Manager service (internal) |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
-| image.name | string | `"rs-server-frontend"` | Image name |
+| image.name | string | `"rs-server-staging"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
 | image.version | string | `"0.2a2"` | Image version, can be a tag or a digest |
