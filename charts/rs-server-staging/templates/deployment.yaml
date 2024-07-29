@@ -51,6 +51,9 @@ spec:
           limits:
             memory: {{ .Values.resources.limit.ram }}
             cpu: {{ .Values.resources.limit.cpu }}
+        volumeMounts:
+        - name: service-config-volume
+          mountPath: {{ .Values.app.confDir }}
         ports:
         - name: web
           protocol: TCP
@@ -92,4 +95,8 @@ spec:
       {{ end }}
       restartPolicy: Always
       securityContext: {}
+      volumes:
+        - name: service-config-volume
+          configMap:
+            name: {{ .Release.Name }}-service-config
   revisionHistoryLimit: 10

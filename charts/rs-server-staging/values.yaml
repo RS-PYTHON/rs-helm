@@ -27,6 +27,8 @@ app:
   port: 8000
   # -- URL suffix for the application. The same value should also be included into ingress.path
   docsUrl: /docs
+  # -- Config directory for the application
+  confDir: /opt/config
   # -- URL of the API Key Manager service (internal)
   uacCheckUrl: http://apikeymanager.processing.svc.cluster.local:8000/check/api_key
   # -- URL of the API Key Manager home page (public)
