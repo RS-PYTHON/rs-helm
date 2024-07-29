@@ -65,6 +65,8 @@ spec:
           value: {{ .Values.app.uacHomeUrl }}
         - name: RSPY_DOCS_URL
           value: {{ .Values.app.docsUrl }}
+        - name: PYGEOAPI_CONFIG
+          value: {{ .Values.app.pygeoapiConfig }}
         securityContext:
           privileged: false
         {{ if .Values.probe }}

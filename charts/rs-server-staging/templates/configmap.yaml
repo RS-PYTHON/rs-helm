@@ -18,7 +18,7 @@ metadata:
   namespace: {{ .Values.namespace }}
   
 data:
-  config.yml: |-
+  {{ .Values.app.pygeoapiConfig }}: |-
     server:
       url: http://localhost:8000
       bind:
