@@ -14,9 +14,10 @@ RS SERVER STAGING
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| app.confDir | string | `"/opt/config"` | Config directory for the application |
+| app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. The same value should also be included into ingress.path |
 | app.port | int | `8000` | Port for the application |
+| app.pygeoapiConfig | string | `"config.yml"` | Config file name for the application |
 | app.uacCheckUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` | URL of the API Key Manager service (internal) |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
