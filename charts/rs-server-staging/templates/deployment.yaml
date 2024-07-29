@@ -71,7 +71,7 @@ spec:
           value: {{ .Values.app.docsUrl }}
         - name: PYGEOAPI_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.pygeoapiConfig }}
-        - name: PYGEOAPI_CONFIG
+        - name: PYGEOAPI_OPENAPI
           value: {{ .Values.app.confDir }}/{{ .Values.app.openapiConfig }}
         securityContext:
           privileged: false
