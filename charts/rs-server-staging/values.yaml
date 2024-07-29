@@ -35,6 +35,8 @@ app:
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
   # -- Config file name for the application
   pygeoapiConfig: config.yml
+  # -- Config file name for the application
+  openapiConfig: openapi.json
 
 probe:
   liveness:

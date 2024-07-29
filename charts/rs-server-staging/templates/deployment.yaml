@@ -53,7 +53,11 @@ spec:
             cpu: {{ .Values.resources.limit.cpu }}
         volumeMounts:
         - name: service-config-volume
-          mountPath: {{ .Values.app.confDir }}
+          mountPath: {{ .Values.app.confDir }}/{{ .Values.app.pygeoapiConfig }}
+          subPath: {{ .Values.app.pygeoapiConfig }}
+        - name: service-openapi-volume
+          mountPath: {{ .Values.app.confDir }}/{{ .Values.app.openapiConfig }}
+          subPath: {{ .Values.app.openapiConfig }}
         ports:
         - name: web
           protocol: TCP
@@ -67,6 +71,8 @@ spec:
           value: {{ .Values.app.docsUrl }}
         - name: PYGEOAPI_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.pygeoapiConfig }}
+        - name: PYGEOAPI_CONFIG
+          value: {{ .Values.app.confDir }}/{{ .Values.app.openapiConfig }}
         securityContext:
           privileged: false
         {{ if .Values.probe }}
@@ -101,4 +107,7 @@ spec:
         - name: service-config-volume
           configMap:
             name: {{ .Release.Name }}-service-config
+        - name: service-openapi-volume
+          configMap:
+            name: {{ .Release.Name }}-service-openapi
   revisionHistoryLimit: 10
