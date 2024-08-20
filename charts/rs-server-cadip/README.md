@@ -22,7 +22,7 @@ RS SERVER CADIP
 | app.station.cadip.endpoint.secret.username | string | `"test"` | Username to authenticate with the CADIP station |
 | app.station.cadip.endpoint.url | object | `{"file":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Files","session":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Sessions"}` | CADIP station URL |
 | app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
-| app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` | URL of the API Key Manager service |
+| app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | app.workDir | string | `"/app"` | Working directory for the application |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-cadip"` | Image name |
