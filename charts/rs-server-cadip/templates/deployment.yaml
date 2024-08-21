@@ -165,6 +165,31 @@ spec:
             secretKeyRef:
               name: {{ .Release.Name }}-mti-endpoint
               key: pass
+        - name: "OIDC_ENDPOINT"
+          valueFrom:
+            secretKeyRef:
+              key:  oidc_endpoint
+              name: {{ .Release.Name }}-auth
+        - name: "OIDC_REALM"
+          valueFrom:
+            secretKeyRef:
+              key:  oidc_realm
+              name: {{ .Release.Name }}-auth
+        - name: "OIDC_CLIENT_ID"
+          valueFrom:
+            secretKeyRef:
+              key:  oidc_client_id
+              name: {{ .Release.Name }}-auth
+        - name: "OIDC_CLIENT_SECRET"
+          valueFrom:
+            secretKeyRef:
+              key:  oidc_client_secret
+              name: {{ .Release.Name }}-auth
+        - name: "RSPY_COOKIE_SECRET"
+          valueFrom:
+            secretKeyRef:
+              key:  cookie_secret
+              name: {{ .Release.Name }}-auth
         securityContext:
           privileged: false
         {{ if .Values.probe }}
