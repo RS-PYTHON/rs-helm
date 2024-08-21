@@ -22,11 +22,16 @@ RS SERVER CATALOG
 | app.presignedUrlExpirationTime | int | `1800` | Presigned URL expiration time in seconds. 30 min by default |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` | URL of the API Key Manager service |
+| auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
+| auth.secret.oidc_client_id | string | `""` | OIDC CLient ID |
+| auth.secret.oidc_client_secret | string | `""` | OIDC Secret used to sync user info from Keycloak |
+| auth.secret.oidc_endpoint | string | `""` | OIDC End Point |
+| auth.secret.oidc_realm | string | `""` | OIDC Realm |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-catalog"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"0.2a1"` | Image version, can be a tag or a digest |
+| image.version | string | `"0.2a2"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
