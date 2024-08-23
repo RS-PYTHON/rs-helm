@@ -19,152 +19,152 @@ metadata:
   namespace: {{ .Values.namespace }}
 
 data:
-    {{ .Values.app.cadipSearchConfigFile }}: |-
-  stations:
-    cadip:
-      endpoint:
-        need_auth: true
+  {{ .Values.app.cadipSearchConfigFile }}: |-
+    stations:
+      cadip:
+        endpoint:
+          need_auth: true
 
-  collections:
-    - id: cadip_session_by_id_list
-      station: cadip
-      query:
-        id: S1A_20170501121534062343,S1A_20240328185208053186
-        limit: 20
-    - id: cadip_session_by_id
-      station: cadip
-      query:
-        id: S1A_20240328185208053186
-        limit: 20
+    collections:
+      - id: cadip_session_by_id_list
+        station: cadip
+        query:
+          id: S1A_20170501121534062343,S1A_20240328185208053186
+          limit: 20
+      - id: cadip_session_by_id
+        station: cadip
+        query:
+          id: S1A_20240328185208053186
+          limit: 20
 
-    - id: cadip_session_by_id_platform
-      station: cadip
-      query:
-        id: S1A_20240328185208053186
-        satellite: S1A
-        limit: 20
+      - id: cadip_session_by_id_platform
+        station: cadip
+        query:
+          id: S1A_20240328185208053186
+          satellite: S1A
+          limit: 20
 
-    - id: cadip_session_by_lists_id_platform
-      station: cadip
-      query:
-        id: S1A_20240328185208053186,S1A_20240328185208053186
-        satellite: S1A,S2B
-        limit: 20
+      - id: cadip_session_by_lists_id_platform
+        station: cadip
+        query:
+          id: S1A_20240328185208053186,S1A_20240328185208053186
+          satellite: S1A,S2B
+          limit: 20
 
-    - id: cadip_session_by_platform_list
-      station: cadip
-      query:
-        satellite: S1A, S2B
-        limit: 20
+      - id: cadip_session_by_platform_list
+        station: cadip
+        query:
+          satellite: S1A, S2B
+          limit: 20
 
-    - id: cadip_session_by_start_stop_platform
-      station: cadip
-      query:
-        start_date: "2020-02-16T12:00:00Z"
-        stop_date: "2023-02-16T12:00:00Z"
-        satellite: S1A
-        limit: 20
+      - id: cadip_session_by_start_stop_platform
+        station: cadip
+        query:
+          start_date: "2020-02-16T12:00:00Z"
+          stop_date: "2023-02-16T12:00:00Z"
+          satellite: S1A
+          limit: 20
 
-    - id: cadip_session_by_interval
-      station: cadip
-      query:
-        start_date: "2014-02-16T12:00:00Z"
-        stop_date: "2024-02-16T12:00:00Z"
-        limit: 2
+      - id: cadip_session_by_interval
+        station: cadip
+        query:
+          start_date: "2014-02-16T12:00:00Z"
+          stop_date: "2024-02-16T12:00:00Z"
+          limit: 2
 
-    - id: cadip_session_by_satellite
-      station: cadip
-      query:
-        satellite: S1A
-        limit: 2
+      - id: cadip_session_by_satellite
+        station: cadip
+        query:
+          satellite: S1A
+          limit: 2
 
-    - id: cadip_session_s2b
-      station: cadip
-      query:
-        satellite: S2B
+      - id: cadip_session_s2b
+        station: cadip
+        query:
+          satellite: S2B
 
-    - id: cadip_session_incorrect
-      station: cadip
-      query:
-        satellite: incorrect_platform
+      - id: cadip_session_incorrect
+        station: cadip
+        query:
+          satellite: incorrect_platform
 
-    - id: cadip_session_incomplete
-      station: cadip
-      query:
-        limit: 1
+      - id: cadip_session_incomplete
+        station: cadip
+        query:
+          limit: 1
 
-    - id: cadip_session_incomplete_no_stop
-      station: cadip
-      query:
-        start_date: "2020-02-16T12:00:00Z"
+      - id: cadip_session_incomplete_no_stop
+        station: cadip
+        query:
+          start_date: "2020-02-16T12:00:00Z"
 
-    - id: cadip_session_incomplete_no_start
-      station: cadip
-      query:
-        stop_date: "2020-02-16T12:00:00Z"
+      - id: cadip_session_incomplete_no_start
+        station: cadip
+        query:
+          stop_date: "2020-02-16T12:00:00Z"
 
-    - id: cadip_session_incomplete_platf_no_start
-      station: cadip
-      query:
-        satellite: S1A
-        start_date: "2020-02-16T12:00:00Z"
+      - id: cadip_session_incomplete_platf_no_start
+        station: cadip
+        query:
+          satellite: S1A
+          start_date: "2020-02-16T12:00:00Z"
 
-    - id: cadip_session_incorrect_station
-      station: incorrect
-      query:
-        satellite: S1A
+      - id: cadip_session_incorrect_station
+        station: incorrect
+        query:
+          satellite: S1A
 
-    - id: cadip_valid_auth
-      station: cadip
-      query:
-        limit: 1
+      - id: cadip_valid_auth
+        station: cadip
+        query:
+          limit: 1
 
-    ###
-    - id: cadip
-      station: cadip
-      query:
-        limit: 100
-    - id: ins
-      station: ins
-      query:
-        limit: 100
-    - id: mps
-      station: mps
-      query:
-        limit: 100
-    - id: mti
-      station: mti
-      query:
-        limit: 100
-    - id: nsg
-      station: nsg
-      query:
-        limit: 100
-    - id: sgs
-      station: sgs
-      query:
-        limit: 100
-    - id: s1_ins
-      station: ins
-      query: $filter=Satellite in ('S1A', 'S1C')
-    - id: s1_mps
-      station: mps
-      query: $filter=Satellite in ('S1A', 'S1C')
-    - id: s1_nsg
-      station: nsg
-      query: $filter=Satellite in ('S1A', 'S1C')
-    - id: s1_sgs
-      station: sgs
-      query: $filter=Satellite in ('S1A', 'S1C')
-    - id: s1_mti
-      station: mti
-      query: $filter=Satellite in ('S1A', 'S1C')
-    - id: s2_ins
-      station: ins
-      query: $filter=Satellite in ('S2A', 'S2B', 'S2C')
-    - id: s2_sgs
-      station: sgs
-      query: $filter=Satellite in ('S2A', 'S2B', 'S2C')
-    - id: s3_sgs
-      station: sgs
-      query: $filter=Satellite in ('S3A', 'S3B')
+      ###
+      - id: cadip
+        station: cadip
+        query:
+          limit: 100
+      - id: ins
+        station: ins
+        query:
+          limit: 100
+      - id: mps
+        station: mps
+        query:
+          limit: 100
+      - id: mti
+        station: mti
+        query:
+          limit: 100
+      - id: nsg
+        station: nsg
+        query:
+          limit: 100
+      - id: sgs
+        station: sgs
+        query:
+          limit: 100
+      - id: s1_ins
+        station: ins
+        query: $filter=Satellite in ('S1A', 'S1C')
+      - id: s1_mps
+        station: mps
+        query: $filter=Satellite in ('S1A', 'S1C')
+      - id: s1_nsg
+        station: nsg
+        query: $filter=Satellite in ('S1A', 'S1C')
+      - id: s1_sgs
+        station: sgs
+        query: $filter=Satellite in ('S1A', 'S1C')
+      - id: s1_mti
+        station: mti
+        query: $filter=Satellite in ('S1A', 'S1C')
+      - id: s2_ins
+        station: ins
+        query: $filter=Satellite in ('S2A', 'S2B', 'S2C')
+      - id: s2_sgs
+        station: sgs
+        query: $filter=Satellite in ('S2A', 'S2B', 'S2C')
+      - id: s3_sgs
+        station: sgs
+        query: $filter=Satellite in ('S3A', 'S3B')
