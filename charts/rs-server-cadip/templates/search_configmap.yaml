@@ -23,7 +23,6 @@ data:
   stations:
     cadip:
       endpoint:
-        url: '{{ $v.endpoint.url.file }}'
         need_auth: true
 
   collections:
