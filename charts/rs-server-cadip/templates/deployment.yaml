@@ -55,7 +55,11 @@ spec:
         - name: workdir
           mountPath: {{ .Values.app.workDir }}
         - name: service-config-volume
-          mountPath: {{ .Values.app.confDir }}
+          mountPath: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
+          subPath: {{ .Values.app.eodagConfigFile }}
+        - name: search-service-config-volume
+          mountPath: {{ .Values.app.confDir }}/{{ .Values.app.cadipSearchConfigFile }}
+          subPath: {{ .Values.app.cadipSearchConfigFile }}
         ports:
         - name: web
           protocol: TCP
@@ -204,4 +208,7 @@ spec:
         - name: service-config-volume
           configMap:
             name: {{ .Release.Name }}-service-config
+        - name: search-service-config-volume
+          configMap:
+            name: {{ .Release.Name }}-search-service-config
   revisionHistoryLimit: 10
