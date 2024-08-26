@@ -74,7 +74,7 @@ spec:
         - name: EODAG_CADIP_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
         - name: RSPY_CADIP_SEARCH_CONFIG
-          value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
+          value: {{ .Values.app.confDir }}/{{ .Values.app.cadipSearchConfigFile }}
         - name: POSTGRES_PORT
           value: {{ .Values.postgres.port | quote }}
         - name: POSTGRES_DB
