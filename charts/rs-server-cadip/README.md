@@ -14,6 +14,7 @@ RS SERVER CADIP
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| app.cadipSearchConfigFile | string | `"cadip_search_config.yaml"` | Cadip search configuration file for the application |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.eodagConfigFile | string | `"cadip_ws_config.yaml"` | EODAG configuration file for the application |
 | app.port | int | `8000` | Port for the application |

@@ -55,7 +55,11 @@ spec:
         - name: workdir
           mountPath: {{ .Values.app.workDir }}
         - name: service-config-volume
-          mountPath: {{ .Values.app.confDir }}
+          mountPath: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
+          subPath: {{ .Values.app.eodagConfigFile }}
+        - name: search-service-config-volume
+          mountPath: {{ .Values.app.confDir }}/{{ .Values.app.cadipSearchConfigFile }}
+          subPath: {{ .Values.app.cadipSearchConfigFile }}
         ports:
         - name: web
           protocol: TCP
@@ -69,6 +73,8 @@ spec:
         #  value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
         - name: EODAG_CADIP_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
+        - name: RSPY_CADIP_SEARCH_CONFIG
+          value: {{ .Values.app.confDir }}/{{ .Values.app.cadipSearchConfigFile }}
         - name: POSTGRES_PORT
           value: {{ .Values.postgres.port | quote }}
         - name: POSTGRES_DB
@@ -227,4 +233,7 @@ spec:
         - name: service-config-volume
           configMap:
             name: {{ .Release.Name }}-service-config
+        - name: search-service-config-volume
+          configMap:
+            name: {{ .Release.Name }}-search-service-config
   revisionHistoryLimit: 10
