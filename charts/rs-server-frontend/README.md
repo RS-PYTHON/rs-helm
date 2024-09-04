@@ -16,7 +16,7 @@ RS SERVER FRONTEND
 |-----|------|---------|-------------|
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. Must be the same value as ingress.path |
 | app.port | int | `8000` | Port for the application |
-| app.uacCheckUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` | URL of the API Key Manager service (internal) |
+| app.uacCheckUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service (internal) |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-frontend"` | Image name |
