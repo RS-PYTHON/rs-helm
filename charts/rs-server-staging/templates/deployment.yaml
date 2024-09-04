@@ -64,7 +64,7 @@ spec:
           containerPort: {{ .Values.app.port }}
         env:
         - name: RSPY_UAC_CHECK_URL
-          value: {{ .Values.app.uacCheckUrl }}
+          value: {{ .Values.app.uacUrl }}
         - name: RSPY_UAC_HOMEPAGE
           value: {{ .Values.app.uacHomeUrl }}
         - name: RSPY_DOCS_URL

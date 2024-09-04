@@ -30,7 +30,7 @@ app:
   # -- Config directory for the application
   confDir: /app/conf
   # -- URL of the API Key Manager service (internal)
-  uacCheckUrl: http://apikeymanager.processing.svc.cluster.local:8000/check/api_key
+  uacUrl: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
   # -- URL of the API Key Manager home page (public)
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
   # -- Config file name for the application
