@@ -120,6 +120,19 @@ obs:
     # -- Secret Key to authenticate with the object storage service
     sk: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
 
+auth:
+  secret:
+    # -- OIDC End Point
+    oidc_endpoint: ""
+    # -- OIDC Realm
+    oidc_realm: ""
+    # -- OIDC CLient ID
+    oidc_client_id: ""
+    # -- OIDC Secret used to sync user info from Keycloak
+    oidc_client_secret: ""
+    # -- Random string used to encode cookie-based HTTP sessions in SessionMiddleware
+    cookie_secret: ""
+
 image:
   #imagePullSecrets: regcred
   # -- Image registry

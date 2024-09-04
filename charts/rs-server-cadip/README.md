@@ -1,6 +1,6 @@
 # rs-server-cadip
 
-![Version: 0.0.2-a2](https://img.shields.io/badge/Version-0.0.2--a2-informational?style=flat-square) ![AppVersion: v0.2a2](https://img.shields.io/badge/AppVersion-v0.2a2-informational?style=flat-square)
+![Version: 0.0.2-a3](https://img.shields.io/badge/Version-0.0.2--a3-informational?style=flat-square) ![AppVersion: v0.2a3](https://img.shields.io/badge/AppVersion-v0.2a3-informational?style=flat-square)
 
 RS SERVER CADIP
 
@@ -25,6 +25,11 @@ RS SERVER CADIP
 | app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | app.workDir | string | `"/app"` | Working directory for the application |
+| auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
+| auth.secret.oidc_client_id | string | `""` | OIDC CLient ID |
+| auth.secret.oidc_client_secret | string | `""` | OIDC Secret used to sync user info from Keycloak |
+| auth.secret.oidc_endpoint | string | `""` | OIDC End Point |
+| auth.secret.oidc_realm | string | `""` | OIDC Realm |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-cadip"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
