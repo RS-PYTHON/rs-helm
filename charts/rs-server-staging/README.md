@@ -19,8 +19,8 @@ RS SERVER STAGING
 | app.openapiConfig | string | `"openapi.json"` | Config file name for the application |
 | app.port | int | `8000` | Port for the application |
 | app.pygeoapiConfig | string | `"config.yml"` | Config file name for the application |
-| app.uacCheckUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/check/api_key"` | URL of the API Key Manager service (internal) |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
+| app.uacUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service (internal) |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-staging"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
