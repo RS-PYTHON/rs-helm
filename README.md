@@ -24,6 +24,10 @@ The catalog's database is a PostgreSQL database with the PostGIS extension. It i
 
 The frontend is a simple FastAPI interface based on Swagger exposing the endpoints. A user can use it to interact with the rs-server backends (CADIP, ADGS, catalog, etc).
 
+## [rs-server-staging](charts/rs-server-staging/README.md)
+
+The staging service is a simple a simple OGC API based application for staging external data sources products.
+
 ## [mockup-station-adgs](charts/mockup-station-adgs/README.md)
 
 A simple mock for ADGS station.
