@@ -13,6 +13,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [0.2a3] - 2024-09-05
+
+### Added
+
+- RSPY-341 : Update products types after eodag3 update
+- RSPY-321 : First implementation of rs-server-staging
+- RSPY-322 : Cadip search stac view
+- RSPY-346 : Oauth2 authentication + cookie secret
+
+### Changed
+
+- app.uacURL from `http://apikeymanager.processing.svc.cluster.local:8000/check/api_key` to `http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key`
+
+### Fixed
+
+- RSPY-405 : uacCheckUrl or uacURL
+
 ## [0.2a2] - 2024-07-18
 
 ### Added
