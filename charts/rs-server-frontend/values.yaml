@@ -64,7 +64,7 @@ image:
   # -- Image name
   name: rs-server-frontend
   # -- Image version, can be a tag or a digest
-  version: 0.2a2
+  version: 0.2a3
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
