@@ -29,13 +29,15 @@ spec:
   - host: {{ .Values.ingress.host }}
     http:
       paths:
+      {{ range .Values.ingress.path }}
       - backend:
           service:
-            name: {{ .Release.Name }}-svc
+            name: {{ $.Release.Name }}-svc
             port:
-              number: {{ .Values.service.port }}
-        path: {{ .Values.ingress.path }}
+              number: {{ $.Values.service.port }}
+        path: {{ . | quote }}
         pathType: Prefix
+      {{ end }}
   tls:
   - hosts:
     - {{ .Values.ingress.host }}

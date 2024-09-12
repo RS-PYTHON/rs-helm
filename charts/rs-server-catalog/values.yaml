@@ -105,7 +105,9 @@ ingress:
   # -- Ingress host name
   host: subdomain.example.com
   # -- Ingress path
-  path: /catalog
+  path: 
+    - /catalog
+    - /auth
 
 resources:
   request:
