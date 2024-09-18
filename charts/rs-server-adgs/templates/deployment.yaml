@@ -79,6 +79,8 @@ spec:
           value: {{ .Values.obs.endpoint }}
         - name: S3_REGION
           value: {{ .Values.obs.region }}
+        - name: RSPY_USE_MODULE_FOR_STATION_TOKEN
+          value: {{ .Values.app.useTokenModule }}
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
