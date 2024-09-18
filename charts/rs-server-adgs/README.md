@@ -23,7 +23,7 @@ RS SERVER ADGS
 | app.station.endpoint.url | string | `"http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/Products"` | ADGS URL |
 | app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
-| app.useTokenModule | string | `"on"` | The way the token for external stations is loaded: own module or let eodag to do it (set it to off) |
+| app.useTokenModule | string | `"on"` | The way the token for the external stations is loaded: own module or let eodag to do it (set it to off) |
 | app.workDir | string | `"/app"` | Working directory for the application |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
 | auth.secret.oidc_client_id | string | `""` | OIDC CLient ID |
