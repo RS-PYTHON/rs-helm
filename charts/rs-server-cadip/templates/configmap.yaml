@@ -236,6 +236,14 @@ data:
             uid: "$.Id"
             downloadLink: "{{ $v.endpoint.url.session }}({uid})/$value"
     {{ end }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-token-service-config
+  namespace: {{ .Values.namespace }}
+
+data:
   {{ .Values.app.eodagConfigFileTokenModule }}: |-
     {{- range $k, $v := .Values.app.station }}
       {{ $k }}:
