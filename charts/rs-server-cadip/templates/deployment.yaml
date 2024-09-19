@@ -66,11 +66,11 @@ spec:
           containerPort: {{ .Values.app.port }}
         envFrom:
         - secretRef:
-            name: cadip-adgs
+            name: cadip-cadip
         - secretRef:
-            name: sgs-adgs
+            name: cadip-sgs
         - secretRef:
-            name: mti-adgs                        
+            name: cadip-mti
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}
