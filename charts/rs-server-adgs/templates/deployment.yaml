@@ -62,7 +62,7 @@ spec:
           containerPort: {{ .Values.app.port }}
         envFrom:
         - secretRef:
-          name: auxip-adgs
+            name: auxip-adgs
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}
