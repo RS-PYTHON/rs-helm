@@ -16,14 +16,14 @@ RS SERVER CADIP
 |-----|------|---------|-------------|
 | app.cadipSearchConfigFile | string | `"cadip_search_config.yaml"` | Cadip search configuration file for the application |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
-| app.eodagConfigFile | string | `"cadip_ws_config.yaml"` | EODAG configuration file for the application |
+| app.eodagConfigFile | string | `"cadip_ws_config.yaml"` | otherwise adgs_ws_config_token_module.yaml. Set properly the EODAG_ADGS_CONFIG env var |
+| app.eodagConfigFileTokenModule | string | `"cadip_ws_config_token_module.yaml"` |  |
 | app.port | int | `8000` | Port for the application |
-| app.station.cadip | object | `{"endpoint":{"secret":{"password":"test","username":"test"},"url":{"file":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Files","session":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Sessions"}}}` | CADIP station name |
-| app.station.cadip.endpoint.secret.password | string | `"test"` | Password to authenticate with the CADIP station |
-| app.station.cadip.endpoint.secret.username | string | `"test"` | Username to authenticate with the CADIP station |
-| app.station.cadip.endpoint.url | object | `{"file":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Files","session":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Sessions"}` | CADIP station URL |
+| app.station.cadip | object | `{"endpoint":{"secret":{"cadip_auth_authorization":"Basic test","cadip_auth_client_id":"client_id","cadip_auth_client_secret":"client_secret","cadip_auth_grant":"password","cadip_auth_pass":"test","cadip_auth_scope":"","cadip_auth_token_url":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/oauth2/token","cadip_auth_type":"oauth2","cadip_auth_user":"test","cadip_domain":"mockup-station-cadip-cadip-svc.processing.svc.cluster.local","cadip_srv_name":"cadip","cadip_srv_url":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080"},"url":{"file":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Files","root":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","session":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Sessions"}}}` | CADIP station name |
+| app.station.cadip.endpoint.url | object | `{"file":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Files","root":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","session":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Sessions"}` | CADIP station URL |
 | app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
+| app.useTokenModule | bool | `true` | The way the token for the external stations is loaded: own module or let eodag to do it (set it to false) |
 | app.workDir | string | `"/app"` | Working directory for the application |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
 | auth.secret.oidc_client_id | string | `""` | OIDC CLient ID |
