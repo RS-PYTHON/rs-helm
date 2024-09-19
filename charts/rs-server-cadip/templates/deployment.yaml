@@ -73,6 +73,10 @@ spec:
         #  value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
         - name: EODAG_CADIP_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
+        {{ if .Values.app.useTokenModule }}
+        - name: EODAG_CADIP_CONFIG
+          value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFileTokenModule }}
+        {{ end }}
         - name: RSPY_CADIP_SEARCH_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.cadipSearchConfigFile }}
         - name: POSTGRES_PORT
@@ -85,6 +89,8 @@ spec:
           value: {{ .Values.obs.endpoint }}
         - name: S3_REGION
           value: {{ .Values.obs.region }}
+        - name: RSPY_USE_MODULE_FOR_STATION_TOKEN
+          value: '{{ .Values.app.useTokenModule }}'          
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
@@ -111,66 +117,6 @@ spec:
             secretKeyRef:
               name: {{ .Release.Name }}-obs
               key: sk
-        - name: EODAG__cadip__auth__credentials__username
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-cadip-endpoint
-              key: user
-        - name: EODAG__cadip__auth__credentials__password
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-cadip-endpoint
-              key: pass
-        - name: EODAG__sgs__auth__credentials__username
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-sgs-endpoint
-              key: user
-        - name: EODAG__sgs__auth__credentials__password
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-sgs-endpoint
-              key: pass
-        - name: EODAG__mti__auth__credentials__username
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-mti-endpoint
-              key: user
-        - name: EODAG__mti__auth__credentials__password
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-mti-endpoint
-              key: pass
-        - name: EODAG__cadip_session__auth__credentials__username
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-cadip-endpoint
-              key: user
-        - name: EODAG__cadip_session__auth__credentials__password
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-cadip-endpoint
-              key: pass
-        - name: EODAG__sgs_session__auth__credentials__username
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-sgs-endpoint
-              key: user
-        - name: EODAG__sgs_session__auth__credentials__password
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-sgs-endpoint
-              key: pass
-        - name: EODAG__mti_session__auth__credentials__username
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-mti-endpoint
-              key: user
-        - name: EODAG__mti_session__auth__credentials__password
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-mti-endpoint
-              key: pass
         - name: "OIDC_ENDPOINT"
           valueFrom:
             secretKeyRef:

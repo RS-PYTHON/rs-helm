@@ -31,44 +31,79 @@ app:
   confDir: /app/conf
   # -- Station configuration file for the application
   stationConfigFile: stations_cfg.json
-  # -- EODAG configuration file for the application
+  # -- EODAG configuration file for the application. if useTokenModule is false, eodagConfigFile shall be used
+  # -- otherwise adgs_ws_config_token_module.yaml. Set properly the EODAG_ADGS_CONFIG env var
   eodagConfigFile: cadip_ws_config.yaml
+  eodagConfigFileTokenModule: cadip_ws_config_token_module.yaml
   # -- Cadip search configuration file for the application
   cadipSearchConfigFile: cadip_search_config.yaml
+  # -- The way the token for the external stations is loaded: own module or let eodag to do it (set it to false)
+  useTokenModule: true
   station:
     # -- CADIP station name
     cadip:
       endpoint:
         # -- CADIP station URL
         url:
+          root: http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080
           file: http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Files
           session: http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Sessions
 
         secret:
-          # -- Username to authenticate with the CADIP station
-          username: test
-          # -- Password to authenticate with the CADIP station
-          password: test
+          cadip_domain: mockup-station-cadip-cadip-svc.processing.svc.cluster.local
+          cadip_srv_name: cadip
+          cadip_srv_url: http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080
+          cadip_auth_type: oauth2
+          cadip_auth_token_url: http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/oauth2/token
+          cadip_auth_grant: password
+          cadip_auth_scope: ""
+          cadip_auth_user: test
+          cadip_auth_pass: test
+          cadip_auth_client_id: client_id
+          cadip_auth_client_secret: client_secret
+          cadip_auth_authorization: Basic test
     # @ignored
     sgs:
       endpoint:
         url: 
+          root: http://mockup-station-cadip-sgs-svc.processing.svc.cluster.local:8080
           file: http://mockup-station-cadip-sgs-svc.processing.svc.cluster.local:8080/Files
           session: http://mockup-station-cadip-sgs-svc.processing.svc.cluster.local:8080/Sessions
 
         secret:
-          username: test
-          password: test
+          sgs_domain: mockup-station-cadip-sgs-svc.processing.svc.cluster.local
+          sgs_srv_name: cadip
+          sgs_srv_url: http://mockup-station-cadip-sgs-svc.processing.svc.cluster.local:8080
+          sgs_auth_type: oauth2
+          sgs_auth_token_url: http://mockup-station-cadip-sgs-svc.processing.svc.cluster.local:8080/oauth2/token
+          sgs_auth_grant: password
+          sgs_auth_scope: ""
+          sgs_auth_user: test
+          sgs_auth_pass: test
+          sgs_auth_client_id: client_id
+          sgs_auth_client_secret: client_secret
+          sgs_auth_authorization: Basic test
     # @ignored
     mti:
       endpoint:
         url: 
+          root: http://mockup-station-cadip-mti-svc.processing.svc.cluster.local:8080
           file: http://mockup-station-cadip-mti-svc.processing.svc.cluster.local:8080/Files
           session: http://mockup-station-cadip-mti-svc.processing.svc.cluster.local:8080/Sessions
 
         secret:
-          username: test
-          password: test
+          mti_domain: mockup-station-cadip-mti-svc.processing.svc.cluster.local
+          mti_srv_name: cadip
+          mti_srv_url: http://mockup-station-cadip-mti-svc.processing.svc.cluster.local:8080
+          mti_auth_type: oauth2
+          mti_auth_token_url: http://mockup-station-cadip-mti-svc.processing.svc.cluster.local:8080/oauth2/token
+          mti_auth_grant: password
+          mti_auth_scope: ""
+          mti_auth_user: test
+          mti_auth_pass: test
+          mti_auth_client_id: client_id
+          mti_auth_client_secret: client_secret
+          mti_auth_authorization: Basic test
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
 
