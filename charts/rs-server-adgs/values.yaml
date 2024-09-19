@@ -43,9 +43,21 @@ app:
       url: http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/Products
       secret:
         # -- Username to authenticate with the ADGS endpoint
-        username: test
+        #username: test
         # -- Password to authenticate with the ADGS endpoint
-        password: test
+        #password: test
+        adgs_domain: mockup-station-adgs-svc.processing.svc.cluster.local
+        adgs_srv_name: auxip
+        adgs_srv_url: http://mockup-station-adgs-svc.processing.svc.cluster.local:8080
+        adgs_auth_type: oauth2
+        adgs_auth_token_url: http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/oauth2/token
+        adgs_auth_grant: password
+        adgs_auth_scope: ""
+        adgs_auth_user: test
+        adgs_auth_pass: test
+        adgs_auth_client_id: client_id
+        adgs_auth_client_secret: client_secret
+        adgs_auth_authorization: Basic test        
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
 
