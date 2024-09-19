@@ -18,8 +18,18 @@ RS SERVER ADGS
 | app.eodagConfigFile | string | `"eodagConfigFileTokenModule"` | otherwise adgs_ws_config_token_module.yaml |
 | app.eodagConfigFileTokenModule | string | `"adgs_ws_config_token_module.yaml"` |  |
 | app.port | int | `8000` | Port for the application |
-| app.station.endpoint.secret.password | string | `"test"` | Password to authenticate with the ADGS endpoint |
-| app.station.endpoint.secret.username | string | `"test"` | Username to authenticate with the ADGS endpoint |
+| app.station.endpoint.secret.adgs_auth_authorization | string | `"Basic test"` |  |
+| app.station.endpoint.secret.adgs_auth_client_id | string | `"client_id"` |  |
+| app.station.endpoint.secret.adgs_auth_client_secret | string | `"client_secret"` |  |
+| app.station.endpoint.secret.adgs_auth_grant | string | `"password"` |  |
+| app.station.endpoint.secret.adgs_auth_pass | string | `"test"` |  |
+| app.station.endpoint.secret.adgs_auth_scope | string | `""` |  |
+| app.station.endpoint.secret.adgs_auth_token_url | string | `"http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/oauth2/token"` |  |
+| app.station.endpoint.secret.adgs_auth_type | string | `"oauth2"` |  |
+| app.station.endpoint.secret.adgs_auth_user | string | `"test"` |  |
+| app.station.endpoint.secret.adgs_domain | string | `"mockup-station-adgs-svc.processing.svc.cluster.local"` | Password to authenticate with the ADGS endpoint password: test |
+| app.station.endpoint.secret.adgs_srv_name | string | `"auxip"` |  |
+| app.station.endpoint.secret.adgs_srv_url | string | `"http://mockup-station-adgs-svc.processing.svc.cluster.local:8080"` |  |
 | app.station.endpoint.url | string | `"http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/Products"` | ADGS URL |
 | app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
