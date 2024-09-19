@@ -15,7 +15,7 @@ RS SERVER ADGS
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
-| app.eodagConfigFile | string | `"eodagConfigFileTokenModule"` | otherwise adgs_ws_config_token_module.yaml |
+| app.eodagConfigFile | string | `"eodagConfigFileTokenModule"` | otherwise adgs_ws_config_token_module.yaml. Set properly the EODAG_ADGS_CONFIG env var |
 | app.eodagConfigFileTokenModule | string | `"adgs_ws_config_token_module.yaml"` |  |
 | app.port | int | `8000` | Port for the application |
 | app.station.endpoint.secret.adgs_auth_authorization | string | `"Basic test"` |  |
