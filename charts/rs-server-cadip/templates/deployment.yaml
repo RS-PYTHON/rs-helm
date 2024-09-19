@@ -56,6 +56,8 @@ spec:
           mountPath: {{ .Values.app.workDir }}
         - name: service-config-volume
           mountPath: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
+        - name: token-service-config-volume
+          mountPath: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFileTokenModule }}
           subPath: {{ .Values.app.eodagConfigFile }}
         - name: search-service-config-volume
           mountPath: {{ .Values.app.confDir }}/{{ .Values.app.cadipSearchConfigFile }}
@@ -188,6 +190,9 @@ spec:
         - name: service-config-volume
           configMap:
             name: {{ .Release.Name }}-service-config
+        - name: token-service-config-volume
+          configMap:
+            name: {{ .Release.Name }}-token-service-config
         - name: search-service-config-volume
           configMap:
             name: {{ .Release.Name }}-search-service-config
