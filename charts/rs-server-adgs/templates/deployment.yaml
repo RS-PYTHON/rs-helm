@@ -106,17 +106,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: {{ .Release.Name }}-obs
-              key: sk
-        - name: EODAG__adgs__auth__credentials__username
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-endpoint
-              key: user
-        - name: EODAG__adgs__auth__credentials__password
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-endpoint
-              key: pass
+              key: sk        
         - name: "OIDC_ENDPOINT"
           valueFrom:
             secretKeyRef:
