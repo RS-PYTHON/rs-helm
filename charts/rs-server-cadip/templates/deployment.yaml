@@ -66,19 +66,24 @@ spec:
           containerPort: {{ .Values.app.port }}
         envFrom:
         - secretRef:
-            name: auxip-adgs
+            name: cadip-adgs
+        - secretRef:
+            name: sgs-adgs
+        - secretRef:
+            name: mti-adgs                        
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}
         - name: RSPY_WORKING_DIR
           value: {{ .Values.app.workDir }}
         #- name: RSPY_STATION_CONFIG
-        #  value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
-        - name: EODAG_CADIP_CONFIG
-          value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
-        {{ if .Values.app.useTokenModule }}
+        #  value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}        
+        {{- if .Values.app.useTokenModule }}
         - name: EODAG_CADIP_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFileTokenModule }}
+        {{- else }}
+        - name: EODAG_CADIP_CONFIG
+          value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
         {{ end }}
         - name: RSPY_CADIP_SEARCH_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.cadipSearchConfigFile }}
