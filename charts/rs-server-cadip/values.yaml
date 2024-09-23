@@ -48,20 +48,6 @@ app:
           root: http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080
           file: http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Files
           session: http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Sessions
-
-        secret:
-          cadip_domain: mockup-station-cadip-cadip-svc.processing.svc.cluster.local
-          cadip_srv_name: cadip
-          cadip_srv_url: http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080
-          cadip_auth_type: oauth2
-          cadip_auth_token_url: http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/oauth2/token
-          cadip_auth_grant: password
-          cadip_auth_scope: ""
-          cadip_auth_user: test
-          cadip_auth_pass: test
-          cadip_auth_client_id: client_id
-          cadip_auth_client_secret: client_secret
-          cadip_auth_authorization: Basic test
     # @ignored
     sgs:
       endpoint:
@@ -69,20 +55,6 @@ app:
           root: http://mockup-station-cadip-sgs-svc.processing.svc.cluster.local:8080
           file: http://mockup-station-cadip-sgs-svc.processing.svc.cluster.local:8080/Files
           session: http://mockup-station-cadip-sgs-svc.processing.svc.cluster.local:8080/Sessions
-
-        secret:
-          sgs_domain: mockup-station-cadip-sgs-svc.processing.svc.cluster.local
-          sgs_srv_name: cadip
-          sgs_srv_url: http://mockup-station-cadip-sgs-svc.processing.svc.cluster.local:8080
-          sgs_auth_type: oauth2
-          sgs_auth_token_url: http://mockup-station-cadip-sgs-svc.processing.svc.cluster.local:8080/oauth2/token
-          sgs_auth_grant: password
-          sgs_auth_scope: ""
-          sgs_auth_user: test
-          sgs_auth_pass: test
-          sgs_auth_client_id: client_id
-          sgs_auth_client_secret: client_secret
-          sgs_auth_authorization: Basic test
     # @ignored
     mti:
       endpoint:
@@ -90,20 +62,6 @@ app:
           root: http://mockup-station-cadip-mti-svc.processing.svc.cluster.local:8080
           file: http://mockup-station-cadip-mti-svc.processing.svc.cluster.local:8080/Files
           session: http://mockup-station-cadip-mti-svc.processing.svc.cluster.local:8080/Sessions
-
-        secret:
-          mti_domain: mockup-station-cadip-mti-svc.processing.svc.cluster.local
-          mti_srv_name: cadip
-          mti_srv_url: http://mockup-station-cadip-mti-svc.processing.svc.cluster.local:8080
-          mti_auth_type: oauth2
-          mti_auth_token_url: http://mockup-station-cadip-mti-svc.processing.svc.cluster.local:8080/oauth2/token
-          mti_auth_grant: password
-          mti_auth_scope: ""
-          mti_auth_user: test
-          mti_auth_pass: test
-          mti_auth_client_id: client_id
-          mti_auth_client_secret: client_secret
-          mti_auth_authorization: Basic test
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
 
@@ -130,6 +88,46 @@ probe:
     periodSeconds: 30
     # -- timeoutSeconds for the readiness probe
     timeoutSeconds: 5
+
+# A Kubernetes Affinity, if required. For more information, see [Affinity v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#affinity-v1-core).
+#
+# For example:
+#   affinity:
+#     nodeAffinity:
+#      requiredDuringSchedulingIgnoredDuringExecution:
+#        nodeSelectorTerms:
+#        - matchExpressions:
+#          - key: foo.bar.com/role
+#            operator: In
+#            values:
+#            - master
+# Or if empty :
+#   affinity: {}
+affinity:
+  nodeAffinity:
+   requiredDuringSchedulingIgnoredDuringExecution:
+     nodeSelectorTerms:
+     - matchExpressions:
+       - key: role
+         operator: In
+         values:
+         - access_csc
+
+# A list of Kubernetes Tolerations, if required. For more information, see [Toleration v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#toleration-v1-core).
+#
+# For example:
+#   tolerations:
+#   - key: foo.bar.com/role
+#     operator: Equal
+#     value: master
+#     effect: NoSchedule
+# Or if empty :
+#   tolerations: []
+tolerations:
+- key: role
+  operator: Equal
+  value: access_csc
+  effect: NoSchedule
 
 postgres:
   # -- PostgreSQL port

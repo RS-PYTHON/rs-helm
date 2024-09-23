@@ -40,20 +40,7 @@ app:
   station:
     endpoint:
       # -- ADGS URL
-      url: http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/Products
-      secret:        
-        adgs_domain: mockup-station-adgs-svc.processing.svc.cluster.local
-        adgs_srv_name: auxip
-        adgs_srv_url: http://mockup-station-adgs-svc.processing.svc.cluster.local:8080
-        adgs_auth_type: oauth2
-        adgs_auth_token_url: http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/oauth2/token
-        adgs_auth_grant: password
-        adgs_auth_scope: ""
-        adgs_auth_user: test
-        adgs_auth_pass: test
-        adgs_auth_client_id: client_id
-        adgs_auth_client_secret: client_secret
-        adgs_auth_authorization: Basic test
+      url: http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/Products      
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
 
@@ -80,6 +67,46 @@ probe:
     periodSeconds: 30
     # -- timeoutSeconds for the readiness probe
     timeoutSeconds: 5
+
+# A Kubernetes Affinity, if required. For more information, see [Affinity v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#affinity-v1-core).
+#
+# For example:
+#   affinity:
+#     nodeAffinity:
+#      requiredDuringSchedulingIgnoredDuringExecution:
+#        nodeSelectorTerms:
+#        - matchExpressions:
+#          - key: foo.bar.com/role
+#            operator: In
+#            values:
+#            - master
+# Or if empty :
+#   affinity: {}
+affinity:
+  nodeAffinity:
+   requiredDuringSchedulingIgnoredDuringExecution:
+     nodeSelectorTerms:
+     - matchExpressions:
+       - key: role
+         operator: In
+         values:
+         - access_csc
+
+# A list of Kubernetes Tolerations, if required. For more information, see [Toleration v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#toleration-v1-core).
+#
+# For example:
+#   tolerations:
+#   - key: foo.bar.com/role
+#     operator: Equal
+#     value: master
+#     effect: NoSchedule
+# Or if empty :
+#   tolerations: []
+tolerations:
+- key: role
+  operator: Equal
+  value: access_csc
+  effect: NoSchedule
 
 postgres:
   # -- PostgreSQL port

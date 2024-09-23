@@ -178,4 +178,12 @@ spec:
         - name: service-config-volume
           configMap:
             name: {{ .Release.Name }}-service-config
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
   revisionHistoryLimit: 10
