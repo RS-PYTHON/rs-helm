@@ -90,6 +90,14 @@ spec:
       - name:  {{ .Values.image.imagePullSecrets }}
       {{ end }}
       {{ end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       restartPolicy: Always
       securityContext: {}
   revisionHistoryLimit: 10

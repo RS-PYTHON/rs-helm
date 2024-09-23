@@ -104,4 +104,12 @@ spec:
       - name: opt-lta
         persistentVolumeClaim:
           claimName: {{ .Release.Name }}-pvc
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
   revisionHistoryLimit: 10
