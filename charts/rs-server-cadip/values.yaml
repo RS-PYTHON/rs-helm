@@ -38,7 +38,7 @@ app:
   # -- Cadip search configuration file for the application
   cadipSearchConfigFile: cadip_search_config.yaml
   # -- The way the token for the external stations is loaded: own module or let eodag to do it (set it to false)
-  useTokenModule: true
+  useTokenModule: false
   station:
     # -- CADIP station name
     cadip:

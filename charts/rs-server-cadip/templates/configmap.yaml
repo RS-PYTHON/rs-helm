@@ -27,13 +27,7 @@ data:
           auth_uri: '{{ $v.endpoint.url.root }}/oauth2/token'
           token_type: json
           token_key: access_token
-          request_method: POST
-          req_data:
-            client_id: filled_by_rs_server
-            client_secret: filled_by_rs_server
-            grant_type: filled_by_rs_server
-            username: filled_by_rs_server
-            password: filled_by_rs_server
+          request_method: POST          
         products:
           S1_SAR_RAW:
             productType: RAW
@@ -118,13 +112,7 @@ data:
           auth_uri: '{{ $v.endpoint.url.root }}/oauth2/token'
           token_type: json
           token_key: access_token
-          request_method: POST
-          req_data:
-            client_id: filled_by_rs_server
-            client_secret: filled_by_rs_server
-            grant_type: filled_by_rs_server
-            username: filled_by_rs_server
-            password: filled_by_rs_server
+          request_method: POST          
         products:
           S1_SAR_RAW:
             productType: RAW
