@@ -70,8 +70,13 @@ spec:
           value: {{ .Values.app.workDir }}
         - name: RSPY_STATION_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
-        - name: EODAG_ADGS_CONFIG          
-          value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
+        {{ if eq .Values.app.useTokenModule true }}
+        - name: EODAG_ADGS_CONFIG
+          value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFileTokenModule }}
+        {{ else }}
+        - name: EODAG_ADGS_CONFIG
+          value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
+        {{ end }}
         - name: POSTGRES_PORT
           value: {{ .Values.postgres.port | quote }}
         - name: POSTGRES_DB
