@@ -16,7 +16,7 @@ RS SERVER ADGS
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
-| app.eodagConfigFile | string | `"adgs_ws_config.yaml"` | Set properly the EODAG_ADGS_CONFIG env var. See helpers.tpl file, mychart.tokenconfigfile |
+| app.eodagConfigFile | string | `"adgs_ws_config.yaml"` | Set properly the EODAG_ADGS_CONFIG env var. |
 | app.eodagConfigFileTokenModule | string | `"adgs_ws_config_token_module.yaml"` |  |
 | app.port | int | `8000` | Port for the application |
 | app.station.endpoint.url | string | `"http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/Products"` | ADGS URL |
