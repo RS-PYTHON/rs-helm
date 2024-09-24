@@ -82,7 +82,7 @@ spec:
         #- name: RSPY_STATION_CONFIG
         #  value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}        
         - name: EODAG_CADIP_CONFIG
-          value: "{{ .Values.app.confDir }}/{{ include "mychart.tokenconfigfile" . }}"
+          value: "{{ .Values.app.confDir }}/{{ include \"mychart.tokenconfigfile\" . }}"
         - name: RSPY_CADIP_SEARCH_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.cadipSearchConfigFile }}
         - name: POSTGRES_PORT
