@@ -81,14 +81,8 @@ spec:
           value: {{ .Values.app.workDir }}
         #- name: RSPY_STATION_CONFIG
         #  value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}        
-        - name: EODAG_CADIP_CONFIG
-          value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}        
-        {{- if .Values.app.useTokenModule }}
-        {{ if eq .Values.app.useTokenModule true }}
-        - name: EODAG_CADIP_CONFIG
-          value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFileTokenModule }}        
-        {{ end }}
-        {{ end }}
+        - name: EODAG_ADGS_CONFIG
+          value: "{{ .Values.app.confDir }}/{{ template "mychart.tokenconfigfile" .Values.configfile }}"
         - name: RSPY_CADIP_SEARCH_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.cadipSearchConfigFile }}
         - name: POSTGRES_PORT
