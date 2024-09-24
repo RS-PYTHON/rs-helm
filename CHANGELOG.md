@@ -13,6 +13,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [0.2a4] - 2024-09-24
+
+### Added
+
+- RSPY-396 : Implement missing fields of virtual STAC collections
+
+### Changed
+
+- Bumped Image version of docker images
+
+### Fixed
+
+- RSPY-346 : add oauth2 auth endpoint for rs-server-catalog
+
 ## [0.2a3] - 2024-09-05
 
 ### Added
