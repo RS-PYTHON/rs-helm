@@ -23,11 +23,3 @@ Create the image path for the passed in image field
 {{- printf "%s/%s/%s:%s" .registry .repository .name .version -}}
 {{- end -}}
 {{- end -}}
-
-{{- define "mychart.tokenconfigfile" -}}
-{{- if eq .Values.app.useTokenModule true -}}
-cadip_ws_config_token_module.yaml
-{{- else -}}
-cadip_ws_config.yaml
-{{- end -}}
-{{- end -}}
