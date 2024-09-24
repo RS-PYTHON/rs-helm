@@ -26,9 +26,9 @@ Create the image path for the passed in image field
 
 {{- define "mychart.tokenconfigfile" -}}
 {{- if eq .Values.app.useTokenModule true -}}
-cadip_ws_config_token_module.yaml
+adgs_ws_config_token_module.yaml
 {{- else -}}
-cadip_ws_config.yaml
+adgs_ws_config.yaml
 {{- end -}}
 {{- end -}}
 

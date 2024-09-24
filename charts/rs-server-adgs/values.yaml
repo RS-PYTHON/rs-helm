@@ -31,12 +31,11 @@ app:
   confDir: /app/conf
   # -- Station configuration file for the application
   stationConfigFile: stations_cfg.json
-  # -- EODAG configuration file for the application. if useTokenModule is false, eodagConfigFile shall be used
-  # -- otherwise adgs_ws_config_token_module.yaml. Set properly the EODAG_ADGS_CONFIG env var
-  eodagConfigFile: adgs_ws_config.yaml
-  eodagConfigFileTokenModule: adgs_ws_config_token_module.yaml
+  # -- EODAG configuration file for the application. If useTokenModule is true the adgs_ws_config_token_module.yaml
+  # -- shall be used. When useTokenModule is false, the adgs_ws_config.yaml shall be used. 
+  # -- Set properly the EODAG_ADGS_CONFIG env var. See helpers.tpl file, mychart.tokenconfigfile
   # -- The way the token for the external stations is loaded: own module or let eodag to do it (set it to false)
-  useTokenModule: false
+  useTokenModule: true
   station:
     endpoint:
       # -- ADGS URL

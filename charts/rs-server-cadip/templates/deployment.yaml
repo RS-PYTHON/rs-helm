@@ -81,7 +81,7 @@ spec:
           value: {{ .Values.app.workDir }}
         #- name: RSPY_STATION_CONFIG
         #  value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}        
-        - name: EODAG_ADGS_CONFIG
+        - name: EODAG_CADIP_CONFIG
           value: "{{ .Values.app.confDir }}/{{ include "mychart.tokenconfigfile" . }}"
         - name: RSPY_CADIP_SEARCH_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.cadipSearchConfigFile }}
