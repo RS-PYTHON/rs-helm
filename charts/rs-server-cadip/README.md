@@ -14,9 +14,7 @@ RS SERVER CADIP
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0].key | string | `"role"` |  |
-| affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0].operator | string | `"In"` |  |
-| affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0].values[0] | string | `"access_csc"` |  |
+| affinity | object | `{}` |  |
 | app.cadipSearchConfigFile | string | `"cadip_search_config.yaml"` | Cadip search configuration file for the application |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.eodagConfigFile | string | `"cadip_ws_config.yaml"` | otherwise adgs_ws_config_token_module.yaml. Set properly the EODAG_ADGS_CONFIG env var |
@@ -26,7 +24,7 @@ RS SERVER CADIP
 | app.station.cadip.endpoint.url | object | `{"file":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Files","root":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","session":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Sessions"}` | CADIP station URL |
 | app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
-| app.useTokenModule | bool | `false` | The way the token for the external stations is loaded: own module or let eodag to do it (set it to false) |
+| app.useTokenModule | bool | `true` | The way the token for the external stations is loaded: own module or let eodag to do it (set it to false) |
 | app.workDir | string | `"/app"` | Working directory for the application |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
 | auth.secret.oidc_client_id | string | `""` | OIDC CLient ID |
