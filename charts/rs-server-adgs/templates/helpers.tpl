@@ -24,7 +24,7 @@ Create the image path for the passed in image field
 {{- end -}}
 {{- end -}}
 
-{{- define "mychart.configfile" -}}
+{{- define "mychart.tokenconfigfile" -}}
 {{- if eq .Values.app.useTokenModule true }}
 {{- $configFile := "cadip_ws_config_token_module.yaml" -}}
 {{- else -}}
