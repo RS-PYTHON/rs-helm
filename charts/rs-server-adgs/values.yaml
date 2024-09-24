@@ -31,17 +31,17 @@ app:
   confDir: /app/conf
   # -- Station configuration file for the application
   stationConfigFile: stations_cfg.json
-  # -- EODAG configuration file for the application
+  # -- EODAG configuration file for the application. If useTokenModule is true the adgs_ws_config_token_module.yaml
+  # -- shall be used. When useTokenModule is false, the adgs_ws_config.yaml shall be used. 
+  # -- Set properly the EODAG_ADGS_CONFIG env var.
   eodagConfigFile: adgs_ws_config.yaml
+  eodagConfigFileTokenModule: adgs_ws_config_token_module.yaml
+  # -- The way the token for the external stations is loaded: own module or let eodag to do it (set it to false)
+  useTokenModule: true
   station:
     endpoint:
       # -- ADGS URL
-      url: http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/Products
-      secret:
-        # -- Username to authenticate with the ADGS endpoint
-        username: test
-        # -- Password to authenticate with the ADGS endpoint
-        password: test
+      url: http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/Products      
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
 
@@ -68,6 +68,46 @@ probe:
     periodSeconds: 30
     # -- timeoutSeconds for the readiness probe
     timeoutSeconds: 5
+
+# A Kubernetes Affinity, if required. For more information, see [Affinity v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#affinity-v1-core).
+#
+# For example:
+#   affinity:
+#     nodeAffinity:
+#      requiredDuringSchedulingIgnoredDuringExecution:
+#        nodeSelectorTerms:
+#        - matchExpressions:
+#          - key: foo.bar.com/role
+#            operator: In
+#            values:
+#            - master
+# Or if empty :
+affinity: {}
+# affinity:
+#   nodeAffinity:
+#    requiredDuringSchedulingIgnoredDuringExecution:
+#      nodeSelectorTerms:
+#      - matchExpressions:
+#        - key: role
+#          operator: In
+#          values:
+#          - access_csc
+
+# A list of Kubernetes Tolerations, if required. For more information, see [Toleration v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#toleration-v1-core).
+#
+# For example:
+#   tolerations:
+#   - key: foo.bar.com/role
+#     operator: Equal
+#     value: master
+#     effect: NoSchedule
+# Or if empty :
+#   tolerations: []
+tolerations:
+- key: role
+  operator: Equal
+  value: access_csc
+  effect: NoSchedule
 
 postgres:
   # -- PostgreSQL port

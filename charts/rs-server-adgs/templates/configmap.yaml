@@ -22,8 +22,77 @@ data:
   {{ .Values.app.eodagConfigFile }}: |-
     adgs:
       auth:
-        type: GenericAuth
-        method: basic
+        type: TokenAuth
+        auth_uri: '{{ .Values.app.station.endpoint.url }}/oauth2/token'
+        token_type: json
+        token_key: access_token
+        request_method: POST        
+      products:
+        CAMS_GRF_AUX:
+          productType: cams-ads-grf-aux
+
+      search:
+        type: ODataV4Search
+        api_endpoint: '{{ .Values.app.station.endpoint.url }}'
+        need_auth: true
+        results_entry: responses | $
+        metadata_mapping:
+            id:
+                - null
+                - '$.Id'
+            Name:
+              - null
+              - '$.Name'
+            ContentLength:
+              - null
+              - '$.ContentLength'
+            PublicationDate:
+              - null
+              - '$.PublicationDate'
+            Start:
+              - null
+              - '$.ContentDate.Start'
+            End:
+              - null
+              - '$.ContentDate.End'
+            startTimeFromAscendingNode:
+                - null
+                - '$.PublicationDate'
+            completionTimeFromAscendingNode:
+                - null
+                - '$.PublicationDate'
+            geometry: 'POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))'
+            downloadLink: '{{ .Values.app.station.endpoint.url }}({id})/$value'
+            title: '$.Name'
+
+        free_text_search_operations:
+          $filter:
+            union: ' OR '
+            wrapper: '"{}"'
+            operations:
+                and:
+                  - 'PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}'
+                  - 'PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}'
+
+        pagination:
+          max_items_per_page: 1000
+          next_page_url_tpl: '{url}?{search}&$top={items_per_page}'
+          total_items_nb_key_path: '$.total'
+
+      download:
+        type: HTTPDownload
+        base_uri: '{{ .Values.app.station.endpoint.url }}'
+        metadata_mapping:
+            uid: '$.Id'
+            downloadLink: '{{ .Values.app.station.endpoint.url }}({uid})/$value'
+  {{ .Values.app.eodagConfigFileTokenModule }}: |-
+    adgs:
+      auth:
+        type: HTTPHeaderAuth
+        headers:
+            Authorization: "Bearer {token}"
+        credentials:
+          token: token_value
       products:
         CAMS_GRF_AUX:
           productType: cams-ads-grf-aux

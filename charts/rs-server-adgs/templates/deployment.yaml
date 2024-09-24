@@ -60,6 +60,9 @@ spec:
         - name: web
           protocol: TCP
           containerPort: {{ .Values.app.port }}
+        envFrom:
+        - secretRef:
+            name: auxip-adgs
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}
@@ -67,8 +70,13 @@ spec:
           value: {{ .Values.app.workDir }}
         - name: RSPY_STATION_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
+        {{ if eq .Values.app.useTokenModule true }}
+        - name: EODAG_ADGS_CONFIG
+          value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFileTokenModule }}
+        {{ else }}
         - name: EODAG_ADGS_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
+        {{ end }}
         - name: POSTGRES_PORT
           value: {{ .Values.postgres.port | quote }}
         - name: POSTGRES_DB
@@ -79,6 +87,8 @@ spec:
           value: {{ .Values.obs.endpoint }}
         - name: S3_REGION
           value: {{ .Values.obs.region }}
+        - name: RSPY_USE_MODULE_FOR_STATION_TOKEN
+          value: '{{ .Values.app.useTokenModule }}'
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
@@ -104,17 +114,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: {{ .Release.Name }}-obs
-              key: sk
-        - name: EODAG__adgs__auth__credentials__username
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-endpoint
-              key: user
-        - name: EODAG__adgs__auth__credentials__password
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-endpoint
-              key: pass
+              key: sk        
         - name: "OIDC_ENDPOINT"
           valueFrom:
             secretKeyRef:
