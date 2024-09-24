@@ -24,7 +24,7 @@ MOCKUP STATION ADGS
 | image.name | string | `"rs-testmeans_adgs-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"sha256:35df59a75d715ccec832f3114c9c5ca22ee454edcf7d35299ed4fb8d44ee837c"` | Image version, can be a tag or a digest |
+| image.version | string | `"sha256:7be32b07c4e4097e028521dc05d61d002527208a483043e0e354a25a0a82bf8f"` | Image version, can be a tag or a digest |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/health"` | Path for the liveness probe |
