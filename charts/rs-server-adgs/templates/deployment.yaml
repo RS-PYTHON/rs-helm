@@ -70,8 +70,8 @@ spec:
           value: {{ .Values.app.workDir }}
         - name: RSPY_STATION_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
-        - name: EODAG_ADGS_CONFIG
-          value: '{{ .Values.app.confDir }}/{{ include "mychart.tokenconfigfile" . }}'
+        - name: EODAG_ADGS_CONFIG          
+          value: {{ .Values.app.confDir }}/{{ include "mychart.tokenconfigfile" . }}
         - name: POSTGRES_PORT
           value: {{ .Values.postgres.port | quote }}
         - name: POSTGRES_DB
