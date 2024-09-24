@@ -17,8 +17,6 @@ RS SERVER CADIP
 | affinity | object | `{}` |  |
 | app.cadipSearchConfigFile | string | `"cadip_search_config.yaml"` | Cadip search configuration file for the application |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
-| app.eodagConfigFile | string | `"cadip_ws_config.yaml"` | otherwise adgs_ws_config_token_module.yaml. Set properly the EODAG_ADGS_CONFIG env var |
-| app.eodagConfigFileTokenModule | string | `"cadip_ws_config_token_module.yaml"` |  |
 | app.port | int | `8000` | Port for the application |
 | app.station.cadip | object | `{"endpoint":{"url":{"file":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Files","root":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","session":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Sessions"}}}` | CADIP station name |
 | app.station.cadip.endpoint.url | object | `{"file":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Files","root":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","session":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Sessions"}` | CADIP station URL |
