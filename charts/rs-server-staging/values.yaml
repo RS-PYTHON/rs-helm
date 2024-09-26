@@ -41,7 +41,7 @@ app:
 probe:
   liveness:
     # -- Path for the liveness probe
-    path: /health
+    path: /_mgmt/ping
     # -- Port for the liveness probe
     port: 8000
     # -- InitialDelaySeconds for the liveness probe
@@ -52,7 +52,7 @@ probe:
     timeoutSeconds: 5
   readiness:
     # -- Path for the readiness probe
-    path: /health
+    path: /_mgmt/ping
     # -- Port for the readiness probe
     port: 8000
     # -- InitialDelaySeconds for the readiness probe
@@ -127,7 +127,6 @@ ingress:
   host: subdomain.example.com
   # -- Ingress path for the application
   path:
-    - /docs
     - /processes
     - /jobs
 
