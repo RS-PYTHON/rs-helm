@@ -16,6 +16,7 @@ RS SERVER STAGING
 |-----|------|---------|-------------|
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. The same value should also be included into ingress.path |
+| app.endpointCatalog | string | `"http://rs-server-catalog-svc.processing.svc.cluster.local:8080"` | Catalog pod address |
 | app.openapiConfig | string | `"openapi.json"` | Config file name for the application |
 | app.port | int | `8000` | Port for the application |
 | app.pygeoapiConfig | string | `"config.yml"` | Config file name for the application |
