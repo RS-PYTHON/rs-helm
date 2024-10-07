@@ -73,6 +73,15 @@ spec:
           value: {{ .Values.app.confDir }}/{{ .Values.app.pygeoapiConfig }}
         - name: PYGEOAPI_OPENAPI
           value: {{ .Values.app.confDir }}/{{ .Values.app.openapiConfig }}
+        - name: DASK_GATEWAY__ADDRESS
+          value: {{ .Values.dask.gateway_address }}
+        - name: DASK_GATEWAY__AUTH__TYPE
+          value: {{ .Values.dask.gateway_auth_type }}
+        - name: JUPYTERHUB_API_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: JUPYTERHUB_API_TOKEN
+              key: TOKEN
         securityContext:
           privileged: false
         {{ if .Values.probe }}

@@ -38,6 +38,11 @@ app:
   # -- Config file name for the application
   openapiConfig: openapi.json
 
+dask:
+  gateway_address: http://traefik-dask-gateway.dask-gateway.svc.cluster.local
+  gateway_auth_type: jupyterhub
+  jupyterhub_api_token: JUPYTER_API_TOKEN_HERE
+
 probe:
   liveness:
     # -- Path for the liveness probe
