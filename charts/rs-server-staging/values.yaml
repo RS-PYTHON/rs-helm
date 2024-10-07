@@ -83,16 +83,16 @@ probe:
 #            values:
 #            - master
 # Or if empty :
-#   affinity: {}
-affinity:
-  nodeAffinity:
-   requiredDuringSchedulingIgnoredDuringExecution:
-     nodeSelectorTerms:
-     - matchExpressions:
-       - key: role
-         operator: In
-         values:
-         - access_csc
+  affinity: {}
+# affinity:
+#   nodeAffinity:
+#    requiredDuringSchedulingIgnoredDuringExecution:
+#      nodeSelectorTerms:
+#      - matchExpressions:
+#        - key: role
+#          operator: In
+#          values:
+#          - access_csc
 
 # A list of Kubernetes Tolerations, if required. For more information, see [Toleration v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#toleration-v1-core).
 #
@@ -135,7 +135,7 @@ ingress:
   host: subdomain.example.com
   # -- Ingress path for the application
   path:
-    - /docs
+    # - /docs
     - /processes
     - /jobs
 
