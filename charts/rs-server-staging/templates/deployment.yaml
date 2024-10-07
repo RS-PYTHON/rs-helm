@@ -80,7 +80,7 @@ spec:
         - name: JUPYTERHUB_API_TOKEN
           valueFrom:
             secretKeyRef:
-              name: JUPYTERHUB_API_TOKEN
+              name: jupyterhub-api-token
               key: TOKEN
         securityContext:
           privileged: false
