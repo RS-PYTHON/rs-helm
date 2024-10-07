@@ -24,6 +24,9 @@ RS SERVER STAGING
 | app.pygeoapiConfig | string | `"config.yml"` | Config file name for the application |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service (internal) |
+| dask.gateway_address | string | `"http://traefik-dask-gateway.dask-gateway.svc.cluster.local"` | Dask gateway address |
+| dask.jupyterhub | string | `"jupyterhub"` | Dask gateway auth type |
+| dask.jupyterhub_api_token | string | `"JUPYTER_API_TOKEN_HERE"` | Jupyter API Token when dask.jupyterhub=jupyterhub |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-staging"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
