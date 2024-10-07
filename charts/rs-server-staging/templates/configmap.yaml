@@ -49,7 +49,7 @@ data:
       staging:
         type: process
         processor:
-          name: HelloWorld
+          name: RSPYStaging
 
     openapi:
       path: /docs/openapi.json
