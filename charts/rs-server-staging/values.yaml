@@ -39,8 +39,11 @@ app:
   openapiConfig: openapi.json
 
 dask:
+  # -- Dask gateway address
   gateway_address: http://traefik-dask-gateway.dask-gateway.svc.cluster.local
-  gateway_auth_type: jupyterhub
+  # -- Dask gateway auth type
+  jupyterhub: jupyterhub
+  # -- Jupyter API Token when dask.jupyterhub=jupyterhub
   jupyterhub_api_token: JUPYTER_API_TOKEN_HERE
 
 probe:
