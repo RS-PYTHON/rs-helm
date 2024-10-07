@@ -14,9 +14,6 @@ RS SERVER STAGING
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0].key | string | `"role"` |  |
-| affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0].operator | string | `"In"` |  |
-| affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0].values[0] | string | `"access_csc"` |  |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. The same value should also be included into ingress.path |
 | app.openapiConfig | string | `"openapi.json"` | Config file name for the application |
@@ -36,8 +33,9 @@ RS SERVER STAGING
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
-| ingress.path | list | `["/docs","/processes","/jobs"]` | Ingress path for the application |
+| ingress.path | list | `["/processes","/jobs"]` | Ingress path for the application |
 | namespace | string | `"processing"` | Namespace for the deployment |
+| probe.affinity | object | `{}` |  |
 | probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/health"` | Path for the liveness probe |
 | probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |
