@@ -42,7 +42,7 @@ dask:
   # -- Dask gateway address
   gateway_address: http://traefik-dask-gateway.dask-gateway.svc.cluster.local
   # -- Dask gateway auth type
-  jupyterhub: jupyterhub
+  gateway_auth_type: jupyterhub
   # -- Jupyter API Token when dask.jupyterhub=jupyterhub
   jupyterhub_api_token: JUPYTER_API_TOKEN_HERE
 
