@@ -63,12 +63,6 @@ spec:
         envFrom:
         - secretRef:
             name: auxip-adgs
-        - secretRef:
-            name: cadip-cadip
-        - secretRef:
-            name: cadip-sgs
-        - secretRef:
-            name: cadip-mti
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}
