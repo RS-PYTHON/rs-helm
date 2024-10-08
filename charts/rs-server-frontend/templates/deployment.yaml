@@ -62,6 +62,8 @@ spec:
           value: {{ .Values.app.uacHomeUrl }}
         - name: RSPY_DOCS_URL
           value: {{ .Values.app.docsUrl }}
+        - name: STAC_BROWSER_URLS
+          value: {{ .Values.stac-browser.urls }}
         securityContext:
           privileged: false
         {{ if .Values.probe }}
