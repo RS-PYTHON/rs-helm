@@ -101,7 +101,7 @@ spec:
         - name: S3_REGION
           value: {{ .Values.obs.region }}
         - name: STAC_BROWSER_URLS
-          value: {{ .Values.stac-browser.urls }}
+          value: {{ .Values.stacbrowser.urls }}
         - name: RSPY_USE_MODULE_FOR_STATION_TOKEN
           value: '{{ .Values.app.useTokenModule }}'          
         {{ if .Values.tempo }}

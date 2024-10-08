@@ -145,7 +145,7 @@ probe:
     # -- timeoutSeconds for the readiness probe
     timeoutSeconds: 5
 
-stac-browser:
+stacbrowser:
   urls: "https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"
 
 tempo:

@@ -63,7 +63,7 @@ spec:
         - name: RSPY_DOCS_URL
           value: {{ .Values.app.docsUrl }}
         - name: STAC_BROWSER_URLS
-          value: {{ .Values.stac-browser.urls }}
+          value: {{ .Values.stacbrowser.urls }}
         securityContext:
           privileged: false
         {{ if .Values.probe }}

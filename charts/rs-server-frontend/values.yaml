@@ -94,5 +94,5 @@ resources:
     # -- Pod CPU limit
     cpu: "500m"
 
-stac-browser:
+stacbrowser:
   urls: "https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"
