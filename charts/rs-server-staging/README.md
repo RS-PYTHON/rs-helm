@@ -22,6 +22,11 @@ RS SERVER STAGING
 | app.pygeoapiConfig | string | `"config.yml"` | Config file name for the application |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service (internal) |
+| auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
+| auth.secret.oidc_client_id | string | `""` | OIDC CLient ID |
+| auth.secret.oidc_client_secret | string | `""` | OIDC Secret used to sync user info from Keycloak |
+| auth.secret.oidc_endpoint | string | `""` | OIDC End Point |
+| auth.secret.oidc_realm | string | `""` | OIDC Realm |
 | dask.gateway_address | string | `"http://traefik-dask-gateway.dask-gateway.svc.cluster.local"` | Dask gateway address |
 | dask.gateway_auth_type | string | `"jupyterhub"` | Dask gateway auth type |
 | dask.jupyterhub_api_token | string | `"JUPYTER_API_TOKEN_HERE"` | Jupyter API Token when dask.jupyterhub=jupyterhub |
@@ -36,6 +41,10 @@ RS SERVER STAGING
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
 | ingress.path | list | `["/processes","/jobs"]` | Ingress path for the application |
 | namespace | string | `"processing"` | Namespace for the deployment |
+| obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
+| obs.region | string | `"sbg"` | Region of the object storage service |
+| obs.secret.ak | string | `"TDr8foJqSygBQ9YFmWDy"` | Access Key to authenticate with the object storage service |
+| obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service |
 | probe.affinity | object | `{}` |  |
 | probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/health"` | Path for the liveness probe |
