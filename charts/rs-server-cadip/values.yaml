@@ -206,9 +206,6 @@ resources:
     # -- Pod CPU limit
     cpu: "500m"
 
-stacbrowser:
-  urls: "https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"
-
 tempo:
   # -- Grafana tempo endpoint.
   endpoint: http://grafana-tempo-distributor.logging.svc.cluster.local:4317
