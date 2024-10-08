@@ -67,7 +67,6 @@ RS SERVER CADIP
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
 | service.port | int | `8080` | Port for the service |
-| stacbrowser.urls | string | `"https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"` |  |
 | tempo.endpoint | string | `"http://grafana-tempo-distributor.logging.svc.cluster.local:4317"` | Grafana tempo endpoint. |
 | tolerations[0].effect | string | `"NoSchedule"` |  |
 | tolerations[0].key | string | `"role"` |  |
