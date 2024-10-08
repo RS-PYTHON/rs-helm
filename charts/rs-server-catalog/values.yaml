@@ -145,8 +145,8 @@ probe:
     # -- timeoutSeconds for the readiness probe
     timeoutSeconds: 5
 
-stac-browser:
-  urls: "https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"
+stac_browser:
+  urls: "https://stac_browser-cadip.subdomain.example.com;https://stac_browser-catalog.subdomain.example.com"
 
 tempo:
   # -- Grafana tempo endpoint.
