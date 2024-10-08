@@ -90,7 +90,7 @@ spec:
         - name: RSPY_USE_MODULE_FOR_STATION_TOKEN
           value: '{{ .Values.app.useTokenModule }}'
         - name: STAC_BROWSER_URLS
-          value: {{ .Values.stac-browser.urls }}
+          value: '{{ .Values.stac_browser.urls }}'
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
