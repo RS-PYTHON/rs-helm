@@ -62,15 +62,13 @@ spec:
         - name: web
           protocol: TCP
           containerPort: {{ .Values.app.port }}
+        {{ if .Values.app.stations }}
         envFrom:
+        {{ range .Values.app.stations }}
         - secretRef:
-            name: auxip-adgs
-        - secretRef:
-            name: cadip-cadip
-        - secretRef:
-            name: cadip-sgs
-        - secretRef:
-            name: cadip-mti
+            name: {{ . | quote }}
+        {{ end }}
+        {{ end }}
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacUrl }}

@@ -39,6 +39,12 @@ app:
   openapiConfig: openapi.json
   # -- Catalog pod address
   endpointCatalog: http://rs-server-catalog-svc.processing.svc.cluster.local:8080
+  # -- List of configured stations (expect a secret with the same name)
+  stations:
+    - auxip-adgs
+    - cadip-cadip
+    - cadip-sgs
+    - cadip-mti
 
 dask:
   # -- Dask gateway address
