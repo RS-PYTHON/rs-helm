@@ -1,6 +1,6 @@
 # rs-server-staging
 
-![Version: 0.0.2-a4](https://img.shields.io/badge/Version-0.0.2--a4-informational?style=flat-square) ![AppVersion: v0.2a4](https://img.shields.io/badge/AppVersion-v0.2a4-informational?style=flat-square)
+![Version: 0.0.2-a5](https://img.shields.io/badge/Version-0.0.2--a5-informational?style=flat-square) ![AppVersion: v0.2a5](https://img.shields.io/badge/AppVersion-v0.2a5-informational?style=flat-square)
 
 RS SERVER STAGING
 
@@ -46,7 +46,6 @@ RS SERVER STAGING
 | obs.region | string | `"sbg"` | Region of the object storage service |
 | obs.secret.ak | string | `"TDr8foJqSygBQ9YFmWDy"` | Access Key to authenticate with the object storage service |
 | obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service |
-| probe.affinity | object | `{}` |  |
 | probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/_mgmt/ping"` | Path for the liveness probe |
 | probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |
