@@ -51,7 +51,7 @@ dask:
 probe:
   liveness:
     # -- Path for the liveness probe
-    path: /health
+    path: /_mgmt/ping
     # -- Port for the liveness probe
     port: 8000
     # -- InitialDelaySeconds for the liveness probe
@@ -62,7 +62,7 @@ probe:
     timeoutSeconds: 5
   readiness:
     # -- Path for the readiness probe
-    path: /health
+    path: /_mgmt/ping
     # -- Port for the readiness probe
     port: 8000
     # -- InitialDelaySeconds for the readiness probe
@@ -75,17 +75,18 @@ probe:
 # A Kubernetes Affinity, if required. For more information, see [Affinity v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#affinity-v1-core).
 #
 # For example:
-#   affinity:
-#     nodeAffinity:
-#      requiredDuringSchedulingIgnoredDuringExecution:
-#        nodeSelectorTerms:
-#        - matchExpressions:
-#          - key: foo.bar.com/role
-#            operator: In
-#            values:
-#            - master
+# affinity:
+#   nodeAffinity:
+#    requiredDuringSchedulingIgnoredDuringExecution:
+#      nodeSelectorTerms:
+#      - matchExpressions:
+#        - key: foo.bar.com/role
+#          operator: In
+#          values:
+#          - master
 # Or if empty :
-  affinity: {}
+# affinity: {}
+#
 # affinity:
 #   nodeAffinity:
 #    requiredDuringSchedulingIgnoredDuringExecution:
@@ -96,16 +97,21 @@ probe:
 #          values:
 #          - access_csc
 
+# -- Pod affinity
+affinity: {}
+
 # A list of Kubernetes Tolerations, if required. For more information, see [Toleration v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/#toleration-v1-core).
 #
 # For example:
-#   tolerations:
-#   - key: foo.bar.com/role
-#     operator: Equal
-#     value: master
-#     effect: NoSchedule
+# tolerations:
+# - key: foo.bar.com/role
+#   operator: Equal
+#   value: master
+#   effect: NoSchedule
 # Or if empty :
-#   tolerations: []
+# tolerations: []
+
+# -- Pod toleration
 tolerations:
 - key: role
   operator: Equal
@@ -161,7 +167,6 @@ ingress:
   host: subdomain.example.com
   # -- Ingress path for the application
   path:
-    # - /docs
     - /processes
     - /jobs
 
