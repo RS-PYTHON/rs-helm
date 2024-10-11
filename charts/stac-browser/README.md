@@ -28,10 +28,10 @@ STAC BROWSER
 | image.repository | string | `"rs-python"` | Image repository |
 | image.version | string | `"sha256:0307f9f4413db9a5550b046b28603efd5dac79303579bc52885a2f187ce8393e"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
-| ingress.host | string | `"subdomain.example.com"` | Ingress host name. Note that because of bug https://github.com/radiantearth/stac-browser/issues/479 the actual URL will be will be `{{ .Release.Name }}.{{ .Values.ingress.host }}` |
+| ingress.host | string | `"stac-browser.subdomain.example.com"` | Ingress host name. |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
-| ingress.path | string | `"/"` | Ingress path for the application |
+| ingress.path | string | `"/"` | Ingress path for the application Note that because of bug https://github.com/radiantearth/stac-browser/issues/479 the path is forced to / |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | probe.liveness.initialDelaySeconds | int | `5` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/"` | Path for the liveness probe |
