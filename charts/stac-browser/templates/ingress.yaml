@@ -26,7 +26,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: {{ .Release.Name }}.{{ .Values.ingress.host }}
+  - host: {{ .Values.ingress.host }}
     http:
       paths:
       - backend:
@@ -38,7 +38,7 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - {{ .Release.Name }}.{{ .Values.ingress.host }}
-    secretName: {{ .Release.Name | replace "." "-" }}-{{ .Values.ingress.host | replace "." "-" }}
+    - {{ .Values.ingress.host }}
+    secretName: {{ .Values.ingress.host | replace "." "-" }}
 {{ end }}
 {{ end }}
