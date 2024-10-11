@@ -24,39 +24,45 @@ service:
 
 app:
   # -- Port for the application
-  port: 5000
-  # -- Working directory for the application
-  workDir: /app
-  # -- Config directory for the application
-  confDir: /opt/adgs/config
-  # -- Auth configuration file for the application
-  authConfigFile: auth.json
-  # -- catalog configuration file for the application
-  catalogConfigFile: GETFileResponse.json
+  port: 8080
+  # -- OIDC End Point
+  oidc_endpoint: ""
+  # -- OIDC Realm
+  oidc_realm: ""
+  # -- OIDC Public Client ID
+  oidc_client_id: ""
+  # -- Allows or disallows loading and browsing external STAC data
+  SB_allowExternalAccess: "false"
+  # -- Detect locale from user
+  SB_detectLocaleFromBrowser: "true"
+  # -- Allows search engines to better crawl STAC Browser
+  SB_historyMode: history
+  # -- URL of the STAC catalog
+  SB_catalogUrl: https://subdomain.example.com/catalog/
 
 probe:
   liveness:
     # -- Path for the liveness probe
-    path: /health
+    path: /
     # -- Port for the liveness probe
-    port: 5000
+    port: 8080
     # -- InitialDelaySeconds for the liveness probe
-    initialDelaySeconds: 30
+    initialDelaySeconds: 5
     # -- periodSeconds for the liveness probe
-    periodSeconds: 30
+    periodSeconds: 10
     # -- timeoutSeconds for the liveness probe
-    timeoutSeconds: 5
+    timeoutSeconds: 1
   readiness:
     # -- Path for the readiness probe
-    path: /health
+    path: /
     # -- Port for the readiness probe
-    port: 5000
+    port: 8080
     # -- InitialDelaySeconds for the readiness probe
-    initialDelaySeconds: 30
+    initialDelaySeconds: 5
     # -- periodSeconds for the readiness probe
-    periodSeconds: 30
+    periodSeconds: 10
     # -- timeoutSeconds for the readiness probe
-    timeoutSeconds: 5
+    timeoutSeconds: 1
 
 image:
   # -- Image registry
@@ -64,12 +70,26 @@ image:
   # -- Image repository
   repository: rs-python
   # -- Image name
-  name: rs-testmeans_adgs-station-mock
+  name: stac-browser
   # -- Image version, can be a tag or a digest
-  version: sha256:64b19359a3f4a343bea14879412c4e0edb2d257987785b7c7224524949425f3d 
+  version: sha256:0307f9f4413db9a5550b046b28603efd5dac79303579bc52885a2f187ce8393e
   # -- Image pull policy
-  PullPolicy: Always
+  PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
+
+ingress:
+  # -- Enabled/Disable ingress
+  enabled: true
+  issuer:
+    # -- Ingress Issuer type
+    type: cluster-issuer
+    # -- Ingress Issuer name
+    name: letsencrypt-prod
+  # -- Ingress host name.
+  host: stac-browser.subdomain.example.com
+  # -- Ingress path for the application
+  # Note that because of bug https://github.com/radiantearth/stac-browser/issues/479 the path is forced to /
+  path: /
 
 resources:
   request:
@@ -82,14 +102,3 @@ resources:
     ram: "1000Mi"
     # -- Pod CPU limit
     cpu: "500m"
-
-volume:
-  # -- Size of the database volume
-  size: "10Gi"
-  # -- AccessMode of the database volume
-  accessModes: ReadWriteOnce
-  # -- StorageClass of the database volume
-  storageClassName: csi-cinder-sc-retain
-
-# -- Keep the ressources for PVC and ConfigMap. Default is to keep.
-helmResourcePolicy: keep

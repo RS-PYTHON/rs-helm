@@ -13,6 +13,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [0.2a5] - 2024-10-10
+
+### Added
+
+- RSPY-358 : Update helm charts to deploy RSPY-352
+- RSPY-230 : Deploy STAC browser
+
+### Changed
+
+- Bumped Image version of docker images
+
+### Fixed
+
+- RSPY-419 : [Rs-server] Errors with rs-server-staging
+
 ## [0.2a4] - 2024-09-24
 
 ### Added

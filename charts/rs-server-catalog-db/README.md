@@ -1,6 +1,6 @@
 # rs-server-catalog-db
 
-![Version: 0.0.2-a4](https://img.shields.io/badge/Version-0.0.2--a4-informational?style=flat-square) ![AppVersion: v0.2a4](https://img.shields.io/badge/AppVersion-v0.2a4-informational?style=flat-square)
+![Version: 0.0.2-a5](https://img.shields.io/badge/Version-0.0.2--a5-informational?style=flat-square) ![AppVersion: v0.2a5](https://img.shields.io/badge/AppVersion-v0.2a5-informational?style=flat-square)
 
 RS SERVER CATALOG DB
 
