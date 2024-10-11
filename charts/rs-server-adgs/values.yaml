@@ -44,6 +44,9 @@ app:
       url: http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/Products      
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
+  # -- List of configured stations (expect a secret with the same name)
+  stations:
+    - auxip-adgs
 
 probe:
   liveness:

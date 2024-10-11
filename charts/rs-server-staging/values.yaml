@@ -37,6 +37,12 @@ app:
   pygeoapiConfig: config.yml
   # -- Config file name for the application
   openapiConfig: openapi.json
+  # -- List of configured stations (expect a secret with the same name)
+  stations:
+    - auxip-adgs
+    - cadip-cadip
+    - cadip-sgs
+    - cadip-mti
 
 probe:
   liveness:
