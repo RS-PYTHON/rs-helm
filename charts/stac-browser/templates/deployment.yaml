@@ -57,17 +57,17 @@ spec:
           containerPort: {{ .Values.app.port }}
         env:
         - name: SB_allowExternalAccess
-          value: "true"
+          value: {{ .Values.app.SB_allowExternalAccess | quote }}
         - name: SB_historyMode
-          value: history
+          value: {{ .Values.app.SB_historyMode }}
         - name: SB_catalogUrl
-          value: https://dev-rspy.esa-copernicus.eu/cadip/
+          value: {{ .Values.app.SB_catalogUrl }}
         - name: OIDC_ENDPOINT
-          value: https://iam.dev-rspy.esa-copernicus.eu
+          value: {{ .Values.app.oidc_endpoint }}
         - name: OIDC_REALM
-          value: rspy
+          value: {{ .Values.app.oidc_realm }}
         - name: PUBLIC_CLIENT_ID
-          value: fastapi_public
+          value: {{ .Values.app.oidc_client_id }}
         securityContext:
           privileged: false
         {{ if .Values.probe }}
