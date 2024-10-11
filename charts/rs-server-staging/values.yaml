@@ -38,11 +38,15 @@ app:
   # -- Config file name for the application
   openapiConfig: openapi.json
   # -- List of configured stations (expect a secret with the same name)
-  stations:
-    - auxip-adgs
-    - cadip-cadip
-    - cadip-sgs
-    - cadip-mti
+  station:
+    adgs:
+      type: auxip
+    cadip:
+      type: cadip
+    sgs:
+      type: cadip
+    mti:
+      type: cadip
 
 probe:
   liveness:

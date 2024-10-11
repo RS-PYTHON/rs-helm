@@ -62,13 +62,11 @@ spec:
         - name: web
           protocol: TCP
           containerPort: {{ .Values.app.port }}
-        {{ if .Values.app.stations }}
         envFrom:
-        {{ range .Values.app.stations }}
-        - secretRef:
-            name: {{ . | quote }}
-        {{ end }}
-        {{ end }}
+        {{- range $k, $v := .Values.app.station }}
+          - secretRef:
+            name: {{ $v.type }}-{{ $k }}
+        {{- end }}
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacUrl }}
