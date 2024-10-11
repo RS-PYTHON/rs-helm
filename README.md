@@ -44,6 +44,10 @@ A simple mock for LTA station.
 
 A simple mock for DPR processor.
 
+## [stac-browser](charts/stac-browser/README.md)
+
+A simple chart for the STAC browser.
+
 ---
 
 Find more documentation on the [rs-server repository](https://github.com/RS-PYTHON/rs-server).
