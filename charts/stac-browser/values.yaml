@@ -1,0 +1,101 @@
+# Copyright 2024 CS Group
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# -- Namespace for the deployment
+namespace: processing
+
+# -- Number of replicas for the deployment
+replicaCount: 1
+
+service:
+  # -- Port for the service
+  port: 8080
+
+app:
+  # -- Port for the application
+  port: 8080
+  # -- OIDC End Point
+  oidc_endpoint: ""
+  # -- OIDC Realm
+  oidc_realm: ""
+  # -- OIDC Public Client ID
+  oidc_client_id: ""
+  # -- Allows or disallows loading and browsing external STAC data.
+  SB_allowExternalAccess: "false"
+  # -- Allows search engines to better crawl STAC Browser
+  SB_historyMode: history
+  # -- URL of the STAC catalog
+  SB_catalogUrl: https://subdomain.example.com/catalog/
+
+probe:
+  liveness:
+    # -- Path for the liveness probe
+    path: /
+    # -- Port for the liveness probe
+    port: 8080
+    # -- InitialDelaySeconds for the liveness probe
+    initialDelaySeconds: 5
+    # -- periodSeconds for the liveness probe
+    periodSeconds: 10
+    # -- timeoutSeconds for the liveness probe
+    timeoutSeconds: 1
+  readiness:
+    # -- Path for the readiness probe
+    path: /
+    # -- Port for the readiness probe
+    port: 8080
+    # -- InitialDelaySeconds for the readiness probe
+    initialDelaySeconds: 5
+    # -- periodSeconds for the readiness probe
+    periodSeconds: 10
+    # -- timeoutSeconds for the readiness probe
+    timeoutSeconds: 1
+
+image:
+  # -- Image registry
+  registry: ghcr.io
+  # -- Image repository
+  repository: rs-python
+  # -- Image name
+  name: stac-browser
+  # -- Image version, can be a tag or a digest
+  version: sha256:0307f9f4413db9a5550b046b28603efd5dac79303579bc52885a2f187ce8393e
+  # -- Image pull policy
+  PullPolicy: IfNotPresent
+  #imagePullSecrets: regcred
+
+ingress:
+  # -- Enabled/Disable ingress
+  enabled: true
+  issuer:
+    # -- Ingress Issuer type
+    type: cluster-issuer
+    # -- Ingress Issuer name
+    name: letsencrypt-prod
+  # -- Ingress host name
+  host: subdomain.example.com
+  # -- Ingress path for the application. Must be the same value as app.docsUrl.
+  path: /
+
+resources:
+  request:
+    # -- Pod memory request
+    ram: "256Mi"
+    # -- Pod CPU request
+    cpu: "100m"
+  limit:
+    # -- Pod memory limit
+    ram: "1000Mi"
+    # -- Pod CPU limit
+    cpu: "500m"

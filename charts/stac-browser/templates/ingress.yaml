@@ -20,10 +20,6 @@ metadata:
   namespace: {{ .Values.namespace }}
   annotations:
     cert-manager.io/{{ .Values.ingress.issuer.type }}: {{ .Values.ingress.issuer.name }}
-    nginx.ingress.kubernetes.io/cors-allow-headers: x-api-key, authorization
-    nginx.ingress.kubernetes.io/cors-allow-origin: '*'
-    nginx.ingress.kubernetes.io/enable-cors: "true"
-
   name: {{ .Release.Name }}-ingress
 spec:
   ingressClassName: nginx
