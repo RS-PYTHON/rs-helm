@@ -39,6 +39,6 @@ spec:
   tls:
   - hosts:
     - {{ .Release.Name }}.{{ .Values.ingress.host }}
-    secretName: {{ .Values.ingress.host | replace "." "-" }}
+    secretName: {{ .Release.Name | replace "." "-" }}-{{ .Values.ingress.host | replace "." "-" }}
 {{ end }}
 {{ end }}
