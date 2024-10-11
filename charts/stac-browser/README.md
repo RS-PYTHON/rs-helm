@@ -14,8 +14,9 @@ STAC BROWSER
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| app.SB_allowExternalAccess | string | `"false"` | Allows or disallows loading and browsing external STAC data. |
+| app.SB_allowExternalAccess | string | `"false"` | Allows or disallows loading and browsing external STAC data |
 | app.SB_catalogUrl | string | `"https://subdomain.example.com/catalog/"` | URL of the STAC catalog |
+| app.SB_detectLocaleFromBrowser | string | `"true"` | Detect locale from user |
 | app.SB_historyMode | string | `"history"` | Allows search engines to better crawl STAC Browser |
 | app.oidc_client_id | string | `""` | OIDC Public Client ID |
 | app.oidc_endpoint | string | `""` | OIDC End Point |
