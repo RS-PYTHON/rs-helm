@@ -58,6 +58,8 @@ spec:
         env:
         - name: SB_allowExternalAccess
           value: {{ .Values.app.SB_allowExternalAccess | quote }}
+        - name: SB_detectLocaleFromBrowser
+          value: {{ .Values.app.SB_detectLocaleFromBrowser | quote }}
         - name: SB_historyMode
           value: {{ .Values.app.SB_historyMode }}
         - name: SB_catalogUrl
