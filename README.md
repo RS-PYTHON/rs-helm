@@ -47,7 +47,7 @@ A simple mock for DPR processor.
 ## [stac-browser](charts/stac-browser/README.md)
 
 A simple chart for the STAC browser.
-Note that because of bug <https://github.com/radiantearth/stac-browser/issues/479> the actual URL will be will be `{{ .Release.Name }}.{{ .Values.ingress.host }}`
+Note that because of bug <https://github.com/radiantearth/stac-browser/issues/479> the ingress path is forced to `/`.
 
 ---
 
