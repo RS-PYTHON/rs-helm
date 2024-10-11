@@ -61,8 +61,10 @@ spec:
           protocol: TCP
           containerPort: {{ .Values.app.port }}
         envFrom:
-        - secretRef:
-            name: auxip-adgs
+        {{- range $k, $v := .Values.app.station }}
+          - secretRef:
+            name: auxip-{{ $k }}
+        {{- end }}
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}

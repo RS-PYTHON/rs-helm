@@ -68,12 +68,10 @@ spec:
           protocol: TCP
           containerPort: {{ .Values.app.port }}
         envFrom:
-        - secretRef:
-            name: cadip-cadip
-        - secretRef:
-            name: cadip-sgs
-        - secretRef:
-            name: cadip-mti
+        {{- range $k, $v := .Values.app.station }}
+          - secretRef:
+            name: cadip-{{ $k }}
+        {{- end }}
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}

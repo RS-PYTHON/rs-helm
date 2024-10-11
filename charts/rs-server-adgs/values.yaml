@@ -39,9 +39,10 @@ app:
   # -- The way the token for the external stations is loaded: own module or let eodag to do it (set it to false)
   useTokenModule: true
   station:
-    endpoint:
-      # -- ADGS URL
-      url: http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/Products      
+    adgs:
+      endpoint:
+        # -- ADGS URL
+        url: http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/Products      
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
 
