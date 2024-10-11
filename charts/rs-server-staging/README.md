@@ -20,7 +20,7 @@ RS SERVER STAGING
 | app.openapiConfig | string | `"openapi.json"` | Config file name for the application |
 | app.port | int | `8000` | Port for the application |
 | app.pygeoapiConfig | string | `"config.yml"` | Config file name for the application |
-| app.stations | list | `["auxip-adgs","cadip-cadip","cadip-sgs","cadip-mti"]` | List of configured stations (expect a secret with the same name) |
+| app.station | object | `{"adgs":{"type":"auxip"},"cadip":{"type":"cadip"},"mti":{"type":"cadip"},"sgs":{"type":"cadip"}}` | List of configured stations (expect a secret with the same name) |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service (internal) |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
