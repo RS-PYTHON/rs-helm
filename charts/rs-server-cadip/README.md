@@ -23,6 +23,7 @@ RS SERVER CADIP
 | app.station.cadip | object | `{"endpoint":{"url":{"file":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Files","root":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","session":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Sessions"}}}` | CADIP station name |
 | app.station.cadip.endpoint.url | object | `{"file":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Files","root":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","session":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Sessions"}` | CADIP station URL |
 | app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
+| app.stations | list | `["cadip-cadip","cadip-sgs","cadip-mti"]` | List of configured stations (expect a secret with the same name) |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | app.useTokenModule | bool | `true` | The way the token for the external stations is loaded: own module or let eodag to do it (set it to false) |
 | app.workDir | string | `"/app"` | Working directory for the application |
