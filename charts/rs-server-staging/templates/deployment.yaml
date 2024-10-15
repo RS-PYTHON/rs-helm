@@ -65,7 +65,7 @@ spec:
         envFrom:
         {{- range $k, $v := .Values.app.station }}
           - secretRef:
-            name: {{ $v.type }}-{{ $k }}
+              name: {{ $v.type }}-{{ $k }}
         {{- end }}
         env:
         - name: RSPY_UAC_CHECK_URL
