@@ -79,6 +79,9 @@ data:
             completionTimeFromAscendingNode:
               - null
               - '$.PublicationDate'
+            href:
+              - null
+              - '{{ $v.endpoint.url.file }}({id})/$value'
             geometry: 'POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))'
             downloadLink: '{{ $v.endpoint.url.file }}({id})/$value'
             title: '$.Name'
@@ -196,6 +199,9 @@ data:
             completionTimeFromAscendingNode:
               - null
               - "$.PublicationDate"
+            href:
+              - null
+              - '{{ $v.endpoint.url.file }}({id})/$value'            
             geometry: "POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))"
             title: "$.Name"
 
@@ -292,6 +298,9 @@ data:
             completionTimeFromAscendingNode:
               - null
               - '$.PublicationDate'
+            href:
+              - null
+              - '{{ $v.endpoint.url.file }}({id})/$value'              
             geometry: 'POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))'
             downloadLink: '{{ $v.endpoint.url.file }}({id})/$value'
             title: '$.Name'
@@ -409,6 +418,9 @@ data:
             completionTimeFromAscendingNode:
               - null
               - "$.PublicationDate"
+            href:
+              - null
+              - '{{ $v.endpoint.url.file }}({id})/$value'              
             geometry: "POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))"
             title: "$.Name"
 
