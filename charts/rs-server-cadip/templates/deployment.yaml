@@ -69,7 +69,7 @@ spec:
           containerPort: {{ .Values.app.port }}
         envFrom:
         {{- range $k, $v := .Values.app.station }}
-          - secretRef:
+        - secretRef:
             name: cadip-{{ $k }}
         {{- end }}
         env:
