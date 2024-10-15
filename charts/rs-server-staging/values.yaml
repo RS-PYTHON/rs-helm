@@ -38,13 +38,17 @@ app:
   # -- Config file name for the application
   openapiConfig: openapi.json
   # -- Catalog pod address
-  endpointCatalog: http://rs-server-catalog-svc.processing.svc.cluster.local:8080
+  endpointCatalog: http://rs-server-catalog-svc.processing.svc.cluster.local:8080  
   # -- List of configured stations (expect a secret with the same name)
-  stations:
-    - auxip-adgs
-    - cadip-cadip
-    - cadip-sgs
-    - cadip-mti
+  station:
+    adgs:
+      type: auxip
+    cadip:
+      type: cadip
+    sgs:
+      type: cadip
+    mti:
+      type: cadip
 
 dask:
   # -- Dask gateway address
@@ -53,6 +57,7 @@ dask:
   gateway_auth_type: jupyterhub
   # -- Jupyter API Token when dask.jupyterhub=jupyterhub
   jupyterhub_api_token: JUPYTER_API_TOKEN_HERE
+  
 
 probe:
   liveness:
@@ -156,7 +161,7 @@ image:
   # -- Image name
   name: rs-server-staging
   # -- Image version, can be a tag or a digest
-  version: 0.2a4
+  version: 0.2a5
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred

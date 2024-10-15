@@ -21,7 +21,7 @@ RS SERVER STAGING
 | app.openapiConfig | string | `"openapi.json"` | Config file name for the application |
 | app.port | int | `8000` | Port for the application |
 | app.pygeoapiConfig | string | `"config.yml"` | Config file name for the application |
-| app.stations | list | `["auxip-adgs","cadip-cadip","cadip-sgs","cadip-mti"]` | List of configured stations (expect a secret with the same name) |
+| app.station | object | `{"adgs":{"type":"auxip"},"cadip":{"type":"cadip"},"mti":{"type":"cadip"},"sgs":{"type":"cadip"}}` | List of configured stations (expect a secret with the same name) |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service (internal) |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
@@ -36,7 +36,7 @@ RS SERVER STAGING
 | image.name | string | `"rs-server-staging"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"0.2a4"` | Image version, can be a tag or a digest |
+| image.version | string | `"0.2a5"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
