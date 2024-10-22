@@ -40,6 +40,10 @@ spec:
         type: {{ .Values.namespace }}
     spec:
       terminationGracePeriodSeconds: 30
+      initContainers:
+      - name: init-{{ .Release.Name }}
+        image: alpine/curl
+        command: 
       containers:
       - name: {{ .Release.Name }}
         image: "{{ template "mychart.image" .Values.image }}"
