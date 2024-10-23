@@ -132,6 +132,9 @@ data:
             SessionId:
               - null
               - "$.SessionId"
+            Satellite:
+              - null
+              - "$.Satellite"
             NumChannels:
               - null
               - "$.NumChannels"
