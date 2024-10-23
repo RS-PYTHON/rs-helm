@@ -24,7 +24,7 @@ data:
       {{ $k }}:
         auth:
           type: TokenAuth
-          auth_uri: '{{ $v.endpoint.url.root }}/oauth2/token'
+          auth_uri: '{{ $v.endpoint.url.token }}'
           token_type: json
           token_key: access_token
           request_method: POST          
@@ -35,7 +35,7 @@ data:
 
         search:
           type: ODataV4Search
-          api_endpoint: '{{ $v.endpoint.url.file }}'
+          api_endpoint: '{{ $v.endpoint.url.odata }}/Files'
           need_auth: true
           results_entry: responses | $
           metadata_mapping:
@@ -81,9 +81,9 @@ data:
               - '$.PublicationDate'
             href:
               - null
-              - '{{ $v.endpoint.url.file }}({id})/$value'
+              - '{{ $v.endpoint.url.odata }}/Files({id})/$value'
             geometry: 'POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))'
-            downloadLink: '{{ $v.endpoint.url.file }}({id})/$value'
+            downloadLink: '{{ $v.endpoint.url.odata }}/Files({id})/$value'
             title: '$.Name'
 
           free_text_search_operations:
@@ -104,15 +104,15 @@ data:
 
         download:
           type: HTTPDownload
-          base_uri: '{{ $v.endpoint.url.file }}'
+          base_uri: '{{ $v.endpoint.url.odata }}/Files'
           metadata_mapping:
             uid: '$.Id'
-            downloadLink: '{{ $v.endpoint.url.file }}({uid})/$value'
+            downloadLink: '{{ $v.endpoint.url.odata }}/Files({uid})/$value'
 
       {{ $k }}_session:
         auth:
           type: TokenAuth
-          auth_uri: '{{ $v.endpoint.url.root }}/oauth2/token'
+          auth_uri: '{{ $v.endpoint.url.token }}'
           token_type: json
           token_key: access_token
           request_method: POST          
@@ -122,7 +122,7 @@ data:
             collection: Sentinel1
         search:
           type: ODataV4Search
-          api_endpoint: '{{ $v.endpoint.url.session }}'
+          api_endpoint: '{{ $v.endpoint.url.odata }}/Sessions'
           need_auth: true
           results_entry: responses | $
           metadata_mapping:
@@ -201,7 +201,7 @@ data:
               - "$.PublicationDate"
             href:
               - null
-              - '{{ $v.endpoint.url.file }}({id})/$value'            
+              - '{{ $v.endpoint.url.odata }}/Sessions({id})/$value'
             geometry: "POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))"
             title: "$.Name"
 
@@ -225,10 +225,10 @@ data:
 
         download:
           type: HTTPDownload
-          base_uri: '{{ $v.endpoint.url.session }}'
+          base_uri: '{{ $v.endpoint.url.odata }}/Sessions'
           metadata_mapping:
             uid: "$.Id"
-            downloadLink: "{{ $v.endpoint.url.session }}({uid})/$value"
+            downloadLink: "{{ $v.endpoint.url.odata }}/Sessions({uid})/$value"
     {{ end }}
 ---
 apiVersion: v1
@@ -254,7 +254,7 @@ data:
 
         search:
           type: ODataV4Search
-          api_endpoint: '{{ $v.endpoint.url.file }}'
+          api_endpoint: '{{ $v.endpoint.url.odata }}/Files'
           need_auth: true
           results_entry: responses | $
           metadata_mapping:
@@ -300,9 +300,9 @@ data:
               - '$.PublicationDate'
             href:
               - null
-              - '{{ $v.endpoint.url.file }}({id})/$value'              
+              - '{{ $v.endpoint.url.odata }}/Files({id})/$value'
             geometry: 'POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))'
-            downloadLink: '{{ $v.endpoint.url.file }}({id})/$value'
+            downloadLink: '{{ $v.endpoint.url.odata }}/Files({id})/$value'
             title: '$.Name'
 
           free_text_search_operations:
@@ -323,10 +323,10 @@ data:
 
         download:
           type: HTTPDownload
-          base_uri: '{{ $v.endpoint.url.file }}'
+          base_uri: '{{ $v.endpoint.url.odata }}/Files'
           metadata_mapping:
             uid: '$.Id'
-            downloadLink: '{{ $v.endpoint.url.file }}({uid})/$value'
+            downloadLink: '{{ $v.endpoint.url.odata }}/Files({uid})/$value'
 
       {{ $k }}_session:
         auth:
@@ -341,7 +341,7 @@ data:
             collection: Sentinel1
         search:
           type: ODataV4Search
-          api_endpoint: '{{ $v.endpoint.url.session }}'
+          api_endpoint: '{{ $v.endpoint.url.odata }}/Sessions'
           need_auth: true
           results_entry: responses | $
           metadata_mapping:
@@ -420,7 +420,7 @@ data:
               - "$.PublicationDate"
             href:
               - null
-              - '{{ $v.endpoint.url.file }}({id})/$value'              
+              - '{{ $v.endpoint.url.odata }}/Sessions({id})/$value'
             geometry: "POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))"
             title: "$.Name"
 
@@ -444,10 +444,10 @@ data:
 
         download:
           type: HTTPDownload
-          base_uri: '{{ $v.endpoint.url.session }}'
+          base_uri: '{{ $v.endpoint.url.odata }}/Sessions'
           metadata_mapping:
             uid: "$.Id"
-            downloadLink: "{{ $v.endpoint.url.session }}({uid})/$value"
+            downloadLink: "{{ $v.endpoint.url.odata }}/Sessions({uid})/$value"
     {{ end }}
 ---
 apiVersion: v1
