@@ -47,9 +47,15 @@ data:
               ContentLength:
                 - null
                 - '$.ContentLength'
+               ContentType:
+                - null
+                - '$.ContentType'
               PublicationDate:
                 - null
                 - '$.PublicationDate'
+              EvictionDate:
+                - null
+                - '$.EvictionDate'
               Start:
                 - null
                 - '$.ContentDate.Start'
@@ -61,7 +67,25 @@ data:
                   - '$.PublicationDate'
               completionTimeFromAscendingNode:
                   - null
-                  - '$.PublicationDate'
+                  - '$.PublicationDate'      
+              ChecksumValue:
+                - null
+                - '$.Checksum[0].Value'
+              attr_ptype:
+                  - null
+                  - '$.attr_ptype'
+              attr_serial_identif:
+                  - null
+                  - '$.attr_serial_identif'
+              attr_platform_short_name:
+                  - null
+                  - '$.attr_platform_short_name'
+              attr_processing_date:
+                  - null
+                  - '$.attr_processing_date'
+              attrs:
+                  - null
+                  - '$.Attributes'
               geometry: 'POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))'
               downloadLink: '{{ $v.endpoint.url }}({id})/$value'
               title: '$.Name'
@@ -74,10 +98,13 @@ data:
                   and:
                     - 'PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}'
                     - 'PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}'
-
+                    - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq '{attr_ptype}')"
+                    - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq '{attr_serial_identif}')"
+                    - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq '{attr_platform_short_name}')"
+                    - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'processingDate' and att/OData.CSC.StringAttribute/Value eq '{attr_processing_date#to_iso_utc_datetime}')"
           pagination:
             max_items_per_page: 1000
-            next_page_url_tpl: '{url}?{search}&$top={items_per_page}'
+            next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$expand=Attributes'
             total_items_nb_key_path: '$.total'
 
         download:
@@ -161,3 +188,95 @@ data:
       "{{ $k }}": "{{ $v.endpoint.url }}"
       {{- end }}
     }
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-search-service-config
+  namespace: {{ .Values.namespace }}
+data:
+  {{ .Values.app.cadipSearchConfigFile }}: |-
+  collections:
+  - id: s1_adgs_OPER_AUX_ECMWFD_PDMC
+    station: adgs
+    query:
+      productType: OPER_AUX_ECMWFD_PDMC
+    stac_extensions: [ "https://stac-extensions.github.io/eo/v1.0.0/schema.json", "https://stac-extensions.github.io/projection/v1.0.0/schema.json", "https://stac-extensions.github.io/view/v1.0.0/schema.json" ]
+    title: 'Sentinel-1 Inuvik CADIP sessions'
+    description: 'Sentinel-1 Inuvik CADIP sessions'
+    license: other
+    extent:
+      spatial:
+        bbox: [[ -180, -82.85, 180, 82.82 ]]
+      temporal:
+        interval: [[ '2024-06-12T02:57:21.459000Z', '2024-08-22T11:30:12.767000Z' ]]
+    links:
+      - rel: license
+        href: 'https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf'
+        title: 'Legal notice on the use of Copernicus Sentinel Data and Service Information'
+    providers:
+      - name: 'European Union/ESA/Copernicus'
+        roles:
+          - producer
+          - licensor
+        url: 'https://sentiwiki.copernicus.eu/web/s1-mission'
+      - name: 'Reference System'
+        roles:
+          - host
+        url: 'https://home.rs-python.eu/'
+
+  - id: s2_adgs2_AUX_OBMEMC
+    station: adgs2
+    query:
+      productType: AUX_OBMEMC
+    stac_extensions: [ "https://stac-extensions.github.io/eo/v1.0.0/schema.json", "https://stac-extensions.github.io/projection/v1.0.0/schema.json", "https://stac-extensions.github.io/view/v1.0.0/schema.json" ]
+    title: 'Sentinel-1 Inuvik CADIP sessions'
+    description: 'Sentinel-1 Inuvik CADIP sessions'
+    license: other
+    extent:
+      spatial:
+        bbox: [[ -180, -82.85, 180, 82.82 ]]
+      temporal:
+        interval: [[ '2024-06-12T02:57:21.459000Z', '2024-08-22T11:30:12.767000Z' ]]
+    links:
+      - rel: license
+        href: 'https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf'
+        title: 'Legal notice on the use of Copernicus Sentinel Data and Service Information'
+    providers:
+      - name: 'European Union/ESA/Copernicus'
+        roles:
+          - producer
+          - licensor
+        url: 'https://sentiwiki.copernicus.eu/web/s1-mission'
+      - name: 'Reference System'
+        roles:
+          - host
+        url: 'https://home.rs-python.eu/'
+
+  - id: aux_interval
+    station: adgs
+    query:
+      PublicationDate: 2023-01-01T12:00:00Z/2024-01-01T12:00:00Z
+    stac_extensions: [ "https://stac-extensions.github.io/eo/v1.0.0/schema.json", "https://stac-extensions.github.io/projection/v1.0.0/schema.json", "https://stac-extensions.github.io/view/v1.0.0/schema.json" ]
+    title: 'Sentinel-1 Inuvik CADIP sessions'
+    description: 'Sentinel-1 Inuvik CADIP sessions'
+    license: other
+    extent:
+      spatial:
+        bbox: [[ -180, -82.85, 180, 82.82 ]]
+      temporal:
+        interval: [[ '2024-06-12T02:57:21.459000Z', '2024-08-22T11:30:12.767000Z' ]]
+    links:
+      - rel: license
+        href: 'https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf'
+        title: 'Legal notice on the use of Copernicus Sentinel Data and Service Information'
+    providers:
+      - name: 'European Union/ESA/Copernicus'
+        roles:
+          - producer
+          - licensor
+        url: 'https://sentiwiki.copernicus.eu/web/s1-mission'
+      - name: 'Reference System'
+        roles:
+          - host
+        url: 'https://home.rs-python.eu/'
