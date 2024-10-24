@@ -89,10 +89,9 @@ data:
           free_text_search_operations:
             $filter:
               union: ' OR '
-              wrapper: '"{}"'
               operations:
                 and:
-                  - 'SessionID in {SessionIds}'
+                  - 'SessionID in ({SessionIds})'
                   - 'SessionID eq {SessionID}'
                   - 'PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}'
                   - 'PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}'
@@ -211,13 +210,12 @@ data:
           free_text_search_operations:
             $filter:
               union: " OR "
-              wrapper: '"{}"'
               operations:
                 and:
-                  - "SessionId in {SessionIds}"
+                  - "SessionId in ({SessionIds})"
                   - "SessionId eq {SessionId}"
                   - "Satellite eq {platform}"
-                  - "Satellite in {platforms}"
+                  - "Satellite in ({platforms})"
                   - "PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}"
                   - "PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}"
 
@@ -314,8 +312,8 @@ data:
               wrapper: '"{}"'
               operations:
                 and:
-                  - 'SessionID in {SessionIds}'
-                  - 'SessionID eq {SessionID}'
+                  - 'SessionID in ({SessionIds})'
+                  - 'SessionID eq ({SessionID})'
                   - 'PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}'
                   - 'PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}'
 
@@ -436,10 +434,10 @@ data:
               wrapper: '"{}"'
               operations:
                 and:
-                  - "SessionId in {SessionIds}"
+                  - "SessionId in ({SessionIds})"
                   - "SessionId eq {SessionId}"
                   - "Satellite eq {platform}"
-                  - "Satellite in {platforms}"
+                  - "Satellite in ({platforms})"
                   - "PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}"
                   - "PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}"
 
