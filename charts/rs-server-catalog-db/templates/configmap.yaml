@@ -31,7 +31,7 @@ data:
     ON CONFLICT DO NOTHING;
 
     UPDATE pgstac.stac_extensions
-    SET content='$(cat /opt/pgstack_json_schema/{{ join "_" (slice ( . | splitList "/" ) 3 ) }})''
+    SET content='$(cat /opt/pgstack_json_schema/{{ join "_" (slice ( . | splitList "/" ) 3 ) }})'
     WHERE url={{ . | squote }} ;
 
     EOSQL
