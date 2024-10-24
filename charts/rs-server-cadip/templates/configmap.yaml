@@ -231,9 +231,10 @@ data:
                   - "Satellite in ({platforms})"
                   - "PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}"
                   - "PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}"
+                  - "Retransfer eq {Retransfer}"
 
           pagination:
-            max_items_per_page: 100
+            max_items_per_page: 1000
             next_page_url_tpl: "{url}?{search}&$top={items_per_page}&$expand=Files"
             total_items_nb_key_path: "$.total"
 
@@ -477,7 +478,7 @@ data:
                   - "PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}"
 
           pagination:
-            max_items_per_page: 100
+            max_items_per_page: 1000
             next_page_url_tpl: "{url}?{search}&$top={items_per_page}&$expand=Files"
             total_items_nb_key_path: "$.total"
 
