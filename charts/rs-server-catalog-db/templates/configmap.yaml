@@ -29,6 +29,11 @@ data:
     VALUES
       ({{ . | squote }})
     ON CONFLICT DO NOTHING;
+
+    UPDATE pgstac.stac_extensions
+    SET content='$(cat /opt/pgstack_json_schema/{{ join "_" (slice ( . | splitList "/" ) 3 ) }})''
+    WHERE url={{ . | squote }} ;
+
     EOSQL
     {{ end }}
     {{ end }}
@@ -41,6 +46,32 @@ data:
       ({{ . | squote }})
     ON CONFLICT DO NOTHING;
     EOSQL
+    {{ end }}
+    {{ end }}
+    
+    {{ end }}
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-download-json-schema
+  namespace: {{ .Values.namespace }}
+  
+data:
+  {{ .Values.app.pgstac_init_download_schema_script }}: |-
+    {{ if .Values.app.stac }}
+    #!/bin/sh
+    {{ if .Values.app.stac.extensions }}
+    {{ range .Values.app.stac.extensions }}
+
+    url={{ . }} ;
+
+    filename=$(echo ${url} | awk -F'/' '{print $4, $5, $6}' OFS="_") ;
+
+    curl -s --create-dirs --output-dir /opt/pgstack_json_schema/ -o ${filename} ${url} ;
+
     {{ end }}
     {{ end }}
     

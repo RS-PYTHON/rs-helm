@@ -43,7 +43,12 @@ spec:
       initContainers:
       - name: init-{{ .Release.Name }}
         image: alpine/curl
-        command: 
+        command: [ "/scripts/init/download.sh" ]
+        volumeMounts:
+          - name: download-json-schema
+            mountPath: /scripts/init/
+          - name: pgstack-json-schema
+            mountPath: /opt/pgstack_json_schema/
       containers:
       - name: {{ .Release.Name }}
         image: "{{ template "mychart.image" .Values.image }}"
@@ -60,8 +65,10 @@ spec:
           protocol: TCP
           containerPort: 5432
         volumeMounts:
-          - mountPath: /var/lib/postgresql/data
-            name: pgstac-pgdata
+          - name: pgstac-pgdata
+            mountPath: /var/lib/postgresql/data
+          - name: pgstack-json-schema
+            mountPath: /opt/pgstack_json_schema/
         env:
         - name: POSTGRES_PORT
           value: {{ .Values.postgres.port | quote }}
@@ -125,4 +132,10 @@ spec:
           persistentVolumeClaim:
             claimName: {{ .Release.Name }}-pvc
             readOnly: false
+        - name: download-json-schema
+          configMap:
+            name: {{ .Release.Name }}-download-json-schema
+            defaultMode: 0744
+        - name: pgstack-json-schema
+          emptyDir: {}
   revisionHistoryLimit: 10

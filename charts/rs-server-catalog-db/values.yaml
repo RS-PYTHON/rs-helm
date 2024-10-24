@@ -17,6 +17,7 @@ namespace: database
 
 app:
   pgstac_post_actions_script: pgstac_post_actions.sh
+  pgstac_init_download_schema_script: download.sh
   stac:
     extensions:
       - https://stac-extensions.github.io/eo/v1.1.0/schema.json
