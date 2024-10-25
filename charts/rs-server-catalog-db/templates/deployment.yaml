@@ -43,7 +43,7 @@ spec:
       initContainers:
       - name: init-{{ .Release.Name }}
         image: alpine/curl
-        command: [ "/scripts/init/download.sh" ]
+        command: [ "/scripts/init/{{ .Values.app.pgstac_init_download_schema_script }}" ]
         volumeMounts:
           - name: download-json-schema
             mountPath: /scripts/init/
@@ -69,6 +69,9 @@ spec:
             mountPath: /var/lib/postgresql/data
           - name: pgstack-json-schema
             mountPath: /opt/pgstack_json_schema/
+          - name: patch-post-action
+            mountPath: /docker-entrypoint-initdb.d/{{ .Values.app.pgstac_post_actions_script }}
+            subPath: {{ .Values.app.pgstac_post_actions_script }}
         env:
         - name: POSTGRES_PORT
           value: {{ .Values.postgres.port | quote }}
@@ -135,6 +138,10 @@ spec:
         - name: download-json-schema
           configMap:
             name: {{ .Release.Name }}-download-json-schema
+            defaultMode: 0744
+        - name: patch-post-action
+          configMap:
+            name: {{ .Release.Name }}-patch-post-action
             defaultMode: 0744
         - name: pgstack-json-schema
           emptyDir: {}

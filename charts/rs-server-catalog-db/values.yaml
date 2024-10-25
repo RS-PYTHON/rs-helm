@@ -16,7 +16,7 @@
 namespace: database
 
 app:
-  pgstac_post_actions_script: pgstac_post_actions.sh
+  pgstac_post_actions_script: 999_post_actions.sh
   pgstac_init_download_schema_script: download.sh
   stac:
     extensions:

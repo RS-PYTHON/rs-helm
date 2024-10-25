@@ -15,7 +15,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}-add-queryables
+  name: {{ .Release.Name }}-patch-queryables
   namespace: {{ .Values.namespace }}
   
 data:
@@ -61,10 +61,10 @@ metadata:
   
 data:
   {{ .Values.app.pgstac_init_download_schema_script }}: |-
-    {{ if .Values.app.stac }}
     #!/bin/sh
-    {{ if .Values.app.stac.extensions }}
-    {{ range .Values.app.stac.extensions }}
+    {{- if .Values.app.stac }}
+    {{- if .Values.app.stac.extensions }}
+    {{- range .Values.app.stac.extensions }}
 
     url={{ . }} ;
 
@@ -72,7 +72,7 @@ data:
 
     curl -s --create-dirs --output-dir /opt/pgstack_json_schema/ -o ${filename} ${url} ;
 
-    {{ end }}
-    {{ end }}
+    {{- end }}
+    {{- end }}
     
-    {{ end }}
+    {{- end }}
