@@ -113,7 +113,7 @@ data:
           metadata_mapping:
               uid: '$.Id'
               downloadLink: '{{ $v.endpoint.url }}({uid})/$value'
-    {{- end }}
+    {{ end }}
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -216,7 +216,7 @@ data:
           metadata_mapping:
               uid: '$.Id'
               downloadLink: '{{ $v.endpoint.url }}({uid})/$value'
-    {{- end }}  
+    {{ end }}  
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -224,7 +224,7 @@ metadata:
   name: {{ .Release.Name }}-search-service-config
   namespace: {{ .Values.namespace }}
 data:
-  {{ .Values.app.cadipSearchConfigFile }}: |-
+  {{ .Values.app.adgsSearchConfigFile }}: |-
   collections:
   - id: s1_adgs_OPER_AUX_ECMWFD_PDMC
     station: adgs
