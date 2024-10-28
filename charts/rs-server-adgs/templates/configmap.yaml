@@ -39,8 +39,8 @@ data:
           results_entry: responses | $
           metadata_mapping:
               id:
-                - null
-                - '$.Id'
+                  - null
+                  - '$.Id'
               Name:
                 - null
                 - '$.Name'
@@ -63,11 +63,11 @@ data:
                 - null
                 - '$.ContentDate.End'
               startTimeFromAscendingNode:
-                - null
-                - '$.PublicationDate'
+                  - null
+                  - '$.PublicationDate'
               completionTimeFromAscendingNode:
-                - null
-                - '$.PublicationDate'      
+                  - null
+                  - '$.PublicationDate'      
               ChecksumValue:
                 - null
                 - '$.Checksum[0].Value'
@@ -114,6 +114,14 @@ data:
               uid: '$.Id'
               downloadLink: '{{ $v.endpoint.url }}({uid})/$value'
     {{- end }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-token-service-config
+  namespace: {{ .Values.namespace }}
+
+data:
   {{ .Values.app.eodagConfigFileTokenModule }}: |-
     {{- range $k, $v := .Values.app.station }}
       {{ $k }}:
@@ -142,9 +150,15 @@ data:
               ContentLength:
                 - null
                 - '$.ContentLength'
+               ContentType:
+                - null
+                - '$.ContentType'
               PublicationDate:
                 - null
                 - '$.PublicationDate'
+              EvictionDate:
+                - null
+                - '$.EvictionDate'
               Start:
                 - null
                 - '$.ContentDate.Start'
@@ -156,7 +170,25 @@ data:
                   - '$.PublicationDate'
               completionTimeFromAscendingNode:
                   - null
-                  - '$.PublicationDate'
+                  - '$.PublicationDate'      
+              ChecksumValue:
+                - null
+                - '$.Checksum[0].Value'
+              attr_ptype:
+                  - null
+                  - '$.attr_ptype'
+              attr_serial_identif:
+                  - null
+                  - '$.attr_serial_identif'
+              attr_platform_short_name:
+                  - null
+                  - '$.attr_platform_short_name'
+              attr_processing_date:
+                  - null
+                  - '$.attr_processing_date'
+              attrs:
+                  - null
+                  - '$.Attributes'
               geometry: 'POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))'
               downloadLink: '{{ $v.endpoint.url }}({id})/$value'
               title: '$.Name'
@@ -169,10 +201,13 @@ data:
                   and:
                     - 'PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}'
                     - 'PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}'
-
+                    - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq '{attr_ptype}')"
+                    - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq '{attr_serial_identif}')"
+                    - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq '{attr_platform_short_name}')"
+                    - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'processingDate' and att/OData.CSC.StringAttribute/Value eq '{attr_processing_date#to_iso_utc_datetime}')"
           pagination:
             max_items_per_page: 1000
-            next_page_url_tpl: '{url}?{search}&$top={items_per_page}'
+            next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$expand=Attributes'
             total_items_nb_key_path: '$.total'
 
         download:
@@ -181,13 +216,7 @@ data:
           metadata_mapping:
               uid: '$.Id'
               downloadLink: '{{ $v.endpoint.url }}({uid})/$value'
-    {{- end }}
-  {{ .Values.app.stationConfigFile }}: |-
-    {
-      {{- range $k, $v := .Values.app.station }}
-      "{{ $k }}": "{{ $v.endpoint.url }}"
-      {{- end }}
-    }
+    {{- end }}  
 ---
 apiVersion: v1
 kind: ConfigMap
