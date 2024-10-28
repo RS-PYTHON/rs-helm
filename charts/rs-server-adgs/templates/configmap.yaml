@@ -39,8 +39,8 @@ data:
           results_entry: responses | $
           metadata_mapping:
               id:
-                  - null
-                  - '$.Id'
+                - null
+                - '$.Id'
               Name:
                 - null
                 - '$.Name'
@@ -63,11 +63,11 @@ data:
                 - null
                 - '$.ContentDate.End'
               startTimeFromAscendingNode:
-                  - null
-                  - '$.PublicationDate'
+                - null
+                - '$.PublicationDate'
               completionTimeFromAscendingNode:
-                  - null
-                  - '$.PublicationDate'      
+                - null
+                - '$.PublicationDate'      
               ChecksumValue:
                 - null
                 - '$.Checksum[0].Value'
@@ -188,7 +188,7 @@ data:
       "{{ $k }}": "{{ $v.endpoint.url }}"
       {{- end }}
     }
-
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
