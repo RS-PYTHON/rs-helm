@@ -179,7 +179,9 @@ ingress:
   # -- Ingress host name
   host: subdomain.example.com
   # -- Ingress path
-  path: /adgs
+  path:
+    - /adgs
+    - /auxip
 
 resources:
   request:
