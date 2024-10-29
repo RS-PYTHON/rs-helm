@@ -47,10 +47,10 @@ data:
               - '$.Name'
             SessionIds:
               - null
-              - '$.SessionID'
-            SessionID:
+              - '$.SessionId'
+            SessionId:
               - null
-              - '$.SessionID'
+              - '$.SessionId'
             Channel:
               - null
               - '$.Channel'
@@ -92,8 +92,8 @@ data:
               wrapper: '{}'
               operations:
                 and:
-                  - 'SessionID in ({SessionIds})'
-                  - 'SessionID eq {SessionID}'
+                  - 'SessionId in ({SessionIds})'
+                  - 'SessionId eq {SessionId}'
                   - 'PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}'
                   - 'PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}'
 
@@ -292,10 +292,10 @@ data:
               - '$.Name'
             SessionIds:
               - null
-              - '$.SessionID'
-            SessionID:
+              - '$.SessionId'
+            SessionId:
               - null
-              - '$.SessionID'
+              - '$.SessionId'
             Channel:
               - null
               - '$.Channel'
@@ -337,8 +337,8 @@ data:
               wrapper: '{}'
               operations:
                 and:
-                  - 'SessionID in ({SessionIds})'
-                  - 'SessionID eq {SessionID}'
+                  - 'SessionId in ({SessionIds})'
+                  - 'SessionId eq {SessionId}'
                   - 'PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}'
                   - 'PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}'
 
