@@ -460,7 +460,7 @@ data:
               - "$.PublicationDate"
             href:
               - null
-              - '{{ $v.endpoint.url.odata }}/Sessions({id})/$value'
+              - '{{ $v.endpoint.url.odata }}/Files({id})/$value'
             geometry: "POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))"
             title: "$.Name"
 
@@ -495,10 +495,10 @@ data:
 
         download:
           type: HTTPDownload
-          base_uri: '{{ $v.endpoint.url.odata }}/Sessions'
+          base_uri: '{{ $v.endpoint.url.odata }}/Files'
           metadata_mapping:
             uid: "$.Id"
-            downloadLink: "{{ $v.endpoint.url.odata }}/Sessions({uid})/$value"
+            downloadLink: "{{ $v.endpoint.url.odata }}/Files({uid})/$value"
     {{ end }}
 ---
 apiVersion: v1
