@@ -39,15 +39,15 @@ data:
           results_entry: responses | $
           metadata_mapping:
               id:
-                  - null
-                  - '$.Id'
+                - null
+                - '$.Id'
               Name:
                 - null
                 - '$.Name'
               ContentLength:
                 - null
                 - '$.ContentLength'
-               ContentType:
+              ContentType:
                 - null
                 - '$.ContentType'
               PublicationDate:
@@ -63,29 +63,32 @@ data:
                 - null
                 - '$.ContentDate.End'
               startTimeFromAscendingNode:
-                  - null
-                  - '$.PublicationDate'
+                - null
+                - '$.PublicationDate'
               completionTimeFromAscendingNode:
-                  - null
-                  - '$.PublicationDate'      
+                - null
+                - '$.PublicationDate'      
               ChecksumValue:
                 - null
                 - '$.Checksum[0].Value'
               attr_ptype:
-                  - null
-                  - '$.attr_ptype'
+                - null
+                - '$.attr_ptype'
               attr_serial_identif:
-                  - null
-                  - '$.attr_serial_identif'
+                - null
+                - '$.attr_serial_identif'
               attr_platform_short_name:
-                  - null
-                  - '$.attr_platform_short_name'
+                - null
+                - '$.attr_platform_short_name'
               attr_processing_date:
-                  - null
-                  - '$.attr_processing_date'
+                - null
+                - '$.attr_processing_date'
               attrs:
-                  - null
-                  - '$.Attributes'
+                - null
+                - '$.Attributes'
+              href:
+                - null
+                - '{{ $v.endpoint.url }}({id})/$value'
               geometry: 'POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))'
               downloadLink: '{{ $v.endpoint.url }}({id})/$value'
               title: '$.Name'
@@ -142,15 +145,15 @@ data:
           results_entry: responses | $
           metadata_mapping:
               id:
-                  - null
-                  - '$.Id'
+                - null
+                - '$.Id'
               Name:
                 - null
                 - '$.Name'
               ContentLength:
                 - null
                 - '$.ContentLength'
-               ContentType:
+              ContentType:
                 - null
                 - '$.ContentType'
               PublicationDate:
@@ -166,29 +169,32 @@ data:
                 - null
                 - '$.ContentDate.End'
               startTimeFromAscendingNode:
-                  - null
-                  - '$.PublicationDate'
+                - null
+                - '$.PublicationDate'
               completionTimeFromAscendingNode:
-                  - null
-                  - '$.PublicationDate'      
+                - null
+                - '$.PublicationDate'      
               ChecksumValue:
                 - null
                 - '$.Checksum[0].Value'
               attr_ptype:
-                  - null
-                  - '$.attr_ptype'
+                - null
+                - '$.attr_ptype'
               attr_serial_identif:
-                  - null
-                  - '$.attr_serial_identif'
+                - null
+                - '$.attr_serial_identif'
               attr_platform_short_name:
-                  - null
-                  - '$.attr_platform_short_name'
+                - null
+                - '$.attr_platform_short_name'
               attr_processing_date:
-                  - null
-                  - '$.attr_processing_date'
+                - null
+                - '$.attr_processing_date'
               attrs:
-                  - null
-                  - '$.Attributes'
+                - null
+                - '$.Attributes'            
+              href:
+                - null
+                - '{{ $v.endpoint.url }}({id})/$value'
               geometry: 'POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))'
               downloadLink: '{{ $v.endpoint.url }}({id})/$value'
               title: '$.Name'
