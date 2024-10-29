@@ -173,7 +173,7 @@ data:
                 - '$.PublicationDate'
               completionTimeFromAscendingNode:
                 - null
-                - '$.PublicationDate'      
+                - '$.PublicationDate'
               ChecksumValue:
                 - null
                 - '$.Checksum[0].Value'
