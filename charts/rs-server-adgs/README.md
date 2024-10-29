@@ -15,6 +15,7 @@ RS SERVER ADGS
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
+| app.adgsSearchConfigFile | string | `"adgs_search_config.yaml"` |  |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.eodagConfigFile | string | `"adgs_ws_config.yaml"` | Set properly the EODAG_ADGS_CONFIG env var. |
 | app.eodagConfigFileTokenModule | string | `"adgs_ws_config_token_module.yaml"` |  |
