@@ -39,7 +39,7 @@ RS SERVER ADGS
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
-| ingress.path | string | `"/adgs"` | Ingress path |
+| ingress.path | list | `["/adgs","/auxip"]` | Ingress path |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
 | obs.region | string | `"sbg"` | Region of the object storage service |
