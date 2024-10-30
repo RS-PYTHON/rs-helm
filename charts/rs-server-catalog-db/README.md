@@ -14,6 +14,10 @@ RS SERVER CATALOG DB
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| app.pgstac_init_download_schema_script | string | `"download.sh"` | Script's name to download the STAC extensions schema |
+| app.pgstac_post_actions_script | string | `"999_post_actions.sh"` | Script's name to be executed after pgstack init, must after `999_initpgstac.sh` |
+| app.stac.extensions | list | `["https://stac-extensions.github.io/eo/v1.1.0/schema.json","https://stac-extensions.github.io/sat/v1.0.0/schema.json","https://stac-extensions.github.io/projection/v1.1.0/schema.json","https://stac-extensions.github.io/processing/v1.2.0/schema.json","https://stac-extensions.github.io/product/v0.1.0/schema.json","https://stac-extensions.github.io/sar/v1.0.0/schema.json","https://stac-extensions.github.io/raster/v1.1.0/schema.json","https://stac-extensions.github.io/authentication/v1.1.0/schema.json","https://stac-extensions.github.io/alternate-assets/v1.2.0/schema.json","https://stac-extensions.github.io/timestamps/v1.1.0/schema.json"]` | Additionnals STAC extensions |
+| app.stac.queryables | list | `["eo:snow_cover","sat:absolute_orbit","sat:relative_orbit","processing:level","processing:facility","processing:datetime","processing:version","product:type","product:timeliness","product:timeliness_category","sar:instrument_mode","published","expires","unpublished"]` | Additionnals queryables |
 | helmResourcePolicy | string | `"keep"` | Keep the ressources for PVC and ConfigMap. Default is to keep. |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"pgstac"` | Image name |
