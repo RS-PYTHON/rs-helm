@@ -13,6 +13,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [0.2a6] - 2024-07-11
+
+### Added
+
+- RSPY-403 : STAC Queryables (Catalog database part)
+- RSPY-326 : Implement basic staging process
+- Added new ADGS station (adgs2) in rs-server-station-secrets
+
+### Changed
+
+- ADGS service with new stac changes
+- ADGS ingress path is now a list (temp fix while migrating from adgs to auxip endpoint)
+- ADGS mockup updated with attributes
+- ADGS mockup and ADGS for multiple adgs station
+
+### Fixed
+
+- Fixed missing platform in cadip
+- Fixed several YAML indentation
+
 ## [0.2a5] - 2024-10-10
 
 ### Added
