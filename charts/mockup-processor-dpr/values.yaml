@@ -46,7 +46,7 @@ image:
   # -- Image name
   name: rs-testmeans_dpr-processor-mock
   # -- Image version, can be a tag or a digest
-  version: sha256:892a8f8f5650bdc47d8c4e72a7e5dd5790c9c2c561930d1701a915ca38e1d9ed
+  version: sha256:9604012b04cb7f5af403b5a91f0d316f44902f01f3d4fb81857b5d5d5288be30
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred

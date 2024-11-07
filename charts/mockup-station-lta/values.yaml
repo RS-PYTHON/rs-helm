@@ -66,7 +66,7 @@ image:
   # -- Image name
   name: rs-testmeans_lta-station-mock
   # -- Image version, can be a tag or a digest
-  version: sha256:ceb39d341e3fb2de899f3c3c5f11177e19f9a7b7b1dcd85fbdd4afded9066c53
+  version: sha256:1a9fbc48f08304b0e403ea733297b647396dd520130567738b8f417cb9492223
   # -- Image pull policy
   PullPolicy: Always
   #imagePullSecrets: regcred

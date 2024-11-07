@@ -1,6 +1,6 @@
 # stac-browser
 
-![Version: 0.0.2-a5](https://img.shields.io/badge/Version-0.0.2--a5-informational?style=flat-square) ![AppVersion: v0.2a5](https://img.shields.io/badge/AppVersion-v0.2a5-informational?style=flat-square)
+![Version: 0.0.2-a6post1](https://img.shields.io/badge/Version-0.0.2--a6post1-informational?style=flat-square) ![AppVersion: v0.2a6post1](https://img.shields.io/badge/AppVersion-v0.2a6post1-informational?style=flat-square)
 
 STAC BROWSER
 
@@ -26,7 +26,7 @@ STAC BROWSER
 | image.name | string | `"stac-browser"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"sha256:0307f9f4413db9a5550b046b28603efd5dac79303579bc52885a2f187ce8393e"` | Image version, can be a tag or a digest |
+| image.version | string | `"sha256:57ac8d7712457885c1842481d851d90eb23943e2e6709b7b9ae06dbe9666b35d"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"stac-browser.subdomain.example.com"` | Ingress host name. |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
