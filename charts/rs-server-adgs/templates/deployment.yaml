@@ -55,7 +55,14 @@ spec:
         - name: workdir
           mountPath: {{ .Values.app.workDir }}
         - name: service-config-volume
-          mountPath: {{ .Values.app.confDir }}
+          mountPath: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
+          subPath: {{ .Values.app.eodagConfigFile }}
+        - name: token-service-config-volume
+          mountPath: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFileTokenModule }}
+          subPath: {{ .Values.app.eodagConfigFileTokenModule }}
+        - name: search-service-config-volume
+          mountPath: {{ .Values.app.confDir }}/{{ .Values.app.adgsSearchConfigFile }}
+          subPath: {{ .Values.app.adgsSearchConfigFile }}
         ports:
         - name: web
           protocol: TCP
@@ -181,4 +188,10 @@ spec:
         - name: service-config-volume
           configMap:
             name: {{ .Release.Name }}-service-config
+        - name: token-service-config-volume
+          configMap:
+            name: {{ .Release.Name }}-token-service-config
+        - name: search-service-config-volume
+          configMap:
+            name: {{ .Release.Name }}-search-service-config
   revisionHistoryLimit: 10
