@@ -1,6 +1,6 @@
 # mockup-processor-dpr
 
-![Version: 0.0.2-a6](https://img.shields.io/badge/Version-0.0.2--a6-informational?style=flat-square) ![AppVersion: v0.2a6.post1.dev0](https://img.shields.io/badge/AppVersion-v0.2a6.post1.dev0-informational?style=flat-square)
+![Version: 0.0.2-a6post1](https://img.shields.io/badge/Version-0.0.2--a6post1-informational?style=flat-square) ![AppVersion: v0.2a6post1](https://img.shields.io/badge/AppVersion-v0.2a6post1-informational?style=flat-square)
 
 MOCKUP PROCESSOR DPR
 
@@ -19,7 +19,7 @@ MOCKUP PROCESSOR DPR
 | image.name | string | `"rs-testmeans_dpr-processor-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"sha256:892a8f8f5650bdc47d8c4e72a7e5dd5790c9c2c561930d1701a915ca38e1d9ed"` | Image version, can be a tag or a digest |
+| image.version | string | `"sha256:9604012b04cb7f5af403b5a91f0d316f44902f01f3d4fb81857b5d5d5288be30"` | Image version, can be a tag or a digest |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
 | obs.region | string | `"sbg"` | Region of the object storage service |
