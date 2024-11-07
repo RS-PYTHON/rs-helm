@@ -161,7 +161,7 @@ image:
   # -- Image name
   name: rs-server-staging
   # -- Image version, can be a tag or a digest
-  version: 0.2a5
+  version: 0.2a6.post1.dev0
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
