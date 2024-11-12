@@ -20,6 +20,11 @@ metadata:
   
 data:
   {{ .Values.app.pgstac_post_actions_script }}: |-
+    psql -X -q -v ON_ERROR_STOP=1 <<EOSQL
+    UPDATE pgstac.pgstac_settings 
+    SET value='on' where name='context';
+    EOSQL
+    
     {{ if .Values.app.stac }}
     
     {{ if .Values.app.stac.extensions }}
