@@ -12,226 +12,233 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# THIS FILE WAS AUTOMATICALLY CREATED FROM:
+#  - rs-server/services/cadip/config/cadip_ws_config.template.yaml
+#  - rs-server/services/cadip/config/cadip_ws_config.template_session.yaml
+#  - rs-server/services/cadip/config/cadip_ws_config_token_module.template.yaml
+#  - rs-server/services/cadip/config/cadip_ws_config_token_module.template_session.yaml
+#  - rs-server/services/cadip/config/cadip_search_config.template.yaml
+#  - rs-server/resources/sync_config_files.py
+# DON'T MODIFY IT DIRECTLY !
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-service-config
   namespace: {{ .Values.namespace }}
-  
 data:
-  {{ .Values.app.eodagConfigFile }}: |-
+  {{ .Values.app.eodagConfigFile }}: |
     {{- range $k, $v := .Values.app.station }}
       {{ $k }}:
         auth:
           type: TokenAuth
-          auth_uri: '{{ $v.endpoint.url.root }}/oauth2/token'
+          auth_uri: {{ $v.endpoint.url.root }}/oauth2/token
           token_type: json
           token_key: access_token
-          request_method: POST          
+          request_method: POST
+          req_data:
+            client_id: client_id
+            client_secret: client_secret
+            grant_type: password
+          credentials:
+            username: test
+            password: test
+          headers:
+            Content-Type: application/x-www-form-urlencoded
         products:
           S1_SAR_RAW:
             productType: RAW
             collection: Sentinel1
-
         search:
           type: ODataV4Search
-          api_endpoint: '{{ $v.endpoint.url.file }}'
+          api_endpoint: {{ $v.endpoint.url.file }}
           need_auth: true
           results_entry: responses | $
           metadata_mapping:
             id:
-              - null
-              - '$.Id'
+            - null
+            - $.Id
             Name:
-              - null
-              - '$.Name'
+            - null
+            - $.Name
             SessionIds:
-              - null
-              - '$.SessionID'
+            - null
+            - $.SessionID
             SessionID:
-              - null
-              - '$.SessionID'
+            - null
+            - $.SessionID
             Channel:
-              - null
-              - '$.Channel'
+            - null
+            - $.Channel
             BlockNumber:
-              - null
-              - '$.BlockNumber'
+            - null
+            - $.BlockNumber
             FinalBlock:
-              - null
-              - '$.FinalBlock'
+            - null
+            - $.FinalBlock
             PublicationDate:
-              - null
-              - '$.PublicationDate'
+            - null
+            - $.PublicationDate
             EvictionDate:
-              - null
-              - '$.EvictionDate'
+            - null
+            - $.EvictionDate
             Size:
-              - null
-              - '$.Size'
+            - null
+            - $.Size
             Retransfer:
-              - null
-              - '$.Retransfer'
-            # Eodag Specific map
+            - null
+            - $.Retransfer
             startTimeFromAscendingNode:
-              - null
-              - '$.PublicationDate'
+            - null
+            - $.PublicationDate
             completionTimeFromAscendingNode:
-              - null
-              - '$.PublicationDate'
+            - null
+            - $.PublicationDate
             href:
-              - null
-              - '{{ $v.endpoint.url.file }}({id})/$value'
-            geometry: 'POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))'
-            downloadLink: '{{ $v.endpoint.url.file }}({id})/$value'
-            title: '$.Name'
-
+            - null
+            - {{ $v.endpoint.url.file }}({id})/$value
+            geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
+            downloadLink: {{ $v.endpoint.url.file }}({id})/$value
+            title: $.Name
           free_text_search_operations:
             $filter:
               union: ' OR '
               wrapper: '"{}"'
               operations:
                 and:
-                  - 'SessionID in {SessionIds}'
-                  - 'SessionID eq {SessionID}'
-                  - 'PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}'
-                  - 'PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}'
-
+                - SessionID in {SessionIds}
+                - SessionID eq {SessionID}
+                - PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}
+                - PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}
           pagination:
             max_items_per_page: 1000
             next_page_url_tpl: '{url}?{search}&$top={items_per_page}'
-            total_items_nb_key_path: '$.total'
-
+            total_items_nb_key_path: $.total
         download:
           type: HTTPDownload
-          base_uri: '{{ $v.endpoint.url.file }}'
+          base_uri: {{ $v.endpoint.url.file }}
           metadata_mapping:
-            uid: '$.Id'
-            downloadLink: '{{ $v.endpoint.url.file }}({uid})/$value'
-
+            uid: $.Id
+            downloadLink: {{ $v.endpoint.url.file }}({uid})/$value
       {{ $k }}_session:
         auth:
           type: TokenAuth
-          auth_uri: '{{ $v.endpoint.url.root }}/oauth2/token'
+          auth_uri: {{ $v.endpoint.url.root }}/oauth2/token
           token_type: json
           token_key: access_token
-          request_method: POST          
+          request_method: POST
         products:
           S1_SAR_RAW:
             productType: RAW
             collection: Sentinel1
         search:
           type: ODataV4Search
-          api_endpoint: '{{ $v.endpoint.url.session }}'
+          api_endpoint: {{ $v.endpoint.url.session }}
           need_auth: true
           results_entry: responses | $
           metadata_mapping:
             id:
-              - null
-              - "$.Id"
+            - null
+            - $.Id
             SessionIds:
-              - null
-              - "$.SessionId"
+            - null
+            - $.SessionId
             SessionId:
-              - null
-              - "$.SessionId"
+            - null
+            - $.SessionId
             Satellite:
-              - null
-              - "$.Satellite"
+            - null
+            - $.Satellite
             NumChannels:
-              - null
-              - "$.NumChannels"
+            - null
+            - $.NumChannels
             PublicationDate:
-              - null
-              - "$.PublicationDate"
+            - null
+            - $.PublicationDate
             platform:
-              - null
-              - "$.Satellite"
+            - null
+            - $.Satellite
             platforms:
-              - null
-              - "$.Satellite"
+            - null
+            - $.Satellite
             StationUnitId:
-              - null
-              - "$.StationUnitId"
+            - null
+            - $.StationUnitId
             DownlinkOrbit:
-              - null
-              - "$.DownlinkOrbit"
+            - null
+            - $.DownlinkOrbit
             AcquisitionId:
-              - null
-              - "$.AcquisitionId"
+            - null
+            - $.AcquisitionId
             AntennaId:
-              - null
-              - "$.AntennaId"
+            - null
+            - $.AntennaId
             FrontEndId:
-              - null
-              - "$.FrontEndId"
+            - null
+            - $.FrontEndId
             Retransfer:
-              - null
-              - "$.Retransfer"
+            - null
+            - $.Retransfer
             AntennaStatusOK:
-              - null
-              - "$.AntennaStatusOK"
+            - null
+            - $.AntennaStatusOK
             FrontEndStatusOK:
-              - null
-              - "$.FrontEndStatusOK"
+            - null
+            - $.FrontEndStatusOK
             PlannedDataStart:
-              - null
-              - "$.PlannedDataStart"
+            - null
+            - $.PlannedDataStart
             PlannedDataStop:
-              - null
-              - "$.PlannedDataStop"
+            - null
+            - $.PlannedDataStop
             DownlinkStart:
-              - null
-              - "$.DownlinkStart"
+            - null
+            - $.DownlinkStart
             DownlinkStop:
-              - null
-              - "$.DownlinkStop"
+            - null
+            - $.DownlinkStop
             DownlinkStatusOK:
-              - null
-              - "$.DownlinkStatusOK"
+            - null
+            - $.DownlinkStatusOK
             DeliveryPushOK:
-              - null
-              - "$.DeliveryPushOK"
+            - null
+            - $.DeliveryPushOK
             Files:
-              - null
-              - "$.Files"
-            # Eodag Specific map
+            - null
+            - $.Files
             startTimeFromAscendingNode:
-              - null
-              - "$.PublicationDate"
+            - null
+            - $.PublicationDate
             completionTimeFromAscendingNode:
-              - null
-              - "$.PublicationDate"
+            - null
+            - $.PublicationDate
             href:
-              - null
-              - '{{ $v.endpoint.url.file }}({id})/$value'            
-            geometry: "POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))"
-            title: "$.Name"
-
+            - null
+            - {{ $v.endpoint.url.file }}({id})/$value
+            geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
+            title: $.Name
           free_text_search_operations:
             $filter:
-              union: " OR "
+              union: ' OR '
               wrapper: '"{}"'
               operations:
                 and:
-                  - "SessionId in {SessionIds}"
-                  - "SessionId eq {SessionId}"
-                  - "Satellite eq {platform}"
-                  - "Satellite in {platforms}"
-                  - "PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}"
-                  - "PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}"
-
+                - SessionId in {SessionIds}
+                - SessionId eq {SessionId}
+                - Satellite eq {platform}
+                - Satellite in {platforms}
+                - PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}
+                - PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}
           pagination:
             max_items_per_page: 1000
-            next_page_url_tpl: "{url}?{search}&$top={items_per_page}&$expand=Files"
-            total_items_nb_key_path: "$.total"
-
+            next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$expand=Files'
+            total_items_nb_key_path: $.total
         download:
           type: HTTPDownload
-          base_uri: '{{ $v.endpoint.url.session }}'
+          base_uri: {{ $v.endpoint.url.session }}
           metadata_mapping:
-            uid: "$.Id"
-            downloadLink: "{{ $v.endpoint.url.session }}({uid})/$value"
+            uid: $.Id
+            downloadLink: {{ $v.endpoint.url.session }}({uid})/$value
     {{ end }}
 ---
 apiVersion: v1
@@ -239,103 +246,96 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-token-service-config
   namespace: {{ .Values.namespace }}
-
 data:
-  {{ .Values.app.eodagConfigFileTokenModule }}: |-
+  {{ .Values.app.eodagConfigFileTokenModule }}: |
     {{- range $k, $v := .Values.app.station }}
       {{ $k }}:
         auth:
           type: HTTPHeaderAuth
           headers:
-              Authorization: "Bearer {token}"
+            Authorization: Bearer {token}
           credentials:
             token: token_value
         products:
           S1_SAR_RAW:
             productType: RAW
             collection: Sentinel1
-
         search:
           type: ODataV4Search
-          api_endpoint: '{{ $v.endpoint.url.file }}'
+          api_endpoint: {{ $v.endpoint.url.file }}
           need_auth: true
           results_entry: responses | $
           metadata_mapping:
             id:
-              - null
-              - '$.Id'
+            - null
+            - $.Id
             Name:
-              - null
-              - '$.Name'
+            - null
+            - $.Name
             SessionIds:
-              - null
-              - '$.SessionID'
+            - null
+            - $.SessionID
             SessionID:
-              - null
-              - '$.SessionID'
+            - null
+            - $.SessionID
             Channel:
-              - null
-              - '$.Channel'
+            - null
+            - $.Channel
             BlockNumber:
-              - null
-              - '$.BlockNumber'
+            - null
+            - $.BlockNumber
             FinalBlock:
-              - null
-              - '$.FinalBlock'
+            - null
+            - $.FinalBlock
             PublicationDate:
-              - null
-              - '$.PublicationDate'
+            - null
+            - $.PublicationDate
             EvictionDate:
-              - null
-              - '$.EvictionDate'
+            - null
+            - $.EvictionDate
             Size:
-              - null
-              - '$.Size'
+            - null
+            - $.Size
             Retransfer:
-              - null
-              - '$.Retransfer'
-            # Eodag Specific map
+            - null
+            - $.Retransfer
             startTimeFromAscendingNode:
-              - null
-              - '$.PublicationDate'
+            - null
+            - $.PublicationDate
             completionTimeFromAscendingNode:
-              - null
-              - '$.PublicationDate'
+            - null
+            - $.PublicationDate
             href:
-              - null
-              - '{{ $v.endpoint.url.file }}({id})/$value'              
-            geometry: 'POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))'
-            downloadLink: '{{ $v.endpoint.url.file }}({id})/$value'
-            title: '$.Name'
-
+            - null
+            - {{ $v.endpoint.url.file }}({id})/$value
+            geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
+            downloadLink: {{ $v.endpoint.url.file }}({id})/$value
+            title: $.Name
           free_text_search_operations:
             $filter:
               union: ' OR '
               wrapper: '"{}"'
               operations:
                 and:
-                  - 'SessionID in {SessionIds}'
-                  - 'SessionID eq {SessionID}'
-                  - 'PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}'
-                  - 'PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}'
-
+                - SessionID in {SessionIds}
+                - SessionID eq {SessionID}
+                - PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}
+                - PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}
           pagination:
             max_items_per_page: 1000
             next_page_url_tpl: '{url}?{search}&$top={items_per_page}'
-            total_items_nb_key_path: '$.total'
-
+            total_items_nb_key_path: $.total
         download:
           type: HTTPDownload
-          base_uri: '{{ $v.endpoint.url.file }}'
+          base_uri: {{ $v.endpoint.url.file }}
           metadata_mapping:
-            uid: '$.Id'
-            downloadLink: '{{ $v.endpoint.url.file }}({uid})/$value'
-
+            uid: $.Id
+            downloadLink: {{ $v.endpoint.url.file }}({uid})/$value
       {{ $k }}_session:
         auth:
           type: HTTPHeaderAuth
           headers:
-              Authorization: "Bearer {token}"
+            Authorization: Bearer {token}
           credentials:
             token: token_value
         products:
@@ -344,116 +344,112 @@ data:
             collection: Sentinel1
         search:
           type: ODataV4Search
-          api_endpoint: '{{ $v.endpoint.url.session }}'
+          api_endpoint: {{ $v.endpoint.url.session }}
           need_auth: true
           results_entry: responses | $
           metadata_mapping:
             id:
-              - null
-              - "$.Id"
+            - null
+            - $.Id
             SessionIds:
-              - null
-              - "$.SessionId"
+            - null
+            - $.SessionId
             SessionId:
-              - null
-              - "$.SessionId"
+            - null
+            - $.SessionId
             Satellite:
-              - null
-              - "$.Satellite"
+            - null
+            - $.Satellite
             NumChannels:
-              - null
-              - "$.NumChannels"
+            - null
+            - $.NumChannels
             PublicationDate:
-              - null
-              - "$.PublicationDate"
+            - null
+            - $.PublicationDate
             platform:
-              - null
-              - "$.Satellite"
+            - null
+            - $.Satellite
             platforms:
-              - null
-              - "$.Satellite"
+            - null
+            - $.Satellite
             StationUnitId:
-              - null
-              - "$.StationUnitId"
+            - null
+            - $.StationUnitId
             DownlinkOrbit:
-              - null
-              - "$.DownlinkOrbit"
+            - null
+            - $.DownlinkOrbit
             AcquisitionId:
-              - null
-              - "$.AcquisitionId"
+            - null
+            - $.AcquisitionId
             AntennaId:
-              - null
-              - "$.AntennaId"
+            - null
+            - $.AntennaId
             FrontEndId:
-              - null
-              - "$.FrontEndId"
+            - null
+            - $.FrontEndId
             Retransfer:
-              - null
-              - "$.Retransfer"
+            - null
+            - $.Retransfer
             AntennaStatusOK:
-              - null
-              - "$.AntennaStatusOK"
+            - null
+            - $.AntennaStatusOK
             FrontEndStatusOK:
-              - null
-              - "$.FrontEndStatusOK"
+            - null
+            - $.FrontEndStatusOK
             PlannedDataStart:
-              - null
-              - "$.PlannedDataStart"
+            - null
+            - $.PlannedDataStart
             PlannedDataStop:
-              - null
-              - "$.PlannedDataStop"
+            - null
+            - $.PlannedDataStop
             DownlinkStart:
-              - null
-              - "$.DownlinkStart"
+            - null
+            - $.DownlinkStart
             DownlinkStop:
-              - null
-              - "$.DownlinkStop"
+            - null
+            - $.DownlinkStop
             DownlinkStatusOK:
-              - null
-              - "$.DownlinkStatusOK"
+            - null
+            - $.DownlinkStatusOK
             DeliveryPushOK:
-              - null
-              - "$.DeliveryPushOK"
+            - null
+            - $.DeliveryPushOK
             Files:
-              - null
-              - "$.Files"
-            # Eodag Specific map
+            - null
+            - $.Files
             startTimeFromAscendingNode:
-              - null
-              - "$.PublicationDate"
+            - null
+            - $.PublicationDate
             completionTimeFromAscendingNode:
-              - null
-              - "$.PublicationDate"
+            - null
+            - $.PublicationDate
             href:
-              - null
-              - '{{ $v.endpoint.url.file }}({id})/$value'              
-            geometry: "POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))"
-            title: "$.Name"
-
+            - null
+            - {{ $v.endpoint.url.file }}({id})/$value
+            geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
+            title: $.Name
           free_text_search_operations:
             $filter:
-              union: " OR "
+              union: ' OR '
               wrapper: '"{}"'
               operations:
                 and:
-                  - "SessionId in {SessionIds}"
-                  - "SessionId eq {SessionId}"
-                  - "Satellite eq {platform}"
-                  - "Satellite in {platforms}"
-                  - "PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}"
-                  - "PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}"
-
+                - SessionId in {SessionIds}
+                - SessionId eq {SessionId}
+                - Satellite eq {platform}
+                - Satellite in {platforms}
+                - PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}
+                - PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}
           pagination:
             max_items_per_page: 1000
-            next_page_url_tpl: "{url}?{search}&$top={items_per_page}&$expand=Files"
-            total_items_nb_key_path: "$.total"
-
+            next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$expand=Files'
+            total_items_nb_key_path: $.total
         download:
           type: HTTPDownload
-          base_uri: '{{ $v.endpoint.url.session }}'
+          base_uri: {{ $v.endpoint.url.session }}
           metadata_mapping:
-            uid: "$.Id"
-            downloadLink: "{{ $v.endpoint.url.session }}({uid})/$value"
+            uid: $.Id
+            downloadLink: {{ $v.endpoint.url.session }}({uid})/$value
     {{ end }}
 ---
 apiVersion: v1
@@ -461,156 +457,195 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-search-service-config
   namespace: {{ .Values.namespace }}
-
 data:
-  {{ .Values.app.cadipSearchConfigFile }}: |-
+  {{ .Values.app.cadipSearchConfigFile }}: |
     stations:
       cadip:
         endpoint:
           need_auth: true
-
     collections:
-      - id: cadip_sessions_id
-        station: cadip
-        query:
-          top: 20
-        stac_extensions: [ "https://stac-extensions.github.io/eo/v1.0.0/schema.json", "https://stac-extensions.github.io/projection/v1.0.0/schema.json", "https://stac-extensions.github.io/view/v1.0.0/schema.json" ]
-        title: "'cadip' station"
-        description: "'cadip' station"
-        license: other
-        extent:
-          spatial:
-            bbox: [[ -180, -82.85, 180, 82.82 ]]
-          temporal:
-            interval: [[ '2024-06-12T02:57:21.459000Z', '2024-08-22T11:30:12.767000Z' ]]
-        links:
-          - rel: license
-            href: 'https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf'
-            title: 'Legal notice on the use of Copernicus Sentinel Data and Service Information'
-        providers:
-          - name: 'European Union/ESA/Copernicus'
-            roles:
-              - producer
-              - licensor
-            url: 'https://sentiwiki.copernicus.eu/web/s1-mission'
-          - name: 'Reference System'
-            roles:
-              - host
-            url: 'https://home.rs-python.eu/'
-
-      - id: cadip_s1A
-        station: cadip
-        query:
-          Satellite: S1A, S1B
-          top: 20
-        stac_extensions: [ "https://stac-extensions.github.io/eo/v1.0.0/schema.json", "https://stac-extensions.github.io/projection/v1.0.0/schema.json", "https://stac-extensions.github.io/view/v1.0.0/schema.json" ]
-        title: "'cadip' station - S1A"
-        description: "'cadip' station - S1A"
-        license: other
-        extent:
-          spatial:
-            bbox: [[ -180, -82.85, 180, 82.82 ]]
-          temporal:
-            interval: [[ '2024-06-12T02:57:21.459000Z', '2024-08-22T11:30:12.767000Z' ]]
-        links:
-          - rel: license
-            href: 'https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf'
-            title: 'Legal notice on the use of Copernicus Sentinel Data and Service Information'
-        providers:
-          - name: 'European Union/ESA/Copernicus'
-            roles:
-              - producer
-              - licensor
-            url: 'https://sentiwiki.copernicus.eu/web/s1-mission'
-          - name: 'Reference System'
-            roles:
-              - host
-            url: 'https://home.rs-python.eu/'
-
-      - id: mti_s1A
-        station: mti
-        query:
-          Satellite: S1A
-          top: 20
-        stac_extensions: [ "https://stac-extensions.github.io/eo/v1.0.0/schema.json", "https://stac-extensions.github.io/projection/v1.0.0/schema.json", "https://stac-extensions.github.io/view/v1.0.0/schema.json" ]
-        title: "'mti' station - S1A"
-        description: "'mti' station - S1A"
-        license: other
-        extent:
-          spatial:
-            bbox: [ [ -180, -82.85, 180, 82.82 ] ]
-          temporal:
-            interval: [ [ '2024-06-12T02:57:21.459000Z', '2024-08-22T11:30:12.767000Z' ] ]
-        links:
-          - rel: license
-            href: 'https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf'
-            title: 'Legal notice on the use of Copernicus Sentinel Data and Service Information'
-        providers:
-          - name: 'European Union/ESA/Copernicus'
-            roles:
-              - producer
-              - licensor
-            url: 'https://sentiwiki.copernicus.eu/web/s1-mission'
-          - name: 'Reference System'
-            roles:
-              - host
-            url: 'https://home.rs-python.eu/'
-
-      - id: sgs_s1A
-        station: sgs
-        query:
-          Satellite: S1A
-          top: 20
-        stac_extensions: [ "https://stac-extensions.github.io/eo/v1.0.0/schema.json", "https://stac-extensions.github.io/projection/v1.0.0/schema.json", "https://stac-extensions.github.io/view/v1.0.0/schema.json" ]
-        title: "'sgs' station - S1A"
-        description: "'sgs' station - S1A"
-        license: other
-        extent:
-          spatial:
-            bbox: [ [ -180, -82.85, 180, 82.82 ] ]
-          temporal:
-            interval: [ [ '2024-06-12T02:57:21.459000Z', '2024-08-22T11:30:12.767000Z' ] ]
-        links:
-          - rel: license
-            href: 'https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf'
-            title: 'Legal notice on the use of Copernicus Sentinel Data and Service Information'
-        providers:
-          - name: 'European Union/ESA/Copernicus'
-            roles:
-              - producer
-              - licensor
-            url: 'https://sentiwiki.copernicus.eu/web/s1-mission'
-          - name: 'Reference System'
-            roles:
-              - host
-            url: 'https://home.rs-python.eu/'
-
-      - id: cadip_s1a_interval
-        station: cadip
-        query:
-          PublicationDate: "2020-01-01T00:00:00Z/2024-01-01T00:00:00Z"
-          Satellite: S1A
-          top: 20
-        stac_extensions: [ "https://stac-extensions.github.io/eo/v1.0.0/schema.json", "https://stac-extensions.github.io/projection/v1.0.0/schema.json", "https://stac-extensions.github.io/view/v1.0.0/schema.json" ]
-        title: "'cadip' station - S1A 2020/2023"
-        description: "'cadip' station - S1A 2020/2023"
-        license: other
-        extent:
-          spatial:
-            bbox: [[ -180, -82.85, 180, 82.82 ]]
-          temporal:
-            interval: [[ '2020-01-01T00:00:00Z', '2024-01-01T00:00:00Z' ]]
-        links:
-          - rel: license
-            href: 'https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf'
-            title: 'Legal notice on the use of Copernicus Sentinel Data and Service Information'
-        providers:
-          - name: 'European Union/ESA/Copernicus'
-            roles:
-              - producer
-              - licensor
-            url: 'https://sentiwiki.copernicus.eu/web/s1-mission'
-          - name: 'Reference System'
-            roles:
-              - host
-            url: 'https://home.rs-python.eu/'
+    - id: cadip_sessions_id
+      station: cadip
+      query:
+        top: 20
+      stac_extensions:
+      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/projection/v1.0.0/schema.json
+      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      title: '''cadip'' station'
+      description: '''cadip'' station'
+      license: other
+      extent:
+        spatial:
+          bbox:
+          - - -180
+            - -82.85
+            - 180
+            - 82.82
+        temporal:
+          interval:
+          - - '2024-06-12T02:57:21.459000Z'
+            - '2024-08-22T11:30:12.767000Z'
+      links:
+      - rel: license
+        href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
+        title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+      providers:
+      - name: European Union/ESA/Copernicus
+        roles:
+        - producer
+        - licensor
+        url: https://sentiwiki.copernicus.eu/web/s1-mission
+      - name: Reference System
+        roles:
+        - host
+        url: https://home.rs-python.eu/
+    - id: cadip_s1A
+      station: cadip
+      query:
+        Satellite: S1A, S1B
+        top: 20
+      stac_extensions:
+      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/projection/v1.0.0/schema.json
+      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      title: '''cadip'' station - S1A'
+      description: '''cadip'' station - S1A'
+      license: other
+      extent:
+        spatial:
+          bbox:
+          - - -180
+            - -82.85
+            - 180
+            - 82.82
+        temporal:
+          interval:
+          - - '2024-06-12T02:57:21.459000Z'
+            - '2024-08-22T11:30:12.767000Z'
+      links:
+      - rel: license
+        href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
+        title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+      providers:
+      - name: European Union/ESA/Copernicus
+        roles:
+        - producer
+        - licensor
+        url: https://sentiwiki.copernicus.eu/web/s1-mission
+      - name: Reference System
+        roles:
+        - host
+        url: https://home.rs-python.eu/
+    - id: mti_s1A
+      station: mti
+      query:
+        Satellite: S1A
+        top: 20
+      stac_extensions:
+      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/projection/v1.0.0/schema.json
+      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      title: '''mti'' station - S1A'
+      description: '''mti'' station - S1A'
+      license: other
+      extent:
+        spatial:
+          bbox:
+          - - -180
+            - -82.85
+            - 180
+            - 82.82
+        temporal:
+          interval:
+          - - '2024-06-12T02:57:21.459000Z'
+            - '2024-08-22T11:30:12.767000Z'
+      links:
+      - rel: license
+        href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
+        title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+      providers:
+      - name: European Union/ESA/Copernicus
+        roles:
+        - producer
+        - licensor
+        url: https://sentiwiki.copernicus.eu/web/s1-mission
+      - name: Reference System
+        roles:
+        - host
+        url: https://home.rs-python.eu/
+    - id: sgs_s1A
+      station: sgs
+      query:
+        Satellite: S1A
+        top: 20
+      stac_extensions:
+      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/projection/v1.0.0/schema.json
+      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      title: '''sgs'' station - S1A'
+      description: '''sgs'' station - S1A'
+      license: other
+      extent:
+        spatial:
+          bbox:
+          - - -180
+            - -82.85
+            - 180
+            - 82.82
+        temporal:
+          interval:
+          - - '2024-06-12T02:57:21.459000Z'
+            - '2024-08-22T11:30:12.767000Z'
+      links:
+      - rel: license
+        href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
+        title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+      providers:
+      - name: European Union/ESA/Copernicus
+        roles:
+        - producer
+        - licensor
+        url: https://sentiwiki.copernicus.eu/web/s1-mission
+      - name: Reference System
+        roles:
+        - host
+        url: https://home.rs-python.eu/
+    - id: cadip_s1a_interval
+      station: cadip
+      query:
+        PublicationDate: 2020-01-01T00:00:00Z/2024-01-01T00:00:00Z
+        Satellite: S1A
+        top: 20
+      stac_extensions:
+      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/projection/v1.0.0/schema.json
+      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      title: '''cadip'' station - S1A 2020/2023'
+      description: '''cadip'' station - S1A 2020/2023'
+      license: other
+      extent:
+        spatial:
+          bbox:
+          - - -180
+            - -82.85
+            - 180
+            - 82.82
+        temporal:
+          interval:
+          - - '2020-01-01T00:00:00Z'
+            - '2024-01-01T00:00:00Z'
+      links:
+      - rel: license
+        href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
+        title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+      providers:
+      - name: European Union/ESA/Copernicus
+        roles:
+        - producer
+        - licensor
+        url: https://sentiwiki.copernicus.eu/web/s1-mission
+      - name: Reference System
+        roles:
+        - host
+        url: https://home.rs-python.eu/
