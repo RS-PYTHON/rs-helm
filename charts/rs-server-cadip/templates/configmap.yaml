@@ -37,7 +37,7 @@ data:
           type: ODataV4Search
           api_endpoint: '{{ $v.endpoint.url.odata }}/Files'
           need_auth: true
-          results_entry: responses | $
+          results_entry: $.value
           metadata_mapping:
             id:
               - null
@@ -282,7 +282,7 @@ data:
           type: ODataV4Search
           api_endpoint: '{{ $v.endpoint.url.odata }}/Files'
           need_auth: true
-          results_entry: responses | $
+          results_entry: $.value
           metadata_mapping:
             id:
               - null
