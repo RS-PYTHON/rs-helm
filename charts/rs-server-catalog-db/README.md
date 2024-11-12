@@ -1,6 +1,6 @@
 # rs-server-catalog-db
 
-![Version: 0.0.2-a5](https://img.shields.io/badge/Version-0.0.2--a5-informational?style=flat-square) ![AppVersion: v0.2a5](https://img.shields.io/badge/AppVersion-v0.2a5-informational?style=flat-square)
+![Version: 0.0.2-a6post1](https://img.shields.io/badge/Version-0.0.2--a6post1-informational?style=flat-square) ![AppVersion: v0.2a6post1](https://img.shields.io/badge/AppVersion-v0.2a6post1-informational?style=flat-square)
 
 RS SERVER CATALOG DB
 
@@ -23,7 +23,7 @@ RS SERVER CATALOG DB
 | image.name | string | `"pgstac"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"stac-utils"` | Image repository |
-| image.version | string | `"v0.7.10"` | Image version, can be a tag or a digest |
+| image.version | string | `"v0.8.6"` | Image version, can be a tag or a digest |
 | namespace | string | `"database"` | Namespace for the deployment |
 | postgres.db | string | `"catalog"` | PostgreSQL database name |
 | postgres.port | string | `"5432"` | PostgreSQL port |
