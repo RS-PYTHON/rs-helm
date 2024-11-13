@@ -36,7 +36,7 @@ data:
           type: ODataV4Search
           api_endpoint: '{{ $v.endpoint.url }}'
           need_auth: true
-          results_entry: responses | $
+          results_entry: $.value
           metadata_mapping:
               id:
                 - null
@@ -96,7 +96,7 @@ data:
           free_text_search_operations:
             $filter:
               union: ' OR '
-              wrapper: '"{}"'
+              wrapper: '{}'
               operations:
                   and:
                     - 'PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}'
@@ -109,6 +109,17 @@ data:
             max_items_per_page: 1000
             next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$expand=Attributes'
             total_items_nb_key_path: '$.total'
+
+          sort:
+            sort_by_tpl: '&$orderby={sort_param} {sort_order}'
+            sort_param_mapping:
+              startTimeFromAscendingNode: ContentDate.Start
+              completionTimeFromAscendingNode: ContentDate.Stop
+              publicationDate: PublicationDate
+            sort_order_mapping:
+              ascending: asc
+              descending: desc
+            max_sort_params: 1
 
         download:
           type: HTTPDownload
@@ -142,7 +153,7 @@ data:
           type: ODataV4Search
           api_endpoint: '{{ $v.endpoint.url }}'
           need_auth: true
-          results_entry: responses | $
+          results_entry: $.value
           metadata_mapping:
               id:
                 - null
@@ -202,7 +213,7 @@ data:
           free_text_search_operations:
             $filter:
               union: ' OR '
-              wrapper: '"{}"'
+              wrapper: '{}'
               operations:
                   and:
                     - 'PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}'
@@ -215,6 +226,17 @@ data:
             max_items_per_page: 1000
             next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$expand=Attributes'
             total_items_nb_key_path: '$.total'
+
+          sort:
+            sort_by_tpl: '&$orderby={sort_param} {sort_order}'
+            sort_param_mapping:
+              startTimeFromAscendingNode: ContentDate.Start
+              completionTimeFromAscendingNode: ContentDate.Stop
+              publicationDate: PublicationDate
+            sort_order_mapping:
+              ascending: asc
+              descending: desc
+            max_sort_params: 1
 
         download:
           type: HTTPDownload
