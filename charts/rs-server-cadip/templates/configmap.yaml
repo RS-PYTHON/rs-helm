@@ -13,10 +13,10 @@
 # limitations under the License.
 
 # THIS FILE WAS AUTOMATICALLY CREATED FROM:
-#  - rs-server/services/cadip/config/cadip_ws_config_token_module.template.yaml
-#  - rs-server/services/cadip/config/cadip_ws_config_token_module.template_session.yaml
 #  - rs-server/services/cadip/config/cadip_ws_config.template.yaml
 #  - rs-server/services/cadip/config/cadip_ws_config.template_session.yaml
+#  - rs-server/services/cadip/config/cadip_ws_config_token_module.template.yaml
+#  - rs-server/services/cadip/config/cadip_ws_config_token_module.template_session.yaml
 #  - rs-server/services/cadip/config/cadip_search_config.template.yaml
 #  - rs-server/resources/sync_config_files.py
 # DON'T MODIFY IT DIRECTLY !
@@ -37,14 +37,16 @@ data:
           token_key: access_token
           request_method: POST
           req_data:
-            client_id: client_id
-            client_secret: client_secret
-            grant_type: password
+            client_id: PLACEHOLDER
+            client_secret: PLACEHOLDER
+            grant_type: PLACEHOLDER
+            username: PLACEHOLDER
+            password: PLACEHOLDER
           credentials:
-            username: test
-            password: test
+            username: PLACEHOLDER
+            password: PLACEHOLDER
           headers:
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: PLACEHOLDER
         products:
           S1_SAR_RAW:
             productType: RAW
@@ -128,16 +130,16 @@ data:
           token_key: access_token
           request_method: POST
           req_data:
-            client_id: client
-            client_secret: client_sec
-            grant_type: password
-            username: test2
-            password: test2
+            client_id: PLACEHOLDER
+            client_secret: PLACEHOLDER
+            grant_type: PLACEHOLDER
+            username: PLACEHOLDER
+            password: PLACEHOLDER
           credentials:
-            username: test
-            password: test
+            username: PLACEHOLDER
+            password: PLACEHOLDER
           headers:
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: PLACEHOLDER
         products:
           S1_SAR_RAW:
             productType: RAW
