@@ -21,6 +21,7 @@ RS SERVER ADGS
 | app.eodagConfigFileTokenModule | string | `"adgs_ws_config_token_module.yaml"` |  |
 | app.port | int | `8000` | Port for the application |
 | app.station.adgs.endpoint.url | string | `"http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/Products"` | ADGS URL |
+| app.station.adgs2.endpoint.url | string | `"http://mockup-station-adgs2-svc.processing.svc.cluster.local:8080/Products"` | ADGS2 URL |
 | app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | app.useTokenModule | bool | `true` | The way the token for the external stations is loaded: own module or let eodag to do it (set it to false) |
