@@ -84,6 +84,12 @@ spec:
           value: {{ .Values.dask.gateway_auth_type }}
         - name: RSPY_HOST_CATALOG
           value: {{ .Values.app.endpointCatalog }}
+        {{ if .Values.tempo }}
+        {{ if .Values.tempo.endpoint }}
+        - name: TEMPO_ENDPOINT
+          value: {{ .Values.tempo.endpoint }}
+        {{ end }}
+        {{ end }}
         - name: JUPYTERHUB_API_TOKEN
           valueFrom:
             secretKeyRef:
