@@ -84,6 +84,22 @@ spec:
           value: {{ .Values.dask.gateway_auth_type }}
         - name: RSPY_HOST_CATALOG
           value: {{ .Values.app.endpointCatalog }}
+        - name: POSTGRES_PORT
+          value: {{ .Values.postgres.port | quote }}
+        - name: POSTGRES_DB
+          value: {{ .Values.postgres.db }}
+        - name: POSTGRES_HOST
+          value: {{ .Values.postgres.host }}
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-postgres
+              key: user
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-postgres
+              key: pass
         - name: JUPYTERHUB_API_TOKEN
           valueFrom:
             secretKeyRef:

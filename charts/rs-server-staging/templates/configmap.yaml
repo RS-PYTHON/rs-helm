@@ -41,9 +41,14 @@ data:
           - processes
 
     manager:
-      name: TinyDB
-      connection: /tmp/pygeoapi-process-manager.db
-      output_dir: /tmp/
+      name: PostgreSQL
+      connection:
+        host: ${POSTGRES_HOST}
+        port: ${POSTGRES_PORT}
+        database: ${POSTGRES_DB}
+        user: ${POSTGRES_USER}
+        password: ${POSTGRES_PASSWORD}
+      output_dir: /tmp
 
     resources:
       staging:

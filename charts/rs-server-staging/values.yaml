@@ -128,6 +128,19 @@ tolerations:
   operator: Equal
   value: access_csc
   effect: NoSchedule
+  
+postgres:
+  # -- PostgreSQL port
+  port: "5432"
+  # -- PostgreSQL database name
+  db: rspydemo
+  # -- PostgreSQL service URL
+  host: postgresql-cluster-rw.database.svc.cluster.local
+  secret:
+    # -- Username to authenticate with the PostgreSQL service
+    user: test
+    # -- Password to authenticate with the PostgreSQL service
+    pass: test
 
 obs:
   # -- URL of the object storage service endpoint
