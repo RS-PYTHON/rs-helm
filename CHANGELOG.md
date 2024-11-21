@@ -13,7 +13,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
-## [0.2a6] - 2024-07-11
+## [0.2a7] - 2024-11-21
+
+> :warning: **BREAKING** : After [PR RS-PYTHON/rs-server#688](https://github.com/RS-PYTHON/rs-server/pull/688) configuration files should only be edited from the templates rs-server repository ([search link](https://github.com/search?q=repo%3ARS-PYTHON%2Frs-server+path%3Aservices%2F*%2Fconfig%2F*template*.yaml&type=code)).
+
+### Added
+
+- rs-server-adgs
+  - name to the queryable
+  - adgs2 mockup station in the conf
+- RSPY-131 : rs-server-pagination
+
+### Changed
+
+- Set value of `context` to on in pgstac_settings (needed for pagination)
+- rs-server-cadip : Sort is now by `PublicationDate`
+- RSPY-450 : Update pgstac to 0.8.6
+
+### Fixed
+
+- Identation and removed useless quotes in multiple config files
+- RSPY-518 : Staging not integrated with Tempo
+- Missing CORS header for stac browser
+
+## [0.2a6] - 2024-11-07
 
 ### Added
 
