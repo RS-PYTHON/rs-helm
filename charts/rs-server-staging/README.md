@@ -63,6 +63,7 @@ RS SERVER STAGING
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
 | service.port | int | `8080` | Port for the service |
+| tempo.endpoint | string | `"http://grafana-tempo-distributor.logging.svc.cluster.local:4317"` | Grafana tempo endpoint. |
 | tolerations | list | `[{"effect":"NoSchedule","key":"role","operator":"Equal","value":"access_csc"}]` | Pod toleration |
 
 ----------------------------------------------

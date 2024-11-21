@@ -100,6 +100,12 @@ spec:
             secretKeyRef:
               name: {{ .Release.Name }}-postgres
               key: pass
+        {{ if .Values.tempo }}
+        {{ if .Values.tempo.endpoint }}
+        - name: TEMPO_ENDPOINT
+          value: {{ .Values.tempo.endpoint }}
+        {{ end }}
+        {{ end }}
         - name: JUPYTERHUB_API_TOKEN
           valueFrom:
             secretKeyRef:
