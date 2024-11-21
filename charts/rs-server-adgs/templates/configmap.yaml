@@ -44,7 +44,7 @@ data:
             username: PLACEHOLDER
             password: PLACEHOLDER
           headers:
-            Content-Type: PLACEHOLDER
+            Content-Type: application/x-www-form-urlencoded
         products:
           CAMS_GRF_AUX:
             productType: cams-ads-grf-aux
@@ -52,7 +52,11 @@ data:
           type: ODataV4Search
           api_endpoint: {{ $v.endpoint.url }}
           need_auth: true
+<<<<<<< Updated upstream
           results_entry: $.value
+=======
+          results_entry: $.value | $
+>>>>>>> Stashed changes
           metadata_mapping:
             id:
             - null
@@ -134,11 +138,15 @@ data:
               id: Name
               auxip:id: Id
               created: PublicationDate
-              end_datetime: End
+              end_datetime: ContentDate/End
               file:size: ContentLength
               type: ContentType
               eviction_datetime: EvictionDate
               published: PublicationDate
+              startTimeFromAscendingNode: ContentDate/Start
+              completionTimeFromAscendingNode: ContentDate/Stop
+              publicationDate: PublicationDate
+              start_datetime: ContentDate/Start
             sort_order_mapping:
               ascending: asc
               descending: desc
@@ -173,7 +181,11 @@ data:
           type: ODataV4Search
           api_endpoint: {{ $v.endpoint.url }}
           need_auth: true
+<<<<<<< Updated upstream
           results_entry: $.value
+=======
+          results_entry: $.value | $
+>>>>>>> Stashed changes
           metadata_mapping:
             id:
             - null
@@ -255,11 +267,15 @@ data:
               id: Name
               auxip:id: Id
               created: PublicationDate
-              end_datetime: End
+              end_datetime: ContentDate/End
               file:size: ContentLength
               type: ContentType
               eviction_datetime: EvictionDate
               published: PublicationDate
+              startTimeFromAscendingNode: ContentDate/Start
+              completionTimeFromAscendingNode: ContentDate/Stop
+              publicationDate: PublicationDate
+              start_datetime: ContentDate/Start
             sort_order_mapping:
               ascending: asc
               descending: desc

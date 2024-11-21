@@ -46,7 +46,7 @@ data:
             username: PLACEHOLDER
             password: PLACEHOLDER
           headers:
-            Content-Type: PLACEHOLDER
+            Content-Type: application/x-www-form-urlencoded
         products:
           S1_SAR_RAW:
             productType: RAW
@@ -55,7 +55,11 @@ data:
           type: ODataV4Search
           api_endpoint: {{ $v.endpoint.url.odata }}/Files
           need_auth: true
+<<<<<<< Updated upstream
           results_entry: $.value
+=======
+          results_entry: $.value | $
+>>>>>>> Stashed changes
           metadata_mapping:
             id:
             - null
@@ -66,7 +70,11 @@ data:
             SessionIds:
             - null
             - $.SessionId
+<<<<<<< Updated upstream
             SessionId:
+=======
+            SessionID:
+>>>>>>> Stashed changes
             - null
             - $.SessionId
             Channel:
@@ -102,6 +110,9 @@ data:
             geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
             downloadLink: {{ $v.endpoint.url.odata }}/Files({id})/$value
             title: $.Name
+            SessionId:
+            - null
+            - $.SessionId
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -148,7 +159,7 @@ data:
             username: PLACEHOLDER
             password: PLACEHOLDER
           headers:
-            Content-Type: PLACEHOLDER
+            Content-Type: application/x-www-form-urlencoded
         products:
           S1_SAR_RAW:
             productType: RAW
@@ -157,7 +168,11 @@ data:
           type: ODataV4Search
           api_endpoint: {{ $v.endpoint.url.odata }}/Sessions
           need_auth: true
+<<<<<<< Updated upstream
           results_entry: $.value
+=======
+          results_entry: $.value | $
+>>>>>>> Stashed changes
           metadata_mapping:
             id:
             - null
@@ -317,7 +332,11 @@ data:
           type: ODataV4Search
           api_endpoint: {{ $v.endpoint.url.odata }}/Files
           need_auth: true
+<<<<<<< Updated upstream
           results_entry: $.value
+=======
+          results_entry: $.value | $
+>>>>>>> Stashed changes
           metadata_mapping:
             id:
             - null
@@ -328,7 +347,11 @@ data:
             SessionIds:
             - null
             - $.SessionId
+<<<<<<< Updated upstream
             SessionId:
+=======
+            SessionID:
+>>>>>>> Stashed changes
             - null
             - $.SessionId
             Channel:
@@ -364,6 +387,9 @@ data:
             geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
             downloadLink: {{ $v.endpoint.url.odata }}/Files({id})/$value
             title: $.Name
+            SessionId:
+            - null
+            - $.SessionId
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -408,7 +434,11 @@ data:
           type: ODataV4Search
           api_endpoint: {{ $v.endpoint.url.odata }}/Sessions
           need_auth: true
+<<<<<<< Updated upstream
           results_entry: $.value
+=======
+          results_entry: $.value | $
+>>>>>>> Stashed changes
           metadata_mapping:
             id:
             - null
