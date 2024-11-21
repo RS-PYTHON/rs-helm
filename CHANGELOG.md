@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 - Set value of `context` to on in pgstac_settings (needed for pagination)
 - rs-server-cadip : Sort is now by `PublicationDate`
 - RSPY-450 : Update pgstac to 0.8.6
+- bump docker image's tag
 
 ### Fixed
 
