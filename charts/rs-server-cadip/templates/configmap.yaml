@@ -102,9 +102,6 @@ data:
             geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
             downloadLink: {{ $v.endpoint.url.odata }}/Files({id})/$value
             title: $.Name
-            SessionId:
-            - null
-            - $.SessionId
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -123,7 +120,6 @@ data:
             sort_by_tpl: '&$orderby={sort_param} {sort_order}'
             sort_param_mapping:
               datetime: PublicationDate
-              publicationDate: PublicationDate
             sort_order_mapping:
               ascending: asc
               descending: desc
@@ -367,9 +363,6 @@ data:
             geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
             downloadLink: {{ $v.endpoint.url.odata }}/Files({id})/$value
             title: $.Name
-            SessionId:
-            - null
-            - $.SessionId
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -388,7 +381,6 @@ data:
             sort_by_tpl: '&$orderby={sort_param} {sort_order}'
             sort_param_mapping:
               datetime: PublicationDate
-              publicationDate: PublicationDate
             sort_order_mapping:
               ascending: asc
               descending: desc
@@ -538,7 +530,6 @@ data:
               cadip:delivery_push_ok: DeliveryPushOK
               startTimeFromAscendingNode: DownlinkStart
               completionTimeFromAscendingNode: DownlinkStop
-              publicationDate: PublicationDate
             sort_order_mapping:
               ascending: asc
               descending: desc

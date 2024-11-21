@@ -128,9 +128,6 @@ data:
           sort:
             sort_by_tpl: '&$orderby={sort_param} {sort_order}'
             sort_param_mapping:
-              startTimeFromAscendingNode: ContentDate/Start
-              completionTimeFromAscendingNode: ContentDate/Stop
-              publicationDate: PublicationDate
               id: Name
               auxip:id: Id
               created: PublicationDate
@@ -139,9 +136,6 @@ data:
               type: ContentType
               eviction_datetime: EvictionDate
               published: PublicationDate
-              startTimeFromAscendingNode: ContentDate/Start
-              completionTimeFromAscendingNode: ContentDate/Stop
-              publicationDate: PublicationDate
               start_datetime: ContentDate/Start
             sort_order_mapping:
               ascending: asc
@@ -264,9 +258,6 @@ data:
               type: ContentType
               eviction_datetime: EvictionDate
               published: PublicationDate
-              startTimeFromAscendingNode: ContentDate/Start
-              completionTimeFromAscendingNode: ContentDate/Stop
-              publicationDate: PublicationDate
               start_datetime: ContentDate/Start
             sort_order_mapping:
               ascending: asc
