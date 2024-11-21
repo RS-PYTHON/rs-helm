@@ -52,11 +52,7 @@ data:
           type: ODataV4Search
           api_endpoint: {{ $v.endpoint.url }}
           need_auth: true
-<<<<<<< Updated upstream
-          results_entry: $.value
-=======
           results_entry: $.value | $
->>>>>>> Stashed changes
           metadata_mapping:
             id:
             - null
@@ -181,11 +177,7 @@ data:
           type: ODataV4Search
           api_endpoint: {{ $v.endpoint.url }}
           need_auth: true
-<<<<<<< Updated upstream
-          results_entry: $.value
-=======
           results_entry: $.value | $
->>>>>>> Stashed changes
           metadata_mapping:
             id:
             - null
