@@ -47,6 +47,11 @@ RS SERVER STAGING
 | obs.region | string | `"sbg"` | Region of the object storage service |
 | obs.secret.ak | string | `"TDr8foJqSygBQ9YFmWDy"` | Access Key to authenticate with the object storage service |
 | obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service |
+| postgres.db | string | `"rspydemo"` | PostgreSQL database name |
+| postgres.host | string | `"postgresql-cluster-rw.database.svc.cluster.local"` | PostgreSQL service URL |
+| postgres.port | string | `"5432"` | PostgreSQL port |
+| postgres.secret.pass | string | `"test"` | Password to authenticate with the PostgreSQL service |
+| postgres.secret.user | string | `"test"` | Username to authenticate with the PostgreSQL service |
 | probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/_mgmt/ping"` | Path for the liveness probe |
 | probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |
