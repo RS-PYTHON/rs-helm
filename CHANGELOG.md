@@ -36,6 +36,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 - Identation and removed useless quotes in multiple config files
 - RSPY-518 : Staging not integrated with Tempo
 - Missing CORS header for stac browser
+- RSPY-531 : Add Catalog obs environment variable to be configurable
 
 ## [0.2a6] - 2024-11-07
 
