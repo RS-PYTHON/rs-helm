@@ -44,7 +44,7 @@ data:
             username: PLACEHOLDER
             password: PLACEHOLDER
           headers:
-            Content-Type: PLACEHOLDER
+            Content-Type: application/x-www-form-urlencoded
         products:
           CAMS_GRF_AUX:
             productType: cams-ads-grf-aux
@@ -52,7 +52,7 @@ data:
           type: ODataV4Search
           api_endpoint: {{ $v.endpoint.url }}
           need_auth: true
-          results_entry: responses | $
+          results_entry: $.value | $
           metadata_mapping:
             id:
             - null
@@ -111,7 +111,7 @@ data:
           free_text_search_operations:
             $filter:
               union: ' OR '
-              wrapper: '"{}"'
+              wrapper: '{}'
               operations:
                 and:
                 - contains(Name, '{Name}')
@@ -130,12 +130,12 @@ data:
             sort_param_mapping:
               id: Name
               auxip:id: Id
-              created: PublicationDate
-              end_datetime: End
               file:size: ContentLength
               type: ContentType
               eviction_datetime: EvictionDate
-              published: PublicationDate
+              start_datetime: ContentDate/Start
+              end_datetime: ContentDate/End
+              created: PublicationDate
             sort_order_mapping:
               ascending: asc
               descending: desc
@@ -170,7 +170,7 @@ data:
           type: ODataV4Search
           api_endpoint: {{ $v.endpoint.url }}
           need_auth: true
-          results_entry: responses | $
+          results_entry: $.value | $
           metadata_mapping:
             id:
             - null
@@ -229,7 +229,7 @@ data:
           free_text_search_operations:
             $filter:
               union: ' OR '
-              wrapper: '"{}"'
+              wrapper: '{}'
               operations:
                 and:
                 - contains(Name, '{Name}')
@@ -246,14 +246,14 @@ data:
           sort:
             sort_by_tpl: '&$orderby={sort_param} {sort_order}'
             sort_param_mapping:
-              id: Name
-              auxip:id: Id
-              created: PublicationDate
-              end_datetime: End
               file:size: ContentLength
               type: ContentType
               eviction_datetime: EvictionDate
-              published: PublicationDate
+              start_datetime: ContentDate/Start
+              end_datetime: ContentDate/End
+              id: Name
+              auxip:id: Id
+              created: PublicationDate
             sort_order_mapping:
               ascending: asc
               descending: desc
