@@ -74,7 +74,7 @@ image:
   # -- Image name
   name: rs-testmeans_cadip-station-mock
   # -- Image version, can be a tag or a digest
-  version: sha256:c5969ba8420f39c90125a527bd9eb79723b6129fbf7859c54fcfea98271b848e
+  version: sha256:4831636c5adfee6cfc809bdeb25e361e084ddeb49e3aaaacca54a1b7be2137a9
   # -- Image pull policy
   PullPolicy: Always
   #imagePullSecrets: regcred

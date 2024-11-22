@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
-## [0.2a7] - 2024-11-21
+## [0.2a7] - 2024-11-22
 
 > :warning: **BREAKING** : After [PR RS-PYTHON/rs-server#688](https://github.com/RS-PYTHON/rs-server/pull/688) configuration files should only be edited from the templates rs-server repository ([search link](https://github.com/search?q=repo%3ARS-PYTHON%2Frs-server+path%3Aservices%2F*%2Fconfig%2F*template*.yaml&type=code)).
 
