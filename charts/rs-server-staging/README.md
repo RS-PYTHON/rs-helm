@@ -1,6 +1,6 @@
 # rs-server-staging
 
-![Version: 0.0.2-a6post1](https://img.shields.io/badge/Version-0.0.2--a6post1-informational?style=flat-square) ![AppVersion: v0.2a6post1](https://img.shields.io/badge/AppVersion-v0.2a6post1-informational?style=flat-square)
+![Version: 0.0.2-a7](https://img.shields.io/badge/Version-0.0.2--a7-informational?style=flat-square) ![AppVersion: v0.2a7](https://img.shields.io/badge/AppVersion-v0.2a7-informational?style=flat-square)
 
 RS SERVER STAGING
 
@@ -15,6 +15,7 @@ RS SERVER STAGING
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
+| app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. The same value should also be included into ingress.path |
 | app.endpointCatalog | string | `"http://rs-server-catalog-svc.processing.svc.cluster.local:8080"` | Catalog pod address |
