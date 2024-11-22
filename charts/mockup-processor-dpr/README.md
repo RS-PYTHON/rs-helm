@@ -1,6 +1,6 @@
 # mockup-processor-dpr
 
-![Version: 0.0.2-a6post1](https://img.shields.io/badge/Version-0.0.2--a6post1-informational?style=flat-square) ![AppVersion: v0.2a6post1](https://img.shields.io/badge/AppVersion-v0.2a6post1-informational?style=flat-square)
+![Version: 0.0.2-a7](https://img.shields.io/badge/Version-0.0.2--a7-informational?style=flat-square) ![AppVersion: v0.2a7](https://img.shields.io/badge/AppVersion-v0.2a7-informational?style=flat-square)
 
 MOCKUP PROCESSOR DPR
 
