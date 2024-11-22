@@ -24,7 +24,7 @@ MOCKUP STATION LTA
 | image.name | string | `"rs-testmeans_lta-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"sha256:1a9fbc48f08304b0e403ea733297b647396dd520130567738b8f417cb9492223"` | Image version, can be a tag or a digest |
+| image.version | string | `"sha256:bb525c9ac981358fb483ac0db9543496b8c1add84664faa88885d3d80e97d978"` | Image version, can be a tag or a digest |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/health"` | Path for the liveness probe |

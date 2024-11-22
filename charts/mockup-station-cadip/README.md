@@ -28,7 +28,7 @@ MOCKUP STATION CADIP
 | image.name | string | `"rs-testmeans_cadip-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"sha256:c5969ba8420f39c90125a527bd9eb79723b6129fbf7859c54fcfea98271b848e"` | Image version, can be a tag or a digest |
+| image.version | string | `"sha256:4831636c5adfee6cfc809bdeb25e361e084ddeb49e3aaaacca54a1b7be2137a9"` | Image version, can be a tag or a digest |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/health"` | Path for the liveness probe |
