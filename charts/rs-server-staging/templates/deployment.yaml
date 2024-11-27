@@ -84,6 +84,8 @@ spec:
           value: {{ .Values.dask.gateway_auth_type }}
         - name: RSPY_HOST_CATALOG
           value: {{ .Values.app.endpointCatalog }}
+        - name: RSPY_CATALOG_BUCKET
+          value: {{ .Values.app.catalogBucket }}
         - name: POSTGRES_PORT
           value: {{ .Values.postgres.port | quote }}
         - name: POSTGRES_DB

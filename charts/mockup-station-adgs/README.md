@@ -1,6 +1,6 @@
 # mockup-station-adgs
 
-![Version: 0.0.2-a6post1](https://img.shields.io/badge/Version-0.0.2--a6post1-informational?style=flat-square) ![AppVersion: v0.2a6post1](https://img.shields.io/badge/AppVersion-v0.2a6post1-informational?style=flat-square)
+![Version: 0.0.2-a7](https://img.shields.io/badge/Version-0.0.2--a7-informational?style=flat-square) ![AppVersion: v0.2a7](https://img.shields.io/badge/AppVersion-v0.2a7-informational?style=flat-square)
 
 MOCKUP STATION ADGS
 
@@ -24,7 +24,7 @@ MOCKUP STATION ADGS
 | image.name | string | `"rs-testmeans_adgs-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"sha256:25e34afb12145c4748fa315e901359a2a271a4cb54027b1a6e585224612d0106"` | Image version, can be a tag or a digest |
+| image.version | string | `"sha256:2726e4da2a548aefc648235a9a52c0936633098d2fedd689d1ab39658d24cafc"` | Image version, can be a tag or a digest |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/health"` | Path for the liveness probe |
