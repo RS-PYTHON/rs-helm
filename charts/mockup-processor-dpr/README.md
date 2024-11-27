@@ -19,7 +19,7 @@ MOCKUP PROCESSOR DPR
 | image.name | string | `"rs-testmeans_dpr-processor-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"sha256:9604012b04cb7f5af403b5a91f0d316f44902f01f3d4fb81857b5d5d5288be30"` | Image version, can be a tag or a digest |
+| image.version | string | `"sha256:23d916e20f53ee7300776c8cb25091b7891a72b6bf80a5a0f324cc241d2a8c56"` | Image version, can be a tag or a digest |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
 | obs.region | string | `"sbg"` | Region of the object storage service |

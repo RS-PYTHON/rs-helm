@@ -15,6 +15,7 @@ RS SERVER STAGING
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
+| app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. The same value should also be included into ingress.path |
 | app.endpointCatalog | string | `"http://rs-server-catalog-svc.processing.svc.cluster.local:8080"` | Catalog pod address |
@@ -34,7 +35,7 @@ RS SERVER STAGING
 | image.name | string | `"rs-server-staging"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"0.2a6.post1.dev0"` | Image version, can be a tag or a digest |
+| image.version | string | `"0.2a7"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |

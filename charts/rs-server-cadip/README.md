@@ -17,12 +17,11 @@ RS SERVER CADIP
 | affinity | object | `{}` | Pod affinity |
 | app.cadipSearchConfigFile | string | `"cadip_search_config.yaml"` | Cadip search configuration file for the application |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
-| app.eodagConfigFile | string | `"cadip_ws_config.yaml"` | Set properly the EODAG_ADGS_CONFIG env var. |
+| app.eodagConfigFile | string | `"cadip_ws_config.yaml"` | Set properly the EODAG_CADIP_CONFIG env var. |
 | app.eodagConfigFileTokenModule | string | `"cadip_ws_config_token_module.yaml"` |  |
 | app.port | int | `8000` | Port for the application |
-| app.station.cadip | object | `{"endpoint":{"url":{"file":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Files","root":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","session":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Sessions"}}}` | CADIP station name |
-| app.station.cadip.endpoint.url | object | `{"file":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Files","root":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","session":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/Sessions"}` | CADIP station URL |
-| app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
+| app.station.cadip | object | `{"endpoint":{"url":{"odata":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","token":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/oauth2/token"}}}` | CADIP station name |
+| app.station.cadip.endpoint.url | object | `{"odata":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","token":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/oauth2/token"}` | CADIP station URL |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | app.useTokenModule | bool | `true` | allow EODAG to handle it (set it to false for EODAG). |
 | app.workDir | string | `"/app"` | Working directory for the application |
@@ -35,7 +34,7 @@ RS SERVER CADIP
 | image.name | string | `"rs-server-cadip"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"0.2a6.post1.dev0"` | Image version, can be a tag or a digest |
+| image.version | string | `"0.2a7"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
