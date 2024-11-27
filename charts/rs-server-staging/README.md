@@ -19,9 +19,7 @@ RS SERVER STAGING
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. The same value should also be included into ingress.path |
 | app.endpointCatalog | string | `"http://rs-server-catalog-svc.processing.svc.cluster.local:8080"` | Catalog pod address |
-| app.openapiConfig | string | `"openapi.json"` | Config file name for the application |
 | app.port | int | `8000` | Port for the application |
-| app.pygeoapiConfig | string | `"config.yml"` | Config file name for the application |
 | app.station | object | `{"adgs":{"type":"auxip"},"cadip":{"type":"cadip"},"mti":{"type":"cadip"},"sgs":{"type":"cadip"}}` | List of configured stations (expect a secret with the same name) |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service (internal) |
