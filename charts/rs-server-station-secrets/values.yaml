@@ -35,7 +35,7 @@ app:
         client_id: client_id
         client_secret: client_secret
         authorization: Basic test
-      trusted_domains:
+      trusteddomains:
         - trusted.domain1.eu
         - trusted.domain2.eu
     adgs2:
