@@ -26,6 +26,8 @@ RS SERVER STATION SECRETS
 | app.stations.adgs.domain | string | `"mockup-station-adgs-svc.processing.svc.cluster.local"` |  |
 | app.stations.adgs.service.name | string | `"auxip"` |  |
 | app.stations.adgs.service.url | string | `"http://mockup-station-adgs-svc.processing.svc.cluster.local:8080"` |  |
+| app.stations.adgs.trusteddomains[0] | string | `"trusted.domain1.eu"` |  |
+| app.stations.adgs.trusteddomains[1] | string | `"trusted.domain2.eu"` |  |
 | app.stations.adgs2.authentication.auth_type | string | `"oauth2"` |  |
 | app.stations.adgs2.authentication.authorization | string | `"Basic test"` |  |
 | app.stations.adgs2.authentication.client_id | string | `"client_id"` |  |
