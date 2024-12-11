@@ -96,6 +96,8 @@ spec:
           value: {{ .Values.obs.endpoint }}
         - name: S3_REGION
           value: {{ .Values.obs.region }}
+        - name: RSPY_ADGS_SEARCH_CONFIG
+          value: '{{ .Values.app.adgsSearchConfigFile }}'
         - name: RSPY_USE_MODULE_FOR_STATION_TOKEN
           value: '{{ .Values.app.useTokenModule }}'
         - name: STAC_BROWSER_URLS
@@ -202,4 +204,5 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+
   revisionHistoryLimit: 10
