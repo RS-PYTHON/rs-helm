@@ -23,7 +23,7 @@ RS SERVER CADIP
 | app.station.cadip | object | `{"endpoint":{"url":{"odata":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","token":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/oauth2/token"}}}` | CADIP station name |
 | app.station.cadip.endpoint.url | object | `{"odata":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","token":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/oauth2/token"}` | CADIP station URL |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
-| app.useTokenModule | bool | `true` | allow EODAG to handle it (set it to false for EODAG). |
+| app.useTokenModule | bool | `false` | allow EODAG to handle it (set it to false for EODAG). |
 | app.workDir | string | `"/app"` | Working directory for the application |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
 | auth.secret.oidc_client_id | string | `""` | OIDC CLient ID |
