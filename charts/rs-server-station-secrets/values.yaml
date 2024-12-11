@@ -35,6 +35,9 @@ app:
         client_id: client_id
         client_secret: client_secret
         authorization: Basic test
+      trusteddomains:
+      - trusted.domain1.eu
+      - trusted.domain2.eu
     adgs2:
       service:
         name: auxip
