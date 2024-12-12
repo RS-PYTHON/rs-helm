@@ -13,6 +13,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [0.2a8] - 2024-12-12
+
+> :warning: **BREAKING** : After [PR RS-PYTHON/rs-server#688](https://github.com/RS-PYTHON/rs-server/pull/688) configuration files should only be edited from the templates rs-server repository ([search link](https://github.com/search?q=repo%3ARS-PYTHON%2Frs-server+path%3Aservices%2F*%2Fconfig%2F*template*.yaml&type=code)).
+
+### Added
+
+- RSPY-342 : Persist staging jobs in a postgresql database (needs pygeoapi 0.18)
+- RSPY-556 : Low performance of CADIP/AUXIP searches
+- RSPY-527 : Securely support redirections when downloading a CADIP/AUXIP file
+
+### Changed
+
+- rs-server-station-secrets: Parameter client_secret should be optional
+- use lowercase checksum from eodag
+
+### Fixed
+
+- RSPY-555 : [RS-SERVER-ADGS] Collection configuration not modifiable with configmap update
+- RSPY-558 : Affinity and Toleration configuration for rs-server-cadip and rs-server-adgs
+- RSPY-511 : Search pagination from multiple CADIP/AUXIP stations
+
 ## [0.2a7] - 2024-11-22
 
 > :warning: **BREAKING** : After [PR RS-PYTHON/rs-server#688](https://github.com/RS-PYTHON/rs-server/pull/688) configuration files should only be edited from the templates rs-server repository ([search link](https://github.com/search?q=repo%3ARS-PYTHON%2Frs-server+path%3Aservices%2F*%2Fconfig%2F*template*.yaml&type=code)).
