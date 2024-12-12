@@ -66,7 +66,7 @@ image:
   # -- Image name
   name: rs-testmeans_adgs-station-mock
   # -- Image version, can be a tag or a digest
-  version: sha256:2726e4da2a548aefc648235a9a52c0936633098d2fedd689d1ab39658d24cafc 
+  version: sha256:d937631e96ac37a7388d2a75a4a6df415b068b82a746f1b64c52e4a6fbda8f8b 
   # -- Image pull policy
   PullPolicy: Always
   #imagePullSecrets: regcred
