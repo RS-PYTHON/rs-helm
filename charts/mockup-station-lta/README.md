@@ -1,6 +1,6 @@
 # mockup-station-lta
 
-![Version: 0.0.2-a7](https://img.shields.io/badge/Version-0.0.2--a7-informational?style=flat-square) ![AppVersion: v0.2a7](https://img.shields.io/badge/AppVersion-v0.2a7-informational?style=flat-square)
+![Version: 0.0.2-a8](https://img.shields.io/badge/Version-0.0.2--a8-informational?style=flat-square) ![AppVersion: v0.2a8](https://img.shields.io/badge/AppVersion-v0.2a8-informational?style=flat-square)
 
 MOCKUP STATION LTA
 
@@ -24,7 +24,7 @@ MOCKUP STATION LTA
 | image.name | string | `"rs-testmeans_lta-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"sha256:bb525c9ac981358fb483ac0db9543496b8c1add84664faa88885d3d80e97d978"` | Image version, can be a tag or a digest |
+| image.version | string | `"sha256:e0a829417f5a1d7591e564b9bb286ebf91e0cceb34b0e041241596168687263c"` | Image version, can be a tag or a digest |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/health"` | Path for the liveness probe |
