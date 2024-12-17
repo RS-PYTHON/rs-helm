@@ -43,6 +43,7 @@ data:
           credentials:
             username: PLACEHOLDER
             password: PLACEHOLDER
+            auth_for_token: PLACEHOLDER
           headers:
             Content-Type: application/x-www-form-urlencoded
           retrieve_headers:
