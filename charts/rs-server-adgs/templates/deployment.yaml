@@ -97,7 +97,7 @@ spec:
         - name: S3_REGION
           value: {{ .Values.obs.region }}
         - name: RSPY_ADGS_SEARCH_CONFIG
-          value: '{{ .Values.app.adgsSearchConfigFile }}'
+          value: {{ .Values.app.confDir }}/{{ .Values.app.adgsSearchConfigFile }}
         - name: RSPY_USE_MODULE_FOR_STATION_TOKEN
           value: '{{ .Values.app.useTokenModule }}'
         - name: STAC_BROWSER_URLS
