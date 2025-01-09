@@ -61,6 +61,8 @@ spec:
             name: {{ $v.type }}-{{ $k }}
         {{- end }}
         env:
+        - name: RSPY_DASK_STAGING_CLUSTER_NAME
+          value:  {{ .Values.app.clusterName }}
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacUrl }}
         - name: RSPY_UAC_HOMEPAGE

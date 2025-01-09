@@ -55,6 +55,8 @@ dask:
   gateway_auth_type: jupyterhub
   # -- Jupyter API Token when dask.jupyterhub=jupyterhub
   jupyterhub_api_token: JUPYTER_API_TOKEN_HERE
+  # -- Dask cluster name for staging
+  clusterName: dask-staging
   
 
 probe:
