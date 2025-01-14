@@ -92,10 +92,10 @@ data:
             Retransfer:
             - null
             - $.Retransfer
-            startTimeFromAscendingNode:
+            StartPublicationDate:
             - null
             - $.PublicationDate
-            completionTimeFromAscendingNode:
+            StopPublicationDate:
             - null
             - $.PublicationDate
             href:
@@ -112,8 +112,9 @@ data:
                 and:
                 - SessionId in ({SessionIds})
                 - SessionId eq {SessionId}
-                - PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}
-                - PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}
+                - PublicationDate gte {StartPublicationDate#to_iso_utc_datetime}
+                - PublicationDate lte {StopPublicationDate#to_iso_utc_datetime}
+                - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
           pagination:
             max_items_per_page: 10000
             next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}'
@@ -231,10 +232,10 @@ data:
             Files:
             - null
             - $.Files
-            startTimeFromAscendingNode:
+            StartPublicationDate:
             - null
             - $.PublicationDate
-            completionTimeFromAscendingNode:
+            StopPublicationDate:
             - null
             - $.PublicationDate
             href:
@@ -252,8 +253,9 @@ data:
                 - SessionId eq {SessionId}
                 - Satellite eq {platform}
                 - Satellite in ({platforms})
-                - PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}
-                - PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}
+                - PublicationDate gte {StartPublicationDate#to_iso_utc_datetime}
+                - PublicationDate lte {StopPublicationDate#to_iso_utc_datetime}
+                - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
                 - Retransfer eq {Retransfer}
           pagination:
             max_items_per_page: 10000
@@ -282,8 +284,6 @@ data:
               cadip:planned_data_stop: PlannedDataStop
               cadip:downlink_status_ok: DownlinkStatusOK
               cadip:delivery_push_ok: DeliveryPushOK
-              startTimeFromAscendingNode: DownlinkStart
-              completionTimeFromAscendingNode: DownlinkStop
               publicationDate: PublicationDate
             sort_order_mapping:
               ascending: asc
@@ -355,10 +355,10 @@ data:
             Retransfer:
             - null
             - $.Retransfer
-            startTimeFromAscendingNode:
+            StartPublicationDate:
             - null
             - $.PublicationDate
-            completionTimeFromAscendingNode:
+            StopPublicationDate:
             - null
             - $.PublicationDate
             href:
@@ -375,8 +375,10 @@ data:
                 and:
                 - SessionId in ({SessionIds})
                 - SessionId eq {SessionId}
-                - PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}
-                - PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}
+                - PublicationDate gte {StartPublicationDate#to_iso_utc_datetime}
+                - PublicationDate lte {StopPublicationDate#to_iso_utc_datetime}
+                - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
+                - Retransfer eq {Retransfer}
           pagination:
             max_items_per_page: 10000
             next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}'
@@ -481,10 +483,10 @@ data:
             Files:
             - null
             - $.Files
-            startTimeFromAscendingNode:
+            StartPublicationDate:
             - null
             - $.PublicationDate
-            completionTimeFromAscendingNode:
+            StopPublicationDate:
             - null
             - $.PublicationDate
             href:
@@ -502,8 +504,9 @@ data:
                 - SessionId eq {SessionId}
                 - Satellite eq {platform}
                 - Satellite in ({platforms})
-                - PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}
-                - PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}
+                - PublicationDate gte {StartPublicationDate#to_iso_utc_datetime}
+                - PublicationDate lte {StopPublicationDate#to_iso_utc_datetime}
+                - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
                 - Retransfer eq {Retransfer}
           pagination:
             max_items_per_page: 10000
@@ -532,8 +535,6 @@ data:
               cadip:planned_data_stop: PlannedDataStop
               cadip:downlink_status_ok: DownlinkStatusOK
               cadip:delivery_push_ok: DeliveryPushOK
-              startTimeFromAscendingNode: DownlinkStart
-              completionTimeFromAscendingNode: DownlinkStop
             sort_order_mapping:
               ascending: asc
               descending: desc
