@@ -34,6 +34,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 - RSPY-555 : [RS-SERVER-ADGS] Collection configuration not modifiable with configmap update
   - additionnal commit : Add Absolute path for adgsSearchconfigFile
+- RSPY-558 : Affinity and Toleration not set on rs-server-cadip, rs-server-adgs 
 - RSPY-575 : Cannot contact MasPalomas station anymore with token module = false
 
 ## [0.2a8] - 2024-12-12
