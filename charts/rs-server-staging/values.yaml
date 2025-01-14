@@ -55,6 +55,8 @@ dask:
   gateway_auth_type: jupyterhub
   # -- Jupyter API Token when dask.jupyterhub=jupyterhub
   jupyterhub_api_token: JUPYTER_API_TOKEN_HERE
+  # -- Dask cluster name for staging
+  clusterName: dask-staging
   
 
 probe:
@@ -172,7 +174,7 @@ image:
   # -- Image name
   name: rs-server-staging
   # -- Image version, can be a tag or a digest
-  version: 0.2a7
+  version: 0.2a8
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
