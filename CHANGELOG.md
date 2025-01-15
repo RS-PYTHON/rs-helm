@@ -13,6 +13,30 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [0.2a9] - 2025-01-15
+
+:sparkler: Happy new year !
+
+> :warning: **BREAKING** : After [PR RS-PYTHON/rs-server#688](https://github.com/RS-PYTHON/rs-server/pull/688) configuration files should only be edited from the templates rs-server repository ([search link](https://github.com/search?q=repo%3ARS-PYTHON%2Frs-server+path%3Aservices%2F*%2Fconfig%2F*template*.yaml&type=code)).
+
+### Added
+
+- rs-server-staging : env variable for the dask's cluster selection
+
+### Changed
+
+- rs-server-cadip & rs-server-adgs : synchronize config files for int values
+  - `max_items_per_page` increased by x10
+- bump docker image tags
+- adgs platformShortName in uppercase
+
+### Fixed
+
+- RSPY-555 : [RS-SERVER-ADGS] Collection configuration not modifiable with configmap update
+  - additionnal commit : Add Absolute path for adgsSearchconfigFile
+- RSPY-558 : Affinity and Toleration not set on rs-server-cadip, rs-server-adgs 
+- RSPY-575 : Cannot contact MasPalomas station anymore with token module = false
+
 ## [0.2a8] - 2024-12-12
 
 > :warning: **BREAKING** : After [PR RS-PYTHON/rs-server#688](https://github.com/RS-PYTHON/rs-server/pull/688) configuration files should only be edited from the templates rs-server repository ([search link](https://github.com/search?q=repo%3ARS-PYTHON%2Frs-server+path%3Aservices%2F*%2Fconfig%2F*template*.yaml&type=code)).
