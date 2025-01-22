@@ -102,7 +102,7 @@ spec:
         - name: JUPYTERHUB_API_TOKEN
           valueFrom:
             secretKeyRef:
-              name: jupyterhub-api-token
+              name: {{ .Release.Name }}-jupyterhub-api-token
               key: TOKEN
         - name: S3_ENDPOINT
           value: {{ .Values.obs.endpoint }}
