@@ -35,10 +35,12 @@ app:
   SB_allowExternalAccess: "false"
   # -- Detect locale from user
   SB_detectLocaleFromBrowser: "true"
-  # -- Allows search engines to better crawl STAC Browser
+  # -- Allows search engines to better crawl STAC Browser. Must be set to 'history' for OIDC
   SB_historyMode: history
   # -- URL of the STAC catalog
   SB_catalogUrl: https://subdomain.example.com/catalog/
+  # -- Social sharing
+  SB_socialSharing: email,bsky,mastodon
 
 probe:
   liveness:
@@ -72,7 +74,7 @@ image:
   # -- Image name
   name: stac-browser
   # -- Image version, can be a tag or a digest
-  version: sha256:57ac8d7712457885c1842481d851d90eb23943e2e6709b7b9ae06dbe9666b35d
+  version: sha256:eca16af07307ded914bc63776660611a12122f873a23bda15973707fba70612f
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
