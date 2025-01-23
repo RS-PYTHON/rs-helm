@@ -64,12 +64,15 @@ spec:
           value: {{ .Values.app.SB_historyMode }}
         - name: SB_catalogUrl
           value: {{ .Values.app.SB_catalogUrl }}
-        - name: OIDC_ENDPOINT
-          value: {{ .Values.app.oidc_endpoint }}
-        - name: OIDC_REALM
-          value: {{ .Values.app.oidc_realm }}
-        - name: PUBLIC_CLIENT_ID
-          value: {{ .Values.app.oidc_client_id }}
+        - name: SB_authConfig
+          value: |
+            {
+              "type": "openIdConnect",
+              "openIdConnectUrl": "{{ .Values.app.oidc_endpoint }}/realms/{{ .Values.app.oidc_realm }}/.well-known/openid-configuration",
+              "oidcConfig": {
+                "client_id": "{{ .Values.app.oidc_client_id }}"
+              }
+            }
         securityContext:
           privileged: false
         {{ if .Values.probe }}
