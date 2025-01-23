@@ -17,7 +17,8 @@ STAC BROWSER
 | app.SB_allowExternalAccess | string | `"false"` | Allows or disallows loading and browsing external STAC data |
 | app.SB_catalogUrl | string | `"https://subdomain.example.com/catalog/"` | URL of the STAC catalog |
 | app.SB_detectLocaleFromBrowser | string | `"true"` | Detect locale from user |
-| app.SB_historyMode | string | `"history"` | Allows search engines to better crawl STAC Browser |
+| app.SB_historyMode | string | `"history"` | Allows search engines to better crawl STAC Browser. Must be set to 'history' for OIDC |
+| app.SB_socialSharing | string | `"email,bsky,mastodon"` | Social sharing |
 | app.oidc_client_id | string | `""` | OIDC Public Client ID |
 | app.oidc_endpoint | string | `""` | OIDC End Point |
 | app.oidc_realm | string | `""` | OIDC Realm |
@@ -26,7 +27,7 @@ STAC BROWSER
 | image.name | string | `"stac-browser"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"sha256:57ac8d7712457885c1842481d851d90eb23943e2e6709b7b9ae06dbe9666b35d"` | Image version, can be a tag or a digest |
+| image.version | string | `"sha256:eca16af07307ded914bc63776660611a12122f873a23bda15973707fba70612f"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"stac-browser.subdomain.example.com"` | Ingress host name. |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
