@@ -35,10 +35,12 @@ app:
   SB_allowExternalAccess: "false"
   # -- Detect locale from user
   SB_detectLocaleFromBrowser: "true"
-  # -- Allows search engines to better crawl STAC Browser
+  # -- Allows search engines to better crawl STAC Browser. Must be set to 'history' for OIDC
   SB_historyMode: history
   # -- URL of the STAC catalog
   SB_catalogUrl: https://subdomain.example.com/catalog/
+  # -- Social sharing
+  SB_socialSharing: "['email', 'bsky', 'mastodon']"
 
 probe:
   liveness:
