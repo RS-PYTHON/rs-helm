@@ -72,10 +72,10 @@ image:
   # -- Image name
   name: pgstac
   # -- Image version, can be a tag or a digest
-  version: v0.8.6
+  version: v0.9.2
   # -- Image pull policy
   PullPolicy: IfNotPresent
-  
+
 resources:
   request:
     # -- Pod memory request
