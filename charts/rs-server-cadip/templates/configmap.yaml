@@ -112,8 +112,8 @@ data:
                 and:
                 - SessionId in ({SessionIds})
                 - SessionId eq {SessionId}
-                - PublicationDate gte {StartPublicationDate#to_iso_utc_datetime}
-                - PublicationDate lte {StopPublicationDate#to_iso_utc_datetime}
+                - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
+                - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
           pagination:
             max_items_per_page: 10000
@@ -253,8 +253,8 @@ data:
                 - SessionId eq {SessionId}
                 - Satellite eq {platform}
                 - Satellite in ({platforms})
-                - PublicationDate gte {StartPublicationDate#to_iso_utc_datetime}
-                - PublicationDate lte {StopPublicationDate#to_iso_utc_datetime}
+                - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
+                - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
                 - Id eq {id}
                 - DownlinkOrbit eq {DownlinkOrbit}
@@ -390,8 +390,8 @@ data:
                 and:
                 - SessionId in ({SessionIds})
                 - SessionId eq {SessionId}
-                - PublicationDate gte {StartPublicationDate#to_iso_utc_datetime}
-                - PublicationDate lte {StopPublicationDate#to_iso_utc_datetime}
+                - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
+                - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
                 - Id eq {id}
                 - DownlinkOrbit eq {DownlinkOrbit}
@@ -534,8 +534,8 @@ data:
                 - SessionId eq {SessionId}
                 - Satellite eq {platform}
                 - Satellite in ({platforms})
-                - PublicationDate gte {StartPublicationDate#to_iso_utc_datetime}
-                - PublicationDate lte {StopPublicationDate#to_iso_utc_datetime}
+                - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
+                - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
                 - Id eq {id}
                 - DownlinkOrbit eq {DownlinkOrbit}
