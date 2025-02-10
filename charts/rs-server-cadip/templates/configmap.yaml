@@ -256,7 +256,22 @@ data:
                 - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
                 - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
+                - Id eq {id}
+                - DownlinkOrbit eq {DownlinkOrbit}
+                - DownlinkStart eq {DownlinkStart}
+                - DownlinkStop eq {DownlinkStop}
+                - NumChannels eq {NumChannels}
+                - AcquisitionId eq {AcquisitionId}
+                - AntennaId eq {AntennaId}
+                - StationUnitId eq {StationUnitId}
+                - FrontEndId eq {FrontEndId}
+                - PlannedDataStart eq {PlannedDataStart}
+                - PlannedDataStop eq {PlannedDataStop}
                 - Retransfer eq {Retransfer}
+                - AntennaStatusOK eq {AntennaStatusOK}
+                - FrontEndStatusOK eq {FrontEndStatusOK}
+                - DownlinkStatusOK eq {DownlinkStatusOK}
+                - DeliveryPushOK eq {DeliveryPushOK}
           pagination:
             max_items_per_page: 10000
             next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}'
@@ -378,7 +393,22 @@ data:
                 - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
                 - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
+                - Id eq {id}
+                - DownlinkOrbit eq {DownlinkOrbit}
+                - DownlinkStart eq {DownlinkStart}
+                - DownlinkStop eq {DownlinkStop}
+                - NumChannels eq {NumChannels}
+                - AcquisitionId eq {AcquisitionId}
+                - AntennaId eq {AntennaId}
+                - StationUnitId eq {StationUnitId}
+                - FrontEndId eq {FrontEndId}
+                - PlannedDataStart eq {PlannedDataStart}
+                - PlannedDataStop eq {PlannedDataStop}
                 - Retransfer eq {Retransfer}
+                - AntennaStatusOK eq {AntennaStatusOK}
+                - FrontEndStatusOK eq {FrontEndStatusOK}
+                - DownlinkStatusOK eq {DownlinkStatusOK}
+                - DeliveryPushOK eq {DeliveryPushOK}
           pagination:
             max_items_per_page: 10000
             next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}'
@@ -507,7 +537,22 @@ data:
                 - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
                 - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
+                - Id eq {id}
+                - DownlinkOrbit eq {DownlinkOrbit}
+                - DownlinkStart eq {DownlinkStart}
+                - DownlinkStop eq {DownlinkStop}
+                - NumChannels eq {NumChannels}
+                - AcquisitionId eq {AcquisitionId}
+                - AntennaId eq {AntennaId}
+                - StationUnitId eq {StationUnitId}
+                - FrontEndId eq {FrontEndId}
+                - PlannedDataStart eq {PlannedDataStart}
+                - PlannedDataStop eq {PlannedDataStop}
                 - Retransfer eq {Retransfer}
+                - AntennaStatusOK eq {AntennaStatusOK}
+                - FrontEndStatusOK eq {FrontEndStatusOK}
+                - DownlinkStatusOK eq {DownlinkStatusOK}
+                - DeliveryPushOK eq {DeliveryPushOK}
           pagination:
             max_items_per_page: 10000
             next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}'
