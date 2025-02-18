@@ -23,6 +23,6 @@ spec:
     app: {{ .Release.Name }}
   ports:
   - name: {{ .Release.Name }}-service
-    protocol: TCP
+    protocol: TCPles helm cha
     port: {{ .Values.service.port }}
     targetPort: {{ .Values.app.port }}

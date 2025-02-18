@@ -112,6 +112,30 @@ data:
             geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
             downloadLink: {{ $v.endpoint.url }}({id})/$value
             title: $.Name
+            auxip:id:
+            - null
+            - $.Id
+            DatetimeStart:
+            - null
+            - $.ContentDate.Start
+            StartPublicationDate:
+            - null
+            - $.PublicationDate
+            StopPublicationDate:
+            - null
+            - $.PublicationDate
+            platformSerialIdentifier:
+            - null
+            - $.platformSerialIdentifier
+            platformShortName:
+            - null
+            - $.platformShortName
+            processing:datetime:
+            - null
+            - $.processing:datetime
+            processingCenter:
+            - null
+            - $.processingCenter
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -119,11 +143,12 @@ data:
               operations:
                 and:
                 - contains(Name, '{Name}')
-                - PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}
-                - PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}
+                - PublicationDate gte {StartPublicationDate#to_iso_utc_datetime}
+                - PublicationDate lte {StopPublicationDate#to_iso_utc_datetime}
+                - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
                 - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq '{attr_ptype}')
                 - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq '{attr_serial_identif}')
-                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq '{attr_platform_short_name}')
+                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq '{attr_platform_short_name#to_upper}')
                 - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'processingDate' and att/OData.CSC.StringAttribute/Value eq '{attr_processing_date#to_iso_utc_datetime}')
           pagination:
             max_items_per_page: 10000
@@ -230,6 +255,30 @@ data:
             geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
             downloadLink: {{ $v.endpoint.url }}({id})/$value
             title: $.Name
+            auxip:id:
+            - null
+            - $.Id
+            DatetimeStart:
+            - null
+            - $.ContentDate.Start
+            StartPublicationDate:
+            - null
+            - $.PublicationDate
+            StopPublicationDate:
+            - null
+            - $.PublicationDate
+            platformSerialIdentifier:
+            - null
+            - $.platformSerialIdentifier
+            platformShortName:
+            - null
+            - $.platformShortName
+            processing:datetime:
+            - null
+            - $.processing:datetime
+            processingCenter:
+            - null
+            - $.processingCenter
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -237,11 +286,12 @@ data:
               operations:
                 and:
                 - contains(Name, '{Name}')
-                - PublicationDate gt {startTimeFromAscendingNode#to_iso_utc_datetime}
-                - PublicationDate lt {completionTimeFromAscendingNode#to_iso_utc_datetime}
+                - PublicationDate gte {StartPublicationDate#to_iso_utc_datetime}
+                - PublicationDate lte {StopPublicationDate#to_iso_utc_datetime}
+                - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
                 - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq '{attr_ptype}')
                 - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq '{attr_serial_identif}')
-                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq '{attr_platform_short_name}')
+                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq '{attr_platform_short_name#to_upper}')
                 - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'processingDate' and att/OData.CSC.StringAttribute/Value eq '{attr_processing_date#to_iso_utc_datetime}')
           pagination:
             max_items_per_page: 10000
