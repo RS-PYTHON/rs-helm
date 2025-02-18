@@ -13,6 +13,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [0.2a10] - 2025-02-18
+
+### Added
+
+- RSPY-493 : extend filter attributes for rs-server-cadip/adgs
+
+### Changed
+
+- [PR#90](https://github.com/RS-PYTHON/rs-helm/pull/90) : Rename staging secret to allow multiple instances
+- [PR#95](https://github.com/RS-PYTHON/rs-helm/pull/95) : Update configs for rs-server-cadip/adgs
+- RSPY-596 : Update to stac-browser 3.3.0
+- bumped docker images tags
+
+### Fixed
+
+- [PR#96](https://github.com/RS-PYTHON/rs-helm/pull/96) : Fix CADIP eodag config
+- RSPY-598 : Support lte/gte operators for rs-server-cadip/adgs
+
 ## [0.2a9] - 2025-01-15
 
 :sparkler: Happy new year !
