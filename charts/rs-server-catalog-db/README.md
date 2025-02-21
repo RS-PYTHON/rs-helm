@@ -23,7 +23,7 @@ RS SERVER CATALOG DB
 | image.name | string | `"pgstac"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"stac-utils"` | Image repository |
-| image.version | string | `"v0.9.2"` | Image version, can be a tag or a digest |
+| image.version | string | `"v0.9.3"` | Image version, can be a tag or a digest |
 | namespace | string | `"database"` | Namespace for the deployment |
 | postgres.db | string | `"catalog"` | PostgreSQL database name |
 | postgres.port | string | `"5432"` | PostgreSQL port |
