@@ -43,28 +43,39 @@ app:
   SB_socialSharing: email,bsky,mastodon
 
 probe:
+  startup::
+    # -- Path for the liveness probe
+    path: /
+    # -- Port for the liveness probe
+    port: 8080
+    # -- InitialDelaySeconds for the liveness probe
+    initialDelaySeconds: 0
+    # -- periodSeconds for the liveness probe
+    periodSeconds: 2
+    # -- timeoutSeconds for the liveness probe
+    timeoutSeconds: 1
   liveness:
     # -- Path for the liveness probe
     path: /
     # -- Port for the liveness probe
     port: 8080
     # -- InitialDelaySeconds for the liveness probe
-    initialDelaySeconds: 5
+    initialDelaySeconds: 0
     # -- periodSeconds for the liveness probe
-    periodSeconds: 10
+    periodSeconds: 30
     # -- timeoutSeconds for the liveness probe
-    timeoutSeconds: 1
+    timeoutSeconds: 5
   readiness:
     # -- Path for the readiness probe
     path: /
     # -- Port for the readiness probe
     port: 8080
     # -- InitialDelaySeconds for the readiness probe
-    initialDelaySeconds: 5
+    initialDelaySeconds: 0
     # -- periodSeconds for the readiness probe
-    periodSeconds: 10
+    periodSeconds: 30
     # -- timeoutSeconds for the readiness probe
-    timeoutSeconds: 1
+    timeoutSeconds: 5
 
 image:
   # -- Image registry

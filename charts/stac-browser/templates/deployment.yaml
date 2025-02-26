@@ -78,6 +78,15 @@ spec:
         securityContext:
           privileged: false
         {{ if .Values.probe }}
+        {{ if .Values.probe.startup }}
+        startupProbe:
+          httpGet:
+            path: {{ .Values.probe.startup.path }}
+            port: {{ .Values.probe.startup.port }}
+          initialDelaySeconds: {{ .Values.probe.startup.initialDelaySeconds }}
+          periodSeconds: {{ .Values.probe.startup.periodSeconds }}
+          timeoutSeconds: {{ .Values.probe.startup.timeoutSeconds }}
+        {{ end }}
         {{ if .Values.probe.liveness }}
         livenessProbe:
           httpGet:

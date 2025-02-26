@@ -106,6 +106,17 @@ spec:
         securityContext:
           privileged: false
         {{ if .Values.probe }}
+        {{ if .Values.probe.startup }}
+        startupProbe:
+          exec:
+            command:
+              - pg_isready
+              - -d
+              - {{ .Values.postgres.db }}
+          initialDelaySeconds: {{ .Values.probe.startup.initialDelaySeconds }}
+          periodSeconds: {{ .Values.probe.startup.periodSeconds }}
+          timeoutSeconds: {{ .Values.probe.startup.timeoutSeconds }}
+        {{ end }}
         {{ if .Values.probe.liveness }}
         livenessProbe:
           exec:

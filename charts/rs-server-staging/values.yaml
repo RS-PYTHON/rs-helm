@@ -60,13 +60,24 @@ dask:
   
 
 probe:
+  startup:
+    # -- Path for the liveness probe
+    path: /_mgmt/ping
+    # -- Port for the liveness probe
+    port: 8000
+    # -- InitialDelaySeconds for the liveness probe
+    initialDelaySeconds: 0
+    # -- periodSeconds for the liveness probe
+    periodSeconds: 2
+    # -- timeoutSeconds for the liveness probe
+    timeoutSeconds: 1
   liveness:
     # -- Path for the liveness probe
     path: /_mgmt/ping
     # -- Port for the liveness probe
     port: 8000
     # -- InitialDelaySeconds for the liveness probe
-    initialDelaySeconds: 30
+    initialDelaySeconds: 0
     # -- periodSeconds for the liveness probe
     periodSeconds: 30
     # -- timeoutSeconds for the liveness probe
@@ -77,7 +88,7 @@ probe:
     # -- Port for the readiness probe
     port: 8000
     # -- InitialDelaySeconds for the readiness probe
-    initialDelaySeconds: 30
+    initialDelaySeconds: 0
     # -- periodSeconds for the readiness probe
     periodSeconds: 30
     # -- timeoutSeconds for the readiness probe
