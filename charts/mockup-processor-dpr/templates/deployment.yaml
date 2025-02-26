@@ -100,4 +100,12 @@ spec:
       {{ end }}
       restartPolicy: Always
       securityContext: {}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
   revisionHistoryLimit: 10

@@ -93,3 +93,9 @@ volume:
 
 # -- Keep the ressources for PVC and ConfigMap. Default is to keep.
 helmResourcePolicy: keep
+
+# -- Pod affinity
+affinity: {}
+
+# -- Pod toleration
+tolerations: []
