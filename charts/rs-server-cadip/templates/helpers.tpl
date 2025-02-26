@@ -23,3 +23,31 @@ Create the image path for the passed in image field
 {{- printf "%s/%s/%s:%s" .registry .repository .name .version -}}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Create chart name and version as used by the chart label.
+*/}}
+{{- define "mychart.chart" -}}
+{{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/*
+Selector labels
+*/}}
+{{- define "mychart.selectorLabels" -}}
+app.kubernetes.io/component: cadip
+app.kubernetes.io/name: {{ .Chart.Name }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+
+{{/*
+Labels
+*/}}
+{{- define "mychart.Labels" -}}
+{{ include "mychart.selectorLabels" . }}
+helm.sh/chart: {{ include "mychart.chart" . }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+app.kubernetes.io/chart-version: {{ .Chart.Version | quote }}
+app.kubernetes.io/part-of: rs-server
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}

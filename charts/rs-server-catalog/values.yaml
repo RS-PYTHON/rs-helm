@@ -72,9 +72,9 @@ postgres:
   db: catalog
   host:
     # -- PostgreSQL service URL for Read Write
-    rw: rs-server-catalog-db-svc.database.svc.cluster.local
+    rw: rs-server-catalog-db.database.svc.cluster.local
     # -- PostgreSQL service URL for Read Only
-    ro: rs-server-catalog-db-svc.database.svc.cluster.local
+    ro: rs-server-catalog-db.database.svc.cluster.local
   secret:
     # -- Username to authenticate with the PostgreSQL service
     user: postgres
@@ -122,13 +122,24 @@ resources:
     cpu: "500m"
 
 probe:
+  startup:
+    # -- Path for the liveness probe
+    path: /health
+    # -- Port for the liveness probe
+    port: 8000
+    # -- InitialDelaySeconds for the liveness probe
+    initialDelaySeconds: 20
+    # -- periodSeconds for the liveness probe
+    periodSeconds: 2
+    # -- timeoutSeconds for the liveness probe
+    timeoutSeconds: 1
   liveness:
     # -- Path for the liveness probe
     path: /health
     # -- Port for the liveness probe
     port: 8000
     # -- InitialDelaySeconds for the liveness probe
-    initialDelaySeconds: 30
+    initialDelaySeconds: 0
     # -- periodSeconds for the liveness probe
     periodSeconds: 30
     # -- timeoutSeconds for the liveness probe
@@ -139,7 +150,7 @@ probe:
     # -- Port for the readiness probe
     port: 8000
     # -- InitialDelaySeconds for the readiness probe
-    initialDelaySeconds: 30
+    initialDelaySeconds: 0
     # -- periodSeconds for the readiness probe
     periodSeconds: 30
     # -- timeoutSeconds for the readiness probe

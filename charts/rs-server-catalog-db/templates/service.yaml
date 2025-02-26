@@ -15,14 +15,15 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: {{ .Release.Name }}-svc
+  name: {{ .Release.Name }}
   labels:
-    app: {{ .Release.Name }}-svc
+    {{- include "mychart.Labels" . | nindent 4 }}
 spec:
+  type: ClusterIP
   selector:
-    app: {{ .Release.Name }}
+    {{- include "mychart.selectorLabels" . | nindent 4 }}
   ports:
-  - name: {{ .Release.Name }}-service
+  - name: {{ .Release.Name }}-http
     protocol: TCP
     port: {{ .Values.service.port }}
-    targetPort: {{ .Values.service.port }}
+    targetPort: {{ .Values.app.port }}
