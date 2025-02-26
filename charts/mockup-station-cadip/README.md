@@ -14,6 +14,7 @@ MOCKUP STATION CADIP
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| affinity | object | `{}` | Pod affinity |
 | app.authConfigFile | string | `"auth.json"` | Auth configuration file for the application |
 | app.cadipSessionExpand | bool | `true` | Support for expand option, default true |
 | app.catalogConfigFile | string | `"FileResponse.json"` | catalog configuration file for the application |
@@ -30,22 +31,28 @@ MOCKUP STATION CADIP
 | image.repository | string | `"rs-python"` | Image repository |
 | image.version | string | `"ea71db9"` | Image version, can be a tag or a digest |
 | namespace | string | `"processing"` | Namespace for the deployment |
-| probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
+| probe.liveness.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/health"` | Path for the liveness probe |
 | probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |
 | probe.liveness.port | int | `5000` | Port for the liveness probe |
 | probe.liveness.timeoutSeconds | int | `5` | timeoutSeconds for the liveness probe |
-| probe.readiness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the readiness probe |
+| probe.readiness.initialDelaySeconds | int | `0` | InitialDelaySeconds for the readiness probe |
 | probe.readiness.path | string | `"/health"` | Path for the readiness probe |
 | probe.readiness.periodSeconds | int | `30` | periodSeconds for the readiness probe |
 | probe.readiness.port | int | `5000` | Port for the readiness probe |
 | probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
+| probe.startup.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
+| probe.startup.path | string | `"/health"` | Path for the liveness probe |
+| probe.startup.periodSeconds | int | `2` | periodSeconds for the liveness probe |
+| probe.startup.port | int | `5000` | Port for the liveness probe |
+| probe.startup.timeoutSeconds | int | `1` | timeoutSeconds for the liveness probe |
 | replicaCount | int | `1` | Number of replicas for the deployment |
 | resources.limit.cpu | string | `"500m"` | Pod CPU limit |
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
 | service.port | int | `8080` | Port for the service |
+| tolerations | list | `[]` | Pod toleration |
 | volume.accessModes | string | `"ReadWriteOnce"` | AccessMode of the database volume |
 | volume.size | string | `"50Gi"` | Size of the database volume |
 | volume.storageClassName | string | `"csi-cinder-sc-retain"` | StorageClass of the database volume |
