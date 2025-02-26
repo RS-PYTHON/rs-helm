@@ -12,32 +12,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-kind: Deployment
+kind: StatefulSet
 apiVersion: apps/v1
 metadata:
   name: {{ .Release.Name }}
   namespace: {{ .Values.namespace }}
-  generation: 1
   labels:
-    app: {{ .Release.Name }}
-  annotations:
-    deployment.kubernetes.io/revision: '1'
+    {{- include "mychart.Labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      {{- include "mychart.selectorLabels" . | nindent 6 }}
   replicas: {{ .Values.replicaCount }}
-  strategy:
-    type: RollingUpdate
+  podManagementPolicy: Parallel
+  updateStrategy:
     rollingUpdate:
-      maxSurge: 100%
-      maxUnavailable: 50%
+      partition: 0
+  serviceName: {{ .Release.Name }}-headless
   template:
     metadata:
       name: {{ .Release.Name }}
       labels:
-        app: {{ .Release.Name }}
-        type: {{ .Values.namespace }}
+        {{- include "mychart.selectorLabels" . | nindent 8 }}
     spec:
       terminationGracePeriodSeconds: 30
       containers:
@@ -51,32 +47,25 @@ spec:
           limits:
             memory: {{ .Values.resources.limit.ram }}
             cpu: {{ .Values.resources.limit.cpu }}
-        volumeMounts:
-        - name: service-config-volume
-          mountPath: {{ .Values.app.confDir }}/{{ .Values.app.authConfigFile }}
-          subPath: {{ .Values.app.authConfigFile }}
-        - name: quality-config-volume
-          mountPath: {{ .Values.app.confDir }}/Catalogue/{{ .Values.app.qualityConfigFile }}
-          subPath: {{ .Values.app.qualityConfigFile }}
-        - name: sessionid-config-volume
-          mountPath: {{ .Values.app.confDir }}/Catalogue/{{ .Values.app.sessionIDConfigFile }}
-          subPath: {{ .Values.app.sessionIDConfigFile }}
-        - name: catalog-config-volume
-          mountPath: {{ .Values.app.confDir }}/Catalogue/{{ .Values.app.catalogConfigFile }}
-          subPath: {{ .Values.app.catalogConfigFile }}
-        - mountPath: /opt/cadip/config/S3Mock
-          name: opt-cadip
         ports:
         - name: web
           protocol: TCP
           containerPort: {{ .Values.app.port }}
         env:
-        {{ if .Values.app }}
-        {{ if kindIs "bool" .Values.app.cadipSessionExpand }}
-        - name: CADIP_SESSION_EXPAND
-          value: "{{ .Values.app.cadipSessionExpand }}"
-        {{ end }}
-        {{ end }}
+        - name: S3_ENDPOINT
+          value: {{ .Values.obs.endpoint }}
+        - name: S3_REGION
+          value: {{ .Values.obs.region }}
+        - name: S3_ACCESSKEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-obs
+              key: ak
+        - name: S3_SECRETKEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Release.Name }}-obs
+              key: sk
         securityContext:
           privileged: false
         {{ if .Values.probe }}
@@ -116,22 +105,6 @@ spec:
       {{ end }}
       restartPolicy: Always
       securityContext: {}
-      volumes:
-      - name: service-config-volume
-        configMap:
-          name: {{ .Release.Name }}-service-config
-      - name: quality-config-volume
-        configMap:
-          name: {{ .Release.Name }}-quality-config
-      - name: sessionid-config-volume
-        configMap:
-          name: {{ .Release.Name }}-sessionid-config
-      - name: catalog-config-volume
-        configMap:
-          name: {{ .Release.Name }}-catalog-config
-      - name: opt-cadip
-        persistentVolumeClaim:
-          claimName: {{ .Release.Name }}-pvc
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

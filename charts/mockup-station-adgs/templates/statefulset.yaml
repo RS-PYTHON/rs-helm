@@ -118,7 +118,7 @@ spec:
     - metadata:
         name: opt-adgs
         annotations:
-          helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}          
+          helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}
       spec:
         accessModes:
           - ReadWriteOnce
