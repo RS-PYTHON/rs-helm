@@ -31,7 +31,7 @@ spec:
       paths:
       - backend:
           service:
-            name: {{ .Release.Name }}-svc
+            name: {{ .Release.Name }}
             port:
               number: {{ .Values.service.port }}
         path: {{ .Values.ingress.path }}

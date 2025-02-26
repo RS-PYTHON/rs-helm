@@ -72,9 +72,9 @@ postgres:
   db: catalog
   host:
     # -- PostgreSQL service URL for Read Write
-    rw: rs-server-catalog-db-svc.database.svc.cluster.local
+    rw: rs-server-catalog-db.database.svc.cluster.local
     # -- PostgreSQL service URL for Read Only
-    ro: rs-server-catalog-db-svc.database.svc.cluster.local
+    ro: rs-server-catalog-db.database.svc.cluster.local
   secret:
     # -- Username to authenticate with the PostgreSQL service
     user: postgres
