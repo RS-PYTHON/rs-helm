@@ -70,7 +70,7 @@ spec:
             port: {{ .Values.probe.startup.port }}
           initialDelaySeconds: {{ .Values.probe.startup.initialDelaySeconds }}
           periodSeconds: {{ .Values.probe.startup.periodSeconds }}
-          timeoutSeconds: {{ .Values.probe.reastartupdiness.timeoutSeconds }}
+          timeoutSeconds: {{ .Values.probe.startup.timeoutSeconds }}
         {{ end }}
         {{ if .Values.probe.liveness }}
         livenessProbe:
