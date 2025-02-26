@@ -97,6 +97,14 @@ spec:
       - name: catalog-config-volume
         configMap:
           name: {{ .Release.Name }}-catalog-config
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
   volumeClaimTemplates:
     - metadata:
         name: opt-adgs
@@ -109,12 +117,4 @@ spec:
         resources:
           requests:
             storage: {{ .Values.volume.size }}
-      {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
   revisionHistoryLimit: 10
