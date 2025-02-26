@@ -43,7 +43,7 @@ probe:
     # -- InitialDelaySeconds for the liveness probe
     initialDelaySeconds: 0
     # -- periodSeconds for the liveness probe
-    periodSeconds: 10
+    periodSeconds: 2
     # -- timeoutSeconds for the liveness probe
     timeoutSeconds: 1
   liveness:
