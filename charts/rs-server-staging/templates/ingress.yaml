@@ -20,7 +20,7 @@ metadata:
   namespace: {{ .Values.namespace }}
   annotations:
     cert-manager.io/{{ .Values.ingress.issuer.type }}: {{ .Values.ingress.issuer.name }}
-  name: {{ .Release.Name }}-ingress
+  name: {{ .Release.Name }}
 spec:
   ingressClassName: nginx
   rules:

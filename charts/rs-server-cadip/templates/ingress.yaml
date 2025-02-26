@@ -24,7 +24,7 @@ metadata:
     nginx.ingress.kubernetes.io/cors-allow-origin: '*'
     nginx.ingress.kubernetes.io/enable-cors: "true"
 
-  name: {{ .Release.Name }}-ingress
+  name: {{ .Release.Name }}
 spec:
   ingressClassName: nginx
   rules:

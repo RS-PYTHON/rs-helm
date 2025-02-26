@@ -22,7 +22,7 @@ metadata:
     cert-manager.io/{{ .Values.ingress.issuer.type }}: {{ .Values.ingress.issuer.name }}
     nginx.ingress.kubernetes.io/backend-protocol: HTTP
     nginx.ingress.kubernetes.io/proxy-buffer-size: 32k
-  name: {{ .Release.Name }}-ingress
+  name: {{ .Release.Name }}
 spec:
   ingressClassName: nginx
   rules:
