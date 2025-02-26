@@ -12,32 +12,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-kind: Deployment
+kind: StatefulSet
 apiVersion: apps/v1
 metadata:
   name: {{ .Release.Name }}
   namespace: {{ .Values.namespace }}
-  generation: 1
   labels:
-    app: {{ .Release.Name }}
-  annotations:
-    deployment.kubernetes.io/revision: '1'
+    {{- include "mychart.Labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      {{- include "mychart.selectorLabels" . | nindent 6 }}
   replicas: {{ .Values.replicaCount }}
-  strategy:
-    type: RollingUpdate
+  podManagementPolicy: Parallel
+  updateStrategy:
     rollingUpdate:
-      maxSurge: 100%
-      maxUnavailable: 50%
+      partition: 0
+  serviceName: {{ .Release.Name }}-headless
   template:
     metadata:
       name: {{ .Release.Name }}
       labels:
-        app: {{ .Release.Name }}
-        type: {{ .Values.namespace }}
+        {{- include "mychart.selectorLabels" . | nindent 8 }}
     spec:
       terminationGracePeriodSeconds: 30
       containers:
@@ -101,9 +97,18 @@ spec:
       - name: catalog-config-volume
         configMap:
           name: {{ .Release.Name }}-catalog-config
-      - name: opt-adgs
-        persistentVolumeClaim:
-          claimName: {{ .Release.Name }}-pvc
+  volumeClaimTemplates:
+    - metadata:
+        name: opt-adgs
+        annotations:
+          helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}          
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: {{ .Values.volume.storageClassName }}
+        resources:
+          requests:
+            storage: {{ .Values.volume.size }}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

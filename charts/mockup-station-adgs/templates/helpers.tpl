@@ -23,3 +23,24 @@ Create the image path for the passed in image field
 {{- printf "%s/%s/%s:%s" .registry .repository .name .version -}}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Selector labels
+*/}}
+{{- define "mychart.selectorLabels" -}}
+app.kubernetes.io/component: mockup-station
+app.kubernetes.io/name: {{ .Chart.Name }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+
+{{/*
+Labels
+*/}}
+{{- define "mychart.Labels" -}}
+{{ include "mychart.selectorLabels" . }}
+helm.sh/chart: {{ include "loki.chart" . }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+app.kubernetes.io/chart-version: {{ .Chart.Version | quote }}
+app.kubernetes.io/part-of: rs-server
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
