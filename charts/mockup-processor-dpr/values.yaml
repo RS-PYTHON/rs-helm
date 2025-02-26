@@ -86,3 +86,9 @@ probe:
     periodSeconds: 30
     # -- timeoutSeconds for the readiness probe
     timeoutSeconds: 5
+
+# -- Pod affinity
+affinity: {}
+
+# -- Pod toleration
+tolerations: []

@@ -104,6 +104,12 @@ probe:
     # -- timeoutSeconds for the readiness probe
     timeoutSeconds: 5
 
+# -- Pod affinity
+affinity: {}
+
+# -- Pod toleration
+tolerations: []
+
 volume:
   # -- Size of the database volume
   size: "20Gi"

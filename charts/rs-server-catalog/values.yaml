@@ -145,6 +145,12 @@ probe:
     # -- timeoutSeconds for the readiness probe
     timeoutSeconds: 5
 
+# -- Pod affinity
+affinity: {}
+
+# -- Pod toleration
+tolerations: []
+
 stac_browser:
   urls: "https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"
 

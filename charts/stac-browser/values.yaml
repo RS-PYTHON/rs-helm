@@ -104,3 +104,9 @@ resources:
     ram: "1000Mi"
     # -- Pod CPU limit
     cpu: "500m"
+
+# -- Pod affinity
+affinity: {}
+
+# -- Pod toleration
+tolerations: []

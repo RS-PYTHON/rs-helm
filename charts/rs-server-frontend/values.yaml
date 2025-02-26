@@ -94,5 +94,11 @@ resources:
     # -- Pod CPU limit
     cpu: "500m"
 
+# -- Pod affinity
+affinity: {}
+
+# -- Pod toleration
+tolerations: []
+
 stac_browser:
   urls: "https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"
