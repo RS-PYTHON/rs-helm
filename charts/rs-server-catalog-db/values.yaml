@@ -91,7 +91,7 @@ resources:
 probe:
   startup:
     # -- InitialDelaySeconds for the liveness probe
-    initialDelaySeconds: 0
+    initialDelaySeconds: 10
     # -- periodSeconds for the liveness probe
     periodSeconds: 2
     # -- timeoutSeconds for the liveness probe

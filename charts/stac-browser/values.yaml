@@ -49,7 +49,7 @@ probe:
     # -- Port for the liveness probe
     port: 8080
     # -- InitialDelaySeconds for the liveness probe
-    initialDelaySeconds: 0
+    initialDelaySeconds: 2
     # -- periodSeconds for the liveness probe
     periodSeconds: 2
     # -- timeoutSeconds for the liveness probe
