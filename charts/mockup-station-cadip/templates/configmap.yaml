@@ -30,9 +30,13 @@ data:
         "username" : "test",
         "password" : "test",
         "grant_type" : "password",
-        "token" : "P4JSuo3gfQxKo0gfbQTb7nDn5OkzWP3umdGvy7G3CcI"
+        "access_token_list": [],
+        "access_token_creation_date": [],
+        "expires_in_list": [],
+        "refresh_token_list": [],
+        "refresh_token_creation_date": [],
+        "refresh_expires_in_list": []
     }
-
 
 ---
 
