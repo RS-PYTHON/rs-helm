@@ -46,7 +46,7 @@ image:
   # -- Image name
   name: rs-testmeans_dpr-processor-mock
   # -- Image version, can be a tag or a digest
-  version: sha256:463050574f598a802f1d7205cfb1e347eca1a038d570ab88aff5aa5068953fcf
+  version: ea71db9
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
@@ -64,13 +64,24 @@ resources:
     cpu: "500m"
 
 probe:
+  startup:
+    # -- Path for the liveness probe
+    path: /health
+    # -- Port for the liveness probe
+    port: 8000
+    # -- InitialDelaySeconds for the liveness probe
+    initialDelaySeconds: 0
+    # -- periodSeconds for the liveness probe
+    periodSeconds: 2
+    # -- timeoutSeconds for the liveness probe
+    timeoutSeconds: 1
   liveness:
     # -- Path for the liveness probe
     path: /health
     # -- Port for the liveness probe
     port: 8000
     # -- InitialDelaySeconds for the liveness probe
-    initialDelaySeconds: 30
+    initialDelaySeconds: 0
     # -- periodSeconds for the liveness probe
     periodSeconds: 30
     # -- timeoutSeconds for the liveness probe
@@ -81,8 +92,14 @@ probe:
     # -- Port for the readiness probe
     port: 8000
     # -- InitialDelaySeconds for the readiness probe
-    initialDelaySeconds: 30
+    initialDelaySeconds: 0
     # -- periodSeconds for the readiness probe
     periodSeconds: 30
     # -- timeoutSeconds for the readiness probe
     timeoutSeconds: 5
+
+# -- Pod affinity
+affinity: {}
+
+# -- Pod toleration
+tolerations: []

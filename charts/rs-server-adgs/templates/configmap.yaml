@@ -41,8 +41,6 @@ data:
             username: PLACEHOLDER
             password: PLACEHOLDER
           credentials:
-            username: PLACEHOLDER
-            password: PLACEHOLDER
             auth_for_token: PLACEHOLDER
           headers:
             Content-Type: application/x-www-form-urlencoded
@@ -82,10 +80,10 @@ data:
             End:
             - null
             - $.ContentDate.End
-            startTimeFromAscendingNode:
+            StartPublicationDate:
             - null
             - $.PublicationDate
-            completionTimeFromAscendingNode:
+            StopPublicationDate:
             - null
             - $.PublicationDate
             ChecksumValue:
@@ -115,15 +113,6 @@ data:
             auxip:id:
             - null
             - $.Id
-            DatetimeStart:
-            - null
-            - $.ContentDate.Start
-            StartPublicationDate:
-            - null
-            - $.PublicationDate
-            StopPublicationDate:
-            - null
-            - $.PublicationDate
             platformSerialIdentifier:
             - null
             - $.platformSerialIdentifier
@@ -136,6 +125,9 @@ data:
             processingCenter:
             - null
             - $.processingCenter
+            DatetimeStart:
+            - null
+            - $.ContentDate.Start
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -143,13 +135,18 @@ data:
               operations:
                 and:
                 - contains(Name, '{Name}')
-                - PublicationDate gte {StartPublicationDate#to_iso_utc_datetime}
-                - PublicationDate lte {StopPublicationDate#to_iso_utc_datetime}
+                - contains(Id, '{auxip:id}')
+                - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
+                - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
                 - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq '{attr_ptype}')
-                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq '{attr_serial_identif}')
-                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq '{attr_platform_short_name#to_upper}')
-                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'processingDate' and att/OData.CSC.StringAttribute/Value eq '{attr_processing_date#to_iso_utc_datetime}')
+                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq '{platformSerialIdentifier}')
+                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq '{platformShortName#to_upper}')
+                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'processingDate' and att/OData.CSC.StringAttribute/Value eq '{processing:datetime#to_iso_utc_datetime}')
+                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'processingCenter' and att/OData.CSC.StringAttribute/Value eq '{processingCenter#to_iso_utc_datetime}')
+                - ContentDate/Start gt {Start#to_iso_utc_datetime}
+                - ContentDate/Start eq {DatetimeStart#to_iso_utc_datetime}
+                - ContentDate/Stop lt {Stop#to_iso_utc_datetime}
           pagination:
             max_items_per_page: 10000
             next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}&$expand=Attributes'
@@ -225,10 +222,10 @@ data:
             End:
             - null
             - $.ContentDate.End
-            startTimeFromAscendingNode:
+            StartPublicationDate:
             - null
             - $.PublicationDate
-            completionTimeFromAscendingNode:
+            StopPublicationDate:
             - null
             - $.PublicationDate
             ChecksumValue:
@@ -258,15 +255,6 @@ data:
             auxip:id:
             - null
             - $.Id
-            DatetimeStart:
-            - null
-            - $.ContentDate.Start
-            StartPublicationDate:
-            - null
-            - $.PublicationDate
-            StopPublicationDate:
-            - null
-            - $.PublicationDate
             platformSerialIdentifier:
             - null
             - $.platformSerialIdentifier
@@ -279,6 +267,9 @@ data:
             processingCenter:
             - null
             - $.processingCenter
+            DatetimeStart:
+            - null
+            - $.ContentDate.Start
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -286,13 +277,18 @@ data:
               operations:
                 and:
                 - contains(Name, '{Name}')
-                - PublicationDate gte {StartPublicationDate#to_iso_utc_datetime}
-                - PublicationDate lte {StopPublicationDate#to_iso_utc_datetime}
+                - contains(Id, '{auxip:id}')
+                - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
+                - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
                 - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq '{attr_ptype}')
-                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq '{attr_serial_identif}')
-                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq '{attr_platform_short_name#to_upper}')
-                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'processingDate' and att/OData.CSC.StringAttribute/Value eq '{attr_processing_date#to_iso_utc_datetime}')
+                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq '{platformSerialIdentifier}')
+                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq '{platformShortName#to_upper}')
+                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'processingDate' and att/OData.CSC.StringAttribute/Value eq '{processing:datetime#to_iso_utc_datetime}')
+                - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'processingCenter' and att/OData.CSC.StringAttribute/Value eq '{processingCenter#to_iso_utc_datetime}')
+                - ContentDate/Start gt {Start#to_iso_utc_datetime}
+                - ContentDate/Start eq {DatetimeStart#to_iso_utc_datetime}
+                - ContentDate/Stop lt {Stop#to_iso_utc_datetime}
           pagination:
             max_items_per_page: 10000
             next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}&$expand=Attributes'
@@ -353,6 +349,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -388,6 +389,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -424,6 +430,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -460,6 +471,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -496,6 +512,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -532,6 +553,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -568,6 +594,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -604,6 +635,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -640,6 +676,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -676,6 +717,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -712,6 +758,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -748,6 +799,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -784,6 +840,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -820,6 +881,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -856,6 +922,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -892,6 +963,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -928,6 +1004,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -964,6 +1045,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -1000,6 +1086,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -1036,6 +1127,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-AuxiliaryDataGathering
+        title: Auxiliary Data
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:

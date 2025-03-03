@@ -12,18 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+kind: Service
 apiVersion: v1
-kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Release.Name }}-pvc
-  {{ if .Values.helmResourcePolicy }}
-  annotations:
-    helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}
-  {{ end }}
+  name: {{ .Release.Name }}-headless
+  labels:
+    {{- include "mychart.Labels" . | nindent 4 }}
+    prometheus.io/service-monitor: "false"
 spec:
-  accessModes:
-  - {{ .Values.volume.accessModes }}
-  resources:
-    requests:
-      storage: {{ .Values.volume.size }}
-  storageClassName: {{ .Values.volume.storageClassName }}
+  type: ClusterIP
+  clusterIP: None
+  selector:
+    {{- include "mychart.selectorLabels" . | nindent 4 }}
+  ports:
+  - name: {{ .Release.Name }}-http
+    protocol: TCP
+    port: {{ .Values.service.port }}
+    targetPort: {{ .Values.app.port }}

@@ -1,6 +1,6 @@
 # mockup-station-lta
 
-![Version: 0.0.2-a8](https://img.shields.io/badge/Version-0.0.2--a8-informational?style=flat-square) ![AppVersion: v0.2a8](https://img.shields.io/badge/AppVersion-v0.2a8-informational?style=flat-square)
+![Version: 0.0.2-a10](https://img.shields.io/badge/Version-0.0.2--a10-informational?style=flat-square) ![AppVersion: v0.2a10](https://img.shields.io/badge/AppVersion-v0.2a10-informational?style=flat-square)
 
 MOCKUP STATION LTA
 
@@ -14,6 +14,7 @@ MOCKUP STATION LTA
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| affinity | object | `{}` | Pod affinity |
 | app.authConfigFile | string | `"auth.json"` | Auth configuration file for the application |
 | app.catalogConfigFile | string | `"GETQueryResponse.json"` | catalog configuration file for the application |
 | app.confDir | string | `"/opt/lta/config"` | Config directory for the application |
@@ -24,24 +25,30 @@ MOCKUP STATION LTA
 | image.name | string | `"rs-testmeans_lta-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"sha256:e0a829417f5a1d7591e564b9bb286ebf91e0cceb34b0e041241596168687263c"` | Image version, can be a tag or a digest |
+| image.version | string | `"ea71db9"` | Image version, can be a tag or a digest |
 | namespace | string | `"processing"` | Namespace for the deployment |
-| probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
+| probe.liveness.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/health"` | Path for the liveness probe |
 | probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |
 | probe.liveness.port | int | `5000` | Port for the liveness probe |
 | probe.liveness.timeoutSeconds | int | `5` | timeoutSeconds for the liveness probe |
-| probe.readiness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the readiness probe |
+| probe.readiness.initialDelaySeconds | int | `0` | InitialDelaySeconds for the readiness probe |
 | probe.readiness.path | string | `"/health"` | Path for the readiness probe |
 | probe.readiness.periodSeconds | int | `30` | periodSeconds for the readiness probe |
 | probe.readiness.port | int | `5000` | Port for the readiness probe |
 | probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
+| probe.startup.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
+| probe.startup.path | string | `"/health"` | Path for the liveness probe |
+| probe.startup.periodSeconds | int | `2` | periodSeconds for the liveness probe |
+| probe.startup.port | int | `5000` | Port for the liveness probe |
+| probe.startup.timeoutSeconds | int | `1` | timeoutSeconds for the liveness probe |
 | replicaCount | int | `1` | Number of replicas for the deployment |
 | resources.limit.cpu | string | `"500m"` | Pod CPU limit |
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
 | service.port | int | `8080` | Port for the service |
+| tolerations | list | `[]` | Pod toleration |
 | volume.accessModes | string | `"ReadWriteOnce"` | AccessMode of the database volume |
 | volume.size | string | `"10Gi"` | Size of the database volume |
 | volume.storageClassName | string | `"csi-cinder-sc-retain"` | StorageClass of the database volume |

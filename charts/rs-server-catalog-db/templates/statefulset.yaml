@@ -12,32 +12,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-kind: Deployment
+kind: StatefulSet
 apiVersion: apps/v1
 metadata:
   name: {{ .Release.Name }}
   namespace: {{ .Values.namespace }}
-  generation: 1
   labels:
-    app: {{ .Release.Name }}
-  annotations:
-    deployment.kubernetes.io/revision: '1'
+    {{- include "mychart.Labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
-  replicas: 1
-  strategy:
-    type: RollingUpdate
+      {{- include "mychart.selectorLabels" . | nindent 6 }}
+  replicas: {{ .Values.replicaCount }}
+  podManagementPolicy: Parallel
+  updateStrategy:
     rollingUpdate:
-      maxSurge: 100%
-      maxUnavailable: 50%
+      partition: 0
+  serviceName: {{ .Release.Name }}-headless
   template:
     metadata:
       name: {{ .Release.Name }}
       labels:
-        app: {{ .Release.Name }}
-        type: {{ .Values.namespace }}
+        {{- include "mychart.selectorLabels" . | nindent 8 }}
     spec:
       terminationGracePeriodSeconds: 30
       initContainers:
@@ -106,6 +102,17 @@ spec:
         securityContext:
           privileged: false
         {{ if .Values.probe }}
+        {{ if .Values.probe.startup }}
+        startupProbe:
+          exec:
+            command:
+              - pg_isready
+              - -d
+              - {{ .Values.postgres.db }}
+          initialDelaySeconds: {{ .Values.probe.startup.initialDelaySeconds }}
+          periodSeconds: {{ .Values.probe.startup.periodSeconds }}
+          timeoutSeconds: {{ .Values.probe.startup.timeoutSeconds }}
+        {{ end }}
         {{ if .Values.probe.liveness }}
         livenessProbe:
           exec:
@@ -131,10 +138,6 @@ spec:
         {{ end }}
       restartPolicy: Always
       volumes:
-        - name: pgstac-pgdata
-          persistentVolumeClaim:
-            claimName: {{ .Release.Name }}-pvc
-            readOnly: false
         - name: download-json-schema
           configMap:
             name: {{ .Release.Name }}-download-json-schema
@@ -145,4 +148,24 @@ spec:
             defaultMode: 0744
         - name: pgstack-json-schema
           emptyDir: {}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+  volumeClaimTemplates:
+    - metadata:
+        name: pgstac-pgdata
+        annotations:
+          helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: {{ .Values.volume.storageClassName }}
+        resources:
+          requests:
+            storage: {{ .Values.volume.size }}
   revisionHistoryLimit: 10

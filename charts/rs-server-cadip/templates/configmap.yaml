@@ -43,8 +43,6 @@ data:
             username: PLACEHOLDER
             password: PLACEHOLDER
           credentials:
-            username: PLACEHOLDER
-            password: PLACEHOLDER
             auth_for_token: PLACEHOLDER
           headers:
             Content-Type: application/x-www-form-urlencoded
@@ -94,10 +92,10 @@ data:
             Retransfer:
             - null
             - $.Retransfer
-            startTimeFromAscendingNode:
+            StartPublicationDate:
             - null
             - $.PublicationDate
-            completionTimeFromAscendingNode:
+            StopPublicationDate:
             - null
             - $.PublicationDate
             href:
@@ -120,8 +118,8 @@ data:
                 and:
                 - SessionId in ({SessionIds})
                 - SessionId eq {SessionId}
-                - PublicationDate gte {StartPublicationDate#to_iso_utc_datetime}
-                - PublicationDate lte {StopPublicationDate#to_iso_utc_datetime}
+                - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
+                - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
           pagination:
             max_items_per_page: 10000
@@ -155,8 +153,6 @@ data:
             username: PLACEHOLDER
             password: PLACEHOLDER
           credentials:
-            username: PLACEHOLDER
-            password: PLACEHOLDER
             auth_for_token: PLACEHOLDER
           headers:
             Content-Type: application/x-www-form-urlencoded
@@ -243,10 +239,10 @@ data:
             Files:
             - null
             - $.Files
-            startTimeFromAscendingNode:
+            StartPublicationDate:
             - null
             - $.PublicationDate
-            completionTimeFromAscendingNode:
+            StopPublicationDate:
             - null
             - $.PublicationDate
             href:
@@ -270,10 +266,25 @@ data:
                 - SessionId eq {SessionId}
                 - Satellite eq {platform}
                 - Satellite in ({platforms})
-                - PublicationDate gte {StartPublicationDate#to_iso_utc_datetime}
-                - PublicationDate lte {StopPublicationDate#to_iso_utc_datetime}
+                - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
+                - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
+                - Id eq {id}
+                - DownlinkOrbit eq {DownlinkOrbit}
+                - DownlinkStart eq {DownlinkStart}
+                - DownlinkStop eq {DownlinkStop}
+                - NumChannels eq {NumChannels}
+                - AcquisitionId eq {AcquisitionId}
+                - AntennaId eq {AntennaId}
+                - StationUnitId eq {StationUnitId}
+                - FrontEndId eq {FrontEndId}
+                - PlannedDataStart eq {PlannedDataStart}
+                - PlannedDataStop eq {PlannedDataStop}
                 - Retransfer eq {Retransfer}
+                - AntennaStatusOK eq {AntennaStatusOK}
+                - FrontEndStatusOK eq {FrontEndStatusOK}
+                - DownlinkStatusOK eq {DownlinkStatusOK}
+                - DeliveryPushOK eq {DeliveryPushOK}
           pagination:
             max_items_per_page: 10000
             next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}'
@@ -301,8 +312,6 @@ data:
               cadip:planned_data_stop: PlannedDataStop
               cadip:downlink_status_ok: DownlinkStatusOK
               cadip:delivery_push_ok: DeliveryPushOK
-              startTimeFromAscendingNode: DownlinkStart
-              completionTimeFromAscendingNode: DownlinkStop
               publicationDate: PublicationDate
             sort_order_mapping:
               ascending: asc
@@ -374,10 +383,10 @@ data:
             Retransfer:
             - null
             - $.Retransfer
-            startTimeFromAscendingNode:
+            StartPublicationDate:
             - null
             - $.PublicationDate
-            completionTimeFromAscendingNode:
+            StopPublicationDate:
             - null
             - $.PublicationDate
             href:
@@ -400,10 +409,25 @@ data:
                 and:
                 - SessionId in ({SessionIds})
                 - SessionId eq {SessionId}
-                - PublicationDate gte {StartPublicationDate#to_iso_utc_datetime}
-                - PublicationDate lte {StopPublicationDate#to_iso_utc_datetime}
+                - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
+                - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
+                - Id eq '{id}'
+                - DownlinkOrbit eq {DownlinkOrbit}
+                - DownlinkStart eq {DownlinkStart}
+                - DownlinkStop eq {DownlinkStop}
+                - NumChannels eq {NumChannels}
+                - AcquisitionId eq '{AcquisitionId}'
+                - AntennaId eq '{AntennaId}'
+                - StationUnitId eq '{StationUnitId}'
+                - FrontEndId eq {FrontEndId}
+                - PlannedDataStart eq {PlannedDataStart}
+                - PlannedDataStop eq {PlannedDataStop}
                 - Retransfer eq {Retransfer}
+                - AntennaStatusOK eq {AntennaStatusOK}
+                - FrontEndStatusOK eq {FrontEndStatusOK}
+                - DownlinkStatusOK eq {DownlinkStatusOK}
+                - DeliveryPushOK eq {DeliveryPushOK}
           pagination:
             max_items_per_page: 10000
             next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}'
@@ -508,10 +532,10 @@ data:
             Files:
             - null
             - $.Files
-            startTimeFromAscendingNode:
+            StartPublicationDate:
             - null
             - $.PublicationDate
-            completionTimeFromAscendingNode:
+            StopPublicationDate:
             - null
             - $.PublicationDate
             href:
@@ -535,10 +559,25 @@ data:
                 - SessionId eq {SessionId}
                 - Satellite eq {platform}
                 - Satellite in ({platforms})
-                - PublicationDate gte {StartPublicationDate#to_iso_utc_datetime}
-                - PublicationDate lte {StopPublicationDate#to_iso_utc_datetime}
+                - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
+                - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
+                - Id eq '{id}'
+                - DownlinkOrbit eq {DownlinkOrbit}
+                - DownlinkStart eq {DownlinkStart}
+                - DownlinkStop eq {DownlinkStop}
+                - NumChannels eq {NumChannels}
+                - AcquisitionId eq '{AcquisitionId}'
+                - AntennaId eq '{AntennaId}'
+                - StationUnitId eq '{StationUnitId}'
+                - FrontEndId eq {FrontEndId}
+                - PlannedDataStart eq {PlannedDataStart}
+                - PlannedDataStop eq {PlannedDataStop}
                 - Retransfer eq {Retransfer}
+                - AntennaStatusOK eq {AntennaStatusOK}
+                - FrontEndStatusOK eq {FrontEndStatusOK}
+                - DownlinkStatusOK eq {DownlinkStatusOK}
+                - DeliveryPushOK eq {DeliveryPushOK}
           pagination:
             max_items_per_page: 10000
             next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}'
@@ -566,8 +605,6 @@ data:
               cadip:planned_data_stop: PlannedDataStop
               cadip:downlink_status_ok: DownlinkStatusOK
               cadip:delivery_push_ok: DeliveryPushOK
-              startTimeFromAscendingNode: DownlinkStart
-              completionTimeFromAscendingNode: DownlinkStop
             sort_order_mapping:
               ascending: asc
               descending: desc
@@ -617,6 +654,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-DataAcquisition
+        title: Data Acquisition
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -652,6 +694,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-DataAcquisition
+        title: Data Acquisition
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -687,6 +734,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-DataAcquisition
+        title: Data Acquisition
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -723,6 +775,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-DataAcquisition
+        title: Data Acquisition
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -759,6 +816,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-DataAcquisition
+        title: Data Acquisition
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -795,6 +857,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-DataAcquisition
+        title: Data Acquisition
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -831,6 +898,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-DataAcquisition
+        title: Data Acquisition
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -867,6 +939,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-DataAcquisition
+        title: Data Acquisition
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -903,6 +980,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-DataAcquisition
+        title: Data Acquisition
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -939,6 +1021,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-DataAcquisition
+        title: Data Acquisition
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -975,6 +1062,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-DataAcquisition
+        title: Data Acquisition
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -1011,6 +1103,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-DataAcquisition
+        title: Data Acquisition
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -1047,6 +1144,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-DataAcquisition
+        title: Data Acquisition
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -1083,6 +1185,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-DataAcquisition
+        title: Data Acquisition
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:
@@ -1119,6 +1226,11 @@ data:
       - rel: license
         href: https://scihub.copernicus.eu/twiki/pub/SciHubWebPortal/TermsConditions/Sentinel_Data_Terms_and_Conditions.pdf
         title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-DataAcquisition
+        title: Data Acquisition
+        type: text/html
       providers:
       - name: European Union/ESA/Copernicus
         roles:

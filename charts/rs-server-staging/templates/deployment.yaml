@@ -17,15 +17,12 @@ apiVersion: apps/v1
 metadata:
   name: {{ .Release.Name }}
   namespace: {{ .Values.namespace }}
-  generation: 1
   labels:
-    app: {{ .Release.Name }}
-  annotations:
-    deployment.kubernetes.io/revision: '1'
+    {{- include "mychart.Labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      {{- include "mychart.selectorLabels" . | nindent 6 }}
   replicas: {{ .Values.replicaCount }}
   strategy:
     type: RollingUpdate
@@ -36,8 +33,7 @@ spec:
     metadata:
       name: {{ .Release.Name }}
       labels:
-        app: {{ .Release.Name }}
-        type: {{ .Values.namespace }}
+        {{- include "mychart.selectorLabels" . | nindent 8 }}
     spec:
       terminationGracePeriodSeconds: 30
       containers:
@@ -62,7 +58,7 @@ spec:
         {{- end }}
         env:
         - name: RSPY_DASK_STAGING_CLUSTER_NAME
-          value:  {{ .Values.app.clusterName }}
+          value:  {{ .Values.dask.clusterName }}
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacUrl }}
         - name: RSPY_UAC_HOMEPAGE
@@ -102,7 +98,7 @@ spec:
         - name: JUPYTERHUB_API_TOKEN
           valueFrom:
             secretKeyRef:
-              name: jupyterhub-api-token
+              name: {{ .Release.Name }}-jupyterhub-api-token
               key: TOKEN
         - name: S3_ENDPOINT
           value: {{ .Values.obs.endpoint }}
@@ -121,6 +117,15 @@ spec:
         securityContext:
           privileged: false
         {{ if .Values.probe }}
+        {{ if .Values.probe.startup }}
+        startupProbe:
+          httpGet:
+            path: {{ .Values.probe.startup.path }}
+            port: {{ .Values.probe.startup.port }}
+          initialDelaySeconds: {{ .Values.probe.startup.initialDelaySeconds }}
+          periodSeconds: {{ .Values.probe.startup.periodSeconds }}
+          timeoutSeconds: {{ .Values.probe.startup.timeoutSeconds }}
+        {{ end }}
         {{ if .Values.probe.liveness }}
         livenessProbe:
           httpGet:

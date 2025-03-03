@@ -43,13 +43,24 @@ app:
   cadipSessionExpand: true
 
 probe:
+  startup:
+    # -- Path for the liveness probe
+    path: /health
+    # -- Port for the liveness probe
+    port: 5000
+    # -- InitialDelaySeconds for the liveness probe
+    initialDelaySeconds: 0
+    # -- periodSeconds for the liveness probe
+    periodSeconds: 2
+    # -- timeoutSeconds for the liveness probe
+    timeoutSeconds: 1
   liveness:
     # -- Path for the liveness probe
     path: /health
     # -- Port for the liveness probe
     port: 5000
     # -- InitialDelaySeconds for the liveness probe
-    initialDelaySeconds: 30
+    initialDelaySeconds: 0
     # -- periodSeconds for the liveness probe
     periodSeconds: 30
     # -- timeoutSeconds for the liveness probe
@@ -60,7 +71,7 @@ probe:
     # -- Port for the readiness probe
     port: 5000
     # -- InitialDelaySeconds for the readiness probe
-    initialDelaySeconds: 30
+    initialDelaySeconds: 0
     # -- periodSeconds for the readiness probe
     periodSeconds: 30
     # -- timeoutSeconds for the readiness probe
@@ -74,7 +85,7 @@ image:
   # -- Image name
   name: rs-testmeans_cadip-station-mock
   # -- Image version, can be a tag or a digest
-  version: sha256:9d7e1eb7daf5e3ff4a0ac3a68ad1fe6f685be76112215eebb40694d623a96b73
+  version: ea71db9
   # -- Image pull policy
   PullPolicy: Always
   #imagePullSecrets: regcred
@@ -101,3 +112,9 @@ volume:
 
 # -- Keep the ressources for PVC and ConfigMap. Default is to keep.
 helmResourcePolicy: keep
+
+# -- Pod affinity
+affinity: {}
+
+# -- Pod toleration
+tolerations: []

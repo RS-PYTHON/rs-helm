@@ -33,13 +33,24 @@ app:
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
 
 probe:
+  startup::
+    # -- Path for the liveness probe
+    path: /health
+    # -- Port for the liveness probe
+    port: 8000
+    # -- InitialDelaySeconds for the liveness probe
+    initialDelaySeconds: 0
+    # -- periodSeconds for the liveness probe
+    periodSeconds: 2
+    # -- timeoutSeconds for the liveness probe
+    timeoutSeconds: 1
   liveness:
     # -- Path for the liveness probe
     path: /health
     # -- Port for the liveness probe
     port: 8000
     # -- InitialDelaySeconds for the liveness probe
-    initialDelaySeconds: 30
+    initialDelaySeconds: 0
     # -- periodSeconds for the liveness probe
     periodSeconds: 30
     # -- timeoutSeconds for the liveness probe
@@ -50,7 +61,7 @@ probe:
     # -- Port for the readiness probe
     port: 8000
     # -- InitialDelaySeconds for the readiness probe
-    initialDelaySeconds: 30
+    initialDelaySeconds: 0
     # -- periodSeconds for the readiness probe
     periodSeconds: 30
     # -- timeoutSeconds for the readiness probe
@@ -64,7 +75,7 @@ image:
   # -- Image name
   name: rs-server-frontend
   # -- Image version, can be a tag or a digest
-  version: 0.2a8
+  version: 0.2a10
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
@@ -93,6 +104,12 @@ resources:
     ram: "1000Mi"
     # -- Pod CPU limit
     cpu: "500m"
+
+# -- Pod affinity
+affinity: {}
+
+# -- Pod toleration
+tolerations: []
 
 stac_browser:
   urls: "https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"

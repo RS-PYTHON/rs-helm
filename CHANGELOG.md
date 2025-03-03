@@ -13,6 +13,48 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [0.2a10] - 2025-02-18
+
+### Added
+
+- RSPY-493 : extend filter attributes for rs-server-cadip/adgs
+
+### Changed
+
+- [PR#90](https://github.com/RS-PYTHON/rs-helm/pull/90) : Rename staging secret to allow multiple instances
+- [PR#95](https://github.com/RS-PYTHON/rs-helm/pull/95) : Update configs for rs-server-cadip/adgs
+- RSPY-596 : Update to stac-browser 3.3.0
+- bumped docker images tags
+
+### Fixed
+
+- [PR#96](https://github.com/RS-PYTHON/rs-helm/pull/96) : Fix CADIP eodag config
+- RSPY-598 : Support lte/gte operators for rs-server-cadip/adgs
+
+## [0.2a9] - 2025-01-15
+
+:sparkler: Happy new year !
+
+> :warning: **BREAKING** : After [PR RS-PYTHON/rs-server#688](https://github.com/RS-PYTHON/rs-server/pull/688) configuration files should only be edited from the templates rs-server repository ([search link](https://github.com/search?q=repo%3ARS-PYTHON%2Frs-server+path%3Aservices%2F*%2Fconfig%2F*template*.yaml&type=code)).
+
+### Added
+
+- rs-server-staging : env variable for the dask's cluster selection
+
+### Changed
+
+- rs-server-cadip & rs-server-adgs : synchronize config files for int values
+  - `max_items_per_page` increased by x10
+- bump docker image tags
+- adgs platformShortName in uppercase
+
+### Fixed
+
+- RSPY-555 : [RS-SERVER-ADGS] Collection configuration not modifiable with configmap update
+  - additionnal commit : Add Absolute path for adgsSearchconfigFile
+- RSPY-558 : Affinity and Toleration not set on rs-server-cadip, rs-server-adgs 
+- RSPY-575 : Cannot contact MasPalomas station anymore with token module = false
+
 ## [0.2a8] - 2024-12-12
 
 > :warning: **BREAKING** : After [PR RS-PYTHON/rs-server#688](https://github.com/RS-PYTHON/rs-server/pull/688) configuration files should only be edited from the templates rs-server repository ([search link](https://github.com/search?q=repo%3ARS-PYTHON%2Frs-server+path%3Aservices%2F*%2Fconfig%2F*template*.yaml&type=code)).

@@ -17,15 +17,12 @@ apiVersion: apps/v1
 metadata:
   name: {{ .Release.Name }}
   namespace: {{ .Values.namespace }}
-  generation: 1
   labels:
-    app: {{ .Release.Name }}
-  annotations:
-    deployment.kubernetes.io/revision: '1'
+    {{- include "mychart.Labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      {{- include "mychart.selectorLabels" . | nindent 6 }}
   replicas: {{ .Values.replicaCount }}
   strategy:
     type: RollingUpdate
@@ -36,8 +33,7 @@ spec:
     metadata:
       name: {{ .Release.Name }}
       labels:
-        app: {{ .Release.Name }}
-        type: {{ .Values.namespace }}
+        {{- include "mychart.selectorLabels" . | nindent 8 }}
     spec:
       terminationGracePeriodSeconds: 30
       containers:
@@ -97,7 +93,7 @@ spec:
         - name: S3_REGION
           value: {{ .Values.obs.region }}
         - name: RSPY_ADGS_SEARCH_CONFIG
-          value: '{{ .Values.app.adgsSearchConfigFile }}'
+          value: {{ .Values.app.confDir }}/{{ .Values.app.adgsSearchConfigFile }}
         - name: RSPY_USE_MODULE_FOR_STATION_TOKEN
           value: '{{ .Values.app.useTokenModule }}'
         - name: STAC_BROWSER_URLS
@@ -156,6 +152,15 @@ spec:
         securityContext:
           privileged: false
         {{ if .Values.probe }}
+        {{ if .Values.probe.startup }}
+        startupProbe:
+          httpGet:
+            path: {{ .Values.probe.startup.path }}
+            port: {{ .Values.probe.startup.port }}
+          initialDelaySeconds: {{ .Values.probe.startup.initialDelaySeconds }}
+          periodSeconds: {{ .Values.probe.startup.periodSeconds }}
+          timeoutSeconds: {{ .Values.probe.startup.timeoutSeconds }}
+        {{ end }}
         {{ if .Values.probe.liveness }}
         livenessProbe:
           httpGet:

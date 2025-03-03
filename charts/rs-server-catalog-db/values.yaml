@@ -72,10 +72,10 @@ image:
   # -- Image name
   name: pgstac
   # -- Image version, can be a tag or a digest
-  version: v0.8.6
+  version: v0.9.4
   # -- Image pull policy
   PullPolicy: IfNotPresent
-  
+
 resources:
   request:
     # -- Pod memory request
@@ -89,20 +89,33 @@ resources:
     cpu: "500m"
 
 probe:
+  startup:
+    # -- InitialDelaySeconds for the liveness probe
+    initialDelaySeconds: 0
+    # -- periodSeconds for the liveness probe
+    periodSeconds: 2
+    # -- timeoutSeconds for the liveness probe
+    timeoutSeconds: 1
   liveness:
     # -- InitialDelaySeconds for the liveness probe
-    initialDelaySeconds: 30
+    initialDelaySeconds: 0
     # -- periodSeconds for the liveness probe
     periodSeconds: 30
     # -- timeoutSeconds for the liveness probe
     timeoutSeconds: 5
   readiness:
     # -- InitialDelaySeconds for the readiness probe
-    initialDelaySeconds: 30
+    initialDelaySeconds: 0
     # -- periodSeconds for the readiness probe
     periodSeconds: 30
     # -- timeoutSeconds for the readiness probe
     timeoutSeconds: 5
+
+# -- Pod affinity
+affinity: {}
+
+# -- Pod toleration
+tolerations: []
 
 volume:
   # -- Size of the database volume

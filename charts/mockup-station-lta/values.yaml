@@ -35,13 +35,24 @@ app:
   catalogConfigFile: GETQueryResponse.json
 
 probe:
+  startup:
+    # -- Path for the liveness probe
+    path: /health
+    # -- Port for the liveness probe
+    port: 5000
+    # -- InitialDelaySeconds for the liveness probe
+    initialDelaySeconds: 0
+    # -- periodSeconds for the liveness probe
+    periodSeconds: 2
+    # -- timeoutSeconds for the liveness probe
+    timeoutSeconds: 1
   liveness:
     # -- Path for the liveness probe
     path: /health
     # -- Port for the liveness probe
     port: 5000
     # -- InitialDelaySeconds for the liveness probe
-    initialDelaySeconds: 30
+    initialDelaySeconds: 0
     # -- periodSeconds for the liveness probe
     periodSeconds: 30
     # -- timeoutSeconds for the liveness probe
@@ -52,7 +63,7 @@ probe:
     # -- Port for the readiness probe
     port: 5000
     # -- InitialDelaySeconds for the readiness probe
-    initialDelaySeconds: 30
+    initialDelaySeconds: 0
     # -- periodSeconds for the readiness probe
     periodSeconds: 30
     # -- timeoutSeconds for the readiness probe
@@ -66,7 +77,7 @@ image:
   # -- Image name
   name: rs-testmeans_lta-station-mock
   # -- Image version, can be a tag or a digest
-  version: sha256:e0a829417f5a1d7591e564b9bb286ebf91e0cceb34b0e041241596168687263c
+  version: ea71db9
   # -- Image pull policy
   PullPolicy: Always
   #imagePullSecrets: regcred
@@ -93,3 +104,9 @@ volume:
 
 # -- Keep the ressources for PVC and ConfigMap. Default is to keep.
 helmResourcePolicy: keep
+
+# -- Pod affinity
+affinity: {}
+
+# -- Pod toleration
+tolerations: []

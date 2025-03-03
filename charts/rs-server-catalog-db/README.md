@@ -1,6 +1,6 @@
 # rs-server-catalog-db
 
-![Version: 0.0.2-a8](https://img.shields.io/badge/Version-0.0.2--a8-informational?style=flat-square) ![AppVersion: v0.2a8](https://img.shields.io/badge/AppVersion-v0.2a8-informational?style=flat-square)
+![Version: 0.0.2-a10](https://img.shields.io/badge/Version-0.0.2--a10-informational?style=flat-square) ![AppVersion: v0.2a10](https://img.shields.io/badge/AppVersion-v0.2a10-informational?style=flat-square)
 
 RS SERVER CATALOG DB
 
@@ -14,6 +14,7 @@ RS SERVER CATALOG DB
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| affinity | object | `{}` | Pod affinity |
 | app.pgstac_init_download_schema_script | string | `"download.sh"` | Script's name to download the STAC extensions schema |
 | app.pgstac_post_actions_script | string | `"999_post_actions.sh"` | Script's name to be executed after pgstack init, must after `999_initpgstac.sh` |
 | app.stac.extensions | list | `["https://stac-extensions.github.io/eo/v1.1.0/schema.json","https://stac-extensions.github.io/sat/v1.0.0/schema.json","https://stac-extensions.github.io/projection/v1.1.0/schema.json","https://stac-extensions.github.io/processing/v1.2.0/schema.json","https://stac-extensions.github.io/product/v0.1.0/schema.json","https://stac-extensions.github.io/sar/v1.0.0/schema.json","https://stac-extensions.github.io/raster/v1.1.0/schema.json","https://stac-extensions.github.io/authentication/v1.1.0/schema.json","https://stac-extensions.github.io/alternate-assets/v1.2.0/schema.json","https://stac-extensions.github.io/timestamps/v1.1.0/schema.json"]` | Additionnals STAC extensions |
@@ -23,23 +24,27 @@ RS SERVER CATALOG DB
 | image.name | string | `"pgstac"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"stac-utils"` | Image repository |
-| image.version | string | `"v0.8.6"` | Image version, can be a tag or a digest |
+| image.version | string | `"v0.9.4"` | Image version, can be a tag or a digest |
 | namespace | string | `"database"` | Namespace for the deployment |
 | postgres.db | string | `"catalog"` | PostgreSQL database name |
 | postgres.port | string | `"5432"` | PostgreSQL port |
 | postgres.secret.pass | string | `"password"` | Password to authenticate with the PostgreSQL service |
 | postgres.secret.user | string | `"postgres"` | Username to authenticate with the PostgreSQL service |
-| probe.liveness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the liveness probe |
+| probe.liveness.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |
 | probe.liveness.timeoutSeconds | int | `5` | timeoutSeconds for the liveness probe |
-| probe.readiness.initialDelaySeconds | int | `30` | InitialDelaySeconds for the readiness probe |
+| probe.readiness.initialDelaySeconds | int | `0` | InitialDelaySeconds for the readiness probe |
 | probe.readiness.periodSeconds | int | `30` | periodSeconds for the readiness probe |
 | probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
+| probe.startup.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
+| probe.startup.periodSeconds | int | `2` | periodSeconds for the liveness probe |
+| probe.startup.timeoutSeconds | int | `1` | timeoutSeconds for the liveness probe |
 | resources.limit.cpu | string | `"500m"` | Pod CPU limit |
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
 | service.port | int | `5432` | Port for the service |
+| tolerations | list | `[]` | Pod toleration |
 | volume.accessModes | string | `"ReadWriteOnce"` | AccessMode of the database volume |
 | volume.size | string | `"20Gi"` | Size of the database volume |
 | volume.storageClassName | string | `"csi-cinder-sc-retain"` | StorageClass of the database volume |
