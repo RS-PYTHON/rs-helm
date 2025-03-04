@@ -66,8 +66,14 @@ spec:
         envFrom:
         {{- range $k, $v := .Values.app.station }}
         - secretRef:
-            name: auxip-{{ $k }}
+          name: auxip-{{ $k }}
         {{- end }}
+        - secretRef:
+          name: {{ .Release.Name }}-obs
+        - secretRef:
+          name: {{ .Release.Name }}-auth
+        - secretRef:
+          name: {{ .Release.Name }}-postgres
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}
@@ -104,51 +110,6 @@ spec:
           value: {{ .Values.tempo.endpoint }}
         {{ end }}
         {{ end }}
-        - name: POSTGRES_USER
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-postgres
-              key: user
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-postgres
-              key: pass
-        - name: S3_ACCESSKEY
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-obs
-              key: ak
-        - name: S3_SECRETKEY
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-obs
-              key: sk        
-        - name: "OIDC_ENDPOINT"
-          valueFrom:
-            secretKeyRef:
-              key:  oidc_endpoint
-              name: {{ .Release.Name }}-auth
-        - name: "OIDC_REALM"
-          valueFrom:
-            secretKeyRef:
-              key:  oidc_realm
-              name: {{ .Release.Name }}-auth
-        - name: "OIDC_CLIENT_ID"
-          valueFrom:
-            secretKeyRef:
-              key:  oidc_client_id
-              name: {{ .Release.Name }}-auth
-        - name: "OIDC_CLIENT_SECRET"
-          valueFrom:
-            secretKeyRef:
-              key:  oidc_client_secret
-              name: {{ .Release.Name }}-auth
-        - name: "RSPY_COOKIE_SECRET"
-          valueFrom:
-            secretKeyRef:
-              key:  cookie_secret
-              name: {{ .Release.Name }}-auth
         securityContext:
           privileged: false
         {{ if .Values.probe }}
