@@ -56,6 +56,8 @@ spec:
         - secretRef:
             name: {{ $v.type }}-{{ $k }}
         {{- end }}
+        - secretRef:
+            name: {{ .Release.Name }}-auth
         env:
         - name: RSPY_DASK_STAGING_CLUSTER_NAME
           value:  {{ .Values.dask.clusterName }}
