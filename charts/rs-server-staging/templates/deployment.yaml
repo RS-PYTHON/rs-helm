@@ -54,10 +54,16 @@ spec:
         envFrom:
         {{- range $k, $v := .Values.app.station }}
         - secretRef:
-            name: {{ $v.type }}-{{ $k }}
+          name: {{ $v.type }}-{{ $k }}
         {{- end }}
         - secretRef:
-            name: {{ .Release.Name }}-auth
+          name: {{ .Release.Name }}-auth
+        - secretRef:
+          name: {{ .Release.Name }}-postgres
+        - secretRef:
+          name: {{ .Release.Name }}-obs
+        - secretRef:
+          name: {{ .Release.Name }}-jupyterhub-api-token
         env:
         - name: RSPY_DASK_STAGING_CLUSTER_NAME
           value:  {{ .Values.dask.clusterName }}
@@ -81,41 +87,16 @@ spec:
           value: {{ .Values.postgres.db }}
         - name: POSTGRES_HOST
           value: {{ .Values.postgres.host }}
-        - name: POSTGRES_USER
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-postgres
-              key: user
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-postgres
-              key: pass
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
           value: {{ .Values.tempo.endpoint }}
         {{ end }}
         {{ end }}
-        - name: JUPYTERHUB_API_TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-jupyterhub-api-token
-              key: TOKEN
         - name: S3_ENDPOINT
           value: {{ .Values.obs.endpoint }}
         - name: S3_REGION
           value: {{ .Values.obs.region }}
-        - name: S3_ACCESSKEY
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-obs
-              key: ak
-        - name: S3_SECRETKEY
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-obs
-              key: sk
         securityContext:
           privileged: false
         {{ if .Values.probe }}
