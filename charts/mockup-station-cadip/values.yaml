@@ -30,7 +30,7 @@ app:
   # -- Config directory for the application
   confDir: /opt/cadip/config
   # -- Auth configuration file for the application
-  authConfigFile: auth.json
+  authConfigFile: auth_tmp.json
   # -- quality configuration file for the application
   qualityConfigFile: QualityInfoResponse.json
   # -- sessionID configuration file for the application

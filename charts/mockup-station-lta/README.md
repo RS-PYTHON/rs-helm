@@ -15,7 +15,7 @@ MOCKUP STATION LTA
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
-| app.authConfigFile | string | `"auth.json"` | Auth configuration file for the application |
+| app.authConfigFile | string | `"auth_tmp.json"` | Auth configuration file for the application |
 | app.catalogConfigFile | string | `"GETQueryResponse.json"` | catalog configuration file for the application |
 | app.confDir | string | `"/opt/lta/config"` | Config directory for the application |
 | app.port | int | `5000` | Port for the application |
