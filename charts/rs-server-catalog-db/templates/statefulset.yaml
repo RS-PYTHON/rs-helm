@@ -68,6 +68,9 @@ spec:
           - name: patch-post-action
             mountPath: /docker-entrypoint-initdb.d/{{ .Values.app.pgstac_post_actions_script }}
             subPath: {{ .Values.app.pgstac_post_actions_script }}
+        envFrom:
+        - secretRef:
+          name: {{ .Release.Name }}-postgres
         env:
         - name: POSTGRES_PORT
           value: {{ .Values.postgres.port | quote }}
@@ -79,26 +82,6 @@ spec:
           value: /var/lib/postgresql/data/pgdata
         - name: PGDATABASE
           value: {{ .Values.postgres.db }}
-        - name: POSTGRES_USER
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-postgres
-              key: user
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-postgres
-              key: pass        
-        - name: PGUSER
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-postgres
-              key: user
-        - name: PGPASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-postgres
-              key: pass
         securityContext:
           privileged: false
         {{ if .Values.probe }}

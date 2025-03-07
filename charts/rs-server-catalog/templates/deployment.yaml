@@ -51,6 +51,13 @@ spec:
         - name: web
           protocol: TCP
           containerPort: {{ .Values.app.port }}
+        envFrom:
+        - secretRef:
+          name: {{ .Release.Name }}-obs
+        - secretRef:
+          name: {{ .Release.Name }}-auth
+        - secretRef:
+          name: {{ .Release.Name }}-postgres
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}
@@ -92,62 +99,12 @@ spec:
           value: {{ .Values.postgres.port | quote }}
         - name: POSTGRES_DB
           value: {{ .Values.postgres.db }}
-        - name: POSTGRES_USER
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-postgres
-              key: user
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-postgres
-              key: pass
-        - name: POSTGRES_PASS
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-postgres
-              key: pass
         - name: S3_ENDPOINT
           value: {{ .Values.obs.endpoint }}
         - name: S3_REGION
           value: {{ .Values.obs.region }}
         - name: STAC_BROWSER_URLS
           value: {{ .Values.stac_browser.urls }}
-        - name: S3_ACCESSKEY
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-obs
-              key: ak
-        - name: S3_SECRETKEY
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Release.Name }}-obs
-              key: sk
-        - name: "OIDC_ENDPOINT"
-          valueFrom:
-            secretKeyRef:
-              key:  oidc_endpoint
-              name: {{ .Release.Name }}-auth
-        - name: "OIDC_REALM"
-          valueFrom:
-            secretKeyRef:
-              key:  oidc_realm
-              name: {{ .Release.Name }}-auth
-        - name: "OIDC_CLIENT_ID"
-          valueFrom:
-            secretKeyRef:
-              key:  oidc_client_id
-              name: {{ .Release.Name }}-auth
-        - name: "OIDC_CLIENT_SECRET"
-          valueFrom:
-            secretKeyRef:
-              key:  oidc_client_secret
-              name: {{ .Release.Name }}-auth
-        - name: "RSPY_COOKIE_SECRET"
-          valueFrom:
-            secretKeyRef:
-              key:  cookie_secret
-              name: {{ .Release.Name }}-auth
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT

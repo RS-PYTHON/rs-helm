@@ -33,7 +33,7 @@ spec:
       {{ range .Values.ingress.path }}
       - backend:
           service:
-            name: {{ .Release.Name }}
+            name: {{ $.Release.Name }}
             port:
               number: {{ $.Values.service.port }}
         path: {{ . | quote }}
