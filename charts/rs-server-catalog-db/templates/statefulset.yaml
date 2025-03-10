@@ -70,7 +70,7 @@ spec:
             subPath: {{ .Values.app.pgstac_post_actions_script }}
         envFrom:
         - secretRef:
-          name: {{ .Release.Name }}-postgres
+            name: {{ .Release.Name }}-postgres
         env:
         - name: POSTGRES_PORT
           value: {{ .Values.postgres.port | quote }}

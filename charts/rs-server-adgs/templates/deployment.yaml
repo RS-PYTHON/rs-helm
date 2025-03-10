@@ -66,14 +66,14 @@ spec:
         envFrom:
         {{- range $k, $v := .Values.app.station }}
         - secretRef:
-          name: auxip-{{ $k }}
+            name: auxip-{{ $k }}
         {{- end }}
         - secretRef:
-          name: {{ .Release.Name }}-obs
+            name: {{ .Release.Name }}-obs
         - secretRef:
-          name: {{ .Release.Name }}-auth
+            name: {{ .Release.Name }}-auth
         - secretRef:
-          name: {{ .Release.Name }}-postgres
+            name: {{ .Release.Name }}-postgres
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}

@@ -54,16 +54,16 @@ spec:
         envFrom:
         {{- range $k, $v := .Values.app.station }}
         - secretRef:
-          name: {{ $v.type }}-{{ $k }}
+            name: {{ $v.type }}-{{ $k }}
         {{- end }}
         - secretRef:
-          name: {{ .Release.Name }}-auth
+            name: {{ .Release.Name }}-auth
         - secretRef:
-          name: {{ .Release.Name }}-postgres
+            name: {{ .Release.Name }}-postgres
         - secretRef:
-          name: {{ .Release.Name }}-obs
+            name: {{ .Release.Name }}-obs
         - secretRef:
-          name: {{ .Release.Name }}-jupyterhub-api-token
+            name: {{ .Release.Name }}-jupyterhub-api-token
         env:
         - name: RSPY_TIME_BEFORE_ACCESS_TOKEN_EXPIRE
           value:  {{ .Values.app.NbSecsBeforeAccessTokenExpire | default 60 | quote }}
