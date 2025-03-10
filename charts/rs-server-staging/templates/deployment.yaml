@@ -66,9 +66,9 @@ spec:
           name: {{ .Release.Name }}-jupyterhub-api-token
         env:
         - name: RSPY_TIME_BEFORE_ACCESS_TOKEN_EXPIRE
-          value:  {{ .Values.app.NbSecsBeforeAccessTokenExpire | default 60 }}
+          value:  {{ .Values.app.NbSecsBeforeAccessTokenExpire | default 60 | quote }}
         - name: RSPY_TIME_BEFORE_REFRESH_TOKEN_EXPIRE
-          value:  {{ .Values.app.NbSecsBeforeRefreshTokenExpire | default 60 }}
+          value:  {{ .Values.app.NbSecsBeforeRefreshTokenExpire | default 60 | quote }}
         - name: RSPY_DASK_STAGING_CLUSTER_NAME
           value:  {{ .Values.dask.clusterName }}
         - name: RSPY_UAC_CHECK_URL
