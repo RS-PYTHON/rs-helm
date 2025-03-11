@@ -20,8 +20,8 @@ RS SERVER CADIP
 | app.eodagConfigFile | string | `"cadip_ws_config.yaml"` | Set properly the EODAG_CADIP_CONFIG env var. |
 | app.eodagConfigFileTokenModule | string | `"cadip_ws_config_token_module.yaml"` |  |
 | app.port | int | `8000` | Port for the application |
-| app.station.cadip | object | `{"endpoint":{"url":{"odata":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","token":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/oauth2/token"}}}` | CADIP station name |
-| app.station.cadip.endpoint.url | object | `{"odata":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","token":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/oauth2/token"}` | CADIP station URL |
+| app.station.cadip | object | `{"endpoint":{"url":{"odata":"http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080","token":"http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080/oauth2/token"}}}` | CADIP station name |
+| app.station.cadip.endpoint.url | object | `{"odata":"http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080","token":"http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080/oauth2/token"}` | CADIP station URL |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | app.useTokenModule | bool | `false` | allow EODAG to handle it (set it to false for EODAG). |
 | app.workDir | string | `"/app"` | Working directory for the application |
