@@ -37,8 +37,9 @@ app:
   endpointCatalog: http://rs-server-catalog-svc.processing.svc.cluster.local:8080  
   # -- Object Storage bucket for the catalog
   catalogBucket: rs-cluster-catalog
-  # -- Duration before the expiration of the access and refresh tokens
+  # -- Duration before expiration of the access token
   NbSecsBeforeAccessTokenExpire: 60
+  # -- Duration before expiration of the refresh token
   NbSecsBeforeRefreshTokenExpire: 60
   # -- List of configured stations (expect a secret with the same name)
   station:
