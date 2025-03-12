@@ -13,6 +13,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [0.2a11] - 2025-03-12
+
+### Added
+
+- RSPY-602 : Update stac-fastapi / stac-fastapi-pgstac / pgstac to 5.0.x / 4.0.x / 0.9.x
+- RSPY-614 : Add describedby links to CADIP/AUXIP collections 
+- Add affinity and tolerations for all services
+
+### Changed
+
+- [PR#102](https://github.com/RS-PYTHON/rs-helm/pull/102) use `StatefulSet` for RS services with a PVC + add `startupProbe` + add recommended labels
+- [PR#104](https://github.com/RS-PYTHON/rs-helm/pull/104) rework secret
+- [PR#106](https://github.com/RS-PYTHON/rs-helm/pull/106) remove redundant -svc from all service names
+- [PR#98](https://github.com/RS-PYTHON/rs-helm/pull/98) add missing type for stac license link
+
 ## [0.2a10] - 2025-02-18
 
 ### Added
