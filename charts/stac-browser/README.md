@@ -1,6 +1,6 @@
 # stac-browser
 
-![Version: 0.0.2-a10](https://img.shields.io/badge/Version-0.0.2--a10-informational?style=flat-square) ![AppVersion: v0.2a10](https://img.shields.io/badge/AppVersion-v0.2a10-informational?style=flat-square)
+![Version: 0.0.2-a11](https://img.shields.io/badge/Version-0.0.2--a11-informational?style=flat-square) ![AppVersion: v0.2a11](https://img.shields.io/badge/AppVersion-v0.2a11-informational?style=flat-square)
 
 STAC BROWSER
 
