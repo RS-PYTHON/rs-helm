@@ -170,8 +170,8 @@ affinity: {}
 # -- Pod toleration
 tolerations: []
 
-# -- Pod initContainer
-initContainer: []
+# -- Pod initContainers
+initContainers: []
 
 stac_browser:
   urls: "https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"
