@@ -103,6 +103,9 @@ affinity: {}
 # -- Pod toleration
 tolerations: []
 
+# -- Pod initContainers
+initContainers: []
+
 postgres:
   # -- PostgreSQL port
   port: "5432"

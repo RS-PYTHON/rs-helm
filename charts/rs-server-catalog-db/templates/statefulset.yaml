@@ -36,15 +36,10 @@ spec:
         {{- include "mychart.selectorLabels" . | nindent 8 }}
     spec:
       terminationGracePeriodSeconds: 30
+      {{- with .Values.initContainers }}
       initContainers:
-      - name: init-{{ .Release.Name }}
-        image: alpine/curl
-        command: [ "/scripts/init/{{ .Values.app.pgstac_init_download_schema_script }}" ]
-        volumeMounts:
-          - name: download-json-schema
-            mountPath: /scripts/init/
-          - name: pgstack-json-schema
-            mountPath: /opt/pgstack_json_schema/
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
       - name: {{ .Release.Name }}
         image: "{{ template "mychart.image" .Values.image }}"

@@ -121,3 +121,6 @@ affinity: {}
 
 # -- Pod toleration
 tolerations: []
+
+# -- Pod initContainers
+initContainers: []

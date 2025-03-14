@@ -57,7 +57,6 @@ dask:
   jupyterhub_api_token: JUPYTER_API_TOKEN_HERE
   # -- Dask cluster name for staging
   clusterName: dask-staging
-  
 
 probe:
   startup:
@@ -99,7 +98,10 @@ affinity: {}
 
 # -- Pod toleration
 tolerations: []
-  
+
+# -- Pod initContainers
+initContainers: []
+
 postgres:
   # -- PostgreSQL port
   port: "5432"
