@@ -15,8 +15,8 @@ RS SERVER STAGING
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
-| app.NbSecsBeforeAccessTokenExpire | int | `60` | Duration before the expiration of the access and refresh tokens |
-| app.NbSecsBeforeRefreshTokenExpire | int | `60` |  |
+| app.NbSecsBeforeAccessTokenExpire | int | `60` | Duration before expiration of the access token |
+| app.NbSecsBeforeRefreshTokenExpire | int | `60` | Duration before expiration of the refresh token |
 | app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. The same value should also be included into ingress.path |
