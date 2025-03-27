@@ -75,7 +75,7 @@ image:
   # -- Image name
   name: rs-server-frontend
   # -- Image version, can be a tag or a digest
-  version: 0.2a10
+  version: 0.2a11
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
@@ -110,6 +110,9 @@ affinity: {}
 
 # -- Pod toleration
 tolerations: []
+
+# -- Pod initContainers
+initContainers: []
 
 stac_browser:
   urls: "https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"

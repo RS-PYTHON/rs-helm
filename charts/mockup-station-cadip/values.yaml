@@ -85,7 +85,7 @@ image:
   # -- Image name
   name: rs-testmeans_cadip-station-mock
   # -- Image version, can be a tag or a digest
-  version: ea71db9
+  version: 01b3b95
   # -- Image pull policy
   PullPolicy: Always
   #imagePullSecrets: regcred
@@ -118,3 +118,6 @@ affinity: {}
 
 # -- Pod toleration
 tolerations: []
+
+# -- Pod initContainers
+initContainers: []

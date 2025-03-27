@@ -1,6 +1,6 @@
 # rs-server-catalog
 
-![Version: 0.0.2-a10](https://img.shields.io/badge/Version-0.0.2--a10-informational?style=flat-square) ![AppVersion: v0.2a10](https://img.shields.io/badge/AppVersion-v0.2a10-informational?style=flat-square)
+![Version: 0.0.2-a11](https://img.shields.io/badge/Version-0.0.2--a11-informational?style=flat-square) ![AppVersion: v0.2a11](https://img.shields.io/badge/AppVersion-v0.2a11-informational?style=flat-square)
 
 RS SERVER CATALOG
 
@@ -32,12 +32,13 @@ RS SERVER CATALOG
 | image.name | string | `"rs-server-catalog"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"0.2a10"` | Image version, can be a tag or a digest |
+| image.version | string | `"0.2a11"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
 | ingress.path | list | `["/catalog","/auth"]` | Ingress path |
+| initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
 | obs.region | string | `"sbg"` | Region of the object storage service |

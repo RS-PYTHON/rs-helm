@@ -34,7 +34,7 @@ app:
   # -- URL of the API Key Manager home page (public)
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
   # -- Catalog pod address
-  endpointCatalog: http://rs-server-catalog-svc.processing.svc.cluster.local:8080  
+  endpointCatalog: http://rs-server-catalog.processing.svc.cluster.local:8080  
   # -- Object Storage bucket for the catalog
   catalogBucket: rs-cluster-catalog
   # -- Duration before expiration of the access token
@@ -61,7 +61,6 @@ dask:
   jupyterhub_api_token: JUPYTER_API_TOKEN_HERE
   # -- Dask cluster name for staging
   clusterName: dask-staging
-  
 
 probe:
   startup:
@@ -103,7 +102,10 @@ affinity: {}
 
 # -- Pod toleration
 tolerations: []
-  
+
+# -- Pod initContainers
+initContainers: []
+
 postgres:
   # -- PostgreSQL port
   port: "5432"
@@ -149,7 +151,7 @@ image:
   # -- Image name
   name: rs-server-staging
   # -- Image version, can be a tag or a digest
-  version: 0.2a10
+  version: 0.2a11
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred

@@ -1,6 +1,6 @@
 # stac-browser
 
-![Version: 0.0.2-a10](https://img.shields.io/badge/Version-0.0.2--a10-informational?style=flat-square) ![AppVersion: v0.2a10](https://img.shields.io/badge/AppVersion-v0.2a10-informational?style=flat-square)
+![Version: 0.0.2-a11](https://img.shields.io/badge/Version-0.0.2--a11-informational?style=flat-square) ![AppVersion: v0.2a11](https://img.shields.io/badge/AppVersion-v0.2a11-informational?style=flat-square)
 
 STAC BROWSER
 
@@ -34,6 +34,7 @@ STAC BROWSER
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
 | ingress.path | string | `"/"` | Ingress path for the application Note that because of bug https://github.com/radiantearth/stac-browser/issues/479 the path is forced to / |
+| initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | probe.liveness.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/"` | Path for the liveness probe |

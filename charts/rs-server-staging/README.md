@@ -1,6 +1,6 @@
 # rs-server-staging
 
-![Version: 0.0.2-a10](https://img.shields.io/badge/Version-0.0.2--a10-informational?style=flat-square) ![AppVersion: v0.2a10](https://img.shields.io/badge/AppVersion-v0.2a10-informational?style=flat-square)
+![Version: 0.0.2-a11](https://img.shields.io/badge/Version-0.0.2--a11-informational?style=flat-square) ![AppVersion: v0.2a11](https://img.shields.io/badge/AppVersion-v0.2a11-informational?style=flat-square)
 
 RS SERVER STAGING
 
@@ -20,7 +20,7 @@ RS SERVER STAGING
 | app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. The same value should also be included into ingress.path |
-| app.endpointCatalog | string | `"http://rs-server-catalog-svc.processing.svc.cluster.local:8080"` | Catalog pod address |
+| app.endpointCatalog | string | `"http://rs-server-catalog.processing.svc.cluster.local:8080"` | Catalog pod address |
 | app.port | int | `8000` | Port for the application |
 | app.station | object | `{"adgs":{"type":"auxip"},"cadip":{"type":"cadip"},"mti":{"type":"cadip"},"sgs":{"type":"cadip"}}` | List of configured stations (expect a secret with the same name) |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
@@ -38,12 +38,13 @@ RS SERVER STAGING
 | image.name | string | `"rs-server-staging"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"0.2a10"` | Image version, can be a tag or a digest |
+| image.version | string | `"0.2a11"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
 | ingress.path | list | `["/processes","/jobs"]` | Ingress path for the application |
+| initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
 | obs.region | string | `"sbg"` | Region of the object storage service |

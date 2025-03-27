@@ -1,6 +1,6 @@
 # rs-server-cadip
 
-![Version: 0.0.2-a10](https://img.shields.io/badge/Version-0.0.2--a10-informational?style=flat-square) ![AppVersion: v0.2a10](https://img.shields.io/badge/AppVersion-v0.2a10-informational?style=flat-square)
+![Version: 0.0.2-a11](https://img.shields.io/badge/Version-0.0.2--a11-informational?style=flat-square) ![AppVersion: v0.2a11](https://img.shields.io/badge/AppVersion-v0.2a11-informational?style=flat-square)
 
 RS SERVER CADIP
 
@@ -20,8 +20,8 @@ RS SERVER CADIP
 | app.eodagConfigFile | string | `"cadip_ws_config.yaml"` | Set properly the EODAG_CADIP_CONFIG env var. |
 | app.eodagConfigFileTokenModule | string | `"cadip_ws_config_token_module.yaml"` |  |
 | app.port | int | `8000` | Port for the application |
-| app.station.cadip | object | `{"endpoint":{"url":{"odata":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","token":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/oauth2/token"}}}` | CADIP station name |
-| app.station.cadip.endpoint.url | object | `{"odata":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080","token":"http://mockup-station-cadip-cadip-svc.processing.svc.cluster.local:8080/oauth2/token"}` | CADIP station URL |
+| app.station.cadip | object | `{"endpoint":{"url":{"odata":"http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080","token":"http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080/oauth2/token"}}}` | CADIP station name |
+| app.station.cadip.endpoint.url | object | `{"odata":"http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080","token":"http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080/oauth2/token"}` | CADIP station URL |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | app.useTokenModule | bool | `false` | allow EODAG to handle it (set it to false for EODAG). |
 | app.workDir | string | `"/app"` | Working directory for the application |
@@ -34,12 +34,13 @@ RS SERVER CADIP
 | image.name | string | `"rs-server-cadip"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"0.2a10"` | Image version, can be a tag or a digest |
+| image.version | string | `"0.2a11"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
 | ingress.path | string | `"/cadip"` | Ingress path |
+| initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
 | obs.region | string | `"sbg"` | Region of the object storage service |

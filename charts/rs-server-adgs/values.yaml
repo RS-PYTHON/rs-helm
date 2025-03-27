@@ -43,11 +43,11 @@ app:
     adgs:
       endpoint:
         # -- ADGS URL
-        url: http://mockup-station-adgs-svc.processing.svc.cluster.local:8080/Products      
+        url: http://mockup-station-adgs.processing.svc.cluster.local:8080/Products      
     adgs2:
       endpoint:
         # -- ADGS2 URL
-        url: http://mockup-station-adgs2-svc.processing.svc.cluster.local:8080/Products      
+        url: http://mockup-station-adgs2.processing.svc.cluster.local:8080/Products      
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
 
@@ -132,7 +132,7 @@ image:
   # -- Image name
   name: rs-server-adgs
   # -- Image version, can be a tag or a digest
-  version: 0.2a10
+  version: 0.2a11
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
@@ -169,6 +169,9 @@ affinity: {}
 
 # -- Pod toleration
 tolerations: []
+
+# -- Pod initContainers
+initContainers: []
 
 stac_browser:
   urls: "https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"
