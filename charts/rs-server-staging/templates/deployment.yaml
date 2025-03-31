@@ -69,6 +69,10 @@ spec:
         - secretRef:
             name: {{ .Release.Name }}-jupyterhub-api-token
         env:
+        - name: RSPY_EXPIRES_IN
+          value:  {{ .Values.app.AccessTokenLifetime | default 1200 | quote }}
+        - name: RSPY_REFRESH_EXPIRES_IN
+          value:  {{ .Values.app.RefreshTokenLifetime | default 3600 | quote }}
         - name: RSPY_TIME_BEFORE_ACCESS_TOKEN_EXPIRE
           value:  {{ .Values.app.NbSecsBeforeAccessTokenExpire | default 60 | quote }}
         - name: RSPY_TIME_BEFORE_REFRESH_TOKEN_EXPIRE

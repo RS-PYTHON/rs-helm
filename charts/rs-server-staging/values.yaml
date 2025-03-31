@@ -37,6 +37,11 @@ app:
   endpointCatalog: http://rs-server-catalog.processing.svc.cluster.local:8080  
   # -- Object Storage bucket for the catalog
   catalogBucket: rs-cluster-catalog
+  
+  # -- Access token validity duration (in seconds)
+  AccessTokenLifetime: 1200
+  # -- Refresh token validity duration (in seconds)
+  RefreshTokenLifetime: 3600
   # -- Duration before expiration of the access token
   NbSecsBeforeAccessTokenExpire: 60
   # -- Duration before expiration of the refresh token
