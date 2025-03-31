@@ -15,7 +15,7 @@ MOCKUP STATION CADIP
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
-| app.authConfigFile | string | `"auth.json"` | Auth configuration file for the application |
+| app.authConfigFile | string | `"auth_tmp.json"` | Auth configuration file for the application |
 | app.cadipSessionExpand | bool | `true` | Support for expand option, default true |
 | app.catalogConfigFile | string | `"FileResponse.json"` | catalog configuration file for the application |
 | app.confDir | string | `"/opt/cadip/config"` | Config directory for the application |

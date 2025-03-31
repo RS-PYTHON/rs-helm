@@ -104,6 +104,12 @@ data:
             geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
             downloadLink: {{ $v.endpoint.url.odata }}/Files({id})/$value
             title: $.Name
+            StartPublicationDate:
+            - null
+            - $.PublicationDate
+            StopPublicationDate:
+            - null
+            - $.PublicationDate
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -153,6 +159,7 @@ data:
           retrieve_headers:
             Content-Type: application/x-www-form-urlencoded
             Authorization: '{auth_for_token}'
+          refresh_token_key: refresh_token
         products:
           S1_SAR_RAW:
             productType: RAW
@@ -243,6 +250,12 @@ data:
             - {{ $v.endpoint.url.odata }}/Sessions({id})/$value
             geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
             title: $.Name
+            StartPublicationDate:
+            - null
+            - $.PublicationDate
+            StopPublicationDate:
+            - null
+            - $.PublicationDate
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -382,6 +395,12 @@ data:
             geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
             downloadLink: {{ $v.endpoint.url.odata }}/Files({id})/$value
             title: $.Name
+            StartPublicationDate:
+            - null
+            - $.PublicationDate
+            StopPublicationDate:
+            - null
+            - $.PublicationDate
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -524,6 +543,12 @@ data:
             - {{ $v.endpoint.url.odata }}/Files({id})/$value
             geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
             title: $.Name
+            StartPublicationDate:
+            - null
+            - $.PublicationDate
+            StopPublicationDate:
+            - null
+            - $.PublicationDate
           free_text_search_operations:
             $filter:
               union: ' OR '
