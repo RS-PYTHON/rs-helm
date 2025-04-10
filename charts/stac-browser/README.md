@@ -28,7 +28,7 @@ STAC BROWSER
 | image.name | string | `"stac-browser"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"sha256:92b1f71e94dc6558f4ccc9d1fd79d05f41d2018678cb6640777fabbc23cd3022"` | Image version, can be a tag or a digest |
+| image.version | string | `"sha256:ea61b71473a155732b51f188c521413dc89f99dbb1a04013c2844b3946e99c0b"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"stac-browser.subdomain.example.com"` | Ingress host name. |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
