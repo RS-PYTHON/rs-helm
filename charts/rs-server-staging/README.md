@@ -22,6 +22,8 @@ RS SERVER STAGING
 | app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. The same value should also be included into ingress.path |
+| app.endpointAdgs | string | `"https://dev-rspy-ovh.esa-copernicus.eu/auxip"` | Adgs server pod address |
+| app.endpointCadip | string | `"https://dev-rspy-ovh.esa-copernicus.eu/cadip"` | Cadip server pod address |
 | app.endpointCatalog | string | `"http://rs-server-catalog.processing.svc.cluster.local:8080"` | Catalog pod address |
 | app.port | int | `8000` | Port for the application |
 | app.station | object | `{"adgs":{"type":"auxip"},"cadip":{"type":"cadip"},"mti":{"type":"cadip"},"sgs":{"type":"cadip"}}` | List of configured stations (expect a secret with the same name) |
