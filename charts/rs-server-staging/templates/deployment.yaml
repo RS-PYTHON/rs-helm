@@ -91,6 +91,10 @@ spec:
           value: {{ .Values.dask.gateway_auth_type }}
         - name: RSPY_HOST_CATALOG
           value: {{ .Values.app.endpointCatalog }}
+        - name: RSPY_HOST_CADIP
+          value: {{ .Values.app.endpointCadip }}
+        - name: RSPY_HOST_ADGS
+          value: {{ .Values.app.endpointAdgs }}
         - name: RSPY_CATALOG_BUCKET
           value: {{ .Values.app.catalogBucket }}
         - name: POSTGRES_PORT
