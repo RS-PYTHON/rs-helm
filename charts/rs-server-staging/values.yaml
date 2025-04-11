@@ -37,6 +37,10 @@ app:
   endpointCatalog: http://rs-server-catalog.processing.svc.cluster.local:8080  
   # -- Object Storage bucket for the catalog
   catalogBucket: rs-cluster-catalog
+   # -- Cadip server pod address
+  endpointCadip: https://dev-rspy-ovh.esa-copernicus.eu/cadip 
+   # -- Adgs server pod address
+  endpointAdgs: https://dev-rspy-ovh.esa-copernicus.eu/auxip 
   
   # -- Access token validity duration (in seconds)
   AccessTokenLifetime: 1200
