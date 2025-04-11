@@ -328,7 +328,7 @@ data:
       station: adgs
       query: null
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -369,7 +369,7 @@ data:
       station: adgs2
       query: null
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -411,7 +411,7 @@ data:
       query:
         productType: AUX_PP2
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -453,7 +453,7 @@ data:
       query:
         productType: OPER_AUX_ECMWFD_PDMC
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -495,7 +495,7 @@ data:
       query:
         productType: OPER_AUX_OBMEMC
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -537,7 +537,7 @@ data:
       query:
         productType: OPER_AUX_OBMEMC_PDMC
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -579,7 +579,7 @@ data:
       query:
         productType: OPER_AUX_PREORB_OPOD
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -621,7 +621,7 @@ data:
       query:
         productType: OPER_AUX_RESORB_OPOD
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -663,7 +663,7 @@ data:
       query:
         productType: OPER_AUX_RESORB_OPODs
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -705,7 +705,7 @@ data:
       query:
         productType: OPER_MPL_ORBPRE
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -747,7 +747,7 @@ data:
       query:
         productType: OPER_MPL_ORBSCT
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -789,7 +789,7 @@ data:
       query:
         productType: AUX_PP2
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -831,7 +831,7 @@ data:
       query:
         productType: OPER_AUX_ECMWFD_PDMC
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -873,7 +873,7 @@ data:
       query:
         productType: OPER_AUX_OBMEMC
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -915,7 +915,7 @@ data:
       query:
         productType: OPER_AUX_OBMEMC_PDMC
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -957,7 +957,7 @@ data:
       query:
         productType: OPER_AUX_PREORB_OPOD
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -999,7 +999,7 @@ data:
       query:
         productType: OPER_AUX_RESORB_OPOD
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -1041,7 +1041,7 @@ data:
       query:
         productType: OPER_AUX_RESORB_OPODs
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -1083,7 +1083,7 @@ data:
       query:
         productType: OPER_MPL_ORBPRE
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -1125,7 +1125,7 @@ data:
       query:
         productType: OPER_MPL_ORBSCT
       stac_extensions:
-      - https://rs-python.github.io/auxip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/auxip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
