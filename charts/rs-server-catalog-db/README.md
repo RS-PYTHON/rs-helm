@@ -24,7 +24,7 @@ RS SERVER CATALOG DB
 | image.name | string | `"pgstac"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"stac-utils"` | Image repository |
-| image.version | string | `"v0.9.5"` | Image version, can be a tag or a digest |
+| image.version | string | `"v0.9.6"` | Image version, can be a tag or a digest |
 | initContainers | list | `[{"command":["/scripts/init/download.sh"],"image":"alpine/curl","name":"init-pgstac","volumeMounts":[{"mountPath":"/scripts/init/","name":"download-json-schema"},{"mountPath":"/opt/pgstack_json_schema/","name":"pgstack-json-schema"}]}]` | Pod initContainers |
 | namespace | string | `"database"` | Namespace for the deployment |
 | postgres.db | string | `"catalog"` | PostgreSQL database name |
