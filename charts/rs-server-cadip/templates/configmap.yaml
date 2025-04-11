@@ -35,6 +35,8 @@ data:
           auth_uri: {{ $v.endpoint.url.token }}
           token_type: json
           token_key: access_token
+          refresh_token_key: refresh_token
+          token_expiration_key: expires_in
           request_method: POST
           req_data:
             client_id: PLACEHOLDER
@@ -115,10 +117,6 @@ data:
                 - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
                 - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
-          pagination:
-            max_items_per_page: 10000
-            next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}'
-            total_items_nb_key_path: $.total
           sort:
             sort_by_tpl: '&$orderby={sort_param} {sort_order}'
             sort_param_mapping:
@@ -127,6 +125,10 @@ data:
               ascending: asc
               descending: desc
             max_sort_params: 1
+          pagination:
+            max_items_per_page: 10000
+            next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}'
+            total_items_nb_key_path: $.total
         download:
           type: HTTPDownload
           base_uri: {{ $v.endpoint.url.odata }}/Files
@@ -139,6 +141,8 @@ data:
           auth_uri: {{ $v.endpoint.url.token }}
           token_type: json
           token_key: access_token
+          refresh_token_key: refresh_token
+          token_expiration_key: expires_in
           request_method: POST
           req_data:
             client_id: PLACEHOLDER
@@ -153,7 +157,6 @@ data:
           retrieve_headers:
             Content-Type: application/x-www-form-urlencoded
             Authorization: '{auth_for_token}'
-          refresh_token_key: refresh_token
         products:
           S1_SAR_RAW:
             productType: RAW
@@ -173,15 +176,15 @@ data:
             SessionId:
             - null
             - $.SessionId
-            Satellite:
-            - null
-            - $.Satellite
             NumChannels:
             - null
             - $.NumChannels
             PublicationDate:
             - null
             - $.PublicationDate
+            Satellite:
+            - null
+            - $.Satellite
             platform:
             - null
             - $.Satellite
@@ -273,10 +276,6 @@ data:
                 - FrontEndStatusOK eq {FrontEndStatusOK}
                 - DownlinkStatusOK eq {DownlinkStatusOK}
                 - DeliveryPushOK eq {DeliveryPushOK}
-          pagination:
-            max_items_per_page: 10000
-            next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}'
-            total_items_nb_key_path: $.total
           sort:
             sort_by_tpl: '&$orderby={sort_param} {sort_order}'
             sort_param_mapping:
@@ -286,6 +285,7 @@ data:
               end_datetime: DownlinkStop
               published: PublicationDate
               platform: Satellite
+              publicationDate: PublicationDate
               cadip:id: Id
               cadip:num_channels: NumChannels
               cadip:station_unit_id: StationUnitId
@@ -300,11 +300,14 @@ data:
               cadip:planned_data_stop: PlannedDataStop
               cadip:downlink_status_ok: DownlinkStatusOK
               cadip:delivery_push_ok: DeliveryPushOK
-              publicationDate: PublicationDate
             sort_order_mapping:
               ascending: asc
               descending: desc
             max_sort_params: 1
+          pagination:
+            max_items_per_page: 10000
+            next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}'
+            total_items_nb_key_path: $.total
         download:
           type: HTTPDownload
           base_uri: {{ $v.endpoint.url.odata }}/Sessions
@@ -609,7 +612,7 @@ data:
       station: cadip
       query: null
       stac_extensions:
-      - https://rs-python.github.io/cadip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/cadip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -650,7 +653,7 @@ data:
       station: mti
       query: null
       stac_extensions:
-      - https://rs-python.github.io/cadip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/cadip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -691,7 +694,7 @@ data:
       station: sgs
       query: null
       stac_extensions:
-      - https://rs-python.github.io/cadip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/cadip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -733,7 +736,7 @@ data:
       query:
         Satellite: S1A, S1B, S1C
       stac_extensions:
-      - https://rs-python.github.io/cadip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/cadip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -775,7 +778,7 @@ data:
       query:
         Satellite: S2A, S2B, S2C
       stac_extensions:
-      - https://rs-python.github.io/cadip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/cadip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -817,7 +820,7 @@ data:
       query:
         Satellite: S3A, S3B
       stac_extensions:
-      - https://rs-python.github.io/cadip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/cadip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -859,7 +862,7 @@ data:
       query:
         Satellite: S5P
       stac_extensions:
-      - https://rs-python.github.io/cadip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/cadip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -901,7 +904,7 @@ data:
       query:
         Satellite: S1A, S1B, S1C
       stac_extensions:
-      - https://rs-python.github.io/cadip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/cadip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -943,7 +946,7 @@ data:
       query:
         Satellite: S2A, S2B, S2C
       stac_extensions:
-      - https://rs-python.github.io/cadip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/cadip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -985,7 +988,7 @@ data:
       query:
         Satellite: S3A, S3B
       stac_extensions:
-      - https://rs-python.github.io/cadip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/cadip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -1027,7 +1030,7 @@ data:
       query:
         Satellite: S5P
       stac_extensions:
-      - https://rs-python.github.io/cadip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/cadip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -1069,7 +1072,7 @@ data:
       query:
         Satellite: S1A, S1B, S1C
       stac_extensions:
-      - https://rs-python.github.io/cadip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/cadip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -1111,7 +1114,7 @@ data:
       query:
         Satellite: S2A, S2B, S2C
       stac_extensions:
-      - https://rs-python.github.io/cadip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/cadip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -1153,7 +1156,7 @@ data:
       query:
         Satellite: S3A, S3B
       stac_extensions:
-      - https://rs-python.github.io/cadip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/cadip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
@@ -1195,7 +1198,7 @@ data:
       query:
         Satellite: S5P
       stac_extensions:
-      - https://rs-python.github.io/cadip-stac-extension/v1.0.0/schema.json
+      - https://home.rs-python.eu/cadip-stac-extension/v1.1.0/schema.json
       - https://stac-extensions.github.io/eo/v1.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
