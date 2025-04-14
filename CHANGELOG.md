@@ -13,6 +13,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+RSPY-551: No opentelemetry data for rs-server-adgs, rs-server-cadip, rs-server-staging after start/stop platform
+
+## [0.2a112] - 2025-04-14
+
+### Added
+
+- RSPY-561 : Smarter handling of Staging OAuth2 tokens
+- RSPY-611 : Publish our own STAC extension(s)
+
+### Changed
+
+- PgStac : bump version to `0.9.6`
+- Bump docker images version to `0.2a12`
+
+### Fixed
+
+- RSPY-551 : No opentelemetry data for rs-server-adgs, rs-server-cadip, rs-server-staging after start/stop platform
+- [PR#114](https://github.com/RS-PYTHON/rs-helm/pull/114) Typo in `app.kubernetes.io/component` for ADGS
+
 ## [0.2a11] - 2025-03-12
 
 ### Added
