@@ -13,8 +13,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
-RSPY-551: No opentelemetry data for rs-server-adgs, rs-server-cadip, rs-server-staging after start/stop platform
-
 ## [0.2a112] - 2025-04-14
 
 ### Added
