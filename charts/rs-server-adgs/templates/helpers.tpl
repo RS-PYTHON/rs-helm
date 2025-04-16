@@ -35,7 +35,7 @@ Create chart name and version as used by the chart label.
 Selector labels
 */}}
 {{- define "mychart.selectorLabels" -}}
-app.kubernetes.io/component: agds
+app.kubernetes.io/component: adgs
 app.kubernetes.io/name: {{ .Chart.Name }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}

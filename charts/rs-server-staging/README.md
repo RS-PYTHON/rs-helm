@@ -1,6 +1,6 @@
 # rs-server-staging
 
-![Version: 0.0.2-a11](https://img.shields.io/badge/Version-0.0.2--a11-informational?style=flat-square) ![AppVersion: v0.2a11](https://img.shields.io/badge/AppVersion-v0.2a11-informational?style=flat-square)
+![Version: 0.0.2-a12](https://img.shields.io/badge/Version-0.0.2--a12-informational?style=flat-square) ![AppVersion: v0.2a12](https://img.shields.io/badge/AppVersion-v0.2a12-informational?style=flat-square)
 
 RS SERVER STAGING
 
@@ -22,6 +22,8 @@ RS SERVER STAGING
 | app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. The same value should also be included into ingress.path |
+| app.endpointAdgs | string | `"https://subdomain.example.com/auxip"` | Adgs server pod address |
+| app.endpointCadip | string | `"https://subdomain.example.com/cadip"` | Cadip server pod address |
 | app.endpointCatalog | string | `"http://rs-server-catalog.processing.svc.cluster.local:8080"` | Catalog pod address |
 | app.port | int | `8000` | Port for the application |
 | app.station | object | `{"adgs":{"type":"auxip"},"cadip":{"type":"cadip"},"mti":{"type":"cadip"},"sgs":{"type":"cadip"}}` | List of configured stations (expect a secret with the same name) |
@@ -40,7 +42,7 @@ RS SERVER STAGING
 | image.name | string | `"rs-server-staging"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"0.2a11"` | Image version, can be a tag or a digest |
+| image.version | string | `"0.2a12"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
@@ -67,7 +69,7 @@ RS SERVER STAGING
 | probe.readiness.periodSeconds | int | `30` | periodSeconds for the readiness probe |
 | probe.readiness.port | int | `8000` | Port for the readiness probe |
 | probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
-| probe.startup.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
+| probe.startup.initialDelaySeconds | int | `20` | InitialDelaySeconds for the liveness probe |
 | probe.startup.path | string | `"/_mgmt/ping"` | Path for the liveness probe |
 | probe.startup.periodSeconds | int | `2` | periodSeconds for the liveness probe |
 | probe.startup.port | int | `8000` | Port for the liveness probe |

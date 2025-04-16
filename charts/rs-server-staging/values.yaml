@@ -37,6 +37,10 @@ app:
   endpointCatalog: http://rs-server-catalog.processing.svc.cluster.local:8080  
   # -- Object Storage bucket for the catalog
   catalogBucket: rs-cluster-catalog
+   # -- Cadip server pod address
+  endpointCadip: https://subdomain.example.com/cadip 
+   # -- Adgs server pod address
+  endpointAdgs: https://subdomain.example.com/auxip 
   
   # -- Access token validity duration (in seconds)
   AccessTokenLifetime: 1200
@@ -74,7 +78,7 @@ probe:
     # -- Port for the liveness probe
     port: 8000
     # -- InitialDelaySeconds for the liveness probe
-    initialDelaySeconds: 0
+    initialDelaySeconds: 20
     # -- periodSeconds for the liveness probe
     periodSeconds: 2
     # -- timeoutSeconds for the liveness probe
@@ -156,7 +160,7 @@ image:
   # -- Image name
   name: rs-server-staging
   # -- Image version, can be a tag or a digest
-  version: 0.2a11
+  version: 0.2a12
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
