@@ -16,6 +16,8 @@ MOCKUP STATION CADIP
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
 | app.authConfigFile | string | `"auth_tmp.json"` | Auth configuration file for the application |
+| app.bucketName | string | `"rs-dev-cluster-temp"` | Bucket name to stage data from |
+| app.bucketPath | string | `"stations/CADIP/"` | Path inside the bucket to the data |
 | app.cadipSessionExpand | bool | `true` | Support for expand option, default true |
 | app.catalogConfigFile | string | `"FileResponse.json"` | catalog configuration file for the application |
 | app.confDir | string | `"/opt/cadip/config"` | Config directory for the application |
