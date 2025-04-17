@@ -16,6 +16,8 @@ MOCKUP STATION ADGS
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
 | app.authConfigFile | string | `"auth_tmp.json"` | Auth configuration file for the application |
+| app.bucketName | string | `"rs-dev-cluster-temp"` | Bucket name to stage data from |
+| app.bucketPath | string | `"stations/ADGS/"` | Path inside the bucket to the data |
 | app.catalogConfigFile | string | `"GETFileResponse.json"` | catalog configuration file for the application |
 | app.confDir | string | `"/opt/adgs/config"` | Config directory for the application |
 | app.port | int | `5000` | Port for the application |

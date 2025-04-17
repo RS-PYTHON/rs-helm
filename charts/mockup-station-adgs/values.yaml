@@ -33,6 +33,10 @@ app:
   authConfigFile: auth_tmp.json
   # -- catalog configuration file for the application
   catalogConfigFile: GETFileResponse.json
+  # -- Bucket name to stage data from
+  bucketName: rs-dev-cluster-temp
+  # -- Path inside the bucket to the data
+  bucketPath: stations/ADGS/
 
 obs:
   # -- URL of the object storage service endpoint

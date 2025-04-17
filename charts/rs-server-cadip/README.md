@@ -61,7 +61,7 @@ RS SERVER CADIP
 | probe.readiness.periodSeconds | int | `30` | periodSeconds for the readiness probe |
 | probe.readiness.port | int | `8000` | Port for the readiness probe |
 | probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
-| probe.startup.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
+| probe.startup.initialDelaySeconds | int | `10` | InitialDelaySeconds for the liveness probe |
 | probe.startup.path | string | `"/health"` | Path for the liveness probe |
 | probe.startup.periodSeconds | int | `2` | periodSeconds for the liveness probe |
 | probe.startup.port | int | `8000` | Port for the liveness probe |

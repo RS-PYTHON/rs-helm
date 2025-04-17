@@ -41,6 +41,10 @@ app:
   stationName: cadip
   # -- Support for expand option, default true
   cadipSessionExpand: true
+  # -- Bucket name to stage data from
+  bucketName: rs-dev-cluster-temp
+  # -- Path inside the bucket to the data
+  bucketPath: stations/CADIP/
 
 obs:
   # -- URL of the object storage service endpoint
