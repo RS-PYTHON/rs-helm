@@ -1,4 +1,4 @@
-# Copyright 2024 CS Group
+# Copyright 2025 CS Group
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,10 +13,11 @@
 # limitations under the License.
 
 apiVersion: v1
-appVersion: 0.0.0 #{{APP_VERSION}}
-description: RS SERVER CATALOG
-name: rs-server-catalog
-version: 0.0.0 #{{CHART_VERSION}}
-maintainers:
-  - name: CS GROUP
-    url: https://github.com/RS-PYTHON/rs-helm
+kind: ConfigMap
+metadata:
+  name: default-{{ .Chart.Name }}-bucket-config
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "mychart.Labels" . | nindent 4 }}
+data:
+  {{ .Values.app.bucketConfig.bucketConfMountFileName }}: {{ .Values.app.bucketConfig.expirationBucketCsv }}

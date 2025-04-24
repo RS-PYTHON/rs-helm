@@ -51,6 +51,9 @@ spec:
           limits:
             memory: {{ .Values.resources.limit.ram }}
             cpu: {{ .Values.resources.limit.cpu }}
+        volumeMounts:
+        - name: rs-server-catalog-bucket-configmap
+          mountPath: {{ .Values.app.bucketConfig.bucketConfMountDir }}
         ports:
         - name: web
           protocol: TCP
@@ -154,6 +157,14 @@ spec:
       {{ end }}
       restartPolicy: Always
       securityContext: {}
+      volumes:
+      - name: rs-server-catalog-bucket-configmap
+        configMap:
+          {{ if .Values.app.bucketConfig.useExternalCatalogBucketConfigMap }}
+          name: {{ .Values.app.bucketConfig.externalCatalogBucketConfigMapName }}
+          {{ else }}
+          name: default-{{ .Chart.Name }}-bucket-config
+          {{ end }}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
