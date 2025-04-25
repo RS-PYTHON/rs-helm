@@ -51,6 +51,9 @@ spec:
           limits:
             memory: {{ .Values.resources.limit.ram }}
             cpu: {{ .Values.resources.limit.cpu }}
+        volumeMounts:
+        - name: rs-server-staging-bucket-configmap
+          mountPath: {{ .Values.app.bucketConfig.bucketConfMountDir }}
         ports:
         - name: web
           protocol: TCP
@@ -159,6 +162,13 @@ spec:
         - name: service-openapi-volume
           configMap:
             name: {{ .Release.Name }}-service-openapi
+        - name: rs-server-staging-bucket-configmap
+          configMap:
+            {{ if .Values.app.bucketConfig.useExternalCatalogBucketConfigMap }}
+            name: {{ .Values.app.bucketConfig.externalCatalogBucketConfigMapName }}
+            {{ else }}
+            name: default-{{ .Chart.Name }}-bucket-config
+            {{ end }}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
