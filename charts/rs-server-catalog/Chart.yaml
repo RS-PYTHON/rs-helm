@@ -13,10 +13,10 @@
 # limitations under the License.
 
 apiVersion: v1
-appVersion: 0.0.0 #{{APP_VERSION}}
+appVersion: {{APP_VERSION}}
 description: RS SERVER CATALOG
 name: rs-server-catalog
-version: 0.0.0 #{{CHART_VERSION}}
+version: {{CHART_VERSION}}
 maintainers:
   - name: CS GROUP
     url: https://github.com/RS-PYTHON/rs-helm
