@@ -19,6 +19,12 @@ RS SERVER STAGING
 | app.NbSecsBeforeAccessTokenExpire | int | `60` | Duration before expiration of the access token |
 | app.NbSecsBeforeRefreshTokenExpire | int | `60` | Duration before expiration of the refresh token |
 | app.RefreshTokenLifetime | int | `3600` | Refresh token validity duration (in seconds) |
+| app.bucketConfig | object | `{"bucketConfigMountDir":"/home/user/.config","bucketConfigMountFileName":"expiration_bucket.csv","expirationBucketCsv":"\"*, *, *, 30, rspython-ops-staging-all-production\"\n","externalStagingBucketConfigMapName":"","useExternalStagingBucketConfigMap":false}` | Bucket configuration to use to monitor the lifespan and name of data buckets Use an external configuration through an external configmap with the value "externalCatalogBucketConfigMapName" OR Set your own configuration in the value expirationBucketCsv |
+| app.bucketConfig.bucketConfigMountDir | string | `"/home/user/.config"` | Where to mount the configuration (directory) |
+| app.bucketConfig.bucketConfigMountFileName | string | `"expiration_bucket.csv"` | File name for the configuration. Works only with internal ConfigMap |
+| app.bucketConfig.expirationBucketCsv | string | `"\"*, *, *, 30, rspython-ops-staging-all-production\"\n"` | Bucket configuration. Used only if useExternalCatalogBucketConfigMap is false.  Default config puts all data in a bucket called rspython-ops-staging-all-production with a lifespan of 30 days. |
+| app.bucketConfig.externalStagingBucketConfigMapName | string | `""` | Name of the external configmap to use. Used only if useExternalCatalogBucketConfigMap is true |
+| app.bucketConfig.useExternalStagingBucketConfigMap | bool | `false` | Set to true to use an external configmap for the configuration instead of the one set in expirationBucketCsv |
 | app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. The same value should also be included into ingress.path |

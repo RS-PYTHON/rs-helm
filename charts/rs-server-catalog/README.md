@@ -15,6 +15,12 @@ RS SERVER CATALOG
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
+| app.bucketConfig | object | `{"bucketConfigMountDir":"/home/user/.config","bucketConfigMountFileName":"expiration_bucket.csv","expirationBucketCsv":"\"*, *, *, 30, rspython-ops-catalog-all-production\"\n","externalCatalogBucketConfigMapName":"","useExternalCatalogBucketConfigMap":false}` | Bucket configuration to use to monitor the lifespan and name of data buckets Use an external configuration through an external configmap with the value "externalCatalogBucketConfigMapName" OR Set your own configuration in the value expirationBucketCsv |
+| app.bucketConfig.bucketConfigMountDir | string | `"/home/user/.config"` | Where to mount the configuration (directory) |
+| app.bucketConfig.bucketConfigMountFileName | string | `"expiration_bucket.csv"` | File name for the configuration. Works only with internal ConfigMap |
+| app.bucketConfig.expirationBucketCsv | string | `"\"*, *, *, 30, rspython-ops-catalog-all-production\"\n"` | Bucket configuration. Used only if useExternalCatalogBucketConfigMap is false.  Default config puts all data in a bucket called rspython-ops-catalog-all-production with a lifespan of 30 days. |
+| app.bucketConfig.externalCatalogBucketConfigMapName | string | `""` | Name of the external configmap to use. Used only if useExternalCatalogBucketConfigMap is true |
+| app.bucketConfig.useExternalCatalogBucketConfigMap | bool | `false` | Set to true to use an external configmap for the configuration instead of the one set in expirationBucketCsv |
 | app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
 | app.metadata.description | string | `"STAC catalog of Copernicus Reference System Python"` | update the catalog metadata description parameter over the default one received from the pystac client |
 | app.metadata.id | string | `"rs-python"` | update the catalog metadata id parameter over the default one received from the pystac client |
