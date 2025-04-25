@@ -74,7 +74,7 @@ app:
     # -- Bucket configuration. Used only if useExternalCatalogBucketConfigMap is false. 
     # Default config puts all data in a bucket called rspython-ops-staging-all-production with a lifespan of 30 days.
     expirationBucketCsv: |
-      "*, *, *, 30, rspython-ops-staging-all-production"
+      *, *, *, 30, rspython-ops-staging-all-production
     # -- File name for the configuration. Works only with internal ConfigMap
     bucketConfigMountFileName: expiration_bucket.csv
 
