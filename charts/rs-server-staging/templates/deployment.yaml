@@ -36,16 +36,8 @@ spec:
         {{- include "mychart.selectorLabels" . | nindent 8 }}
     spec:
       terminationGracePeriodSeconds: 30
-      initContainers:
-      - name: init-bucket-config
-        image: busybox
-        command: ['sh', '-c', 'cp /configmap-data/* /config-data/']
-        volumeMounts:
-        - name: rs-server-staging-bucket-configmap
-          mountPath: /configmap-data
-        - name: rs-server-staging-bucket-config
-          mountPath: /config-data
       {{- with .Values.initContainers }}
+      initContainers:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
@@ -60,8 +52,8 @@ spec:
             memory: {{ .Values.resources.limit.ram }}
             cpu: {{ .Values.resources.limit.cpu }}
         volumeMounts:
-        - name: rs-server-staging-bucket-config
-          mountPath: {{ .Values.app.bucketConfig.bucketConfigMountDir }}
+        - name: rs-server-staging-bucket-configmap
+          mountPath: {{ .Values.app.confDir }}
         ports:
         - name: web
           protocol: TCP
@@ -177,8 +169,6 @@ spec:
             {{ else }}
             name: default-{{ .Chart.Name }}-bucket-config
             {{ end }}
-        - name: rs-server-staging-bucket-config
-          emptyDir: {}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
