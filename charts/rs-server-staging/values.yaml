@@ -76,7 +76,7 @@ app:
     expirationBucketCsv: |
       *, *, *, 30, rspython-ops-staging-all-production
     # -- File name for the configuration. Works only with internal ConfigMap
-    bucketConfigMountFileName: expiration_bucket.csv
+    bucketConfigFileName: expiration_bucket.csv
 
 dask:
   # -- Dask gateway address

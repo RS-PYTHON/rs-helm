@@ -22,7 +22,7 @@ metadata:
   labels:
     {{- include "mychart.Labels" . | nindent 4 }}
 data:
-  {{ .Values.app.bucketConfig.bucketConfigMountFileName }}: |
+  {{ .Values.app.bucketConfig.bucketConfigFileName }}: |
 {{ .Values.app.bucketConfig.expirationBucketCsv | nindent 4 }}
 
 {{ end }}

@@ -56,7 +56,7 @@ app:
     expirationBucketCsv: |
       *, *, *, 30, rspython-ops-catalog-all-production
     # -- File name for the configuration. Works only with internal ConfigMap
-    bucketConfigMountFileName: expiration_bucket.csv
+    bucketConfigFileName: expiration_bucket.csv
     
 
 obs:
