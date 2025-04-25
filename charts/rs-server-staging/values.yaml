@@ -74,8 +74,8 @@ app:
     expirationBucketCsv: |
       "*, *, *, 30, rspython-ops-catalog-all-production"
     # -- Where to mount the configuration (directory and file name)
-    bucketConfMountDir: /home/user/.config
-    bucketConfMountFileName: expiration_bucket.csv
+    bucketConfigMountDir: /home/user/.config
+    bucketConfigMountFileName: expiration_bucket.csv
 
 dask:
   # -- Dask gateway address

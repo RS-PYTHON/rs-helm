@@ -20,4 +20,4 @@ metadata:
   labels:
     {{- include "mychart.Labels" . | nindent 4 }}
 data:
-  {{ .Values.app.bucketConfig.bucketConfMountFileName }}: {{ .Values.app.bucketConfig.expirationBucketCsv }}
+  {{ .Values.app.bucketConfig.bucketConfigMountFileName }}: {{ .Values.app.bucketConfig.expirationBucketCsv }}
