@@ -172,8 +172,8 @@ spec:
             name: {{ .Release.Name }}-service-openapi
         - name: rs-server-staging-bucket-configmap
           configMap:
-            {{ if .Values.app.bucketConfig.useExternalCatalogBucketConfigMap }}
-            name: {{ .Values.app.bucketConfig.externalCatalogBucketConfigMapName }}
+            {{ if .Values.app.bucketConfig.useExternalStagingBucketConfigMap }}
+            name: {{ .Values.app.bucketConfig.externalStagingBucketConfigMapName }}
             {{ else }}
             name: default-{{ .Chart.Name }}-bucket-config
             {{ end }}

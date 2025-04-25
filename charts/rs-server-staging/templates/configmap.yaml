@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+{{ if not .Values.app.bucketConfig.useExternalStagingBucketConfigMap }}
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -20,4 +22,7 @@ metadata:
   labels:
     {{- include "mychart.Labels" . | nindent 4 }}
 data:
-  {{ .Values.app.bucketConfig.bucketConfigMountFileName }}: {{ .Values.app.bucketConfig.expirationBucketCsv }}
+  {{ .Values.app.bucketConfig.bucketConfigMountFileName }}: |
+{{ .Values.app.bucketConfig.expirationBucketCsv | nindent 4 }}
+
+{{ end }}
