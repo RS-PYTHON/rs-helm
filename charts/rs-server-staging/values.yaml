@@ -75,7 +75,8 @@ app:
     # Default config puts all data in a bucket called rspython-ops-staging-all-production with a lifespan of 30 days.
     expirationBucketCsv: |
       *, *, *, 30, rspython-ops-staging-all-production
-    # -- File name for the configuration. Works only with internal ConfigMap
+    # -- File name for the configuration.
+    # If you use an external configmap, put the name of the file of your configmap, so the environment variables are set properly
     bucketConfigFileName: expiration_bucket.csv
 
 dask:
