@@ -46,6 +46,9 @@ RS SERVER CADIP
 | obs.region | string | `"sbg"` | Region of the object storage service |
 | obs.secret.ak | string | `"TDr8foJqSygBQ9YFmWDy"` | Access Key to authenticate with the object storage service |
 | obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service |
+| otel | object | `{"trace_body":false,"trace_headers":false}` | OpenTelemetry |
+| otel.trace_body | bool | `false` | Trace request bodies and response contents with OpenTelemetry ? |
+| otel.trace_headers | bool | `false` | Trace request headers with OpenTelemetry ? |
 | postgres.db | string | `"rspydemo"` | PostgreSQL database name |
 | postgres.host | string | `"postgresql-cluster-rw.database.svc.cluster.local"` | PostgreSQL service URL |
 | postgres.port | string | `"5432"` | PostgreSQL port |
