@@ -44,7 +44,6 @@ RS SERVER CATALOG
 | obs.region | string | `"sbg"` | Region of the object storage service |
 | obs.secret.ak | string | `"TDr8foJqSygBQ9YFmWDy"` | Access Key to authenticate with the object storage service |
 | obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service |
-| otel | object | `{"trace_body":false,"trace_headers":false}` | OpenTelemetry |
 | otel.trace_body | bool | `false` | Trace request bodies and response contents with OpenTelemetry ? |
 | otel.trace_headers | bool | `false` | Trace request headers with OpenTelemetry ? |
 | postgres.db | string | `"catalog"` | PostgreSQL database name |
