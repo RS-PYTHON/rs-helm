@@ -116,6 +116,8 @@ spec:
           value: {{ .Values.obs.endpoint }}
         - name: S3_REGION
           value: {{ .Values.obs.region }}
+        - name: BUCKET_CONFIG_FILE_PATH
+          value: {{ .Values.app.confDir }}/{{ .Values.app.bucketConfig.bucketConfigFileName }}
         securityContext:
           privileged: false
         {{ if .Values.probe }}
