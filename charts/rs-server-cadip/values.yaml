@@ -188,3 +188,9 @@ stac_browser:
 tempo:
   # -- Grafana tempo endpoint.
   endpoint: http://grafana-tempo-distributor.logging.svc.cluster.local:4317
+
+otel:
+  # -- Trace request headers with OpenTelemetry ?
+  trace_headers: false
+  # -- Trace request bodies and response contents with OpenTelemetry ?
+  trace_body: false
