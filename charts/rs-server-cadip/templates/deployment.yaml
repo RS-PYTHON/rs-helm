@@ -107,13 +107,17 @@ spec:
         - name: STAC_BROWSER_URLS
           value: {{ .Values.stac_browser.urls }}
         - name: RSPY_USE_MODULE_FOR_STATION_TOKEN
-          value: '{{ .Values.app.useTokenModule }}'          
+          value: {{ .Values.app.useTokenModule | quote }}
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
           value: {{ .Values.tempo.endpoint }}
         {{ end }}
         {{ end }}
+        - name: OTEL_PYTHON_REQUESTS_TRACE_HEADERS
+          value: {{ .Values.otel.trace_headers | quote }}
+        - name: OTEL_PYTHON_REQUESTS_TRACE_BODY
+          value: {{ .Values.otel.trace_body | quote }}
         securityContext:
           privileged: false
         {{ if .Values.probe }}
