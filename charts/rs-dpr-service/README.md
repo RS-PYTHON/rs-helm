@@ -15,11 +15,6 @@ RS DPR SERVICE
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
-| app.bucketConfig | object | `{"bucketConfigFileName":"expiration_bucket.csv","expirationBucketCsv":"*, *, *, 30, rspython-ops-dpr-service-all-production\n","externalDprServiceBucketConfigMapName":"","useExternalDprServiceBucketConfigMap":false}` | Bucket configuration to use to monitor the lifespan and name of data buckets Use an external configuration through an external configmap with the value "externalCatalogBucketConfigMapName" OR Set your own configuration in the value expirationBucketCsv |
-| app.bucketConfig.bucketConfigFileName | string | `"expiration_bucket.csv"` | File name for the configuration. If you use an external configmap, put the name of the file of your configmap, so the environment variables are set properly |
-| app.bucketConfig.expirationBucketCsv | string | `"*, *, *, 30, rspython-ops-dpr-service-all-production\n"` | Bucket configuration. Used only if useExternalCatalogBucketConfigMap is false.  Default config puts all data in a bucket called rspython-ops-dpr-service-all-production with a lifespan of 30 days. |
-| app.bucketConfig.externalDprServiceBucketConfigMapName | string | `""` | Name of the external configmap to use. Used only if useExternalDprServiceBucketConfigMap is true |
-| app.bucketConfig.useExternalDprServiceBucketConfigMap | bool | `false` | Set to true to use an external configmap for the configuration instead of the one set in expirationBucketCsv |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. The same value should also be included into ingress.path |
 | app.port | int | `8000` | Port for the application |
@@ -44,7 +39,7 @@ RS DPR SERVICE
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
-| ingress.path | list | `["/processes","/jobs"]` | Ingress path for the application |
+| ingress.path | list | `["/dpr/processes","/dpr/jobs"]` | Ingress path for the application |
 | initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
