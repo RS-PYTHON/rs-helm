@@ -50,19 +50,12 @@ spec:
             cpu: {{ .Values.resources.request.cpu }}
           limits:
             memory: {{ .Values.resources.limit.ram }}
-            cpu: {{ .Values.resources.limit.cpu }}
-        volumeMounts:
-        - name: rs-server-dpr-service-bucket-configmap
-          mountPath: {{ .Values.app.confDir }}
+            cpu: {{ .Values.resources.limit.cpu }}        
         ports:
         - name: web
           protocol: TCP
           containerPort: {{ .Values.app.port }}
-        envFrom:
-        {{- range $k, $v := .Values.app.station }}
-        - secretRef:
-            name: {{ $v.type }}-{{ $k }}
-        {{- end }}
+        envFrom:        
         - secretRef:
             name: {{ .Release.Name }}-auth
         - secretRef:
@@ -75,7 +68,7 @@ spec:
         - name: RSPY_DASK_DPR_SERVICE_CLUSTER_NAME
           value:  {{ .Values.dask.clusterName }}
         - name: RSPY_DASK_DPR_SERVICE_MOCKUP_CLUSTER_NAME
-          value:  {{ .Values.dask.clusterName }}
+          value:  {{ .Values.dask.clusterMockupName }}
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacUrl }}
         - name: RSPY_UAC_HOMEPAGE
@@ -148,21 +141,7 @@ spec:
       {{ end }}
       {{ end }}
       restartPolicy: Always
-      securityContext: {}
-      volumes:
-        - name: service-config-volume
-          configMap:
-            name: {{ .Release.Name }}-service-config
-        - name: service-openapi-volume
-          configMap:
-            name: {{ .Release.Name }}-service-openapi
-        - name: rs-server-dpr-service-bucket-configmap
-          configMap:
-            {{ if .Values.app.bucketConfig.useExternalDprServiceBucketConfigMap }}
-            name: {{ .Values.app.bucketConfig.externalDprServiceBucketConfigMapName }}
-            {{ else }}
-            name: default-{{ .Chart.Name }}-bucket-config
-            {{ end }}
+      securityContext: {}      
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
