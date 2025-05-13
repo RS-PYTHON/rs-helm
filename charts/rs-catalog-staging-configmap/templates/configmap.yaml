@@ -19,4 +19,4 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   {{ .Values.bucketConfigFileName }}: |
-{{ .Values.expiration_bucket_csv | nindent 4 }}
+{{ .Values.expiration_bucket_csv | indent 4 }}
