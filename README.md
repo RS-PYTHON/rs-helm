@@ -50,6 +50,12 @@ A simple mock for DPR processor.
 A simple chart for the STAC browser.
 Note that because of bug <https://github.com/radiantearth/stac-browser/issues/479> the ingress path is forced to `/`.
 
+## [rs-dpr-service](charts/rs-dpr-service/README.md)
+
+A *temporary* service for DPR[^1], to provide a web service to trigger DPR processing.
+
+[^1]: Temporary* service for DPR, because it's only a simple substitue while the official one is not yet delivered.
+
 ---
 
 Find more documentation on the [rs-server repository](https://github.com/RS-PYTHON/rs-server).

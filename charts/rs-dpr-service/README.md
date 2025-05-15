@@ -1,8 +1,8 @@
-# rs-server-catalog
+# rs-dpr-service
 
 ![Version: 0.0.2-a13.post1](https://img.shields.io/badge/Version-0.0.2--a13.post1-informational?style=flat-square) ![AppVersion: v0.2a13.post1](https://img.shields.io/badge/AppVersion-v0.2a13.post1-informational?style=flat-square)
 
-RS SERVER CATALOG
+RS DPR SERVICE
 
 ## Maintainers
 
@@ -15,27 +15,23 @@ RS SERVER CATALOG
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
-| app.bucketConfig | object | `{"bucketConfigFileName":"expiration_bucket.csv","expirationBucketCsv":"*, *, *, 30, rspython-ops-catalog-all-production\n","externalCatalogBucketConfigMapName":"","useExternalCatalogBucketConfigMap":false}` | Bucket configuration to use to monitor the lifespan and name of data buckets Use an external configuration through an external configmap with the value "externalCatalogBucketConfigMapName" OR Set your own configuration in the value expirationBucketCsv |
-| app.bucketConfig.bucketConfigFileName | string | `"expiration_bucket.csv"` | File name for the configuration. If you use an external configmap, put the name of the file of your configmap, so the environment variables are set properly |
-| app.bucketConfig.expirationBucketCsv | string | `"*, *, *, 30, rspython-ops-catalog-all-production\n"` | Bucket configuration. Used only if useExternalCatalogBucketConfigMap is false.  Default config puts all data in a bucket called rspython-ops-catalog-all-production with a lifespan of 30 days. |
-| app.bucketConfig.externalCatalogBucketConfigMapName | string | `""` | Name of the external configmap to use. Used only if useExternalCatalogBucketConfigMap is true |
-| app.bucketConfig.useExternalCatalogBucketConfigMap | bool | `false` | Set to true to use an external configmap for the configuration instead of the one set in expirationBucketCsv |
-| app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
-| app.metadata.description | string | `"STAC catalog of Copernicus Reference System Python"` | update the catalog metadata description parameter over the default one received from the pystac client |
-| app.metadata.id | string | `"rs-python"` | update the catalog metadata id parameter over the default one received from the pystac client |
-| app.metadata.title | string | `"RS-PYTHON STAC Catalog"` | update the catalog metadata title parameter over the default one received from the pystac client |
+| app.docsUrl | string | `"/docs"` | URL suffix for the application. The same value should also be included into ingress.path |
 | app.port | int | `8000` | Port for the application |
-| app.presignedUrlExpirationTime | int | `1800` | Presigned URL expiration time in seconds. 30 min by default |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
-| app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
+| app.uacUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service (internal) |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
 | auth.secret.oidc_client_id | string | `""` | OIDC CLient ID |
 | auth.secret.oidc_client_secret | string | `""` | OIDC Secret used to sync user info from Keycloak |
 | auth.secret.oidc_endpoint | string | `""` | OIDC End Point |
 | auth.secret.oidc_realm | string | `""` | OIDC Realm |
+| dask.clusterMockupName | string | `"dask-eopf-mockup"` | Dask cluster name for mockup eopf processor |
+| dask.clusterName | string | `"dask-eopf"` | Dask cluster name for real eopf processor |
+| dask.gateway_address | string | `"http://traefik-dask-gateway.dask-gateway.svc.cluster.local"` | Dask gateway address |
+| dask.gateway_auth_type | string | `"jupyterhub"` | Dask gateway auth type |
+| dask.jupyterhub_api_token | string | `"JUPYTER_API_TOKEN_HERE"` | Jupyter API Token when dask.jupyterhub=jupyterhub |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
-| image.name | string | `"rs-server-catalog"` | Image name |
+| image.name | string | `"rs-dpr-service"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
 | image.version | string | `"0.2a12"` | Image version, can be a tag or a digest |
@@ -43,7 +39,7 @@ RS SERVER CATALOG
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
-| ingress.path | list | `["/catalog","/auth"]` | Ingress path |
+| ingress.path | list | `["/dpr/processes","/dpr/jobs"]` | Ingress path for the application |
 | initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
@@ -52,24 +48,23 @@ RS SERVER CATALOG
 | obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service |
 | otel.trace_body | bool | `false` | Trace request bodies and response contents with OpenTelemetry ? |
 | otel.trace_headers | bool | `false` | Trace request headers with OpenTelemetry ? |
-| postgres.db | string | `"catalog"` | PostgreSQL database name |
-| postgres.host.ro | string | `"rs-server-catalog-db.database.svc.cluster.local"` | PostgreSQL service URL for Read Only |
-| postgres.host.rw | string | `"rs-server-catalog-db.database.svc.cluster.local"` | PostgreSQL service URL for Read Write |
+| postgres.db | string | `"rspydemo"` | PostgreSQL database name |
+| postgres.host | string | `"postgresql-cluster-rw.database.svc.cluster.local"` | PostgreSQL service URL |
 | postgres.port | string | `"5432"` | PostgreSQL port |
-| postgres.secret.pass | string | `"password"` | Password to authenticate with the PostgreSQL service |
-| postgres.secret.user | string | `"postgres"` | Username to authenticate with the PostgreSQL service |
+| postgres.secret.pass | string | `"test"` | Password to authenticate with the PostgreSQL service |
+| postgres.secret.user | string | `"test"` | Username to authenticate with the PostgreSQL service |
 | probe.liveness.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
-| probe.liveness.path | string | `"/health"` | Path for the liveness probe |
+| probe.liveness.path | string | `"/_mgmt/ping"` | Path for the liveness probe |
 | probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |
 | probe.liveness.port | int | `8000` | Port for the liveness probe |
 | probe.liveness.timeoutSeconds | int | `5` | timeoutSeconds for the liveness probe |
 | probe.readiness.initialDelaySeconds | int | `0` | InitialDelaySeconds for the readiness probe |
-| probe.readiness.path | string | `"/health"` | Path for the readiness probe |
+| probe.readiness.path | string | `"/_mgmt/ping"` | Path for the readiness probe |
 | probe.readiness.periodSeconds | int | `30` | periodSeconds for the readiness probe |
 | probe.readiness.port | int | `8000` | Port for the readiness probe |
 | probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
 | probe.startup.initialDelaySeconds | int | `20` | InitialDelaySeconds for the liveness probe |
-| probe.startup.path | string | `"/health"` | Path for the liveness probe |
+| probe.startup.path | string | `"/_mgmt/ping"` | Path for the liveness probe |
 | probe.startup.periodSeconds | int | `2` | periodSeconds for the liveness probe |
 | probe.startup.port | int | `8000` | Port for the liveness probe |
 | probe.startup.timeoutSeconds | int | `1` | timeoutSeconds for the liveness probe |
@@ -79,7 +74,6 @@ RS SERVER CATALOG
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
 | service.port | int | `8080` | Port for the service |
-| stac_browser.urls | string | `"https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"` |  |
 | tempo.endpoint | string | `"http://grafana-tempo-distributor.logging.svc.cluster.local:4317"` | Grafana tempo endpoint. |
 | tolerations | list | `[]` | Pod toleration |
 
