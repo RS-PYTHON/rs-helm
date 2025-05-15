@@ -48,11 +48,6 @@ RS SERVER CADIP
 | obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service |
 | otel.trace_body | bool | `false` | Trace request bodies and response contents with OpenTelemetry ? |
 | otel.trace_headers | bool | `false` | Trace request headers with OpenTelemetry ? |
-| postgres.db | string | `"rspydemo"` | PostgreSQL database name |
-| postgres.host | string | `"postgresql-cluster-rw.database.svc.cluster.local"` | PostgreSQL service URL |
-| postgres.port | string | `"5432"` | PostgreSQL port |
-| postgres.secret.pass | string | `"test"` | Password to authenticate with the PostgreSQL service |
-| postgres.secret.user | string | `"test"` | Username to authenticate with the PostgreSQL service |
 | probe.liveness.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/health"` | Path for the liveness probe |
 | probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |

@@ -76,8 +76,6 @@ spec:
             name: {{ .Release.Name }}-obs
         - secretRef:
             name: {{ .Release.Name }}-auth
-        - secretRef:
-            name: {{ .Release.Name }}-postgres
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}
@@ -92,12 +90,6 @@ spec:
         - name: EODAG_ADGS_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
         {{ end }}
-        - name: POSTGRES_PORT
-          value: {{ .Values.postgres.port | quote }}
-        - name: POSTGRES_DB
-          value: {{ .Values.postgres.db }}
-        - name: POSTGRES_HOST
-          value: {{ .Values.postgres.host }}
         - name: S3_ENDPOINT
           value: {{ .Values.obs.endpoint }}
         - name: S3_REGION
