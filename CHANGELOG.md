@@ -28,6 +28,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 - [PR#119](https://github.com/RS-PYTHON/rs-helm/pull/119) : Add ADGS2 secret
 - [PR#124](https://github.com/RS-PYTHON/rs-helm/pull/124) :  Clean postgres from adgs and cadip
+- Bump docker images version
 
 ### Fixed
 
