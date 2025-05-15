@@ -13,6 +13,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [0.2a13] - 2025-05-15
+
+### Added
+
+- [RSPY-557](https://github.com/RS-PYTHON/rs-helm/pull/116) : Use the auxip/cadip refresh token
+- [RSPY-670](https://github.com/RS-PYTHON/rs-helm/pull/119) : Add ADGS2 secret
+- [RSPY-487](https://github.com/RS-PYTHON/rs-helm/pull/120) : Deploy a ConfigMap to configure rs-catalog and rs-staging
+- [PR#122](https://github.com/RS-PYTHON/rs-helm/pull/122) : trace otel request body
+- [RSPY-641](https://github.com/RS-PYTHON/rs-helm/pull/125) : Add CQL2 temporal operators support to rs-server-auxip
+- [RSPY-652/653/654](https://github.com/RS-PYTHON/rs-helm/pull/123) : Add rs-dpr-service
+
+### Changed
+
+- [PR#119](https://github.com/RS-PYTHON/rs-helm/pull/119) : Add ADGS2 secret
+- [PR#124](https://github.com/RS-PYTHON/rs-helm/pull/124) :  Clean postgres from adgs and cadip
+- Bump docker images version
+
+### Fixed
+
+- Set startupProbe.initialDelaySeconds to 10 for rs-server-adgs and rs-server-cadip
+- [PR#126](https://github.com/RS-PYTHON/rs-helm/pull/126) : use indent instead of nindent in configmaps
+
 ## [0.2a12] - 2025-04-14
 
 ### Added
@@ -28,7 +50,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 ### Fixed
 
 - RSPY-551 : No opentelemetry data for rs-server-adgs, rs-server-cadip, rs-server-staging after start/stop platform
-- [PR#114](https://github.com/RS-PYTHON/rs-helm/pull/114) Typo in `app.kubernetes.io/component` for ADGS
+- [PR#114](https://github.com/RS-PYTHON/rs-helm/pull/114) : Typo in `app.kubernetes.io/component` for ADGS
 
 ## [0.2a11] - 2025-03-12
 
@@ -40,10 +62,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ### Changed
 
-- [PR#102](https://github.com/RS-PYTHON/rs-helm/pull/102) use `StatefulSet` for RS services with a PVC + add `startupProbe` + add recommended labels
-- [PR#104](https://github.com/RS-PYTHON/rs-helm/pull/104) rework secret
-- [PR#106](https://github.com/RS-PYTHON/rs-helm/pull/106) remove redundant -svc from all service names
-- [PR#98](https://github.com/RS-PYTHON/rs-helm/pull/98) add missing type for stac license link
+- [PR#102](https://github.com/RS-PYTHON/rs-helm/pull/102) : use `StatefulSet` for RS services with a PVC + add `startupProbe` + add recommended labels
+- [PR#104](https://github.com/RS-PYTHON/rs-helm/pull/104) : rework secret
+- [PR#106](https://github.com/RS-PYTHON/rs-helm/pull/106) : remove redundant -svc from all service names
+- [PR#98](https://github.com/RS-PYTHON/rs-helm/pull/98) : add missing type for stac license link
 
 ## [0.2a10] - 2025-02-18
 
