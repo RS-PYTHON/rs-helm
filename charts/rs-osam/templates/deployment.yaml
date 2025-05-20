@@ -79,8 +79,8 @@ spec:
           value: {{ .Values.obs.region }}
         - name: BUCKET_CONFIG_FILE_PATH
           value: {{ .Values.app.confDir }}/{{ .Values.app.bucketConfig.bucketConfigFileName }}
-        - name: DEFAULT_OSAM_FREQUENCY_SYNC          
-          value: 20 
+        - name: DEFAULT_OSAM_FREQUENCY_SYNC
+          value: "20"
         - name: OTEL_PYTHON_REQUESTS_TRACE_HEADERS
           value: {{ .Values.otel.trace_headers | quote }}
         - name: OTEL_PYTHON_REQUESTS_TRACE_BODY
