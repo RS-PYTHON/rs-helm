@@ -36,9 +36,6 @@ RS Object Storage Access Manager
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
 | ingress.path | list | `["/tba"]` | Ingress path for the application |
 | initContainers | list | `[]` | Pod initContainers |
-| keycloack.secret.client_id | string | `""` | Keycloack CLient ID |
-| keycloack.secret.client_secret | string | `""` | Keycloack Secret used to sync user info from Keycloak |
-| keycloack.secret.endpoint | string | `""` | Keycloack End Point |
 | namespace | string | `"operational"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
 | obs.region | string | `"sbg"` | Region of the object storage service |
