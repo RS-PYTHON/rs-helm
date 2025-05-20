@@ -34,6 +34,7 @@ RS Object Storage Access Manager
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
+| ingress.path | list | `["/tba"]` | Ingress path for the application |
 | initContainers | list | `[]` | Pod initContainers |
 | keycloack.secret.client_id | string | `""` | Keycloack CLient ID |
 | keycloack.secret.client_secret | string | `""` | Keycloack Secret used to sync user info from Keycloak |
