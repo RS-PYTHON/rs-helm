@@ -33,6 +33,22 @@ app:
   uacUrl: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
   # -- URL of the API Key Manager home page (public)
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
+  # -- Bucket configuration from where the users can be taken
+  # Use an external configuration through an external configmap with the value "externalBucketConfigMapName"
+  # OR
+  # Set your own configuration in the value expirationBucketCsv
+  bucketConfig:
+    # -- Set to true to use an external configmap for the configuration instead of the one set in expirationBucketCsv
+    useExternalBucketConfigMap: false
+    # -- Name of the external configmap to use. Used only if externalBucketConfigMapName is true
+    externalBucketConfigMapName: ""
+    # -- Bucket configuration. Used only if externalBucketConfigMapName is false. 
+    # Default config puts all data in a bucket called rspython-ops-catalog-all-production with a lifespan of 30 days.
+    expirationBucketCsv: |
+      *, *, *, 30, rspython-ops-catalog-all-production
+    # -- File name for the configuration.
+    # If you use an external configmap, put the name of the file of your configmap, so the environment variables are set properly
+    bucketConfigFileName: expiration_bucket.csv
   
 probe:
   startup:
