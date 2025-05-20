@@ -102,17 +102,7 @@ auth:
     oidc_client_secret: ""
     # -- Random string used to encode cookie-based HTTP sessions in SessionMiddleware
     cookie_secret: ""
-
-keycloack:
-  secret:
-    # -- Keycloack End Point
-    endpoint: ""
-    # -- Keycloack CLient ID
-    client_id: ""
-    # -- Keycloack Secret used to sync user info from Keycloak
-    client_secret: ""
-    
-    
+   
 image:
   # -- Image registry
   registry: ghcr.io

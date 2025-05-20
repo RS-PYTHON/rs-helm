@@ -59,9 +59,7 @@ spec:
         - secretRef:
             name: {{ .Release.Name }}-auth        
         - secretRef:
-            name: {{ .Release.Name }}-obs        
-        - secretRef:
-            name: {{ .Release.Name }}-keycloack
+            name: {{ .Release.Name }}-obs                
         env:                
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacUrl }}
