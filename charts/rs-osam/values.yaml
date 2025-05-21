@@ -118,7 +118,20 @@ auth:
     oidc_client_secret: ""
     # -- Random string used to encode cookie-based HTTP sessions in SessionMiddleware
     cookie_secret: ""
-   
+
+provider:
+  secret:
+    # -- OVH End Point
+    ovh_endpoint: ""
+    # -- OVH Service Name
+    ovh_service_name: ""
+    # -- OVH Application Key
+    ovh_application_key: ""
+    # -- OVH Application Secret
+    ovh_application_secret: ""
+    # -- OVH Consumer Key
+    ovh_consumer_key: ""
+
 image:
   # -- Image registry
   registry: ghcr.io

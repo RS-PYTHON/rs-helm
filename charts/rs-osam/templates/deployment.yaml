@@ -57,9 +57,11 @@ spec:
           containerPort: {{ .Values.app.port }}
         envFrom:        
         - secretRef:
-            name: {{ .Release.Name }}-auth        
+            name: {{ .Release.Name }}-auth
         - secretRef:
-            name: {{ .Release.Name }}-obs                
+            name: {{ .Release.Name }}-obs
+        - secretRef:
+            name: {{ .Release.Name }}-provider-auth
         env:                
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacUrl }}
