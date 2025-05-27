@@ -50,7 +50,10 @@ spec:
             cpu: {{ .Values.resources.request.cpu }}
           limits:
             memory: {{ .Values.resources.limit.ram }}
-            cpu: {{ .Values.resources.limit.cpu }}        
+            cpu: {{ .Values.resources.limit.cpu }}
+        volumeMounts:
+        - name: rs-osam-bucket-configmap
+          mountPath: {{ .Values.app.confDir }}   
         ports:
         - name: web
           protocol: TCP

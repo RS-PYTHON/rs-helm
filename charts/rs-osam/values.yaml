@@ -122,9 +122,7 @@ auth:
 provider:
   secret:
     # -- OVH End Point
-    ovh_endpoint: ""
-    # -- OVH Service Name
-    ovh_service_name: ""
+    ovh_endpoint: ""    
     # -- OVH Application Key
     ovh_application_key: ""
     # -- OVH Application Secret
