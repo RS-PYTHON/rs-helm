@@ -67,7 +67,6 @@ RS Object Storage Access Manager
 | provider.secret.ovh_application_secret | string | `""` | OVH Application Secret |
 | provider.secret.ovh_consumer_key | string | `""` | OVH Consumer Key |
 | provider.secret.ovh_endpoint | string | `""` | OVH End Point |
-| provider.secret.ovh_service_name | string | `""` | OVH Service Name |
 | replicaCount | int | `1` | Number of replicas for the deployment |
 | resources.limit.cpu | string | `"500m"` | Pod CPU limit |
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
