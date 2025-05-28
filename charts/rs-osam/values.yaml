@@ -155,8 +155,7 @@ ingress:
   host: subdomain.example.com
   # -- Ingress path for the application
   path:
-    # to be added
-    - /tba
+    - /storage/accounts/update
     
 
 resources:
