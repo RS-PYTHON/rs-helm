@@ -39,7 +39,7 @@ RS Object Storage Access Manager
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
-| ingress.path | list | `["/storage/accounts/update"]` | Ingress path for the application |
+| ingress.path | list | `["/storage"]` | Ingress path for the application |
 | initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"operational"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
