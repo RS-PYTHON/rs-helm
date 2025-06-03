@@ -129,7 +129,8 @@ provider:
     ovh_application_secret: ""
     # -- OVH Consumer Key
     ovh_consumer_key: ""
-
+    # OVH Service (used in endpoint /cloud/project/<ovh_service>/user )
+    ovh_service: ""
 image:
   # -- Image registry
   registry: ghcr.io
