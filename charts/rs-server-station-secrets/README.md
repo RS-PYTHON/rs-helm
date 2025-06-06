@@ -1,6 +1,6 @@
 # rs-server-station-secrets
 
-![Version: 0.0.2-a13.post1](https://img.shields.io/badge/Version-0.0.2--a13.post1-informational?style=flat-square) ![AppVersion: v0.2a13.post1](https://img.shields.io/badge/AppVersion-v0.2a13.post1-informational?style=flat-square)
+![Version: 0.0.2-a14](https://img.shields.io/badge/Version-0.0.2--a14-informational?style=flat-square) ![AppVersion: v0.2a14](https://img.shields.io/badge/AppVersion-v0.2a14-informational?style=flat-square)
 
 RS SERVER STATION SECRETS
 
@@ -52,6 +52,12 @@ RS SERVER STATION SECRETS
 | app.stations.cadip.domain | string | `"mockup-station-cadip-cadip.processing.svc.cluster.local"` |  |
 | app.stations.cadip.service.name | string | `"cadip"` |  |
 | app.stations.cadip.service.url | string | `"http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080"` |  |
+| app.stations.cdse.authentication.access_key | string | `"example_s3_access_key"` |  |
+| app.stations.cdse.authentication.auth_type | string | `"s3"` |  |
+| app.stations.cdse.authentication.secret_key | string | `"example_s3_secret_key"` |  |
+| app.stations.cdse.domain | string | `"eodata.dataspace.copernicus.eu"` |  |
+| app.stations.cdse.service.name | string | `"s3"` |  |
+| app.stations.cdse.service.url | string | `"https://eodata.dataspace.copernicus.eu"` |  |
 | app.stations.ins.authentication.auth_type | string | `"oauth2"` |  |
 | app.stations.ins.authentication.authorization | string | `nil` |  |
 | app.stations.ins.authentication.client_id | string | `"client_id"` |  |
