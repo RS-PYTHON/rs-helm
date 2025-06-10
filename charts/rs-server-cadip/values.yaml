@@ -139,7 +139,7 @@ image:
   # -- Image name
   name: rs-server-cadip
   # -- Image version, can be a tag or a digest
-  version: 0.2a13.post5.dev0
+  version: 0.2a14
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred

@@ -1,6 +1,6 @@
 # mockup-station-adgs
 
-![Version: 0.0.2-a13.post1](https://img.shields.io/badge/Version-0.0.2--a13.post1-informational?style=flat-square) ![AppVersion: v0.2a13.post1](https://img.shields.io/badge/AppVersion-v0.2a13.post1-informational?style=flat-square)
+![Version: 0.0.2-a14](https://img.shields.io/badge/Version-0.0.2--a14-informational?style=flat-square) ![AppVersion: v0.2a14](https://img.shields.io/badge/AppVersion-v0.2a14-informational?style=flat-square)
 
 MOCKUP STATION ADGS
 
@@ -27,7 +27,7 @@ MOCKUP STATION ADGS
 | image.name | string | `"rs-testmeans_adgs-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"23b6f19"` | Image version, can be a tag or a digest |
+| image.version | string | `"07e0e2e"` | Image version, can be a tag or a digest |
 | initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
