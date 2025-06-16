@@ -34,7 +34,7 @@ app:
   # -- URL of the API Key Manager home page (public)
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
   # -- Description template for ovh users when osam creates them
-  obsDescriptionTemplate: \## linked to keycloak user %keycloak-user%
+  obsDescriptionTemplate: "## linked to keycloak user %keycloak-user%"
   # -- Bucket configuration from where the users can be taken
   # Use an external configuration through an external configmap with the value "externalBucketConfigMapName"
   # OR
