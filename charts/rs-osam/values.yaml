@@ -33,6 +33,8 @@ app:
   uacUrl: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
   # -- URL of the API Key Manager home page (public)
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
+  # -- Description template for ovh users when osam creates them
+  obsDescriptionTemplate: \## linked to keycloak user %keycloak-user%
   # -- Bucket configuration from where the users can be taken
   # Use an external configuration through an external configmap with the value "externalBucketConfigMapName"
   # OR
