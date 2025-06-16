@@ -91,7 +91,7 @@ spec:
         - name: OTEL_PYTHON_REQUESTS_TRACE_BODY
           value: {{ .Values.otel.trace_body | quote }}
         - name: OBS_DESCRIPTION_TEMPLATE
-          value: {{ .Values.app.obsDescriptionTemplate }}
+          value: {{ .Values.app.obsDescriptionTemplate | quote }}
         securityContext:
           privileged: false
         {{ if .Values.probe }}
