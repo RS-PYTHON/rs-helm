@@ -247,6 +247,9 @@ data:
             - {{ $v.endpoint.url.odata }}/Sessions({id})/$value
             geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
             title: $.Name
+            StationId:
+            - null
+            - $.StationId
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -267,6 +270,7 @@ data:
                 - NumChannels eq {NumChannels}
                 - AcquisitionId eq {AcquisitionId}
                 - AntennaId eq {AntennaId}
+                - StationId eq {StationId}
                 - StationUnitId eq {StationUnitId}
                 - FrontEndId eq {FrontEndId}
                 - PlannedDataStart eq {PlannedDataStart}
@@ -405,6 +409,7 @@ data:
                 - NumChannels eq {NumChannels}
                 - AcquisitionId eq '{AcquisitionId}'
                 - AntennaId eq '{AntennaId}'
+                - StationId eq '{StationId}'
                 - StationUnitId eq '{StationUnitId}'
                 - FrontEndId eq {FrontEndId}
                 - PlannedDataStart eq {PlannedDataStart}
@@ -529,6 +534,9 @@ data:
             - {{ $v.endpoint.url.odata }}/Files({id})/$value
             geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
             title: $.Name
+            StationId:
+            - null
+            - $.StationId
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -549,6 +557,7 @@ data:
                 - NumChannels eq {NumChannels}
                 - AcquisitionId eq '{AcquisitionId}'
                 - AntennaId eq '{AntennaId}'
+                - StationId eq '{StationId}'
                 - StationUnitId eq '{StationUnitId}'
                 - FrontEndId eq {FrontEndId}
                 - PlannedDataStart eq {PlannedDataStart}
