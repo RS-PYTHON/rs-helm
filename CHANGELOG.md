@@ -13,6 +13,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [0.2a14] - 2025-06-10
+
+### Added
+
+- [RSPY-676](https://github.com/RS-PYTHON/rs-helm/pull/129) : Add new CADIP StationId field
+- [RSPY-601-603](https://github.com/RS-PYTHON/rs-helm/pull/128) : Add osam service
+
 ## [0.2a13] - 2025-05-15
 
 ### Added

@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # -- Namespace for the deployment
-namespace: operational
+namespace: processing
 
 # -- Number of replicas for the deployment
 replicaCount: 1
@@ -33,6 +33,8 @@ app:
   uacUrl: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
   # -- URL of the API Key Manager home page (public)
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
+  # -- Description template for ovh users when osam creates them
+  obsDescriptionTemplate: "## linked to keycloak user %keycloak-user%"
   # -- Bucket configuration from where the users can be taken
   # Use an external configuration through an external configmap with the value "externalBucketConfigMapName"
   # OR
@@ -139,7 +141,7 @@ image:
   # -- Image name
   name: operational-services-osam
   # -- Image version, can be a tag or a digest
-  version: latest
+  version: 0.2a14
   # -- Image pull policy
   PullPolicy: IfNotPresent
   #imagePullSecrets: regcred
