@@ -13,6 +13,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [0.2a15] - 2025-07-04
+
+### Added
+
+- [RSPY-569](https://github.com/RS-PYTHON/rs-helm/pull/130) : Added support for S3 authentication
+- [RSPY-603](https://github.com/RS-PYTHON/rs-helm/pull/133) : Add obs description template
+- [RSPY-706](https://github.com/RS-PYTHON/rs-helm/pull/134) : Handle AUXIP parameters that can have one or several values
+
+### Changed
+
+- [RSPY-601](https://github.com/RS-PYTHON/rs-helm/pull/132) : Revert operationnel namespace
+- Bump docker images version
+
 ## [0.2a14] - 2025-06-10
 
 ### Added
