@@ -1,6 +1,6 @@
 # rs-osam
 
-![Version: 0.0.2-a14](https://img.shields.io/badge/Version-0.0.2--a14-informational?style=flat-square) ![AppVersion: v0.2a14](https://img.shields.io/badge/AppVersion-v0.2a14-informational?style=flat-square)
+![Version: 0.0.2-a15](https://img.shields.io/badge/Version-0.0.2--a15-informational?style=flat-square) ![AppVersion: v0.2a15](https://img.shields.io/badge/AppVersion-v0.2a15-informational?style=flat-square)
 
 RS Object Storage Access Manager
 
@@ -22,7 +22,7 @@ RS Object Storage Access Manager
 | app.bucketConfig.useExternalBucketConfigMap | bool | `false` | Set to true to use an external configmap for the configuration instead of the one set in expirationBucketCsv |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. The same value should also be included into ingress.path |
-| app.obsDescriptionTemplate | string | `"## linked to keycloak user %keycloak-user% from platform CS"` | Description template for ovh users when osam creates them |
+| app.obsDescriptionTemplate | string | `"## linked to keycloak user %keycloak-user% from platform XYZ"` | Description template for ovh users when osam creates them |
 | app.port | int | `8000` | Port for the application |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service (internal) |
