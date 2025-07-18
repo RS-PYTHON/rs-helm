@@ -74,6 +74,8 @@ spec:
           value: {{ .Values.app.catalogBucket }}
         - name: RSPY_PRESIGNED_URL_EXPIRATION_TIME
           value: {{ .Values.app.presignedUrlExpirationTime | quote }}
+        - name: RSPY_DATA_LIFECYCLE_PERIOD
+          value: {{ .Values.app.dataLifecyclePeriod | quote }}
         - name: APP_HOST
           value: "0.0.0.0"
         - name: APP_PORT
