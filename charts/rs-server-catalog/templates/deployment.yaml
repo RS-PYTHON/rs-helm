@@ -115,7 +115,6 @@ spec:
         - name: STAC_BROWSER_URLS
           value: {{ .Values.stac_browser.urls }}
         - name: BUCKET_CONFIG_FILE_PATH
-          value: {{ .Values.app.confDir }}/{{ .Values.app.bucketConfig.bucketConfigFileName }}
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
