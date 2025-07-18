@@ -1,6 +1,6 @@
 # rs-server-catalog
 
-![Version: 0.0.2-a13.post1](https://img.shields.io/badge/Version-0.0.2--a13.post1-informational?style=flat-square) ![AppVersion: v0.2a13.post1](https://img.shields.io/badge/AppVersion-v0.2a13.post1-informational?style=flat-square)
+![Version: 0.0.2-a15](https://img.shields.io/badge/Version-0.0.2--a15-informational?style=flat-square) ![AppVersion: v0.2a15](https://img.shields.io/badge/AppVersion-v0.2a15-informational?style=flat-square)
 
 RS SERVER CATALOG
 
@@ -22,6 +22,7 @@ RS SERVER CATALOG
 | app.bucketConfig.useExternalCatalogBucketConfigMap | bool | `false` | Set to true to use an external configmap for the configuration instead of the one set in expirationBucketCsv |
 | app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
+| app.dataLifecyclePeriod | int | `86400` | Period in seconds between the end of a cleaning task and the start of a new one. If <0, the task is deactivated. |
 | app.metadata.description | string | `"STAC catalog of Copernicus Reference System Python"` | update the catalog metadata description parameter over the default one received from the pystac client |
 | app.metadata.id | string | `"rs-python"` | update the catalog metadata id parameter over the default one received from the pystac client |
 | app.metadata.title | string | `"RS-PYTHON STAC Catalog"` | update the catalog metadata title parameter over the default one received from the pystac client |
