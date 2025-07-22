@@ -71,7 +71,7 @@ RS SERVER ADGS
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
 | service.port | int | `8080` | Port for the service |
 | stac_browser.urls | string | `"https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"` |  |
-| tempo.endpoint | string | `"http://grafana-tempo-distributor.logging.svc.cluster.local:4317"` | Grafana tempo endpoint. |
+| tempo.endpoint | string | `"http://alloy.monitoring.svc.cluster.local:4317"` | Grafana tempo endpoint. |
 | tolerations | list | `[]` | Pod toleration |
 
 ----------------------------------------------
