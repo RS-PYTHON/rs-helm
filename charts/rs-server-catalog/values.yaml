@@ -35,6 +35,8 @@ app:
   catalogBucket: rs-cluster-catalog
   # -- Presigned URL expiration time in seconds. 30 min by default
   presignedUrlExpirationTime: 1800  
+  # -- Period in seconds between two data lifecycle cleaning tasks. If <0, the task is deactivated.
+  dataLifecyclePeriod: 86400 # 24 hours
   metadata:
     # -- update the catalog metadata id parameter over the default one received from the pystac client
     id: "rs-python"
