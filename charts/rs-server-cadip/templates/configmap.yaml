@@ -624,7 +624,7 @@ data:
       query: null
       stac_extensions:
       - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
       title: All from 'cadip' station
@@ -665,7 +665,7 @@ data:
       query: null
       stac_extensions:
       - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
       title: All from 'mti' station
@@ -706,7 +706,7 @@ data:
       query: null
       stac_extensions:
       - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
       title: All from 'sgs' station
@@ -748,7 +748,7 @@ data:
         Satellite: S1A, S1B, S1C
       stac_extensions:
       - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
       title: Sentinel-1 'cadip' station
@@ -790,7 +790,7 @@ data:
         Satellite: S2A, S2B, S2C
       stac_extensions:
       - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
       title: Sentinel-2 'cadip' station
@@ -832,7 +832,7 @@ data:
         Satellite: S3A, S3B
       stac_extensions:
       - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
       title: Sentinel-3 'cadip' station
@@ -874,7 +874,7 @@ data:
         Satellite: S5P
       stac_extensions:
       - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
       title: Sentinel-5 'cadip' station
@@ -916,7 +916,7 @@ data:
         Satellite: S1A, S1B, S1C
       stac_extensions:
       - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
       title: Sentinel-1 'mti' station
@@ -958,7 +958,7 @@ data:
         Satellite: S2A, S2B, S2C
       stac_extensions:
       - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
       title: Sentinel-2 'mti' station
@@ -1000,7 +1000,7 @@ data:
         Satellite: S3A, S3B
       stac_extensions:
       - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
       title: Sentinel-3 'mti' station
@@ -1042,7 +1042,7 @@ data:
         Satellite: S5P
       stac_extensions:
       - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
       title: Sentinel-5 'mti' station
@@ -1084,7 +1084,7 @@ data:
         Satellite: S1A, S1B, S1C
       stac_extensions:
       - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
       title: Sentinel-1 'sgs' station
@@ -1126,7 +1126,7 @@ data:
         Satellite: S2A, S2B, S2C
       stac_extensions:
       - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
       title: Sentinel-2 'sgs' station
@@ -1168,7 +1168,7 @@ data:
         Satellite: S3A, S3B
       stac_extensions:
       - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
       title: Sentinel-3 'sgs' station
@@ -1210,7 +1210,7 @@ data:
         Satellite: S5P
       stac_extensions:
       - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v1.0.0/schema.json
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
       - https://stac-extensions.github.io/projection/v1.0.0/schema.json
       - https://stac-extensions.github.io/view/v1.0.0/schema.json
       title: Sentinel-5 'sgs' station
