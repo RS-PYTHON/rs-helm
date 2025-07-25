@@ -622,11 +622,7 @@ data:
     - id: cadip
       station: cadip
       query: null
-      stac_extensions:
-      - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
-      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
-      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      stac_extensions: []
       title: All from 'cadip' station
       description: All from 'cadip' station
       license: other
@@ -663,11 +659,7 @@ data:
     - id: mti
       station: mti
       query: null
-      stac_extensions:
-      - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
-      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
-      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      stac_extensions: []
       title: All from 'mti' station
       description: All from 'mti' station
       license: other
@@ -704,11 +696,7 @@ data:
     - id: sgs
       station: sgs
       query: null
-      stac_extensions:
-      - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
-      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
-      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      stac_extensions: []
       title: All from 'sgs' station
       description: All from 'sgs' station
       license: other
@@ -746,11 +734,7 @@ data:
       station: cadip
       query:
         Satellite: S1A, S1B, S1C
-      stac_extensions:
-      - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
-      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
-      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      stac_extensions: []
       title: Sentinel-1 'cadip' station
       description: Sentinel-1 'cadip' station
       license: other
@@ -788,11 +772,7 @@ data:
       station: cadip
       query:
         Satellite: S2A, S2B, S2C
-      stac_extensions:
-      - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
-      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
-      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      stac_extensions: []
       title: Sentinel-2 'cadip' station
       description: Sentinel-2 'cadip' station
       license: other
@@ -830,11 +810,7 @@ data:
       station: cadip
       query:
         Satellite: S3A, S3B
-      stac_extensions:
-      - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
-      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
-      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      stac_extensions: []
       title: Sentinel-3 'cadip' station
       description: Sentinel-3 'cadip' station
       license: other
@@ -872,11 +848,7 @@ data:
       station: cadip
       query:
         Satellite: S5P
-      stac_extensions:
-      - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
-      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
-      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      stac_extensions: []
       title: Sentinel-5 'cadip' station
       description: Sentinel-5 'cadip' station
       license: other
@@ -914,11 +886,7 @@ data:
       station: mti
       query:
         Satellite: S1A, S1B, S1C
-      stac_extensions:
-      - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
-      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
-      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      stac_extensions: []
       title: Sentinel-1 'mti' station
       description: Sentinel-1 'mti' station
       license: other
@@ -956,11 +924,7 @@ data:
       station: mti
       query:
         Satellite: S2A, S2B, S2C
-      stac_extensions:
-      - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
-      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
-      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      stac_extensions: []
       title: Sentinel-2 'mti' station
       description: Sentinel-2 'mti' station
       license: other
@@ -998,11 +962,7 @@ data:
       station: mti
       query:
         Satellite: S3A, S3B
-      stac_extensions:
-      - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
-      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
-      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      stac_extensions: []
       title: Sentinel-3 'mti' station
       description: Sentinel-3 'mti' station
       license: other
@@ -1040,11 +1000,7 @@ data:
       station: mti
       query:
         Satellite: S5P
-      stac_extensions:
-      - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
-      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
-      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      stac_extensions: []
       title: Sentinel-5 'mti' station
       description: Sentinel-5 'mti' station
       license: other
@@ -1082,11 +1038,7 @@ data:
       station: sgs
       query:
         Satellite: S1A, S1B, S1C
-      stac_extensions:
-      - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
-      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
-      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      stac_extensions: []
       title: Sentinel-1 'sgs' station
       description: Sentinel-1 'sgs' station
       license: other
@@ -1124,11 +1076,7 @@ data:
       station: sgs
       query:
         Satellite: S2A, S2B, S2C
-      stac_extensions:
-      - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
-      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
-      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      stac_extensions: []
       title: Sentinel-2 'sgs' station
       description: Sentinel-2 'sgs' station
       license: other
@@ -1166,11 +1114,7 @@ data:
       station: sgs
       query:
         Satellite: S3A, S3B
-      stac_extensions:
-      - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
-      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
-      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      stac_extensions: []
       title: Sentinel-3 'sgs' station
       description: Sentinel-3 'sgs' station
       license: other
@@ -1208,11 +1152,7 @@ data:
       station: sgs
       query:
         Satellite: S5P
-      stac_extensions:
-      - https://home.rs-python.eu/cadip-stac-extension/v1.3.0/schema.json
-      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
-      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
-      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      stac_extensions: []
       title: Sentinel-5 'sgs' station
       description: Sentinel-5 'sgs' station
       license: other
