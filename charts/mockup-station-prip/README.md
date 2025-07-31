@@ -1,8 +1,8 @@
-# mockup-station-adgs
+# mockup-station-prip
 
 ![Version: 0.0.2-a15](https://img.shields.io/badge/Version-0.0.2--a15-informational?style=flat-square) ![AppVersion: v0.2a15](https://img.shields.io/badge/AppVersion-v0.2a15-informational?style=flat-square)
 
-MOCKUP STATION ADGS
+MOCKUP STATION PRIP
 
 ## Maintainers
 
