@@ -19,6 +19,7 @@ STAC BROWSER
 | app.SB_catalogUrl | string | `"https://subdomain.example.com/catalog/"` | URL of the STAC catalog |
 | app.SB_detectLocaleFromBrowser | string | `"true"` | Detect locale from user |
 | app.SB_historyMode | string | `"history"` | Allows search engines to better crawl STAC Browser. Must be set to 'history' for OIDC |
+| app.SB_maxItemsPerPage | int | `1000` | maxItemsPerPage - see https://github.com/radiantearth/stac-browser/pull/563 |
 | app.SB_socialSharing | string | `"email,bsky,mastodon"` | Social sharing |
 | app.oidc_client_id | string | `""` | OIDC Public Client ID |
 | app.oidc_endpoint | string | `""` | OIDC End Point |
