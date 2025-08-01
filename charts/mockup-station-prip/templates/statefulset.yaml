@@ -58,8 +58,8 @@ spec:
         - name: catalog-config-volume
           mountPath: {{ .Values.app.confDir }}/Catalog/{{ .Values.app.catalogConfigFile }}
           subPath: {{ .Values.app.catalogConfigFile }}
-        - mountPath: /opt/adgs/config/Storage
-          name: opt-adgs
+        - mountPath: /opt/prip/config/Storage
+          name: opt-prip
         ports:
         - name: web
           protocol: TCP
@@ -128,7 +128,7 @@ spec:
       {{- end }}
   volumeClaimTemplates:
     - metadata:
-        name: opt-adgs
+        name: opt-prip
         annotations:
           helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}
       spec:
