@@ -13,6 +13,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [0.2] - 2025-08-04
+
+### Added
+
+- [PR#138](https://github.com/RS-PYTHON/rs-helm/pull/138) : Update to stac-browser 3.3.5
+- [PR#137](https://github.com/RS-PYTHON/rs-helm/pull/137) : Update to pgstac 0.9.7
+- [RSPY-156](https://github.com/RS-PYTHON/rs-helm/pull/140) : data lifecycle (cleanup of expired STAC items)
+- [PR#141](https://github.com/RS-PYTHON/rs-helm/pull/141) : update from tempo to alloy
+- [RSPY-696](https://github.com/RS-PYTHON/rs-helm/pull/143) : Use CADIP STAC extension 1.3.0
+- [RSPY-564](https://github.com/RS-PYTHON/rs-helm/pull/146) : Add maxItemsPerPage option in STAC browser chart
+
+### Changed
+
+- [PR#142](https://github.com/RS-PYTHON/rs-helm/pull/142) : Update link to valid copernicus Sentinel Data Legal Notice
+- [PR#144](https://github.com/RS-PYTHON/rs-helm/pull/144) : Update STAC extensions
+- Bump docker images version
+
 ## [0.2a15] - 2025-07-04
 
 ### Added
