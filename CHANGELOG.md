@@ -94,7 +94,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 ### Added
 
 - RSPY-602 : Update stac-fastapi / stac-fastapi-pgstac / pgstac to 5.0.x / 4.0.x / 0.9.x
-- RSPY-614 : Add describedby links to CADIP/AUXIP collections 
+- RSPY-614 : Add describedby links to CADIP/AUXIP collections
 - Add affinity and tolerations for all services
 
 ### Changed
@@ -143,7 +143,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 - RSPY-555 : [RS-SERVER-ADGS] Collection configuration not modifiable with configmap update
   - additionnal commit : Add Absolute path for adgsSearchconfigFile
-- RSPY-558 : Affinity and Toleration not set on rs-server-cadip, rs-server-adgs 
+- RSPY-558 : Affinity and Toleration not set on rs-server-cadip, rs-server-adgs
 - RSPY-575 : Cannot contact MasPalomas station anymore with token module = false
 
 ## [0.2a8] - 2024-12-12
