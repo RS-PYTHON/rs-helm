@@ -8,7 +8,7 @@ RS SERVER CATALOG
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| CS GROUP |  | <https://github.com/RS-PYTHON/rs-helm> |
+| RS-PYTHON |  | <https://github.com/RS-PYTHON/rs-helm> |
 
 ## Values
 
@@ -17,7 +17,7 @@ RS SERVER CATALOG
 | affinity | object | `{}` | Pod affinity |
 | app.bucketConfig | object | `{"bucketConfigFileName":"expiration_bucket.csv","expirationBucketCsv":"*, *, *, 30, rspython-ops-catalog-all-production\n","externalCatalogBucketConfigMapName":"","useExternalCatalogBucketConfigMap":false}` | Bucket configuration to use to monitor the lifespan and name of data buckets Use an external configuration through an external configmap with the value "externalCatalogBucketConfigMapName" OR Set your own configuration in the value expirationBucketCsv |
 | app.bucketConfig.bucketConfigFileName | string | `"expiration_bucket.csv"` | File name for the configuration. If you use an external configmap, put the name of the file of your configmap, so the environment variables are set properly |
-| app.bucketConfig.expirationBucketCsv | string | `"*, *, *, 30, rspython-ops-catalog-all-production\n"` | Bucket configuration. Used only if useExternalCatalogBucketConfigMap is false.  Default config puts all data in a bucket called rspython-ops-catalog-all-production with a lifespan of 30 days. |
+| app.bucketConfig.expirationBucketCsv | string | `"*, *, *, 30, rspython-ops-catalog-all-production\n"` | Bucket configuration. Used only if useExternalCatalogBucketConfigMap is false. Default config puts all data in a bucket called rspython-ops-catalog-all-production with a lifespan of 30 days. |
 | app.bucketConfig.externalCatalogBucketConfigMapName | string | `""` | Name of the external configmap to use. Used only if useExternalCatalogBucketConfigMap is true |
 | app.bucketConfig.useExternalCatalogBucketConfigMap | bool | `false` | Set to true to use an external configmap for the configuration instead of the one set in expirationBucketCsv |
 | app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
