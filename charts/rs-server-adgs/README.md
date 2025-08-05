@@ -8,7 +8,7 @@ RS SERVER ADGS
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| CS GROUP |  | <https://github.com/RS-PYTHON/rs-helm> |
+| RS-PYTHON |  | <https://github.com/RS-PYTHON/rs-helm> |
 
 ## Values
 

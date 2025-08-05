@@ -90,7 +90,6 @@ image:
   version: sha256:652c9462998ed57a4c59464e1a7f4f0364c5bbc8430d00711e1af816ebeab013
   # -- Image pull policy
   PullPolicy: IfNotPresent
-  #imagePullSecrets: regcred
 
 ingress:
   # -- Enabled/Disable ingress
