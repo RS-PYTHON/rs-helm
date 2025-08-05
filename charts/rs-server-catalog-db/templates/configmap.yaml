@@ -17,16 +17,16 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-patch-post-action
   namespace: {{ .Values.namespace }}
-  
+
 data:
   {{ .Values.app.pgstac_post_actions_script }}: |-
     psql -X -q -v ON_ERROR_STOP=1 <<EOSQL
-    UPDATE pgstac.pgstac_settings 
+    UPDATE pgstac.pgstac_settings
     SET value='on' where name='context';
     EOSQL
-    
+
     {{ if .Values.app.stac }}
-    
+
     {{ if .Values.app.stac.extensions }}
     {{ range .Values.app.stac.extensions }}
     psql -X -q -v ON_ERROR_STOP=1 <<EOSQL
@@ -42,7 +42,7 @@ data:
     EOSQL
     {{ end }}
     {{ end }}
-    
+
     {{ if .Values.app.stac.queryables }}
     {{ range .Values.app.stac.queryables }}
     psql -X -q -v ON_ERROR_STOP=1 <<EOSQL
@@ -53,7 +53,7 @@ data:
     EOSQL
     {{ end }}
     {{ end }}
-    
+
     {{ end }}
 
 ---
@@ -63,7 +63,7 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-download-json-schema
   namespace: {{ .Values.namespace }}
-  
+
 data:
   {{ .Values.app.pgstac_init_download_schema_script }}: |-
     #!/bin/sh
@@ -79,5 +79,5 @@ data:
 
     {{- end }}
     {{- end }}
-    
+
     {{- end }}
