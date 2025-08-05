@@ -31,8 +31,8 @@ jobs:
           if [[ -n "$changed" ]]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
             for chart in $(find charts -name Chart.yaml); do
-              sed -i "s,{{APP_VERSION}},1.0," $chart
-              sed -i "s,{{CHART_VERSION}},1.0," $chart
+              sed -i "s,{{APP_VERSION}},'1.0.0'," $chart
+              sed -i "s,{{CHART_VERSION}},'1.0.0'," $chart
             done
           fi
 
