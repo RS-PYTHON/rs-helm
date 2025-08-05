@@ -8,7 +8,7 @@ RS SERVER STAGING
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| CS GROUP |  | <https://github.com/RS-PYTHON/rs-helm> |
+| RS-PYTHON |  | <https://github.com/RS-PYTHON/rs-helm> |
 
 ## Values
 
@@ -21,7 +21,7 @@ RS SERVER STAGING
 | app.RefreshTokenLifetime | int | `3600` | Refresh token validity duration (in seconds) |
 | app.bucketConfig | object | `{"bucketConfigFileName":"expiration_bucket.csv","expirationBucketCsv":"*, *, *, 30, rspython-ops-staging-all-production\n","externalStagingBucketConfigMapName":"","useExternalStagingBucketConfigMap":false}` | Bucket configuration to use to monitor the lifespan and name of data buckets Use an external configuration through an external configmap with the value "externalCatalogBucketConfigMapName" OR Set your own configuration in the value expirationBucketCsv |
 | app.bucketConfig.bucketConfigFileName | string | `"expiration_bucket.csv"` | File name for the configuration. If you use an external configmap, put the name of the file of your configmap, so the environment variables are set properly |
-| app.bucketConfig.expirationBucketCsv | string | `"*, *, *, 30, rspython-ops-staging-all-production\n"` | Bucket configuration. Used only if useExternalCatalogBucketConfigMap is false.  Default config puts all data in a bucket called rspython-ops-staging-all-production with a lifespan of 30 days. |
+| app.bucketConfig.expirationBucketCsv | string | `"*, *, *, 30, rspython-ops-staging-all-production\n"` | Bucket configuration. Used only if useExternalCatalogBucketConfigMap is false. Default config puts all data in a bucket called rspython-ops-staging-all-production with a lifespan of 30 days. |
 | app.bucketConfig.externalStagingBucketConfigMapName | string | `""` | Name of the external configmap to use. Used only if useExternalCatalogBucketConfigMap is true |
 | app.bucketConfig.useExternalStagingBucketConfigMap | bool | `false` | Set to true to use an external configmap for the configuration instead of the one set in expirationBucketCsv |
 | app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |

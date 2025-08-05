@@ -26,27 +26,15 @@ jobs:
 
     - name: Get the rs-server version tag
       id: get_version
-      shell: bash
-      run: |
-        # Enable pipefail so git command failures do not result in null versions downstream
-        set -x
+      uses: ./.github/actions/get_version
 
-        echo "APP_VERSION=$(\
-            git ls-remote --tags --refs --sort="v:refname" \
-            https://github.com/RS-PYTHON/rs-server.git 'v0.*a*' | tail -n1 | sed 's/.*\///' \
-        )" >> $GITHUB_OUTPUT
-
-        echo "CHART_VERSION=0.$(\
-            git ls-remote --tags --refs --sort="v:refname" \
-            https://github.com/RS-PYTHON/rs-server.git 'v0.*a*' | tail -n1 | sed 's/.*\///' | sed 's/^v//' | sed 's/.\{3\}/&-/' \
-         )" >> $GITHUB_OUTPUT
-
-    - name: Update version number in chart.yaml
+    - name: Update version number in Chart.yaml
       shell: bash
       run: |
         for chart in $(find charts -name Chart.yaml); do
-        sed -i "s,{{APP_VERSION}},${{ steps.get_version.outputs.APP_VERSION }}," $chart
-        sed -i "s,{{CHART_VERSION}},${{ steps.get_version.outputs.CHART_VERSION }}," $chart
+          sed -i -e "s,{{APP_VERSION}},${{ steps.get_version.outputs.APP_VERSION }}," \
+                 -e "s,{{CHART_VERSION}},${{ steps.get_version.outputs.CHART_VERSION }}," \
+                 "$chart"
         done
 
     - name: Run helm-docs
