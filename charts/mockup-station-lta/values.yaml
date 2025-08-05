@@ -80,7 +80,6 @@ image:
   version: 5a1c11a
   # -- Image pull policy
   PullPolicy: Always
-  #imagePullSecrets: regcred
 
 resources:
   request:
