@@ -48,7 +48,7 @@ obs:
     ak: TDr8foJqSygBQ9YFmWDy
     # -- Secret Key to authenticate with the object storage service
     sk: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
-    
+
 probe:
   startup:
     # -- Path for the liveness probe
@@ -95,7 +95,6 @@ image:
   version: 5a1c11a
   # -- Image pull policy
   PullPolicy: Always
-  #imagePullSecrets: regcred
 
 resources:
   request:
