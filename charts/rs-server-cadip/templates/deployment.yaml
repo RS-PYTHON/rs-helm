@@ -82,7 +82,7 @@ spec:
         - name: RSPY_WORKING_DIR
           value: {{ .Values.app.workDir }}
         #- name: RSPY_STATION_CONFIG
-        #  value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}        
+        #  value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
         {{ if eq .Values.app.useTokenModule true }}
         - name: EODAG_CADIP_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFileTokenModule }}
