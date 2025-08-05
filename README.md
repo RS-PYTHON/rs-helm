@@ -85,7 +85,7 @@ helm install my-release rs-python/<chart>
 Find below an example on how to install the `rs-server-frontend` component and set some values:
 
 ```bash
-helm install rs-server-frontend rs-python/rs-server-frontend --namespace=processing --set ingress.host=dev-rspy.esa-copernicus.eu --set image.version=latest --set image.PullPolicy=Always  
+helm install rs-server-frontend rs-python/rs-server-frontend --namespace=processing --set ingress.host=dev-rspy.esa-copernicus.eu --set image.version=latest --set image.PullPolicy=Always
 ```
 
 ### Upgrading

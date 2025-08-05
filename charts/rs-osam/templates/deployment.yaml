@@ -53,25 +53,25 @@ spec:
             cpu: {{ .Values.resources.limit.cpu }}
         volumeMounts:
         - name: rs-osam-bucket-configmap
-          mountPath: {{ .Values.app.confDir }}   
+          mountPath: {{ .Values.app.confDir }}
         ports:
         - name: web
           protocol: TCP
           containerPort: {{ .Values.app.port }}
-        envFrom:        
+        envFrom:
         - secretRef:
             name: {{ .Release.Name }}-auth
         - secretRef:
             name: {{ .Release.Name }}-obs
         - secretRef:
             name: {{ .Release.Name }}-provider-auth
-        env:                
+        env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacUrl }}
         - name: RSPY_UAC_HOMEPAGE
           value: {{ .Values.app.uacHomeUrl }}
         - name: RSPY_DOCS_URL
-          value: {{ .Values.app.docsUrl }}        
+          value: {{ .Values.app.docsUrl }}
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
@@ -138,7 +138,7 @@ spec:
           name: {{ .Values.app.bucketConfig.externalBucketConfigMapName }}
           {{ else }}
           name: default-{{ .Chart.Name }}-bucket-config
-          {{ end }}  
+          {{ end }}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
