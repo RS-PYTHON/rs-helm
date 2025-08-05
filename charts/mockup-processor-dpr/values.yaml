@@ -38,7 +38,6 @@ obs:
     sk: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
 
 image:
-  #imagePullSecrets: regcred
   # -- Image registry
   registry: ghcr.io
   # -- Image repository
@@ -49,7 +48,6 @@ image:
   version: 5a1c11a
   # -- Image pull policy
   PullPolicy: IfNotPresent
-  #imagePullSecrets: regcred
 
 resources:
   request:
