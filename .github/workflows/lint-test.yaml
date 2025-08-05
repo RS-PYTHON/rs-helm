@@ -30,6 +30,10 @@ jobs:
           changed=$(ct list-changed --target-branch ${{ github.event.repository.default_branch }})
           if [[ -n "$changed" ]]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
+            for chart in $(find charts -name Chart.yaml); do
+              sed -i "s,{{APP_VERSION}},1.0," $chart
+              sed -i "s,{{CHART_VERSION}},1.0," $chart
+            done
           fi
 
       - name: Run chart-testing (lint)
