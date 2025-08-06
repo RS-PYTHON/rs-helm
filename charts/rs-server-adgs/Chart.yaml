@@ -13,10 +13,10 @@
 # limitations under the License.
 
 apiVersion: v1
-appVersion: {{APP_VERSION}}
+appVersion: "{{APP_VERSION}}"
 description: RS SERVER ADGS
 name: rs-server-adgs
-version: {{CHART_VERSION}}
+version: "{{CHART_VERSION}}"
 maintainers:
   - name: RS-PYTHON
     url: https://github.com/RS-PYTHON/rs-helm
