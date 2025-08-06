@@ -121,7 +121,7 @@ tolerations: []
 initContainers:
 - name: init-pgstac
   image: alpine/curl
-  command: [ "/scripts/init/download.sh" ]
+  command: ["/scripts/init/download.sh"]
   volumeMounts:
     - name: download-json-schema
       mountPath: /scripts/init/

@@ -34,14 +34,14 @@ app:
   # -- URL of the API Key Manager home page (public)
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
   # -- Catalog pod address
-  endpointCatalog: http://rs-server-catalog.processing.svc.cluster.local:8080  
+  endpointCatalog: http://rs-server-catalog.processing.svc.cluster.local:8080
   # -- Object Storage bucket for the catalog
   catalogBucket: rs-cluster-catalog
    # -- Cadip server pod address
-  endpointCadip: https://subdomain.example.com/cadip 
+  endpointCadip: https://subdomain.example.com/cadip
    # -- Adgs server pod address
-  endpointAdgs: https://subdomain.example.com/auxip 
-  
+  endpointAdgs: https://subdomain.example.com/auxip
+
   # -- Access token validity duration (in seconds)
   AccessTokenLifetime: 1200
   # -- Refresh token validity duration (in seconds)
@@ -73,7 +73,7 @@ app:
     useExternalStagingBucketConfigMap: false
     # -- Name of the external configmap to use. Used only if useExternalCatalogBucketConfigMap is true
     externalStagingBucketConfigMapName: ""
-    # -- Bucket configuration. Used only if useExternalCatalogBucketConfigMap is false. 
+    # -- Bucket configuration. Used only if useExternalCatalogBucketConfigMap is false.
     # Default config puts all data in a bucket called rspython-ops-staging-all-production with a lifespan of 30 days.
     expirationBucketCsv: |
       *, *, *, 30, rspython-ops-staging-all-production
@@ -171,7 +171,7 @@ auth:
     oidc_client_secret: ""
     # -- Random string used to encode cookie-based HTTP sessions in SessionMiddleware
     cookie_secret: ""
-    
+
 image:
   # -- Image registry
   registry: ghcr.io
