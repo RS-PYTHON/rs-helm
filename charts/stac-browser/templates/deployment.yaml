@@ -77,8 +77,6 @@ spec:
           value: {{ .Values.app.SB_socialSharing }}
         - name: SB_maxItemsPerPage
           value: {{ .Values.app.SB_maxItemsPerPage | quote }}
-        - name: SB_testToMakeFileChangeInGit
-          value: {{ .Values.app.SB_maxItemsPerPage | quote }}
         securityContext:
           privileged: false
         {{ if .Values.probe }}
