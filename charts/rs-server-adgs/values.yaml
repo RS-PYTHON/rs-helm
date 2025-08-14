@@ -156,8 +156,9 @@ tolerations: []
 # -- Pod initContainers
 initContainers: []
 
-stac_browser:
-  urls: "https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"
+cors:
+  # -- A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser
+  origins: "https://stac-browser-auxip.subdomain.example.com;http://localhost:8080"
 
 tempo:
   # -- Grafana tempo endpoint.

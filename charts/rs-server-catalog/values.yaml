@@ -33,6 +33,12 @@ app:
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
   # -- Object Storage bucket for the catalog
   catalogBucket: rs-cluster-catalog
+  # -- The path prefix for the underlying FastAPI router
+  prefixPath: /catalog
+  # -- URL of FastAPI OpenAPI schema
+  openApiUrl: /catalog/api
+  # -- URL of FastAPI Swagger UI
+  docsUrl: /catalog/api.html
   # -- Presigned URL expiration time in seconds. 30 min by default
   presignedUrlExpirationTime: 1800
   # -- Period in seconds between two data lifecycle cleaning tasks. If <0, the task is deactivated.
@@ -90,11 +96,8 @@ postgres:
   port: "5432"
   # -- PostgreSQL database name
   db: catalog
-  host:
-    # -- PostgreSQL service URL for Read Write
-    rw: rs-server-catalog-db.database.svc.cluster.local
-    # -- PostgreSQL service URL for Read Only
-    ro: rs-server-catalog-db.database.svc.cluster.local
+  # -- PostgreSQL service URL
+  host: rs-server-catalog-db.database.svc.cluster.local
   secret:
     # -- Username to authenticate with the PostgreSQL service
     user: postgres
@@ -143,7 +146,7 @@ resources:
 probe:
   startup:
     # -- Path for the liveness probe
-    path: /health
+    path: /catalog/_mgmt/health
     # -- Port for the liveness probe
     port: 8000
     # -- InitialDelaySeconds for the liveness probe
@@ -154,7 +157,7 @@ probe:
     timeoutSeconds: 1
   liveness:
     # -- Path for the liveness probe
-    path: /health
+    path: /catalog/_mgmt/health
     # -- Port for the liveness probe
     port: 8000
     # -- InitialDelaySeconds for the liveness probe
@@ -165,7 +168,7 @@ probe:
     timeoutSeconds: 5
   readiness:
     # -- Path for the readiness probe
-    path: /health
+    path: /catalog/_mgmt/health
     # -- Port for the readiness probe
     port: 8000
     # -- InitialDelaySeconds for the readiness probe
@@ -184,8 +187,15 @@ tolerations: []
 # -- Pod initContainers
 initContainers: []
 
-stac_browser:
-  urls: "https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"
+cors:
+  # -- A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser
+  origins: "https://stac-browser-catalog.subdomain.example.com;http://localhost:8080"
+  # -- A list of HTTP methods that should be allowed for cross-origin requests. Defaults to "GET,POST,OPTIONS"
+  methods: "GET,POST,OPTIONS"
+  # -- Set to true to enable credentials via CORS requests. Note that you'll need to set CORS_ORIGINS to something other than *, because credentials are disallowed for wildcard CORS origins.
+  credentials: true
+  # -- If CORS credentials are true and you're using an Authorization header, set this to Content-Type,Authorization. Alternatively, you can allow all headers by setting this to *.
+  headers: "*"
 
 tempo:
   # -- Grafana tempo endpoint.
