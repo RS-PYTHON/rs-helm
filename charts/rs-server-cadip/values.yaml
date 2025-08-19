@@ -25,8 +25,6 @@ service:
 app:
   # -- Port for the application
   port: 8000
-  # -- Working directory for the application
-  workDir: /app
   # -- Config directory for the application
   confDir: /app/conf
   # -- Cadip search configuration file for the application
@@ -36,7 +34,7 @@ app:
   # -- Set properly the EODAG_CADIP_CONFIG env var.
   eodagConfigFile: cadip_ws_config.yaml
   eodagConfigFileTokenModule: cadip_ws_config_token_module.yaml
-  # -- The method for loading the token for external stations: use the custom module or 
+  # -- The method for loading the token for external stations: use the custom module or
   # -- allow EODAG to handle it (set it to false for EODAG).
   useTokenModule: false
   station:
@@ -50,13 +48,13 @@ app:
     # @ignored
     sgs:
       endpoint:
-        url: 
+        url:
           token: http://mockup-station-cadip-sgs.processing.svc.cluster.local:8080/oauth2/token
           odata: http://mockup-station-cadip-sgs.processing.svc.cluster.local:8080
     # @ignored
     mti:
       endpoint:
-        url: 
+        url:
           token: http://mockup-station-cadip-mti.processing.svc.cluster.local:8080/oauth2/token
           odata: http://mockup-station-cadip-mti.processing.svc.cluster.local:8080
   # -- URL of the API Key Manager service
@@ -131,7 +129,6 @@ auth:
     cookie_secret: ""
 
 image:
-  #imagePullSecrets: regcred
   # -- Image registry
   registry: ghcr.io
   # -- Image repository
@@ -139,10 +136,9 @@ image:
   # -- Image name
   name: rs-server-cadip
   # -- Image version, can be a tag or a digest
-  version: 0.2a15
+  version: "0.2"
   # -- Image pull policy
   PullPolicy: IfNotPresent
-  #imagePullSecrets: regcred
 
 ingress:
   # -- Enabled/Disable ingress

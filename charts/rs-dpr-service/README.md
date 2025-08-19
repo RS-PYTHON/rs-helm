@@ -8,7 +8,7 @@ RS DPR SERVICE
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| CS GROUP |  | <https://github.com/RS-PYTHON/rs-helm> |
+| RS-PYTHON |  | <https://github.com/RS-PYTHON/rs-helm> |
 
 ## Values
 
@@ -34,7 +34,7 @@ RS DPR SERVICE
 | image.name | string | `"rs-dpr-service"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"0.2a15"` | Image version, can be a tag or a digest |
+| image.version | string | `"0.2"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |

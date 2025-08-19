@@ -35,6 +35,7 @@ spec:
       labels:
         {{- include "mychart.selectorLabels" . | nindent 8 }}
     spec:
+      automountServiceAccountToken: false
       terminationGracePeriodSeconds: 30
       {{- with .Values.initContainers }}
       initContainers:
@@ -50,12 +51,12 @@ spec:
             cpu: {{ .Values.resources.request.cpu }}
           limits:
             memory: {{ .Values.resources.limit.ram }}
-            cpu: {{ .Values.resources.limit.cpu }}        
+            cpu: {{ .Values.resources.limit.cpu }}
         ports:
         - name: web
           protocol: TCP
           containerPort: {{ .Values.app.port }}
-        envFrom:        
+        envFrom:
         - secretRef:
             name: {{ .Release.Name }}-auth
         - secretRef:
@@ -64,7 +65,7 @@ spec:
             name: {{ .Release.Name }}-obs
         - secretRef:
             name: {{ .Release.Name }}-jupyterhub-api-token
-        env:        
+        env:
         - name: RSPY_DASK_DPR_SERVICE_CLUSTER_NAME
           value:  {{ .Values.dask.clusterName }}
         - name: RSPY_DASK_DPR_SERVICE_MOCKUP_CLUSTER_NAME
@@ -100,7 +101,7 @@ spec:
         - name: OTEL_PYTHON_REQUESTS_TRACE_HEADERS
           value: {{ .Values.otel.trace_headers | quote }}
         - name: OTEL_PYTHON_REQUESTS_TRACE_BODY
-          value: {{ .Values.otel.trace_body | quote }}        
+          value: {{ .Values.otel.trace_body | quote }}
         securityContext:
           privileged: false
         {{ if .Values.probe }}
@@ -139,7 +140,7 @@ spec:
       {{ end }}
       {{ end }}
       restartPolicy: Always
-      securityContext: {}      
+      securityContext: {}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

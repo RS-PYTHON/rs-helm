@@ -77,10 +77,9 @@ image:
   # -- Image name
   name: rs-testmeans_lta-station-mock
   # -- Image version, can be a tag or a digest
-  version: 07e0e2e
+  version: 5a1c11a
   # -- Image pull policy
   PullPolicy: Always
-  #imagePullSecrets: regcred
 
 resources:
   request:

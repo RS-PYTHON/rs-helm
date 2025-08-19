@@ -8,7 +8,7 @@ RS SERVER CADIP
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| CS GROUP |  | <https://github.com/RS-PYTHON/rs-helm> |
+| RS-PYTHON |  | <https://github.com/RS-PYTHON/rs-helm> |
 
 ## Values
 
@@ -24,7 +24,6 @@ RS SERVER CADIP
 | app.station.cadip.endpoint.url | object | `{"odata":"http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080","token":"http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080/oauth2/token"}` | CADIP station URL |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | app.useTokenModule | bool | `false` | allow EODAG to handle it (set it to false for EODAG). |
-| app.workDir | string | `"/app"` | Working directory for the application |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
 | auth.secret.oidc_client_id | string | `""` | OIDC CLient ID |
 | auth.secret.oidc_client_secret | string | `""` | OIDC Secret used to sync user info from Keycloak |
@@ -34,7 +33,7 @@ RS SERVER CADIP
 | image.name | string | `"rs-server-cadip"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"0.2a15"` | Image version, can be a tag or a digest |
+| image.version | string | `"0.2"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |

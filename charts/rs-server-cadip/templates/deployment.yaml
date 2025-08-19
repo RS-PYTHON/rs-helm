@@ -35,6 +35,7 @@ spec:
       labels:
         {{- include "mychart.selectorLabels" . | nindent 8 }}
     spec:
+      automountServiceAccountToken: false
       terminationGracePeriodSeconds: 30
       {{- with .Values.initContainers }}
       initContainers:
@@ -52,8 +53,6 @@ spec:
             memory: {{ .Values.resources.limit.ram }}
             cpu: {{ .Values.resources.limit.cpu }}
         volumeMounts:
-        - name: workdir
-          mountPath: {{ .Values.app.workDir }}
         - name: service-config-volume
           mountPath: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
           subPath: {{ .Values.app.eodagConfigFile }}
@@ -79,10 +78,8 @@ spec:
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}
-        - name: RSPY_WORKING_DIR
-          value: {{ .Values.app.workDir }}
         #- name: RSPY_STATION_CONFIG
-        #  value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}        
+        #  value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
         {{ if eq .Values.app.useTokenModule true }}
         - name: EODAG_CADIP_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFileTokenModule }}
@@ -150,9 +147,6 @@ spec:
       restartPolicy: Always
       securityContext: {}
       volumes:
-        - name: workdir
-          emptyDir:
-            sizeLimit: 10Gi
         - name: service-config-volume
           configMap:
             name: {{ .Release.Name }}-service-config

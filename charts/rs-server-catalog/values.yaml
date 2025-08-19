@@ -34,9 +34,9 @@ app:
   # -- Object Storage bucket for the catalog
   catalogBucket: rs-cluster-catalog
   # -- Presigned URL expiration time in seconds. 30 min by default
-  presignedUrlExpirationTime: 1800  
+  presignedUrlExpirationTime: 1800
   # -- Period in seconds between two data lifecycle cleaning tasks. If <0, the task is deactivated.
-  dataLifecyclePeriod: 86400 # 24 hours
+  dataLifecyclePeriod: 86400  # 24 hours
   metadata:
     # -- update the catalog metadata id parameter over the default one received from the pystac client
     id: "rs-python"
@@ -53,14 +53,13 @@ app:
     useExternalCatalogBucketConfigMap: false
     # -- Name of the external configmap to use. Used only if useExternalCatalogBucketConfigMap is true
     externalCatalogBucketConfigMapName: ""
-    # -- Bucket configuration. Used only if useExternalCatalogBucketConfigMap is false. 
+    # -- Bucket configuration. Used only if useExternalCatalogBucketConfigMap is false.
     # Default config puts all data in a bucket called rspython-ops-catalog-all-production with a lifespan of 30 days.
     expirationBucketCsv: |
       *, *, *, 30, rspython-ops-catalog-all-production
     # -- File name for the configuration.
     # If you use an external configmap, put the name of the file of your configmap, so the environment variables are set properly
     bucketConfigFileName: expiration_bucket.csv
-    
 
 obs:
   # -- URL of the object storage service endpoint
@@ -110,10 +109,9 @@ image:
   # -- Image name
   name: rs-server-catalog
   # -- Image version, can be a tag or a digest
-  version: 0.2a15
+  version: "0.2"
   # -- Image pull policy
   PullPolicy: IfNotPresent
-  #imagePullSecrets: regcred
 
 ingress:
   # -- Enabled/Disable ingress
@@ -126,7 +124,7 @@ ingress:
   # -- Ingress host name
   host: subdomain.example.com
   # -- Ingress path
-  path: 
+  path:
     - /catalog
     - /auth
 

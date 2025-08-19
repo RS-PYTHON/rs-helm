@@ -44,14 +44,14 @@ app:
     useExternalBucketConfigMap: false
     # -- Name of the external configmap to use. Used only if externalBucketConfigMapName is true
     externalBucketConfigMapName: ""
-    # -- Bucket configuration. Used only if externalBucketConfigMapName is false. 
+    # -- Bucket configuration. Used only if externalBucketConfigMapName is false.
     # Default config puts all data in a bucket called rspython-ops-catalog-all-production with a lifespan of 30 days.
     expirationBucketCsv: |
       *, *, *, 30, rspython-ops-catalog-all-production
     # -- File name for the configuration.
     # If you use an external configmap, put the name of the file of your configmap, so the environment variables are set properly
     bucketConfigFileName: expiration_bucket.csv
-  
+
 probe:
   startup:
     # -- Path for the liveness probe
@@ -124,7 +124,7 @@ auth:
 provider:
   secret:
     # -- OVH End Point
-    ovh_endpoint: ""    
+    ovh_endpoint: ""
     # -- OVH Application Key
     ovh_application_key: ""
     # -- OVH Application Secret
@@ -141,10 +141,9 @@ image:
   # -- Image name
   name: operational-services-osam
   # -- Image version, can be a tag or a digest
-  version: 0.2a15
+  version: "0.2"
   # -- Image pull policy
   PullPolicy: IfNotPresent
-  #imagePullSecrets: regcred
 
 ingress:
   # -- Enabled/Disable ingress
@@ -159,7 +158,7 @@ ingress:
   # -- Ingress path for the application
   path:
     - /storage
-    
+
 
 resources:
   request:

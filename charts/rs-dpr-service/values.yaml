@@ -33,7 +33,7 @@ app:
   uacUrl: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
   # -- URL of the API Key Manager home page (public)
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
-  
+
 dask:
   # -- Dask gateway address
   gateway_address: http://traefik-dask-gateway.dask-gateway.svc.cluster.local
@@ -126,7 +126,7 @@ auth:
     oidc_client_secret: ""
     # -- Random string used to encode cookie-based HTTP sessions in SessionMiddleware
     cookie_secret: ""
-    
+
 image:
   # -- Image registry
   registry: ghcr.io
@@ -135,10 +135,9 @@ image:
   # -- Image name
   name: rs-dpr-service
   # -- Image version, can be a tag or a digest
-  version: 0.2a15
+  version: "0.2"
   # -- Image pull policy
   PullPolicy: IfNotPresent
-  #imagePullSecrets: regcred
 
 ingress:
   # -- Enabled/Disable ingress
