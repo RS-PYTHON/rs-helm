@@ -114,4 +114,5 @@ tolerations: []
 initContainers: []
 
 stac_browser:
-  urls: "https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"
+  # -- The list of all STAC Browser URLs
+  urls: "https://stac-browser-auxip.subdomain.example.com;https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"

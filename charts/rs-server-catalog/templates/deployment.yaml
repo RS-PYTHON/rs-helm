@@ -81,11 +81,9 @@ spec:
           value: "0.0.0.0"
         - name: APP_PORT
           value: "8000"
-        - name: POSTGRES_HOST_READER
-          value: {{ .Values.postgres.host.ro }}
-        - name: POSTGRES_HOST_WRITER
-          value: {{ .Values.postgres.host.rw }}
-        - name: POSTGRES_DBNAME
+        - name: PGHOST
+          value: {{ .Values.postgres.host }}
+        - name: PGDATABASE
           value: {{ .Values.postgres.db }}
         - name: GDAL_HTTP_MERGE_CONSECUTIVE_RANGES
           value: "YES"
@@ -97,14 +95,22 @@ spec:
           value: "1"
         - name: USE_API_HYDRATE
           value: "false"
+        - name: ENABLE_TRANSACTIONS_EXTENSIONS
+          value: "1"
         - name: CATALOG_METADATA_ID
           value: "{{ .Values.app.metadata.id }}"
         - name: CATALOG_METADATA_TITLE
           value: "{{ .Values.app.metadata.title }}"
         - name: CATALOG_METADATA_DESCRIPTION
           value: "{{ .Values.app.metadata.description }}"
+        - name: PREFIX_PATH
+          value: "{{ .Values.app.prefixPath }}"
+        - name: OPENAPI_URL
+          value: "{{ .Values.app.openApiUrl }}"
+        - name: DOCS_URL
+          value: "{{ .Values.app.docsUrl }}"
         - name: POSTGRES_HOST
-          value: {{ .Values.postgres.host.rw }}
+          value: {{ .Values.postgres.host }}
         - name: POSTGRES_PORT
           value: {{ .Values.postgres.port | quote }}
         - name: POSTGRES_DB
@@ -113,8 +119,14 @@ spec:
           value: {{ .Values.obs.endpoint }}
         - name: S3_REGION
           value: {{ .Values.obs.region }}
-        - name: STAC_BROWSER_URLS
-          value: {{ .Values.stac_browser.urls }}
+        - name: CORS_ORIGINS
+          value: "{{ .Values.cors.origins }}"
+        - name: CORS_METHODS
+          value: "{{ .Values.cors.methods }}"
+        - name: CORS_CREDENTIALS
+          value: "{{ .Values.cors.credentials }}"
+        - name: CORS_HEADERS
+          value: "{{ .Values.cors.headers }}"
         - name: BUCKET_CONFIG_FILE_PATH
           value: {{ .Values.app.confDir }}/{{ .Values.app.bucketConfig.bucketConfigFileName }}
         {{ if .Values.tempo }}
