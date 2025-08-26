@@ -41,6 +41,10 @@ A simple mock for CADIP station.
 
 A simple mock for LTA station.
 
+## [mockup-station-prip](charts/mockup-station-prip/README.md)
+
+A simple mock for PRIP station.
+
 ## [mockup-processor-dpr](charts/mockup-processor-dpr/README.md)
 
 A simple mock for DPR processor.
