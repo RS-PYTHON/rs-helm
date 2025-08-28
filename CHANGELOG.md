@@ -13,6 +13,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [Unreleased] - 2025-08-29
+
+### Added
+
+- [PR#151](https://github.com/RS-PYTHON/rs-helm/pull/151) : Add Lint and Test Chart Github Action
+- [RSPY-402](https://github.com/RS-PYTHON/rs-helm/pull/145) : Add mockup PRIP station
+
+### Changed
+
+- [RSPY-667](https://github.com/RS-PYTHON/rs-helm/pull/156) : Update to stac-fastapi-pgstac 6.0.0
+- [PR#152](https://github.com/RS-PYTHON/rs-helm/pull/152) : Update to pgstac 0.9.8
+
+### Fixed
+
+- [PR#154](https://github.com/RS-PYTHON/rs-helm/pull/154) : Fix SonarQube kubernetes:S6865 - disable automounting
+
+### Removed
+
+- [PR#153](https://github.com/RS-PYTHON/rs-helm/pull/153) : Remove unused workdir for CADIP and AUXIP applications
+
 ## [0.2] - 2025-08-04
 
 ### Added
