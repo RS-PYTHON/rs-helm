@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 - [RSPY-667](https://github.com/RS-PYTHON/rs-helm/pull/156) : Update to stac-fastapi-pgstac 6.0.0
 - [PR#152](https://github.com/RS-PYTHON/rs-helm/pull/152) : Update to pgstac 0.9.8
+- Bump docker image version
 
 ### Fixed
 
