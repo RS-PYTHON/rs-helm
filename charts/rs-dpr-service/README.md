@@ -26,7 +26,7 @@ RS DPR SERVICE
 | auth.secret.oidc_endpoint | string | `""` | OIDC End Point |
 | auth.secret.oidc_realm | string | `""` | OIDC Realm |
 | dask.clusterMockupName | string | `"dask-eopf-mockup"` | Dask cluster name for mockup eopf processor |
-| dask.clusterName | string | `"dask-eopf"` | Dask cluster name for real eopf processor |
+| dask.clusterNames | object | `{"RSPY_DASK_S1ARD_CLUSTER_NAME":"dask-s1ard","RSPY_DASK_S1L0_CLUSTER_NAME":"dask-l0","RSPY_DASK_S3L0_CLUSTER_NAME":"dask-l0"}` | Dask cluster names for real eopf processors |
 | dask.gateway_address | string | `"http://traefik-dask-gateway.dask-gateway.svc.cluster.local"` | Dask gateway address |
 | dask.gateway_auth_type | string | `"jupyterhub"` | Dask gateway auth type |
 | dask.jupyterhub_api_token | string | `"JUPYTER_API_TOKEN_HERE"` | Jupyter API Token when dask.jupyterhub=jupyterhub |
