@@ -1,6 +1,6 @@
 # rs-dpr-service
 
-![Version: 0.0.2-a15](https://img.shields.io/badge/Version-0.0.2--a15-informational?style=flat-square) ![AppVersion: v0.2a15](https://img.shields.io/badge/AppVersion-v0.2a15-informational?style=flat-square)
+![Version: 0.1.0-a1](https://img.shields.io/badge/Version-0.1.0--a1-informational?style=flat-square) ![AppVersion: v1.0a1](https://img.shields.io/badge/AppVersion-v1.0a1-informational?style=flat-square)
 
 RS DPR SERVICE
 
@@ -34,7 +34,7 @@ RS DPR SERVICE
 | image.name | string | `"rs-dpr-service"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"0.2"` | Image version, can be a tag or a digest |
+| image.version | string | `"1.0a1"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
