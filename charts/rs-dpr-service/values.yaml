@@ -41,8 +41,11 @@ dask:
   gateway_auth_type: jupyterhub
   # -- Jupyter API Token when dask.jupyterhub=jupyterhub
   jupyterhub_api_token: JUPYTER_API_TOKEN_HERE
-  # -- Dask cluster name for real eopf processor
-  clusterName: dask-eopf
+  # -- Dask cluster names for real eopf processors
+  clusterNames:
+    RSPY_DASK_S1L0_CLUSTER_NAME: dask-l0
+    RSPY_DASK_S3L0_CLUSTER_NAME: dask-l0
+    RSPY_DASK_S1ARD_CLUSTER_NAME: dask-s1ard
   # -- Dask cluster name for mockup eopf processor
   clusterMockupName: dask-eopf-mockup
 

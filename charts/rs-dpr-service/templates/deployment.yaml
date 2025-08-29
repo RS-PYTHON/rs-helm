@@ -66,10 +66,12 @@ spec:
         - secretRef:
             name: {{ .Release.Name }}-jupyterhub-api-token
         env:
-        - name: RSPY_DASK_DPR_SERVICE_CLUSTER_NAME
-          value:  {{ .Values.dask.clusterName }}
         - name: RSPY_DASK_DPR_SERVICE_MOCKUP_CLUSTER_NAME
           value:  {{ .Values.dask.clusterMockupName }}
+        {{- range $key, $value := .Values.dask.clusterNames }}
+        - name: {{ $key }}
+          value: {{ $value }}
+        {{- end }}
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacUrl }}
         - name: RSPY_UAC_HOMEPAGE
