@@ -20,7 +20,8 @@ RS SERVER PRIP
 | app.eodagConfigFile | string | `"prip_ws_config.yaml"` | Set properly the EODAG_PRIP_CONFIG env var. |
 | app.eodagConfigFileTokenModule | string | `"prip_ws_config_token_module.yaml"` |  |
 | app.port | int | `8000` | Port for the application |
-| app.station.prip.endpoint.url | string | `"http://mockup-station-prip.processing.svc.cluster.local:8080/Products"` | PRIP URL |
+| app.station.prip1.endpoint.url | string | `"http://mockup-station-prip-s1a.processing.svc.cluster.local:8080/Products"` | PRIP-S1A URL |
+| app.station.prip2.endpoint.url | string | `"http://mockup-station-prip-s2b.processing.svc.cluster.local:8080/Products"` | PRIP-S2B URL |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | app.useTokenModule | bool | `false` | The way the token for the external stations is loaded: own module or let eodag to do it (set it to false) |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
