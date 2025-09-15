@@ -1,0 +1,585 @@
+# Copyright 2024 CS Group
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# THIS FILE WAS AUTOMATICALLY CREATED FROM:
+#  - rs-server/services/adgs/config/adgs_search_config.template.yaml
+#  - rs-server/services/adgs/config/adgs_ws_config.template.yaml
+#  - rs-server/services/adgs/config/adgs_ws_config_token_module.template.yaml
+#  - rs-server/resources/sync_config_files.py
+# DON'T MODIFY IT DIRECTLY !
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-service-config
+  namespace: {{ .Values.namespace }}
+data:
+  {{ .Values.app.eodagConfigFile }}: |
+    {{- range $k, $v := .Values.app.station }}
+      {{ $k }}:
+        auth:
+          type: TokenAuth
+          auth_uri: PLACEHOLDER
+          token_type: json
+          token_key: access_token
+          refresh_token_key: refresh_token
+          token_expiration_key: expires_in
+          request_method: POST
+          req_data:
+            client_id: PLACEHOLDER
+            client_secret: PLACEHOLDER
+            grant_type: PLACEHOLDER
+            username: PLACEHOLDER
+            password: PLACEHOLDER
+          credentials:
+            auth_for_token: PLACEHOLDER
+          headers:
+            Content-Type: application/x-www-form-urlencoded
+          retrieve_headers:
+            Content-Type: application/x-www-form-urlencoded
+            Authorization: '{auth_for_token}'
+        products:
+          S1_SAR_RAW:
+            productType: IW_RAW__0N
+        search:
+          type: ODataV4Search
+          api_endpoint: {{ $v.endpoint.url }}
+          need_auth: true
+          results_entry: $.value | $
+          metadata_mapping:
+            id:
+            - null
+            - $.Id
+            prip:id:
+            - null
+            - $.Id
+            Name:
+            - null
+            - $.Name
+            ContentLength:
+            - null
+            - $.ContentLength
+            ContentType:
+            - null
+            - $.ContentType
+            PublicationDate:
+            - null
+            - $.PublicationDate
+            EvictionDate:
+            - null
+            - $.EvictionDate
+            DatetimeStart:
+            - null
+            - $.ContentDate.Start
+            Start:
+            - null
+            - $.ContentDate.Start
+            End:
+            - null
+            - $.ContentDate.End
+            StartPublicationDate:
+            - null
+            - $.PublicationDate
+            StopPublicationDate:
+            - null
+            - $.PublicationDate
+            GeoFootprint:
+            - null
+            - $.GeoFootprint
+            OriginDate:
+            - null
+            - $.OriginDate
+            ProductionType:
+            - null
+            - $.ProductionType
+            ChecksumValue:
+            - null
+            - '{$.Checksum[0].Value#to_lower}'
+            attr_ptype:
+            - null
+            - $.attr_ptype
+            attr_ptypes:
+            - null
+            - $.attr_ptype
+            platformSerialIdentifier:
+            - null
+            - $.platformSerialIdentifier
+            platformSerialIdentifiers:
+            - null
+            - $.platformSerialIdentifier
+            platformShortName:
+            - null
+            - $.platformShortName
+            platformShortNames:
+            - null
+            - $.platformShortName
+            processing:datetime:
+            - null
+            - $.processing:datetime
+            processingCenter:
+            - null
+            - $.processingCenter
+            processorVersion:
+            - null
+            - $.Attributes[?(@.Name=='processorVersion')].Value
+            attrs:
+            - null
+            - $.Attributes
+            href:
+            - null
+            - {{ $v.endpoint.url }}({id})/$value
+            geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
+            downloadLink: {{ $v.endpoint.url }}({id})/$value
+            title: $.Name
+            intersects:
+            - null
+            - $.intersects
+          free_text_search_operations:
+            $filter:
+              union: ' OR '
+              wrapper: '{}'
+              operations:
+                and:
+               # ---- Name-based matches (contains/startswith/endswith) ----
+                - "Name eq '{Name_eq}'"
+                - "contains(Name, '{Name}')"
+                - "contains(Name, '{Name_contains}')"
+                - "startswith(Name, '{Name_startswith}')"
+                - "endswith(Name, '{Name_endswith}')"
+                # ---- Id match (existing) ----
+                - "contains(Id, '{prip:id}')"
+                # ---- Time on PublicationDate ----
+                - "(PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})"
+                - "(PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})"
+                - "PublicationDate eq {PublicationDate#to_iso_utc_datetime}"
+                # ---- Exact equality on other top-level PRIP fields ----
+                - "EvictionDate eq {EvictionDate#to_iso_utc_datetime}"
+                - "ModificationDate eq {ModificationDate#to_iso_utc_datetime}"
+                - "OriginDate eq {OriginDate#to_iso_utc_datetime}"
+                - "Online eq {Online}"
+                - "ContentDate/Start eq {DatetimeStart#to_iso_utc_datetime}"
+                - "ContentDate/Start eq {Start#to_iso_utc_datetime}"
+                - "ContentDate/End eq {End#to_iso_utc_datetime}"
+                # ---- Spatial Intersects  ----
+                # Provide a full WKT geometry like: POLYGON((-60 0,-62 -10,-58 -10,-56 0,-60 0))
+                - "OData.CSC.Intersects(area=geography'SRID=4326;{intersects}')"
+                # ---- Attributes[...] == value (StringAttribute) ----
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq {attr_ptype})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value in ({attr_ptypes}))"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq {platformShortName#to_upper})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value in ({platformShortNames#to_upper}))"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq {platformSerialIdentifier})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value in ({platformSerialIdentifiers}))"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'processingDate' and att/OData.CSC.StringAttribute/Value eq {processing:datetime#to_iso_utc_datetime})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'processingCenter' and att/OData.CSC.StringAttribute/Value eq {processing:facility})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'instrumentShortName' and att/OData.CSC.StringAttribute/Value eq {instrumentShortName#to_upper})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'polarisationChannels' and att/OData.CSC.StringAttribute/Value eq {sar:polarization})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productClass' and att/OData.CSC.StringAttribute/Value eq {productClass})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'orbitNumber' and att/OData.CSC.StringAttribute/Value eq {sat:absolute_orbit})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'relativeOrbitNumber' and att/OData.CSC.StringAttribute/Value eq {sat:relative_orbit})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'cycleNumber' and att/OData.CSC.StringAttribute/Value eq {sat:orbit_cycle})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'orbitDirection' and att/OData.CSC.StringAttribute/Value eq {sat:orbit_state#to_upper})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'datatakeID' and att/OData.CSC.StringAttribute/Value eq {eopf:datatake_id})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productConsolidation' and att/OData.CSC.StringAttribute/Value eq {productConsolidation})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'qualityDataObjectID' and att/OData.CSC.StringAttribute/Value eq {qualityDataObjectID})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'coordinates' and att/OData.CSC.StringAttribute/Value eq {coordinates})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'sliceProductFlag' and att/OData.CSC.StringAttribute/Value eq {sliceProductFlag})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'instrumentConfigurationID' and att/OData.CSC.StringAttribute/Value eq {instrumentConfigurationID})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'startTimeFromAscendingNode' and att/OData.CSC.StringAttribute/Value eq {startTimeFromAscendingNode})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'completionTimeFromAscendingNode' and att/OData.CSC.StringAttribute/Value eq {completionTimeFromAscendingNode})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'beginningDateTime' and att/OData.CSC.StringAttribute/Value eq {start_datetime#to_iso_utc_datetime})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'endingDateTime' and att/OData.CSC.StringAttribute/Value eq {end_datetime#to_iso_utc_datetime})"
+                - '{t_before}'
+                - '{t_after}'
+                - '{t_meets}'
+                - '{t_metby}'
+                - '{t_overlaps}'
+                - '{t_overlappedby}'
+                - '{t_starts}'
+                - '{t_startedby}'
+                - '{t_during}'
+                - '{t_contains}'
+                - '{t_finishes}'
+                - '{t_finishedby}'
+                - '{t_equals}'
+                - '{t_disjoint}'
+                - '{t_intersects}'
+          sort:
+            sort_by_tpl: '&$orderby={sort_param} {sort_order}'
+            sort_param_mapping:
+              id: Name
+              prip:id: Id
+              file:size: ContentLength
+              type: ContentType
+              eviction_datetime: EvictionDate
+              published: PublicationDate
+              start_datetime: ContentDate/Start
+              end_datetime: ContentDate/End
+            sort_order_mapping:
+              ascending: asc
+              descending: desc
+            max_sort_params: 1
+          pagination:
+            max_items_per_page: 10000
+            next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}&$expand=Attributes'
+            total_items_nb_key_path: $.total
+        download:
+          type: HTTPDownload
+          base_uri: {{ $v.endpoint.url }}
+          metadata_mapping:
+            uid: $.Id
+            downloadLink: {{ $v.endpoint.url }}({uid})/$value
+    {{- end }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-token-service-config
+  namespace: {{ .Values.namespace }}
+data:
+  {{ .Values.app.eodagConfigFileTokenModule }}: |
+    {{- range $k, $v := .Values.app.station }}
+      {{ $k }}:
+        auth:
+          type: HTTPHeaderAuth
+          headers:
+            Authorization: Bearer {token}
+          credentials:
+            token: token_value
+        products:
+          CAMS_GRF_AUX:
+            productType: cams-ads-grf-aux
+        search:
+          type: ODataV4Search
+          api_endpoint: {{ $v.endpoint.url }}
+          need_auth: true
+          results_entry: $.value | $
+          metadata_mapping:
+            id:
+            - null
+            - $.Id
+            prip:id:
+            - null
+            - $.Id
+            Name:
+            - null
+            - $.Name
+            ContentLength:
+            - null
+            - $.ContentLength
+            ContentType:
+            - null
+            - $.ContentType
+            PublicationDate:
+            - null
+            - $.PublicationDate
+            EvictionDate:
+            - null
+            - $.EvictionDate
+            DatetimeStart:
+            - null
+            - $.ContentDate.Start
+            Start:
+            - null
+            - $.ContentDate.Start
+            End:
+            - null
+            - $.ContentDate.End
+            StartPublicationDate:
+            - null
+            - $.PublicationDate
+            StopPublicationDate:
+            - null
+            - $.PublicationDate
+            GeoFootprint:
+            - null
+            - $.GeoFootprint
+            OriginDate:
+            - null
+            - $.OriginDate
+            ProductionType:
+            - null
+            - $.ProductionType
+            ChecksumValue:
+            - null
+            - '{$.Checksum[0].Value#to_lower}'
+            attr_ptype:
+            - null
+            - $.attr_ptype
+            attr_ptypes:
+            - null
+            - $.attr_ptype
+            platformSerialIdentifier:
+            - null
+            - $.platformSerialIdentifier
+            platformSerialIdentifiers:
+            - null
+            - $.platformSerialIdentifier
+            platformShortName:
+            - null
+            - $.platformShortName
+            platformShortNames:
+            - null
+            - $.platformShortName
+            processing:datetime:
+            - null
+            - $.processing:datetime
+            processingCenter:
+            - null
+            - $.processingCenter
+            processorVersion:
+            - null
+            - $.Attributes[?(@.Name=='processorVersion')].Value
+            attrs:
+            - null
+            - $.Attributes
+            href:
+            - null
+            - {{ $v.endpoint.url }}({id})/$value
+            geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
+            downloadLink: {{ $v.endpoint.url }}({id})/$value
+            title: $.Name
+          free_text_search_operations:
+            $filter:
+              union: ' OR '
+              wrapper: '{}'
+              operations:
+                and:
+               # ---- Name-based matches (contains/startswith/endswith) ----
+                - "Name eq '{Name_eq}'"
+                - "contains(Name, '{Name}')"
+                - "contains(Name, '{Name_contains}')"
+                - "startswith(Name, '{Name_startswith}')"
+                - "endswith(Name, '{Name_endswith}')"
+                # ---- Id match (existing) ----
+                - "contains(Id, '{prip:id}')"
+                # ---- Time on PublicationDate ----
+                - "(PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})"
+                - "(PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})"
+                - "PublicationDate eq {PublicationDate#to_iso_utc_datetime}"
+                # ---- Exact equality on other top-level PRIP fields ----
+                - "EvictionDate eq {EvictionDate#to_iso_utc_datetime}"
+                - "ModificationDate eq {ModificationDate#to_iso_utc_datetime}"
+                - "OriginDate eq {OriginDate#to_iso_utc_datetime}"
+                - "Online eq {Online}"
+                - "ContentDate/Start eq {DatetimeStart#to_iso_utc_datetime}"
+                - "ContentDate/Start eq {Start#to_iso_utc_datetime}"
+                - "ContentDate/End eq {End#to_iso_utc_datetime}"
+                # ---- Spatial Intersects  ----
+                # Provide a full WKT geometry like: POLYGON((-60 0,-62 -10,-58 -10,-56 0,-60 0))
+                - "OData.CSC.Intersects(area=geography'SRID=4326;{intersects}')"
+                # ---- Attributes[...] == value (StringAttribute) ----
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq {attr_ptype})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value in ({attr_ptypes}))"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq {platformShortName#to_upper})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value in ({platformShortNames#to_upper}))"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq {platformSerialIdentifier})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value in ({platformSerialIdentifiers}))"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'processingDate' and att/OData.CSC.StringAttribute/Value eq {processing:datetime#to_iso_utc_datetime})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'processingCenter' and att/OData.CSC.StringAttribute/Value eq {processing:facility})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'instrumentShortName' and att/OData.CSC.StringAttribute/Value eq {instrumentShortName#to_upper})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'polarisationChannels' and att/OData.CSC.StringAttribute/Value eq {sar:polarization})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productClass' and att/OData.CSC.StringAttribute/Value eq {productClass})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'orbitNumber' and att/OData.CSC.StringAttribute/Value eq {sat:absolute_orbit})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'relativeOrbitNumber' and att/OData.CSC.StringAttribute/Value eq {sat:relative_orbit})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'cycleNumber' and att/OData.CSC.StringAttribute/Value eq {sat:orbit_cycle})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'orbitDirection' and att/OData.CSC.StringAttribute/Value eq {sat:orbit_state#to_upper})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'datatakeID' and att/OData.CSC.StringAttribute/Value eq {eopf:datatake_id})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productConsolidation' and att/OData.CSC.StringAttribute/Value eq {productConsolidation})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'qualityDataObjectID' and att/OData.CSC.StringAttribute/Value eq {qualityDataObjectID})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'coordinates' and att/OData.CSC.StringAttribute/Value eq {coordinates})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'sliceProductFlag' and att/OData.CSC.StringAttribute/Value eq {sliceProductFlag})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'instrumentConfigurationID' and att/OData.CSC.StringAttribute/Value eq {instrumentConfigurationID})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'startTimeFromAscendingNode' and att/OData.CSC.StringAttribute/Value eq {startTimeFromAscendingNode})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'completionTimeFromAscendingNode' and att/OData.CSC.StringAttribute/Value eq {completionTimeFromAscendingNode})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'beginningDateTime' and att/OData.CSC.StringAttribute/Value eq {start_datetime#to_iso_utc_datetime})"
+                - "Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'endingDateTime' and att/OData.CSC.StringAttribute/Value eq {end_datetime#to_iso_utc_datetime})"
+                - '{t_before}'
+                - '{t_after}'
+                - '{t_meets}'
+                - '{t_metby}'
+                - '{t_overlaps}'
+                - '{t_overlappedby}'
+                - '{t_starts}'
+                - '{t_startedby}'
+                - '{t_during}'
+                - '{t_contains}'
+                - '{t_finishes}'
+                - '{t_finishedby}'
+                - '{t_equals}'
+                - '{t_disjoint}'
+                - '{t_intersects}'
+          pagination:
+            max_items_per_page: 10000
+            next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}&$expand=Attributes'
+            total_items_nb_key_path: $.total
+          sort:
+            sort_by_tpl: '&$orderby={sort_param} {sort_order}'
+            sort_param_mapping:
+              file:size: ContentLength
+              type: ContentType
+              eviction_datetime: EvictionDate
+              start_datetime: ContentDate/Start
+              end_datetime: ContentDate/End
+              id: Name
+              auxip:id: Id
+              created: PublicationDate
+            sort_order_mapping:
+              ascending: asc
+              descending: desc
+            max_sort_params: 1
+        download:
+          type: HTTPDownload
+          base_uri: {{ $v.endpoint.url }}
+          metadata_mapping:
+            uid: $.Id
+            downloadLink: {{ $v.endpoint.url }}({uid})/$value
+    {{- end }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-search-service-config
+  namespace: {{ .Values.namespace }}
+data:
+  {{ .Values.app.pripSearchConfigFile }}: |
+    collections:
+    - id: S1A_L0_IW_RAW
+      station: prip_s1a
+      query:
+        productType: IW_RAW__0N
+      stac_extensions: [ "https://stac-extensions.github.io/eo/v2.0.0/schema.json", "https://stac-extensions.github.io/projection/v2.0.0/schema.json", "https://stac-extensions.github.io/view/v1.0.0/schema.json", "https://stac-extensions.github.io/sar/v1.3.0/schema.json", "https://stac-extensions.github.io/sat/v1.1.0/schema.json", "https://stac-extensions.github.io/processing/v1.2.0/schema.json", "https://stac-extensions.github.io/product/v1.0.0/schema.json", "https://cs-si.github.io/eopf-stac-extension/v1.2.0/schema.json", "https://stac-extensions.github.io/timestamps/v1.1.0/schema.json" ]
+      title: "S1A L0 RAW products"
+      description: "S1A L0 RAW products"
+      license: other
+      extent:
+        spatial:
+          bbox: [[ -180, -82.85, 180, 82.82 ]]
+        temporal:
+          interval: [[ '2024-06-12T02:57:21.459000Z', '2024-08-22T11:30:12.767000Z' ]]
+      links:
+        - rel: license
+          href: 'https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice'
+          title: 'Legal notice on the use of Copernicus Sentinel Data and Service Information'
+          type: 'application/pdf'
+        - rel: describedby
+          href: 'https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-SystematicProduction'
+          title: 'Production Service'
+          type: 'text/html'
+      providers:
+        - name: 'European Union/ESA/Copernicus'
+          roles:
+            - producer
+            - licensor
+          url: 'https://sentiwiki.copernicus.eu/web/s1-mission'
+        - name: 'Reference System'
+          roles:
+            - host
+          url: 'https://home.rs-python.eu/'
+    - id: S2B_L0_DS
+      station: prip_s2b
+      query:
+        productType: OPER_MSI
+      stac_extensions: [ "https://stac-extensions.github.io/eo/v2.0.0/schema.json", "https://stac-extensions.github.io/projection/v2.0.0/schema.json", "https://stac-extensions.github.io/view/v1.0.0/schema.json", "https://stac-extensions.github.io/sar/v1.3.0/schema.json", "https://stac-extensions.github.io/sat/v1.1.0/schema.json", "https://stac-extensions.github.io/processing/v1.2.0/schema.json", "https://stac-extensions.github.io/product/v1.0.0/schema.json", "https://cs-si.github.io/eopf-stac-extension/v1.2.0/schema.json", "https://stac-extensions.github.io/timestamps/v1.1.0/schema.json" ]
+      title: "L0 datastrips"
+      description: "Sentinel-2B Level-0 Datastrip"
+      license: other
+      extent:
+        spatial:
+          bbox: [[ -180, -82.85, 180, 82.82 ]]
+        temporal:
+          interval: [[ '2024-06-12T02:57:21.459000Z', '2024-08-22T11:30:12.767000Z' ]]
+      links:
+        - rel: license
+          href: 'https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice'
+          title: 'Legal notice on the use of Copernicus Sentinel Data and Service Information'
+          type: 'application/pdf'
+        - rel: describedby
+          href: 'https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-SystematicProduction'
+          title: 'Production Service'
+          type: 'text/html'
+      providers:
+        - name: 'European Union/ESA/Copernicus'
+          roles:
+            - producer
+            - licensor
+          url: 'https://sentiwiki.copernicus.eu/web/s1-mission'
+        - name: 'Reference System'
+          roles:
+            - host
+          url: 'https://home.rs-python.eu/'
+    - id: S2B_L0_GR
+      station: prip_s2b
+      query:
+        productType: OPER_MSI_L0
+      stac_extensions: [ "https://stac-extensions.github.io/eo/v2.0.0/schema.json", "https://stac-extensions.github.io/projection/v2.0.0/schema.json", "https://stac-extensions.github.io/view/v1.0.0/schema.json", "https://stac-extensions.github.io/sar/v1.3.0/schema.json", "https://stac-extensions.github.io/sat/v1.1.0/schema.json", "https://stac-extensions.github.io/processing/v1.2.0/schema.json", "https://stac-extensions.github.io/product/v1.0.0/schema.json", "https://cs-si.github.io/eopf-stac-extension/v1.2.0/schema.json", "https://stac-extensions.github.io/timestamps/v1.1.0/schema.json" ]
+      title: "L0 granules"
+      description: "Sentinel-2B Level-0 Granule"
+      license: other
+      extent:
+        spatial:
+          bbox: [[ -180, -82.85, 180, 82.82 ]]
+        temporal:
+          interval: [[ '2024-06-12T02:57:21.459000Z', '2024-08-22T11:30:12.767000Z' ]]
+      links:
+        - rel: license
+          href: 'https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice'
+          title: 'Legal notice on the use of Copernicus Sentinel Data and Service Information'
+          type: 'application/pdf'
+        - rel: describedby
+          href: 'https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-SystematicProduction'
+          title: 'Production Service'
+          type: 'text/html'
+      providers:
+        - name: 'European Union/ESA/Copernicus'
+          roles:
+            - producer
+            - licensor
+          url: 'https://sentiwiki.copernicus.eu/web/s1-mission'
+        - name: 'Reference System'
+          roles:
+            - host
+          url: 'https://home.rs-python.eu/'
+    - id: S2B_L2A_TL
+      station: prip_s2b
+      query:
+        productType: OPER_MSI_L2A
+      stac_extensions: [ "https://stac-extensions.github.io/eo/v2.0.0/schema.json", "https://stac-extensions.github.io/projection/v2.0.0/schema.json", "https://stac-extensions.github.io/view/v1.0.0/schema.json", "https://stac-extensions.github.io/sar/v1.3.0/schema.json", "https://stac-extensions.github.io/sat/v1.1.0/schema.json", "https://stac-extensions.github.io/processing/v1.2.0/schema.json", "https://stac-extensions.github.io/product/v1.0.0/schema.json", "https://cs-si.github.io/eopf-stac-extension/v1.2.0/schema.json", "https://stac-extensions.github.io/timestamps/v1.1.0/schema.json" ]
+      title: "L2A tile products"
+      description: "Sentinel-2B Level-2A Tile"
+      license: other
+      extent:
+        spatial:
+          bbox: [[ -180, -82.85, 180, 82.82 ]]
+        temporal:
+          interval: [[ '2024-06-12T02:57:21.459000Z', '2024-08-22T11:30:12.767000Z' ]]
+      links:
+        - rel: license
+          href: 'https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice'
+          title: 'Legal notice on the use of Copernicus Sentinel Data and Service Information'
+          type: 'application/pdf'
+        - rel: describedby
+          href: 'https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-SystematicProduction'
+          title: 'Production Service'
+          type: 'text/html'
+      providers:
+        - name: 'European Union/ESA/Copernicus'
+          roles:
+            - producer
+            - licensor
+          url: 'https://sentiwiki.copernicus.eu/web/s1-mission'
+        - name: 'Reference System'
+          roles:
+            - host
+          url: 'https://home.rs-python.eu/'
