@@ -14,7 +14,7 @@ The CADU Interface delivery Point (CADIP) is a pick-up point for Sentinel CADU d
 
 ## [rs-server-prip](charts/rs-server-prip/README.md)
 
-The Product Interface Deliver Point is a pick-up point for Sentinel products. This service allows clients to discover and retrieve available Sentinel products through a standard OData RESTful API. The following endpoints have been implemented in RS-Server to interact with ADGS RESTful API.
+The Product Interface Deliver Point is a pick-up point for Sentinel products. This service allows clients to discover and retrieve available Sentinel products through a standard OData RESTful API. The following endpoints have been implemented in RS-Server to interact with PRIP RESTful API.
 
 ## [rs-server-catalog](charts/rs-server-catalog/README.md)
 
