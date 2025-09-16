@@ -69,7 +69,7 @@ spec:
         envFrom:
         {{- range $k, $v := .Values.app.station }}
         - secretRef:
-            name: auxip-{{ $k }}
+            name: prip-{{ $k }}
         {{- end }}
         - secretRef:
             name: {{ .Release.Name }}-obs
