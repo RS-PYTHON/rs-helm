@@ -15,11 +15,11 @@ RS SERVER PRIP
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
-| app.adgsSearchConfigFile | string | `"prip_search_config.yaml"` |  |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.eodagConfigFile | string | `"prip_ws_config.yaml"` | Set properly the EODAG_PRIP_CONFIG env var. |
 | app.eodagConfigFileTokenModule | string | `"prip_ws_config_token_module.yaml"` |  |
 | app.port | int | `8000` | Port for the application |
+| app.pripSearchConfigFile | string | `"prip_search_config.yaml"` |  |
 | app.station.prip.endpoint.url | string | `"http://mockup-station-prip.processing.svc.cluster.local:8080/Products"` | PRIP station URL |
 | app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
