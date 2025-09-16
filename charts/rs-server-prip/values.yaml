@@ -29,7 +29,7 @@ app:
   confDir: /app/conf
   # -- Station configuration file for the application
   stationConfigFile: stations_cfg.json
-  adgsSearchConfigFile: prip_search_config.yaml
+  pripSearchConfigFile: prip_search_config.yaml
   # -- EODAG configuration file for the application. If useTokenModule is true the prip_ws_config_token_module.yaml
   # -- shall be used. When useTokenModule is false, the prip_ws_config.yaml shall be used.
   # -- Set properly the EODAG_PRIP_CONFIG env var.
