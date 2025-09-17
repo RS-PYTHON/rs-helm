@@ -41,6 +41,8 @@ app:
   endpointCadip: https://subdomain.example.com/cadip
   # -- Adgs server pod address
   endpointAdgs: https://subdomain.example.com/auxip
+  # -- Prip server pod address
+  endpointPrip: https://subdomain.example.com/prip
 
   # -- Access token validity duration (in seconds)
   AccessTokenLifetime: 1200
@@ -56,6 +58,10 @@ app:
       type: auxip
     adgs2:
       type: auxip
+    s1a:
+      type: prip
+    s2b:
+      type: prip
     cadip:
       type: cadip
     sgs:
