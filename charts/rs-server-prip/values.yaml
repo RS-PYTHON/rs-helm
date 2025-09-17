@@ -38,11 +38,11 @@ app:
   # -- The way the token for the external stations is loaded: own module or let eodag to do it (set it to false)
   useTokenModule: false
   station:
-    prips1a:
+    s1a:
       endpoint:
         # -- PRIP station URL
         url: http://mockup-station-prip-s1a.processing.svc.cluster.local:8080/Products
-    prips2b:
+    s2b:
       endpoint:
         # -- PRIP station URL
         url: http://mockup-station-prip-s2b.processing.svc.cluster.local:8080/Products
