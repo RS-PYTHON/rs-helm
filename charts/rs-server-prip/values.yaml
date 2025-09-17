@@ -41,11 +41,11 @@ app:
     s1a:
       endpoint:
         # -- PRIP station URL
-        url: http://mockup-station-prip-s1a.processing.svc.cluster.local:8080/Products
+        url: http://mockup-prip-s1a.processing.svc.cluster.local:8080/Products
     s2b:
       endpoint:
         # -- PRIP station URL
-        url: http://mockup-station-prip-s2b.processing.svc.cluster.local:8080/Products
+        url: http://mockup-prip-s2b.processing.svc.cluster.local:8080/Products
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
 
