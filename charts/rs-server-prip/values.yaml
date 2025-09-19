@@ -35,6 +35,7 @@ app:
   # -- Set properly the EODAG_PRIP_CONFIG env var.
   eodagConfigFile: prip_ws_config.yaml
   eodagConfigFileTokenModule: prip_ws_config_token_module.yaml
+  ptypeMappingFile: product_type_mapping.yaml
   # -- The way the token for the external stations is loaded: own module or let eodag to do it (set it to false)
   useTokenModule: false
   station:

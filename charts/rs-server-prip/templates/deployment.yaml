@@ -86,6 +86,8 @@ spec:
         {{ else }}
         - name: EODAG_PRIP_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
+        - name: PTYPE_MAPPING_CONFIG
+          value: {{ .Values.app.confDir }}/{{ .Values.app.ptypeMappingFile }}
         {{ end }}
         - name: S3_ENDPOINT
           value: {{ .Values.obs.endpoint }}
