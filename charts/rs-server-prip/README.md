@@ -20,6 +20,7 @@ RS SERVER PRIP
 | app.eodagConfigFileTokenModule | string | `"prip_ws_config_token_module.yaml"` |  |
 | app.port | int | `8000` | Port for the application |
 | app.pripSearchConfigFile | string | `"prip_search_config.yaml"` |  |
+| app.ptypeMappingFile | string | `"product_type_mapping.yaml"` |  |
 | app.station.s1a.endpoint.url | string | `"http://mockup-prip-s1a.processing.svc.cluster.local:8080/Products"` | PRIP station URL |
 | app.station.s2b.endpoint.url | string | `"http://mockup-prip-s2b.processing.svc.cluster.local:8080/Products"` | PRIP station URL |
 | app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
