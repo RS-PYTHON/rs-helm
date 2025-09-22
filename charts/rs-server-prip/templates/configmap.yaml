@@ -165,8 +165,8 @@ data:
             - $.platformShortName
             href:
             - null
-            - http://127.0.0.1:5000/Products({id})/$value
-            downloadLink: http://127.0.0.1:5000/Products({id})/$value
+            - {{ $v.endpoint.url }}({id})/$value
+            downloadLink: {{ $v.endpoint.url }}({id})/$value
             title: $.Name
             intersects:
             - null
@@ -401,8 +401,8 @@ data:
             - $.platformShortName
             href:
               - null
-              - http://127.0.0.1:5000/Products({id})/$value
-            downloadLink: http://127.0.0.1:5000/Products({id})/$value
+              - {{ $v.endpoint.url }}({id})/$value
+            downloadLink: {{ $v.endpoint.url }}({id})/$value
             title: $.Name
           free_text_search_operations:
             $filter:
