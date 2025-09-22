@@ -587,7 +587,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}-service-config
+  name: {{ .Release.Name }}-ptype-service-config
   namespace: {{ .Values.namespace }}
 data:
   {{ .Values.app.ptypeMappingFile }}: |
