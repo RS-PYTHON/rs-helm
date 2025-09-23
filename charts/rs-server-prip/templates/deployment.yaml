@@ -161,6 +161,9 @@ spec:
         - name: search-service-config-volume
           configMap:
             name: {{ .Release.Name }}-search-service-config
+        - name: ptype-service-config-volume
+          configMap:
+            name: {{ .Release.Name }}-ptype-service-config
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
