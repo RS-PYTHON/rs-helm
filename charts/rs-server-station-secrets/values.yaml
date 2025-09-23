@@ -173,14 +173,14 @@ app:
         client_id: client_id
         client_secret: client_secret
         authorization: Basic test
-    s2a:
+    s2b:
       service:
         name: prip
-        url: http://mockup-prip-s2a.processing.svc.cluster.local:8080
-      domain: mockup-prip-s2a.processing.svc.cluster.local
+        url: http://mockup-prip-s2b.processing.svc.cluster.local:8080
+      domain: mockup-prip-s2b.processing.svc.cluster.local
       authentication:
         auth_type: oauth2
-        token_url: http://mockup-prip-s2a.processing.svc.cluster.local:8080/oauth2/token
+        token_url: http://mockup-prip-s2b.processing.svc.cluster.local:8080/oauth2/token
         grant_type: password
         scope: null
         username: test
