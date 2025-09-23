@@ -62,6 +62,9 @@ spec:
         - name: search-service-config-volume
           mountPath: {{ .Values.app.confDir }}/{{ .Values.app.pripSearchConfigFile }}
           subPath: {{ .Values.app.pripSearchConfigFile }}
+        - name: ptype-service-config-volume
+          mountPath: {{ .Values.app.confDir }}/{{ .Values.app.ptypeMappingFile }}
+          subPath: {{ .Values.app.ptypeMappingFile }}
         ports:
         - name: web
           protocol: TCP
