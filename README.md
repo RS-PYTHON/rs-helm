@@ -12,6 +12,10 @@ The Auxiliary Data Gathering Service (ADGS) is a pick-up point for Sentinel auxi
 
 The CADU Interface delivery Point (CADIP) is a pick-up point for Sentinel CADU data. The CADIP allows clients to straightforwardly discover and retrieve available data files through a standard OData RESTful API. The following endpoints have been implemented in RS-Server to interact with CADIP RESTful API.
 
+## [rs-server-prip](charts/rs-server-prip/README.md)
+
+The Product Interface Deliver Point is a pick-up point for Sentinel products. This service allows clients to discover and retrieve available Sentinel products through a standard OData RESTful API. The following endpoints have been implemented in RS-Server to interact with PRIP RESTful API.
+
 ## [rs-server-catalog](charts/rs-server-catalog/README.md)
 
 The catalog is a STAC catalog that contains the medatadata of the products. It is organized in collections and items. It is based on [STAC FastAPI](https://github.com/stac-utils/stac-fastapi).
