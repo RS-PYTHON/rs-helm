@@ -13,9 +13,9 @@
 # limitations under the License.
 
 # THIS FILE WAS AUTOMATICALLY CREATED FROM:
-#  - rs-server/services/adgs/config/adgs_search_config.template.yaml
-#  - rs-server/services/adgs/config/adgs_ws_config.template.yaml
-#  - rs-server/services/adgs/config/adgs_ws_config_token_module.template.yaml
+#  - rs-server/services/prip/config/prip_search_config.template.yaml
+#  - rs-server/services/prip/config/prip_ws_config.template.yaml
+#  - rs-server/services/prip/config/prip_ws_config_token_module.template.yaml
 #  - rs-server/resources/sync_config_files.py
 # DON'T MODIFY IT DIRECTLY !
 
@@ -177,35 +177,25 @@ data:
               wrapper: '{}'
               operations:
                 and:
-                # ---- Name-based matches (contains) ----
                 - contains(Name, '{Name}')
-                # ---- Id match (existing) ----
                 - contains(Id, '{prip:id}')
-                # ---- Time on PublicationDate ----
                 - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
                 - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
-                # ---- Exact equality on other top-level PRIP fields ----
                 - EvictionDate eq {EvictionDate#to_iso_utc_datetime}
                 - ModificationDate eq {ModificationDate#to_iso_utc_datetime}
                 - OriginDate eq {OriginDate#to_iso_utc_datetime}
                 - ContentDate/Start eq {DatetimeStart#to_iso_utc_datetime}
                 - ContentDate/Start eq {Start#to_iso_utc_datetime}
                 - ContentDate/End eq {End#to_iso_utc_datetime}
-                # ---- ContentLength (numeric) ----
                 - ContentLength eq {ContentLength#to_int}
                 - ContentLength gt {ContentLengthMin#to_int}
                 - ContentLength lt {ContentLengthMax#to_int}
                 - (ContentLength ge {ContentLengthMin#to_int} and ContentLength le {ContentLengthMax#to_int})
-                # ---- ContentType (string) ----
                 - ContentType eq '{ContentType}'
                 - ContentType in ({ContentTypes})
-                # ---- ProductionType (string) ----
                 - ProductionType eq '{ProductionType}'
-                # ---- Spatial Intersects  ----
-                # Provide a full WKT geometry like: POLYGON((-60 0,-62 -10,-58 -10,-56 0,-60 0))
                 - OData.CSC.Intersects(area=geography'SRID=4326;{intersects}')
-                # ---- Attributes[...] == value (StringAttribute) ----
                 - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq {attr_ptype})
                 - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value in ({attr_ptypes}))
                 - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq {platformShortName#to_upper})
@@ -286,8 +276,8 @@ data:
           credentials:
             token: token_value
         products:
-          CAMS_GRF_AUX:
-            productType: cams-ads-grf-aux
+          S1_SAR_RAW:
+            productType: IW_RAW__0N
         search:
           type: ODataV4Search
           api_endpoint: {{ $v.endpoint.url }}
@@ -400,45 +390,38 @@ data:
             - null
             - $.platformShortName
             href:
-              - null
-              - {{ $v.endpoint.url }}({id})/$value
+            - null
+            - {{ $v.endpoint.url }}({id})/$value
             downloadLink: {{ $v.endpoint.url }}({id})/$value
             title: $.Name
+            intersects:
+            - null
+            - $.intersects
           free_text_search_operations:
             $filter:
               union: ' OR '
               wrapper: '{}'
               operations:
                 and:
-                # ---- Name-based matches ----
                 - contains(Name, '{Name}')
-                # ---- Id match (existing) ----
                 - contains(Id, '{prip:id}')
-                # ---- Time on PublicationDate ----
                 - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
                 - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
-                # ---- Exact equality on other top-level PRIP fields ----
                 - EvictionDate eq {EvictionDate#to_iso_utc_datetime}
                 - ModificationDate eq {ModificationDate#to_iso_utc_datetime}
                 - OriginDate eq {OriginDate#to_iso_utc_datetime}
                 - ContentDate/Start eq {DatetimeStart#to_iso_utc_datetime}
                 - ContentDate/Start eq {Start#to_iso_utc_datetime}
                 - ContentDate/End eq {End#to_iso_utc_datetime}
-                # ---- ContentLength (numeric) ----
                 - ContentLength eq {ContentLength#to_int}
                 - ContentLength gt {ContentLengthMin#to_int}
                 - ContentLength lt {ContentLengthMax#to_int}
                 - (ContentLength ge {ContentLengthMin#to_int} and ContentLength le {ContentLengthMax#to_int})
-                # ---- ContentType (string) ----
                 - ContentType eq '{ContentType}'
                 - ContentType in ({ContentTypes})
-                # ---- ProductionType (string) ----
                 - ProductionType eq '{ProductionType}'
-                # ---- Spatial Intersects  ----
-                # Provide a full WKT geometry like: POLYGON((-60 0,-62 -10,-58 -10,-56 0,-60 0))
                 - OData.CSC.Intersects(area=geography'SRID=4326;{intersects}')
-                # ---- Attributes[...] == value (StringAttribute) ----
                 - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq {attr_ptype})
                 - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value in ({attr_ptypes}))
                 - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq {platformShortName#to_upper})
@@ -492,20 +475,9 @@ data:
               descending: desc
             max_sort_params: 1
           pagination:
-            sort_by_tpl: '&$orderby={sort_param} {sort_order}'
-            sort_param_mapping:
-              file:size: ContentLength
-              type: ContentType
-              eviction_datetime: EvictionDate
-              start_datetime: ContentDate/Start
-              end_datetime: ContentDate/End
-              id: Name
-              auxip:id: Id
-              created: PublicationDate
-            sort_order_mapping:
-              ascending: asc
-              descending: desc
-            max_sort_params: 1
+            max_items_per_page: 10000
+            next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}&$expand=Attributes'
+            total_items_nb_key_path: $.total
         download:
           type: HTTPDownload
           base_uri: {{ $v.endpoint.url }}
@@ -526,130 +498,190 @@ data:
       station: s1a
       query:
         productType: IW_RAW__0N
-      stac_extensions: [ "https://stac-extensions.github.io/eo/v2.0.0/schema.json", "https://stac-extensions.github.io/projection/v2.0.0/schema.json", "https://stac-extensions.github.io/view/v1.0.0/schema.json", "https://stac-extensions.github.io/sar/v1.3.0/schema.json", "https://stac-extensions.github.io/sat/v1.1.0/schema.json", "https://stac-extensions.github.io/processing/v1.2.0/schema.json", "https://stac-extensions.github.io/product/v1.0.0/schema.json", "https://cs-si.github.io/eopf-stac-extension/v1.2.0/schema.json", "https://stac-extensions.github.io/timestamps/v1.1.0/schema.json" ]
-      title: "S1A L0 RAW products"
-      description: "S1A L0 RAW products"
+      stac_extensions:
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
+      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
+      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      - https://stac-extensions.github.io/sar/v1.3.0/schema.json
+      - https://stac-extensions.github.io/sat/v1.1.0/schema.json
+      - https://stac-extensions.github.io/processing/v1.2.0/schema.json
+      - https://stac-extensions.github.io/product/v1.0.0/schema.json
+      - https://cs-si.github.io/eopf-stac-extension/v1.2.0/schema.json
+      - https://stac-extensions.github.io/timestamps/v1.1.0/schema.json
+      title: S1A L0 RAW products
+      description: S1A L0 RAW products
       license: other
       extent:
         spatial:
-          bbox: [[ -180, -82.85, 180, 82.82 ]]
+          bbox:
+          - - -180
+            - -82.85
+            - 180
+            - 82.82
         temporal:
-          interval: [[ '2024-06-12T02:57:21.459000Z', '2024-08-22T11:30:12.767000Z' ]]
+          interval:
+          - - '2024-06-12T02:57:21.459000Z'
+            - '2024-08-22T11:30:12.767000Z'
       links:
-        - rel: license
-          href: 'https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice'
-          title: 'Legal notice on the use of Copernicus Sentinel Data and Service Information'
-          type: 'application/pdf'
-        - rel: describedby
-          href: 'https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-SystematicProduction'
-          title: 'Production Service'
-          type: 'text/html'
+      - rel: license
+        href: https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice
+        title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-SystematicProduction
+        title: Production Service
+        type: text/html
       providers:
-        - name: 'European Union/ESA/Copernicus'
-          roles:
-            - producer
-            - licensor
-          url: 'https://sentiwiki.copernicus.eu/web/s1-mission'
-        - name: 'Reference System'
-          roles:
-            - host
-          url: 'https://home.rs-python.eu/'
+      - name: European Union/ESA/Copernicus
+        roles:
+        - producer
+        - licensor
+        url: https://sentiwiki.copernicus.eu/web/s1-mission
+      - name: Reference System
+        roles:
+        - host
+        url: https://home.rs-python.eu/
     - id: S2B_L0_DS
       station: s2b
       query:
         productType: OPER_MSI
-      stac_extensions: [ "https://stac-extensions.github.io/eo/v2.0.0/schema.json", "https://stac-extensions.github.io/projection/v2.0.0/schema.json", "https://stac-extensions.github.io/view/v1.0.0/schema.json", "https://stac-extensions.github.io/sar/v1.3.0/schema.json", "https://stac-extensions.github.io/sat/v1.1.0/schema.json", "https://stac-extensions.github.io/processing/v1.2.0/schema.json", "https://stac-extensions.github.io/product/v1.0.0/schema.json", "https://cs-si.github.io/eopf-stac-extension/v1.2.0/schema.json", "https://stac-extensions.github.io/timestamps/v1.1.0/schema.json" ]
-      title: "L0 datastrips"
-      description: "Sentinel-2B Level-0 Datastrip"
+      stac_extensions:
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
+      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
+      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      - https://stac-extensions.github.io/sar/v1.3.0/schema.json
+      - https://stac-extensions.github.io/sat/v1.1.0/schema.json
+      - https://stac-extensions.github.io/processing/v1.2.0/schema.json
+      - https://stac-extensions.github.io/product/v1.0.0/schema.json
+      - https://cs-si.github.io/eopf-stac-extension/v1.2.0/schema.json
+      - https://stac-extensions.github.io/timestamps/v1.1.0/schema.json
+      title: L0 datastrips
+      description: Sentinel-2B Level-0 Datastrip
       license: other
       extent:
         spatial:
-          bbox: [[ -180, -82.85, 180, 82.82 ]]
+          bbox:
+          - - -180
+            - -82.85
+            - 180
+            - 82.82
         temporal:
-          interval: [[ '2024-06-12T02:57:21.459000Z', '2024-08-22T11:30:12.767000Z' ]]
+          interval:
+          - - '2024-06-12T02:57:21.459000Z'
+            - '2024-08-22T11:30:12.767000Z'
       links:
-        - rel: license
-          href: 'https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice'
-          title: 'Legal notice on the use of Copernicus Sentinel Data and Service Information'
-          type: 'application/pdf'
-        - rel: describedby
-          href: 'https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-SystematicProduction'
-          title: 'Production Service'
-          type: 'text/html'
+      - rel: license
+        href: https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice
+        title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-SystematicProduction
+        title: Production Service
+        type: text/html
       providers:
-        - name: 'European Union/ESA/Copernicus'
-          roles:
-            - producer
-            - licensor
-          url: 'https://sentiwiki.copernicus.eu/web/s1-mission'
-        - name: 'Reference System'
-          roles:
-            - host
-          url: 'https://home.rs-python.eu/'
+      - name: European Union/ESA/Copernicus
+        roles:
+        - producer
+        - licensor
+        url: https://sentiwiki.copernicus.eu/web/s1-mission
+      - name: Reference System
+        roles:
+        - host
+        url: https://home.rs-python.eu/
     - id: S2B_L0_GR
       station: s2b
       query:
         productType: OPER_MSI_L0
-      stac_extensions: [ "https://stac-extensions.github.io/eo/v2.0.0/schema.json", "https://stac-extensions.github.io/projection/v2.0.0/schema.json", "https://stac-extensions.github.io/view/v1.0.0/schema.json", "https://stac-extensions.github.io/sar/v1.3.0/schema.json", "https://stac-extensions.github.io/sat/v1.1.0/schema.json", "https://stac-extensions.github.io/processing/v1.2.0/schema.json", "https://stac-extensions.github.io/product/v1.0.0/schema.json", "https://cs-si.github.io/eopf-stac-extension/v1.2.0/schema.json", "https://stac-extensions.github.io/timestamps/v1.1.0/schema.json" ]
-      title: "L0 granules"
-      description: "Sentinel-2B Level-0 Granule"
+      stac_extensions:
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
+      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
+      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      - https://stac-extensions.github.io/sar/v1.3.0/schema.json
+      - https://stac-extensions.github.io/sat/v1.1.0/schema.json
+      - https://stac-extensions.github.io/processing/v1.2.0/schema.json
+      - https://stac-extensions.github.io/product/v1.0.0/schema.json
+      - https://cs-si.github.io/eopf-stac-extension/v1.2.0/schema.json
+      - https://stac-extensions.github.io/timestamps/v1.1.0/schema.json
+      title: L0 granules
+      description: Sentinel-2B Level-0 Granule
       license: other
       extent:
         spatial:
-          bbox: [[ -180, -82.85, 180, 82.82 ]]
+          bbox:
+          - - -180
+            - -82.85
+            - 180
+            - 82.82
         temporal:
-          interval: [[ '2024-06-12T02:57:21.459000Z', '2024-08-22T11:30:12.767000Z' ]]
+          interval:
+          - - '2024-06-12T02:57:21.459000Z'
+            - '2024-08-22T11:30:12.767000Z'
       links:
-        - rel: license
-          href: 'https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice'
-          title: 'Legal notice on the use of Copernicus Sentinel Data and Service Information'
-          type: 'application/pdf'
-        - rel: describedby
-          href: 'https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-SystematicProduction'
-          title: 'Production Service'
-          type: 'text/html'
+      - rel: license
+        href: https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice
+        title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-SystematicProduction
+        title: Production Service
+        type: text/html
       providers:
-        - name: 'European Union/ESA/Copernicus'
-          roles:
-            - producer
-            - licensor
-          url: 'https://sentiwiki.copernicus.eu/web/s1-mission'
-        - name: 'Reference System'
-          roles:
-            - host
-          url: 'https://home.rs-python.eu/'
+      - name: European Union/ESA/Copernicus
+        roles:
+        - producer
+        - licensor
+        url: https://sentiwiki.copernicus.eu/web/s1-mission
+      - name: Reference System
+        roles:
+        - host
+        url: https://home.rs-python.eu/
     - id: S2B_L2A_TL
       station: s2b
       query:
         productType: OPER_MSI_L2A
-      stac_extensions: [ "https://stac-extensions.github.io/eo/v2.0.0/schema.json", "https://stac-extensions.github.io/projection/v2.0.0/schema.json", "https://stac-extensions.github.io/view/v1.0.0/schema.json", "https://stac-extensions.github.io/sar/v1.3.0/schema.json", "https://stac-extensions.github.io/sat/v1.1.0/schema.json", "https://stac-extensions.github.io/processing/v1.2.0/schema.json", "https://stac-extensions.github.io/product/v1.0.0/schema.json", "https://cs-si.github.io/eopf-stac-extension/v1.2.0/schema.json", "https://stac-extensions.github.io/timestamps/v1.1.0/schema.json" ]
-      title: "L2A tile products"
-      description: "Sentinel-2B Level-2A Tile"
+      stac_extensions:
+      - https://stac-extensions.github.io/eo/v2.0.0/schema.json
+      - https://stac-extensions.github.io/projection/v2.0.0/schema.json
+      - https://stac-extensions.github.io/view/v1.0.0/schema.json
+      - https://stac-extensions.github.io/sar/v1.3.0/schema.json
+      - https://stac-extensions.github.io/sat/v1.1.0/schema.json
+      - https://stac-extensions.github.io/processing/v1.2.0/schema.json
+      - https://stac-extensions.github.io/product/v1.0.0/schema.json
+      - https://cs-si.github.io/eopf-stac-extension/v1.2.0/schema.json
+      - https://stac-extensions.github.io/timestamps/v1.1.0/schema.json
+      title: L2A tile products
+      description: Sentinel-2B Level-2A Tile
       license: other
       extent:
         spatial:
-          bbox: [[ -180, -82.85, 180, 82.82 ]]
+          bbox:
+          - - -180
+            - -82.85
+            - 180
+            - 82.82
         temporal:
-          interval: [[ '2024-06-12T02:57:21.459000Z', '2024-08-22T11:30:12.767000Z' ]]
+          interval:
+          - - '2024-06-12T02:57:21.459000Z'
+            - '2024-08-22T11:30:12.767000Z'
       links:
-        - rel: license
-          href: 'https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice'
-          title: 'Legal notice on the use of Copernicus Sentinel Data and Service Information'
-          type: 'application/pdf'
-        - rel: describedby
-          href: 'https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-SystematicProduction'
-          title: 'Production Service'
-          type: 'text/html'
+      - rel: license
+        href: https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice
+        title: Legal notice on the use of Copernicus Sentinel Data and Service Information
+        type: application/pdf
+      - rel: describedby
+        href: https://sentiwiki.copernicus.eu/web/copernicus-operations#CopernicusOperations-SystematicProduction
+        title: Production Service
+        type: text/html
       providers:
-        - name: 'European Union/ESA/Copernicus'
-          roles:
-            - producer
-            - licensor
-          url: 'https://sentiwiki.copernicus.eu/web/s1-mission'
-        - name: 'Reference System'
-          roles:
-            - host
-          url: 'https://home.rs-python.eu/'
+      - name: European Union/ESA/Copernicus
+        roles:
+        - producer
+        - licensor
+        url: https://sentiwiki.copernicus.eu/web/s1-mission
+      - name: Reference System
+        roles:
+        - host
+        url: https://home.rs-python.eu/
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -659,330 +691,276 @@ metadata:
 data:
   {{ .Values.app.ptypeMappingFile }}: |
     types:
-      - productType: S01SIWRAWS
-        mission: S1
-        instrumentMode: IW
-        processingLevel: RAW
-        legacyType: IW_RAW__0S
-
-      - productType: S01SIWRAW
-        mission: S1
-        instrumentMode: IW
-        processingLevel: RAW
-        legacyType: IW_RAW__0N
-
-      - productType: S01SEWRAW
-        mission: S1
-        instrumentMode: EW
-        processingLevel: RAW
-        legacyType: EW_RAW__0S
-
-      - productType: S01SSMRAW
-        mission: S1
-        instrumentMode: SM
-        processingLevel: RAW
-        legacyType: SM_RAW__0S
-
-      - productType: S01SWVRAW
-        mission: S1
-        instrumentMode: WV
-        processingLevel: RAW
-        legacyType: WV_RAW__0S
-
-      - productType: S01SIWANC
-        mission: S1
-        instrumentMode: IW
-        processingLevel: ANC
-        legacyType: IW_RAW__0A
-
-      - productType: S01SEWANC
-        mission: S1
-        instrumentMode: EW
-        processingLevel: ANC
-        legacyType: EW_RAW__0C
-
-      - productType: S01SWVANC
-        mission: S1
-        instrumentMode: WV
-        processingLevel: ANC
-        legacyType: WV_RAW__0N
-
-      - productType: S01SEWGRD
-        mission: S1
-        instrumentMode: EW
-        processingLevel: GRD
-        legacyType: EW_GRDH_1S
-
-      - productType: S01SIWGRD
-        mission: S1
-        instrumentMode: IW
-        processingLevel: GRD
-        legacyType: IW_GRDH_1S
-
-      - productType: S01SIWOCN
-        mission: S1
-        instrumentMode: IW
-        processingLevel: OCN
-        legacyType: IW_OCN__2S
-
-      - productType: S01SSMOCN
-        mission: S1
-        instrumentMode: SM
-        processingLevel: OCN
-        legacyType: SM_OCN__2S
-
-      - productType: S01SEWSLC
-        mission: S1
-        instrumentMode: EW
-        processingLevel: SLC
-        legacyType: EW_SLC__1S
-
-      - productType: S01SIWSLC
-        mission: S1
-        instrumentMode: IW
-        processingLevel: SLC
-        legacyType: IW_SLC__1S
-
-      - productType: S01SWVOCN
-        mission: S1
-        instrumentMode: WV
-        processingLevel: OCN
-        legacyType: WV_OCN__2S
-
-      - productType: S01GPSRAW
-        mission: S1
-        instrumentMode: GPS
-        processingLevel: RAW
-        legacyType: GP_RAW__0_
-
-      - productType: S01HKMRAW
-        mission: S1
-        instrumentMode: HKTM
-        processingLevel: RAW
-        legacyType: HK_RAW__0_
-
-      - productType: S01AISRAW
-        mission: S1
-        instrumentMode: AIS
-        processingLevel: RAW
-        legacyType: RAW
-
-      - productType: S02MSIL0_
-        mission: S2
-        instrumentMode: MSI
-        processingLevel: L0
-        legacyType: MSI_L0__DS
-
-      - productType: S02MSIL1A
-        mission: S2
-        instrumentMode: MSI
-        processingLevel: L1A
-        legacyType: MSI_L1A_DS
-
-      - productType: S02MSIL1B
-        mission: S2
-        instrumentMode: MSI
-        processingLevel: L1B
-        legacyType: MSI_L1B_DS
-
-      - productType: S02MSIL1C
-        mission: S2
-        instrumentMode: MSI
-        processingLevel: L1C
-        legacyType: MSI_L1C_DS
-
-      - productType: S02MSIL2A
-        mission: S2
-        instrumentMode: MSI
-        processingLevel: L2A
-        legacyType: MSI_L2A_DS
-
-      - productType: S02MSISCA
-        mission: S2
-        instrumentMode: ABSR
-        processingLevel: Sun Calibration
-        legacyType:
-
-      - productType: S02MSIDCA
-        mission: S2
-        instrumentMode: DASC
-        processingLevel: Dark Calibration
-        legacyType:
-
-      - productType: S03SRAL0_
-        mission: S3
-        instrumentMode: SRAL
-        processingLevel: L0 observation
-        legacyType: SR_0_SRA___
-
-      - productType: S03SRAL0C
-        mission: S3
-        instrumentMode: SRAL
-        processingLevel: L0 calibration
-        legacyType: SR_0_CAL___
-
-      - productType: S03ALT1A
-        mission: S3
-        instrumentMode: HR
-        processingLevel: L1A
-        legacyType: SR_1_SRA_A_
-
-      - productType: S03ALT1B
-        mission: S3
-        instrumentMode: HR
-        processingLevel: L1B
-        legacyType: SR_1_SRA_BS
-
-      - productType: S03ALT2H
-        mission: S3
-        instrumentMode: HR
-        processingLevel: Hydrology
-        legacyType: SR_2_LAN_HY
-
-      - productType: S03ALTCAL
-        mission: S3
-        instrumentMode: SRAL
-        processingLevel: CAL1/CAL2
-        legacyType: SR_1_CAL
-
-      - productType: S03MWRL0_
-        mission: S3
-        instrumentMode: MWR
-        processingLevel: L0
-        legacyType: MW_0_MWR
-
-      - productType: S03MWRL1_
-        mission: S3
-        instrumentMode: MWR
-        processingLevel: L1
-        legacyType: MW_1_MWR
-
-      - productType: S03MWRCAL
-        mission: S3
-        instrumentMode: MWR
-        processingLevel: CAL
-        legacyType: MW_1_CAL
-
-      - productType: S03OLCL0_
-        mission: S3
-        instrumentMode: OLCI
-        processingLevel: L0
-        legacyType: OL_0_EFR
-
-      - productType: S03OLCEFR
-        instrumentMode: OLCI
-        processingLevel: EFR
-        legacyType: OL_1_EFR
-
-      - productType: S03OLCERR
-        instrumentMode: OLCI
-        processingLevel: ERR
-        legacyType: OL_1_ERR
-
-      - productType: S03OLCRAC
-        mission: S3
-        instrumentMode: OLCI
-        processingLevel: RAC
-        legacyType: OL_1_RAC
-
-      - productType: S03OLCSPC
-        mission: S3
-        instrumentMode: OLCI
-        processingLevel: SPC
-        legacyType: OL_1_SPC
-
-      - productType: S03OLCLFR
-        mission: S3
-        instrumentMode: OLCI
-        processingLevel: LFR
-        legacyType: OL_2_LFR
-
-      - productType: S03OLCLRR
-        mission: S3
-        instrumentMode: OLCI
-        processingLevel: LRR
-        legacyType: OL_2_LRR
-
-      - productType: S03SLSL0_
-        mission: S3
-        instrumentMode: SLSTR
-        processingLevel: L0
-        legacyType: SL_0_SLT
-
-      - productType: S03SLSRBT
-        mission: S3
-        instrumentMode: SLSTR
-        processingLevel: RBT
-        legacyType: SL_1_RBT
-
-      - productType: S03SLSLST
-        mission: S3
-        instrumentMode: SLSTR
-        processingLevel: LST
-        legacyType: SL_2_LST
-
-      - productType: S03SLSFRP
-        mission: S3
-        instrumentMode: SLSTR
-        processingLevel: FRP
-        legacyType: SL_2_FRP
-
-      - productType: S03SYNSDR
-        mission: S3
-        instrumentMode: SYNERGY
-        processingLevel: L2
-        legacyType: SY_2_SYN
-
-      - productType: S03SYNAOD
-        mission: S3
-        instrumentMode: SYNERGY
-        processingLevel: L2
-        legacyType: SY_2_AOD
-
-      - productType: S03SYNVGT
-        mission: S3
-        instrumentMode: SYNERGY
-        processingLevel: L2
-        legacyType: SY_2_VGT
-
-      - productType: S03SYNVGK
-        mission: S3
-        instrumentMode: SYNERGY
-        processingLevel: L2
-        legacyType: SY_2_VGK
-
-      - productType: S03SYNV01
-        mission: S3
-        instrumentMode: SYNERGY
-        processingLevel: L2
-        legacyType: SY_2_VG1
-
-      - productType: S03SYNV10
-        mission: S3
-        instrumentMode: SYNERGY
-        processingLevel: L2
-        legacyType: SY_2_V10
-
-      - productType: SXXACQREP
-        mission: S3
-        instrumentMode: XX=01,02,03,etc
-        processingLevel: L0 acquisition report
-        legacyType: REP_PASS
-
-      - productType: OPER_MSI
-        mission: S2
-        instrumentMode: MSI
-        processingLevel: L2
-        legacyType: OPER_MSI_L2A
-
-      - productType: OPER_MSI
-        mission: S2
-        instrumentMode: MSI
-        processingLevel: L0
-        legacyType: OPER_MSI_L0
-
-      - productType: OPER_MSI
-        mission: S2
-        instrumentMode: MSI
-        processingLevel: L1
-        legacyType: OPER_MSI
+    - productType: S01SIWRAWS
+      mission: S1
+      instrumentMode: IW
+      processingLevel: RAW
+      legacyType: IW_RAW__0S
+    - productType: S01SIWRAW
+      mission: S1
+      instrumentMode: IW
+      processingLevel: RAW
+      legacyType: IW_RAW__0N
+    - productType: S01SEWRAW
+      mission: S1
+      instrumentMode: EW
+      processingLevel: RAW
+      legacyType: EW_RAW__0S
+    - productType: S01SSMRAW
+      mission: S1
+      instrumentMode: SM
+      processingLevel: RAW
+      legacyType: SM_RAW__0S
+    - productType: S01SWVRAW
+      mission: S1
+      instrumentMode: WV
+      processingLevel: RAW
+      legacyType: WV_RAW__0S
+    - productType: S01SIWANC
+      mission: S1
+      instrumentMode: IW
+      processingLevel: ANC
+      legacyType: IW_RAW__0A
+    - productType: S01SEWANC
+      mission: S1
+      instrumentMode: EW
+      processingLevel: ANC
+      legacyType: EW_RAW__0C
+    - productType: S01SWVANC
+      mission: S1
+      instrumentMode: WV
+      processingLevel: ANC
+      legacyType: WV_RAW__0N
+    - productType: S01SEWGRD
+      mission: S1
+      instrumentMode: EW
+      processingLevel: GRD
+      legacyType: EW_GRDH_1S
+    - productType: S01SIWGRD
+      mission: S1
+      instrumentMode: IW
+      processingLevel: GRD
+      legacyType: IW_GRDH_1S
+    - productType: S01SIWOCN
+      mission: S1
+      instrumentMode: IW
+      processingLevel: OCN
+      legacyType: IW_OCN__2S
+    - productType: S01SSMOCN
+      mission: S1
+      instrumentMode: SM
+      processingLevel: OCN
+      legacyType: SM_OCN__2S
+    - productType: S01SEWSLC
+      mission: S1
+      instrumentMode: EW
+      processingLevel: SLC
+      legacyType: EW_SLC__1S
+    - productType: S01SIWSLC
+      mission: S1
+      instrumentMode: IW
+      processingLevel: SLC
+      legacyType: IW_SLC__1S
+    - productType: S01SWVOCN
+      mission: S1
+      instrumentMode: WV
+      processingLevel: OCN
+      legacyType: WV_OCN__2S
+    - productType: S01GPSRAW
+      mission: S1
+      instrumentMode: GPS
+      processingLevel: RAW
+      legacyType: GP_RAW__0_
+    - productType: S01HKMRAW
+      mission: S1
+      instrumentMode: HKTM
+      processingLevel: RAW
+      legacyType: HK_RAW__0_
+    - productType: S01AISRAW
+      mission: S1
+      instrumentMode: AIS
+      processingLevel: RAW
+      legacyType: RAW
+    - productType: S02MSIL0_
+      mission: S2
+      instrumentMode: MSI
+      processingLevel: L0
+      legacyType: MSI_L0__DS
+    - productType: S02MSIL1A
+      mission: S2
+      instrumentMode: MSI
+      processingLevel: L1A
+      legacyType: MSI_L1A_DS
+    - productType: S02MSIL1B
+      mission: S2
+      instrumentMode: MSI
+      processingLevel: L1B
+      legacyType: MSI_L1B_DS
+    - productType: S02MSIL1C
+      mission: S2
+      instrumentMode: MSI
+      processingLevel: L1C
+      legacyType: MSI_L1C_DS
+    - productType: S02MSIL2A
+      mission: S2
+      instrumentMode: MSI
+      processingLevel: L2A
+      legacyType: MSI_L2A_DS
+    - productType: S02MSISCA
+      mission: S2
+      instrumentMode: ABSR
+      processingLevel: Sun Calibration
+      legacyType: null
+    - productType: S02MSIDCA
+      mission: S2
+      instrumentMode: DASC
+      processingLevel: Dark Calibration
+      legacyType: null
+    - productType: S03SRAL0_
+      mission: S3
+      instrumentMode: SRAL
+      processingLevel: L0 observation
+      legacyType: SR_0_SRA___
+    - productType: S03SRAL0C
+      mission: S3
+      instrumentMode: SRAL
+      processingLevel: L0 calibration
+      legacyType: SR_0_CAL___
+    - productType: S03ALT1A
+      mission: S3
+      instrumentMode: HR
+      processingLevel: L1A
+      legacyType: SR_1_SRA_A_
+    - productType: S03ALT1B
+      mission: S3
+      instrumentMode: HR
+      processingLevel: L1B
+      legacyType: SR_1_SRA_BS
+    - productType: S03ALT2H
+      mission: S3
+      instrumentMode: HR
+      processingLevel: Hydrology
+      legacyType: SR_2_LAN_HY
+    - productType: S03ALTCAL
+      mission: S3
+      instrumentMode: SRAL
+      processingLevel: CAL1/CAL2
+      legacyType: SR_1_CAL
+    - productType: S03MWRL0_
+      mission: S3
+      instrumentMode: MWR
+      processingLevel: L0
+      legacyType: MW_0_MWR
+    - productType: S03MWRL1_
+      mission: S3
+      instrumentMode: MWR
+      processingLevel: L1
+      legacyType: MW_1_MWR
+    - productType: S03MWRCAL
+      mission: S3
+      instrumentMode: MWR
+      processingLevel: CAL
+      legacyType: MW_1_CAL
+    - productType: S03OLCL0_
+      mission: S3
+      instrumentMode: OLCI
+      processingLevel: L0
+      legacyType: OL_0_EFR
+    - productType: S03OLCEFR
+      instrumentMode: OLCI
+      processingLevel: EFR
+      legacyType: OL_1_EFR
+    - productType: S03OLCERR
+      instrumentMode: OLCI
+      processingLevel: ERR
+      legacyType: OL_1_ERR
+    - productType: S03OLCRAC
+      mission: S3
+      instrumentMode: OLCI
+      processingLevel: RAC
+      legacyType: OL_1_RAC
+    - productType: S03OLCSPC
+      mission: S3
+      instrumentMode: OLCI
+      processingLevel: SPC
+      legacyType: OL_1_SPC
+    - productType: S03OLCLFR
+      mission: S3
+      instrumentMode: OLCI
+      processingLevel: LFR
+      legacyType: OL_2_LFR
+    - productType: S03OLCLRR
+      mission: S3
+      instrumentMode: OLCI
+      processingLevel: LRR
+      legacyType: OL_2_LRR
+    - productType: S03SLSL0_
+      mission: S3
+      instrumentMode: SLSTR
+      processingLevel: L0
+      legacyType: SL_0_SLT
+    - productType: S03SLSRBT
+      mission: S3
+      instrumentMode: SLSTR
+      processingLevel: RBT
+      legacyType: SL_1_RBT
+    - productType: S03SLSLST
+      mission: S3
+      instrumentMode: SLSTR
+      processingLevel: LST
+      legacyType: SL_2_LST
+    - productType: S03SLSFRP
+      mission: S3
+      instrumentMode: SLSTR
+      processingLevel: FRP
+      legacyType: SL_2_FRP
+    - productType: S03SYNSDR
+      mission: S3
+      instrumentMode: SYNERGY
+      processingLevel: L2
+      legacyType: SY_2_SYN
+    - productType: S03SYNAOD
+      mission: S3
+      instrumentMode: SYNERGY
+      processingLevel: L2
+      legacyType: SY_2_AOD
+    - productType: S03SYNVGT
+      mission: S3
+      instrumentMode: SYNERGY
+      processingLevel: L2
+      legacyType: SY_2_VGT
+    - productType: S03SYNVGK
+      mission: S3
+      instrumentMode: SYNERGY
+      processingLevel: L2
+      legacyType: SY_2_VGK
+    - productType: S03SYNV01
+      mission: S3
+      instrumentMode: SYNERGY
+      processingLevel: L2
+      legacyType: SY_2_VG1
+    - productType: S03SYNV10
+      mission: S3
+      instrumentMode: SYNERGY
+      processingLevel: L2
+      legacyType: SY_2_V10
+    - productType: SXXACQREP
+      mission: S3
+      instrumentMode: XX=01,02,03,etc
+      processingLevel: L0 acquisition report
+      legacyType: REP_PASS
+    - productType: OPER_MSI
+      mission: S2
+      instrumentMode: MSI
+      processingLevel: L2
+      legacyType: OPER_MSI_L2A
+    - productType: OPER_MSI
+      mission: S2
+      instrumentMode: MSI
+      processingLevel: L0
+      legacyType: OPER_MSI_L0
+    - productType: OPER_MSI
+      mission: S2
+      instrumentMode: MSI
+      processingLevel: L1
+      legacyType: OPER_MSI
