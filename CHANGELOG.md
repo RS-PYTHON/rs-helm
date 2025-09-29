@@ -13,6 +13,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [1.0a2] - 2025-09-29
+
+### Added
+
+- [RSPY-324](https://github.com/RS-PYTHON/rs-helm/pull/160) : Add new rs-prip-service
+- [RSPY-761](https://github.com/RS-PYTHON/rs-helm/pull/161) : Preparing prip staging 
+- [RSPY-761](https://github.com/RS-PYTHON/rs-helm/pull/162) : Ptype config
+
+### Changed
+
+- [RSPY-766](https://github.com/RS-PYTHON/rs-helm/pull/159) : Updated rs-dpr-service Helm chart to include multiple environment variable for multiple processors
+- Bump docker image version
+
 ## [1.0a1] - 2025-08-29
 
 ### Added

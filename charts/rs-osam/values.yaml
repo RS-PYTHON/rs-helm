@@ -141,7 +141,7 @@ image:
   # -- Image name
   name: operational-services-osam
   # -- Image version, can be a tag or a digest
-  version: "1.0a1"
+  version: "1.0a2"
   # -- Image pull policy
   PullPolicy: IfNotPresent
 

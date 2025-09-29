@@ -1,6 +1,6 @@
 # rs-server-prip
 
-![Version: 0.1.0-a1](https://img.shields.io/badge/Version-0.1.0--a1-informational?style=flat-square) ![AppVersion: v1.0a1](https://img.shields.io/badge/AppVersion-v1.0a1-informational?style=flat-square)
+![Version: 0.1.0-a2](https://img.shields.io/badge/Version-0.1.0--a2-informational?style=flat-square) ![AppVersion: v1.0a2](https://img.shields.io/badge/AppVersion-v1.0a2-informational?style=flat-square)
 
 RS SERVER PRIP
 
@@ -36,7 +36,7 @@ RS SERVER PRIP
 | image.name | string | `"rs-server-prip"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"1.0a1"` | Image version, can be a tag or a digest |
+| image.version | string | `"1.0a2"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
