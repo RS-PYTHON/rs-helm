@@ -1,6 +1,6 @@
 # mockup-station-lta
 
-![Version: 0.1.0-a1](https://img.shields.io/badge/Version-0.1.0--a1-informational?style=flat-square) ![AppVersion: v1.0a1](https://img.shields.io/badge/AppVersion-v1.0a1-informational?style=flat-square)
+![Version: 0.1.0-a2](https://img.shields.io/badge/Version-0.1.0--a2-informational?style=flat-square) ![AppVersion: v1.0a2](https://img.shields.io/badge/AppVersion-v1.0a2-informational?style=flat-square)
 
 MOCKUP STATION LTA
 
@@ -25,7 +25,7 @@ MOCKUP STATION LTA
 | image.name | string | `"rs-testmeans_lta-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"bdfc69e"` | Image version, can be a tag or a digest |
+| image.version | string | `"aa18208"` | Image version, can be a tag or a digest |
 | initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | probe.liveness.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
