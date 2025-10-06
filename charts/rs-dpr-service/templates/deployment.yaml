@@ -63,6 +63,7 @@ spec:
             name: {{ .Release.Name }}-postgres
         - secretRef:
             name: {{ .Release.Name }}-obs
+        env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacUrl }}
         - name: RSPY_UAC_HOMEPAGE
