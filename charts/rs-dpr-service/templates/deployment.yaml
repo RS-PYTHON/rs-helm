@@ -63,13 +63,6 @@ spec:
             name: {{ .Release.Name }}-postgres
         - secretRef:
             name: {{ .Release.Name }}-obs
-        - secretRef:
-            name: {{ .Release.Name }}-jupyterhub-api-token
-        env:
-        {{- range $key, $value := .Values.dask.clusterNames }}
-        - name: {{ $key }}
-          value: {{ $value }}
-        {{- end }}
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacUrl }}
         - name: RSPY_UAC_HOMEPAGE
