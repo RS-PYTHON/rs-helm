@@ -99,6 +99,8 @@ spec:
           value: {{ .Values.app.endpointCadip }}
         - name: RSPY_HOST_ADGS
           value: {{ .Values.app.endpointAdgs }}
+        - name: RSPY_HOST_PRIP
+          value: {{ .Values.app.endpointPrip }}
         - name: RSPY_CATALOG_BUCKET
           value: {{ .Values.app.catalogBucket }}
         - name: POSTGRES_PORT
