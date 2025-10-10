@@ -175,7 +175,7 @@ app:
         authorization: Basic test
     s2b:
       service:
-        name: prip-2
+        name: prip
         url: http://mockup-prip-s2b.processing.svc.cluster.local:8080
       domain: mockup-prip-s2b.processing.svc.cluster.local
       authentication:
