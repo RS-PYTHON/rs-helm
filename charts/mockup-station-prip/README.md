@@ -17,7 +17,7 @@ MOCKUP STATION PRIP
 | affinity | object | `{}` | Pod affinity |
 | app.authConfigFile | string | `"auth_tmp.json"` | Auth configuration file for the application |
 | app.bucketName | string | `"rs-dev-cluster-temp"` | Bucket name to stage data from |
-| app.bucketPath | string | `"stations/PRIP/"` | Path inside the bucket to the data |
+| app.bucketPath | string | `"stations/ARD_V2/SAFE/"` | Path inside the bucket to the data |
 | app.catalogConfigFile | string | `"GETFileResponse.json"` | catalog configuration file for the application |
 | app.confDir | string | `"/opt/prip/config"` | Config directory for the application |
 | app.port | int | `5000` | Port for the application |
