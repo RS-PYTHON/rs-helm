@@ -36,7 +36,7 @@ app:
   # -- Bucket name to stage data from
   bucketName: rs-dev-cluster-temp
   # -- Path inside the bucket to the data
-  bucketPath: stations/ARD_V2/SAFE/
+  bucketPath: ARD_V2/SAFE/
 
 obs:
   # -- URL of the object storage service endpoint
