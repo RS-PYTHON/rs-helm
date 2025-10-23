@@ -23,7 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 ### Changed
 
 - [PR#166](https://github.com/RS-PYTHON/rs-helm/pull/166) : Pass cluster info from client to rs-dpr-service 166
-- [RSPY-829](https://github.com/RS-PYTHON/rs-helm/pull/170) : Make client_id Optional for credential 
+- [RSPY-829](https://github.com/RS-PYTHON/rs-helm/pull/170) : Make client_id Optional for credential
+- bump docker image tag
 
 ### fixed
 
