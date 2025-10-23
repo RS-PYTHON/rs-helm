@@ -13,6 +13,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [1.0a3] - 2025-10-23
+
+### Added
+
+- [PR#167](https://github.com/RS-PYTHON/rs-helm/pull/167) : Added S3B_20251010143722593812
+- [PR#169](https://github.com/RS-PYTHON/rs-helm/pull/169) : Added 2 new prip products
+
+### Changed
+
+- [PR#166](https://github.com/RS-PYTHON/rs-helm/pull/166) : Pass cluster info from client to rs-dpr-service 166
+- [RSPY-829](https://github.com/RS-PYTHON/rs-helm/pull/170) : Make client_id Optional for credential
+- bump docker image tag
+
+### fixed
+
+- [PR#168](https://github.com/RS-PYTHON/rs-helm/pull/168) : Add missing env variable to allow staging PRIP products
+- [PR#171](https://github.com/RS-PYTHON/rs-helm/pull/171) : Fix/cadip s3 ids
+- [PR#172](https://github.com/RS-PYTHON/rs-helm/pull/172) : Modify lint-test workflow for Python and yamale
+
 ## [1.0a2] - 2025-09-29
 
 ### Added
