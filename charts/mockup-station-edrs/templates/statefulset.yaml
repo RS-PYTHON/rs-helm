@@ -53,7 +53,7 @@ spec:
             name: {{ .Release.Name }}-user
         env:
           - name: PYTHONUNBUFFERED
-            value: 1
+            value: "1"
         securityContext:
           privileged: false
         volumeMounts:
