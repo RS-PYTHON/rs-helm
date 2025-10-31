@@ -51,9 +51,6 @@ spec:
         envFrom:
         - secretRef:
             name: {{ .Release.Name }}-user
-        env:
-          - name: SSL_GENERATE
-            value: "NO"
         securityContext:
           privileged: false
         volumeMounts:
@@ -80,6 +77,9 @@ spec:
             memory: {{ .Values.resources.limit.ram }}
             cpu: {{ .Values.resources.limit.cpu }}
         volumeMounts:
+        - name: server-ftp-certs
+          mountPath: /app/vsftpd/cert
+          readOnly: true
         - name: service-config-volume
           mountPath: {{ .Values.app.confDir }}/{{ .Values.app.authConfigFile }}
           subPath: {{ .Values.app.authConfigFile }}
@@ -98,10 +98,14 @@ spec:
         - secretRef:
             name: {{ .Release.Name }}-user
         env:
-        - name: S3_ENDPOINT
-          value: {{ .Values.obs.endpoint }}
-        - name: S3_REGION
-          value: {{ .Values.obs.region }}
+          - name: SSL_GENERATE
+            value: "NO"
+          - name: SRV_CERT
+            value: tls.crt
+          - name: SRV_KEY
+            value: tls.key
+          - name: CA_CERT
+            value: ca.crt
         securityContext:
           privileged: false
       {{ if .Values.image }}
