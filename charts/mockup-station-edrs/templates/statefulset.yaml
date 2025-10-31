@@ -53,7 +53,7 @@ spec:
             name: {{ .Release.Name }}-user
         env:
           - name: SSL_GENERATE
-            value: NO
+            value: "NO"
         securityContext:
           privileged: false
         volumeMounts:
