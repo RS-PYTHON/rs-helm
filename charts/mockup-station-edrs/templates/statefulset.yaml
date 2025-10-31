@@ -51,6 +51,9 @@ spec:
         envFrom:
         - secretRef:
             name: {{ .Release.Name }}-user
+        env:
+          - name: PYTHONUNBUFFERED
+            value: 1
         securityContext:
           privileged: false
         volumeMounts:
