@@ -1,8 +1,8 @@
-# mockup-station-prip
+# mockup-station-edrs
 
 ![Version: 0.1.0-a3](https://img.shields.io/badge/Version-0.1.0--a3-informational?style=flat-square) ![AppVersion: v1.0a3](https://img.shields.io/badge/AppVersion-v1.0a3-informational?style=flat-square)
 
-MOCKUP STATION PRIP
+MOCKUP STATION EDRS
 
 ## Maintainers
 
@@ -19,15 +19,17 @@ MOCKUP STATION PRIP
 | app.bucketName | string | `"rs-dev-cluster-temp"` | Bucket name to stage data from |
 | app.bucketPath | string | `"ARD_V2/SAFE/"` | Path inside the bucket to the data |
 | app.catalogConfigFile | string | `"GETFileResponse.json"` | catalog configuration file for the application |
-| app.confDir | string | `"/opt/prip/config"` | Config directory for the application |
+| app.confDir | string | `"/opt/edrs/config"` | Config directory for the application |
+| app.password | string | `"test"` | FTP password |
 | app.port | int | `5000` | Port for the application |
+| app.username | string | `"test"` | FTP username |
 | app.workDir | string | `"/app"` | Working directory for the application |
 | helmResourcePolicy | string | `"keep"` | Keep the ressources for PVC and ConfigMap. Default is to keep. |
 | image.PullPolicy | string | `"Always"` | Image pull policy |
-| image.name | string | `"rs-testmeans_prip-station-mock"` | Image name |
+| image.name | string | `"rs-testmeans_edrs-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"eaad52d"` | Image version, can be a tag or a digest |
+| image.version | string | `"feat-rspy807-edrs-patch"` | Image version, can be a tag or a digest |
 | initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
