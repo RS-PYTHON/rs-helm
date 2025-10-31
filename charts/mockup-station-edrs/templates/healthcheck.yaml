@@ -49,12 +49,20 @@ data:
             try:
                 ftps = FTP_TLS()
                 ftps.ssl_version = ssl.PROTOCOL_TLS
-                ftps.context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile=CA_CERT)
-                ftps.context.load_cert_chain(certfile=CLIENT_CERT, keyfile=CLIENT_KEY)
+                context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
+                context.check_hostname = False
+                context.verify_mode = ssl.CERT_REQUIRED
+                context.load_verify_locations(cafile=CA_CERT)
+                context.load_cert_chain(certfile=CLIENT_CERT, keyfile=CLIENT_KEY)
+                ftps.context = context
 
                 ftps.connect(FTP_HOST, FTP_PORT, timeout=5)
                 ftps.auth()
                 ftps.login(FTP_USER, FTP_PASS)
+                try:
+                    ftps.nlst()  # attempt to list directory contents
+                except Exception:
+                    pass  # ignore if directory is empty or inaccessible
                 ftps.quit()
                 ftp_ready = True
                 print("FTP is ready.")
