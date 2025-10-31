@@ -1,0 +1,74 @@
+# Copyright 2024 CS Group
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-healthcheck-script
+  namespace: {{ .Values.namespace }}
+  {{ if .Values.helmResourcePolicy }}
+  annotations:
+    helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}
+  {{ end }}
+data:
+  healthcheck.py: |
+    from flask import Flask
+    from ftplib import FTP_TLS
+    import ssl
+    import os
+    import time
+    import threading
+
+    app = Flask(__name__)
+
+    FTP_HOST = "localhost"
+    FTP_PORT = 21
+    FTP_USER = os.getenv("FTP_USER")
+    FTP_PASS = os.getenv("FTP_PASS")
+
+    CLIENT_CERT = "/certs/tls.crt"
+    CLIENT_KEY = "/certs/tls.key"
+    CA_CERT = "/certs/ca.crt"
+
+    ftp_ready = False
+
+    def check_ftp():
+        global ftp_ready
+        while not ftp_ready:
+            try:
+                ftps = FTP_TLS()
+                ftps.ssl_version = ssl.PROTOCOL_TLS
+                ftps.context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH, cafile=CA_CERT)
+                ftps.context.load_cert_chain(certfile=CLIENT_CERT, keyfile=CLIENT_KEY)
+
+                ftps.connect(FTP_HOST, FTP_PORT, timeout=5)
+                ftps.auth()
+                ftps.login(FTP_USER, FTP_PASS)
+                ftps.quit()
+                ftp_ready = True
+                print("FTP is ready.")
+            except Exception as e:
+                print(f"FTP not ready yet: {e}")
+                time.sleep(5)
+
+    @app.route("/healthz")
+    def healthz():
+        if ftp_ready:
+            return "OK", 200
+        else:
+            return "FTP not ready", 503
+
+    if __name__ == "__main__":
+        threading.Thread(target=check_ftp, daemon=True).start()
+        app.run(host="0.0.0.0", port=8080)
