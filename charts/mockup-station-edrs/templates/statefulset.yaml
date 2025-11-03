@@ -55,7 +55,7 @@ spec:
           - name: PYTHONUNBUFFERED
             value: "1"
           - name: FTP_CHECK_INTERVAL
-            value: "30"
+            value: "15"
         securityContext:
           privileged: false
         volumeMounts:
