@@ -29,6 +29,7 @@ data:
     import os
     import time
     import threading
+    import traceback
 
     app = Flask(__name__)
 
@@ -43,31 +44,57 @@ data:
 
     ftp_ready = False
 
+    def debug(msg):
+        """Simple timestamped debug print."""
+        print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {msg}", flush=True)
+
     def check_ftp():
         global ftp_ready
         while not ftp_ready:
+            debug("Starting FTP check...")
             try:
-                ftps = FTP_TLS()
-                ftps.ssl_version = ssl.PROTOCOL_TLS
+                if not all(os.path.exists(p) for p in [CLIENT_CERT, CLIENT_KEY, CA_CERT]):
+                    debug("One or more certificate files are missing!")
+                    debug(f"CLIENT_CERT exists: {os.path.exists(CLIENT_CERT)}")
+                    debug(f"CLIENT_KEY exists: {os.path.exists(CLIENT_KEY)}")
+                    debug(f"CA_CERT exists: {os.path.exists(CA_CERT)}")
+
+                # Create and configure SSL context
                 context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
                 context.check_hostname = False
                 context.verify_mode = ssl.CERT_REQUIRED
                 context.load_verify_locations(cafile=CA_CERT)
                 context.load_cert_chain(certfile=CLIENT_CERT, keyfile=CLIENT_KEY)
+
+                debug("SSL context created and certificates loaded successfully.")
+
+                # Create FTP_TLS connection
+                ftps = FTP_TLS()
+                ftps.ssl_version = ssl.PROTOCOL_TLS
                 ftps.context = context
 
+                debug(f"Connecting to {FTP_HOST}:{FTP_PORT}...")
                 ftps.connect(FTP_HOST, FTP_PORT, timeout=5)
+                debug("Connected to FTP server.")
+
                 ftps.auth()
+                debug("TLS handshake successful (AUTH TLS).")
+
                 ftps.login(FTP_USER, FTP_PASS)
+                debug("Logged in successfully.")
+
                 try:
-                    ftps.nlst()  # attempt to list directory contents
-                except Exception:
-                    pass  # ignore if directory is empty or inaccessible
+                    files = ftps.nlst()
+                    debug(f"Directory listing: {files}")
+                except Exception as e:
+                    debug(f"Failed to list directory contents: {e}")
+
                 ftps.quit()
                 ftp_ready = True
-                print("FTP is ready.")
+                debug("FTP is ready.")
             except Exception as e:
-                print(f"FTP not ready yet: {e}")
+                debug(f"FTP not ready yet: {e}")
+                traceback.print_exc()
                 time.sleep(5)
 
     @app.route("/healthz")
@@ -78,5 +105,6 @@ data:
             return "FTP not ready", 503
 
     if __name__ == "__main__":
+        debug("Starting healthcheck service...")
         threading.Thread(target=check_ftp, daemon=True).start()
         app.run(host="0.0.0.0", port=8080)
