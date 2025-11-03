@@ -23,7 +23,7 @@ metadata:
   {{ end }}
 spec:
   isCA: true
-  commonName: {{ .Release.Name }}
+  commonName: {{ .Release.Name }}-ca
   secretName: {{ .Release.Name }}-ca-key-pair
   duration: 87600h # 10 years
   privateKey:
