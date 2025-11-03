@@ -50,7 +50,8 @@ data:
 
     def check_ftp():
         global ftp_ready
-        while not ftp_ready:
+        interval = int(os.getenv("FTP_CHECK_INTERVAL", "30"))
+        while True:
             debug("Starting FTP check...")
             try:
                 if not all(os.path.exists(p) for p in [CLIENT_CERT, CLIENT_KEY, CA_CERT]):
@@ -58,44 +59,48 @@ data:
                     debug(f"CLIENT_CERT exists: {os.path.exists(CLIENT_CERT)}")
                     debug(f"CLIENT_KEY exists: {os.path.exists(CLIENT_KEY)}")
                     debug(f"CA_CERT exists: {os.path.exists(CA_CERT)}")
+                    ftp_ready = False
+                else:
+                    # Create and configure SSL context
+                    context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
+                    context.check_hostname = False
+                    context.verify_mode = ssl.CERT_REQUIRED
+                    context.load_verify_locations(cafile=CA_CERT)
+                    context.load_cert_chain(certfile=CLIENT_CERT, keyfile=CLIENT_KEY)
 
-                # Create and configure SSL context
-                context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
-                context.check_hostname = False
-                context.verify_mode = ssl.CERT_REQUIRED
-                context.load_verify_locations(cafile=CA_CERT)
-                context.load_cert_chain(certfile=CLIENT_CERT, keyfile=CLIENT_KEY)
+                    debug("SSL context created and certificates loaded successfully.")
 
-                debug("SSL context created and certificates loaded successfully.")
+                    # Create FTP_TLS connection
+                    ftps = FTP_TLS()
+                    ftps.ssl_version = ssl.PROTOCOL_TLS
+                    ftps.context = context
 
-                # Create FTP_TLS connection
-                ftps = FTP_TLS()
-                ftps.ssl_version = ssl.PROTOCOL_TLS
-                ftps.context = context
+                    debug(f"Connecting to {FTP_HOST}:{FTP_PORT}...")
+                    ftps.connect(FTP_HOST, FTP_PORT, timeout=5)
+                    debug("Connected to FTP server.")
 
-                debug(f"Connecting to {FTP_HOST}:{FTP_PORT}...")
-                ftps.connect(FTP_HOST, FTP_PORT, timeout=5)
-                debug("Connected to FTP server.")
+                    ftps.auth()
+                    debug("TLS handshake successful (AUTH TLS).")
 
-                ftps.auth()
-                debug("TLS handshake successful (AUTH TLS).")
+                    ftps.login(FTP_USER, FTP_PASS)
+                    debug("Logged in successfully.")
 
-                ftps.login(FTP_USER, FTP_PASS)
-                debug("Logged in successfully.")
+                    try:
+                        files = ftps.nlst()
+                        debug(f"Directory listing: {files}")
+                    except Exception as e:
+                        debug(f"Failed to list directory contents: {e}")
 
-                try:
-                    files = ftps.nlst()
-                    debug(f"Directory listing: {files}")
-                except Exception as e:
-                    debug(f"Failed to list directory contents: {e}")
-
-                ftps.quit()
-                ftp_ready = True
-                debug("FTP is ready.")
+                    ftps.quit()
+                    ftp_ready = True
+                    debug("FTP is ready.")
             except Exception as e:
-                debug(f"FTP not ready yet: {e}")
+                ftp_ready = False
+                debug(f"FTP not ready: {e}")
                 traceback.print_exc()
-                time.sleep(5)
+
+            debug(f"Sleeping for {interval} seconds before next check...")
+            time.sleep(interval)
 
     @app.route("/healthz")
     def healthz():

@@ -54,6 +54,8 @@ spec:
         env:
           - name: PYTHONUNBUFFERED
             value: "1"
+          - name: FTP_CHECK_INTERVAL
+            value: "30"
         securityContext:
           privileged: false
         volumeMounts:
@@ -102,6 +104,8 @@ spec:
             name: {{ .Release.Name }}-user
         env:
           - name: SSL_GENERATE
+            value: "NO"
+          - name: FORCE_LOCAL_DATA_SSL
             value: "NO"
           - name: SRV_CERT
             value: tls.crt
