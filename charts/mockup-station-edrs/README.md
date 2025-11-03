@@ -29,7 +29,7 @@ MOCKUP STATION EDRS
 | image.name | string | `"rs-testmeans_edrs-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"feat-rspy807-edrs-patch"` | Image version, can be a tag or a digest |
+| image.version | string | `"feat-rspy807-edrs"` | Image version, can be a tag or a digest |
 | initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
