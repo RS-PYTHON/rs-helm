@@ -68,6 +68,19 @@ entries:
     version: 1.0.0-a3-931c8b0
   - apiVersion: v1
     appVersion: v1.0a3
+    created: "2025-11-03T15:50:44.511498515Z"
+    description: MOCKUP PROCESSOR DPR
+    digest: 1c6ca90b32cde67fd299a7c3dcbf89e3878411c543303fd86b2ec6996e2c75ce
+    icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: mockup-processor-dpr
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/mockup-processor-dpr-1.0.0-a3-7f9eeb2/mockup-processor-dpr-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
+  - apiVersion: v1
+    appVersion: v1.0a3
     created: "2025-10-31T17:26:55.616177667Z"
     description: MOCKUP PROCESSOR DPR
     digest: ecd74fba0aa16f7aeb3740b3e675ba2f8f293cdc5d05989deca58416db2f52ac
@@ -6226,6 +6239,19 @@ entries:
     urls:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/mockup-station-adgs-1.0.0-a3-931c8b0/mockup-station-adgs-1.0.0-a3-931c8b0.tgz
     version: 1.0.0-a3-931c8b0
+  - apiVersion: v1
+    appVersion: v1.0a3
+    created: "2025-11-03T15:50:44.650527845Z"
+    description: MOCKUP STATION ADGS
+    digest: 266f08cf72799227b4c0f3afd4110570f2a46ab6d8e022ba508edc54d080aa7e
+    icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: mockup-station-adgs
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/mockup-station-adgs-1.0.0-a3-7f9eeb2/mockup-station-adgs-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
   - apiVersion: v1
     appVersion: v1.0a3
     created: "2025-10-31T17:26:55.757766883Z"
@@ -12515,6 +12541,19 @@ entries:
     version: 1.0.0-a3-931c8b0
   - apiVersion: v1
     appVersion: v1.0a3
+    created: "2025-11-03T15:50:44.801971861Z"
+    description: MOCKUP STATION CADIP
+    digest: 1a1a1667c50bf6555206e425d298babfb232c81628f89149b9f8ec7f67e9167f
+    icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: mockup-station-cadip
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/mockup-station-cadip-1.0.0-a3-7f9eeb2/mockup-station-cadip-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
+  - apiVersion: v1
+    appVersion: v1.0a3
     created: "2025-10-31T17:26:55.90690924Z"
     description: MOCKUP STATION CADIP
     digest: 8c79d501871edcfbc665fed25cb1a4d8771faa79e29844b1e3cc2270703b1414
@@ -18762,6 +18801,18 @@ entries:
     version: 1.0.0-a3-931c8b0
   - apiVersion: v1
     appVersion: v1.0a3
+    created: "2025-11-03T15:50:44.984495633Z"
+    description: MOCKUP STATION EDRS
+    digest: 0a8d7b665641122f63bd2a15cd91a48a62e0aaba8e4fa0eacd2f2f8aceac702b
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: mockup-station-edrs
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/mockup-station-edrs-1.0.0-a3-7f9eeb2/mockup-station-edrs-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
+  - apiVersion: v1
+    appVersion: v1.0a3
     created: "2025-10-31T17:26:56.050128695Z"
     description: MOCKUP STATION EDRS
     digest: 237c244ceadd0377a1cadbfbf04c961eeec76dee9c4baf93254394a0f24a5e23
@@ -18886,6 +18937,19 @@ entries:
     urls:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/mockup-station-lta-1.0.0-a3-931c8b0/mockup-station-lta-1.0.0-a3-931c8b0.tgz
     version: 1.0.0-a3-931c8b0
+  - apiVersion: v1
+    appVersion: v1.0a3
+    created: "2025-11-03T15:50:45.147233509Z"
+    description: MOCKUP STATION LTA
+    digest: 1868925c3f2633444379479019ac190f23dcbb52fe7fb88439fc0934213eee26
+    icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: mockup-station-lta
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/mockup-station-lta-1.0.0-a3-7f9eeb2/mockup-station-lta-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
   - apiVersion: v1
     appVersion: v1.0a3
     created: "2025-10-31T17:26:56.19105092Z"
@@ -24624,6 +24688,18 @@ entries:
     version: 1.0.0-a3-931c8b0
   - apiVersion: v1
     appVersion: v1.0a3
+    created: "2025-11-03T15:50:45.30676853Z"
+    description: MOCKUP STATION PRIP
+    digest: 656b24ae9a6de6cc769b370a5ccb2457b9c05a490bbbfcfa6ad73a8cda5205a8
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: mockup-station-prip
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/mockup-station-prip-1.0.0-a3-7f9eeb2/mockup-station-prip-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
+  - apiVersion: v1
+    appVersion: v1.0a3
     created: "2025-10-31T17:26:56.347537364Z"
     description: MOCKUP STATION PRIP
     digest: 590de0bdc99646142392abb5c581048586e49dd956db7bcab27a0e72eba3cf47
@@ -25492,6 +25568,19 @@ entries:
     urls:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-catalog-staging-configmap-1.0.0-a3-931c8b0/rs-catalog-staging-configmap-1.0.0-a3-931c8b0.tgz
     version: 1.0.0-a3-931c8b0
+  - apiVersion: v1
+    appVersion: v1.0a3
+    created: "2025-11-03T15:50:45.471581398Z"
+    description: RS SERVER STORAGE CONFIGMAP
+    digest: ee1cb3b355d6f81e72851d6f07e4addc9f40152cbf16c5fdecb6e0fd67822a00
+    icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: rs-catalog-staging-configmap
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-catalog-staging-configmap-1.0.0-a3-7f9eeb2/rs-catalog-staging-configmap-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
   - apiVersion: v1
     appVersion: v1.0a3
     created: "2025-10-31T17:26:56.506871618Z"
@@ -27695,6 +27784,19 @@ entries:
     version: 1.0.0-a3-931c8b0
   - apiVersion: v1
     appVersion: v1.0a3
+    created: "2025-11-03T15:50:45.63421807Z"
+    description: RS DPR SERVICE
+    digest: 9444cc95f1aff24f76497ad5fadd192c3d5ebfbfe21f45d57da05a902f7e058c
+    icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: rs-dpr-service
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-dpr-service-1.0.0-a3-7f9eeb2/rs-dpr-service-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
+  - apiVersion: v1
+    appVersion: v1.0a3
     created: "2025-10-31T17:26:56.674047468Z"
     description: RS DPR SERVICE
     digest: bd31d3605d7eedff0d4431a611b420ca71980c4abf4d751ef5ab264ba49cfbda
@@ -29692,6 +29794,19 @@ entries:
     version: 1.0.0-a3-931c8b0
   - apiVersion: v1
     appVersion: v1.0a3
+    created: "2025-11-03T15:50:45.766875543Z"
+    description: RS Object Storage Access Manager
+    digest: 27b52ba5cd4061132ef600c9c5c3f2fa20ed086dabcb0fde0e5f77c81decd201
+    icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: rs-osam
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-osam-1.0.0-a3-7f9eeb2/rs-osam-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
+  - apiVersion: v1
+    appVersion: v1.0a3
     created: "2025-10-31T17:26:56.82626895Z"
     description: RS Object Storage Access Manager
     digest: 3f7f782ce916c00c5d5b674c15888a8da57abba2cda729676398e9d87e2fbfcb
@@ -31542,6 +31657,19 @@ entries:
     urls:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-adgs-1.0.0-a3-931c8b0/rs-server-adgs-1.0.0-a3-931c8b0.tgz
     version: 1.0.0-a3-931c8b0
+  - apiVersion: v1
+    appVersion: v1.0a3
+    created: "2025-11-03T15:50:45.88268101Z"
+    description: RS SERVER ADGS
+    digest: 7507fc7e2a6b9eb67a7963e8c28e5a3c48bf5fbf2f5db531c6bd3c280242ae3c
+    icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: rs-server-adgs
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-adgs-1.0.0-a3-7f9eeb2/rs-server-adgs-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
   - apiVersion: v1
     appVersion: v1.0a3
     created: "2025-10-31T17:26:56.975553306Z"
@@ -37831,6 +37959,19 @@ entries:
     version: 1.0.0-a3-931c8b0
   - apiVersion: v1
     appVersion: v1.0a3
+    created: "2025-11-03T15:50:46.034242753Z"
+    description: RS SERVER CADIP
+    digest: ad12a60b2ac237e437a345d023b5a7ec0436da315d283e6120e40f5b26fc5fba
+    icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: rs-server-cadip
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-cadip-1.0.0-a3-7f9eeb2/rs-server-cadip-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
+  - apiVersion: v1
+    appVersion: v1.0a3
     created: "2025-10-31T17:26:57.154233858Z"
     description: RS SERVER CADIP
     digest: 31eb586e4a74928d64964d21fb4c44046145772d55630c5369135d6341ba99ab
@@ -44116,6 +44257,19 @@ entries:
     urls:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-catalog-1.0.0-a3-931c8b0/rs-server-catalog-1.0.0-a3-931c8b0.tgz
     version: 1.0.0-a3-931c8b0
+  - apiVersion: v1
+    appVersion: v1.0a3
+    created: "2025-11-03T15:50:46.265330651Z"
+    description: RS SERVER CATALOG
+    digest: 418971d8571085e50c6307829a15d17b43384b20b55496eb3596a89e9e887f2a
+    icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: rs-server-catalog
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-catalog-1.0.0-a3-7f9eeb2/rs-server-catalog-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
   - apiVersion: v1
     appVersion: v1.0a3
     created: "2025-10-31T17:26:57.327663594Z"
@@ -50405,6 +50559,19 @@ entries:
     version: 1.0.0-a3-931c8b0
   - apiVersion: v1
     appVersion: v1.0a3
+    created: "2025-11-03T15:50:46.407348798Z"
+    description: RS SERVER CATALOG DB
+    digest: 363eebe38c29630681358af43b4c68cc0e2799df5dfd6253e450abeef26c1144
+    icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: rs-server-catalog-db
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-catalog-db-1.0.0-a3-7f9eeb2/rs-server-catalog-db-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
+  - apiVersion: v1
+    appVersion: v1.0a3
     created: "2025-10-31T17:26:57.496882589Z"
     description: RS SERVER CATALOG DB
     digest: 032afacce37a328ed32dcedd7f3c43c09f690152faebe8389a9c83e40c92a0ba
@@ -56692,6 +56859,19 @@ entries:
     version: 1.0.0-a3-931c8b0
   - apiVersion: v1
     appVersion: v1.0a3
+    created: "2025-11-03T15:50:46.597588547Z"
+    description: RS SERVER FRONTEND
+    digest: fc6c95a714af95dd599185db54b44f1b3d8410dd0a08de011a1b0b5c9b6312b7
+    icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: rs-server-frontend
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-frontend-1.0.0-a3-7f9eeb2/rs-server-frontend-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
+  - apiVersion: v1
+    appVersion: v1.0a3
     created: "2025-10-31T17:26:57.675848371Z"
     description: RS SERVER FRONTEND
     digest: 58b2b69fab07017daf832f75cf0fb3dcaaa7173ba35707fe2a493460cbd448a9
@@ -62968,6 +63148,19 @@ entries:
     version: 1.0.0-a3-931c8b0
   - apiVersion: v1
     appVersion: v1.0a3
+    created: "2025-11-03T15:50:46.762192129Z"
+    description: RS SERVER PRIP
+    digest: ed73bd489f2bc8bbcf2dcab142a326b224c90dc1d5185f78ddab236a4f4de4af
+    icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: rs-server-prip
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-prip-1.0.0-a3-7f9eeb2/rs-server-prip-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
+  - apiVersion: v1
+    appVersion: v1.0a3
     created: "2025-10-31T17:26:57.836174762Z"
     description: RS SERVER PRIP
     digest: d7682faf97423c90e95c97e5b46adccf4287e7b965df0a8dca9e9a06188f42e2
@@ -63669,6 +63862,19 @@ entries:
     urls:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-staging-1.0.0-a3-931c8b0/rs-server-staging-1.0.0-a3-931c8b0.tgz
     version: 1.0.0-a3-931c8b0
+  - apiVersion: v1
+    appVersion: v1.0a3
+    created: "2025-11-03T15:50:46.918926205Z"
+    description: RS SERVER STAGING
+    digest: 5d364b2bb39e086ca201f8962dcdcec298ae0093add3f3f36942a6b7d19b172b
+    icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: rs-server-staging
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-staging-1.0.0-a3-7f9eeb2/rs-server-staging-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
   - apiVersion: v1
     appVersion: v1.0a3
     created: "2025-10-31T17:26:57.997738829Z"
@@ -69256,6 +69462,19 @@ entries:
     version: 1.0.0-a3-931c8b0
   - apiVersion: v1
     appVersion: v1.0a3
+    created: "2025-11-03T15:50:47.058696088Z"
+    description: RS SERVER STATION SECRETS
+    digest: 71fb6b2a61c8442ad3a3967ff944bd02674fb1687852fdcf2e184c8e1f0a8551
+    icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: rs-server-station-secrets
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/rs-server-station-secrets-1.0.0-a3-7f9eeb2/rs-server-station-secrets-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
+  - apiVersion: v1
+    appVersion: v1.0a3
     created: "2025-10-31T17:26:58.158502679Z"
     description: RS SERVER STATION SECRETS
     digest: 19d83701c5aea21369b04091e6d064e7393db69a8c6d053e70b914831c69fcc1
@@ -74205,6 +74424,19 @@ entries:
     version: 1.0.0-a3-931c8b0
   - apiVersion: v1
     appVersion: v1.0a3
+    created: "2025-11-03T15:50:47.194888726Z"
+    description: STAC BROWSER
+    digest: 18f9a58661677fb5a5548b0ce8e059294a6374b3798b50f9a2c6ccc1fb01c5e0
+    icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
+    maintainers:
+    - name: RS-PYTHON
+      url: https://github.com/RS-PYTHON/rs-helm
+    name: stac-browser
+    urls:
+    - https://github.com/RS-PYTHON/rs-helm/releases/download/stac-browser-1.0.0-a3-7f9eeb2/stac-browser-1.0.0-a3-7f9eeb2.tgz
+    version: 1.0.0-a3-7f9eeb2
+  - apiVersion: v1
+    appVersion: v1.0a3
     created: "2025-10-31T17:26:58.371427244Z"
     description: STAC BROWSER
     digest: 5138a17db3fe91e4f329ad02dac57d7c41606cdeb68909dfc54a1a83b7c6f220
@@ -78498,4 +78730,4 @@ entries:
     urls:
     - https://github.com/RS-PYTHON/rs-helm/releases/download/stac-browser-0.2.0-a10/stac-browser-0.2.0-a10.tgz
     version: 0.2.0-a10
-generated: "2025-11-03T15:22:16.046642053Z"
+generated: "2025-11-03T15:50:47.222861426Z"
