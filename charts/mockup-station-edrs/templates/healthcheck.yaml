@@ -58,7 +58,7 @@ data:
                 # Read environment variable (defaults to FALSE)
                 use_ssl_env = os.getenv("SSL_ENABLE", "FALSE").strip().lower()
                 use_ssl = use_ssl_env in ["1", "true", "yes"]
-                
+
                 if use_ssl:
                     debug("Connecting via FTPES (explicit TLS)...")
 
