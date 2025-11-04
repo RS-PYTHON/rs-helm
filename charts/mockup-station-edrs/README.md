@@ -15,6 +15,7 @@ MOCKUP STATION EDRS
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
+| app.FTPES | object | `{"enabled":false}` | Use FTPES with TLS |
 | app.authConfigFile | string | `"auth_tmp.json"` | Auth configuration file for the application |
 | app.bucketName | string | `"rs-dev-cluster-temp"` | Bucket name to stage data from |
 | app.bucketPath | string | `"ARD_V2/SAFE/"` | Path inside the bucket to the data |
