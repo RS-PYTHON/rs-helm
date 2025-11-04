@@ -24,7 +24,7 @@ metadata:
 data:
   healthcheck.py: |
     from flask import Flask
-    from ftplib import FTP_TLS
+    from ftplib import FTP,FTP_TLS
     import ssl
     import os
     import time
@@ -54,44 +54,69 @@ data:
         while True:
             debug("Starting FTP check...")
             try:
-                if not all(os.path.exists(p) for p in [CLIENT_CERT, CLIENT_KEY, CA_CERT]):
-                    debug("One or more certificate files are missing!")
-                    debug(f"CLIENT_CERT exists: {os.path.exists(CLIENT_CERT)}")
-                    debug(f"CLIENT_KEY exists: {os.path.exists(CLIENT_KEY)}")
-                    debug(f"CA_CERT exists: {os.path.exists(CA_CERT)}")
-                    ftp_ready = False
+
+                # Read environment variable (defaults to FALSE)
+                use_ssl_env = os.getenv("SSL_ENABLE", "FALSE").strip().lower()
+                self.use_ssl = use_ssl_env in ["1", "true", "yes"]
+                
+                if self.use_ssl:
+                    debug("Connecting via FTPES (explicit TLS)...")
+
+                    if not all(os.path.exists(p) for p in [CLIENT_CERT, CLIENT_KEY, CA_CERT]):
+                        debug("One or more certificate files are missing!")
+                        debug(f"CLIENT_CERT exists: {os.path.exists(CLIENT_CERT)}")
+                        debug(f"CLIENT_KEY exists: {os.path.exists(CLIENT_KEY)}")
+                        debug(f"CA_CERT exists: {os.path.exists(CA_CERT)}")
+                        ftp_ready = False
+                    else:
+                        # Create and configure SSL context
+                        context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
+                        context.check_hostname = False
+                        context.verify_mode = ssl.CERT_REQUIRED
+                        context.load_verify_locations(cafile=CA_CERT)
+                        context.load_cert_chain(certfile=CLIENT_CERT, keyfile=CLIENT_KEY)
+
+                        debug("SSL context created and certificates loaded successfully.")
+
+                        # Create FTP_TLS connection
+                        ftps = FTP_TLS()
+                        ftps.ssl_version = ssl.PROTOCOL_TLS
+                        ftps.context = context
+
+                        debug(f"Connecting to {FTP_HOST}:{FTP_PORT}...")
+                        ftps.connect(FTP_HOST, FTP_PORT, timeout=5)
+                        debug("Connected to FTP server.")
+
+                        ftps.auth()
+                        debug("TLS handshake successful (AUTH TLS).")
+
+                        ftps.login(FTP_USER, FTP_PASS)
+                        debug("Logged in successfully.")
+
+                        try:
+                            files = ftps.nlst()
+                            debug(f"Directory listing: {files}")
+                        except Exception as e:
+                            debug(f"Failed to list directory contents: {e}")
+
+                        ftps.quit()
+                        ftp_ready = True
+                        debug("FTP is ready.")
                 else:
-                    # Create and configure SSL context
-                    context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
-                    context.check_hostname = False
-                    context.verify_mode = ssl.CERT_REQUIRED
-                    context.load_verify_locations(cafile=CA_CERT)
-                    context.load_cert_chain(certfile=CLIENT_CERT, keyfile=CLIENT_KEY)
-
-                    debug("SSL context created and certificates loaded successfully.")
-
-                    # Create FTP_TLS connection
-                    ftps = FTP_TLS()
-                    ftps.ssl_version = ssl.PROTOCOL_TLS
-                    ftps.context = context
-
-                    debug(f"Connecting to {FTP_HOST}:{FTP_PORT}...")
-                    ftps.connect(FTP_HOST, FTP_PORT, timeout=5)
+                    debug("Connecting via plain FTP (no SSL)...")
+                    ftp = FTP()
+                    ftp.connect(FTP_HOST, FTP_PORT, timeout=5)
                     debug("Connected to FTP server.")
-
-                    ftps.auth()
-                    debug("TLS handshake successful (AUTH TLS).")
-
-                    ftps.login(FTP_USER, FTP_PASS)
+                    ftp.login(FTP_USER, FTP_PASS)
                     debug("Logged in successfully.")
 
                     try:
-                        files = ftps.nlst()
+                        files = ftp.nlst()
                         debug(f"Directory listing: {files}")
                     except Exception as e:
                         debug(f"Failed to list directory contents: {e}")
 
-                    ftps.quit()
+                    ftp.quit()
                     ftp_ready = True
                     debug("FTP is ready.")
             except Exception as e:

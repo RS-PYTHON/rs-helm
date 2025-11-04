@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+{{ if .Values.app }}
+{{ if .Values.app.FTPES }}
+{{ if .Values.app.FTPES.enabled }}
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -89,3 +92,6 @@ spec:
   issuerRef:
     name: {{ .Release.Name }}-ca-issuer
     kind: Issuer
+{{ end }}
+{{ end }}
+{{ end }}

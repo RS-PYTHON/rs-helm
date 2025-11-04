@@ -56,6 +56,17 @@ spec:
             value: "1"
           - name: FTP_CHECK_INTERVAL
             value: "15"
+        {{ if .Values.app }}
+        {{ if .Values.app.FTPES }}
+        {{ if .Values.app.FTPES.enabled }}
+          - name: SSL_ENABLE
+            value: "TRUE"
+        {{ else }}
+          - name: SSL_ENABLE
+            value: "FALSE"
+        {{ end }}
+        {{ end }}
+        {{ end }}
         securityContext:
           privileged: false
         volumeMounts:
@@ -103,16 +114,20 @@ spec:
         - secretRef:
             name: {{ .Release.Name }}-user
         env:
-          - name: SSL_GENERATE
-            value: "NO"
-          - name: FORCE_LOCAL_DATA_SSL
-            value: "NO"
+        {{ if .Values.app }}
+        {{ if .Values.app.FTPES }}
+        {{ if .Values.app.FTPES.enabled }}
+          - name: SSL_ENABLE
+            value: "YES"
           - name: SRV_CERT
             value: tls.crt
           - name: SRV_KEY
             value: tls.key
           - name: CA_CERT
             value: ca.crt
+        {{ end }}
+        {{ end }}
+        {{ end }}
         securityContext:
           privileged: false
       {{ if .Values.image }}

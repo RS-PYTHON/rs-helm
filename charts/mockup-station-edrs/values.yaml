@@ -41,6 +41,10 @@ app:
   username: test
   # -- FTP password
   password: test
+  # -- Use FTPES with TLS
+  FTPES:
+    enabled: false
+
 
 obs:
   # -- URL of the object storage service endpoint
