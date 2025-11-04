@@ -119,7 +119,7 @@ volume:
   # -- AccessMode of the database volume
   accessModes: ReadWriteOnce
   # -- StorageClass of the database volume
-  storageClassName: csi-cinder-sc-retain
+  storageClassName: csi-cinder-high-speed-retain
 
 # -- Keep the ressources for PVC and ConfigMap. Default is to keep.
 helmResourcePolicy: keep
