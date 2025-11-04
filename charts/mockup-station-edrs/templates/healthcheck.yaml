@@ -57,9 +57,9 @@ data:
 
                 # Read environment variable (defaults to FALSE)
                 use_ssl_env = os.getenv("SSL_ENABLE", "FALSE").strip().lower()
-                self.use_ssl = use_ssl_env in ["1", "true", "yes"]
+                use_ssl = use_ssl_env in ["1", "true", "yes"]
                 
-                if self.use_ssl:
+                if use_ssl:
                     debug("Connecting via FTPES (explicit TLS)...")
 
                     if not all(os.path.exists(p) for p in [CLIENT_CERT, CLIENT_KEY, CA_CERT]):
