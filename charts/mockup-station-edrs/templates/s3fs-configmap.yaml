@@ -29,7 +29,7 @@ data:
 
     mkdir -p /app/vsftpd/users/${FTP_USER}/NOMINAL ;
 
-    s3fs rs-dev-cluster-temp:/stations/EDRS /app/vsftpd/users/${FTP_USER}/NOMINAL -o passwd_file=/etc/passwd-s3fs/edrs -o use_path_request_style -o nonempty -o allow_other -o uid=1001 -o gid=1000 -o mp_umask=0002 -o umask=0002 -o url={{ .Values.obs.endpoint }} -o compat_dir ;
+    s3fs rs-dev-cluster-temp:/stations/EDRS /app/vsftpd/users/${FTP_USER}/NOMINAL -o passwd_file=/etc/passwd-s3fs/edrs -o use_path_request_style -o nonempty -o allow_other -o uid=1000 -o gid=1000 -o mp_umask=0002 -o umask=0002 -o url={{ .Values.obs.endpoint }} -o compat_dir ;
 
     sleep 3650d ;
 
