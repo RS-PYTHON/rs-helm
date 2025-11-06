@@ -136,10 +136,10 @@ affinity:
     requiredDuringSchedulingIgnoredDuringExecution:
       - labelSelector:
           matchExpressions:
-            - key: app.kubernetes.io/instance
+            - key: app.kubernetes.io/name
               operator: In
               values:
-                - {{ .Release.Name }}
+                - mockup-station-edrs
         topologyKey: "kubernetes.io/hostname"
 
 # -- Pod toleration
