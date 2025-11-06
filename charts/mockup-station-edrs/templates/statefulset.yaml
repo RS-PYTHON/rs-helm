@@ -194,10 +194,24 @@ spec:
       {{ end }}
       {{ end }}
       {{ end }}
+      {{ if .Values.app }}
+      {{ if .Values.app.FTPES }}
+      {{ if .Values.app.FTPES.enabled }}
       - name: s3fs-edrs
         secret:
           defaultMode: 256
           secretName: s3fs-edrs
+      - configMap:
+          defaultMode: 484
+          name: s3fs-umount-script
+        name: s3fs-umount-script
+      - configMap:
+          defaultMode: 484
+          name: s3fs-start-script
+        name: s3fs-start-script
+      {{ end }}
+      {{ end }}
+      {{ end }}
       - name: healthcheck-script
         configMap:
           name: {{ .Release.Name }}-healthcheck-script
