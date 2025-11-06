@@ -112,7 +112,7 @@ spec:
         {{ if .Values.app.S3FS }}
         {{ if .Values.app.S3FS.enabled }}
         - mountPath: /app/vsftpd/users/{{ .Values.app.username }}/NOMINAL
-          name: shared-data
+          name: shared-data-ftp
         {{ end }}
         {{ end }}
         {{ end }}
@@ -172,7 +172,7 @@ spec:
       - hostPath:
           path: /mnt/shared-s3
           type: DirectoryOrCreate
-          name: shared-data
+          name: shared-data-ftp
       {{ end }}
       {{ end }}
       {{ end }}

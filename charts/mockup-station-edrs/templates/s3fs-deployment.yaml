@@ -67,9 +67,9 @@ spec:
           name: s3fs-umount-script
         - mountPath: /dev/fuse
           name: fuse-device
-        - mountPath: /mnt/s3
+        - mountPath: /app/vsftpd/users/{{ .Values.app.username }}/NOMINAL
           mountPropagation: Bidirectional
-          name: shared-data
+          name: shared-data-s3fs
         securityContext:
           privileged: true
       {{- with .Values.affinity }}
@@ -100,7 +100,7 @@ spec:
       - hostPath:
           path: /mnt/shared-s3
           type: DirectoryOrCreate
-        name: shared-data
+        name: shared-data-s3fs
   revisionHistoryLimit: 10
 {{ end }}
 {{ end }}
