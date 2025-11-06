@@ -14,7 +14,7 @@ MOCKUP STATION EDRS
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| affinity | object | `{"podAffinity":{"requiredDuringSchedulingIgnoredDuringExecution":[{"labelSelector":{"matchExpressions":[{"key":"app.kubernetes.io/instance","operator":"In","values":[{"":null}]}]},"topologyKey":"kubernetes.io/hostname"}]}}` | Pod affinity |
+| affinity | object | `{"podAffinity":{"requiredDuringSchedulingIgnoredDuringExecution":[{"labelSelector":{"matchExpressions":[{"key":"app.kubernetes.io/name","operator":"In","values":["mockup-station-edrs"]}]},"topologyKey":"kubernetes.io/hostname"}]}}` | Pod affinity |
 | app.FTPES | object | `{"enabled":false}` | Use FTPES with TLS |
 | app.S3FS.enabled | bool | `false` |  |
 | app.authConfigFile | string | `"auth_tmp.json"` | Auth configuration file for the application |
