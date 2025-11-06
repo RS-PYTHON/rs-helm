@@ -96,11 +96,11 @@ spec:
       - hostPath:
           path: /dev/fuse
           type: CharDevice
-          name: fuse-device
+        name: fuse-device
       - hostPath:
           path: /mnt/shared-s3
           type: DirectoryOrCreate
-          name: shared-data
+        name: shared-data
   revisionHistoryLimit: 10
 {{ end }}
 {{ end }}
