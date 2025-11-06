@@ -70,9 +70,15 @@ spec:
         securityContext:
           privileged: false
         volumeMounts:
+        {{ if .Values.app }}
+        {{ if .Values.app.FTPES }}
+        {{ if .Values.app.FTPES.enabled }}
           - name: client-ftp-certs
             mountPath: /certs
             readOnly: true
+        {{ end }}
+        {{ end }}
+        {{ end }}
           - name: healthcheck-script
             mountPath: /healthcheck
             readOnly: true
@@ -93,17 +99,23 @@ spec:
             memory: {{ .Values.resources.limit.ram }}
             cpu: {{ .Values.resources.limit.cpu }}
         volumeMounts:
+        {{ if .Values.app }}
+        {{ if .Values.app.FTPES }}
+        {{ if .Values.app.FTPES.enabled }}
         - name: server-ftp-certs
           mountPath: /app/vsftpd/cert
           readOnly: true
-        - name: service-config-volume
-          mountPath: {{ .Values.app.confDir }}/{{ .Values.app.authConfigFile }}
-          subPath: {{ .Values.app.authConfigFile }}
-        - name: catalog-config-volume
-          mountPath: {{ .Values.app.confDir }}/Catalog/{{ .Values.app.catalogConfigFile }}
-          subPath: {{ .Values.app.catalogConfigFile }}
-        - mountPath: /opt/edrs/config/Storage
+        {{ end }}
+        {{ end }}
+        {{ end }}
+        {{ if .Values.app }}
+        {{ if .Values.app.S3FS }}
+        {{ if .Values.app.S3FS.enabled }}
+        - mountPath: /app/vsftpd/users/
           name: opt-edrs
+        {{ end }}
+        {{ end }}
+        {{ end }}
         ports:
         - name: web
           protocol: TCP
@@ -130,6 +142,37 @@ spec:
         {{ end }}
         securityContext:
           privileged: false
+      {{ if .Values.app }}
+      {{ if .Values.app.S3FS }}
+      {{ if .Values.app.S3FS.enabled }}
+      - name: s3fs
+        command:
+        - /scripts/start/start.sh
+        image: ubuntu:latest
+        imagePullPolicy: Always
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - /scripts/umount/umount.sh
+        envFrom:
+        - secretRef:
+            name: {{ .Release.Name }}-user
+        volumeMounts:
+        - mountPath: /etc/passwd-s3fs
+          name: s3fs-edrs
+          readOnly: true
+        - mountPath: /scripts/start/
+          name: s3fs-start-script
+        - mountPath: /scripts/umount/
+          name: s3fs-umount-script
+        - mountPath: /app/vsftpd/users/
+          name: opt-edrs
+        securityContext:
+          privileged: false
+      {{ end }}
+      {{ end }}
+      {{ end }}
       {{ if .Values.image }}
       {{ if .Values.image.imagePullSecrets }}
       imagePullSecrets:
@@ -139,21 +182,25 @@ spec:
       restartPolicy: Always
       securityContext: {}
       volumes:
+      {{ if .Values.app }}
+      {{ if .Values.app.FTPES }}
+      {{ if .Values.app.FTPES.enabled }}
       - name: client-ftp-certs
         secret:
           secretName: {{ .Release.Name }}-client-tls
       - name: server-ftp-certs
         secret:
           secretName: {{ .Release.Name }}-server-tls
+      {{ end }}
+      {{ end }}
+      {{ end }}
+      - name: s3fs-edrs
+        secret:
+          defaultMode: 256
+          secretName: s3fs-edrs
       - name: healthcheck-script
         configMap:
           name: {{ .Release.Name }}-healthcheck-script
-      - name: service-config-volume
-        configMap:
-          name: {{ .Release.Name }}-service-config
-      - name: catalog-config-volume
-        configMap:
-          name: {{ .Release.Name }}-catalog-config
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

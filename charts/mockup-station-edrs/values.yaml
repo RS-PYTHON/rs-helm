@@ -44,6 +44,8 @@ app:
   # -- Use FTPES with TLS
   FTPES:
     enabled: false
+  S3FS:
+    enabled: false
 
 
 obs:
