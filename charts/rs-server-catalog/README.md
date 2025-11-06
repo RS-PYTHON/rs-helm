@@ -41,7 +41,7 @@ RS SERVER CATALOG
 | cors.credentials | bool | `true` | Set to true to enable credentials via CORS requests. Note that you'll need to set CORS_ORIGINS to something other than *, because credentials are disallowed for wildcard CORS origins. |
 | cors.headers | list | `["*"]` | If CORS credentials are true and you're using an Authorization header, set this to Content-Type,Authorization. Alternatively, you can allow all headers by setting this to *. |
 | cors.methods | list | `["GET","POST","OPTIONS"]` | A list of HTTP methods that should be allowed for cross-origin requests. Defaults to "GET,POST,OPTIONS" |
-| cors.origins | list | `["https://stac-browser-catalog.subdomain.example.com;http://localhost:8080"]` | A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser |
+| cors.origins | list | `["https://stac-browser-catalog.subdomain.example.com","http://localhost:8080"]` | A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-catalog"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
