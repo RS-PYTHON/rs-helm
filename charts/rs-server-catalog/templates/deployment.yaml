@@ -120,13 +120,13 @@ spec:
         - name: S3_REGION
           value: {{ .Values.obs.region }}
         - name: CORS_ORIGINS
-          value: {{ .Values.cors.origins | squote }}
+          value: {{ .Values.cors.origins }}
         - name: CORS_METHODS
-          value: {{ .Values.cors.methods | squote }}
+          value: {{ .Values.cors.methods }}
         - name: CORS_CREDENTIALS
           value: "{{ .Values.cors.credentials }}"
         - name: CORS_HEADERS
-          value: {{ .Values.cors.headers | squote }}
+          value: {{ .Values.cors.headers }}
         - name: BUCKET_CONFIG_FILE_PATH
           value: {{ .Values.app.confDir }}/{{ .Values.app.bucketConfig.bucketConfigFileName }}
         {{ if .Values.tempo }}
