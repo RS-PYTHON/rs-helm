@@ -70,6 +70,14 @@ spec:
         - mountPath: /app/vsftpd/users/{{ .Values.app.username }}/NOMINAL
           mountPropagation: Bidirectional
           name: shared-data
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - '[ "$(ls -A /app/vsftpd/users/{{ .Values.app.username }}/NOMINAL)" ]'
+          initialDelaySeconds: 5
+          periodSeconds: 10
         securityContext:
           privileged: true
       {{- with .Values.affinity }}

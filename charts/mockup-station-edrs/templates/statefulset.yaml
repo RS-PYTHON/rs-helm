@@ -113,6 +113,14 @@ spec:
         {{ if .Values.app.S3FS.enabled }}
         - mountPath: /app/vsftpd/users/{{ .Values.app.username }}/NOMINAL
           name: shared-data
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - '[ "$(ls -A /app/vsftpd/users/{{ .Values.app.username }}/NOMINAL)" ]'
+          initialDelaySeconds: 5
+          periodSeconds: 10
         {{ end }}
         {{ end }}
         {{ end }}
