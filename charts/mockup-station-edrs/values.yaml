@@ -131,7 +131,16 @@ volume:
 helmResourcePolicy: keep
 
 # -- Pod affinity
-affinity: {}
+affinity:
+  podAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+            - key: app.kubernetes.io/instance
+              operator: In
+              values:
+                - {{ .Release.Name }}
+        topologyKey: "kubernetes.io/hostname"
 
 # -- Pod toleration
 tolerations: []
