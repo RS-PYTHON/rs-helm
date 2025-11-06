@@ -111,8 +111,8 @@ spec:
         {{ if .Values.app }}
         {{ if .Values.app.S3FS }}
         {{ if .Values.app.S3FS.enabled }}
-        - mountPath: /app/vsftpd/users/
-          name: opt-edrs
+        - mountPath: /app/vsftpd/users/{{ .Values.app.username }}/NOMINAL
+          name: shared-data
         {{ end }}
         {{ end }}
         {{ end }}
@@ -142,37 +142,6 @@ spec:
         {{ end }}
         securityContext:
           privileged: false
-      {{ if .Values.app }}
-      {{ if .Values.app.S3FS }}
-      {{ if .Values.app.S3FS.enabled }}
-      - name: s3fs
-        command:
-        - /scripts/start/start.sh
-        image: ubuntu:latest
-        imagePullPolicy: Always
-        lifecycle:
-          preStop:
-            exec:
-              command:
-              - /scripts/umount/umount.sh
-        envFrom:
-        - secretRef:
-            name: {{ .Release.Name }}-user
-        volumeMounts:
-        - mountPath: /etc/passwd-s3fs
-          name: s3fs-edrs
-          readOnly: true
-        - mountPath: /scripts/start/
-          name: s3fs-start-script
-        - mountPath: /scripts/umount/
-          name: s3fs-umount-script
-        - mountPath: /app/vsftpd/users/
-          name: opt-edrs
-        securityContext:
-          privileged: false
-      {{ end }}
-      {{ end }}
-      {{ end }}
       {{ if .Values.image }}
       {{ if .Values.image.imagePullSecrets }}
       imagePullSecrets:
@@ -194,27 +163,19 @@ spec:
       {{ end }}
       {{ end }}
       {{ end }}
-      {{ if .Values.app }}
-      {{ if .Values.app.S3FS }}
-      {{ if .Values.app.S3FS.enabled }}
-      - name: s3fs-edrs
-        secret:
-          defaultMode: 256
-          secretName: s3fs-edrs
-      - configMap:
-          defaultMode: 484
-          name: s3fs-umount-script
-        name: s3fs-umount-script
-      - configMap:
-          defaultMode: 484
-          name: s3fs-start-script
-        name: s3fs-start-script
-      {{ end }}
-      {{ end }}
-      {{ end }}
       - name: healthcheck-script
         configMap:
           name: {{ .Release.Name }}-healthcheck-script
+      {{ if .Values.app }}
+      {{ if .Values.app.S3FS }}
+      {{ if .Values.app.S3FS.enabled }}
+      - hostPath:
+          path: /mnt/shared-s3
+          type: DirectoryOrCreate
+          name: shared-data
+      {{ end }}
+      {{ end }}
+      {{ end }}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

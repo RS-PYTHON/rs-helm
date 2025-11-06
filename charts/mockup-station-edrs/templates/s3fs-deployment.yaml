@@ -1,0 +1,107 @@
+# Copyright 2024 CS Group
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+{{ if .Values.app }}
+{{ if .Values.app.S3FS }}
+{{ if .Values.app.S3FS.enabled }}
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "mychart.Labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "mychart.selectorLabels" . | nindent 6 }}
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 50%
+  template:
+    metadata:
+      name: {{ .Release.Name }}
+      labels:
+        {{- include "mychart.selectorLabels" . | nindent 8 }}
+    spec:
+      automountServiceAccountToken: false
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: s3fs
+        command:
+        - /scripts/start/start.sh
+        image: ubuntu:latest
+        imagePullPolicy: Always
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - /scripts/umount/umount.sh
+        env:
+          - name: FTP_USER
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Release.Name }}-user
+                key: FTP_USER
+        volumeMounts:
+        - mountPath: /etc/passwd-s3fs
+          name: s3fs-edrs
+          readOnly: true
+        - mountPath: /scripts/start/
+          name: s3fs-start-script
+        - mountPath: /scripts/umount/
+          name: s3fs-umount-script
+        - mountPath: /dev/fuse
+          name: fuse-device
+        - mountPath: /mnt/s3
+          mountPropagation: Bidirectional
+          name: shared-data
+        securityContext:
+          privileged: true
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+      - name: s3fs-edrs
+        secret:
+          defaultMode: 256
+          secretName: s3fs-edrs
+      - configMap:
+          defaultMode: 484
+          name: s3fs-umount-script
+        name: s3fs-umount-script
+      - configMap:
+          defaultMode: 484
+          name: s3fs-start-script
+        name: s3fs-start-script
+      - hostPath:
+          path: /dev/fuse
+          type: CharDevice
+          name: fuse-device
+      - hostPath:
+          path: /mnt/shared-s3
+          type: DirectoryOrCreate
+          name: shared-data
+  revisionHistoryLimit: 10
+{{ end }}
+{{ end }}
+{{ end }}

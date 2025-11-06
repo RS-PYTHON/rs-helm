@@ -18,6 +18,7 @@
 kind: ConfigMap
 metadata:
   name: s3fs-start-script
+  namespace: {{ .Values.namespace }}
 apiVersion: v1
 data:
   start.sh: |-
