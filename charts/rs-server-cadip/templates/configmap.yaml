@@ -280,6 +280,8 @@ data:
                 - FrontEndStatusOK eq {FrontEndStatusOK}
                 - DownlinkStatusOK eq {DownlinkStatusOK}
                 - DeliveryPushOK eq {DeliveryPushOK}
+                - '{t_contains}'
+                - '{t_intersects}'
           sort:
             sort_by_tpl: '&$orderby={sort_param} {sort_order}'
             sort_param_mapping:
@@ -651,7 +653,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -688,7 +690,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -725,7 +727,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -763,7 +765,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -801,7 +803,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -839,7 +841,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -877,7 +879,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -915,7 +917,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -953,7 +955,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -991,7 +993,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -1029,7 +1031,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -1067,7 +1069,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -1105,7 +1107,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -1143,7 +1145,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -1181,7 +1183,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
