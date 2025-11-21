@@ -96,7 +96,7 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}-search-service-config
+  name: {{ .Release.Name }}-service-config
   namespace: {{ .Values.namespace }}
 data:
   {{ .Values.app.edrsStations }}: |

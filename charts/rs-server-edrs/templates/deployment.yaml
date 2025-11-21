@@ -56,7 +56,7 @@ spec:
         - name: search-service-config-volume
           mountPath: {{ .Values.app.confDir }}/{{ .Values.app.edrsSearchConfigFile }}
           subPath: {{ .Values.app.edrsSearchConfigFile }}
-        - name: search-service-config-volume
+        - name: service-config-volume
           mountPath: {{ .Values.app.confDir }}/{{ .Values.app.edrsStations }}
           subPath: {{ .Values.app.edrsStations }}
         ports:
@@ -138,15 +138,9 @@ spec:
         - name: service-config-volume
           configMap:
             name: {{ .Release.Name }}-service-config
-        - name: token-service-config-volume
-          configMap:
-            name: {{ .Release.Name }}-token-service-config
         - name: search-service-config-volume
           configMap:
             name: {{ .Release.Name }}-search-service-config
-        - name: ptype-service-config-volume
-          configMap:
-            name: {{ .Release.Name }}-ptype-service-config
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
