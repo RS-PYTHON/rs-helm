@@ -165,6 +165,10 @@ obs:
     # -- Secret Key to authenticate with the object storage service
     sk: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
 
+edrs:
+  secret:
+    TO_BE_ADDED: TO_BE_ADDED
+
 auth:
   secret:
     # -- OIDC End Point
