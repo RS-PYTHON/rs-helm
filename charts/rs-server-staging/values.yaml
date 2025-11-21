@@ -71,15 +71,15 @@ app:
     s3rspy:
       type: s3
   # -- Bucket configuration to use to monitor the lifespan and name of data buckets
-  # Use an external configuration through an external configmap with the value "externalCatalogBucketConfigMapName"
+  # Use an external configuration through an external configmap with the value "externalStagingBucketConfigMapName"
   # OR
   # Set your own configuration in the value expirationBucketCsv
   bucketConfig:
     # -- Set to true to use an external configmap for the configuration instead of the one set in expirationBucketCsv
     useExternalStagingBucketConfigMap: false
-    # -- Name of the external configmap to use. Used only if useExternalCatalogBucketConfigMap is true
+    # -- Name of the external configmap to use. Used only if useExternalStagingBucketConfigMap is true
     externalStagingBucketConfigMapName: ""
-    # -- Bucket configuration. Used only if useExternalCatalogBucketConfigMap is false.
+    # -- Bucket configuration. Used only if useExternalStagingBucketConfigMap is false.
     # Default config puts all data in a bucket called rspython-ops-staging-all-production with a lifespan of 30 days.
     expirationBucketCsv: |
       *, *, *, 30, rspython-ops-staging-all-production
