@@ -12,14 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# THIS FILE WAS AUTOMATICALLY CREATED FROM:
-#  - rs-server/services/prip/config/prip_search_config.template.yaml
-#  - rs-server/services/prip/config/prip_ws_config.template.yaml
-#  - rs-server/services/prip/config/prip_ws_config_token_module.template.yaml
-#  - rs-server/resources/sync_config_files.py
-# DON'T MODIFY IT DIRECTLY !
-
-
 apiVersion: v1
 kind: ConfigMap
 metadata:
