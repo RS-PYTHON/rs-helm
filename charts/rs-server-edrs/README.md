@@ -16,9 +16,11 @@ RS SERVER EDRS
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
+| app.edrsSearchConfigFile | string | `"edrs_search_config.yaml"` |  |
+| app.edrsStations | string | `"edrs_stations.yaml"` |  |
 | app.port | int | `8000` | Port for the application |
-| app.station.pedc.endpoint.url | string | `"X"` | PEDC station URL |
-| app.station.bedc.endpoint.url | string | `"X"` | BEDC station URL |
+| app.station.bedc.endpoint.url | string | `"TO be added"` | EDRS BEDC station URL |
+| app.station.pedc.endpoint.url | string | `"TO be added"` | EDRS PEDC station URL |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | app.useTokenModule | bool | `false` | The way the token for the external stations is loaded: own module or let eodag to do it (set it to false) |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
@@ -31,7 +33,7 @@ RS SERVER EDRS
 | image.name | string | `"rs-server-edrs"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"1.0a3"` | Image version, can be a tag or a digest |
+| image.version | string | `"latest"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
