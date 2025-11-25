@@ -34,10 +34,10 @@ RS SERVER CATALOG
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
-| auth.secret.oidc_client_id | string | `""` | OIDC CLient ID |
+| auth.secret.oidc_client_id | string | `"apikeymanager"` | OIDC CLient ID |
 | auth.secret.oidc_client_secret | string | `""` | OIDC Secret used to sync user info from Keycloak |
-| auth.secret.oidc_endpoint | string | `""` | OIDC End Point |
-| auth.secret.oidc_realm | string | `""` | OIDC Realm |
+| auth.secret.oidc_endpoint | string | `"https://iam.example.com"` | OIDC End Point |
+| auth.secret.oidc_realm | string | `"rspy"` | OIDC Realm |
 | cors.credentials | bool | `true` | Set to true to enable credentials via CORS requests. Note that you'll need to set CORS_ORIGINS to something other than *, because credentials are disallowed for wildcard CORS origins. |
 | cors.headers | string | `"*"` | If CORS credentials are true and you're using an Authorization header, set this to Content-Type,Authorization. Alternatively, you can allow all headers by setting this to *. |
 | cors.methods | string | `"GET,POST,OPTIONS"` | A list of HTTP methods that should be allowed for cross-origin requests. Defaults to "GET,POST,OPTIONS" |
@@ -61,10 +61,10 @@ RS SERVER CATALOG
 | otel.trace_body | bool | `false` | Trace request bodies and response contents with OpenTelemetry ? |
 | otel.trace_headers | bool | `false` | Trace request headers with OpenTelemetry ? |
 | postgres.db | string | `"catalog"` | PostgreSQL database name |
-| postgres.host | string | `"rs-server-catalog-db.database.svc.cluster.local"` | PostgreSQL service URL |
+| postgres.host | string | `"cnpgstac-rw.database.svc.cluster.local"` | PostgreSQL service URL |
 | postgres.port | string | `"5432"` | PostgreSQL port |
 | postgres.secret.pass | string | `"password"` | Password to authenticate with the PostgreSQL service |
-| postgres.secret.user | string | `"postgres"` | Username to authenticate with the PostgreSQL service |
+| postgres.secret.user | string | `"catalog"` | Username to authenticate with the PostgreSQL service |
 | probe.liveness.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/catalog/_mgmt/health"` | Path for the liveness probe |
 | probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |

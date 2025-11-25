@@ -81,11 +81,11 @@ obs:
 auth:
   secret:
     # -- OIDC End Point
-    oidc_endpoint: ""
+    oidc_endpoint: "https://iam.example.com"
     # -- OIDC Realm
-    oidc_realm: ""
+    oidc_realm: "rspy"
     # -- OIDC CLient ID
-    oidc_client_id: ""
+    oidc_client_id: "apikeymanager"
     # -- OIDC Secret used to sync user info from Keycloak
     oidc_client_secret: ""
     # -- Random string used to encode cookie-based HTTP sessions in SessionMiddleware
@@ -97,10 +97,10 @@ postgres:
   # -- PostgreSQL database name
   db: catalog
   # -- PostgreSQL service URL
-  host: rs-server-catalog-db.database.svc.cluster.local
+  host: cnpgstac-rw.database.svc.cluster.local
   secret:
     # -- Username to authenticate with the PostgreSQL service
-    user: postgres
+    user: catalog
     # -- Password to authenticate with the PostgreSQL service
     pass: password
 
