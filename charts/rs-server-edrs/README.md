@@ -22,6 +22,7 @@ RS SERVER EDRS
 | app.station.bedc.endpoint.url | string | `"TO be added"` | EDRS BEDC station URL |
 | app.station.pedc.endpoint.url | string | `"TO be added"` | EDRS PEDC station URL |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
+| app.useSSL | bool | `true` |  |
 | app.useTokenModule | bool | `false` | The way the token for the external stations is loaded: own module or let eodag to do it (set it to false) |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
 | auth.secret.oidc_client_id | string | `""` | OIDC CLient ID |
