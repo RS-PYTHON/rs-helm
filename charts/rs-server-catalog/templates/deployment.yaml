@@ -129,6 +129,8 @@ spec:
           value: {{ .Values.cors.headers | squote }}
         - name: BUCKET_CONFIG_FILE_PATH
           value: {{ .Values.app.confDir }}/{{ .Values.app.bucketConfig.bucketConfigFileName }}
+        - name: RSPY_HOST_OSAM
+          value: {{ .Values.app.endpointOsam }}  
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT

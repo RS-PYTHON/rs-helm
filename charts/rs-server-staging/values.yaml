@@ -43,6 +43,8 @@ app:
   endpointAdgs: https://subdomain.example.com/auxip
   # -- Prip server pod address
   endpointPrip: https://subdomain.example.com/prip
+  # -- Osam pod address
+  endpointOsam: http://rs-osam.processing.svc.cluster.local:8080
 
   # -- Access token validity duration (in seconds)
   AccessTokenLifetime: 1200

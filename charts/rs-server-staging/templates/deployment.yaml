@@ -109,6 +109,8 @@ spec:
           value: {{ .Values.postgres.db }}
         - name: POSTGRES_HOST
           value: {{ .Values.postgres.host }}
+        - name: RSPY_HOST_OSAM
+          value: {{ .Values.app.endpointOsam }}  
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT

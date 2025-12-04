@@ -66,6 +66,8 @@ app:
     # -- File name for the configuration.
     # If you use an external configmap, put the name of the file of your configmap, so the environment variables are set properly
     bucketConfigFileName: expiration_bucket.csv
+  # -- Osam pod address
+  endpointOsam: http://rs-osam.processing.svc.cluster.local:8080
 
 obs:
   # -- URL of the object storage service endpoint
