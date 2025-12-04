@@ -31,6 +31,7 @@ app:
   edrsStations: edrs_stations.yaml
   # -- The way the token for the external stations is loaded: own module or let eodag to do it (set it to false)
   useTokenModule: false
+  useSSL: true
   station:
     pedc:
       endpoint:

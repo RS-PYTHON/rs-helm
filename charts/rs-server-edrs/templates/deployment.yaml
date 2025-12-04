@@ -79,6 +79,8 @@ spec:
           value: {{ .Values.obs.endpoint }}
         - name: S3_REGION
           value: {{ .Values.obs.region }}
+        - name: USE_SSL
+          value: {{ .Values.app.useSSL | quote }}
         - name: RSPY_EDRS_COLLECTIONS_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.edrsSearchConfigFile }}
         - name: EDRS_STATIONS_CONFIG_YAML
