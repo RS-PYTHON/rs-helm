@@ -2,25 +2,32 @@ name: Lint and Test Charts
 
 on: pull_request
 
+env:
+  YAMALE_VERSION: "6.1.0"
+
 jobs:
-  lint-test:
+  lint:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.list-changed.outputs.changed }}
+      ref_exists_in_rs_server: ${{ steps.check_branch.outputs.ref_exists_in_rs_server }}
+      APP_VERSION: ${{ steps.get_version.outputs.APP_VERSION }}
+      CHART_VERSION: ${{ steps.get_version.outputs.CHART_VERSION }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
-
-      - name: Set up Helm
-        uses: azure/setup-helm@v4
-        with:
-          version: v3.18.4
-
-      - uses: actions/setup-python@v5
+      - name: Check if branch exists in rs-server
+        id: check_branch
+        run: |
+          echo "ref_exists_in_rs_server=$( \
+            git ls-remote --heads https://github.com/${GITHUB_REPOSITORY_OWNER}/rs-server.git "${{ github.head_ref }}" | wc -l \
+          )" >> $GITHUB_OUTPUT
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.x'
           check-latest: true
-
       - name: 'Yamllint'
         uses: karancode/yamllint-github-action@master
         with:
@@ -29,16 +36,13 @@ jobs:
           yamllint_comment: true
         env:
           GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Get the rs-server version tag
         id: get_version
         uses: ./.github/actions/get_version
-
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2
         with:
-          yamale_version: "6.0.0"
-
+          yamale_version: ${{ env.YAMALE_VERSION }}
       - name: List changed Chart.yaml and update version number
         id: list-changed
         run: |
@@ -52,19 +56,173 @@ jobs:
                      "$dir/Chart.yaml"
             done
           fi
-
       - name: Run chart-testing (lint)
-        if: steps.list-changed.outputs.changed == 'true'
-        run: ct lint --check-version-increment=false --target-branch ${{ github.event.repository.default_branch }}
+        run: ct lint --check-version-increment=false --target-branch "${{ github.event.repository.default_branch }}"
 
+  test:
+    runs-on: ubuntu-latest
+    needs: lint
+    if: needs.lint.outputs.changed == 'true'
+    env:
+      AK: TDr8foJqSygBQ9YFmWDy
+      SK: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
+      HELM_VERSION: v3.19.2
+      RS_HELM_OPTS: --set=volume.storageClassName=standard --set=app.bucketConfig.useExternalBucketConfigMap=true --set=app.bucketConfig.externalBucketConfigMapName=rs-catalog-staging-configmap --set=auth.secret.oidc_endpoint=http://keycloak-keycloakx-http.iam.svc.cluster.local
+      CT_OPTS: --debug --skip-clean-up --helm-extra-set-args="--timeout=30s"
+      CT_RS_OPTS: --debug --skip-clean-up --helm-extra-set-args="$RS_HELM_OPTS --timeout=60s"
+      CT_CHARTS_STEP1: charts/rs-catalog-staging-configmap,charts/rs-server-station-secrets
+      CT_CHARTS_STEP2: charts/mockup-processor-dpr,charts/mockup-station-adgs,charts/mockup-station-cadip,charts/mockup-station-lta,charts/mockup-station-prip
+      CT_CHARTS_STEP3: charts/rs-osam
+      CT_CHARTS_STEP4: charts/rs-server-adgs,charts/rs-server-cadip,charts/rs-server-catalog,charts/rs-server-prip,charts/rs-server-staging
+      CT_CHARTS_STEP5: charts/rs-server-frontend,charts/stac-browser
+      PG_VERSION: 17
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
       - name: Create kind cluster
-        if: steps.list-changed.outputs.changed == 'true'
-        uses: helm/kind-action@v1.12.0
-
-      - name: Create required namespace
-        if: steps.list-changed.outputs.changed == 'true'
-        run: kubectl create namespace processing
-
-      - name: Run chart-testing (install)
-        if: false  # This step is disabled for now, needs a lot more work to be functional
-        run: ct install --debug --namespace processing --target-branch ${{ github.event.repository.default_branch }}
+        uses: helm/kind-action@v1
+      - name: Set up Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: ${{ env.HELM_VERSION }}
+      - name: Install metrics-server
+        run: |
+          helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+          helm repo update metrics-server
+          helm upgrade --install --set args={--kubelet-insecure-tls} metrics-server metrics-server/metrics-server --namespace kube-system --wait
+      - name: Deploy cnpg database
+        run: |
+          helm repo add cnpg https://cloudnative-pg.github.io/charts
+          helm repo update cnpg
+          kubectl create namespace database
+          helm upgrade --install cnpg --namespace database --wait cnpg/cloudnative-pg
+          helm upgrade --install postgresql --namespace database --set cluster.enablePDB=false --set cluster.instances=1 \
+                       --set-string version.postgresql=${{ env.PG_VERSION }} --wait cnpg/cluster
+          until kubectl exec -n database svc/postgresql-cluster-rw -- pg_isready -U postgres >/dev/null 2>&1; do
+            sleep 1
+          done
+          kubectl exec -n database svc/postgresql-cluster-rw -- psql -U postgres -c "CREATE USER test WITH PASSWORD 'test';"
+          kubectl exec -n database svc/postgresql-cluster-rw -- psql -U postgres -c "CREATE DATABASE rspydemo OWNER test;"
+          kubectl exec -n database svc/postgresql-cluster-rw -- psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE rspydemo TO test;"
+      - name: Deploy cnpgstac database
+        run: |
+          kubectl create secret generic catalog-database-password -n database --from-literal=username=catalog --from-literal=password=password
+          helm pull oci://643vlk6z.gra7.container-registry.ovh.net/public/eo-cnpgstac --version 1.0.0-alpha --untar --untardir ./charts
+          helm upgrade --install cnpgstac ./charts/eo-cnpgstac --namespace database \
+                       --set cnpgstac.instances=1 \
+                       --set cnpgstac.bootstrap.initdb.database=catalog \
+                       --set cnpgstac.bootstrap.initdb.owner=catalog \
+                       --set cnpgstac.bootstrap.initdb.secret.name=catalog-database-password \
+                       --wait --timeout=60s
+          until kubectl exec -n database svc/cnpgstac-rw -- pg_isready -U postgres >/dev/null 2>&1; do
+            sleep 1
+          done
+          kubectl wait --for=condition=complete job/cnpgstac-init-pgstac-db -n database --timeout=60s
+          rm -Rf ./charts/eo-cnpgstac
+      - name: Deploy Keycloak
+        run: |
+          # https://github.com/codecentric/helm-charts/tree/master/charts/keycloakx#tldr
+          kubectl create namespace iam
+          helm repo add codecentric https://codecentric.github.io/helm-charts
+          helm repo update codecentric
+          cat << EOF > values.yaml
+          command:
+            - "/opt/keycloak/bin/kc.sh"
+            - "start"
+            - "--http-port=8080"
+            - "--hostname-strict=false"
+          extraEnv: |
+            - name: KEYCLOAK_ADMIN
+              value: admin
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              value: admin
+            - name: JAVA_OPTS_APPEND
+              value: >-
+                -Djgroups.dns.query={{ include "keycloak.fullname" . }}-headless
+          EOF
+          helm install keycloak codecentric/keycloakx --namespace iam --values ./values.yaml --wait
+          POD_NAME=$(kubectl get pods --namespace iam -l "app.kubernetes.io/name=keycloakx,app.kubernetes.io/instance=keycloak" -o name)
+          kubectl --namespace iam port-forward "$POD_NAME" 8080 &
+      - name: Deploy api-key-manager
+        run: |
+          helm repo add apikeymanager https://csgroup-oss.github.io/apikey-manager/
+          helm repo update apikeymanager
+          kubectl create namespace processing
+          helm install apikeymanager apikeymanager/apikeymanager --version 1.0.0 --namespace processing --wait --timeout=60s
+      - name: Deploy minio
+        run: |
+          # Minio for cloudnative pg - https://github.com/minio/minio/tree/master/helm/minio#installing-the-chart-toy-setup
+          helm repo add minio https://charts.min.io/
+          helm repo update minio
+          helm install minio minio/minio --namespace minio --set mode=standalone --set replicas=1 \
+                       --set persistence.enabled=false --set resources.requests.memory=128Mi \
+                       --set rootUser=$AK,rootPassword=$SK \
+                       --set buckets[0].name=rs-dev-cluster-temp,buckets[1].name=rs-cluster-catalog \
+                       --create-namespace --wait
+          kubectl port-forward -n minio svc/minio 9000:9000 &
+      - name: Upload test data to Minio
+        run: |
+          wget -q https://dl.min.io/client/mc/release/linux-amd64/mc -O mc
+          chmod +x mc
+          ./mc alias set myminio http://localhost:9000 $AK $SK
+          ./mc cp --recursive .github/common/resources/stations/ myminio/rs-dev-cluster-temp/stations/
+      - name: Set up chart-testing
+        uses: helm/chart-testing-action@v2
+        with:
+          yamale_version: ${{ env.YAMALE_VERSION }}
+      - name: check installed versions
+        run: |
+            kubectl version --client
+            helm version
+      - name: update charts locally
+        run: |
+            # Update version numbers
+            find charts -name "Chart.yaml" -print0 | xargs -0 sed -i \
+              -e "s,{{APP_VERSION}},${{ needs.lint.outputs.APP_VERSION }}," \
+              -e "s,{{CHART_VERSION}},${{ needs.lint.outputs.CHART_VERSION }},"
+            # Keep only one station per service (cadip/cadip, adgs/adgs, prip/s1a)
+            yq -i 'del(.app.station.adgs2)' charts/rs-server-adgs/values.yaml
+            yq -i 'del(.app.station.sgs, .app.station.mti)' charts/rs-server-cadip/values.yaml
+            yq -i 'del(.app.station.s2b)' charts/rs-server-prip/values.yaml
+            yq -i 'del(.app.station.adgs2, .app.station.sgs, .app.station.mti, .app.station.s2b, .app.station.s3rspy)' charts/rs-server-staging/values.yaml
+            # can't find a way to change region in helm values so change it to minio default
+            find charts -name "values.yaml" -print0 | xargs -0 sed -i "s,region: sbg,region: us-east-1,"
+            # disable opentelemetry
+            find charts -name "values.yaml" -print0 | xargs -0 yq -i 'del(.tempo)'
+      - name: Run chart-testing (install step 1 - secrets/configmaps)
+        uses: ./.github/actions/run-with-watch
+        with:
+          namespace: processing
+          command: ct install $CT_OPTS --namespace processing --charts $CT_CHARTS_STEP1
+      - name: Run chart-testing (install step 2 - mockups)
+        uses: ./.github/actions/run-with-watch
+        with:
+          namespace: processing
+          command: ct install $CT_RS_OPTS --namespace processing --charts $CT_CHARTS_STEP2
+      - name: Run chart-testing (install step 3 - rs-osam)
+        uses: ./.github/actions/run-with-watch
+        with:
+          namespace: processing
+          command: ct install $CT_RS_OPTS --namespace processing --charts $CT_CHARTS_STEP3
+      - name: Run chart-testing (install step 4 - rs-server backends - same branch found)
+        if: needs.lint.outputs.ref_exists_in_rs_server == 1
+        uses: ./.github/actions/run-with-watch
+        with:
+          namespace: processing
+          command: |
+            ct install --debug --skip-clean-up --namespace processing --charts $CT_CHARTS_STEP4 \
+                       --helm-extra-set-args='${{ env.RS_HELM_OPTS }} --set=image.version=${{ github.head_ref }} --timeout=60s'
+      - name: Run chart-testing (install step 4 - rs-server backends - default)
+        if: needs.lint.outputs.ref_exists_in_rs_server != 1
+        uses: ./.github/actions/run-with-watch
+        with:
+          namespace: processing
+          command: ct install $CT_RS_OPTS --namespace processing --charts $CT_CHARTS_STEP4
+      - name: Run chart-testing (install step 5 - frontend/stac-browser)
+        uses: ./.github/actions/run-with-watch
+        with:
+          namespace: processing
+          command: ct install $CT_RS_OPTS --namespace processing --charts $CT_CHARTS_STEP5
+      - name: 🩺 Kubernetes failure diagnostics
+        if: failure()
+        run: .github/common/resources/kind-diagnostics.sh

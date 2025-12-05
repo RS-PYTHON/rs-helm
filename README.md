@@ -20,10 +20,6 @@ The Product Interface Deliver Point is a pick-up point for Sentinel products. Th
 
 The catalog is a STAC catalog that contains the medatadata of the products. It is organized in collections and items. It is based on [STAC FastAPI](https://github.com/stac-utils/stac-fastapi).
 
-## [rs-server-catalog-db](charts/rs-server-catalog-db/README.md)
-
-The catalog's database is a PostgreSQL database with the PostGIS extension. It is based on [PgSTAC](https://github.com/stac-utils/pgstac).
-
 ## [rs-server-frontend](charts/rs-server-frontend/README.md)
 
 The frontend is a simple FastAPI interface based on Swagger exposing the endpoints. A user can use it to interact with the rs-server backends (CADIP, ADGS, catalog, etc).
