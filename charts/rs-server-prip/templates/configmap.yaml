@@ -536,7 +536,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -583,7 +583,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -630,7 +630,7 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
@@ -677,12 +677,12 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
         url: https://home.rs-python.eu/
-    - id: S1A_L1_IW_SLC
+    - id: IW_SLC__1S
       station: s1a
       query:
         productType: IW_SLC__1S
@@ -696,8 +696,8 @@ data:
       - https://stac-extensions.github.io/product/v1.0.0/schema.json
       - https://cs-si.github.io/eopf-stac-extension/v1.2.0/schema.json
       - https://stac-extensions.github.io/timestamps/v1.1.0/schema.json
-      title: S1A L0 RAW products
-      description: S1A L0 RAW products
+      title: IW 1S SLC tile products
+      description: Sentinel-1A Level-1 Tile
       license: other
       extent:
         spatial:
@@ -724,12 +724,11 @@ data:
         roles:
         - producer
         - licensor
-        url: https://sentiwiki.copernicus.eu/web/s1-mission
+        url: https://sentiwiki.copernicus.eu/web/sentinel-1
       - name: Reference System
         roles:
         - host
         url: https://home.rs-python.eu/
-    
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -739,6 +738,11 @@ metadata:
 data:
   {{ .Values.app.ptypeMappingFile }}: |
     types:
+    - productType: S01SSMGRD
+      mission: S1
+      instrumentMode: SM
+      processingLevel: GRD
+      legacyType: S[1-6]_GRD[FHM]_1[AS]
     - productType: S01SIWRAWS
       mission: S1
       instrumentMode: IW
@@ -864,7 +868,7 @@ data:
       instrumentMode: DASC
       processingLevel: Dark Calibration
       legacyType: null
-    - productType: S03SRAL0_
+    - productType: S03ALTL0_
       mission: S3
       instrumentMode: SRAL
       processingLevel: L0 observation

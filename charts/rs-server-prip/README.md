@@ -1,6 +1,6 @@
 # rs-server-prip
 
-![Version: 0.1.0-a3](https://img.shields.io/badge/Version-0.1.0--a3-informational?style=flat-square) ![AppVersion: v1.0a3](https://img.shields.io/badge/AppVersion-v1.0a3-informational?style=flat-square)
+![Version: 0.1.0-a4](https://img.shields.io/badge/Version-0.1.0--a4-informational?style=flat-square) ![AppVersion: v1.0a4](https://img.shields.io/badge/AppVersion-v1.0a4-informational?style=flat-square)
 
 RS SERVER PRIP
 
@@ -31,12 +31,12 @@ RS SERVER PRIP
 | auth.secret.oidc_client_secret | string | `""` | OIDC Secret used to sync user info from Keycloak |
 | auth.secret.oidc_endpoint | string | `""` | OIDC End Point |
 | auth.secret.oidc_realm | string | `""` | OIDC Realm |
-| cors.origins | string | `"https://stac-browser-auxip.subdomain.example.com;http://localhost:8080"` | A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser |
+| cors.origins | string | `"https://stac-browser-prip.subdomain.example.com,http://localhost:8080"` | A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-prip"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"1.0a3"` | Image version, can be a tag or a digest |
+| image.version | string | `"1.0a4"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |

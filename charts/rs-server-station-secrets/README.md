@@ -1,6 +1,6 @@
 # rs-server-station-secrets
 
-![Version: 0.1.0-a3](https://img.shields.io/badge/Version-0.1.0--a3-informational?style=flat-square) ![AppVersion: v1.0a3](https://img.shields.io/badge/AppVersion-v1.0a3-informational?style=flat-square)
+![Version: 0.1.0-a4](https://img.shields.io/badge/Version-0.1.0--a4-informational?style=flat-square) ![AppVersion: v1.0a4](https://img.shields.io/badge/AppVersion-v1.0a4-informational?style=flat-square)
 
 RS SERVER STATION SECRETS
 
@@ -159,7 +159,7 @@ RS SERVER STATION SECRETS
 | app.stations.sgs.authentication.auth_type | string | `"oauth2"` |  |
 | app.stations.sgs.authentication.authorization | string | `nil` |  |
 | app.stations.sgs.authentication.client_id | string | `"client_id"` |  |
-| app.stations.sgs.authentication.client_secret | string | `""` |  |
+| app.stations.sgs.authentication.client_secret | string | `"client_secret"` |  |
 | app.stations.sgs.authentication.grant_type | string | `"password"` |  |
 | app.stations.sgs.authentication.password | string | `"test"` |  |
 | app.stations.sgs.authentication.scope | string | `nil` |  |
