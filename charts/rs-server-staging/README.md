@@ -30,7 +30,7 @@ RS SERVER STAGING
 | app.endpointAdgs | string | `"https://subdomain.example.com/auxip"` | Adgs server pod address |
 | app.endpointCadip | string | `"https://subdomain.example.com/cadip"` | Cadip server pod address |
 | app.endpointCatalog | string | `"http://rs-server-catalog.processing.svc.cluster.local:8080"` | Catalog pod address |
-| app.endpointOsam | string | `"subdomain.example.com"` | Osam pod address |
+| app.endpointOsam | string | `"https://subdomain.example.com/osam"` | Osam pod address |
 | app.endpointPrip | string | `"https://subdomain.example.com/prip"` | Prip server pod address |
 | app.port | int | `8000` | Port for the application |
 | app.station | object | `{"adgs":{"type":"auxip"},"adgs2":{"type":"auxip"},"cadip":{"type":"cadip"},"mti":{"type":"cadip"},"s1a":{"type":"prip"},"s2b":{"type":"prip"},"s3rspy":{"type":"s3"},"sgs":{"type":"cadip"}}` | List of configured stations (expect a secret with the same name) |
