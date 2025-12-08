@@ -24,7 +24,7 @@ RS SERVER CATALOG
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.dataLifecyclePeriod | int | `86400` | Period in seconds between two data lifecycle cleaning tasks. If <0, the task is deactivated. |
 | app.docsUrl | string | `"/catalog/api.html"` | URL of FastAPI Swagger UI |
-| app.endpointOsam | string | `"http://rs-osam.processing.svc.cluster.local:8080"` | Osam pod address |
+| app.endpointOsam | string | `"subdomain.example.com"` | Osam pod address |
 | app.metadata.description | string | `"STAC catalog of Copernicus Reference System Python"` | update the catalog metadata description parameter over the default one received from the pystac client |
 | app.metadata.id | string | `"rs-python"` | update the catalog metadata id parameter over the default one received from the pystac client |
 | app.metadata.title | string | `"RS-PYTHON STAC Catalog"` | update the catalog metadata title parameter over the default one received from the pystac client |
@@ -56,7 +56,7 @@ RS SERVER CATALOG
 | initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
-| obs.region | string | `"sbg"` | Region of the object storage service |
+| obs.region | string | `"sbg"` |  |
 | obs.secret.ak | string | `"TDr8foJqSygBQ9YFmWDy"` | Access Key to authenticate with the object storage service |
 | obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service |
 | otel.trace_body | bool | `false` | Trace request bodies and response contents with OpenTelemetry ? |
