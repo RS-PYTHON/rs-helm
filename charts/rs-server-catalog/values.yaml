@@ -81,11 +81,11 @@ obs:
 auth:
   secret:
     # -- OIDC End Point
-    oidc_endpoint: ""
+    oidc_endpoint: "https://iam.example.com"
     # -- OIDC Realm
-    oidc_realm: ""
+    oidc_realm: "rspy"
     # -- OIDC CLient ID
-    oidc_client_id: ""
+    oidc_client_id: "apikeymanager"
     # -- OIDC Secret used to sync user info from Keycloak
     oidc_client_secret: ""
     # -- Random string used to encode cookie-based HTTP sessions in SessionMiddleware
@@ -97,10 +97,10 @@ postgres:
   # -- PostgreSQL database name
   db: catalog
   # -- PostgreSQL service URL
-  host: rs-server-catalog-db.database.svc.cluster.local
+  host: cnpgstac-rw.database.svc.cluster.local
   secret:
     # -- Username to authenticate with the PostgreSQL service
-    user: postgres
+    user: catalog
     # -- Password to authenticate with the PostgreSQL service
     pass: password
 
@@ -112,7 +112,7 @@ image:
   # -- Image name
   name: rs-server-catalog
   # -- Image version, can be a tag or a digest
-  version: "1.0a3"
+  version: "1.0a4"
   # -- Image pull policy
   PullPolicy: IfNotPresent
 
@@ -189,13 +189,13 @@ initContainers: []
 
 cors:
   # -- A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser
-  origins: '["https://stac-browser-catalog.subdomain.example.com","http://localhost:8080"]'
+  origins: https://stac-browser-catalog.subdomain.example.com,http://localhost:8080
   # -- A list of HTTP methods that should be allowed for cross-origin requests. Defaults to "GET,POST,OPTIONS"
-  methods: '["GET","POST","OPTIONS"]'
+  methods: GET,POST,OPTIONS
   # -- Set to true to enable credentials via CORS requests. Note that you'll need to set CORS_ORIGINS to something other than *, because credentials are disallowed for wildcard CORS origins.
   credentials: true
   # -- If CORS credentials are true and you're using an Authorization header, set this to Content-Type,Authorization. Alternatively, you can allow all headers by setting this to *.
-  headers: '["*"]'
+  headers: '*'
 
 tempo:
   # -- Grafana tempo endpoint.

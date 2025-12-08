@@ -738,6 +738,11 @@ metadata:
 data:
   {{ .Values.app.ptypeMappingFile }}: |
     types:
+    - productType: S01SSMGRD
+      mission: S1
+      instrumentMode: SM
+      processingLevel: GRD
+      legacyType: S[1-6]_GRD[FHM]_1[AS]
     - productType: S01SIWRAWS
       mission: S1
       instrumentMode: IW
@@ -863,7 +868,7 @@ data:
       instrumentMode: DASC
       processingLevel: Dark Calibration
       legacyType: null
-    - productType: S03SRAL0_
+    - productType: S03ALTL0_
       mission: S3
       instrumentMode: SRAL
       processingLevel: L0 observation
