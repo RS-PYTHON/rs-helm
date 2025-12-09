@@ -51,10 +51,7 @@ spec:
             cpu: {{ .Values.resources.request.cpu }}
           limits:
             memory: {{ .Values.resources.limit.ram }}
-            cpu: {{ .Values.resources.limit.cpu }}
-        volumeMounts:
-        - name: rs-server-catalog-bucket-configmap
-          mountPath: {{ .Values.app.confDir }}
+            cpu: {{ .Values.resources.limit.cpu }}        
         ports:
         - name: web
           protocol: TCP
@@ -126,9 +123,7 @@ spec:
         - name: CORS_CREDENTIALS
           value: "{{ .Values.cors.credentials }}"
         - name: CORS_HEADERS
-          value: {{ .Values.cors.headers | squote }}
-        - name: BUCKET_CONFIG_FILE_PATH
-          value: {{ .Values.app.confDir }}/{{ .Values.app.bucketConfig.bucketConfigFileName }}
+          value: {{ .Values.cors.headers | squote }}        
         - name: RSPY_HOST_OSAM
           value: {{ .Values.app.endpointOsam }}  
         {{ if .Values.tempo }}
@@ -179,15 +174,7 @@ spec:
       {{ end }}
       {{ end }}
       restartPolicy: Always
-      securityContext: {}
-      volumes:
-      - name: rs-server-catalog-bucket-configmap
-        configMap:
-          {{ if .Values.app.bucketConfig.useExternalCatalogBucketConfigMap }}
-          name: {{ .Values.app.bucketConfig.externalCatalogBucketConfigMapName }}
-          {{ else }}
-          name: default-{{ .Chart.Name }}-bucket-config
-          {{ end }}
+      securityContext: {}      
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

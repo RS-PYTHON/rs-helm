@@ -51,10 +51,7 @@ spec:
             cpu: {{ .Values.resources.request.cpu }}
           limits:
             memory: {{ .Values.resources.limit.ram }}
-            cpu: {{ .Values.resources.limit.cpu }}
-        volumeMounts:
-        - name: rs-server-staging-bucket-configmap
-          mountPath: {{ .Values.app.confDir }}
+            cpu: {{ .Values.resources.limit.cpu }}        
         ports:
         - name: web
           protocol: TCP
@@ -172,14 +169,7 @@ spec:
             name: {{ .Release.Name }}-service-config
         - name: service-openapi-volume
           configMap:
-            name: {{ .Release.Name }}-service-openapi
-        - name: rs-server-staging-bucket-configmap
-          configMap:
-            {{ if .Values.app.bucketConfig.useExternalStagingBucketConfigMap }}
-            name: {{ .Values.app.bucketConfig.externalStagingBucketConfigMapName }}
-            {{ else }}
-            name: default-{{ .Chart.Name }}-bucket-config
-            {{ end }}
+            name: {{ .Release.Name }}-service-openapi        
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
