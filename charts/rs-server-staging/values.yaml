@@ -45,6 +45,7 @@ app:
   endpointPrip: https://subdomain.example.com/prip
   # -- Osam pod address
   endpointOsam: https://subdomain.example.com/osam
+  tempBucketConfig: expiration_bucket_csv
 
   # -- Access token validity duration (in seconds)
   AccessTokenLifetime: 1200
