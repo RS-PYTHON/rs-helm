@@ -122,8 +122,6 @@ spec:
           value: {{ .Values.otel.trace_headers | quote }}
         - name: OTEL_PYTHON_REQUESTS_TRACE_BODY
           value: {{ .Values.otel.trace_body | quote }}
-        - name: BUCKET_CONFIG_FILE_PATH
-          value: {{ .Values.app.confDir }}/{{ .Values.app.bucketConfig.bucketConfigFileName }}
         securityContext:
           privileged: false
         {{ if .Values.probe }}
