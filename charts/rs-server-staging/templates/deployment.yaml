@@ -51,7 +51,7 @@ spec:
             cpu: {{ .Values.resources.request.cpu }}
           limits:
             memory: {{ .Values.resources.limit.ram }}
-            cpu: {{ .Values.resources.limit.cpu }}        
+            cpu: {{ .Values.resources.limit.cpu }}
         ports:
         - name: web
           protocol: TCP
@@ -107,7 +107,7 @@ spec:
         - name: POSTGRES_HOST
           value: {{ .Values.postgres.host }}
         - name: RSPY_HOST_OSAM
-          value: {{ .Values.app.endpointOsam }}  
+          value: {{ .Values.app.endpointOsam }}
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
@@ -167,7 +167,7 @@ spec:
             name: {{ .Release.Name }}-service-config
         - name: service-openapi-volume
           configMap:
-            name: {{ .Release.Name }}-service-openapi        
+            name: {{ .Release.Name }}-service-openapi
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
