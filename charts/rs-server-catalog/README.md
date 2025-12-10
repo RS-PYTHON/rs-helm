@@ -19,7 +19,7 @@ RS SERVER CATALOG
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.dataLifecyclePeriod | int | `86400` | Period in seconds between two data lifecycle cleaning tasks. If <0, the task is deactivated. |
 | app.docsUrl | string | `"/catalog/api.html"` | URL of FastAPI Swagger UI |
-| app.endpointOsam | string | `"https://subdomain.example.com/osam"` | Bucket configuration to use to monitor the lifespan and name of data buckets. This info is now retrieved from Osam service.    Osam pod address |
+| app.endpointOsam | string | `"https://subdomain.example.com/osam"` | Bucket configuration to use to monitor the lifespan and name of data buckets. This info is now retrieved from Osam service. Osam pod address |
 | app.metadata.description | string | `"STAC catalog of Copernicus Reference System Python"` | update the catalog metadata description parameter over the default one received from the pystac client |
 | app.metadata.id | string | `"rs-python"` | update the catalog metadata id parameter over the default one received from the pystac client |
 | app.metadata.title | string | `"RS-PYTHON STAC Catalog"` | update the catalog metadata title parameter over the default one received from the pystac client |
