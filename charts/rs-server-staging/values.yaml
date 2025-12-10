@@ -72,7 +72,7 @@ app:
       type: cadip
     s3rspy:
       type: s3
-
+  
 dask:
   # -- Dask gateway address
   gateway_address: http://traefik-dask-gateway.dask-gateway.svc.cluster.local

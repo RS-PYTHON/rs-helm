@@ -51,7 +51,7 @@ spec:
             cpu: {{ .Values.resources.request.cpu }}
           limits:
             memory: {{ .Values.resources.limit.ram }}
-            cpu: {{ .Values.resources.limit.cpu }}
+            cpu: {{ .Values.resources.limit.cpu }}        
         ports:
         - name: web
           protocol: TCP
@@ -123,9 +123,9 @@ spec:
         - name: CORS_CREDENTIALS
           value: "{{ .Values.cors.credentials }}"
         - name: CORS_HEADERS
-          value: {{ .Values.cors.headers | squote }}
+          value: {{ .Values.cors.headers | squote }}        
         - name: RSPY_HOST_OSAM
-          value: {{ .Values.app.endpointOsam }}
+          value: {{ .Values.app.endpointOsam }}  
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
@@ -174,7 +174,7 @@ spec:
       {{ end }}
       {{ end }}
       restartPolicy: Always
-      securityContext: {}
+      securityContext: {}      
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

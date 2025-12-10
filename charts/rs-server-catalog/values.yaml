@@ -51,7 +51,7 @@ app:
     # -- update the catalog metadata description parameter over the default one received from the pystac client
     description: "STAC catalog of Copernicus Reference System Python"
   # -- Bucket configuration to use to monitor the lifespan and name of data buckets. This info is now
-  # retrieved from Osam service.
+  # retrieved from Osam service.   
   # Osam pod address
   endpointOsam: https://subdomain.example.com/osam
 
