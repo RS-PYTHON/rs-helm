@@ -46,7 +46,7 @@ app:
   # -- Osam pod address
   endpointOsam: https://subdomain.example.com/osam
   # -- enable ssl connection for edrs
-  useSssl: true
+  useSsl: true
   # -- Access token validity duration (in seconds)
   AccessTokenLifetime: 1200
   # -- Refresh token validity duration (in seconds)
