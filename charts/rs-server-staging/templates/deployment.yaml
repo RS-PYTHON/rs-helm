@@ -51,10 +51,7 @@ spec:
             cpu: {{ .Values.resources.request.cpu }}
           limits:
             memory: {{ .Values.resources.limit.ram }}
-            cpu: {{ .Values.resources.limit.cpu }}
-        volumeMounts:
-        - name: rs-server-staging-bucket-configmap
-          mountPath: {{ .Values.app.confDir }}
+            cpu: {{ .Values.resources.limit.cpu }}        
         ports:
         - name: web
           protocol: TCP
@@ -109,6 +106,8 @@ spec:
           value: {{ .Values.postgres.db }}
         - name: POSTGRES_HOST
           value: {{ .Values.postgres.host }}
+        - name: RSPY_HOST_OSAM
+          value: {{ .Values.app.endpointOsam }}  
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
@@ -123,8 +122,6 @@ spec:
           value: {{ .Values.otel.trace_headers | quote }}
         - name: OTEL_PYTHON_REQUESTS_TRACE_BODY
           value: {{ .Values.otel.trace_body | quote }}
-        - name: BUCKET_CONFIG_FILE_PATH
-          value: {{ .Values.app.confDir }}/{{ .Values.app.bucketConfig.bucketConfigFileName }}
         securityContext:
           privileged: false
         {{ if .Values.probe }}
@@ -170,14 +167,7 @@ spec:
             name: {{ .Release.Name }}-service-config
         - name: service-openapi-volume
           configMap:
-            name: {{ .Release.Name }}-service-openapi
-        - name: rs-server-staging-bucket-configmap
-          configMap:
-            {{ if .Values.app.bucketConfig.useExternalStagingBucketConfigMap }}
-            name: {{ .Values.app.bucketConfig.externalStagingBucketConfigMapName }}
-            {{ else }}
-            name: default-{{ .Chart.Name }}-bucket-config
-            {{ end }}
+            name: {{ .Release.Name }}-service-openapi        
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

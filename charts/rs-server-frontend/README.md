@@ -23,7 +23,7 @@ RS SERVER FRONTEND
 | image.name | string | `"rs-server-frontend"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"1.0a3"` | Image version, can be a tag or a digest |
+| image.version | string | `"1.0a4"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
@@ -52,7 +52,7 @@ RS SERVER FRONTEND
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
 | service.port | int | `8080` | Port for the service |
-| stac_browser.urls | string | `"https://stac-browser-auxip.subdomain.example.com;https://stac-browser-cadip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"` | The list of all STAC Browser URLs |
+| stac_browser.urls | string | `"https://stac-browser-auxip.subdomain.example.com;https://stac-browser-cadip.subdomain.example.com;https://stac-browser-prip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"` | The list of all STAC Browser URLs |
 | tolerations | list | `[]` | Pod toleration |
 
 ----------------------------------------------

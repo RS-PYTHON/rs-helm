@@ -15,15 +15,11 @@ RS SERVER CATALOG
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
-| app.bucketConfig | object | `{"bucketConfigFileName":"expiration_bucket.csv","expirationBucketCsv":"*, *, *, 30, rspython-ops-catalog-all-production\n","externalCatalogBucketConfigMapName":"","useExternalCatalogBucketConfigMap":false}` | Bucket configuration to use to monitor the lifespan and name of data buckets Use an external configuration through an external configmap with the value "externalCatalogBucketConfigMapName" OR Set your own configuration in the value expirationBucketCsv |
-| app.bucketConfig.bucketConfigFileName | string | `"expiration_bucket.csv"` | File name for the configuration. If you use an external configmap, put the name of the file of your configmap, so the environment variables are set properly |
-| app.bucketConfig.expirationBucketCsv | string | `"*, *, *, 30, rspython-ops-catalog-all-production\n"` | Bucket configuration. Used only if useExternalCatalogBucketConfigMap is false. Default config puts all data in a bucket called rspython-ops-catalog-all-production with a lifespan of 30 days. |
-| app.bucketConfig.externalCatalogBucketConfigMapName | string | `""` | Name of the external configmap to use. Used only if useExternalCatalogBucketConfigMap is true |
-| app.bucketConfig.useExternalCatalogBucketConfigMap | bool | `false` | Set to true to use an external configmap for the configuration instead of the one set in expirationBucketCsv |
 | app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.dataLifecyclePeriod | int | `86400` | Period in seconds between two data lifecycle cleaning tasks. If <0, the task is deactivated. |
 | app.docsUrl | string | `"/catalog/api.html"` | URL of FastAPI Swagger UI |
+| app.endpointOsam | string | `"https://subdomain.example.com/osam"` | Bucket configuration to use to monitor the lifespan and name of data buckets. This info is now retrieved from Osam service. Osam pod address |
 | app.metadata.description | string | `"STAC catalog of Copernicus Reference System Python"` | update the catalog metadata description parameter over the default one received from the pystac client |
 | app.metadata.id | string | `"rs-python"` | update the catalog metadata id parameter over the default one received from the pystac client |
 | app.metadata.title | string | `"RS-PYTHON STAC Catalog"` | update the catalog metadata title parameter over the default one received from the pystac client |
@@ -34,19 +30,19 @@ RS SERVER CATALOG
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
-| auth.secret.oidc_client_id | string | `""` | OIDC CLient ID |
+| auth.secret.oidc_client_id | string | `"apikeymanager"` | OIDC CLient ID |
 | auth.secret.oidc_client_secret | string | `""` | OIDC Secret used to sync user info from Keycloak |
-| auth.secret.oidc_endpoint | string | `""` | OIDC End Point |
-| auth.secret.oidc_realm | string | `""` | OIDC Realm |
+| auth.secret.oidc_endpoint | string | `"https://iam.example.com"` | OIDC End Point |
+| auth.secret.oidc_realm | string | `"rspy"` | OIDC Realm |
 | cors.credentials | bool | `true` | Set to true to enable credentials via CORS requests. Note that you'll need to set CORS_ORIGINS to something other than *, because credentials are disallowed for wildcard CORS origins. |
-| cors.headers | string | `"[\"*\"]"` | If CORS credentials are true and you're using an Authorization header, set this to Content-Type,Authorization. Alternatively, you can allow all headers by setting this to *. |
-| cors.methods | string | `"[\"GET\",\"POST\",\"OPTIONS\"]"` | A list of HTTP methods that should be allowed for cross-origin requests. Defaults to "GET,POST,OPTIONS" |
-| cors.origins | string | `"[\"https://stac-browser-catalog.subdomain.example.com\",\"http://localhost:8080\"]"` | A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser |
+| cors.headers | string | `"*"` | If CORS credentials are true and you're using an Authorization header, set this to Content-Type,Authorization. Alternatively, you can allow all headers by setting this to *. |
+| cors.methods | string | `"GET,POST,OPTIONS"` | A list of HTTP methods that should be allowed for cross-origin requests. Defaults to "GET,POST,OPTIONS" |
+| cors.origins | string | `"https://stac-browser-catalog.subdomain.example.com,http://localhost:8080"` | A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-catalog"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"1.0a3"` | Image version, can be a tag or a digest |
+| image.version | string | `"1.0a4"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
@@ -55,16 +51,16 @@ RS SERVER CATALOG
 | initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
-| obs.region | string | `"sbg"` | Region of the object storage service |
+| obs.region | string | `"sbg"` |  |
 | obs.secret.ak | string | `"TDr8foJqSygBQ9YFmWDy"` | Access Key to authenticate with the object storage service |
 | obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service |
 | otel.trace_body | bool | `false` | Trace request bodies and response contents with OpenTelemetry ? |
 | otel.trace_headers | bool | `false` | Trace request headers with OpenTelemetry ? |
 | postgres.db | string | `"catalog"` | PostgreSQL database name |
-| postgres.host | string | `"rs-server-catalog-db.database.svc.cluster.local"` | PostgreSQL service URL |
+| postgres.host | string | `"cnpgstac-rw.database.svc.cluster.local"` | PostgreSQL service URL |
 | postgres.port | string | `"5432"` | PostgreSQL port |
 | postgres.secret.pass | string | `"password"` | Password to authenticate with the PostgreSQL service |
-| postgres.secret.user | string | `"postgres"` | Username to authenticate with the PostgreSQL service |
+| postgres.secret.user | string | `"catalog"` | Username to authenticate with the PostgreSQL service |
 | probe.liveness.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
 | probe.liveness.path | string | `"/catalog/_mgmt/health"` | Path for the liveness probe |
 | probe.liveness.periodSeconds | int | `30` | periodSeconds for the liveness probe |

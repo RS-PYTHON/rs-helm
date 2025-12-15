@@ -50,27 +50,14 @@ app:
     title: "RS-PYTHON STAC Catalog"
     # -- update the catalog metadata description parameter over the default one received from the pystac client
     description: "STAC catalog of Copernicus Reference System Python"
-  # -- Bucket configuration to use to monitor the lifespan and name of data buckets
-  # Use an external configuration through an external configmap with the value "externalCatalogBucketConfigMapName"
-  # OR
-  # Set your own configuration in the value expirationBucketCsv
-  bucketConfig:
-    # -- Set to true to use an external configmap for the configuration instead of the one set in expirationBucketCsv
-    useExternalCatalogBucketConfigMap: false
-    # -- Name of the external configmap to use. Used only if useExternalCatalogBucketConfigMap is true
-    externalCatalogBucketConfigMapName: ""
-    # -- Bucket configuration. Used only if useExternalCatalogBucketConfigMap is false.
-    # Default config puts all data in a bucket called rspython-ops-catalog-all-production with a lifespan of 30 days.
-    expirationBucketCsv: |
-      *, *, *, 30, rspython-ops-catalog-all-production
-    # -- File name for the configuration.
-    # If you use an external configmap, put the name of the file of your configmap, so the environment variables are set properly
-    bucketConfigFileName: expiration_bucket.csv
+  # -- Bucket configuration to use to monitor the lifespan and name of data buckets. This info is now
+  # retrieved from Osam service.
+  # Osam pod address
+  endpointOsam: https://subdomain.example.com/osam
 
 obs:
   # -- URL of the object storage service endpoint
   endpoint: http://minio.minio.svc.cluster.local:9000
-  # -- Region of the object storage service
   region: sbg
   secret:
     # -- Access Key to authenticate with the object storage service
@@ -81,11 +68,11 @@ obs:
 auth:
   secret:
     # -- OIDC End Point
-    oidc_endpoint: ""
+    oidc_endpoint: "https://iam.example.com"
     # -- OIDC Realm
-    oidc_realm: ""
+    oidc_realm: "rspy"
     # -- OIDC CLient ID
-    oidc_client_id: ""
+    oidc_client_id: "apikeymanager"
     # -- OIDC Secret used to sync user info from Keycloak
     oidc_client_secret: ""
     # -- Random string used to encode cookie-based HTTP sessions in SessionMiddleware
@@ -97,10 +84,10 @@ postgres:
   # -- PostgreSQL database name
   db: catalog
   # -- PostgreSQL service URL
-  host: rs-server-catalog-db.database.svc.cluster.local
+  host: cnpgstac-rw.database.svc.cluster.local
   secret:
     # -- Username to authenticate with the PostgreSQL service
-    user: postgres
+    user: catalog
     # -- Password to authenticate with the PostgreSQL service
     pass: password
 
@@ -112,7 +99,7 @@ image:
   # -- Image name
   name: rs-server-catalog
   # -- Image version, can be a tag or a digest
-  version: "1.0a3"
+  version: "1.0a4"
   # -- Image pull policy
   PullPolicy: IfNotPresent
 
@@ -189,13 +176,13 @@ initContainers: []
 
 cors:
   # -- A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser
-  origins: '["https://stac-browser-catalog.subdomain.example.com","http://localhost:8080"]'
+  origins: https://stac-browser-catalog.subdomain.example.com,http://localhost:8080
   # -- A list of HTTP methods that should be allowed for cross-origin requests. Defaults to "GET,POST,OPTIONS"
-  methods: '["GET","POST","OPTIONS"]'
+  methods: GET,POST,OPTIONS
   # -- Set to true to enable credentials via CORS requests. Note that you'll need to set CORS_ORIGINS to something other than *, because credentials are disallowed for wildcard CORS origins.
   credentials: true
   # -- If CORS credentials are true and you're using an Authorization header, set this to Content-Type,Authorization. Alternatively, you can allow all headers by setting this to *.
-  headers: '["*"]'
+  headers: '*'
 
 tempo:
   # -- Grafana tempo endpoint.

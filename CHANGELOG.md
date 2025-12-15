@@ -13,6 +13,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [1.0a4] - 2025-11-20
+
+### Changed
+
+- [PR#174](https://github.com/RS-PYTHON/rs-helm/pull/174) : Regex support for S01SSMGRD
+- [PR#176](https://github.com/RS-PYTHON/rs-helm/pull/176) : Update CORS values for stac-fastapi-pgstac v6.1.0
+- [RSPY-834](https://github.com/RS-PYTHON/rs-helm/pull/177) : Implement CQL2 temporal operators in rs-server-cadip
+- [PR#178](https://github.com/RS-PYTHON/rs-helm/pull/178) : Update URLs, comments and product type
+- bump docker image tag
+
 ## [1.0a3] - 2025-10-23
 
 ### Added
