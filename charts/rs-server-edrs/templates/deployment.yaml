@@ -99,8 +99,6 @@ spec:
           value: {{ .Values.otel.trace_headers | quote }}
         - name: OTEL_PYTHON_REQUESTS_TRACE_BODY
           value: {{ .Values.otel.trace_body | quote }}
-        - name: USE_SSL
-          value: "true"
         securityContext:
           privileged: false
         {{ if .Values.probe }}
