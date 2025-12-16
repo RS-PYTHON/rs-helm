@@ -31,6 +31,7 @@ RS SERVER STAGING
 | app.station | object | `{"adgs":{"type":"auxip"},"adgs2":{"type":"auxip"},"cadip":{"type":"cadip"},"mti":{"type":"cadip"},"s1a":{"type":"prip"},"s2b":{"type":"prip"},"s3rspy":{"type":"s3"},"sgs":{"type":"cadip"}}` | List of configured stations (expect a secret with the same name) |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service (internal) |
+| app.useSsl | string | `"true"` | enable ssl connection for edrs |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
 | auth.secret.oidc_client_id | string | `""` | OIDC CLient ID |
 | auth.secret.oidc_client_secret | string | `""` | OIDC Secret used to sync user info from Keycloak |

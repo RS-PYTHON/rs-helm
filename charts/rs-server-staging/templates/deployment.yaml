@@ -107,7 +107,9 @@ spec:
         - name: POSTGRES_HOST
           value: {{ .Values.postgres.host }}
         - name: RSPY_HOST_OSAM
-          value: {{ .Values.app.endpointOsam }}  
+          value: {{ .Values.app.endpointOsam }}
+        - name: USE_SSL
+          value: {{ .Values.app.useSsl | quote}} 
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
