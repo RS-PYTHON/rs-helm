@@ -117,7 +117,7 @@ spec:
         - name: S3_REGION
           value: {{ .Values.obs.region }}
         - name: CORS_ORIGINS
-          value: {{ .Values.cors.origins | squote }}
+          value: '{{ .Values.cors.origins }}'
         - name: CORS_METHODS
           value: {{ .Values.cors.methods | squote }}
         - name: CORS_CREDENTIALS
