@@ -52,7 +52,7 @@ RS SERVER FRONTEND
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
 | service.port | int | `8080` | Port for the service |
-| stac_browser.urls | string | `"https://stac-browser-auxip.subdomain.example.com;https://stac-browser-cadip.subdomain.example.com;https://stac-browser-prip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"` | The list of all STAC Browser URLs |
+| stac_browser.urls | string | `"https://stac-browser-auxip.subdomain.example.com;https://stac-browser-cadip.subdomain.example.com;https://stac-browser-prip.subdomain.example.com;https://stac-browser-edrs.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"` | The list of all STAC Browser URLs |
 | tolerations | list | `[]` | Pod toleration |
 
 ----------------------------------------------

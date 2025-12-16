@@ -115,4 +115,4 @@ initContainers: []
 
 stac_browser:
   # -- The list of all STAC Browser URLs
-  urls: "https://stac-browser-auxip.subdomain.example.com;https://stac-browser-cadip.subdomain.example.com;https://stac-browser-prip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"
+  urls: "https://stac-browser-auxip.subdomain.example.com;https://stac-browser-cadip.subdomain.example.com;https://stac-browser-prip.subdomain.example.com;https://stac-browser-edrs.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"
