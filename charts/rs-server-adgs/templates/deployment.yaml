@@ -96,7 +96,7 @@ spec:
         - name: RSPY_USE_MODULE_FOR_STATION_TOKEN
           value: {{ .Values.app.useTokenModule | quote }}
         - name: CORS_ORIGINS
-          value: '{{ .Values.cors.origins }}'
+          value: {{ .Values.cors.origins | squote }}
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
