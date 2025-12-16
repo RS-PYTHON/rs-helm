@@ -101,29 +101,29 @@ metadata:
 data:
   {{ .Values.app.edrsStations }}: |
     stations: |
-      -pedc:
+      pedc:
         service:
           name: edrs
-          url: To be added
-          port: To be added
-        domain: To be added
+          url: mockup-station-edrs.processing.svc.cluster.local
+          port: 21
+        domain: mockup-station-edrs.processing.svc.cluster.local
         authentication:
           auth_type: ftp
-          username: To be added from secrets
-          password: To be added from secrets
-          # ca_crt: /certs/ca.crt
-          # client_crt: /certs/client.crt
-          # client_key: /certs/client.key
-      -bedc:
+          username: 'test'
+          password: 'test'
+          ca_crt: /certs/ca.crt
+          client_crt: /certs/tls.crt
+          client_key: /certs/tls.key
+      bedc:
         service:
           name: edrs
-          url: To be added
-          port: To be added
-        domain: To be added
+          url: mockup-station-edrs.processing.svc.cluster.local
+          port: 21
+        domain: mockup-station-edrs.processing.svc.cluster.local
         authentication:
           auth_type: ftp
-          username: To be added from secrets
-          password: To be added from secrets
-          # ca_crt: /path/to/ca.crt
-          # client_crt: /path/to/client.crt
-          # client_key: /path/to/client.key
+          username: 'test'
+          password: 'test'
+          ca_crt: /certs/ca.crt
+          client_crt: /certs/tls.crt
+          client_key: /certs/tls.key
