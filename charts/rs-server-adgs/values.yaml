@@ -158,7 +158,7 @@ initContainers: []
 
 cors:
   # -- A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser
-  origins: https://stac-browser-auxip.subdomain.example.com,http://localhost:8080
+  origins: 'https://stac-browser-auxip.subdomain.example.com,http://localhost:8080'
 
 tempo:
   # -- Grafana tempo endpoint.
