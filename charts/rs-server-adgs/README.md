@@ -30,7 +30,7 @@ RS SERVER ADGS
 | auth.secret.oidc_client_secret | string | `""` | OIDC Secret used to sync user info from Keycloak |
 | auth.secret.oidc_endpoint | string | `""` | OIDC End Point |
 | auth.secret.oidc_realm | string | `""` | OIDC Realm |
-| cors.origins | string | `"https://stac-browser-auxip.subdomain.example.com,http://localhost:8080"` | A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser |
+| cors.origins | string | `"https://stac-browser-auxip.subdomain.example.com;http://localhost:8080"` | A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-adgs"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
