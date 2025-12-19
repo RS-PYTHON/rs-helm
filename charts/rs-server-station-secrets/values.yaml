@@ -224,9 +224,21 @@ app:
         auth_type: ftp
         username: 'test'
         password: 'test'
-        ca_crt: /certs/ca.crt
-        client_crt: /certs/tls.crt
-        client_key: /certs/tls.key
+        ca_crt: |-
+          -----BEGIN CERTIFICATE-----
+          MIID...
+          -----END CERTIFICATE-----
+
+        client_crt: |-
+          -----BEGIN CERTIFICATE-----
+          MIID...
+          -----END CERTIFICATE-----
+
+        client_key: |-
+          -----BEGIN RSA PRIVATE KEY-----
+          MIID...
+          -----END RSA PRIVATE KEY-----
+
     bedc:
       service:
         name: edrs
@@ -237,6 +249,17 @@ app:
         auth_type: ftp
         username: 'test'
         password: 'test'
-        ca_crt: /certs/ca.crt
-        client_crt: /certs/tls.crt
-        client_key: /certs/tls.key
+        ca_crt: |-
+          -----BEGIN CERTIFICATE-----
+          MIID...
+          -----END CERTIFICATE-----
+
+        client_crt: |-
+          -----BEGIN CERTIFICATE-----
+          MIID...
+          -----END CERTIFICATE-----
+
+        client_key: |-
+          -----BEGIN RSA PRIVATE KEY-----
+          MIID...
+          -----END RSA PRIVATE KEY-----
