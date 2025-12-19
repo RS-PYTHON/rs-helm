@@ -214,3 +214,29 @@ app:
         authorization: null
         access_key: ${access_key}
         secret_key: ${secret_key}
+    pedc:
+      service:
+        name: edrs
+        url: mockup-station-edrs.processing.svc.cluster.local
+        port: 21
+      domain: mockup-station-edrs.processing.svc.cluster.local
+      authentication:
+        auth_type: ftp
+        username: 'test'
+        password: 'test'
+        ca_crt: /certs/ca.crt
+        client_crt: /certs/tls.crt
+        client_key: /certs/tls.key
+    bedc:
+      service:
+        name: edrs
+        url: mockup-station-edrs.processing.svc.cluster.local
+        port: 21
+      domain: mockup-station-edrs.processing.svc.cluster.local
+      authentication:
+        auth_type: ftp
+        username: 'test'
+        password: 'test'
+        ca_crt: /certs/ca.crt
+        client_crt: /certs/tls.crt
+        client_key: /certs/tls.key
