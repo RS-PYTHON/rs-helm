@@ -1,0 +1,207 @@
+# Copyright 2024 CS Group
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "mychart.Labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "mychart.selectorLabels" . | nindent 6 }}
+  replicas: {{ .Values.replicaCount }}
+  podManagementPolicy: Parallel
+  updateStrategy:
+    rollingUpdate:
+      partition: 0
+  serviceName: {{ .Release.Name }}-headless
+  template:
+    metadata:
+      name: {{ .Release.Name }}
+      labels:
+        {{- include "mychart.selectorLabels" . | nindent 8 }}
+    spec:
+      terminationGracePeriodSeconds: 30
+      {{- with .Values.initContainers }}
+      initContainers:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+      - name: ftp-healthcheck
+        image: python:3.14-slim
+        command: ["/bin/sh", "-c"]
+        args:
+          - pip install flask && python /healthcheck/healthcheck.py
+        ports:
+          - containerPort: 8080
+        envFrom:
+        - secretRef:
+            name: {{ .Release.Name }}-user
+        env:
+          - name: PYTHONUNBUFFERED
+            value: "1"
+          - name: FTP_CHECK_INTERVAL
+            value: "15"
+        {{ if .Values.app }}
+        {{ if .Values.app.FTPES }}
+        {{ if .Values.app.FTPES.enabled }}
+          - name: SSL_ENABLE
+            value: "TRUE"
+        {{ else }}
+          - name: SSL_ENABLE
+            value: "FALSE"
+        {{ end }}
+        {{ end }}
+        {{ end }}
+        securityContext:
+          privileged: false
+        volumeMounts:
+        {{ if .Values.app }}
+        {{ if .Values.app.FTPES }}
+        {{ if .Values.app.FTPES.enabled }}
+          - name: client-ftp-certs
+            mountPath: /certs
+            readOnly: true
+        {{ end }}
+        {{ end }}
+        {{ end }}
+          - name: healthcheck-script
+            mountPath: /healthcheck
+            readOnly: true
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+      - name: {{ .Release.Name }}
+        image: "{{ template "mychart.image" .Values.image }}"
+        imagePullPolicy: {{ .Values.image.PullPolicy }}
+        resources:
+          requests:
+            memory: {{ .Values.resources.request.ram }}
+            cpu: {{ .Values.resources.request.cpu }}
+          limits:
+            memory: {{ .Values.resources.limit.ram }}
+            cpu: {{ .Values.resources.limit.cpu }}
+        volumeMounts:
+        {{ if .Values.app }}
+        {{ if .Values.app.FTPES }}
+        {{ if .Values.app.FTPES.enabled }}
+        - name: server-ftp-certs
+          mountPath: /app/vsftpd/cert
+          readOnly: true
+        {{ end }}
+        {{ end }}
+        {{ end }}
+        {{ if .Values.app }}
+        {{ if .Values.app.S3FS }}
+        {{ if .Values.app.S3FS.enabled }}
+        - mountPath: /app/vsftpd/users/{{ .Values.app.username }}/NOMINAL
+          name: shared-data
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - '[ "$(ls -A /app/vsftpd/users/{{ .Values.app.username }}/NOMINAL)" ]'
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        {{ end }}
+        {{ end }}
+        {{ end }}
+        ports:
+        - name: web
+          protocol: TCP
+          containerPort: {{ .Values.app.port }}
+        envFrom:
+        - secretRef:
+            name: {{ .Release.Name }}-obs
+        - secretRef:
+            name: {{ .Release.Name }}-user
+        env:
+        {{ if .Values.app }}
+        {{ if .Values.app.FTPES }}
+        {{ if .Values.app.FTPES.enabled }}
+          - name: SSL_ENABLE
+            value: "YES"
+          - name: SRV_CERT
+            value: tls.crt
+          - name: SRV_KEY
+            value: tls.key
+          - name: CA_CERT
+            value: ca.crt
+        {{ end }}
+        {{ end }}
+        {{ end }}
+        securityContext:
+          privileged: false
+      {{ if .Values.image }}
+      {{ if .Values.image.imagePullSecrets }}
+      imagePullSecrets:
+      - name:  {{ .Values.image.imagePullSecrets }}
+      {{ end }}
+      {{ end }}
+      restartPolicy: Always
+      securityContext: {}
+      volumes:
+      {{ if .Values.app }}
+      {{ if .Values.app.FTPES }}
+      {{ if .Values.app.FTPES.enabled }}
+      - name: client-ftp-certs
+        secret:
+          secretName: {{ .Release.Name }}-client-tls
+      - name: server-ftp-certs
+        secret:
+          secretName: {{ .Release.Name }}-server-tls
+      {{ end }}
+      {{ end }}
+      {{ end }}
+      - name: healthcheck-script
+        configMap:
+          name: {{ .Release.Name }}-healthcheck-script
+      {{ if .Values.app }}
+      {{ if .Values.app.S3FS }}
+      {{ if .Values.app.S3FS.enabled }}
+      - hostPath:
+          path: /mnt/shared-s3
+          type: DirectoryOrCreate
+        name: shared-data
+      {{ end }}
+      {{ end }}
+      {{ end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+  volumeClaimTemplates:
+    - metadata:
+        name: opt-edrs
+        annotations:
+          helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: {{ .Values.volume.storageClassName }}
+        resources:
+          requests:
+            storage: {{ .Values.volume.size }}
+  revisionHistoryLimit: 10
