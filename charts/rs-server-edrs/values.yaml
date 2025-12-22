@@ -34,13 +34,51 @@ app:
   useSSL: true
   station:
     pedc:
-      endpoint:
+      service:
+        # -- EDRS PEDC service name
+        name: edrs
         # -- EDRS PEDC station URL
-        url: TO be added
+        url: mockup-station-edrs-headless.processing.svc.cluster.local
+        # -- EDRS PEDC station port
+        port: 21
+      # -- EDRS PEDC domain
+      domain: mockup-station-edrs-headless.processing.svc.cluster.local
+      authentication:
+        # -- EDRS PEDC authentication type
+        auth_type: ftp
+        # -- EDRS PEDC authentication username
+        username: test
+        # -- EDRS PEDC authentication password
+        password: test
+        # -- EDRS PEDC CA certificate path
+        ca_crt: /certs/ca.crt
+        # -- EDRS PEDC client certificate path
+        client_crt: /certs/tls.crt
+        # -- EDRS PEDC client key path
+        client_key: /certs/tls.key
     bedc:
-      endpoint:
+      service:
+        # -- EDRS BEDC service name
+        name: edrs
         # -- EDRS BEDC station URL
-        url: TO be added
+        url: mockup-station-edrs-headless.processing.svc.cluster.local
+        # -- EDRS BEDC station port
+        port: 21
+      # -- EDRS BEDC domain
+      domain: mockup-station-edrs-headless.processing.svc.cluster.local
+      authentication:
+        # -- EDRS BEDC authentication type
+        auth_type: ftp
+        # -- EDRS BEDC authentication username
+        username: test
+        # -- EDRS BEDC authentication password
+        password: test
+        # -- EDRS BEDC CA certificate path
+        ca_crt: /certs/ca.crt
+        # -- EDRS BEDC client certificate path
+        client_crt: /certs/tls.crt
+        # -- EDRS BEDC client key path
+        client_key: /certs/tls.key
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
 

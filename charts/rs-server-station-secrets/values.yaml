@@ -217,9 +217,9 @@ app:
     pedc:
       service:
         name: edrs
-        url: mockup-station-edrs.processing.svc.cluster.local
+        url: mockup-station-edrs-headless.processing.svc.cluster.local
         port: 21
-      domain: mockup-station-edrs.processing.svc.cluster.local
+      domain: mockup-station-edrs-headless.processing.svc.cluster.local
       authentication:
         auth_type: ftp
         username: 'test'
@@ -242,9 +242,9 @@ app:
     bedc:
       service:
         name: edrs
-        url: mockup-station-edrs.processing.svc.cluster.local
+        url: mockup-station-edrs-headless.processing.svc.cluster.local
         port: 21
-      domain: mockup-station-edrs.processing.svc.cluster.local
+      domain: mockup-station-edrs-headless.processing.svc.cluster.local
       authentication:
         auth_type: ftp
         username: 'test'
