@@ -19,8 +19,26 @@ RS SERVER EDRS
 | app.edrsSearchConfigFile | string | `"edrs_search_config.yaml"` |  |
 | app.edrsStations | string | `"edrs_stations.yaml"` |  |
 | app.port | int | `8000` | Port for the application |
-| app.station.bedc.endpoint.url | string | `"TO be added"` | EDRS BEDC station URL |
-| app.station.pedc.endpoint.url | string | `"TO be added"` | EDRS PEDC station URL |
+| app.station.bedc.authentication.auth_type | string | `"ftp"` | EDRS BEDC authentication type |
+| app.station.bedc.authentication.ca_crt | string | `"/certs/ca.crt"` | EDRS BEDC CA certificate path |
+| app.station.bedc.authentication.client_crt | string | `"/certs/tls.crt"` | EDRS BEDC client certificate path |
+| app.station.bedc.authentication.client_key | string | `"/certs/tls.key"` | EDRS BEDC client key path |
+| app.station.bedc.authentication.password | string | `"test"` | EDRS BEDC authentication password |
+| app.station.bedc.authentication.username | string | `"test"` | EDRS BEDC authentication username |
+| app.station.bedc.domain | string | `"mockup-station-edrs-headless.processing.svc.cluster.local"` | EDRS BEDC domain |
+| app.station.bedc.service.name | string | `"edrs"` | EDRS BEDC service name |
+| app.station.bedc.service.port | int | `21` | EDRS BEDC station port |
+| app.station.bedc.service.url | string | `"mockup-station-edrs-headless.processing.svc.cluster.local"` | EDRS BEDC station URL |
+| app.station.pedc.authentication.auth_type | string | `"ftp"` | EDRS PEDC authentication type |
+| app.station.pedc.authentication.ca_crt | string | `"/certs/ca.crt"` | EDRS PEDC CA certificate path |
+| app.station.pedc.authentication.client_crt | string | `"/certs/tls.crt"` | EDRS PEDC client certificate path |
+| app.station.pedc.authentication.client_key | string | `"/certs/tls.key"` | EDRS PEDC client key path |
+| app.station.pedc.authentication.password | string | `"test"` | EDRS PEDC authentication password |
+| app.station.pedc.authentication.username | string | `"test"` | EDRS PEDC authentication username |
+| app.station.pedc.domain | string | `"mockup-station-edrs-headless.processing.svc.cluster.local"` | EDRS PEDC domain |
+| app.station.pedc.service.name | string | `"edrs"` | EDRS PEDC service name |
+| app.station.pedc.service.port | int | `21` | EDRS PEDC station port |
+| app.station.pedc.service.url | string | `"mockup-station-edrs-headless.processing.svc.cluster.local"` | EDRS PEDC station URL |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | app.useSSL | bool | `true` |  |
 | app.useTokenModule | bool | `false` | The way the token for the external stations is loaded: own module or let eodag to do it (set it to false) |
