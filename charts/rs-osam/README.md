@@ -1,6 +1,6 @@
 # rs-osam
 
-![Version: 0.1.0-a4](https://img.shields.io/badge/Version-0.1.0--a4-informational?style=flat-square) ![AppVersion: v1.0a4](https://img.shields.io/badge/AppVersion-v1.0a4-informational?style=flat-square)
+![Version: 0.1.0-a5](https://img.shields.io/badge/Version-0.1.0--a5-informational?style=flat-square) ![AppVersion: v1.0a5](https://img.shields.io/badge/AppVersion-v1.0a5-informational?style=flat-square)
 
 RS Object Storage Access Manager
 

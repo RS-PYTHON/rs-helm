@@ -1,6 +1,6 @@
 # rs-server-staging
 
-![Version: 0.1.0-a4](https://img.shields.io/badge/Version-0.1.0--a4-informational?style=flat-square) ![AppVersion: v1.0a4](https://img.shields.io/badge/AppVersion-v1.0a4-informational?style=flat-square)
+![Version: 0.1.0-a5](https://img.shields.io/badge/Version-0.1.0--a5-informational?style=flat-square) ![AppVersion: v1.0a5](https://img.shields.io/badge/AppVersion-v1.0a5-informational?style=flat-square)
 
 RS SERVER STAGING
 
@@ -28,7 +28,7 @@ RS SERVER STAGING
 | app.endpointOsam | string | `"https://subdomain.example.com/osam"` | Osam pod address |
 | app.endpointPrip | string | `"https://subdomain.example.com/prip"` | Prip server pod address |
 | app.port | int | `8000` | Port for the application |
-| app.station | object | `{"adgs":{"type":"auxip"},"adgs2":{"type":"auxip"},"cadip":{"type":"cadip"},"mti":{"type":"cadip"},"s1a":{"type":"prip"},"s2b":{"type":"prip"},"s3rspy":{"type":"s3"},"sgs":{"type":"cadip"}}` | List of configured stations (expect a secret with the same name) |
+| app.station | object | `{"adgs":{"type":"auxip"},"adgs2":{"type":"auxip"},"bedc":{"type":"edrs"},"cadip":{"type":"cadip"},"mti":{"type":"cadip"},"pedc":{"type":"edrs"},"s1a":{"type":"prip"},"s2b":{"type":"prip"},"s3rspy":{"type":"s3"},"sgs":{"type":"cadip"}}` | List of configured stations (expect a secret with the same name) |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service (internal) |
 | app.useSsl | string | `"true"` | enable ssl connection for edrs |
@@ -41,7 +41,6 @@ RS SERVER STAGING
 | dask.gateway_address | string | `"http://traefik-dask-gateway.dask-gateway.svc.cluster.local"` | Dask gateway address |
 | dask.gateway_auth_type | string | `"jupyterhub"` | Dask gateway auth type |
 | dask.jupyterhub_api_token | string | `"JUPYTER_API_TOKEN_HERE"` | Jupyter API Token when dask.jupyterhub=jupyterhub |
-| edrs.secret.TO_BE_ADDED | string | `"TO_BE_ADDED"` |  |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-staging"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |

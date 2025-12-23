@@ -92,7 +92,6 @@ data:
           url: "https://home.rs-python.eu/"
 
 ---
-
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -101,29 +100,18 @@ metadata:
 data:
   {{ .Values.app.edrsStations }}: |
     stations: |
-      pedc:
+    {{- range $k, $v := .Values.app.station }}
+      {{ $k }}:
         service:
-          name: edrs
-          url: mockup-station-edrs.processing.svc.cluster.local
-          port: 21
-        domain: mockup-station-edrs.processing.svc.cluster.local
+          name: {{ $v.service.name }}
+          url: {{ $v.service.url }}
+          port: {{ $v.service.port }}
+        domain: {{ $v.domain }}
         authentication:
-          auth_type: ftp
-          username: 'test'
-          password: 'test'
-          ca_crt: /certs/ca.crt
-          client_crt: /certs/tls.crt
-          client_key: /certs/tls.key
-      bedc:
-        service:
-          name: edrs
-          url: mockup-station-edrs.processing.svc.cluster.local
-          port: 21
-        domain: mockup-station-edrs.processing.svc.cluster.local
-        authentication:
-          auth_type: ftp
-          username: 'test'
-          password: 'test'
-          ca_crt: /certs/ca.crt
-          client_crt: /certs/tls.crt
-          client_key: /certs/tls.key
+          auth_type: {{ $v.authentication.auth_type }}
+          username: {{ $v.authentication.username | quote }}
+          password: {{ $v.authentication.password | quote }}
+          ca_crt: {{ $v.authentication.ca_crt }}
+          client_crt: {{ $v.authentication.client_crt }}
+          client_key: {{ $v.authentication.client_key }}
+    {{- end }}

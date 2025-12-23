@@ -217,7 +217,9 @@ jobs:
         uses: ./.github/actions/run-with-watch
         with:
           namespace: processing
-          command: ct install $CT_RS_OPTS --namespace processing --charts $CT_CHARTS_STEP4
+          command: |
+            ct install $CT_RS_OPTS --namespace processing --charts $CT_CHARTS_STEP4 \
+                       --helm-extra-set-args='--set=image.version=latest --timeout=60s'
       - name: Run chart-testing (install step 5 - frontend/stac-browser)
         uses: ./.github/actions/run-with-watch
         with:
