@@ -13,6 +13,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [1.0a5] - 2025-12-23
+
+### Added
+- [RSPY-857](https://github.com/RS-PYTHON/rs-helm/pull/185) : Feat rspy857/endpoint bucket configuration
+- [RSPY-814](https://github.com/RS-PYTHON/rs-helm/pull/180) : EDRS staging
+- [RSPY-808](https://github.com/RS-PYTHON/rs-helm/pull/179) : rs-server-edrs
+- [RSPY-807](https://github.com/RS-PYTHON/rs-helm/pull/175) : edrs mockup 
+
+### Changed
+
+- [PR#183](https://github.com/RS-PYTHON/rs-helm/pull/183) : Update to stac-fastapi-pgstac 6.1.1
+- [PR#185](https://github.com/RS-PYTHON/rs-helm/pull/185) : Update GitHub actions
+- bump docker image tag
+- update root README with rs-server-edrs and mockup-station-edrs
+
 ## [1.0a4] - 2025-11-20
 
 ### Changed
