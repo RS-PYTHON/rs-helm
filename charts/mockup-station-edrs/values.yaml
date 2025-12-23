@@ -102,7 +102,7 @@ image:
   # -- Image name
   name: rs-testmeans_edrs-station-mock
   # -- Image version, can be a tag or a digest
-  version: feat-rspy807-edrs
+  version: 7ea8d82
   # -- Image pull policy
   PullPolicy: Always
   # imagePullSecrets: regcred
