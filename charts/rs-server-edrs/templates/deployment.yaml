@@ -77,6 +77,8 @@ spec:
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}
+        - name: RSPY_OAUTH2_ATTRIBUTES
+          value: {{ .Values.app.oauth2Attributes }}
         - name: S3_ENDPOINT
           value: {{ .Values.obs.endpoint }}
         - name: S3_REGION

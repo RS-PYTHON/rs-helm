@@ -29,6 +29,8 @@ app:
   confDir: /app/conf
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
+  # -- OAuth2 attributes to read and save, as a comma-separated str
+  oauth2Attributes: monthly-download-volume-limit-gb
   # -- URL of the API Key Manager home page (public)
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
   # -- Object Storage bucket for the catalog

@@ -48,6 +48,8 @@ app:
         url: http://mockup-station-adgs2.processing.svc.cluster.local:8080/Products
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
+  # -- OAuth2 attributes to read and save, as a comma-separated str
+  oauth2Attributes: monthly-download-volume-limit-gb
 
 probe:
   startup:
