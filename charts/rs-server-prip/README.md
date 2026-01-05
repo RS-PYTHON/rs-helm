@@ -18,6 +18,7 @@ RS SERVER PRIP
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.eodagConfigFile | string | `"prip_ws_config.yaml"` | Set properly the EODAG_PRIP_CONFIG env var. |
 | app.eodagConfigFileTokenModule | string | `"prip_ws_config_token_module.yaml"` |  |
+| app.oauth2Attributes | string | `"monthly-download-volume-limit-gb"` | OAuth2 attributes to read and save, as a comma-separated str |
 | app.port | int | `8000` | Port for the application |
 | app.pripSearchConfigFile | string | `"prip_search_config.yaml"` |  |
 | app.ptypeMappingFile | string | `"product_type_mapping.yaml"` |  |

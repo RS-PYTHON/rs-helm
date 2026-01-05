@@ -18,6 +18,7 @@ RS SERVER EDRS
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.edrsSearchConfigFile | string | `"edrs_search_config.yaml"` |  |
 | app.edrsStations | string | `"edrs_stations.yaml"` |  |
+| app.oauth2Attributes | string | `"monthly-download-volume-limit-gb"` | OAuth2 attributes to read and save, as a comma-separated str |
 | app.port | int | `8000` | Port for the application |
 | app.station.bedc.authentication.auth_type | string | `"ftp"` | EDRS BEDC authentication type |
 | app.station.bedc.authentication.ca_crt | string | `"/certs/ca.crt"` | EDRS BEDC CA certificate path |

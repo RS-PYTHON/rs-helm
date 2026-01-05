@@ -19,6 +19,7 @@ RS SERVER ADGS
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.eodagConfigFile | string | `"adgs_ws_config.yaml"` | Set properly the EODAG_ADGS_CONFIG env var. |
 | app.eodagConfigFileTokenModule | string | `"adgs_ws_config_token_module.yaml"` |  |
+| app.oauth2Attributes | string | `"monthly-download-volume-limit-gb"` | OAuth2 attributes to read and save, as a comma-separated str |
 | app.port | int | `8000` | Port for the application |
 | app.station.adgs.endpoint.url | string | `"http://mockup-station-adgs.processing.svc.cluster.local:8080/Products"` | ADGS URL |
 | app.station.adgs2.endpoint.url | string | `"http://mockup-station-adgs2.processing.svc.cluster.local:8080/Products"` | ADGS2 URL |

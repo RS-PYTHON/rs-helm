@@ -16,6 +16,7 @@ RS SERVER FRONTEND
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. Must be the same value as ingress.path |
+| app.oauth2Attributes | string | `"monthly-download-volume-limit-gb"` | OAuth2 attributes to read and save, as a comma-separated str |
 | app.port | int | `8000` | Port for the application |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service (internal) |

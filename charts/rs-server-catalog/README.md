@@ -23,6 +23,7 @@ RS SERVER CATALOG
 | app.metadata.description | string | `"STAC catalog of Copernicus Reference System Python"` | update the catalog metadata description parameter over the default one received from the pystac client |
 | app.metadata.id | string | `"rs-python"` | update the catalog metadata id parameter over the default one received from the pystac client |
 | app.metadata.title | string | `"RS-PYTHON STAC Catalog"` | update the catalog metadata title parameter over the default one received from the pystac client |
+| app.oauth2Attributes | string | `"monthly-download-volume-limit-gb"` | OAuth2 attributes to read and save, as a comma-separated str |
 | app.openApiUrl | string | `"/catalog/api"` | URL of FastAPI OpenAPI schema |
 | app.port | int | `8000` | Port for the application |
 | app.prefixPath | string | `"/catalog"` | The path prefix for the underlying FastAPI router |

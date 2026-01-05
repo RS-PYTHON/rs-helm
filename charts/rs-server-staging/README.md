@@ -27,6 +27,7 @@ RS SERVER STAGING
 | app.endpointCatalog | string | `"http://rs-server-catalog.processing.svc.cluster.local:8080"` | Catalog pod address |
 | app.endpointOsam | string | `"https://subdomain.example.com/osam"` | Osam pod address |
 | app.endpointPrip | string | `"https://subdomain.example.com/prip"` | Prip server pod address |
+| app.oauth2Attributes | string | `"monthly-download-volume-limit-gb"` | OAuth2 attributes to read and save, as a comma-separated str |
 | app.port | int | `8000` | Port for the application |
 | app.station | object | `{"adgs":{"type":"auxip"},"adgs2":{"type":"auxip"},"bedc":{"type":"edrs"},"cadip":{"type":"cadip"},"mti":{"type":"cadip"},"pedc":{"type":"edrs"},"s1a":{"type":"prip"},"s2b":{"type":"prip"},"s3rspy":{"type":"s3"},"sgs":{"type":"cadip"}}` | List of configured stations (expect a secret with the same name) |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
