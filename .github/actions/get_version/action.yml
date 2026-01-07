@@ -13,12 +13,15 @@
 # limitations under the License.
 
 name: publish-get_version
-description: Get the rs-server version tag
+description: Get the rs-server version tags
 
 outputs:
   APP_VERSION:
-    description: "Version tag of rs-server"
+    description: "Version tag of rs-server git repository"
     value: ${{ steps.get_version.outputs.APP_VERSION }}
+  IMAGE_VERSION:
+    description: "Version tag of rs-server docker images"
+    value: ${{ steps.get_version.outputs.IMAGE_VERSION }}
   CHART_VERSION:
     description: "Helm-compatible chart version"
     value: ${{ steps.get_version.outputs.CHART_VERSION }}
@@ -31,7 +34,7 @@ runs:
         shell: bash
         run: |
           # Enable pipefail so git command failures do not result in null versions downstream
-          set -x
+          set -euo pipefail
 
           : "${GITHUB_OUTPUT:=$RUNNER_TEMP/github_output.txt}"
           touch "$GITHUB_OUTPUT"
@@ -40,11 +43,14 @@ runs:
             if [[ "$GITHUB_REF_NAME" =~ v[0-9].[0-9][ab] || "$GITHUB_REF_NAME" =~ v[0-9][ab] ]] ; then
               # Sprint release
               # v0.1a10
-              echo "APP_VERSION=$(\
+              APP_VERSION=$(\
                 git ls-remote --tags --refs --sort="v:refname" \
                 https://github.com/RS-PYTHON/rs-server.git | grep -E 'v[0-9](.)?([0-9])?[ab]' | tail -n1 | sed 's/.*\///' \
-              )" >> "$GITHUB_OUTPUT"
+              )
+              echo "APP_VERSION=$APP_VERSION" >> "$GITHUB_OUTPUT"
               # v0.1a10
+              echo "IMAGE_VERSION=${APP_VERSION#v}" >> "$GITHUB_OUTPUT"
+              # 0.1a10
 
               # Ugly workaround to transform the chart_version into SemVer 2, required by Helm
               CHART_VERSION_TMP=$(echo $GITHUB_REF_NAME | sed 's/.*\///' | sed 's/^v//')
@@ -61,11 +67,14 @@ runs:
             elif [[ "$GITHUB_REF_NAME" = v[0-9].[0-9] || "$GITHUB_REF_NAME" = v[0-9] ]] ; then
               # Checkpoint release
               # v0.1 or v1
-              echo "APP_VERSION=$(\
+              APP_VERSION=$(\
                 git ls-remote --tags --refs --sort="v:refname" \
                 https://github.com/RS-PYTHON/rs-server.git | grep -E 'v[0-9](.)?([0-9])?$' | tail -n1 | sed 's/.*\///' \
-              )" >> "$GITHUB_OUTPUT"
+              )
+              echo "APP_VERSION=$APP_VERSION" >> "$GITHUB_OUTPUT"
               # v0.1
+              echo "IMAGE_VERSION=${APP_VERSION#v}" >> "$GITHUB_OUTPUT"
+              # 0.1
 
               CHART_VERSION=$(echo $GITHUB_REF_NAME | sed 's/.*\///' | sed 's/^v//')
               while [[ ${#CHART_VERSION} -lt 5 ]]; do
@@ -78,11 +87,23 @@ runs:
               # v1   => 1.0.0
             fi
           elif [ "$GITHUB_REF_TYPE" == "branch" ]; then
-            echo "APP_VERSION=$(\
+            APP_VERSION=$(\
               git ls-remote --tags --refs --sort="v:refname" \
               https://github.com/RS-PYTHON/rs-server.git | grep -E 'v[0-9](.)?([0-9])?[ab]' | tail -n1 | sed 's/.*\///' \
-            )" >> "$GITHUB_OUTPUT"
+            )
+            echo "APP_VERSION=$APP_VERSION" >> "$GITHUB_OUTPUT"
             # v0.1a10
+
+            IMAGE_PREFIX=${APP_VERSION#v}
+            # 0.1a10
+            IMAGE_VERSION=$(gh api /orgs/RS-PYTHON/packages/container/rs-server-cadip/versions \
+              --jq '.[].metadata.container.tags[]' | grep "^${IMAGE_PREFIX}" | sort -V | tail -n1)
+            if [[ -z "$IMAGE_VERSION" ]]; then
+              echo "❌ No image found for prefix $IMAGE_PREFIX in rs-server-cadip" >&2
+              exit 1
+            fi
+            echo "IMAGE_VERSION=$IMAGE_VERSION" >> "$GITHUB_OUTPUT"
+            # 0.1a10.post105
 
             # Ugly workaround to transform the chart_version into SemVer 2, required by Helm
             CHART_VERSION_TMP=$(git ls-remote --tags --refs --sort="v:refname" \
@@ -99,5 +120,5 @@ runs:
             # v1a7 => 1.0.0-a7-1tr5hrt
           fi
 
-          echo "APP_VERSION and CHART_VERSION written to: $GITHUB_OUTPUT"
+          echo "APP_VERSION, IMAGE_VERSION and CHART_VERSION written to: $GITHUB_OUTPUT"
           cat "$GITHUB_OUTPUT"
