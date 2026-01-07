@@ -66,7 +66,7 @@ jobs:
     env:
       AK: TDr8foJqSygBQ9YFmWDy
       SK: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
-      HELM_VERSION: v3.19.2
+      HELM_VERSION: v3.19.4
       RS_HELM_OPTS: --set=volume.storageClassName=standard --set=app.bucketConfig.useExternalBucketConfigMap=true --set=app.bucketConfig.externalBucketConfigMapName=rs-catalog-staging-configmap --set=auth.secret.oidc_endpoint=http://keycloak-keycloakx-http.iam.svc.cluster.local
       CT_OPTS: --debug --skip-clean-up --helm-extra-set-args="--timeout=30s"
       CT_RS_OPTS: --debug --skip-clean-up --helm-extra-set-args="$RS_HELM_OPTS --timeout=60s"
