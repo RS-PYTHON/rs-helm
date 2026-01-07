@@ -39,11 +39,11 @@ jobs:
           yamllint_comment: true
         env:
           GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Get the rs-server version tag (test from my branch)
+      - name: Get the rs-server version tag
         id: get_version
         uses: ./.github/actions/get_version
-        with:
-          my_var: toto
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2
         with:
