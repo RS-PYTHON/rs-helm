@@ -8,6 +8,9 @@ env:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
     outputs:
       changed: ${{ steps.list-changed.outputs.changed }}
       ref_exists_in_rs_server: ${{ steps.check_branch.outputs.ref_exists_in_rs_server }}
@@ -39,6 +42,8 @@ jobs:
       - name: Get the rs-server version tag
         id: get_version
         uses: ./.github/actions/get_version
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2
         with:
@@ -54,6 +59,9 @@ jobs:
               sed -i -e "s,{{APP_VERSION}},${{ steps.get_version.outputs.APP_VERSION }}," \
                      -e "s,{{CHART_VERSION}},${{ steps.get_version.outputs.CHART_VERSION }}," \
                      "$dir/Chart.yaml"
+              if [[ "$dir" == *rs-server* ]]; then
+                yq -i ".image.version = \"${{ steps.get_version.outputs.IMAGE_VERSION }}\"" "$dir/values.yaml"
+              fi
             done
           fi
       - name: Run chart-testing (lint)
@@ -66,7 +74,7 @@ jobs:
     env:
       AK: TDr8foJqSygBQ9YFmWDy
       SK: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
-      HELM_VERSION: v3.19.2
+      HELM_VERSION: v3.19.4
       RS_HELM_OPTS: --set=volume.storageClassName=standard --set=app.bucketConfig.useExternalBucketConfigMap=true --set=app.bucketConfig.externalBucketConfigMapName=rs-catalog-staging-configmap --set=auth.secret.oidc_endpoint=http://keycloak-keycloakx-http.iam.svc.cluster.local
       CT_OPTS: --debug --skip-clean-up --helm-extra-set-args="--timeout=30s"
       CT_RS_OPTS: --debug --skip-clean-up --helm-extra-set-args="$RS_HELM_OPTS --timeout=60s"
