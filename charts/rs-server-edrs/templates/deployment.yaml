@@ -59,8 +59,6 @@ spec:
         - name: service-config-volume
           mountPath: {{ .Values.app.confDir }}/{{ .Values.app.edrsStations }}
           subPath: {{ .Values.app.edrsStations }}
-        - name: mockup-station-edrs-certs
-          mountPath: /certs/
         ports:
         - name: web
           protocol: TCP
@@ -147,10 +145,6 @@ spec:
         - name: search-service-config-volume
           configMap:
             name: {{ .Release.Name }}-search-service-config
-        - name: mockup-station-edrs-certs
-          secret:
-            secretName: mockup-station-edrs-client-tls
-
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
