@@ -83,6 +83,10 @@ spec:
           value: {{ .Values.app.uacURL }}
         - name: RSPY_OAUTH2_ATTRIBUTES
           value: {{ .Values.app.oauth2Attributes }}
+        {{ if .Values.app.force_multipolygon }}
+        - name: RSPY_FORCE_MULTIPOLYGON_FOR_STATIONS
+          value: {{ .Values.app.force_multipolygon | squote }}
+        {{ end }}
         - name: RSPY_STATION_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
         {{ if eq .Values.app.useTokenModule true }}
