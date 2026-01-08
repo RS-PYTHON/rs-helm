@@ -39,13 +39,15 @@ runs:
           : "${GITHUB_OUTPUT:=$RUNNER_TEMP/github_output.txt}"
           touch "$GITHUB_OUTPUT"
 
+          RS_SERVER_GIT="https://github.com/${GITHUB_REPOSITORY_OWNER}/rs-server.git"
+
           if [ "$GITHUB_REF_TYPE" == "tag" ]; then
             if [[ "$GITHUB_REF_NAME" =~ v[0-9].[0-9][ab] || "$GITHUB_REF_NAME" =~ v[0-9][ab] ]] ; then
               # Sprint release
               # v0.1a10
               APP_VERSION=$(\
                 git ls-remote --tags --refs --sort="v:refname" \
-                https://github.com/RS-PYTHON/rs-server.git | grep -E 'v[0-9](.)?([0-9])?[ab]' | tail -n1 | sed 's/.*\///' \
+                ${RS_SERVER_GIT} | grep -E 'v[0-9](.)?([0-9])?[ab]' | tail -n1 | sed 's/.*\///' \
               )
               echo "APP_VERSION=$APP_VERSION" >> "$GITHUB_OUTPUT"
               # v0.1a10
@@ -69,7 +71,7 @@ runs:
               # v0.1 or v1
               APP_VERSION=$(\
                 git ls-remote --tags --refs --sort="v:refname" \
-                https://github.com/RS-PYTHON/rs-server.git | grep -E 'v[0-9](.)?([0-9])?$' | tail -n1 | sed 's/.*\///' \
+                ${RS_SERVER_GIT} | grep -E 'v[0-9](.)?([0-9])?$' | tail -n1 | sed 's/.*\///' \
               )
               echo "APP_VERSION=$APP_VERSION" >> "$GITHUB_OUTPUT"
               # v0.1
@@ -89,25 +91,37 @@ runs:
           elif [ "$GITHUB_REF_TYPE" == "branch" ]; then
             APP_VERSION=$(\
               git ls-remote --tags --refs --sort="v:refname" \
-              https://github.com/RS-PYTHON/rs-server.git | grep -E 'v[0-9](.)?([0-9])?[ab]' | tail -n1 | sed 's/.*\///' \
+              ${RS_SERVER_GIT} | grep -E 'v[0-9](.)?([0-9])?[ab]' | tail -n1 | sed 's/.*\///' \
             )
             echo "APP_VERSION=$APP_VERSION" >> "$GITHUB_OUTPUT"
             # v0.1a10
 
-            IMAGE_PREFIX=${APP_VERSION#v}
-            # 0.1a10
-            IMAGE_VERSION=$(gh api /orgs/RS-PYTHON/packages/container/rs-server-cadip/versions \
-              --jq '.[].metadata.container.tags[]' | grep "^${IMAGE_PREFIX}" | sort -V | tail -n1)
-            if [[ -z "$IMAGE_VERSION" ]]; then
-              echo "❌ No image found for prefix $IMAGE_PREFIX in rs-server-cadip" >&2
-              exit 1
+            echo ${RS_SERVER_GIT}
+            echo "${GITHUB_REF_NAME}"
+            git ls-remote --heads ${RS_SERVER_GIT} "${GITHUB_REF_NAME}"
+            git ls-remote --heads ${RS_SERVER_GIT} "${GITHUB_REF_NAME}" | wc -l
+
+            ref_exists_in_rs_server=$(git ls-remote --heads ${RS_SERVER_GIT} "${GITHUB_REF_NAME}" | wc -l)
+            if [[ "${ref_exists_in_rs_server}" == "1" ]]; then
+              # Replace special characters by -
+              IMAGE_VERSION=$(sed "s/[^a-zA-Z0-9]/-/g" <<< "${GITHUB_REF_NAME}")
+              # feat-711-multiple-item-search
+            else
+              IMAGE_PREFIX=${APP_VERSION#v}
+              # 0.1a10
+              IMAGE_VERSION=$(gh api /orgs/${GITHUB_REPOSITORY_OWNER}/packages/container/rs-server-cadip/versions \
+                --jq '.[].metadata.container.tags[]' | grep "^${IMAGE_PREFIX}" | sort -V | tail -n1)
+              # 0.1a10.post105
+              if [[ -z "$IMAGE_VERSION" ]]; then
+                echo "❌ No image found for prefix $IMAGE_PREFIX in rs-server-cadip" >&2
+                exit 1
+              fi
             fi
             echo "IMAGE_VERSION=$IMAGE_VERSION" >> "$GITHUB_OUTPUT"
-            # 0.1a10.post105
 
             # Ugly workaround to transform the chart_version into SemVer 2, required by Helm
             CHART_VERSION_TMP=$(git ls-remote --tags --refs --sort="v:refname" \
-                https://github.com/RS-PYTHON/rs-server.git | grep -E 'v[0-9](.)?([0-9])?[ab]' | tail -n1 | sed 's/.*\///' | sed 's/^v//')
+                ${RS_SERVER_GIT} | grep -E 'v[0-9](.)?([0-9])?[ab]' | tail -n1 | sed 's/.*\///' | sed 's/^v//')
             CHART_VERSION_PREFIX=${CHART_VERSION_TMP%[ab]*}
             CHART_VERSION_SUFFIX=${CHART_VERSION_TMP/#$CHART_VERSION_PREFIX}
             while [[ ${#CHART_VERSION_PREFIX} -lt 5 ]]; do
