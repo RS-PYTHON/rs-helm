@@ -51,6 +51,8 @@ jobs:
       - name: Get the rs-server version tag
         id: get_version
         uses: ./.github/actions/get_version
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Update version number in Chart.yaml
         shell: bash
