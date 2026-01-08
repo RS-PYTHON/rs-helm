@@ -52,7 +52,7 @@ jobs:
         id: get_version
         uses: ./.github/actions/get_version
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ github.token }}
 
       - name: Update version number in Chart.yaml
         shell: bash
