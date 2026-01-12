@@ -65,8 +65,6 @@ jobs:
     needs: lint
     if: needs.lint.outputs.changed == 'true'
     env:
-      AK: TDr8foJqSygBQ9YFmWDy
-      SK: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
       HELM_VERSION: v3.19.4
       RS_HELM_OPTS: --set=volume.storageClassName=standard --set=app.bucketConfig.useExternalBucketConfigMap=true --set=app.bucketConfig.externalBucketConfigMapName=rs-catalog-staging-configmap --set=auth.secret.oidc_endpoint=http://keycloak-keycloakx-http.iam.svc.cluster.local
       CT_OPTS: --debug --skip-clean-up --helm-extra-set-args="--timeout=30s"
@@ -150,23 +148,14 @@ jobs:
           helm repo update apikeymanager
           kubectl create namespace processing
           helm install apikeymanager apikeymanager/apikeymanager --version 1.0.0 --namespace processing --wait --timeout=60s
-      - name: Deploy minio
+      - name: Deploy seaweedfs
+        run: .github/common/resources/deploy-seaweedfs.sh rs-dev-cluster-temp,rs-cluster-catalog
+      - name: Upload test data to S3
+        env:
+          AWS_ACCESS_KEY_ID: TDr8foJqSygBQ9YFmWDy
+          AWS_SECRET_ACCESS_KEY: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
         run: |
-          # Minio for cloudnative pg - https://github.com/minio/minio/tree/master/helm/minio#installing-the-chart-toy-setup
-          helm repo add minio https://charts.min.io/
-          helm repo update minio
-          helm install minio minio/minio --namespace minio --set mode=standalone --set replicas=1 \
-                       --set persistence.enabled=false --set resources.requests.memory=128Mi \
-                       --set rootUser=$AK,rootPassword=$SK \
-                       --set buckets[0].name=rs-dev-cluster-temp,buckets[1].name=rs-cluster-catalog \
-                       --create-namespace --wait
-          kubectl port-forward -n minio svc/minio 9000:9000 &
-      - name: Upload test data to Minio
-        run: |
-          wget -q https://dl.min.io/client/mc/release/linux-amd64/mc -O mc
-          chmod +x mc
-          ./mc alias set myminio http://localhost:9000 $AK $SK
-          ./mc cp --recursive .github/common/resources/stations/ myminio/rs-dev-cluster-temp/stations/
+          aws s3 cp --recursive .github/common/resources/stations/ s3://rs-dev-cluster-temp/stations/ --endpoint-url http://localhost:9000
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2
         with:
@@ -186,7 +175,7 @@ jobs:
             yq -i 'del(.app.station.sgs, .app.station.mti)' charts/rs-server-cadip/values.yaml
             yq -i 'del(.app.station.s2b)' charts/rs-server-prip/values.yaml
             yq -i 'del(.app.station.adgs2, .app.station.sgs, .app.station.mti, .app.station.s2b, .app.station.s3rspy)' charts/rs-server-staging/values.yaml
-            # can't find a way to change region in helm values so change it to minio default
+            # can't find a way to change region in helm values so change it to s3 default
             find charts -name "values.yaml" -print0 | xargs -0 sed -i "s,region: sbg,region: us-east-1,"
             # disable opentelemetry
             find charts -name "values.yaml" -print0 | xargs -0 yq -i 'del(.tempo)'
