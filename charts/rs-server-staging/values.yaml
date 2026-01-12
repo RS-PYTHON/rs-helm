@@ -1,4 +1,4 @@
-# Copyright 2024 CS Group
+# Copyright 2023-2026 Airbus, CS Group
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -31,6 +31,8 @@ app:
   confDir: /app/conf
   # -- URL of the API Key Manager service (internal)
   uacUrl: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
+  # -- OAuth2 attributes to read and save, as a comma-separated str
+  oauth2Attributes: monthly-download-volume-limit-gb
   # -- URL of the API Key Manager home page (public)
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
   # -- Catalog pod address
@@ -73,6 +75,10 @@ app:
       type: cadip
     s3rspy:
       type: s3
+    pedc:
+      type: edrs
+    bedc:
+      type: edrs
 
 dask:
   # -- Dask gateway address
@@ -152,10 +158,6 @@ obs:
     # -- Secret Key to authenticate with the object storage service
     sk: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
 
-edrs:
-  secret:
-    TO_BE_ADDED: TO_BE_ADDED
-
 auth:
   secret:
     # -- OIDC End Point
@@ -177,7 +179,7 @@ image:
   # -- Image name
   name: rs-server-staging
   # -- Image version, can be a tag or a digest
-  version: "1.0a4"
+  version: "1.0a5"
   # -- Image pull policy
   PullPolicy: IfNotPresent
 

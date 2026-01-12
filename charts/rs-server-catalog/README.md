@@ -1,6 +1,6 @@
 # rs-server-catalog
 
-![Version: 0.1.0-a4](https://img.shields.io/badge/Version-0.1.0--a4-informational?style=flat-square) ![AppVersion: v1.0a4](https://img.shields.io/badge/AppVersion-v1.0a4-informational?style=flat-square)
+![Version: 0.1.0-a5](https://img.shields.io/badge/Version-0.1.0--a5-informational?style=flat-square) ![AppVersion: v1.0a5](https://img.shields.io/badge/AppVersion-v1.0a5-informational?style=flat-square)
 
 RS SERVER CATALOG
 
@@ -17,12 +17,13 @@ RS SERVER CATALOG
 | affinity | object | `{}` | Pod affinity |
 | app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
-| app.dataLifecyclePeriod | int | `86400` | Period in seconds between two data lifecycle cleaning tasks. If <0, the task is deactivated. |
+| app.dataLifecyclePeriod | int | `86400` | Period in seconds between two data lifecycle cleaning tasks. If <0, the task is deactivated. Default: 24 hours |
 | app.docsUrl | string | `"/catalog/api.html"` | URL of FastAPI Swagger UI |
-| app.endpointOsam | string | `"https://subdomain.example.com/osam"` | Bucket configuration to use to monitor the lifespan and name of data buckets. This info is now retrieved from Osam service. Osam pod address |
+| app.endpointOsam | string | `"https://subdomain.example.com/osam"` | URL of OSAM service |
 | app.metadata.description | string | `"STAC catalog of Copernicus Reference System Python"` | update the catalog metadata description parameter over the default one received from the pystac client |
 | app.metadata.id | string | `"rs-python"` | update the catalog metadata id parameter over the default one received from the pystac client |
 | app.metadata.title | string | `"RS-PYTHON STAC Catalog"` | update the catalog metadata title parameter over the default one received from the pystac client |
+| app.oauth2Attributes | string | `"monthly-download-volume-limit-gb"` | OAuth2 attributes to read and save, as a comma-separated str |
 | app.openApiUrl | string | `"/catalog/api"` | URL of FastAPI OpenAPI schema |
 | app.port | int | `8000` | Port for the application |
 | app.prefixPath | string | `"/catalog"` | The path prefix for the underlying FastAPI router |
@@ -42,7 +43,7 @@ RS SERVER CATALOG
 | image.name | string | `"rs-server-catalog"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"1.0a4"` | Image version, can be a tag or a digest |
+| image.version | string | `"1.0a5"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |

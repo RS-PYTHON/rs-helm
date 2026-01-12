@@ -1,4 +1,4 @@
-# Copyright 2023-2025 Airbus, CS Group
+# Copyright 2023-2026 Airbus, CS Group
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -214,3 +214,52 @@ app:
         authorization: null
         access_key: ${access_key}
         secret_key: ${secret_key}
+    pedc:
+      service:
+        name: edrs
+        url: mockup-station-edrs-headless.processing.svc.cluster.local
+        port: 21
+      domain: mockup-station-edrs-headless.processing.svc.cluster.local
+      authentication:
+        auth_type: ftp
+        username: 'test'
+        password: 'test'
+        ca_crt: |-
+          -----BEGIN CERTIFICATE-----
+          MIID...
+          -----END CERTIFICATE-----
+
+        client_crt: |-
+          -----BEGIN CERTIFICATE-----
+          MIID...
+          -----END CERTIFICATE-----
+
+        client_key: |-
+          -----BEGIN RSA PRIVATE KEY-----
+          MIID...
+          -----END RSA PRIVATE KEY-----
+
+    bedc:
+      service:
+        name: edrs
+        url: mockup-station-edrs-headless.processing.svc.cluster.local
+        port: 21
+      domain: mockup-station-edrs-headless.processing.svc.cluster.local
+      authentication:
+        auth_type: ftp
+        username: 'test'
+        password: 'test'
+        ca_crt: |-
+          -----BEGIN CERTIFICATE-----
+          MIID...
+          -----END CERTIFICATE-----
+
+        client_crt: |-
+          -----BEGIN CERTIFICATE-----
+          MIID...
+          -----END CERTIFICATE-----
+
+        client_key: |-
+          -----BEGIN RSA PRIVATE KEY-----
+          MIID...
+          -----END RSA PRIVATE KEY-----

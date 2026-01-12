@@ -82,6 +82,8 @@ spec:
           value:  {{ .Values.dask.clusterName }}
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacUrl }}
+        - name: RSPY_OAUTH2_ATTRIBUTES
+          value: {{ .Values.app.oauth2Attributes }}
         - name: RSPY_UAC_HOMEPAGE
           value: {{ .Values.app.uacHomeUrl }}
         - name: RSPY_DOCS_URL

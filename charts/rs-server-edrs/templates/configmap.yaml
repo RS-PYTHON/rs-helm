@@ -126,19 +126,19 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   {{ .Values.app.edrsStations }}: |
-    stations: "pedc:\n  service:\n    name: edrs\n    url: '{URL}'\n    port: '{PORT}'\n  domain: mockup-station-pedc.processing.svc.cluster.local\n  authentication:\n    auth_type: ftpes\n    username: '{USER}'\n    password: '{PASS}'\n    ca_crt: /certs/ca.crt\n    client_crt: /certs/client.crt\n    client_key: /certs/client.key\nbedc:\n  service:\n    name: edrs\n    url: '{URL}'\n    port: '{PORT}'\n  domain: mockup-station-pedc.processing.svc.cluster.local\n  authentication:\n    auth_type: ftpes\n    username: '{USER}'\n    password: '{PASS}'\n    ca_crt: /path/to/ca.crt\n    client_crt: /path/to/client.crt\n    client_key: /path/to/client.key\n"
-{{- range $k, $v := .Values.app.station }}
-  {{ $k }}:
-    service:
-      name: {{ $v.service.name }}
-      url: {{ $v.service.url }}
-      port: {{ $v.service.port }}
-    domain: {{ $v.domain }}
-    authentication:
-      auth_type: {{ $v.authentication.auth_type }}
-      username: {{ $v.authentication.username | quote }}
-      password: {{ $v.authentication.password | quote }}
-      ca_crt: {{ $v.authentication.ca_crt }}
-      client_crt: {{ $v.authentication.client_crt }}
-      client_key: {{ $v.authentication.client_key }}
-{{- end }}
+    stations: |
+    {{- range $k, $v := .Values.app.station }}
+      {{ $k }}:
+        service:
+          name: {{ $v.service.name }}
+          url: {{ $v.service.url }}
+          port: {{ $v.service.port }}
+        domain: {{ $v.domain }}
+        authentication:
+          auth_type: {{ $v.authentication.auth_type }}
+          username: {{ $v.authentication.username | quote }}
+          password: {{ $v.authentication.password | quote }}
+          ca_crt: {{ $v.authentication.ca_crt }}
+          client_crt: {{ $v.authentication.client_crt }}
+          client_key: {{ $v.authentication.client_key }}
+    {{- end }}

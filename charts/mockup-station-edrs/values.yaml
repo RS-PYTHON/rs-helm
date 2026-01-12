@@ -28,7 +28,7 @@ app:
   # -- Working directory for the application
   workDir: /app
   # -- Config directory for the application
-  confDir: /opt/adgs/config
+  confDir: /opt/edrs/config
   # -- Auth configuration file for the application
   authConfigFile: auth_tmp.json
   # -- catalog configuration file for the application
@@ -36,7 +36,17 @@ app:
   # -- Bucket name to stage data from
   bucketName: rs-dev-cluster-temp
   # -- Path inside the bucket to the data
-  bucketPath: stations/ADGS/
+  bucketPath: ARD_V2/SAFE/
+  # -- FTP username
+  username: test
+  # -- FTP password
+  password: test
+  # -- Use FTPES with TLS
+  FTPES:
+    enabled: false
+  S3FS:
+    enabled: false
+
 
 obs:
   # -- URL of the object storage service endpoint
@@ -90,11 +100,12 @@ image:
   # -- Image repository
   repository: rs-python
   # -- Image name
-  name: rs-testmeans_adgs-station-mock
+  name: rs-testmeans_edrs-station-mock
   # -- Image version, can be a tag or a digest
   version: 7ea8d82
   # -- Image pull policy
   PullPolicy: Always
+  # imagePullSecrets: regcred
 
 resources:
   request:
@@ -114,13 +125,22 @@ volume:
   # -- AccessMode of the database volume
   accessModes: ReadWriteOnce
   # -- StorageClass of the database volume
-  storageClassName: csi-cinder-sc-retain
+  storageClassName: csi-cinder-high-speed-retain
 
 # -- Keep the ressources for PVC and ConfigMap. Default is to keep.
 helmResourcePolicy: keep
 
 # -- Pod affinity
-affinity: {}
+affinity:
+  podAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+                - mockup-station-edrs
+        topologyKey: "kubernetes.io/hostname"
 
 # -- Pod toleration
 tolerations: []

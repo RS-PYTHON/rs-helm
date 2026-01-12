@@ -8,9 +8,11 @@ env:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
     outputs:
       changed: ${{ steps.list-changed.outputs.changed }}
-      ref_exists_in_rs_server: ${{ steps.check_branch.outputs.ref_exists_in_rs_server }}
       APP_VERSION: ${{ steps.get_version.outputs.APP_VERSION }}
       CHART_VERSION: ${{ steps.get_version.outputs.CHART_VERSION }}
     steps:
@@ -18,12 +20,6 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - name: Check if branch exists in rs-server
-        id: check_branch
-        run: |
-          echo "ref_exists_in_rs_server=$( \
-            git ls-remote --heads https://github.com/${GITHUB_REPOSITORY_OWNER}/rs-server.git "${{ github.head_ref }}" | wc -l \
-          )" >> $GITHUB_OUTPUT
       - uses: actions/setup-python@v6
         with:
           python-version: '3.x'
@@ -39,6 +35,8 @@ jobs:
       - name: Get the rs-server version tag
         id: get_version
         uses: ./.github/actions/get_version
+        env:
+          GH_TOKEN: ${{ github.token }}
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2
         with:
@@ -54,6 +52,9 @@ jobs:
               sed -i -e "s,{{APP_VERSION}},${{ steps.get_version.outputs.APP_VERSION }}," \
                      -e "s,{{CHART_VERSION}},${{ steps.get_version.outputs.CHART_VERSION }}," \
                      "$dir/Chart.yaml"
+              if [[ "$dir" == *rs-server* ]]; then
+                yq -i ".image.version = \"${{ steps.get_version.outputs.IMAGE_VERSION }}\"" "$dir/values.yaml"
+              fi
             done
           fi
       - name: Run chart-testing (lint)
@@ -66,12 +67,12 @@ jobs:
     env:
       AK: TDr8foJqSygBQ9YFmWDy
       SK: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
-      HELM_VERSION: v3.19.2
+      HELM_VERSION: v3.19.4
       RS_HELM_OPTS: --set=volume.storageClassName=standard --set=app.bucketConfig.useExternalBucketConfigMap=true --set=app.bucketConfig.externalBucketConfigMapName=rs-catalog-staging-configmap --set=auth.secret.oidc_endpoint=http://keycloak-keycloakx-http.iam.svc.cluster.local
       CT_OPTS: --debug --skip-clean-up --helm-extra-set-args="--timeout=30s"
       CT_RS_OPTS: --debug --skip-clean-up --helm-extra-set-args="$RS_HELM_OPTS --timeout=60s"
       CT_CHARTS_STEP1: charts/rs-catalog-staging-configmap,charts/rs-server-station-secrets
-      CT_CHARTS_STEP2: charts/mockup-processor-dpr,charts/mockup-station-adgs,charts/mockup-station-cadip,charts/mockup-station-lta,charts/mockup-station-prip
+      CT_CHARTS_STEP2: charts/mockup-processor-dpr,charts/mockup-station-adgs,charts/mockup-station-cadip,charts/mockup-station-lta,charts/mockup-station-prip,charts/mockup-station-edrs
       CT_CHARTS_STEP3: charts/rs-osam
       CT_CHARTS_STEP4: charts/rs-server-adgs,charts/rs-server-cadip,charts/rs-server-catalog,charts/rs-server-prip,charts/rs-server-staging,charts/rs-server-edrs
       CT_CHARTS_STEP5: charts/rs-server-frontend,charts/stac-browser
@@ -204,20 +205,13 @@ jobs:
         with:
           namespace: processing
           command: ct install $CT_RS_OPTS --namespace processing --charts $CT_CHARTS_STEP3
-      - name: Run chart-testing (install step 4 - rs-server backends - same branch found)
-        if: needs.lint.outputs.ref_exists_in_rs_server == 1
+      - name: Run chart-testing (install step 4 - rs-server backends)
         uses: ./.github/actions/run-with-watch
         with:
           namespace: processing
           command: |
-            ct install --debug --skip-clean-up --namespace processing --charts $CT_CHARTS_STEP4 \
-                       --helm-extra-set-args='${{ env.RS_HELM_OPTS }} --set=image.version=${{ github.head_ref }} --timeout=60s'
-      - name: Run chart-testing (install step 4 - rs-server backends - default)
-        if: needs.lint.outputs.ref_exists_in_rs_server != 1
-        uses: ./.github/actions/run-with-watch
-        with:
-          namespace: processing
-          command: ct install $CT_RS_OPTS --namespace processing --charts $CT_CHARTS_STEP4
+            ct install $CT_RS_OPTS --namespace processing --charts $CT_CHARTS_STEP4 \
+                       --helm-extra-set-args='--set=image.version=latest --timeout=60s'
       - name: Run chart-testing (install step 5 - frontend/stac-browser)
         uses: ./.github/actions/run-with-watch
         with:

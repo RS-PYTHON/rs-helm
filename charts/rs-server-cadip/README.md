@@ -1,6 +1,6 @@
 # rs-server-cadip
 
-![Version: 0.1.0-a4](https://img.shields.io/badge/Version-0.1.0--a4-informational?style=flat-square) ![AppVersion: v1.0a4](https://img.shields.io/badge/AppVersion-v1.0a4-informational?style=flat-square)
+![Version: 0.1.0-a5](https://img.shields.io/badge/Version-0.1.0--a5-informational?style=flat-square) ![AppVersion: v1.0a5](https://img.shields.io/badge/AppVersion-v1.0a5-informational?style=flat-square)
 
 RS SERVER CADIP
 
@@ -19,6 +19,7 @@ RS SERVER CADIP
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.eodagConfigFile | string | `"cadip_ws_config.yaml"` | Set properly the EODAG_CADIP_CONFIG env var. |
 | app.eodagConfigFileTokenModule | string | `"cadip_ws_config_token_module.yaml"` |  |
+| app.oauth2Attributes | string | `"monthly-download-volume-limit-gb"` | OAuth2 attributes to read and save, as a comma-separated str |
 | app.port | int | `8000` | Port for the application |
 | app.station.cadip | object | `{"endpoint":{"url":{"odata":"http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080","token":"http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080/oauth2/token"}}}` | CADIP station name |
 | app.station.cadip.endpoint.url | object | `{"odata":"http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080","token":"http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080/oauth2/token"}` | CADIP station URL |
@@ -34,7 +35,7 @@ RS SERVER CADIP
 | image.name | string | `"rs-server-cadip"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"1.0a4"` | Image version, can be a tag or a digest |
+| image.version | string | `"1.0a5"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |

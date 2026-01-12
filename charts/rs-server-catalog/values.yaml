@@ -1,4 +1,4 @@
-# Copyright 2024 CS Group
+# Copyright 2023-2026 Airbus, CS Group
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -29,6 +29,8 @@ app:
   confDir: /app/conf
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
+  # -- OAuth2 attributes to read and save, as a comma-separated str
+  oauth2Attributes: monthly-download-volume-limit-gb
   # -- URL of the API Key Manager home page (public)
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
   # -- Object Storage bucket for the catalog
@@ -41,8 +43,8 @@ app:
   docsUrl: /catalog/api.html
   # -- Presigned URL expiration time in seconds. 30 min by default
   presignedUrlExpirationTime: 1800
-  # -- Period in seconds between two data lifecycle cleaning tasks. If <0, the task is deactivated.
-  dataLifecyclePeriod: 86400  # 24 hours
+  # -- Period in seconds between two data lifecycle cleaning tasks. If <0, the task is deactivated. Default: 24 hours
+  dataLifecyclePeriod: 86400
   metadata:
     # -- update the catalog metadata id parameter over the default one received from the pystac client
     id: "rs-python"
@@ -50,9 +52,7 @@ app:
     title: "RS-PYTHON STAC Catalog"
     # -- update the catalog metadata description parameter over the default one received from the pystac client
     description: "STAC catalog of Copernicus Reference System Python"
-  # -- Bucket configuration to use to monitor the lifespan and name of data buckets. This info is now
-  # retrieved from Osam service.
-  # Osam pod address
+  # -- URL of OSAM service
   endpointOsam: https://subdomain.example.com/osam
 
 obs:
@@ -99,7 +99,7 @@ image:
   # -- Image name
   name: rs-server-catalog
   # -- Image version, can be a tag or a digest
-  version: "1.0a4"
+  version: "1.0a5"
   # -- Image pull policy
   PullPolicy: IfNotPresent
 
