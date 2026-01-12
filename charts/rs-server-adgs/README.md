@@ -44,7 +44,7 @@ RS SERVER ADGS
 | ingress.path | list | `["/adgs","/auxip"]` | Ingress path |
 | initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
-| obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
+| obs.endpoint | string | `"http://seaweedfs-s3.seaweedfs.svc.cluster.local:9000"` | URL of the object storage service endpoint |
 | obs.region | string | `"sbg"` | Region of the object storage service |
 | obs.secret.ak | string | `"TDr8foJqSygBQ9YFmWDy"` | Access Key to authenticate with the object storage service |
 | obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service |

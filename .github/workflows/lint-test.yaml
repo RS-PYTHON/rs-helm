@@ -150,17 +150,8 @@ jobs:
           helm repo update apikeymanager
           kubectl create namespace processing
           helm install apikeymanager apikeymanager/apikeymanager --version 1.0.0 --namespace processing --wait --timeout=60s
-      - name: Deploy minio
-        run: |
-          # Minio for cloudnative pg - https://github.com/minio/minio/tree/master/helm/minio#installing-the-chart-toy-setup
-          helm repo add minio https://charts.min.io/
-          helm repo update minio
-          helm install minio minio/minio --namespace minio --set mode=standalone --set replicas=1 \
-                       --set persistence.enabled=false --set resources.requests.memory=128Mi \
-                       --set rootUser=$AK,rootPassword=$SK \
-                       --set buckets[0].name=rs-dev-cluster-temp,buckets[1].name=rs-cluster-catalog \
-                       --create-namespace --wait
-          kubectl port-forward -n minio svc/minio 9000:9000 &
+      - name: Deploy seaweedfs
+        run: .github/common/resources/deploy-seaweedfs.sh rs-dev-cluster-temp,rs-cluster-catalog
       - name: Upload test data to Minio
         run: |
           wget -q https://dl.min.io/client/mc/release/linux-amd64/mc -O mc
