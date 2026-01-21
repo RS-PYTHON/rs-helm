@@ -82,6 +82,8 @@ spec:
           value:  {{ .Values.dask.clusterName }}
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacUrl }}
+        - name: RSPY_OAUTH2_ATTRIBUTES
+          value: {{ .Values.app.oauth2Attributes }}
         - name: RSPY_UAC_HOMEPAGE
           value: {{ .Values.app.uacHomeUrl }}
         - name: RSPY_DOCS_URL
@@ -107,7 +109,9 @@ spec:
         - name: POSTGRES_HOST
           value: {{ .Values.postgres.host }}
         - name: RSPY_HOST_OSAM
-          value: {{ .Values.app.endpointOsam }}  
+          value: {{ .Values.app.endpointOsam }}
+        - name: USE_SSL
+          value: {{ .Values.app.useSsl | quote}} 
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
@@ -122,8 +126,11 @@ spec:
           value: {{ .Values.otel.trace_headers | quote }}
         - name: OTEL_PYTHON_REQUESTS_TRACE_BODY
           value: {{ .Values.otel.trace_body | quote }}
+<<<<<<< HEAD
         - name: BUCKET_CONFIG_FILE_PATH
           value: {{ .Values.app.confDir }}/{{ .Values.app.tempBucketConfig }}
+=======
+>>>>>>> origin/develop
         securityContext:
           privileged: false
         {{ if .Values.probe }}

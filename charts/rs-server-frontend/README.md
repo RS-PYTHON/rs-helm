@@ -1,6 +1,6 @@
 # rs-server-frontend
 
-![Version: 0.1.0-a4](https://img.shields.io/badge/Version-0.1.0--a4-informational?style=flat-square) ![AppVersion: v1.0a4](https://img.shields.io/badge/AppVersion-v1.0a4-informational?style=flat-square)
+![Version: 0.1.0-a5](https://img.shields.io/badge/Version-0.1.0--a5-informational?style=flat-square) ![AppVersion: v1.0a5](https://img.shields.io/badge/AppVersion-v1.0a5-informational?style=flat-square)
 
 RS SERVER FRONTEND
 
@@ -16,6 +16,7 @@ RS SERVER FRONTEND
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. Must be the same value as ingress.path |
+| app.oauth2Attributes | string | `"monthly-download-volume-limit-gb"` | OAuth2 attributes to read and save, as a comma-separated str |
 | app.port | int | `8000` | Port for the application |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service (internal) |
@@ -23,7 +24,7 @@ RS SERVER FRONTEND
 | image.name | string | `"rs-server-frontend"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"1.0a4"` | Image version, can be a tag or a digest |
+| image.version | string | `"1.0a5"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
@@ -52,7 +53,7 @@ RS SERVER FRONTEND
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
 | service.port | int | `8080` | Port for the service |
-| stac_browser.urls | string | `"https://stac-browser-auxip.subdomain.example.com;https://stac-browser-cadip.subdomain.example.com;https://stac-browser-prip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"` | The list of all STAC Browser URLs |
+| stac_browser.urls | string | `"https://stac-browser-auxip.subdomain.example.com;https://stac-browser-cadip.subdomain.example.com;https://stac-browser-prip.subdomain.example.com;https://stac-browser-edrs.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"` | The list of all STAC Browser URLs |
 | tolerations | list | `[]` | Pod toleration |
 
 ----------------------------------------------

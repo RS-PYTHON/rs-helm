@@ -1,6 +1,6 @@
 # rs-server-adgs
 
-![Version: 0.1.0-a4](https://img.shields.io/badge/Version-0.1.0--a4-informational?style=flat-square) ![AppVersion: v1.0a4](https://img.shields.io/badge/AppVersion-v1.0a4-informational?style=flat-square)
+![Version: 0.1.0-a5](https://img.shields.io/badge/Version-0.1.0--a5-informational?style=flat-square) ![AppVersion: v1.0a5](https://img.shields.io/badge/AppVersion-v1.0a5-informational?style=flat-square)
 
 RS SERVER ADGS
 
@@ -19,6 +19,7 @@ RS SERVER ADGS
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.eodagConfigFile | string | `"adgs_ws_config.yaml"` | Set properly the EODAG_ADGS_CONFIG env var. |
 | app.eodagConfigFileTokenModule | string | `"adgs_ws_config_token_module.yaml"` |  |
+| app.oauth2Attributes | string | `"monthly-download-volume-limit-gb"` | OAuth2 attributes to read and save, as a comma-separated str |
 | app.port | int | `8000` | Port for the application |
 | app.station.adgs.endpoint.url | string | `"http://mockup-station-adgs.processing.svc.cluster.local:8080/Products"` | ADGS URL |
 | app.station.adgs2.endpoint.url | string | `"http://mockup-station-adgs2.processing.svc.cluster.local:8080/Products"` | ADGS2 URL |
@@ -35,7 +36,7 @@ RS SERVER ADGS
 | image.name | string | `"rs-server-adgs"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"1.0a4"` | Image version, can be a tag or a digest |
+| image.version | string | `"1.0a5"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
@@ -43,7 +44,7 @@ RS SERVER ADGS
 | ingress.path | list | `["/adgs","/auxip"]` | Ingress path |
 | initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
-| obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
+| obs.endpoint | string | `"http://seaweedfs-s3.seaweedfs.svc.cluster.local:9000"` | URL of the object storage service endpoint |
 | obs.region | string | `"sbg"` | Region of the object storage service |
 | obs.secret.ak | string | `"TDr8foJqSygBQ9YFmWDy"` | Access Key to authenticate with the object storage service |
 | obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service |
