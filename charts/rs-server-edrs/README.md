@@ -1,6 +1,6 @@
 # rs-server-edrs
 
-![Version: 0.1.0-a4](https://img.shields.io/badge/Version-0.1.0--a4-informational?style=flat-square) ![AppVersion: v1.0a4](https://img.shields.io/badge/AppVersion-v1.0a4-informational?style=flat-square)
+![Version: 0.1.0-a5](https://img.shields.io/badge/Version-0.1.0--a5-informational?style=flat-square) ![AppVersion: v1.0a5](https://img.shields.io/badge/AppVersion-v1.0a5-informational?style=flat-square)
 
 RS SERVER EDRS
 
@@ -18,9 +18,28 @@ RS SERVER EDRS
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.edrsSearchConfigFile | string | `"edrs_search_config.yaml"` |  |
 | app.edrsStations | string | `"edrs_stations.yaml"` |  |
+| app.oauth2Attributes | string | `"monthly-download-volume-limit-gb"` | OAuth2 attributes to read and save, as a comma-separated str |
 | app.port | int | `8000` | Port for the application |
-| app.station.bedc.endpoint.url | string | `"TO be added"` | EDRS BEDC station URL |
-| app.station.pedc.endpoint.url | string | `"TO be added"` | EDRS PEDC station URL |
+| app.station.bedc.authentication.auth_type | string | `"ftp"` | EDRS BEDC authentication type |
+| app.station.bedc.authentication.ca_crt | string | `"/certs/ca.crt"` | EDRS BEDC CA certificate path |
+| app.station.bedc.authentication.client_crt | string | `"/certs/tls.crt"` | EDRS BEDC client certificate path |
+| app.station.bedc.authentication.client_key | string | `"/certs/tls.key"` | EDRS BEDC client key path |
+| app.station.bedc.authentication.password | string | `"test"` | EDRS BEDC authentication password |
+| app.station.bedc.authentication.username | string | `"test"` | EDRS BEDC authentication username |
+| app.station.bedc.domain | string | `"mockup-station-edrs-headless.processing.svc.cluster.local"` | EDRS BEDC domain |
+| app.station.bedc.service.name | string | `"edrs"` | EDRS BEDC service name |
+| app.station.bedc.service.port | int | `21` | EDRS BEDC station port |
+| app.station.bedc.service.url | string | `"mockup-station-edrs-headless.processing.svc.cluster.local"` | EDRS BEDC station URL |
+| app.station.pedc.authentication.auth_type | string | `"ftp"` | EDRS PEDC authentication type |
+| app.station.pedc.authentication.ca_crt | string | `"/certs/ca.crt"` | EDRS PEDC CA certificate path |
+| app.station.pedc.authentication.client_crt | string | `"/certs/tls.crt"` | EDRS PEDC client certificate path |
+| app.station.pedc.authentication.client_key | string | `"/certs/tls.key"` | EDRS PEDC client key path |
+| app.station.pedc.authentication.password | string | `"test"` | EDRS PEDC authentication password |
+| app.station.pedc.authentication.username | string | `"test"` | EDRS PEDC authentication username |
+| app.station.pedc.domain | string | `"mockup-station-edrs-headless.processing.svc.cluster.local"` | EDRS PEDC domain |
+| app.station.pedc.service.name | string | `"edrs"` | EDRS PEDC service name |
+| app.station.pedc.service.port | int | `21` | EDRS PEDC station port |
+| app.station.pedc.service.url | string | `"mockup-station-edrs-headless.processing.svc.cluster.local"` | EDRS PEDC station URL |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | app.useSSL | bool | `true` |  |
 | app.useTokenModule | bool | `false` | The way the token for the external stations is loaded: own module or let eodag to do it (set it to false) |
@@ -34,7 +53,7 @@ RS SERVER EDRS
 | image.name | string | `"rs-server-edrs"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"latest"` | Image version, can be a tag or a digest |
+| image.version | string | `"1.0a5"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
@@ -42,7 +61,7 @@ RS SERVER EDRS
 | ingress.path | list | `["/edrs"]` | Ingress path |
 | initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
-| obs.endpoint | string | `"http://minio.minio.svc.cluster.local:9000"` | URL of the object storage service endpoint |
+| obs.endpoint | string | `"http://seaweedfs-s3.seaweedfs.svc.cluster.local:9000"` | URL of the object storage service endpoint |
 | obs.region | string | `"sbg"` | Region of the object storage service |
 | obs.secret.ak | string | `"TDr8foJqSygBQ9YFmWDy"` | Access Key to authenticate with the object storage service |
 | obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service |

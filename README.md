@@ -12,6 +12,10 @@ The Auxiliary Data Gathering Service (ADGS) is a pick-up point for Sentinel auxi
 
 The CADU Interface delivery Point (CADIP) is a pick-up point for Sentinel CADU data. The CADIP allows clients to straightforwardly discover and retrieve available data files through a standard OData RESTful API. The following endpoints have been implemented in RS-Server to interact with CADIP RESTful API.
 
+## [rs-server-edrs](charts/rs-server-edrs/README.md)
+
+The European Data Relay Satellite System (EDRS) is a pick-up point for Sentinel CADU data. This service allows clients to discover and retrieve available auxiliary data files through a standard FTPES. The following endpoints have been implemented in RS-Server to interact with EDRS RESTful API.
+
 ## [rs-server-prip](charts/rs-server-prip/README.md)
 
 The Product Interface Deliver Point is a pick-up point for Sentinel products. This service allows clients to discover and retrieve available Sentinel products through a standard OData RESTful API. The following endpoints have been implemented in RS-Server to interact with PRIP RESTful API.
@@ -36,6 +40,10 @@ A simple mock for ADGS station.
 ## [mockup-station-cadip](charts/mockup-station-cadip/README.md)
 
 A simple mock for CADIP station.
+
+## [mockup-station-edrs](charts/mockup-station-edrs/README.md)
+
+A simple mock for EDRS station.
 
 ## [mockup-station-lta](charts/mockup-station-lta/README.md)
 

@@ -78,6 +78,8 @@ spec:
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}
+        - name: RSPY_OAUTH2_ATTRIBUTES
+          value: {{ .Values.app.oauth2Attributes }}
         - name: RSPY_STATION_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
         {{ if eq .Values.app.useTokenModule true }}
