@@ -171,6 +171,9 @@ data:
             intersects:
             - null
             - $.intersects
+            Names:
+            - null
+            - $.Name
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -178,6 +181,7 @@ data:
               operations:
                 and:
                 - contains(Name, '{Name}')
+                - Name in ({Names})
                 - contains(Id, '{prip:id}')
                 - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
                 - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
@@ -397,6 +401,9 @@ data:
             intersects:
             - null
             - $.intersects
+            Names:
+            - null
+            - $.Name
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -404,6 +411,7 @@ data:
               operations:
                 and:
                 - contains(Name, '{Name}')
+                - Name in ({Names})
                 - contains(Id, '{prip:id}')
                 - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
                 - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})

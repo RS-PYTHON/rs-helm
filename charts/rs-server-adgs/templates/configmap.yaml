@@ -130,6 +130,9 @@ data:
             platformShortNames:
             - null
             - $.platformShortName
+            Names:
+            - null
+            - $.Name
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -138,6 +141,7 @@ data:
                 and:
                 - contains(Name, '{Name}')
                 - contains(Id, '{auxip:id}')
+                - Name in ({Names})
                 - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
                 - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
@@ -281,6 +285,9 @@ data:
             DatetimeStart:
             - null
             - $.ContentDate.Start
+            Names:
+            - null
+            - $.Name
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -289,6 +296,7 @@ data:
                 and:
                 - contains(Name, '{Name}')
                 - contains(Id, '{auxip:id}')
+                - Name in ({Names})
                 - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
                 - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
