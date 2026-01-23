@@ -61,9 +61,6 @@ data:
             id:
             - null
             - $.Id
-            prip:id:
-            - null
-            - $.Id
             Name:
             - null
             - $.Name
@@ -182,7 +179,6 @@ data:
                 and:
                 - contains(Name, '{Name}')
                 - Name in ({Names})
-                - contains(Id, '{prip:id}')
                 - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
                 - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
@@ -240,7 +236,6 @@ data:
             sort_by_tpl: '&$orderby={sort_param} {sort_order}'
             sort_param_mapping:
               id: Name
-              prip:id: Id
               file:size: ContentLength
               type: ContentType
               eviction_datetime: EvictionDate
@@ -291,9 +286,6 @@ data:
             id:
             - null
             - $.Id
-            prip:id:
-            - null
-            - $.Id
             Name:
             - null
             - $.Name
@@ -412,7 +404,6 @@ data:
                 and:
                 - contains(Name, '{Name}')
                 - Name in ({Names})
-                - contains(Id, '{prip:id}')
                 - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
                 - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
@@ -470,7 +461,6 @@ data:
             sort_by_tpl: '&$orderby={sort_param} {sort_order}'
             sort_param_mapping:
               id: Name
-              prip:id: Id
               file:size: ContentLength
               type: ContentType
               eviction_datetime: EvictionDate
