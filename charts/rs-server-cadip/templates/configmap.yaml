@@ -616,10 +616,6 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   {{ .Values.app.cadipSearchConfigFile }}: |
-    stations:
-      cadip:
-        endpoint:
-          need_auth: true
     collections:
     - id: cadip
       station: cadip
