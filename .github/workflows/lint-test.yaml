@@ -1,6 +1,14 @@
 name: Lint and Test Charts
 
-on: pull_request
+on:
+  push:
+    branches:
+      - develop  # pushes on the 'develop' branch
+    tags:
+      - '**'  # new git tags (including hierarchical tags like v1.0/beta)
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
 
 env:
   YAMALE_VERSION: "6.1.0"
