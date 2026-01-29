@@ -106,6 +106,12 @@ data:
             geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
             downloadLink: {{ $v.endpoint.url.odata }}/Files({id})/$value
             title: $.Name
+            externalIds:
+            - null
+            - $.Id
+            externalIdss:
+            - null
+            - $.Id
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -114,6 +120,8 @@ data:
                 and:
                 - SessionId in ({SessionIds})
                 - SessionId eq {SessionId}
+                - Id eq {externalIds}
+                - Id in ({externalIdss})
                 - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
                 - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
@@ -250,6 +258,12 @@ data:
             StationId:
             - null
             - $.StationId
+            externalIds:
+            - null
+            - $.Id
+            externalIdss:
+            - null
+            - $.Id
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -258,6 +272,8 @@ data:
                 and:
                 - SessionId in ({SessionIds})
                 - SessionId eq {SessionId}
+                - Id eq {externalIds}
+                - Id in ({externalIdss})
                 - Satellite eq {platform}
                 - Satellite in ({platforms})
                 - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
@@ -392,6 +408,12 @@ data:
             geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
             downloadLink: {{ $v.endpoint.url.odata }}/Files({id})/$value
             title: $.Name
+            externalIds:
+            - null
+            - $.Id
+            externalIdss:
+            - null
+            - $.Id
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -400,6 +422,8 @@ data:
                 and:
                 - SessionId in ({SessionIds})
                 - SessionId eq {SessionId}
+                - Id eq {externalIds}
+                - Id in ({externalIdss})
                 - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
                 - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
                 - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
@@ -538,6 +562,12 @@ data:
             StationId:
             - null
             - $.StationId
+            externalIds:
+            - null
+            - $.Id
+            externalIdss:
+            - null
+            - $.Id
           free_text_search_operations:
             $filter:
               union: ' OR '
@@ -546,6 +576,8 @@ data:
                 and:
                 - SessionId in ({SessionIds})
                 - SessionId eq {SessionId}
+                - Id eq {externalIds}
+                - Id in ({externalIdss})
                 - Satellite eq {platform}
                 - Satellite in ({platforms})
                 - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
