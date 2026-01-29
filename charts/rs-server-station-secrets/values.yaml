@@ -197,14 +197,6 @@ app:
         auth_type: s3
         access_key: example_s3_access_key
         secret_key: example_s3_secret_key
-        token_url: null
-        grant_type: password
-        scope: null
-        username: test
-        password: test
-        client_id: client_id
-        client_secret: client_secret
-        authorization: null
     s3test:
       domain: s3.gra.io.cloud.ovh.net
       service:
@@ -212,14 +204,6 @@ app:
         url: https://s3.gra.io.cloud.ovh.net
       authentication:
         auth_type: s3
-        token_url: null
-        grant_type: password
-        scope: null
-        username: test
-        password: test
-        client_id: client_id
-        client_secret: client_secret
-        authorization: null
         access_key: ${access_key}
         secret_key: ${secret_key}
     pedc:
@@ -247,12 +231,6 @@ app:
           MIID...
           -----END RSA PRIVATE KEY-----
 
-        token_url: null
-        grant_type: password
-        scope: null
-        client_id: client_id
-        client_secret: client_secret
-        authorization: null
     bedc:
       service:
         name: edrs
@@ -277,10 +255,3 @@ app:
           -----BEGIN RSA PRIVATE KEY-----
           MIID...
           -----END RSA PRIVATE KEY-----
-
-        token_url: null
-        grant_type: password
-        scope: null
-        client_id: client_id
-        client_secret: client_secret
-        authorization: null
