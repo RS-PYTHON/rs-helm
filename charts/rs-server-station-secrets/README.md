@@ -41,16 +41,10 @@ RS SERVER STATION SECRETS
 | app.stations.adgs2.service.name | string | `"auxip"` |  |
 | app.stations.adgs2.service.url | string | `"http://mockup-station-adgs2.processing.svc.cluster.local:8080"` |  |
 | app.stations.bedc.authentication.auth_type | string | `"ftp"` |  |
-| app.stations.bedc.authentication.authorization | string | `nil` |  |
 | app.stations.bedc.authentication.ca_crt | string | `"-----BEGIN CERTIFICATE-----\nMIID...\n-----END CERTIFICATE-----"` |  |
 | app.stations.bedc.authentication.client_crt | string | `"-----BEGIN CERTIFICATE-----\nMIID...\n-----END CERTIFICATE-----"` |  |
-| app.stations.bedc.authentication.client_id | string | `"client_id"` |  |
 | app.stations.bedc.authentication.client_key | string | `"-----BEGIN RSA PRIVATE KEY-----\nMIID...\n-----END RSA PRIVATE KEY-----"` |  |
-| app.stations.bedc.authentication.client_secret | string | `"client_secret"` |  |
-| app.stations.bedc.authentication.grant_type | string | `"password"` |  |
 | app.stations.bedc.authentication.password | string | `"test"` |  |
-| app.stations.bedc.authentication.scope | string | `nil` |  |
-| app.stations.bedc.authentication.token_url | string | `nil` |  |
 | app.stations.bedc.authentication.username | string | `"test"` |  |
 | app.stations.bedc.domain | string | `"mockup-station-edrs-headless.processing.svc.cluster.local"` |  |
 | app.stations.bedc.service.name | string | `"edrs"` |  |
@@ -70,15 +64,7 @@ RS SERVER STATION SECRETS
 | app.stations.cadip.service.url | string | `"http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080"` |  |
 | app.stations.cdse.authentication.access_key | string | `"example_s3_access_key"` |  |
 | app.stations.cdse.authentication.auth_type | string | `"s3"` |  |
-| app.stations.cdse.authentication.authorization | string | `nil` |  |
-| app.stations.cdse.authentication.client_id | string | `"client_id"` |  |
-| app.stations.cdse.authentication.client_secret | string | `"client_secret"` |  |
-| app.stations.cdse.authentication.grant_type | string | `"password"` |  |
-| app.stations.cdse.authentication.password | string | `"test"` |  |
-| app.stations.cdse.authentication.scope | string | `nil` |  |
 | app.stations.cdse.authentication.secret_key | string | `"example_s3_secret_key"` |  |
-| app.stations.cdse.authentication.token_url | string | `nil` |  |
-| app.stations.cdse.authentication.username | string | `"test"` |  |
 | app.stations.cdse.domain | string | `"eodata.dataspace.copernicus.eu"` |  |
 | app.stations.cdse.service.name | string | `"s3"` |  |
 | app.stations.cdse.service.url | string | `"https://eodata.dataspace.copernicus.eu"` |  |
@@ -143,16 +129,10 @@ RS SERVER STATION SECRETS
 | app.stations.nsg.service.name | string | `"cadip"` |  |
 | app.stations.nsg.service.url | string | `"http://mockup-station-cadip-nsg.processing.svc.cluster.local:8080"` |  |
 | app.stations.pedc.authentication.auth_type | string | `"ftp"` |  |
-| app.stations.pedc.authentication.authorization | string | `nil` |  |
 | app.stations.pedc.authentication.ca_crt | string | `"-----BEGIN CERTIFICATE-----\nMIID...\n-----END CERTIFICATE-----"` |  |
 | app.stations.pedc.authentication.client_crt | string | `"-----BEGIN CERTIFICATE-----\nMIID...\n-----END CERTIFICATE-----"` |  |
-| app.stations.pedc.authentication.client_id | string | `"client_id"` |  |
 | app.stations.pedc.authentication.client_key | string | `"-----BEGIN RSA PRIVATE KEY-----\nMIID...\n-----END RSA PRIVATE KEY-----"` |  |
-| app.stations.pedc.authentication.client_secret | string | `"client_secret"` |  |
-| app.stations.pedc.authentication.grant_type | string | `"password"` |  |
 | app.stations.pedc.authentication.password | string | `"test"` |  |
-| app.stations.pedc.authentication.scope | string | `nil` |  |
-| app.stations.pedc.authentication.token_url | string | `nil` |  |
 | app.stations.pedc.authentication.username | string | `"test"` |  |
 | app.stations.pedc.domain | string | `"mockup-station-edrs-headless.processing.svc.cluster.local"` |  |
 | app.stations.pedc.service.name | string | `"edrs"` |  |
@@ -184,15 +164,7 @@ RS SERVER STATION SECRETS
 | app.stations.s2b.service.url | string | `"http://mockup-prip-s2b.processing.svc.cluster.local:8080"` |  |
 | app.stations.s3test.authentication.access_key | string | `"${access_key}"` |  |
 | app.stations.s3test.authentication.auth_type | string | `"s3"` |  |
-| app.stations.s3test.authentication.authorization | string | `nil` |  |
-| app.stations.s3test.authentication.client_id | string | `"client_id"` |  |
-| app.stations.s3test.authentication.client_secret | string | `"client_secret"` |  |
-| app.stations.s3test.authentication.grant_type | string | `"password"` |  |
-| app.stations.s3test.authentication.password | string | `"test"` |  |
-| app.stations.s3test.authentication.scope | string | `nil` |  |
 | app.stations.s3test.authentication.secret_key | string | `"${secret_key}"` |  |
-| app.stations.s3test.authentication.token_url | string | `nil` |  |
-| app.stations.s3test.authentication.username | string | `"test"` |  |
 | app.stations.s3test.domain | string | `"s3.gra.io.cloud.ovh.net"` |  |
 | app.stations.s3test.service.name | string | `"s3"` |  |
 | app.stations.s3test.service.url | string | `"https://s3.gra.io.cloud.ovh.net"` |  |
