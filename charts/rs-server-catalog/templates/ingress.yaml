@@ -23,6 +23,7 @@ metadata:
     nginx.ingress.kubernetes.io/cors-allow-headers: x-api-key, authorization, content-type
     nginx.ingress.kubernetes.io/cors-allow-origin: '*'
     nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
   name: {{ .Release.Name }}
 spec:
   ingressClassName: nginx
