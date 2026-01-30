@@ -41,7 +41,7 @@ app:
   SB_catalogUrl: https://subdomain.example.com/catalog/
   # -- Social sharing
   SB_socialSharing: email,bsky,mastodon
-  # -- maxEntriesPerPage - see https://github.com/radiantearth/stac-browser/pull/563
+  # -- maxEntriesPerPage - see https://github.com/radiantearth/stac-browser/pull/563 and https://github.com/radiantearth/stac-browser/releases/tag/v4.0.0
   SB_maxEntriesPerPage: 1000
 
 probe:
