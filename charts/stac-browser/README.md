@@ -1,6 +1,6 @@
 # stac-browser
 
-![Version: 0.1.0-a5](https://img.shields.io/badge/Version-0.1.0--a5-informational?style=flat-square) ![AppVersion: v1.0a5](https://img.shields.io/badge/AppVersion-v1.0a5-informational?style=flat-square)
+![Version: 0.1.0-a6](https://img.shields.io/badge/Version-0.1.0--a6-informational?style=flat-square) ![AppVersion: v1.0a6](https://img.shields.io/badge/AppVersion-v1.0a6-informational?style=flat-square)
 
 STAC BROWSER
 
@@ -19,7 +19,7 @@ STAC BROWSER
 | app.SB_catalogUrl | string | `"https://subdomain.example.com/catalog/"` | URL of the STAC catalog |
 | app.SB_detectLocaleFromBrowser | string | `"true"` | Detect locale from user |
 | app.SB_historyMode | string | `"history"` | Allows search engines to better crawl STAC Browser. Must be set to 'history' for OIDC |
-| app.SB_maxItemsPerPage | int | `1000` | maxItemsPerPage - see https://github.com/radiantearth/stac-browser/pull/563 |
+| app.SB_maxEntriesPerPage | int | `1000` | maxEntriesPerPage - see https://github.com/radiantearth/stac-browser/pull/563 and https://github.com/radiantearth/stac-browser/releases/tag/v4.0.0 |
 | app.SB_socialSharing | string | `"email,bsky,mastodon"` | Social sharing |
 | app.oidc_client_id | string | `""` | OIDC Public Client ID |
 | app.oidc_endpoint | string | `""` | OIDC End Point |
