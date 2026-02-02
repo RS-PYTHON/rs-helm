@@ -76,8 +76,8 @@ spec:
             }
         - name: SB_socialSharing
           value: {{ .Values.app.SB_socialSharing }}
-        - name: SB_maxItemsPerPage
-          value: {{ .Values.app.SB_maxItemsPerPage | quote }}
+        - name: SB_maxEntriesPerPage
+          value: {{ .Values.app.SB_maxEntriesPerPage | quote }}
         securityContext:
           privileged: false
         {{ if .Values.probe }}
