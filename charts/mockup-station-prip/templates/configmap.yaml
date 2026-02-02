@@ -54,7 +54,7 @@ data:
   {{ .Values.app.catalogConfigFile }}: |-
     {
         "Data": [
-            {
+        {
             "Id": "06c91249-b275-4811-9a55-a8d11b534945",
             "Name": "S1A_IW_RAW__0NSH_20220626T050533_20220626T051038_043829_053B7F_203C.SAFE.zip",
             "EvictionDate": "9999-12-31T23:59:59.999Z",
@@ -215,8 +215,8 @@ data:
                 "Value": "A"
                 }
             ]
-            },
-            {
+        },
+        {
             "@odata.mediaContentType": "application/octet-stream",
             "Id": "4db05e5e-16d7-4c15-8ca1-9a7d31d06eba",
             "Name": "S2B_OPER_MSI_L0__DS_2BPS_20250801T074015_S20250801T070620_N05.11.tar",
@@ -937,8 +937,8 @@ data:
                 "Value": "A"
                 }
             ]
-            },
-            {
+        },
+        {
             "@odata.mediaContentType": "application/octet-stream",
             "Id": "b99c8f80-ee84-4854-bd36-15b18ac0ecca",
             "Name": "S2B_OPER_MSI_L0__GR_2BPS_20250801T074015_S20250801T070620_D04_N05.11.tar",
@@ -1099,8 +1099,8 @@ data:
                 "Value": "A"
                 }
             ]
-            },
-            {
+        },
+        {
             "@odata.mediaContentType": "application/octet-stream",
             "Id": "cf978bc8-0588-43da-8f40-7717d1b85fae",
             "Name": "S2B_OPER_MSI_L2A_TL_2BPS_20250801T074829_A043890_T47XMH_N05.11.tar",
