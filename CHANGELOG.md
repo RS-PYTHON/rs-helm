@@ -13,6 +13,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [1.0a6] - 2026-02-02
+
+### Added
+
+- [PR#194](https://github.com/RS-PYTHON/rs-helm/pull/194) : Save keycloak attribute
+- [PR#202](https://github.com/RS-PYTHON/rs-helm/pull/202) : New CADIP session S1A_20250611050700059594
+- [PR#204](https://github.com/RS-PYTHON/rs-helm/pull/204) : Added 2 new AUX for S1L0
+- [PR#190](https://github.com/RS-PYTHON/rs-helm/pull/190) : multiple item search
+- [PR#205](https://github.com/RS-PYTHON/rs-helm/pull/205) : stac-external-ids-extension
+- [PR#210](https://github.com/RS-PYTHON/rs-helm/pull/210) : Update to stac-browser v4.0.0
+
+### Changed
+
+- [PR#207](https://github.com/RS-PYTHON/rs-helm/pull/207) : Update to Helm 3.20.0
+- [PR#196](https://github.com/RS-PYTHON/rs-helm/pull/196) : Retrieve and deploy correct image tags in CI/CD
+- [PR#201](https://github.com/RS-PYTHON/rs-helm/pull/201) : Replace minio by seaweedfs
+- [PR#209](https://github.com/RS-PYTHON/rs-helm/pull/209) : Enable CI on develop and tags
+- [PR#210](https://github.com/RS-PYTHON/rs-helm/pull/210) : Add proxy timeout read for catalog ingress (1 hour)
+- bump docker image tag
+
+### Fixed
+
+- [PR#194](https://github.com/RS-PYTHON/rs-helm/pull/197) : remove mockup secret from rs-server-edrs
+- [PR#199](https://github.com/RS-PYTHON/rs-helm/pull/199) : Fix case where same branch exists in rs-server with special chars
+- [PR#193](https://github.com/RS-PYTHON/rs-helm/pull/193) : edrs sync config
+
 ## [1.0a5] - 2025-12-23
 
 ### Added
