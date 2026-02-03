@@ -6980,7 +6980,7 @@ data:
             },
             {
                 "Id": "9b6f2c3a-1e6a-4f5b-9f3a-0c7a2d4f8e91",
-                "Name": "S3A_AX___FRO_AX_20200117T000000_20200127T000000_20200120T065046___________________EUM_O_AL_001.SEN3",
+                "Name": "S3A_OPER_MPL_ORBRES_20200117T000000_20200127T000000_0001.EOF",
                 "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}test-l0-develop-2/S3_D_TDS_1/AUX/S3A_AX___FRO_AX_20200117T000000_20200127T000000_20200120T065046___________________EUM_O_AL_001.SEN3/S3A_OPER_MPL_ORBRES_20200117T000000_20200127T000000_0001.EOF",
                 "ContentType": "application/octet-stream",
                 "ContentLength": "0",
@@ -7045,7 +7045,7 @@ data:
             },
             {
                 "Id": "c4e8a1b2-7d5f-4a3c-8e9f-1b2d3c4a5e6f",
-                "Name": "S3A_AX___OSF_AX_20160216T192404_99991231T235959_20170322T163046___________________EUM_O_AL_001.SEN3",
+                "Name": "S3A_OPER_MPL_ORBSCT_20160216T192404_99999999T999999_0002.EOF",
                 "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}test-l0-develop-2/S3_D_TDS_1/AUX/S3A_AX___OSF_AX_20160216T192404_99991231T235959_20170322T163046___________________EUM_O_AL_001.SEN3/S3A_OPER_MPL_ORBSCT_20160216T192404_99999999T999999_0002.EOF",
                 "ContentType": "application/octet-stream",
                 "ContentLength": "0",
