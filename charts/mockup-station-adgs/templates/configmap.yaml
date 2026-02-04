@@ -6601,7 +6601,7 @@ data:
                         "@odata.type": "#OData.CSC.StringAttribute",
                         "Name": "productType",
                         "ValueType": "String",
-                        "Value": "AX___OSF_AX"
+                        "Value": "TEST_TYPE_AX___OSF_AX"
                     },
                     {
                         "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
@@ -6672,7 +6672,7 @@ data:
                         "@odata.type": "#OData.CSC.StringAttribute",
                         "Name": "productType",
                         "ValueType": "String",
-                        "Value": "AX___OSF_AX"
+                        "Value": "TEST_TYPE_AX___OSF_AX"
                     },
                     {
                         "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
@@ -6743,7 +6743,7 @@ data:
                         "@odata.type": "#OData.CSC.StringAttribute",
                         "Name": "productType",
                         "ValueType": "String",
-                        "Value": "AX___OSF_AX"
+                        "Value": "TEST_TYPE_AX___OSF_AX"
                     },
                     {
                         "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
@@ -6814,7 +6814,7 @@ data:
                         "@odata.type": "#OData.CSC.StringAttribute",
                         "Name": "productType",
                         "ValueType": "String",
-                        "Value": "AX___OSF_AX"
+                        "Value": "TEST_TYPE_AX___OSF_AX"
                     },
                     {
                         "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
@@ -6977,6 +6977,136 @@ data:
                         "Value": "0001"
                     }
                 ]
-            }
+            },
+            {
+                "Id": "9b6f2c3a-1e6a-4f5b-9f3a-0c7a2d4f8e91",
+                "Name": "S3A_OPER_MPL_ORBRES_20200117T000000_20200127T000000_0001.EOF",
+                "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}test-l0-develop-2/S3_D_TDS_1/AUX/S3A_AX___FRO_AX_20200117T000000_20200127T000000_20200120T065046___________________EUM_O_AL_001.SEN3/S3A_OPER_MPL_ORBRES_20200117T000000_20200127T000000_0001.EOF",
+                "ContentType": "application/octet-stream",
+                "ContentLength": "0",
+                "OriginDate": "2020-01-17T00:00:00.000Z",
+                "PublicationDate": "2020-01-20T06:50:46.000Z",
+                "EvictionDate": "2020-01-27T00:00:00.000Z",
+                "Checksum": [
+                    {
+                    "Algorithm": "MD5",
+                    "Value": "REPLACE_WITH_MD5",
+                    "ChecksumDate": "2020-01-20T06:50:46.000Z"
+                    }
+                ],
+                "ContentDate": {
+                    "Start": "2020-01-17T00:00:00.000Z",
+                    "End": "2020-01-27T00:00:00.000Z"
+                },
+                "Attributes": [
+                    {
+                    "@odata.type": "#OData.CSC.StringAttribute",
+                    "Name": "platformShortName",
+                    "ValueType": "String",
+                    "Value": "SENTINEL-3"
+                    },
+                    {
+                    "@odata.type": "#OData.CSC.StringAttribute",
+                    "Name": "platformSerialIdentifier",
+                    "ValueType": "String",
+                    "Value": "A"
+                    },
+                    {
+                    "@odata.type": "#OData.CSC.StringAttribute",
+                    "Name": "productType",
+                    "ValueType": "String",
+                    "Value": "AX___FRO_AX"
+                    },
+                    {
+                    "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                    "Name": "beginningDateTime",
+                    "ValueType": "DateTimeOffset",
+                    "Value": "2020-01-17T00:00:00.000Z"
+                    },
+                    {
+                    "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                    "Name": "endingDateTime",
+                    "ValueType": "DateTimeOffset",
+                    "Value": "2020-01-27T00:00:00.000Z"
+                    },
+                    {
+                    "@odata.type": "#OData.CSC.StringAttribute",
+                    "Name": "processingCenter",
+                    "ValueType": "String",
+                    "Value": "EUMETSAT"
+                    },
+                    {
+                    "@odata.type": "#OData.CSC.StringAttribute",
+                    "Name": "processorVersion",
+                    "ValueType": "String",
+                    "Value": "001"
+                    }
+                ]
+            },
+            {
+                "Id": "c4e8a1b2-7d5f-4a3c-8e9f-1b2d3c4a5e6f",
+                "Name": "S3A_OPER_MPL_ORBSCT_20160216T192404_99999999T999999_0002.EOF",
+                "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}test-l0-develop-2/S3_D_TDS_1/AUX/S3A_AX___OSF_AX_20160216T192404_99991231T235959_20170322T163046___________________EUM_O_AL_001.SEN3/S3A_OPER_MPL_ORBSCT_20160216T192404_99999999T999999_0002.EOF",
+                "ContentType": "application/octet-stream",
+                "ContentLength": "0",
+                "OriginDate": "2016-02-16T19:24:04.000Z",
+                "PublicationDate": "2017-03-22T16:30:46.000Z",
+                "EvictionDate": "9999-12-31T23:59:59.000Z",
+                "Checksum": [
+                    {
+                    "Algorithm": "MD5",
+                    "Value": "REPLACE_WITH_MD5",
+                    "ChecksumDate": "2017-03-22T16:30:46.000Z"
+                    }
+                ],
+                "ContentDate": {
+                    "Start": "2016-02-16T19:24:04.000Z",
+                    "End": "9999-12-31T23:59:59.000Z"
+                },
+                "Attributes": [
+                    {
+                    "@odata.type": "#OData.CSC.StringAttribute",
+                    "Name": "platformShortName",
+                    "ValueType": "String",
+                    "Value": "SENTINEL-3"
+                    },
+                    {
+                    "@odata.type": "#OData.CSC.StringAttribute",
+                    "Name": "platformSerialIdentifier",
+                    "ValueType": "String",
+                    "Value": "A"
+                    },
+                    {
+                    "@odata.type": "#OData.CSC.StringAttribute",
+                    "Name": "productType",
+                    "ValueType": "String",
+                    "Value": "AX___OSF_AX"
+                    },
+                    {
+                    "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                    "Name": "beginningDateTime",
+                    "ValueType": "DateTimeOffset",
+                    "Value": "2016-02-16T19:24:04.000Z"
+                    },
+                    {
+                    "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                    "Name": "endingDateTime",
+                    "ValueType": "DateTimeOffset",
+                    "Value": "9999-12-31T23:59:59.000Z"
+                    },
+                    {
+                    "@odata.type": "#OData.CSC.StringAttribute",
+                    "Name": "processingCenter",
+                    "ValueType": "String",
+                    "Value": "EUMETSAT"
+                    },
+                    {
+                    "@odata.type": "#OData.CSC.StringAttribute",
+                    "Name": "processorVersion",
+                    "ValueType": "String",
+                    "Value": "001"
+                    }
+                ]
+                }
         ]
     }
