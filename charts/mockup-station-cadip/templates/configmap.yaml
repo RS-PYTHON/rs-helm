@@ -7405,6 +7405,19 @@ data:
                 "Retransfer": false
             },
             {
+                "Id": "xx-3e8d-4c77-9d1a-0f5c8b2e7a67",
+                "Name": "DCS_01_S3A_20200121061417020455_ch2_DSDB_00020.raw",
+                "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}test-l0-develop-2/S3_D_TDS_1/CADUs/S3A_20200121061417020455.short/ch_2/DCS_01_S3A_20200121061417020455_ch2_DSDB_00020.raw",
+                "SessionId": "S3A_20200121061417020456",
+                "Channel": 2,
+                "BlockNumber": 21,
+                "FinalBlock": false,
+                "PublicationDate": "2020-01-21T18:52:30.165Z",
+                "EvictionDate": "2020-01-21T18:52:30.165Z",
+                "Size": "42",
+                "Retransfer": false
+            },
+            {
                 "Id": "6b4f2a91-3e8d-4c77-9d1a-0f5c8b2e7a64",
                 "Name": "DCS_01_S3A_20200121061417020455_ch1_DSDB_00020.raw",
                 "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}test-l0-develop-2/S3_D_TDS_1/CADUs/S3A_20200121061417020455.short/ch_1/DCS_01_S3A_20200121061417020455_ch1_DSDB_00020.raw",
