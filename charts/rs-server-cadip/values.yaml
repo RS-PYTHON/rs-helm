@@ -29,14 +29,9 @@ app:
   confDir: /app/conf
   # -- Cadip search configuration file for the application
   cadipSearchConfigFile: cadip_search_config.yaml
-  # -- EODAG configuration file for the application. If useTokenModule is true the cadip_ws_config_token_module.yaml
-  # -- shall be used. When useTokenModule is false, the cadip_ws_config.yaml shall be used.
+  # -- EODAG configuration file for the application. Uses cadip_ws_config.yaml by default.
   # -- Set properly the EODAG_CADIP_CONFIG env var.
   eodagConfigFile: cadip_ws_config.yaml
-  eodagConfigFileTokenModule: cadip_ws_config_token_module.yaml
-  # -- The method for loading the token for external stations: use the custom module or
-  # -- allow EODAG to handle it (set it to false for EODAG).
-  useTokenModule: false
   station:
     # -- CADIP station name
     cadip:

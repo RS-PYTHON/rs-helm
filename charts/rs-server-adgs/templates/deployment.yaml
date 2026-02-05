@@ -56,9 +56,6 @@ spec:
         - name: service-config-volume
           mountPath: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
           subPath: {{ .Values.app.eodagConfigFile }}
-        - name: token-service-config-volume
-          mountPath: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFileTokenModule }}
-          subPath: {{ .Values.app.eodagConfigFileTokenModule }}
         - name: search-service-config-volume
           mountPath: {{ .Values.app.confDir }}/{{ .Values.app.adgsSearchConfigFile }}
           subPath: {{ .Values.app.adgsSearchConfigFile }}
@@ -82,21 +79,14 @@ spec:
           value: {{ .Values.app.oauth2Attributes }}
         - name: RSPY_STATION_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
-        {{ if eq .Values.app.useTokenModule true }}
-        - name: EODAG_ADGS_CONFIG
-          value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFileTokenModule }}
-        {{ else }}
         - name: EODAG_ADGS_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
-        {{ end }}
         - name: S3_ENDPOINT
           value: {{ .Values.obs.endpoint }}
         - name: S3_REGION
           value: {{ .Values.obs.region }}
         - name: RSPY_ADGS_SEARCH_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.adgsSearchConfigFile }}
-        - name: RSPY_USE_MODULE_FOR_STATION_TOKEN
-          value: {{ .Values.app.useTokenModule | quote }}
         - name: CORS_ORIGINS
           value: {{ .Values.cors.origins | squote }}
         {{ if .Values.tempo }}
@@ -152,9 +142,6 @@ spec:
         - name: service-config-volume
           configMap:
             name: {{ .Release.Name }}-service-config
-        - name: token-service-config-volume
-          configMap:
-            name: {{ .Release.Name }}-token-service-config
         - name: search-service-config-volume
           configMap:
             name: {{ .Release.Name }}-search-service-config
