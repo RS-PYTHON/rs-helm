@@ -51,6 +51,8 @@ app:
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
   # -- OAuth2 attributes to read and save, as a comma-separated str
   oauth2Attributes: monthly-download-volume-limit-gb
+  # -- For these stations, we need to force the use of multipolygon geometries in requests
+  force_multipolygon: station1,station2
 
 probe:
   startup:
