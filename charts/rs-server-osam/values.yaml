@@ -139,7 +139,7 @@ image:
   # -- Image repository
   repository: rs-python
   # -- Image name
-  name: operational-services-osam
+  name: rs-server-osam
   # -- Image version, can be a tag or a digest
   version: "1.0a6"
   # -- Image pull policy
