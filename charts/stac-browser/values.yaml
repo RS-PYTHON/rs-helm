@@ -41,8 +41,8 @@ app:
   SB_catalogUrl: https://subdomain.example.com/catalog/
   # -- Social sharing
   SB_socialSharing: email,bsky,mastodon
-  # -- maxItemsPerPage - see https://github.com/radiantearth/stac-browser/pull/563
-  SB_maxItemsPerPage: 1000
+  # -- maxEntriesPerPage - see https://github.com/radiantearth/stac-browser/pull/563 and https://github.com/radiantearth/stac-browser/releases/tag/v4.0.0
+  SB_maxEntriesPerPage: 1000
 
 probe:
   startup::
@@ -87,7 +87,7 @@ image:
   # -- Image name
   name: stac-browser
   # -- Image version, can be a tag or a digest
-  version: sha256:652c9462998ed57a4c59464e1a7f4f0364c5bbc8430d00711e1af816ebeab013
+  version: sha256:7569c041f26e76095ad90330d6c248c82abdfe211bed443fb06cbf2b80e4e0d9
   # -- Image pull policy
   PullPolicy: IfNotPresent
 

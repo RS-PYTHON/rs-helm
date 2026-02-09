@@ -1,6 +1,6 @@
 # rs-server-staging
 
-![Version: 0.1.0-a5](https://img.shields.io/badge/Version-0.1.0--a5-informational?style=flat-square) ![AppVersion: v1.0a5](https://img.shields.io/badge/AppVersion-v1.0a5-informational?style=flat-square)
+![Version: 0.1.0-a6](https://img.shields.io/badge/Version-0.1.0--a6-informational?style=flat-square) ![AppVersion: v1.0a6](https://img.shields.io/badge/AppVersion-v1.0a6-informational?style=flat-square)
 
 RS SERVER STAGING
 
@@ -46,7 +46,7 @@ RS SERVER STAGING
 | image.name | string | `"rs-server-staging"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"1.0a5"` | Image version, can be a tag or a digest |
+| image.version | string | `"1.0a6"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |

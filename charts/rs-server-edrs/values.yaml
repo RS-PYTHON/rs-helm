@@ -151,7 +151,7 @@ image:
   # -- Image name
   name: rs-server-edrs
   # -- Image version, can be a tag or a digest
-  version: "1.0a5"
+  version: "1.0a6"
   # -- Image pull policy
   PullPolicy: IfNotPresent
 

@@ -1,6 +1,6 @@
 # stac-browser
 
-![Version: 0.1.0-a5](https://img.shields.io/badge/Version-0.1.0--a5-informational?style=flat-square) ![AppVersion: v1.0a5](https://img.shields.io/badge/AppVersion-v1.0a5-informational?style=flat-square)
+![Version: 0.1.0-a6](https://img.shields.io/badge/Version-0.1.0--a6-informational?style=flat-square) ![AppVersion: v1.0a6](https://img.shields.io/badge/AppVersion-v1.0a6-informational?style=flat-square)
 
 STAC BROWSER
 
@@ -19,7 +19,7 @@ STAC BROWSER
 | app.SB_catalogUrl | string | `"https://subdomain.example.com/catalog/"` | URL of the STAC catalog |
 | app.SB_detectLocaleFromBrowser | string | `"true"` | Detect locale from user |
 | app.SB_historyMode | string | `"history"` | Allows search engines to better crawl STAC Browser. Must be set to 'history' for OIDC |
-| app.SB_maxItemsPerPage | int | `1000` | maxItemsPerPage - see https://github.com/radiantearth/stac-browser/pull/563 |
+| app.SB_maxEntriesPerPage | int | `1000` | maxEntriesPerPage - see https://github.com/radiantearth/stac-browser/pull/563 and https://github.com/radiantearth/stac-browser/releases/tag/v4.0.0 |
 | app.SB_socialSharing | string | `"email,bsky,mastodon"` | Social sharing |
 | app.oidc_client_id | string | `""` | OIDC Public Client ID |
 | app.oidc_endpoint | string | `""` | OIDC End Point |
@@ -29,7 +29,7 @@ STAC BROWSER
 | image.name | string | `"stac-browser"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"sha256:652c9462998ed57a4c59464e1a7f4f0364c5bbc8430d00711e1af816ebeab013"` | Image version, can be a tag or a digest |
+| image.version | string | `"sha256:7569c041f26e76095ad90330d6c248c82abdfe211bed443fb06cbf2b80e4e0d9"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"stac-browser.subdomain.example.com"` | Ingress host name. |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
