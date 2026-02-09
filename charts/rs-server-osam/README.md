@@ -1,4 +1,4 @@
-# rs-osam
+# rs-server-osam
 
 ![Version: 0.1.0-a6](https://img.shields.io/badge/Version-0.1.0--a6-informational?style=flat-square) ![AppVersion: v1.0a6](https://img.shields.io/badge/AppVersion-v1.0a6-informational?style=flat-square)
 
@@ -32,7 +32,7 @@ RS Object Storage Access Manager
 | auth.secret.oidc_endpoint | string | `""` | OIDC End Point |
 | auth.secret.oidc_realm | string | `""` | OIDC Realm |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
-| image.name | string | `"operational-services-osam"` | Image name |
+| image.name | string | `"rs-server-osam"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
 | image.version | string | `"1.0a6"` | Image version, can be a tag or a digest |
