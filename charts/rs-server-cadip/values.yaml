@@ -35,23 +35,18 @@ app:
   station:
     # -- CADIP station name
     cadip:
-      endpoint:
-        # -- CADIP station URL
-        url:
-          token: http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080/oauth2/token
-          odata: http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080
+      # -- CADIP config file name
+      configFile: cadip_service_config.yaml
+      # -- CADIP station URL
+      endpoint: http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080
     # @ignored
     sgs:
-      endpoint:
-        url:
-          token: http://mockup-station-cadip-sgs.processing.svc.cluster.local:8080/oauth2/token
-          odata: http://mockup-station-cadip-sgs.processing.svc.cluster.local:8080
+      configFile: sgs_service_config.yaml
+      endpoint: http://mockup-station-cadip-sgs.processing.svc.cluster.local:8080
     # @ignored
-    mti:
-      endpoint:
-        url:
-          token: http://mockup-station-cadip-mti.processing.svc.cluster.local:8080/oauth2/token
-          odata: http://mockup-station-cadip-mti.processing.svc.cluster.local:8080
+    mti: 
+      configFile: mti_service_config.yaml
+      endpoint: http://mockup-station-cadip-mti.processing.svc.cluster.local:8080
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
   # -- OAuth2 attributes to read and save, as a comma-separated str

@@ -27,7 +27,7 @@ metadata:
 data:
   {{ .Values.app.eodagConfigFile }}: |
     {{- range $k, $v := .Values.app.station }}
-    {{ $.Files.Get (printf "config/%s" $v) | nindent 4 }}
+    {{ tpl ($.Files.Get (printf "config/%s" $v.configFile)) $ | nindent 4 }}
     {{- end }}
 ---
 apiVersion: v1
