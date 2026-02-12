@@ -161,6 +161,12 @@ s1a:
       intersects:
       - null
       - $.intersects
+      externalIds:
+      - null
+      - $.Id
+      externalIdss:
+      - null
+      - $.Id
     free_text_search_operations:
       $filter:
         union: ' OR '
@@ -169,6 +175,8 @@ s1a:
           and:
           - contains(Name, '{Name}')
           - Name in ({Names})
+          - Id eq {externalIds}
+          - Id in ({externalIdss})
           - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
           - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
           - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
