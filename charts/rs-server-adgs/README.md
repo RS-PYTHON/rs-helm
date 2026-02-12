@@ -18,14 +18,14 @@ RS SERVER ADGS
 | app.adgsSearchConfigFile | string | `"adgs_search_config.yaml"` |  |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.eodagConfigFile | string | `"adgs_ws_config.yaml"` | Set properly the EODAG_ADGS_CONFIG env var. |
-| app.eodagConfigFileTokenModule | string | `"adgs_ws_config_token_module.yaml"` |  |
 | app.oauth2Attributes | string | `"monthly-download-volume-limit-gb"` | OAuth2 attributes to read and save, as a comma-separated str |
 | app.port | int | `8000` | Port for the application |
-| app.station.adgs.endpoint.url | string | `"http://mockup-station-adgs.processing.svc.cluster.local:8080/Products"` | ADGS URL |
-| app.station.adgs2.endpoint.url | string | `"http://mockup-station-adgs2.processing.svc.cluster.local:8080/Products"` | ADGS2 URL |
+| app.station.adgs.configFile | string | `"adgs_service_config.yaml"` | ADGS config file |
+| app.station.adgs.endpoint | string | `"http://mockup-station-adgs.processing.svc.cluster.local:8080/Products"` | ADGS URL |
+| app.station.adgs2.configFile | string | `"adgs2_service_config.yaml"` |  |
+| app.station.adgs2.endpoint | string | `"http://mockup-station-adgs2.processing.svc.cluster.local:8080/Products"` |  |
 | app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
-| app.useTokenModule | bool | `false` | The way the token for the external stations is loaded: own module or let eodag to do it (set it to false) |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
 | auth.secret.oidc_client_id | string | `""` | OIDC CLient ID |
 | auth.secret.oidc_client_secret | string | `""` | OIDC Secret used to sync user info from Keycloak |
