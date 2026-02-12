@@ -36,13 +36,13 @@ app:
   ptypeMappingFile: product_type_mapping.yaml
   station:
     s1a:
-      endpoint:
-        # -- PRIP station URL
-        url: http://mockup-prip-s1a.processing.svc.cluster.local:8080/Products
+      # -- PRIP station URL
+      endpoint: http://mockup-prip-s1a.processing.svc.cluster.local:8080/Products
+      # -- PRIP station config file name
+      configFile: s1a_service_config.yaml
     s2b:
-      endpoint:
-        # -- PRIP station URL
-        url: http://mockup-prip-s2b.processing.svc.cluster.local:8080/Products
+      endpoint: http://mockup-prip-s2b.processing.svc.cluster.local:8080/Products
+      configFile: s2b_service_config.yaml
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
   # -- OAuth2 attributes to read and save, as a comma-separated str
