@@ -75,8 +75,6 @@ spec:
             name: prip-{{ $k }}
         {{- end }}
         - secretRef:
-            name: {{ .Release.Name }}-obs
-        - secretRef:
             name: {{ .Release.Name }}-auth
         env:
         - name: RSPY_UAC_CHECK_URL
@@ -94,10 +92,6 @@ spec:
         - name: PTYPE_MAPPING_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.ptypeMappingFile }}
         {{ end }}
-        - name: S3_ENDPOINT
-          value: {{ .Values.obs.endpoint }}
-        - name: S3_REGION
-          value: {{ .Values.obs.region }}
         - name: RSPY_PRIP_SEARCH_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.pripSearchConfigFile }}
         - name: RSPY_USE_MODULE_FOR_STATION_TOKEN
