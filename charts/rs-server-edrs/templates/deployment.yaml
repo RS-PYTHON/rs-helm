@@ -69,18 +69,12 @@ spec:
             name: edrs-{{ $k }}
         {{- end }}
         - secretRef:
-            name: {{ .Release.Name }}-obs
-        - secretRef:
             name: {{ .Release.Name }}-auth
         env:
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}
         - name: RSPY_OAUTH2_ATTRIBUTES
           value: {{ .Values.app.oauth2Attributes }}
-        - name: S3_ENDPOINT
-          value: {{ .Values.obs.endpoint }}
-        - name: S3_REGION
-          value: {{ .Values.obs.region }}
         - name: USE_SSL
           value: {{ .Values.app.useSSL | quote }}
         - name: RSPY_EDRS_COLLECTIONS_CONFIG
