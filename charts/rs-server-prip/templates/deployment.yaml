@@ -84,7 +84,6 @@ spec:
           value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
         - name: PTYPE_MAPPING_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.ptypeMappingFile }}
-        {{ end }}
         - name: RSPY_PRIP_SEARCH_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.pripSearchConfigFile }}
         - name: CORS_ORIGINS

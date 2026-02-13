@@ -79,7 +79,6 @@ spec:
           value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
         - name: EODAG_ADGS_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
-        {{ end }}
         - name: RSPY_ADGS_SEARCH_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.adgsSearchConfigFile }}
         - name: CORS_ORIGINS
