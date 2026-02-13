@@ -69,8 +69,6 @@ spec:
             name: cadip-{{ $k }}
         {{- end }}
         - secretRef:
-            name: {{ .Release.Name }}-obs
-        - secretRef:
             name: {{ .Release.Name }}-auth
         env:
         - name: RSPY_UAC_CHECK_URL
@@ -83,10 +81,6 @@ spec:
           value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
         - name: RSPY_CADIP_SEARCH_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.cadipSearchConfigFile }}
-        - name: S3_ENDPOINT
-          value: {{ .Values.obs.endpoint }}
-        - name: S3_REGION
-          value: {{ .Values.obs.region }}
         - name: CORS_ORIGINS
           value: {{ .Values.cors.origins | squote }}
         {{ if .Values.tempo }}

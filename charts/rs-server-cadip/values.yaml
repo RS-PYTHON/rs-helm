@@ -96,17 +96,6 @@ tolerations: []
 # -- Pod initContainers
 initContainers: []
 
-obs:
-  # -- URL of the object storage service endpoint
-  endpoint: http://seaweedfs-s3.seaweedfs.svc.cluster.local:9000
-  # -- Region of the object storage service
-  region: sbg
-  secret:
-    # -- Access Key to authenticate with the object storage service
-    ak: TDr8foJqSygBQ9YFmWDy
-    # -- Secret Key to authenticate with the object storage service
-    sk: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
-
 auth:
   secret:
     # -- OIDC End Point

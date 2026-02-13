@@ -69,8 +69,6 @@ spec:
             name: auxip-{{ $k }}
         {{- end }}
         - secretRef:
-            name: {{ .Release.Name }}-obs
-        - secretRef:
             name: {{ .Release.Name }}-auth
         env:
         - name: RSPY_UAC_CHECK_URL
@@ -81,10 +79,7 @@ spec:
           value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
         - name: EODAG_ADGS_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
-        - name: S3_ENDPOINT
-          value: {{ .Values.obs.endpoint }}
-        - name: S3_REGION
-          value: {{ .Values.obs.region }}
+        {{ end }}
         - name: RSPY_ADGS_SEARCH_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.adgsSearchConfigFile }}
         - name: CORS_ORIGINS
