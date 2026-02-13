@@ -44,7 +44,7 @@ app:
       configFile: sgs_service_config.yaml
       endpoint: http://mockup-station-cadip-sgs.processing.svc.cluster.local:8080
     # @ignored
-    mti: 
+    mti:
       configFile: mti_service_config.yaml
       endpoint: http://mockup-station-cadip-mti.processing.svc.cluster.local:8080
   # -- URL of the API Key Manager service
