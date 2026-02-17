@@ -1,3 +1,22 @@
+# Copyright 2023-2025 Airbus, CS Group
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# THIS FILE WAS AUTOMATICALLY CREATED FROM:
+#  - rs-server/services/prip/config/prip_ws_config.template.yaml
+#  - rs-server/resources/sync_config_files.py
+# DON'T MODIFY IT DIRECTLY !
+
 s1a:
   auth:
     type: TokenAuth
@@ -33,6 +52,9 @@ s1a:
       - null
       - $.Id
       Name:
+      - null
+      - $.Name
+      Names:
       - null
       - $.Name
       ContentLength:
@@ -139,9 +161,12 @@ s1a:
       intersects:
       - null
       - $.intersects
-      Names:
+      externalIds:
       - null
-      - $.Name
+      - $.Id
+      externalIdss:
+      - null
+      - $.Id
     free_text_search_operations:
       $filter:
         union: ' OR '
@@ -150,6 +175,8 @@ s1a:
           and:
           - contains(Name, '{Name}')
           - Name in ({Names})
+          - Id eq {externalIds}
+          - Id in ({externalIdss})
           - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
           - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
           - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
@@ -166,7 +193,7 @@ s1a:
           - ContentType eq '{ContentType}'
           - ContentType in ({ContentTypes})
           - ProductionType eq '{ProductionType}'
-          - OData.CSC.Intersects(area=geography'SRID=4326;{intersects#replace_str("POLYGON ","POLYGON")}')
+          - OData.CSC.Intersects(area=geography'SRID=4326;{intersects}')
           - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq {attr_ptype})
           - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value in ({attr_ptypes}))
           - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq {platformShortName#to_upper})
@@ -207,7 +234,6 @@ s1a:
       sort_by_tpl: '&$orderby={sort_param} {sort_order}'
       sort_param_mapping:
         id: Name
-        prip:id: Id
         file:size: ContentLength
         type: ContentType
         eviction_datetime: EvictionDate

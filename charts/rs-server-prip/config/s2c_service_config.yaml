@@ -1,4 +1,4 @@
-s1a:
+s2c:
   auth:
     type: TokenAuth
     auth_uri: PLACEHOLDER
@@ -8,8 +8,8 @@ s1a:
     token_expiration_key: expires_in
     request_method: POST
     req_data:
-      client_id: PLACEHOLDER
-      client_secret: PLACEHOLDER
+      #          client_id: PLACEHOLDER
+      #          client_secret: PLACEHOLDER
       grant_type: PLACEHOLDER
       username: PLACEHOLDER
       password: PLACEHOLDER
@@ -25,7 +25,7 @@ s1a:
       productType: IW_RAW__0N
   search:
     type: ODataV4Search
-    api_endpoint: {{ $.Values.app.station.s1a.endpoint }}
+    api_endpoint: https://PLACEHOLDER/odata/v1/Products
     need_auth: true
     results_entry: $.value | $
     metadata_mapping:
@@ -133,8 +133,8 @@ s1a:
       - $.platformShortName
       href:
       - null
-      - {{ $.Values.app.station.s1a.endpoint }}({id})/$value
-      downloadLink: {{ $.Values.app.station.s1a.endpoint }}({id})/$value
+      - https://PLACEHOLDER/odata/v1/Products({id})/$value
+      downloadLink: https://PLACEHOLDER/odata/v1/Products({id})/$value
       title: $.Name
       intersects:
       - null
@@ -207,7 +207,6 @@ s1a:
       sort_by_tpl: '&$orderby={sort_param} {sort_order}'
       sort_param_mapping:
         id: Name
-        prip:id: Id
         file:size: ContentLength
         type: ContentType
         eviction_datetime: EvictionDate
@@ -219,13 +218,14 @@ s1a:
         ascending: asc
         descending: desc
       max_sort_params: 1
+    timeout: 60
     pagination:
       max_items_per_page: 10000
       next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}&$expand=Attributes'
       total_items_nb_key_path: $.total
   download:
     type: HTTPDownload
-    base_uri: {{ $.Values.app.station.s1a.endpoint }}
+    base_uri: https://PLACEHOLDER/odata/v1/Products
     metadata_mapping:
       uid: $.Id
-      downloadLink: {{ $.Values.app.station.s1a.endpoint }}({uid})/$value
+      downloadLink: https://PLACEHOLDER/odata/v1/Products({uid})/$value

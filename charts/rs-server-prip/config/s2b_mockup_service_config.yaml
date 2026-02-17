@@ -1,4 +1,23 @@
-s1a:
+# Copyright 2023-2025 Airbus, CS Group
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# THIS FILE WAS AUTOMATICALLY CREATED FROM:
+#  - rs-server/services/prip/config/prip_ws_config.template.yaml
+#  - rs-server/resources/sync_config_files.py
+# DON'T MODIFY IT DIRECTLY !
+
+s2b:
   auth:
     type: TokenAuth
     auth_uri: PLACEHOLDER
@@ -21,11 +40,15 @@ s1a:
       Content-Type: application/x-www-form-urlencoded
       Authorization: '{auth_for_token}'
   products:
-    S1_SAR_RAW:
-      productType: IW_RAW__0N
+    S2_MSI_L0_DS:
+      productType: OPER_MSI
+    S2_MSI_L0_GR:
+      productType: OPER_MSI_L0
+    S2_MSI_L2A:
+      productType: OPER_MSI_L2A
   search:
     type: ODataV4Search
-    api_endpoint: {{ $.Values.app.station.s1a.endpoint }}
+    api_endpoint: {{ $.Values.app.station.s2b.endpoint }}
     need_auth: true
     results_entry: $.value | $
     metadata_mapping:
@@ -33,6 +56,9 @@ s1a:
       - null
       - $.Id
       Name:
+      - null
+      - $.Name
+      Names:
       - null
       - $.Name
       ContentLength:
@@ -133,15 +159,18 @@ s1a:
       - $.platformShortName
       href:
       - null
-      - {{ $.Values.app.station.s1a.endpoint }}({id})/$value
-      downloadLink: {{ $.Values.app.station.s1a.endpoint }}({id})/$value
+      - {{ $.Values.app.station.s2b.endpoint }}({id})/$value
+      downloadLink: {{ $.Values.app.station.s2b.endpoint }}({id})/$value
       title: $.Name
       intersects:
       - null
       - $.intersects
-      Names:
+      externalIds:
       - null
-      - $.Name
+      - $.Id
+      externalIdss:
+      - null
+      - $.Id
     free_text_search_operations:
       $filter:
         union: ' OR '
@@ -150,6 +179,8 @@ s1a:
           and:
           - contains(Name, '{Name}')
           - Name in ({Names})
+          - Id eq {externalIds}
+          - Id in ({externalIdss})
           - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
           - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
           - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
@@ -166,7 +197,7 @@ s1a:
           - ContentType eq '{ContentType}'
           - ContentType in ({ContentTypes})
           - ProductionType eq '{ProductionType}'
-          - OData.CSC.Intersects(area=geography'SRID=4326;{intersects#replace_str("POLYGON ","POLYGON")}')
+          - OData.CSC.Intersects(area=geography'SRID=4326;{intersects}')
           - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq {attr_ptype})
           - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value in ({attr_ptypes}))
           - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq {platformShortName#to_upper})
@@ -207,7 +238,6 @@ s1a:
       sort_by_tpl: '&$orderby={sort_param} {sort_order}'
       sort_param_mapping:
         id: Name
-        prip:id: Id
         file:size: ContentLength
         type: ContentType
         eviction_datetime: EvictionDate
@@ -225,7 +255,7 @@ s1a:
       total_items_nb_key_path: $.total
   download:
     type: HTTPDownload
-    base_uri: {{ $.Values.app.station.s1a.endpoint }}
+    base_uri: {{ $.Values.app.station.s2b.endpoint }}
     metadata_mapping:
       uid: $.Id
-      downloadLink: {{ $.Values.app.station.s1a.endpoint }}({uid})/$value
+      downloadLink: {{ $.Values.app.station.s2b.endpoint }}({uid})/$value

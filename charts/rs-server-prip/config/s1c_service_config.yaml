@@ -1,4 +1,4 @@
-s1a:
+s1c:
   auth:
     type: TokenAuth
     auth_uri: PLACEHOLDER
@@ -20,12 +20,13 @@ s1a:
     retrieve_headers:
       Content-Type: application/x-www-form-urlencoded
       Authorization: '{auth_for_token}'
+    ssl_verify: true
   products:
     S1_SAR_RAW:
       productType: IW_RAW__0N
   search:
     type: ODataV4Search
-    api_endpoint: {{ $.Values.app.station.s1a.endpoint }}
+    api_endpoint: {{ $.Values.app.station.s1c.endpoint }}
     need_auth: true
     results_entry: $.value | $
     metadata_mapping:
@@ -133,8 +134,8 @@ s1a:
       - $.platformShortName
       href:
       - null
-      - {{ $.Values.app.station.s1a.endpoint }}({id})/$value
-      downloadLink: {{ $.Values.app.station.s1a.endpoint }}({id})/$value
+      - {{ $.Values.app.station.s1c.endpoint }}({id})/$value
+      downloadLink: {{ $.Values.app.station.s1c.endpoint }}({id})/$value
       title: $.Name
       intersects:
       - null
@@ -207,7 +208,6 @@ s1a:
       sort_by_tpl: '&$orderby={sort_param} {sort_order}'
       sort_param_mapping:
         id: Name
-        prip:id: Id
         file:size: ContentLength
         type: ContentType
         eviction_datetime: EvictionDate
@@ -225,7 +225,7 @@ s1a:
       total_items_nb_key_path: $.total
   download:
     type: HTTPDownload
-    base_uri: {{ $.Values.app.station.s1a.endpoint }}
+    base_uri: {{ $.Values.app.station.s1c.endpoint }}
     metadata_mapping:
       uid: $.Id
-      downloadLink: {{ $.Values.app.station.s1a.endpoint }}({uid})/$value
+      downloadLink: {{ $.Values.app.station.s1c.endpoint }}({uid})/$value
