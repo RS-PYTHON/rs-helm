@@ -20,10 +20,8 @@ RS SERVER ADGS
 | app.eodagConfigFile | string | `"adgs_ws_config.yaml"` | Set properly the EODAG_ADGS_CONFIG env var. |
 | app.oauth2Attributes | string | `"monthly-download-volume-limit-gb"` | OAuth2 attributes to read and save, as a comma-separated str |
 | app.port | int | `8000` | Port for the application |
-| app.station.adgs.configFile | string | `"adgs_service_config.yaml"` | ADGS config file |
-| app.station.adgs.endpoint | string | `"http://mockup-station-adgs.processing.svc.cluster.local:8080/Products"` | ADGS URL |
-| app.station.adgs2.configFile | string | `"adgs2_service_config.yaml"` |  |
-| app.station.adgs2.endpoint | string | `"http://mockup-station-adgs2.processing.svc.cluster.local:8080/Products"` |  |
+| app.station.adgs.configFile | string | `"adgs_service_config.yaml"` | Station config file - Example: adgs_service_config.yaml |
+| app.station.adgs.endpoint | string | `""` | Station URL - Example: http://mockup-station-adgs.processing.svc.cluster.local:8080/Products |
 | app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
