@@ -1,7 +1,7 @@
-sgs:
+mps:
   auth:
     type: TokenAuth
-    auth_uri: https://PLACEHOLDER/realms/Copernicus/protocol/openid-connect/token
+    auth_uri: https://PLACEHOLDER/cadip-oauth/oauth/token
     token_type: json
     token_key: access_token
     refresh_token_key: refresh_token
@@ -14,9 +14,12 @@ sgs:
       username: PLACEHOLDER
       password: PLACEHOLDER
     credentials:
-      empty: value
+      auth_for_token: PLACEHOLDER
     headers:
       Content-Type: application/x-www-form-urlencoded
+    retrieve_headers:
+      Content-Type: application/x-www-form-urlencoded
+      Authorization: '{auth_for_token}'
   products:
     S1_SAR_RAW:
       productType: RAW
@@ -24,7 +27,7 @@ sgs:
 
   search:
     type: ODataV4Search
-    api_endpoint: '{{ $.Values.app.station.sgs.endpoint }}/Files'
+    api_endpoint: '{{ $.Values.app.station.mps.endpoint }}/Files'
     need_auth: true
     results_entry: $.value
     metadata_mapping:
@@ -69,9 +72,9 @@ sgs:
         - $.PublicationDate
       href:
         - null
-        - '{{ $.Values.app.station.sgs.endpoint }}/Files({id})/$value'
+        - '{{ $.Values.app.station.mps.endpoint }}/Files({id})/$value'
       geometry: 'POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))'
-      downloadLink: '{{ $.Values.app.station.sgs.endpoint }}/Files({id})/$value'
+      downloadLink: '{{ $.Values.app.station.mps.endpoint }}/Files({id})/$value'
       title: '$.Name'
 
     free_text_search_operations:
@@ -102,15 +105,15 @@ sgs:
 
   download:
     type: HTTPDownload
-    base_uri: '{{ $.Values.app.station.sgs.endpoint }}/Files'
+    base_uri: '{{ $.Values.app.station.mps.endpoint }}/Files'
     metadata_mapping:
       uid: '$.Id'
-      downloadLink: '{{ $.Values.app.station.sgs.endpoint }}/Files({uid})/$value'
+      downloadLink: '{{ $.Values.app.station.mps.endpoint }}/Files({uid})/$value'
 
-sgs_session:
+mps_session:
   auth:
     type: TokenAuth
-    auth_uri: https://PLACEHOLDER/realms/Copernicus/protocol/openid-connect/token
+    auth_uri: https://PLACEHOLDER/cadip-oauth/oauth/token
     token_type: json
     token_key: access_token
     refresh_token_key: refresh_token
@@ -123,16 +126,19 @@ sgs_session:
       username: PLACEHOLDER
       password: PLACEHOLDER
     credentials:
-      empty: value
+      auth_for_token: PLACEHOLDER
     headers:
       Content-Type: application/x-www-form-urlencoded
+    retrieve_headers:
+      Content-Type: application/x-www-form-urlencoded
+      Authorization: '{auth_for_token}'
   products:
     S1_SAR_RAW:
       productType: RAW
       collection: Sentinel1
   search:
     type: ODataV4Search
-    api_endpoint: '{{ $.Values.app.station.sgs.endpoint }}/Sessions'
+    api_endpoint: '{{ $.Values.app.station.mps.endpoint }}/Sessions'
     need_auth: true
     results_entry: $.value
     metadata_mapping:
@@ -213,7 +219,7 @@ sgs_session:
         - $.PublicationDate
       href:
         - null
-        - '{{ $.Values.app.station.sgs.endpoint }}/Files({id})/$value'
+        - '{{ $.Values.app.station.mps.endpoint }}/Files({id})/$value'
       geometry: "POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))"
       title: "$.Name"
 
@@ -285,7 +291,7 @@ sgs_session:
 
   download:
     type: HTTPDownload
-    base_uri: '{{ $.Values.app.station.sgs.endpoint }}/Sessions'
+    base_uri: '{{ $.Values.app.station.mps.endpoint }}/Sessions'
     metadata_mapping:
       uid: "$.Id"
-      downloadLink: "{{ $.Values.app.station.sgs.endpoint }}/Files({uid})/$value"
+      downloadLink: "{{ $.Values.app.station.mps.endpoint }}/Files({uid})/$value"

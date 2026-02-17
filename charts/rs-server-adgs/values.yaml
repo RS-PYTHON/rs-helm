@@ -35,13 +35,10 @@ app:
   eodagConfigFile: adgs_ws_config.yaml
   station:
     adgs:
-      # -- ADGS URL
-      endpoint: http://mockup-station-adgs.processing.svc.cluster.local:8080/Products
-      # -- ADGS config file
+      # -- Station URL - Example: http://mockup-station-adgs.processing.svc.cluster.local:8080/Products
+      endpoint: ""
+      # -- Station config file - Example: adgs_service_config.yaml
       configFile: adgs_service_config.yaml
-    adgs2:
-      endpoint: http://mockup-station-adgs2.processing.svc.cluster.local:8080/Products
-      configFile: adgs2_service_config.yaml
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
   # -- OAuth2 attributes to read and save, as a comma-separated str
