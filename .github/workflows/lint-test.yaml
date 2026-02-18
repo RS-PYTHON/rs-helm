@@ -79,7 +79,7 @@ jobs:
       CT_RS_OPTS: --debug --skip-clean-up --helm-extra-set-args="$RS_HELM_OPTS --timeout=60s"
       CT_CHARTS_STEP1: charts/rs-catalog-staging-configmap,charts/rs-server-station-secrets
       CT_CHARTS_STEP2: charts/mockup-processor-dpr,charts/mockup-station-adgs,charts/mockup-station-cadip,charts/mockup-station-lta,charts/mockup-station-prip,charts/mockup-station-edrs
-      CT_CHARTS_STEP3: charts/rs-osam
+      CT_CHARTS_STEP3: charts/rs-server-osam
       CT_CHARTS_STEP4: charts/rs-server-adgs,charts/rs-server-cadip,charts/rs-server-catalog,charts/rs-server-prip,charts/rs-server-staging,charts/rs-server-edrs
       CT_CHARTS_STEP5: charts/rs-server-frontend,charts/stac-browser
       PG_VERSION: 17
@@ -197,7 +197,7 @@ jobs:
         with:
           namespace: processing
           command: ct install $CT_RS_OPTS --namespace processing --charts $CT_CHARTS_STEP2
-      - name: Run chart-testing (install step 3 - rs-osam)
+      - name: Run chart-testing (install step 3 - rs-server-osam)
         uses: ./.github/actions/run-with-watch
         with:
           namespace: processing
