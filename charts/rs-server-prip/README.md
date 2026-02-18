@@ -21,10 +21,8 @@ RS SERVER PRIP
 | app.port | int | `8000` | Port for the application |
 | app.pripSearchConfigFile | string | `"prip_search_config.yaml"` |  |
 | app.ptypeMappingFile | string | `"product_type_mapping.yaml"` |  |
-| app.station.s1a.configFile | string | `"s1a_service_config.yaml"` | PRIP station config file name |
-| app.station.s1a.endpoint | string | `"http://mockup-prip-s1a.processing.svc.cluster.local:8080/Products"` | PRIP station URL |
-| app.station.s2b.configFile | string | `"s2b_service_config.yaml"` |  |
-| app.station.s2b.endpoint | string | `"http://mockup-prip-s2b.processing.svc.cluster.local:8080/Products"` |  |
+| app.station.s1a.configFile | string | `"s1a_service_config.yaml"` | PRIP station config file name - Example: s1a_service_config.yaml |
+| app.station.s1a.endpoint | string | `""` | PRIP station URL - Example: http://mockup-prip-s1a.processing.svc.cluster.local:8080/Products |
 | app.stationConfigFile | string | `"stations_cfg.json"` | Station configuration file for the application |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |

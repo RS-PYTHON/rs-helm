@@ -18,11 +18,11 @@ RS SERVER CADIP
 | app.cadipSearchConfigFile | string | `"cadip_search_config.yaml"` | Cadip search configuration file for the application |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.eodagConfigFile | string | `"cadip_ws_config.yaml"` | Set properly the EODAG_CADIP_CONFIG env var. |
-| app.mockupStation.cadip | object | `{"configFile":"cadip_mockup_service_config.yaml","endpoint":""}` | CADIP station name |
-| app.mockupStation.cadip.configFile | string | `"cadip_mockup_service_config.yaml"` | CADIP config file name - Example: cadip_service_config.yaml |
-| app.mockupStation.cadip.endpoint | string | `""` | CADIP station URL - Example: http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080 |
 | app.oauth2Attributes | string | `"monthly-download-volume-limit-gb"` | OAuth2 attributes to read and save, as a comma-separated str |
 | app.port | int | `8000` | Port for the application |
+| app.station.mti | object | `{"configFile":"mti_service_config.yaml","endpoint":""}` | CADIP station name |
+| app.station.mti.configFile | string | `"mti_service_config.yaml"` | CADIP config file name - Example: cadip_service_config.yaml |
+| app.station.mti.endpoint | string | `""` | CADIP station URL - Example: http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080 |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
 | auth.secret.oidc_client_id | string | `""` | OIDC CLient ID |
