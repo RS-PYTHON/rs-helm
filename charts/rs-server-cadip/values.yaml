@@ -32,13 +32,13 @@ app:
   # -- EODAG configuration file for the application. Uses cadip_ws_config.yaml by default.
   # -- Set properly the EODAG_CADIP_CONFIG env var.
   eodagConfigFile: cadip_ws_config.yaml
-  mockupStation:
+  station:
     # -- CADIP station name
-    cadip:
+    mti:
       # -- CADIP station URL - Example: http://mockup-station-cadip-cadip.processing.svc.cluster.local:8080
       endpoint: ""
       # -- CADIP config file name - Example: cadip_service_config.yaml
-      configFile: cadip_mockup_service_config.yaml
+      configFile: mti_service_config.yaml
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
   # -- OAuth2 attributes to read and save, as a comma-separated str
