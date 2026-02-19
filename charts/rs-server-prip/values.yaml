@@ -30,23 +30,16 @@ app:
   # -- Station configuration file for the application
   stationConfigFile: stations_cfg.json
   pripSearchConfigFile: prip_search_config.yaml
-  # -- EODAG configuration file for the application. If useTokenModule is true the prip_ws_config_token_module.yaml
-  # -- shall be used. When useTokenModule is false, the prip_ws_config.yaml shall be used.
+  # -- EODAG configuration file for the application. Use prip_ws_config.yaml by default.
   # -- Set properly the EODAG_PRIP_CONFIG env var.
   eodagConfigFile: prip_ws_config.yaml
-  eodagConfigFileTokenModule: prip_ws_config_token_module.yaml
   ptypeMappingFile: product_type_mapping.yaml
-  # -- The way the token for the external stations is loaded: own module or let eodag to do it (set it to false)
-  useTokenModule: false
   station:
     s1a:
-      endpoint:
-        # -- PRIP station URL
-        url: http://mockup-prip-s1a.processing.svc.cluster.local:8080/Products
-    s2b:
-      endpoint:
-        # -- PRIP station URL
-        url: http://mockup-prip-s2b.processing.svc.cluster.local:8080/Products
+      # -- PRIP station URL - Example: http://mockup-prip-s1a.processing.svc.cluster.local:8080/Products
+      endpoint: ""
+      # -- PRIP station config file name - Example: s1a_service_config.yaml
+      configFile: s1a_service_config.yaml
   # -- URL of the API Key Manager service
   uacURL: http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key
   # -- OAuth2 attributes to read and save, as a comma-separated str

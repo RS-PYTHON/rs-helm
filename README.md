@@ -68,7 +68,7 @@ A *temporary* service for DPR[^1], to provide a web service to trigger DPR proce
 
 [^1]: Temporary* service for DPR, because it's only a simple substitue while the official one is not yet delivered.
 
-## [rs-osam](charts/rs-osam/README.md)
+## [rs-server-osam](charts/rs-server-osam/README.md)
 
 A service to synchronize users create/detele users in the Cloud Provider's Object Storage based on the existing Keycloak's user. OSAM stands for Object Storage Access Manager.
 

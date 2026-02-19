@@ -56,9 +56,6 @@ spec:
         - name: service-config-volume
           mountPath: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
           subPath: {{ .Values.app.eodagConfigFile }}
-        - name: token-service-config-volume
-          mountPath: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFileTokenModule }}
-          subPath: {{ .Values.app.eodagConfigFileTokenModule }}
         - name: search-service-config-volume
           mountPath: {{ .Values.app.confDir }}/{{ .Values.app.cadipSearchConfigFile }}
           subPath: {{ .Values.app.cadipSearchConfigFile }}
@@ -80,19 +77,12 @@ spec:
           value: {{ .Values.app.oauth2Attributes }}
         #- name: RSPY_STATION_CONFIG
         #  value: {{ .Values.app.confDir }}/{{ .Values.app.stationConfigFile }}
-        {{ if eq .Values.app.useTokenModule true }}
-        - name: EODAG_CADIP_CONFIG
-          value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFileTokenModule }}
-        {{ else }}
         - name: EODAG_CADIP_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.eodagConfigFile }}
-        {{ end }}
         - name: RSPY_CADIP_SEARCH_CONFIG
           value: {{ .Values.app.confDir }}/{{ .Values.app.cadipSearchConfigFile }}
         - name: CORS_ORIGINS
           value: {{ .Values.cors.origins | squote }}
-        - name: RSPY_USE_MODULE_FOR_STATION_TOKEN
-          value: {{ .Values.app.useTokenModule | quote }}
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
@@ -146,9 +136,6 @@ spec:
         - name: service-config-volume
           configMap:
             name: {{ .Release.Name }}-service-config
-        - name: token-service-config-volume
-          configMap:
-            name: {{ .Release.Name }}-token-service-config
         - name: search-service-config-volume
           configMap:
             name: {{ .Release.Name }}-search-service-config
