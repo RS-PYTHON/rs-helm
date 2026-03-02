@@ -101,7 +101,7 @@ image:
   # -- Image name
   name: rs-server-prip
   # -- Image version, can be a tag or a digest
-  version: "1.0a6"
+  version: "1.0a7"
   # -- Image pull policy
   PullPolicy: IfNotPresent
 
