@@ -13,6 +13,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [1.0a7] - 2026-03-02
+
+### Added
+
+- [RSPY-906](https://github.com/RS-PYTHON/rs-helm/pull/217) : stac search external ids
+- [PR#212](https://github.com/RS-PYTHON/rs-helm/pull/212) : new: 2 auxips, 2 cadus
+- [PR#213](https://github.com/RS-PYTHON/rs-helm/pull/213) : Added antemeridian-crossing product
+
+### Changed
+
+- [PR#215](https://github.com/RS-PYTHON/rs-helm/pull/215) : Update to SeaweedFS 4.12
+- [PR#221](https://github.com/RS-PYTHON/rs-helm/pull/221) : Update to seaweedfs 4.13
+- [RSPY-926](https://github.com/RS-PYTHON/rs-helm/pull/218) : rs-server-osam
+- [RSPY-490](https://github.com/RS-PYTHON/rs-helm/pull/220) : Allow to externalize CADIP/AUXIP collections configuration files
+- Update docker image tag
+
+### Removed
+
+- [PR#219](https://github.com/RS-PYTHON/rs-helm/pull/219) : Remove useless OBS configuration
+
+
 ## [1.0a6] - 2026-02-02
 
 ### Added
