@@ -1,6 +1,6 @@
 # mockup-station-adgs
 
-![Version: 0.1.0-a6](https://img.shields.io/badge/Version-0.1.0--a6-informational?style=flat-square) ![AppVersion: v1.0a6](https://img.shields.io/badge/AppVersion-v1.0a6-informational?style=flat-square)
+![Version: 0.1.0-a7](https://img.shields.io/badge/Version-0.1.0--a7-informational?style=flat-square) ![AppVersion: v1.0a7](https://img.shields.io/badge/AppVersion-v1.0a7-informational?style=flat-square)
 
 MOCKUP STATION ADGS
 
@@ -27,7 +27,7 @@ MOCKUP STATION ADGS
 | image.name | string | `"rs-testmeans_adgs-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"3c14be7"` | Image version, can be a tag or a digest |
+| image.version | string | `"276bcd0"` | Image version, can be a tag or a digest |
 | initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://seaweedfs-s3.seaweedfs.svc.cluster.local:9000"` | URL of the object storage service endpoint |
