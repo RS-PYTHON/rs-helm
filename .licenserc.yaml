@@ -12,11 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ .Chart.Name }}
-  namespace: {{ .Values.namespace }}
-data:
-  {{ .Values.bucketConfigFileName }}: |
-{{ .Values.expiration_bucket_csv | indent 4 }}
+header:
+  license:
+    spdx-id: Apache-2.0
+    copyright-owner: Airbus, CS Group
+    copyright-year: '2023-2026'
+
+  paths-ignore:
+    - '**/*.cfg'
+    - '**/*.csv'
+    - '**/*.env'
+    - '**/*.json'
+    - '**/*.md'
+    - '**/*.template'
+    - '**/*.tfvars'
+    - '**/Dockerfile*'
+    - '**/.gitignore'
+    - '.gitmodules'
+    - '.safety-project.ini'
+    - '.trivyignore'
+    - 'LICENSE'
+    - 'NOTICE'
+
+  comment: on-failure
