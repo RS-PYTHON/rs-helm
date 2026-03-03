@@ -12,17 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-{{ if .Values.app }}
-{{ if .Values.app.S3FS }}
-{{ if .Values.app.S3FS.enabled }}
-kind: Secret
-metadata:
-  name: s3fs-edrs
-  namespace: {{ .Values.namespace }}
-type: Opaque
-apiVersion: v1
-stringData:
-  edrs: "{{ .Values.obs.secret.ak }}:{{ .Values.obs.secret.sk }}"
-{{ end }}
-{{ end }}
-{{ end }}
+header:
+  license:
+    spdx-id: Apache-2.0
+    copyright-owner: Airbus, CS Group
+    copyright-year: '2023-2026'
+
+  paths-ignore:
+    - '**/*.cfg'
+    - '**/*.csv'
+    - '**/*.env'
+    - '**/*.json'
+    - '**/*.md'
+    - '**/*.template'
+    - '**/*.tfvars'
+    - '**/Dockerfile*'
+    - '**/.gitignore'
+    - '.gitmodules'
+    - '.safety-project.ini'
+    - '.trivyignore'
+    - 'LICENSE'
+    - 'NOTICE'
+
+  comment: on-failure
