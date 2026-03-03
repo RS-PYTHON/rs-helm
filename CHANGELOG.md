@@ -67,7 +67,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 - [RSPY-857](https://github.com/RS-PYTHON/rs-helm/pull/185) : Feat rspy857/endpoint bucket configuration
 - [RSPY-814](https://github.com/RS-PYTHON/rs-helm/pull/180) : EDRS staging
 - [RSPY-808](https://github.com/RS-PYTHON/rs-helm/pull/179) : rs-server-edrs
-- [RSPY-807](https://github.com/RS-PYTHON/rs-helm/pull/175) : edrs mockup 
+- [RSPY-807](https://github.com/RS-PYTHON/rs-helm/pull/175) : edrs mockup
 
 ### Changed
 
@@ -110,7 +110,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 ### Added
 
 - [RSPY-324](https://github.com/RS-PYTHON/rs-helm/pull/160) : Add new rs-prip-service
-- [RSPY-761](https://github.com/RS-PYTHON/rs-helm/pull/161) : Preparing prip staging 
+- [RSPY-761](https://github.com/RS-PYTHON/rs-helm/pull/161) : Preparing prip staging
 - [RSPY-761](https://github.com/RS-PYTHON/rs-helm/pull/162) : Ptype config
 
 ### Changed
