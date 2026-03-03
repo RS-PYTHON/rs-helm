@@ -1,4 +1,4 @@
-# Copyright 2024 CS Group
+# Copyright 2023-2026 Airbus, CS Group
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ spec:
             cpu: {{ .Values.resources.request.cpu }}
           limits:
             memory: {{ .Values.resources.limit.ram }}
-            cpu: {{ .Values.resources.limit.cpu }}        
+            cpu: {{ .Values.resources.limit.cpu }}
         ports:
         - name: web
           protocol: TCP
@@ -111,7 +111,7 @@ spec:
         - name: RSPY_HOST_OSAM
           value: {{ .Values.app.endpointOsam }}
         - name: USE_SSL
-          value: {{ .Values.app.useSsl | quote }} 
+          value: {{ .Values.app.useSsl | quote }}
         {{ if .Values.tempo }}
         {{ if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
@@ -171,7 +171,7 @@ spec:
             name: {{ .Release.Name }}-service-config
         - name: service-openapi-volume
           configMap:
-            name: {{ .Release.Name }}-service-openapi        
+            name: {{ .Release.Name }}-service-openapi
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
