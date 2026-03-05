@@ -211,7 +211,7 @@ jobs:
               -e "s,{{CHART_VERSION}},${{ needs.lint.outputs.CHART_VERSION }},"
             # Keep only one station per service (cadip/cadip, adgs/adgs, prip/s1a)
             yq -i 'del(.app.station.adgs2)' charts/rs-server-adgs/values.yaml
-            yq -i 'del(.app.station.sgs, .app.station.mti)' charts/rs-server-cadip/values.yaml
+            yq -i 'del(.app.station.sgs)' charts/rs-server-cadip/values.yaml
             yq -i 'del(.app.station.s2b)' charts/rs-server-prip/values.yaml
             yq -i 'del(.app.station.adgs2, .app.station.sgs, .app.station.mti, .app.station.s2b, .app.station.s3rspy)' charts/rs-server-staging/values.yaml
             # can't find a way to change region in helm values so change it to s3 default
