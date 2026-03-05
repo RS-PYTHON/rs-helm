@@ -46,7 +46,7 @@ sgs:
       collection: Sentinel1
   search:
     type: ODataV4Search
-    api_endpoint: {{ $.Values.app.station.sgsMockup.endpoint }}/Files
+    api_endpoint: {{ $.Values.app.station.sgs-mockup.endpoint }}/Files
     need_auth: true
     results_entry: $.value | $
     metadata_mapping:
@@ -91,9 +91,9 @@ sgs:
       - $.PublicationDate
       href:
       - null
-      - {{ $.Values.app.station.sgsMockup.endpoint }}/Files({id})/$value
+      - {{ $.Values.app.station.sgs-mockup.endpoint }}/Files({id})/$value
       geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
-      downloadLink: {{ $.Values.app.station.sgsMockup.endpoint }}/Files({id})/$value
+      downloadLink: {{ $.Values.app.station.sgs-mockup.endpoint }}/Files({id})/$value
       title: $.Name
       externalIds:
       - null
@@ -128,10 +128,10 @@ sgs:
       total_items_nb_key_path: $.total
   download:
     type: HTTPDownload
-    base_uri: {{ $.Values.app.station.sgsMockup.endpoint }}/Files
+    base_uri: {{ $.Values.app.station.sgs-mockup.endpoint }}/Files
     metadata_mapping:
       uid: $.Id
-      downloadLink: {{ $.Values.app.station.sgsMockup.endpoint }}/Files({uid})/$value
+      downloadLink: {{ $.Values.app.station.sgs-mockup.endpoint }}/Files({uid})/$value
 sgs_session:
   auth:
     type: TokenAuth
@@ -160,7 +160,7 @@ sgs_session:
       collection: Sentinel1
   search:
     type: ODataV4Search
-    api_endpoint: {{ $.Values.app.station.sgsMockup.endpoint }}/Sessions
+    api_endpoint: {{ $.Values.app.station.sgs-mockup.endpoint }}/Sessions
     need_auth: true
     results_entry: $.value | $
     metadata_mapping:
@@ -244,7 +244,7 @@ sgs_session:
       - $.PublicationDate
       href:
       - null
-      - {{ $.Values.app.station.sgsMockup.endpoint }}/Files({id})/$value
+      - {{ $.Values.app.station.sgs-mockup.endpoint }}/Files({id})/$value
       geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
       title: $.Name
       externalIds:
@@ -321,7 +321,7 @@ sgs_session:
       total_items_nb_key_path: $.total
   download:
     type: HTTPDownload
-    base_uri: {{ $.Values.app.station.sgsMockup.endpoint }}/Sessions
+    base_uri: {{ $.Values.app.station.sgs-mockup.endpoint }}/Sessions
     metadata_mapping:
       uid: $.Id
-      downloadLink: {{ $.Values.app.station.sgsMockup.endpoint }}/Files({uid})/$value
+      downloadLink: {{ $.Values.app.station.sgs-mockup.endpoint }}/Files({uid})/$value
