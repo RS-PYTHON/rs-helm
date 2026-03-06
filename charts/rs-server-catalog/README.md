@@ -1,6 +1,6 @@
 # rs-server-catalog
 
-![Version: 0.1.0-a6](https://img.shields.io/badge/Version-0.1.0--a6-informational?style=flat-square) ![AppVersion: v1.0a6](https://img.shields.io/badge/AppVersion-v1.0a6-informational?style=flat-square)
+![Version: 0.1.0-a7](https://img.shields.io/badge/Version-0.1.0--a7-informational?style=flat-square) ![AppVersion: v1.0a7](https://img.shields.io/badge/AppVersion-v1.0a7-informational?style=flat-square)
 
 RS SERVER CATALOG
 
@@ -53,8 +53,8 @@ RS SERVER CATALOG
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://seaweedfs-s3.seaweedfs.svc.cluster.local:9000"` | URL of the object storage service endpoint |
 | obs.region | string | `"sbg"` |  |
-| obs.secret.ak | string | `"TDr8foJqSygBQ9YFmWDy"` | Access Key to authenticate with the object storage service |
-| obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service |
+| obs.secret.ak | string | `"TDr8foJqSygBQ9YFmWDy"` | Access Key to authenticate with the object storage service with admin rights. Only used for the data lifecyle. |
+| obs.secret.sk | string | `"z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs"` | Secret Key to authenticate with the object storage service with admin rights. Only used for the data lifecyle. |
 | otel.trace_body | bool | `false` | Trace request bodies and response contents with OpenTelemetry ? |
 | otel.trace_headers | bool | `false` | Trace request headers with OpenTelemetry ? |
 | postgres.db | string | `"catalog"` | PostgreSQL database name |
