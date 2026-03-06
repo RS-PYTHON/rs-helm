@@ -46,7 +46,7 @@ mti:
       collection: Sentinel1
   search:
     type: ODataV4Search
-    api_endpoint: {{ $.Values.app.station.mtiMockup.endpoint }}/Files
+    api_endpoint: {{ $.Values.app.station.mti.endpoint }}/Files
     need_auth: true
     results_entry: $.value | $
     metadata_mapping:
@@ -91,9 +91,9 @@ mti:
       - $.PublicationDate
       href:
       - null
-      - {{ $.Values.app.station.mtiMockup.endpoint }}/Files({id})/$value
+      - {{ $.Values.app.station.mti.endpoint }}/Files({id})/$value
       geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
-      downloadLink: {{ $.Values.app.station.mtiMockup.endpoint }}/Files({id})/$value
+      downloadLink: {{ $.Values.app.station.mti.endpoint }}/Files({id})/$value
       title: $.Name
       externalIds:
       - null
@@ -128,10 +128,10 @@ mti:
       total_items_nb_key_path: $.total
   download:
     type: HTTPDownload
-    base_uri: {{ $.Values.app.station.mtiMockup.endpoint }}/Files
+    base_uri: {{ $.Values.app.station.mti.endpoint }}/Files
     metadata_mapping:
       uid: $.Id
-      downloadLink: {{ $.Values.app.station.mtiMockup.endpoint }}/Files({uid})/$value
+      downloadLink: {{ $.Values.app.station.mti.endpoint }}/Files({uid})/$value
 mti_session:
   auth:
     type: TokenAuth
@@ -160,7 +160,7 @@ mti_session:
       collection: Sentinel1
   search:
     type: ODataV4Search
-    api_endpoint: {{ $.Values.app.station.mtiMockup.endpoint }}/Sessions
+    api_endpoint: {{ $.Values.app.station.mti.endpoint }}/Sessions
     need_auth: true
     results_entry: $.value | $
     metadata_mapping:
@@ -244,7 +244,7 @@ mti_session:
       - $.PublicationDate
       href:
       - null
-      - {{ $.Values.app.station.mtiMockup.endpoint }}/Files({id})/$value
+      - {{ $.Values.app.station.mti.endpoint }}/Files({id})/$value
       geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
       title: $.Name
       externalIds:
@@ -321,7 +321,7 @@ mti_session:
       total_items_nb_key_path: $.total
   download:
     type: HTTPDownload
-    base_uri: {{ $.Values.app.station.mtiMockup.endpoint }}/Sessions
+    base_uri: {{ $.Values.app.station.mti.endpoint }}/Sessions
     metadata_mapping:
       uid: $.Id
-      downloadLink: {{ $.Values.app.station.mtiMockup.endpoint }}/Files({uid})/$value
+      downloadLink: {{ $.Values.app.station.mti.endpoint }}/Files({uid})/$value

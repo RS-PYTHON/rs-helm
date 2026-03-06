@@ -46,7 +46,7 @@ cadip:
       collection: Sentinel1
   search:
     type: ODataV4Search
-    api_endpoint: {{ $.Values.app.station.cadipMockup.endpoint }}/Files
+    api_endpoint: {{ $.Values.app.station.cadip.endpoint }}/Files
     need_auth: true
     results_entry: $.value | $
     metadata_mapping:
@@ -91,9 +91,9 @@ cadip:
       - $.PublicationDate
       href:
       - null
-      - {{ $.Values.app.station.cadipMockup.endpoint }}/Files({id})/$value
+      - {{ $.Values.app.station.cadip.endpoint }}/Files({id})/$value
       geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
-      downloadLink: {{ $.Values.app.station.cadipMockup.endpoint }}/Files({id})/$value
+      downloadLink: {{ $.Values.app.station.cadip.endpoint }}/Files({id})/$value
       title: $.Name
       externalIds:
       - null
@@ -128,10 +128,10 @@ cadip:
       total_items_nb_key_path: $.total
   download:
     type: HTTPDownload
-    base_uri: {{ $.Values.app.station.cadipMockup.endpoint }}/Files
+    base_uri: {{ $.Values.app.station.cadip.endpoint }}/Files
     metadata_mapping:
       uid: $.Id
-      downloadLink: {{ $.Values.app.station.cadipMockup.endpoint }}/Files({uid})/$value
+      downloadLink: {{ $.Values.app.station.cadip.endpoint }}/Files({uid})/$value
 cadip_session:
   auth:
     type: TokenAuth
@@ -160,7 +160,7 @@ cadip_session:
       collection: Sentinel1
   search:
     type: ODataV4Search
-    api_endpoint: {{ $.Values.app.station.cadipMockup.endpoint }}/Sessions
+    api_endpoint: {{ $.Values.app.station.cadip.endpoint }}/Sessions
     need_auth: true
     results_entry: $.value | $
     metadata_mapping:
@@ -244,7 +244,7 @@ cadip_session:
       - $.PublicationDate
       href:
       - null
-      - {{ $.Values.app.station.cadipMockup.endpoint }}/Files({id})/$value
+      - {{ $.Values.app.station.cadip.endpoint }}/Files({id})/$value
       geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
       title: $.Name
       externalIds:
@@ -321,7 +321,7 @@ cadip_session:
       total_items_nb_key_path: $.total
   download:
     type: HTTPDownload
-    base_uri: {{ $.Values.app.station.cadipMockup.endpoint }}/Sessions
+    base_uri: {{ $.Values.app.station.cadip.endpoint }}/Sessions
     metadata_mapping:
       uid: $.Id
-      downloadLink: {{ $.Values.app.station.cadipMockup.endpoint }}/Files({uid})/$value
+      downloadLink: {{ $.Values.app.station.cadip.endpoint }}/Files({uid})/$value
