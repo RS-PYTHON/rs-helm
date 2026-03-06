@@ -60,9 +60,9 @@ obs:
   endpoint: http://seaweedfs-s3.seaweedfs.svc.cluster.local:9000
   region: sbg
   secret:
-    # -- Access Key to authenticate with the object storage service
+    # -- Access Key to authenticate with the object storage service with admin rights. Only used for the data lifecyle.
     ak: TDr8foJqSygBQ9YFmWDy
-    # -- Secret Key to authenticate with the object storage service
+    # -- Secret Key to authenticate with the object storage service with admin rights. Only used for the data lifecyle.
     sk: z2RaqjFttnVZRTsLLqmy4PE6PzJOKzPsE47alDBs
 
 auth:
