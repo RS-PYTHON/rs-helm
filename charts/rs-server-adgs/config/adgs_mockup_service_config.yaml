@@ -17,7 +17,7 @@
 #  - rs-server/resources/sync_config_files.py
 # DON'T MODIFY IT DIRECTLY !
 
-adgsmockup:
+adgs:
   auth:
     type: TokenAuth
     auth_uri: PLACEHOLDER
@@ -44,7 +44,7 @@ adgsmockup:
       productType: cams-ads-grf-aux
   search:
     type: ODataV4Search
-    api_endpoint: {{ $.Values.app.station.adgsmockup.endpoint }}
+    api_endpoint: {{ $.Values.app.station.adgs.endpoint }}
     need_auth: true
     results_entry: $.value | $
     metadata_mapping:
@@ -116,9 +116,9 @@ adgsmockup:
       - $.Attributes
       href:
       - null
-      - {{ $.Values.app.station.adgsmockup.endpoint }}({id})/$value
+      - {{ $.Values.app.station.adgs.endpoint }}({id})/$value
       geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
-      downloadLink: {{ $.Values.app.station.adgsmockup.endpoint }}({id})/$value
+      downloadLink: {{ $.Values.app.station.adgs.endpoint }}({id})/$value
       title: $.Name
       externalIds:
       - null
@@ -185,7 +185,7 @@ adgsmockup:
       total_items_nb_key_path: $.total
   download:
     type: HTTPDownload
-    base_uri: {{ $.Values.app.station.adgsmockup.endpoint }}
+    base_uri: {{ $.Values.app.station.adgs.endpoint }}
     metadata_mapping:
       uid: $.Id
-      downloadLink: {{ $.Values.app.station.adgsmockup.endpoint }}({uid})/$value
+      downloadLink: {{ $.Values.app.station.adgs.endpoint }}({uid})/$value
