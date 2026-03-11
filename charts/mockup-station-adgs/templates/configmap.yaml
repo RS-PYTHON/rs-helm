@@ -1,4 +1,4 @@
-# Copyright 2024 CS Group
+# Copyright 2023-2026 Airbus, CS Group
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -6885,7 +6885,7 @@ data:
                         "@odata.type": "#OData.CSC.StringAttribute",
                         "Name": "productType",
                         "ValueType": "String",
-                        "Value": "OPER_MPL_ORBSCT"
+                        "Value": "MPL_ORBSCT"
                     },
                     {
                         "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
@@ -6950,7 +6950,7 @@ data:
                         "@odata.type": "#OData.CSC.StringAttribute",
                         "Name": "productType",
                         "ValueType": "String",
-                        "Value": "OPER_MPL_ORBPRE"
+                        "Value": "MPL_ORBPRE"
                     },
                     {
                         "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",

@@ -141,7 +141,7 @@ image:
   # -- Image name
   name: rs-server-osam
   # -- Image version, can be a tag or a digest
-  version: "latest"
+  version: "1.0a7"
   # -- Image pull policy
   PullPolicy: IfNotPresent
 
