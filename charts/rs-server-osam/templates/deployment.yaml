@@ -86,7 +86,11 @@ spec:
         - name: BUCKET_CONFIG_FILE_PATH
           value: {{ .Values.app.confDir }}/{{ .Values.app.bucketConfig.bucketConfigFileName }}
         - name: DEFAULT_OSAM_FREQUENCY_SYNC
-          value: "43200"
+          value: {{ .Values.app.defaultOsamFrequencySync }}
+        - name: OSAM_CREDENTIALS_CACHE_SIZE
+          value: {{ .Values.app.osamCredentialsCacheSize }}
+        - name: OSAM_CREDENTIALS_CACHE_TTL
+          value: {{ .Values.app.osamCredentialsCacheTtl }}
         - name: OTEL_PYTHON_REQUESTS_TRACE_HEADERS
           value: {{ .Values.otel.trace_headers | quote }}
         - name: OTEL_PYTHON_REQUESTS_TRACE_BODY
