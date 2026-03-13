@@ -35,7 +35,7 @@ app:
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
   # -- Description template for ovh users when osam creates them
   obsDescriptionTemplate: "## linked to keycloak user %keycloak-user% from platform XYZ"
-  # -- Bucket configuration from where the users can be taken
+  # Bucket configuration from where the users can be taken
   # Use an external configuration through an external configmap with the value "externalBucketConfigMapName"
   # OR
   # Set your own configuration in the value expirationBucketCsv
@@ -51,6 +51,12 @@ app:
     # -- File name for the configuration.
     # If you use an external configmap, put the name of the file of your configmap, so the environment variables are set properly
     bucketConfigFileName: expiration_bucket.csv
+    # -- The default synchronization time in seconds of the keycloak users with the ovh users (default is twice per day)
+    defaultOsamFrequencySync: 43200
+    # -- Cache size (number of cached Keycloak usernames) for the /storage/account/credentials endpoint
+    osamCredentialsCacheSize: 1024
+    # -- Cache TTL (time to live) in seconds for the /storage/account/credentials endpoint (default is 2 hours)
+    osamCredentialsCacheTtl: 7200
 
 probe:
   startup:
