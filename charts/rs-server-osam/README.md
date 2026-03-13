@@ -15,7 +15,6 @@ RS Object Storage Access Manager
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
-| app.bucketConfig | object | `{"bucketConfigFileName":"expiration_bucket.csv","defaultOsamFrequencySync":43200,"expirationBucketCsv":"*, *, *, 30, rspython-ops-catalog-all-production\n","externalBucketConfigMapName":"","osamCredentialsCacheSize":1024,"osamCredentialsCacheTtl":7200,"useExternalBucketConfigMap":false}` | Bucket configuration from where the users can be taken Use an external configuration through an external configmap with the value "externalBucketConfigMapName" OR Set your own configuration in the value expirationBucketCsv |
 | app.bucketConfig.bucketConfigFileName | string | `"expiration_bucket.csv"` | File name for the configuration. If you use an external configmap, put the name of the file of your configmap, so the environment variables are set properly |
 | app.bucketConfig.defaultOsamFrequencySync | int | `43200` | The default synchronization time in seconds of the keycloak users with the ovh users (default is twice per day) |
 | app.bucketConfig.expirationBucketCsv | string | `"*, *, *, 30, rspython-ops-catalog-all-production\n"` | Bucket configuration. Used only if externalBucketConfigMapName is false. Default config puts all data in a bucket called rspython-ops-catalog-all-production with a lifespan of 30 days. |
