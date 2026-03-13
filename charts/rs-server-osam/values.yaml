@@ -35,7 +35,7 @@ app:
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
   # -- Description template for ovh users when osam creates them
   obsDescriptionTemplate: "## linked to keycloak user %keycloak-user% from platform XYZ"
-  # -- Bucket configuration from where the users can be taken
+  # Bucket configuration from where the users can be taken
   # Use an external configuration through an external configmap with the value "externalBucketConfigMapName"
   # OR
   # Set your own configuration in the value expirationBucketCsv
