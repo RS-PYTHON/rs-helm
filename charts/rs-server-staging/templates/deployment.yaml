@@ -66,8 +66,6 @@ spec:
         - secretRef:
             name: {{ .Release.Name }}-postgres
         - secretRef:
-            name: {{ .Release.Name }}-obs
-        - secretRef:
             name: {{ .Release.Name }}-jupyterhub-api-token
         env:
         - name: RSPY_EXPIRES_IN
@@ -118,10 +116,6 @@ spec:
           value: {{ .Values.tempo.endpoint }}
         {{ end }}
         {{ end }}
-        - name: S3_ENDPOINT
-          value: {{ .Values.obs.endpoint }}
-        - name: S3_REGION
-          value: {{ .Values.obs.region }}
         - name: OTEL_PYTHON_REQUESTS_TRACE_HEADERS
           value: {{ .Values.otel.trace_headers | quote }}
         - name: OTEL_PYTHON_REQUESTS_TRACE_BODY
