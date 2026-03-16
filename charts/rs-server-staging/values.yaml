@@ -47,8 +47,6 @@ app:
   endpointPrip: https://subdomain.example.com/prip
   # -- Osam pod address
   endpointOsam: https://subdomain.example.com/osam
-  # -- enable ssl connection for edrs
-  useSsl: "true"
   # -- Access token validity duration (in seconds)
   AccessTokenLifetime: 1200
   # -- Refresh token validity duration (in seconds)
@@ -75,10 +73,6 @@ app:
       type: cadip
     s3rspy:
       type: s3
-    pedc:
-      type: edrs
-    bedc:
-      type: edrs
 
 dask:
   # -- Dask gateway address

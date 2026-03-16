@@ -40,16 +40,6 @@ RS SERVER STATION SECRETS
 | app.stations.adgs2.domain | string | `"mockup-station-adgs2.processing.svc.cluster.local"` |  |
 | app.stations.adgs2.service.name | string | `"auxip"` |  |
 | app.stations.adgs2.service.url | string | `"http://mockup-station-adgs2.processing.svc.cluster.local:8080"` |  |
-| app.stations.bedc.authentication.auth_type | string | `"ftp"` |  |
-| app.stations.bedc.authentication.ca_crt | string | `"-----BEGIN CERTIFICATE-----\nMIID...\n-----END CERTIFICATE-----"` |  |
-| app.stations.bedc.authentication.client_crt | string | `"-----BEGIN CERTIFICATE-----\nMIID...\n-----END CERTIFICATE-----"` |  |
-| app.stations.bedc.authentication.client_key | string | `"-----BEGIN RSA PRIVATE KEY-----\nMIID...\n-----END RSA PRIVATE KEY-----"` |  |
-| app.stations.bedc.authentication.password | string | `"test"` |  |
-| app.stations.bedc.authentication.username | string | `"test"` |  |
-| app.stations.bedc.domain | string | `"mockup-station-edrs-headless.processing.svc.cluster.local"` |  |
-| app.stations.bedc.service.name | string | `"edrs"` |  |
-| app.stations.bedc.service.port | int | `21` |  |
-| app.stations.bedc.service.url | string | `"mockup-station-edrs-headless.processing.svc.cluster.local"` |  |
 | app.stations.cadip.authentication.auth_type | string | `"oauth2"` |  |
 | app.stations.cadip.authentication.authorization | string | `nil` |  |
 | app.stations.cadip.authentication.client_id | string | `"client_id"` |  |
@@ -128,16 +118,6 @@ RS SERVER STATION SECRETS
 | app.stations.nsg.domain | string | `"mockup-station-cadip-nsg.processing.svc.cluster.local"` |  |
 | app.stations.nsg.service.name | string | `"cadip"` |  |
 | app.stations.nsg.service.url | string | `"http://mockup-station-cadip-nsg.processing.svc.cluster.local:8080"` |  |
-| app.stations.pedc.authentication.auth_type | string | `"ftp"` |  |
-| app.stations.pedc.authentication.ca_crt | string | `"-----BEGIN CERTIFICATE-----\nMIID...\n-----END CERTIFICATE-----"` |  |
-| app.stations.pedc.authentication.client_crt | string | `"-----BEGIN CERTIFICATE-----\nMIID...\n-----END CERTIFICATE-----"` |  |
-| app.stations.pedc.authentication.client_key | string | `"-----BEGIN RSA PRIVATE KEY-----\nMIID...\n-----END RSA PRIVATE KEY-----"` |  |
-| app.stations.pedc.authentication.password | string | `"test"` |  |
-| app.stations.pedc.authentication.username | string | `"test"` |  |
-| app.stations.pedc.domain | string | `"mockup-station-edrs-headless.processing.svc.cluster.local"` |  |
-| app.stations.pedc.service.name | string | `"edrs"` |  |
-| app.stations.pedc.service.port | int | `21` |  |
-| app.stations.pedc.service.url | string | `"mockup-station-edrs-headless.processing.svc.cluster.local"` |  |
 | app.stations.s1a.authentication.auth_type | string | `"oauth2"` |  |
 | app.stations.s1a.authentication.authorization | string | `"Basic test"` |  |
 | app.stations.s1a.authentication.client_id | string | `"client_id"` |  |
