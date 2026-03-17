@@ -210,9 +210,8 @@ jobs:
             find charts -name "Chart.yaml" -print0 | xargs -0 sed -i \
               -e "s,{{APP_VERSION}},${{ needs.lint.outputs.APP_VERSION }}," \
               -e "s,{{CHART_VERSION}},${{ needs.lint.outputs.CHART_VERSION }},"
-            for dir in *rs-server*/; do
-              yq -i ".image.version = \"${{ needs.lint.outputs.IMAGE_VERSION }}\"" "$dir/values.yaml"
-            done
+            find charts -maxdepth 2 -path "*/rs-server-*/values.yaml" -exec \
+              yq -i '.image.version = "${{ needs.lint.outputs.IMAGE_VERSION }}"' {} \;
             # Keep only one station per service (cadip/cadip, adgs/adgs, prip/s1a)
             yq -i 'del(.app.station.adgs2)' charts/rs-server-adgs/values.yaml
             yq -i 'del(.app.station.sgs)' charts/rs-server-cadip/values.yaml
