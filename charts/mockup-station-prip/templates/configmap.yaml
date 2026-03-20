@@ -1725,7 +1725,6 @@ data:
             "@odata.mediaContentType": "application/octet-stream",
             "Id": "05fa4a7e-4a99-4c92-9f0b-5dbb2a5fbe55",
             "Name": "S2B_OPER_MSI_L2A_TL_2BPS_20260310T135837_A047051_T35MMN_N05.12.tar",
-            "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}S2B_OPER_MSI_L2A_TL_2BPS_20260310T135837_A047051_T35MMN_N05.12.tar",
             "ContentType": "application/octet-stream",
             "ContentLength": 1120051200,
             "OriginDate": "2026-03-10T13:25:15Z",
