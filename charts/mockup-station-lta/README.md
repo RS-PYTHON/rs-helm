@@ -1,6 +1,6 @@
 # mockup-station-lta
 
-![Version: 0.1.0-a7](https://img.shields.io/badge/Version-0.1.0--a7-informational?style=flat-square) ![AppVersion: v1.0a7](https://img.shields.io/badge/AppVersion-v1.0a7-informational?style=flat-square)
+![Version: 0.1.0-a7](https://img.shields.io/badge/Version-0.1.0--a7-informational?style=flat-square) ![AppVersion: v1.0a8](https://img.shields.io/badge/AppVersion-v1.0a8-informational?style=flat-square)
 
 MOCKUP STATION LTA
 
