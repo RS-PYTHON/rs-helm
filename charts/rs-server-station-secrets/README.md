@@ -1,6 +1,6 @@
 # rs-server-station-secrets
 
-![Version: 0.1.0-a8](https://img.shields.io/badge/Version-0.1.0--a8-informational?style=flat-square) ![AppVersion: v1.0a8](https://img.shields.io/badge/AppVersion-v1.0a8-informational?style=flat-square)
+![Version: 0.1.0-a8.post1](https://img.shields.io/badge/Version-0.1.0--a8.post1-informational?style=flat-square) ![AppVersion: v1.0a8.post1](https://img.shields.io/badge/AppVersion-v1.0a8.post1-informational?style=flat-square)
 
 RS SERVER STATION SECRETS
 

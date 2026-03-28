@@ -13,6 +13,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [1.0a8] - 2026-03-27
+
+### Added
+
+- [PR#216](https://github.com/RS-PYTHON/rs-helm/pull/216) : new short dataset for S3 L0 processor
+- [RSPY-979](https://github.com/RS-PYTHON/rs-helm/pull/232) : return valid geojson geometries#232
+
+### Changed
+
+- [RSPY-940](https://github.com/RS-PYTHON/rs-helm/pull/222): Use new auxip types
+- bump docker image
+
+### Fixed
+
+- [PR#224](https://github.com/RS-PYTHON/rs-helm/pull/224) : Fix copyright
+- [PR#226](https://github.com/RS-PYTHON/rs-helm/pull/226) : Fix mockup station names
+- [PR#230](https://github.com/RS-PYTHON/rs-helm/pull/230) : Deploy correct rs-server version in tests
+
+### Removed
+
+- [RSPY-981](https://github.com/RS-PYTHON/rs-helm/pull/229) : Remove EDRS
+
 ## [1.0a7] - 2026-03-02
 
 ### Added
