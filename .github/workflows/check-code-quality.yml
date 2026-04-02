@@ -106,7 +106,7 @@ jobs:
 
       - id: safety
         name: Run safety
-        if: always() && github.actor != 'dependabot[bot]' # dependabot does not have access to secrets
+        if: always() && github.actor != 'dependabot[bot]'  # dependabot does not have access to secrets
         env:
             SAFETY_API_KEY: ${{ secrets.SAFETY_API_KEY }}
         run: |
