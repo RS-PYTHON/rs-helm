@@ -7113,14 +7113,14 @@ data:
                 "Name": "S1A_OPER_MPL_ORBPRE_20250611T021935_20250618T021934_0001.EOF.zip",
                 "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}test-l0-develop-3/S1A_OPER_MPL_ORBPRE_20250611T021935_20250618T021934_0001.EOF/S1A_OPER_MPL_ORBPRE_20250611T021935_20250618T021934_0001.EOF.zip",
                 "ContentType": "application/octet-stream",
-                "ContentLength": "unknown",
+                "ContentLength": "3169203",
                 "OriginDate": "2025-06-18T02:19:34.000Z",
                 "PublicationDate": "2025-06-18T02:19:34.000Z",
                 "EvictionDate": "2025-06-18T02:19:34.000Z",
                 "Checksum": [
                     {
                         "Algorithm": "MD5",
-                        "Value": "your-md5-here",
+                        "Value": "cFeaFeAe20df52651743FC8CDdba02D",
                         "ChecksumDate": "2025-06-18T00:00:00.000Z"
                     }
                 ],
