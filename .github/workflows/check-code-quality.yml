@@ -17,9 +17,9 @@ name: Check code quality
 on:
   push:
     branches:
-      - develop # pushes on the 'develop' branch
+      - develop  # pushes on the 'develop' branch
     tags:
-      - '**' # new git tags (including hierarchical tags like v1.0/beta)
+      - '**'  # new git tags (including hierarchical tags like v1.0/beta)
   pull_request:
     types: [opened, synchronize, reopened]
     # run this worflow only for code/test related changes (avoid it for documentation)
@@ -40,7 +40,7 @@ jobs:
       conf: ${{ steps.filter.outputs.conf }}
     steps:
       - uses: actions/checkout@v6
-      - uses: dorny/paths-filter@fbd0ab8f3e69293af611ebaee6363fc25e6d187d # v4
+      - uses: dorny/paths-filter@fbd0ab8f3e69293af611ebaee6363fc25e6d187d  # v4
         id: filter
         with:
           filters: |
@@ -59,7 +59,7 @@ jobs:
           ":information_source: This job checks that you have run \`pre-commit run --all-files\` in
           your local git repository before committing."
           >> $GITHUB_STEP_SUMMARY
-      - uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd # v3.0.1
+      - uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd  # v3.0.1
 
   check-license:
     runs-on: ubuntu-latest
@@ -75,7 +75,7 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
       - name: check License Header
-        uses: apache/skywalking-eyes/header@8c96ee223558797cdd9eba82c0919258e1cf2dad # main
+        uses: apache/skywalking-eyes/header@8c96ee223558797cdd9eba82c0919258e1cf2dad  # main
         with:
           log: debug
           mode: check
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Check security (bandit, safety, trivy)
     permissions:
-      security-events: write # needed for github/codeql-action/upload-sarif
+      security-events: write  # needed for github/codeql-action/upload-sarif
     steps:
       - uses: actions/checkout@v6
 
@@ -97,7 +97,7 @@ jobs:
 
       - id: bandit
         name: Run bandit
-        if: always() # even if previous steps returned a non-zero exit code
+        if: always()  # even if previous steps returned a non-zero exit code
         run: |
           set -x
           bandit -r . || true # run next line even if fails
@@ -116,7 +116,7 @@ jobs:
 
       - name: Run Trivy vulnerability scanner
         if: always()
-        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # 0.35.0
+        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1  # 0.35.0
         env:
           TRIVY_DB_REPOSITORY: public.ecr.aws/aquasecurity/trivy-db:2
           TRIVY_JAVA_DB_REPOSITORY: public.ecr.aws/aquasecurity/trivy-java-db:1
@@ -129,7 +129,7 @@ jobs:
 
       - name: Export Trivy results to sarif
         if: always()
-        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # 0.35.0
+        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1  # 0.35.0
         env:
           TRIVY_DB_REPOSITORY: public.ecr.aws/aquasecurity/trivy-db:2
           TRIVY_JAVA_DB_REPOSITORY: public.ecr.aws/aquasecurity/trivy-java-db:1
@@ -180,10 +180,10 @@ jobs:
   generate-quality-report:
     runs-on: ubuntu-latest
     name: Quality report (sonarqube)
-    needs: [changes, check-security] # see actions/download-artifact below
+    needs: [changes, check-security]  # see actions/download-artifact below
     if: ${{ needs.changes.outputs.code == 'true' }}
     permissions:
-      pull-requests: write # for: phwt/sonarqube-quality-gate-action
+      pull-requests: write  # for: phwt/sonarqube-quality-gate-action
     env:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       SONAR_PROJECT_KEY: RS-PYTHON_rs-helm
@@ -191,7 +191,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          fetch-depth: 0 # Full history for SCM and branch analysis
+          fetch-depth: 0  # Full history for SCM and branch analysis
       - name: Download vulnerability reports
         uses: actions/download-artifact@v8
         with:
@@ -199,7 +199,7 @@ jobs:
             check-security
 
       - name: Run SonarCloud Scanner
-        uses: SonarSource/sonarqube-scan-action@a31c9398be7ace6bbfaf30c0bd5d415f843d45e9 # v7
+        uses: SonarSource/sonarqube-scan-action@a31c9398be7ace6bbfaf30c0bd5d415f843d45e9  # v7
         with:
           # See doc: https://docs.sonarsource.com/sonarqube-cloud
           #
@@ -207,7 +207,7 @@ jobs:
           # analyzed: other metrics, duplications, coding rules...
           #
           # "sonar.exclusions" completely excludes some files from the analysis: those files don't appear at all
-          # in SonarQube.
+          # in SonarQube.
           #
           projectBaseDir: .
           args: >
@@ -223,7 +223,7 @@ jobs:
         run: sleep 5
 
       - name: Report quality gate result in the pull request comment
-        uses: phwt/sonarqube-quality-gate-action@e8842ff65b97bfa4fd4effe3ab0909f568d16e91 # v1
+        uses: phwt/sonarqube-quality-gate-action@e8842ff65b97bfa4fd4effe3ab0909f568d16e91  # v1
         id: quality-gate-result
         with:
           sonar-project-key: ${{ env.SONAR_PROJECT_KEY }}
@@ -239,7 +239,7 @@ jobs:
 
       - id: check-gate
         name: Check quality gate status
-        uses: sonarsource/sonarqube-quality-gate-action@cb3ed20f9fec62b4c3b8ad9e77656c6adaade913 # master
+        uses: sonarsource/sonarqube-quality-gate-action@cb3ed20f9fec62b4c3b8ad9e77656c6adaade913  # master
         timeout-minutes: 5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
