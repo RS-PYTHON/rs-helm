@@ -54,7 +54,6 @@ jobs:
     if: ${{ needs.changes.outputs.code == 'true' }}
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/actions/install-python
       - run: >
           echo
           ":information_source: This job checks that you have run \`pre-commit run --all-files\` in
@@ -187,7 +186,7 @@ jobs:
       pull-requests: write # for: phwt/sonarqube-quality-gate-action
     env:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      SONAR_PROJECT_KEY: RS-PYTHON_rs-demo
+      SONAR_PROJECT_KEY: RS-PYTHON_rs-helm
       SONAR_HOST_URL: https://sonarcloud.io
     steps:
       - uses: actions/checkout@v6
