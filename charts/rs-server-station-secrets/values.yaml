@@ -204,5 +204,5 @@ app:
         url: https://s3.gra.io.cloud.ovh.net
       authentication:
         auth_type: s3
-        access_key: ${access_key}
-        secret_key: ${secret_key}
+        access_key: ${S3_ACCESSKEY}
+        secret_key: ${S3_SECRETKEY}
