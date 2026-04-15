@@ -16,8 +16,7 @@ name: Lint and Test Charts
 
 on:
   push:
-    branches:
-      - develop  # pushes on the 'develop' branch
+    branches: [develop, main] # pushes on the 'develop' or 'main' branches
     tags:
       - '**'  # new git tags (including hierarchical tags like v1.0/beta)
   pull_request:
