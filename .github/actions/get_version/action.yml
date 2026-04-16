@@ -109,7 +109,7 @@ runs:
               # 0.1a10.post105
               if [[ -z "$IMAGE_VERSION" ]]; then
                 echo "❌ No image found for prefix $IMAGE_PREFIX in rs-server-cadip" >&2
-                exit 1
+                exit 666
               fi
             fi
             echo "IMAGE_VERSION=$IMAGE_VERSION" >> "$GITHUB_OUTPUT"
