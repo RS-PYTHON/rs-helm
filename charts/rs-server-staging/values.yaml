@@ -39,6 +39,12 @@ app:
   endpointCatalog: http://rs-server-catalog.processing.svc.cluster.local:8080
   # -- Object Storage bucket for the catalog
   catalogBucket: rs-cluster-catalog
+  # -- Catalog publish timeout (in seconds)
+  catalogPublishTimeout: 120
+  # -- Catalog publish max retries
+  catalogPublishMaxRetries: 3
+  # -- Catalog publish retry delay (in seconds)
+  catalogPublishRetryDelay: 30
   # -- Cadip server pod address
   endpointCadip: https://subdomain.example.com/cadip
   # -- Adgs server pod address

@@ -54,6 +54,7 @@ app:
     description: "STAC catalog of Copernicus Reference System Python"
   # -- URL of OSAM service
   endpointOsam: https://subdomain.example.com/osam
+  publishCheckMaxWorkers: 6
 
 obs:
   # -- URL of the object storage service endpoint
