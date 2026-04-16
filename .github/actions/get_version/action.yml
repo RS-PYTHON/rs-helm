@@ -93,35 +93,45 @@ runs:
               git ls-remote --tags --refs --sort="v:refname" \
               ${RS_SERVER_GIT} | grep -E 'v[0-9](.)?([0-9])?[ab]' | tail -n1 | sed 's/.*\///' \
             )
+            echo "wololo APP_VERSION=$APP_VERSION"
             echo "APP_VERSION=$APP_VERSION" >> "$GITHUB_OUTPUT"
             # v0.1a10
 
             ref_exists_in_rs_server=$(git ls-remote --heads ${RS_SERVER_GIT} "${GITHUB_HEAD_REF}" | wc -l)
+            echo "wololo ref_exists_in_rs_server=$ref_exists_in_rs_server"
             if [[ "${ref_exists_in_rs_server}" == "1" ]]; then
               # Replace special characters by -
               IMAGE_VERSION=$(sed "s/[^a-zA-Z0-9]/-/g" <<< "${GITHUB_HEAD_REF}")
               # feat-711-multiple-item-search
             else
               IMAGE_PREFIX=${APP_VERSION#v}
+              echo "wololo IMAGE_PREFIX=$IMAGE_PREFIX"
+              gh api /orgs/${GITHUB_REPOSITORY_OWNER}/packages/container/rs-server-cadip/versions
               # 0.1a10
               IMAGE_VERSION=$(gh api /orgs/${GITHUB_REPOSITORY_OWNER}/packages/container/rs-server-cadip/versions \
                 --jq '.[].metadata.container.tags[]' | grep "^${IMAGE_PREFIX}" | sort -V | tail -n1)
+              echo "wololo IMAGE_VERSION=$IMAGE_VERSION"
               # 0.1a10.post105
               if [[ -z "$IMAGE_VERSION" ]]; then
                 echo "❌ No image found for prefix $IMAGE_PREFIX in rs-server-cadip" >&2
                 exit 666
               fi
             fi
+            echo "wololo IMAGE_VERSION=$IMAGE_VERSION"
             echo "IMAGE_VERSION=$IMAGE_VERSION" >> "$GITHUB_OUTPUT"
 
             # Ugly workaround to transform the chart_version into SemVer 2, required by Helm
             CHART_VERSION_TMP=$(git ls-remote --tags --refs --sort="v:refname" \
                 ${RS_SERVER_GIT} | grep -E 'v[0-9](.)?([0-9])?[ab]' | tail -n1 | sed 's/.*\///' | sed 's/^v//')
+            echo "wololo CHART_VERSION_TMP=$CHART_VERSION_TMP"
             CHART_VERSION_PREFIX=${CHART_VERSION_TMP%[ab]*}
+            echo "wololo CHART_VERSION_PREFIX=$CHART_VERSION_PREFIX"
             CHART_VERSION_SUFFIX=${CHART_VERSION_TMP/#$CHART_VERSION_PREFIX}
+            echo "wololo CHART_VERSION_SUFFIX=$CHART_VERSION_SUFFIX"
             while [[ ${#CHART_VERSION_PREFIX} -lt 5 ]]; do
               CHART_VERSION_PREFIX+=".0"
             done
+            echo "wololo CHART_VERSION_PREFIX=$CHART_VERSION_PREFIX"
             if [[ ${#CHART_VERSION_PREFIX} -eq 5 ]]; then
               echo "CHART_VERSION=$CHART_VERSION_PREFIX-$CHART_VERSION_SUFFIX-$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_OUTPUT"
             fi
