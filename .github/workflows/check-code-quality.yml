@@ -16,8 +16,8 @@ name: Check code quality
 
 on:
   push:
-    branches: [develop, main] # pushes on the 'develop' or 'main' branches
-    tags: ['**'] # new git tags (including hierarchical tags like v1.0/beta)
+    branches: [develop, main]  # pushes on the 'develop' or 'main' branches
+    tags: ['**']  # new git tags (including hierarchical tags like v1.0/beta)
   pull_request:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
@@ -34,5 +34,5 @@ jobs:
       SAFETY_API_KEY: ${{ secrets.SAFETY_API_KEY }}
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     permissions:
-      contents: write # for apache/skywalking-eyes/header
-      pull-requests: write # for apache/skywalking-eyes/header and phwt/sonarqube-quality-gate-action
+      contents: write  # for apache/skywalking-eyes/header
+      pull-requests: write  # for apache/skywalking-eyes/header and phwt/sonarqube-quality-gate-action
