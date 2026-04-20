@@ -20,6 +20,9 @@ RS SERVER STAGING
 | app.NbSecsBeforeRefreshTokenExpire | int | `60` | Duration before expiration of the refresh token |
 | app.RefreshTokenLifetime | int | `3600` | Refresh token validity duration (in seconds) |
 | app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
+| app.catalogPublishMaxRetries | int | `3` | Catalog publish max retries |
+| app.catalogPublishRetryDelay | int | `30` | Catalog publish retry delay (in seconds) |
+| app.catalogPublishTimeout | int | `120` | Catalog publish timeout (in seconds) |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.docsUrl | string | `"/docs"` | URL suffix for the application. The same value should also be included into ingress.path |
 | app.endpointAdgs | string | `"https://subdomain.example.com/auxip"` | Adgs server pod address |
