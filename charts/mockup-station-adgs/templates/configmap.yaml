@@ -7229,7 +7229,7 @@ data:
             {{- range $product := $s3AuxiliaryProducts }}
             {{- $productHash := sha256sum $product.name }}
             ,{
-                "Id": "{{ printf "%s-%s-%s-%s-%s" (substr 0 8 $productHash) (substr 8 4 $productHash) (substr 12 4 $productHash) (substr 16 4 $productHash) (substr 20 12 $productHash) }}",
+                "Id": "{{ printf "%s-%s-%s-%s-%s" (substr 0 8 $productHash) (substr 8 12 $productHash) (substr 12 16 $productHash) (substr 16 20 $productHash) (substr 20 32 $productHash) }}",
                 "Name": "{{ $product.name }}",
                 "S3_path": "s3://validation-dpr/ops/s3/S3auxiliarydata/{{ $product.name }}",
                 "ContentType": "application/octet-stream",
