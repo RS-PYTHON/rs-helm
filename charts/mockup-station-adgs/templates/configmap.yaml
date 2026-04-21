@@ -7179,5 +7179,126 @@ data:
                     }
                 ]
             }
+            {{- $s3AuxiliaryProducts := list
+                (dict "name" "S3A_OL_1_CAL_AX_20211027T000000_20991231T235959_20211029T120000___________________MPC_O_AL_025.SEN3.zip" "size" "1593405" "serial" "A" "productType" "OL_1_CAL_AX" "start" "2021-10-27T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2021-10-29T12:00:00.000Z" "processingCenter" "MPC" "processorVersion" "025" "processingDate" "2021-10-29T00:00:00.000Z")
+                (dict "name" "S3A_OL_1_CLUTAX_20160425T095210_20991231T235959_20160525T120000___________________MPC_O_AL_003.SEN3.zip" "size" "25367" "serial" "A" "productType" "OL_1_CLUTAX" "start" "2016-04-25T09:52:10.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2016-05-25T12:00:00.000Z" "processingCenter" "MPC" "processorVersion" "003" "processingDate" "2016-05-25T00:00:00.000Z")
+                (dict "name" "S3A_OL_1_EO__AX_20160425T103700_20991231T235959_20210309T120000___________________MPC_O_AL_010.SEN3.zip" "size" "7774" "serial" "A" "productType" "OL_1_EO__AX" "start" "2016-04-25T10:37:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2021-03-09T12:00:00.000Z" "processingCenter" "MPC" "processorVersion" "010" "processingDate" "2021-03-09T00:00:00.000Z")
+                (dict "name" "S3A_OL_1_INS_AX_20201030T120000_20991231T235959_20201030T120000___________________MPC_O_AL_008.SEN3.zip" "size" "433226511" "serial" "A" "productType" "OL_1_INS_AX" "start" "2020-10-30T12:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2020-10-30T12:00:00.000Z" "processingCenter" "MPC" "processorVersion" "008" "processingDate" "2020-10-30T00:00:00.000Z")
+                (dict "name" "S3A_OL_1_PRG_AX_20160425T095210_20991231T235959_20210309T120000___________________MPC_O_AL_004.SEN3.zip" "size" "6256" "serial" "A" "productType" "OL_1_PRG_AX" "start" "2016-04-25T09:52:10.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2021-03-09T12:00:00.000Z" "processingCenter" "MPC" "processorVersion" "004" "processingDate" "2021-03-09T00:00:00.000Z")
+                (dict "name" "S3A_OL_1_RAC_AX_20160425T103700_20991231T235959_20210309T120000___________________MPC_O_AL_006.SEN3.zip" "size" "5882" "serial" "A" "productType" "OL_1_RAC_AX" "start" "2016-04-25T10:37:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2021-03-09T12:00:00.000Z" "processingCenter" "MPC" "processorVersion" "006" "processingDate" "2021-03-09T00:00:00.000Z")
+                (dict "name" "S3A_OL_1_SPC_AX_20160425T103700_20991231T235959_20210309T120000___________________MPC_O_AL_008.SEN3.zip" "size" "5583" "serial" "A" "productType" "OL_1_SPC_AX" "start" "2016-04-25T10:37:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2021-03-09T12:00:00.000Z" "processingCenter" "MPC" "processorVersion" "008" "processingDate" "2021-03-09T00:00:00.000Z")
+                (dict "name" "S3__AX___DEM_AX_20000101T000000_20991231T235959_20151214T120000___________________MPC_O_AL_001.SEN3.zip" "size" "389576377" "serial" "" "productType" "AX___DEM_AX" "start" "2000-01-01T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2015-12-14T12:00:00.000Z" "processingCenter" "MPC" "processorVersion" "001" "processingDate" "2015-12-14T00:00:00.000Z")
+                (dict "name" "S3__AX___MA1_AX_20260331T150000_20260401T030000_20260401T054341___________________ECW_O_SN_001.SEN3.zip" "size" "155900054" "serial" "" "productType" "AX___MA1_AX" "start" "2026-03-31T15:00:00.000Z" "end" "2026-04-01T03:00:00.000Z" "publication" "2026-04-01T05:43:41.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MA1_AX_20260331T210000_20260401T090000_20260401T054342___________________ECW_O_SN_001.SEN3.zip" "size" "156238028" "serial" "" "productType" "AX___MA1_AX" "start" "2026-03-31T21:00:00.000Z" "end" "2026-04-01T09:00:00.000Z" "publication" "2026-04-01T05:43:42.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MA1_AX_20260401T030000_20260401T150000_20260401T174741___________________ECW_O_SN_001.SEN3.zip" "size" "156754331" "serial" "" "productType" "AX___MA1_AX" "start" "2026-04-01T03:00:00.000Z" "end" "2026-04-01T15:00:00.000Z" "publication" "2026-04-01T17:47:41.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MA1_AX_20260401T090000_20260401T210000_20260401T174832___________________ECW_O_SN_001.SEN3.zip" "size" "155857288" "serial" "" "productType" "AX___MA1_AX" "start" "2026-04-01T09:00:00.000Z" "end" "2026-04-01T21:00:00.000Z" "publication" "2026-04-01T17:48:32.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MA1_AX_20260401T150000_20260402T030000_20260402T053731___________________ECW_O_SN_001.SEN3.zip" "size" "156625252" "serial" "" "productType" "AX___MA1_AX" "start" "2026-04-01T15:00:00.000Z" "end" "2026-04-02T03:00:00.000Z" "publication" "2026-04-02T05:37:31.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-02T00:00:00.000Z")
+                (dict "name" "S3__AX___MA1_AX_20260401T210000_20260402T090000_20260402T054420___________________ECW_O_SN_001.SEN3.zip" "size" "154888461" "serial" "" "productType" "AX___MA1_AX" "start" "2026-04-01T21:00:00.000Z" "end" "2026-04-02T09:00:00.000Z" "publication" "2026-04-02T05:44:20.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-02T00:00:00.000Z")
+                (dict "name" "S3__AX___MA2_AX_20260331T150000_20260401T030000_20260401T054253___________________ECW_O_SN_001.SEN3.zip" "size" "686731018" "serial" "" "productType" "AX___MA2_AX" "start" "2026-03-31T15:00:00.000Z" "end" "2026-04-01T03:00:00.000Z" "publication" "2026-04-01T05:42:53.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MA2_AX_20260331T210000_20260401T090000_20260401T055357___________________ECW_O_SN_001.SEN3.zip" "size" "686072974" "serial" "" "productType" "AX___MA2_AX" "start" "2026-03-31T21:00:00.000Z" "end" "2026-04-01T09:00:00.000Z" "publication" "2026-04-01T05:53:57.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MA2_AX_20260401T030000_20260401T150000_20260401T174545___________________ECW_O_SN_001.SEN3.zip" "size" "682965620" "serial" "" "productType" "AX___MA2_AX" "start" "2026-04-01T03:00:00.000Z" "end" "2026-04-01T15:00:00.000Z" "publication" "2026-04-01T17:45:45.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MA2_AX_20260401T090000_20260401T210000_20260401T175741___________________ECW_O_SN_001.SEN3.zip" "size" "686246864" "serial" "" "productType" "AX___MA2_AX" "start" "2026-04-01T09:00:00.000Z" "end" "2026-04-01T21:00:00.000Z" "publication" "2026-04-01T17:57:41.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MA2_AX_20260401T150000_20260402T030000_20260402T054133___________________ECW_O_SN_001.SEN3.zip" "size" "686315645" "serial" "" "productType" "AX___MA2_AX" "start" "2026-04-01T15:00:00.000Z" "end" "2026-04-02T03:00:00.000Z" "publication" "2026-04-02T05:41:33.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-02T00:00:00.000Z")
+                (dict "name" "S3__AX___MA2_AX_20260401T210000_20260402T090000_20260402T055036___________________ECW_O_SN_001.SEN3.zip" "size" "685513159" "serial" "" "productType" "AX___MA2_AX" "start" "2026-04-01T21:00:00.000Z" "end" "2026-04-02T09:00:00.000Z" "publication" "2026-04-02T05:50:36.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-02T00:00:00.000Z")
+                (dict "name" "S3__AX___MF1_AX_20260401T120000_20260402T000000_20260331T181633___________________ECW_O_NR_001.SEN3.zip" "size" "173241818" "serial" "" "productType" "AX___MF1_AX" "start" "2026-04-01T12:00:00.000Z" "end" "2026-04-02T00:00:00.000Z" "publication" "2026-03-31T18:16:33.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-03-31T00:00:00.000Z")
+                (dict "name" "S3__AX___MF1_AX_20260401T120000_20260402T000000_20260401T061129___________________ECW_O_NR_001.SEN3.zip" "size" "172484658" "serial" "" "productType" "AX___MF1_AX" "start" "2026-04-01T12:00:00.000Z" "end" "2026-04-02T00:00:00.000Z" "publication" "2026-04-01T06:11:29.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MF1_AX_20260401T180000_20260402T060000_20260401T061420___________________ECW_O_NR_001.SEN3.zip" "size" "171321486" "serial" "" "productType" "AX___MF1_AX" "start" "2026-04-01T18:00:00.000Z" "end" "2026-04-02T06:00:00.000Z" "publication" "2026-04-01T06:14:20.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MF1_AX_20260401T180000_20260402T060000_20260401T180641___________________ECW_O_NR_001.SEN3.zip" "size" "170902958" "serial" "" "productType" "AX___MF1_AX" "start" "2026-04-01T18:00:00.000Z" "end" "2026-04-02T06:00:00.000Z" "publication" "2026-04-01T18:06:41.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MF1_AX_20260402T000000_20260402T120000_20260401T061421___________________ECW_O_NR_001.SEN3.zip" "size" "171297500" "serial" "" "productType" "AX___MF1_AX" "start" "2026-04-02T00:00:00.000Z" "end" "2026-04-02T12:00:00.000Z" "publication" "2026-04-01T06:14:21.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MF1_AX_20260402T000000_20260402T120000_20260401T181130___________________ECW_O_NR_001.SEN3.zip" "size" "171585668" "serial" "" "productType" "AX___MF1_AX" "start" "2026-04-02T00:00:00.000Z" "end" "2026-04-02T12:00:00.000Z" "publication" "2026-04-01T18:11:30.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MF1_AX_20260402T060000_20260402T180000_20260401T181637___________________ECW_O_NR_001.SEN3.zip" "size" "169244301" "serial" "" "productType" "AX___MF1_AX" "start" "2026-04-02T06:00:00.000Z" "end" "2026-04-02T18:00:00.000Z" "publication" "2026-04-01T18:16:37.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MF1_AX_20260402T060000_20260402T180000_20260402T055233___________________ECW_O_NR_001.SEN3.zip" "size" "170363719" "serial" "" "productType" "AX___MF1_AX" "start" "2026-04-02T06:00:00.000Z" "end" "2026-04-02T18:00:00.000Z" "publication" "2026-04-02T05:52:33.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-02T00:00:00.000Z")
+                (dict "name" "S3__AX___MF1_AX_20260402T120000_20260403T000000_20260401T181638___________________ECW_O_NR_001.SEN3.zip" "size" "171276966" "serial" "" "productType" "AX___MF1_AX" "start" "2026-04-02T12:00:00.000Z" "end" "2026-04-03T00:00:00.000Z" "publication" "2026-04-01T18:16:38.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MF1_AX_20260402T120000_20260403T000000_20260402T060137___________________ECW_O_NR_001.SEN3.zip" "size" "171901413" "serial" "" "productType" "AX___MF1_AX" "start" "2026-04-02T12:00:00.000Z" "end" "2026-04-03T00:00:00.000Z" "publication" "2026-04-02T06:01:37.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-02T00:00:00.000Z")
+                (dict "name" "S3__AX___MF1_AX_20260402T180000_20260403T060000_20260402T060735___________________ECW_O_NR_001.SEN3.zip" "size" "171182601" "serial" "" "productType" "AX___MF1_AX" "start" "2026-04-02T18:00:00.000Z" "end" "2026-04-03T06:00:00.000Z" "publication" "2026-04-02T06:07:35.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-02T00:00:00.000Z")
+                (dict "name" "S3__AX___MF1_AX_20260402T180000_20260403T060000_20260402T175940___________________ECW_O_NR_001.SEN3.zip" "size" "171988075" "serial" "" "productType" "AX___MF1_AX" "start" "2026-04-02T18:00:00.000Z" "end" "2026-04-03T06:00:00.000Z" "publication" "2026-04-02T17:59:40.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-02T00:00:00.000Z")
+                (dict "name" "S3__AX___MF2_AX_20260401T120000_20260402T000000_20260331T181745___________________ECW_O_NR_001.SEN3.zip" "size" "687732962" "serial" "" "productType" "AX___MF2_AX" "start" "2026-04-01T12:00:00.000Z" "end" "2026-04-02T00:00:00.000Z" "publication" "2026-03-31T18:17:45.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-03-31T00:00:00.000Z")
+                (dict "name" "S3__AX___MF2_AX_20260401T120000_20260402T000000_20260401T060734___________________ECW_O_NR_001.SEN3.zip" "size" "686008028" "serial" "" "productType" "AX___MF2_AX" "start" "2026-04-01T12:00:00.000Z" "end" "2026-04-02T00:00:00.000Z" "publication" "2026-04-01T06:07:34.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MF2_AX_20260401T180000_20260402T060000_20260401T061240___________________ECW_O_NR_001.SEN3.zip" "size" "686291894" "serial" "" "productType" "AX___MF2_AX" "start" "2026-04-01T18:00:00.000Z" "end" "2026-04-02T06:00:00.000Z" "publication" "2026-04-01T06:12:40.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MF2_AX_20260401T180000_20260402T060000_20260401T180553___________________ECW_O_NR_001.SEN3.zip" "size" "683604206" "serial" "" "productType" "AX___MF2_AX" "start" "2026-04-01T18:00:00.000Z" "end" "2026-04-02T06:00:00.000Z" "publication" "2026-04-01T18:05:53.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MF2_AX_20260402T000000_20260402T120000_20260401T061638___________________ECW_O_NR_001.SEN3.zip" "size" "686448230" "serial" "" "productType" "AX___MF2_AX" "start" "2026-04-02T00:00:00.000Z" "end" "2026-04-02T12:00:00.000Z" "publication" "2026-04-01T06:16:38.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MF2_AX_20260402T000000_20260402T120000_20260401T181150___________________ECW_O_NR_001.SEN3.zip" "size" "686384149" "serial" "" "productType" "AX___MF2_AX" "start" "2026-04-02T00:00:00.000Z" "end" "2026-04-02T12:00:00.000Z" "publication" "2026-04-01T18:11:50.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MF2_AX_20260402T060000_20260402T180000_20260401T181442___________________ECW_O_NR_001.SEN3.zip" "size" "684806868" "serial" "" "productType" "AX___MF2_AX" "start" "2026-04-02T06:00:00.000Z" "end" "2026-04-02T18:00:00.000Z" "publication" "2026-04-01T18:14:42.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MF2_AX_20260402T060000_20260402T180000_20260402T055850___________________ECW_O_NR_001.SEN3.zip" "size" "684249496" "serial" "" "productType" "AX___MF2_AX" "start" "2026-04-02T06:00:00.000Z" "end" "2026-04-02T18:00:00.000Z" "publication" "2026-04-02T05:58:50.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-02T00:00:00.000Z")
+                (dict "name" "S3__AX___MF2_AX_20260402T120000_20260403T000000_20260401T182038___________________ECW_O_NR_001.SEN3.zip" "size" "685302770" "serial" "" "productType" "AX___MF2_AX" "start" "2026-04-02T12:00:00.000Z" "end" "2026-04-03T00:00:00.000Z" "publication" "2026-04-01T18:20:38.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-01T00:00:00.000Z")
+                (dict "name" "S3__AX___MF2_AX_20260402T120000_20260403T000000_20260402T060936___________________ECW_O_NR_001.SEN3.zip" "size" "685867448" "serial" "" "productType" "AX___MF2_AX" "start" "2026-04-02T12:00:00.000Z" "end" "2026-04-03T00:00:00.000Z" "publication" "2026-04-02T06:09:36.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-02T00:00:00.000Z")
+                (dict "name" "S3__AX___MF2_AX_20260402T180000_20260403T060000_20260402T061244___________________ECW_O_NR_001.SEN3.zip" "size" "687596264" "serial" "" "productType" "AX___MF2_AX" "start" "2026-04-02T18:00:00.000Z" "end" "2026-04-03T06:00:00.000Z" "publication" "2026-04-02T06:12:44.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-02T00:00:00.000Z")
+                (dict "name" "S3__AX___MF2_AX_20260402T180000_20260403T060000_20260402T175852___________________ECW_O_NR_001.SEN3.zip" "size" "687548136" "serial" "" "productType" "AX___MF2_AX" "start" "2026-04-02T18:00:00.000Z" "end" "2026-04-03T06:00:00.000Z" "publication" "2026-04-02T17:58:52.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-02T00:00:00.000Z")
+                (dict "name" "S3__SR_2_SURFAX_20000101T000000_20991231T235959_20151214T120000___________________MPC_O_AL_001.SEN3.zip" "size" "933126348" "serial" "" "productType" "SR_2_SURFAX" "start" "2000-01-01T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2015-12-14T12:00:00.000Z" "processingCenter" "MPC" "processorVersion" "001" "processingDate" "2015-12-14T00:00:00.000Z")
+            }}
+            {{- range $product := $s3AuxiliaryProducts }}
+            {{- $productHash := sha256sum $product.name }}
+            ,{
+                "Id": "{{ printf "%s-%s-%s-%s-%s" (substr 0 8 $productHash) (substr 8 4 $productHash) (substr 12 4 $productHash) (substr 16 4 $productHash) (substr 20 12 $productHash) }}",
+                "Name": "{{ $product.name }}",
+                "S3_path": "s3://validation-dpr/ops/s3/S3auxiliarydata/{{ $product.name }}",
+                "ContentType": "application/octet-stream",
+                "ContentLength": "{{ $product.size }}",
+                "OriginDate": "{{ $product.start }}",
+                "PublicationDate": "{{ $product.publication }}",
+                "EvictionDate": "{{ $product.end }}",
+                "Checksum": [
+                    {
+                        "Algorithm": "MD5",
+                        "Value": "REPLACE_WITH_MD5",
+                        "ChecksumDate": "{{ $product.publication }}"
+                    }
+                ],
+                "ContentDate": {
+                    "Start": "{{ $product.start }}",
+                    "End": "{{ $product.end }}"
+                },
+                "Attributes": [
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "platformShortName",
+                        "ValueType": "String",
+                        "Value": "SENTINEL-3"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "platformSerialIdentifier",
+                        "ValueType": "String",
+                        "Value": "{{ $product.serial }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "productType",
+                        "ValueType": "String",
+                        "Value": "{{ $product.productType }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "beginningDateTime",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "{{ $product.start }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "endingDateTime",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "{{ $product.end }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "processingCenter",
+                        "ValueType": "String",
+                        "Value": "{{ $product.processingCenter }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "processorVersion",
+                        "ValueType": "String",
+                        "Value": "{{ $product.processorVersion }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "processingDate",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "{{ $product.processingDate }}"
+                    }
+                ]
+            }
+            {{- end }}
         ]
     }
