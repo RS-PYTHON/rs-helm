@@ -1,6 +1,6 @@
 # rs-server-frontend
 
-![Version: 0.1.0-a8.post2](https://img.shields.io/badge/Version-0.1.0--a8.post2-informational?style=flat-square) ![AppVersion: v1.0a8.post2](https://img.shields.io/badge/AppVersion-v1.0a8.post2-informational?style=flat-square)
+![Version: 0.1.0-a9](https://img.shields.io/badge/Version-0.1.0--a9-informational?style=flat-square) ![AppVersion: v1.0a9](https://img.shields.io/badge/AppVersion-v1.0a9-informational?style=flat-square)
 
 RS SERVER FRONTEND
 
