@@ -1,6 +1,6 @@
 # rs-server-catalog
 
-![Version: 0.1.0-a8.post2](https://img.shields.io/badge/Version-0.1.0--a8.post2-informational?style=flat-square) ![AppVersion: v1.0a8.post2](https://img.shields.io/badge/AppVersion-v1.0a8.post2-informational?style=flat-square)
+![Version: 0.1.0-a9](https://img.shields.io/badge/Version-0.1.0--a9-informational?style=flat-square) ![AppVersion: v1.0a9](https://img.shields.io/badge/AppVersion-v1.0a9-informational?style=flat-square)
 
 RS SERVER CATALOG
 
@@ -28,8 +28,8 @@ RS SERVER CATALOG
 | app.port | int | `8000` | Port for the application |
 | app.prefixPath | string | `"/catalog"` | The path prefix for the underlying FastAPI router |
 | app.presignedUrlExpirationTime | int | `1800` | Presigned URL expiration time in seconds. 30 min by default |
-| app.publishCheckMaxWorkers | int | `6` |  |
-| app.uacHomeUrl | string | `"https://apikeymanager.dev-rspy-ovh.esa-copernicus.eu/docs"` | URL of the API Key Manager home page (public) |
+| app.publishCheckMaxWorkers | int | `6` | Maximum number of workers for the catalog - publish task. Default: 6 |
+| app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
 | auth.secret.oidc_client_id | string | `"apikeymanager"` | OIDC CLient ID |
@@ -44,7 +44,7 @@ RS SERVER CATALOG
 | image.name | string | `"rs-server-catalog"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"1.0a8"` | Image version, can be a tag or a digest |
+| image.version | string | `"1.0a9"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
