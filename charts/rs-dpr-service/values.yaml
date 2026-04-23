@@ -129,7 +129,7 @@ image:
   # -- Image name
   name: rs-dpr-service
   # -- Image version, can be a tag or a digest
-  version: "1.0a8"
+  version: "1.0a9"
   # -- Image pull policy
   PullPolicy: IfNotPresent
 
