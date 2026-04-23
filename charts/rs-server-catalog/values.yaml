@@ -54,6 +54,7 @@ app:
     description: "STAC catalog of Copernicus Reference System Python"
   # -- URL of OSAM service
   endpointOsam: https://subdomain.example.com/osam
+  # -- Maximum number of workers for the catalog - publish task. Default: 6
   publishCheckMaxWorkers: 6
 
 obs:
