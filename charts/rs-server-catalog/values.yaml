@@ -32,7 +32,7 @@ app:
   # -- OAuth2 attributes to read and save, as a comma-separated str
   oauth2Attributes: monthly-download-volume-limit-gb
   # -- URL of the API Key Manager home page (public)
-  uacHomeUrl: https://apikeymanager.dev-rspy-ovh.esa-copernicus.eu/docs
+  uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
   # -- Object Storage bucket for the catalog
   catalogBucket: rs-cluster-catalog
   # -- The path prefix for the underlying FastAPI router
@@ -54,6 +54,7 @@ app:
     description: "STAC catalog of Copernicus Reference System Python"
   # -- URL of OSAM service
   endpointOsam: https://subdomain.example.com/osam
+  # -- Maximum number of workers for the catalog - publish task. Default: 6
   publishCheckMaxWorkers: 6
 
 obs:
@@ -100,7 +101,7 @@ image:
   # -- Image name
   name: rs-server-catalog
   # -- Image version, can be a tag or a digest
-  version: "1.0a8"
+  version: "1.0a9"
   # -- Image pull policy
   PullPolicy: IfNotPresent
 

@@ -1,6 +1,6 @@
 # mockup-station-cadip
 
-![Version: 0.1.0-a8.post2](https://img.shields.io/badge/Version-0.1.0--a8.post2-informational?style=flat-square) ![AppVersion: v1.0a8.post2](https://img.shields.io/badge/AppVersion-v1.0a8.post2-informational?style=flat-square)
+![Version: 0.1.0-a9](https://img.shields.io/badge/Version-0.1.0--a9-informational?style=flat-square) ![AppVersion: v1.0a9](https://img.shields.io/badge/AppVersion-v1.0a9-informational?style=flat-square)
 
 MOCKUP STATION CADIP
 
@@ -31,7 +31,7 @@ MOCKUP STATION CADIP
 | image.name | string | `"rs-testmeans_cadip-station-mock"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"b0e10dc"` | Image version, can be a tag or a digest |
+| image.version | string | `"2034131"` | Image version, can be a tag or a digest |
 | initContainers | list | `[]` | Pod initContainers |
 | namespace | string | `"processing"` | Namespace for the deployment |
 | obs.endpoint | string | `"http://seaweedfs-s3.seaweedfs.svc.cluster.local:9000"` | URL of the object storage service endpoint |
