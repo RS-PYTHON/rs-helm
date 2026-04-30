@@ -105,7 +105,7 @@ runs:
               IMAGE_PREFIX=${APP_VERSION#v}
               # 0.1a10
               IMAGE_VERSION=$(gh api /orgs/${GITHUB_REPOSITORY_OWNER}/packages/container/rs-server-cadip/versions \
-                --jq '.[].metadata.container.tags[]' | grep "^${IMAGE_PREFIX}" | sort -V | tail -n1)
+                --jq '.[].metadata.container.tags[]' | grep "^${IMAGE_PREFIX}" | grep -v -- '-cache$' | sort -V | tail -n1)
               # 0.1a10.post105
               if [[ -z "$IMAGE_VERSION" ]]; then
                 echo "❌ No image found for prefix $IMAGE_PREFIX in rs-server-cadip" >&2
