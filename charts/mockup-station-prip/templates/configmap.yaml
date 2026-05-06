@@ -1863,7 +1863,7 @@ data:
         {
           "Id": "c9e32045-60f4-4c17-bcde-84324bdad470",
           "Name": "S1D_S5_SLC__1SDV_20260504T123815_20260504T123832_002634_004666_4470.SAFE.zip",
-          "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}S1D_S5_SLC__1SDV_20260504T123815_20260504T123832_002634_004666_4470.SAFE.zip",
+          "S3_path": "s3://rs-dev-cluster-temp/stations/PRIP/S1D_S5_SLC__1SDV_20260504T123815_20260504T123832_002634_004666_4470.SAFE.zip",
           "EvictionDate": "9999-12-31T23:59:59.999Z",
           "ModificationDate": "2026-05-04T13:08:45.000Z",
           "OriginDate": "2026-05-04T12:45:00.000Z",
