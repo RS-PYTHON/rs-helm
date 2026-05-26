@@ -13,6 +13,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [1.0a10] - 2026-05-26
+
+### Added
+
+- [RSPY-1046](https://github.com/RS-PYTHON/rs-helm/pull/247) : Add Sentinel-1D in rs-sever-cadip and rs-server-prip
+
+### Changed
+
+- bump docker image
+- [PR#249](https://github.com/RS-PYTHON/rs-helm/pull/249) : Robustify secret chart
+
+### Fixed
+
+-[PR#248](https://github.com/RS-PYTHON/rs-helm/pull/248) : Fix bad identation in rs-server-station-secrets
+
 ## [1.0a9] - 2026-04-23
 
 ### Added

@@ -45,7 +45,7 @@ image:
   # -- Image name
   name: rs-testmeans_dpr-processor-mock
   # -- Image version, can be a tag or a digest
-  version: fix-fastapi-issue
+  version: "e1c079f"
   # -- Image pull policy
   PullPolicy: IfNotPresent
 
