@@ -84,7 +84,7 @@ jobs:
         id: list-changed
         run: |
           changed=$(ct list-changed --target-branch ${{ github.event.repository.default_branch }})
-          if [[ -n "$changed" ]]; then
+          if [[ -n "$changed" || $(git diff --name-only origin/${{ github.event.repository.default_branch }}...HEAD | grep -c '^\.github/workflows/lint-test.yaml') -gt 0 ]]; then
             echo "$changed"
             echo "changed=true" >> "$GITHUB_OUTPUT"
             for dir in $changed; do
