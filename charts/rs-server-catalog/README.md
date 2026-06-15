@@ -29,7 +29,7 @@ RS SERVER CATALOG
 | app.prefixPath | string | `"/catalog"` | The path prefix for the underlying FastAPI router |
 | app.presignedUrlExpirationTime | int | `1800` | Presigned URL expiration time in seconds. 30 min by default |
 | app.publishCheckMaxWorkers | int | `6` | Maximum number of workers for the catalog - publish task. Default: 6 |
-| app.uacHomeUrl | string | `"https://apikeymanager.dev-rspy-ovh.esa-copernicus.eu/docs"` | URL of the API Key Manager home page (public) |
+| app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacURL | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service |
 | auth.secret.cookie_secret | string | `""` | Random string used to encode cookie-based HTTP sessions in SessionMiddleware |
 | auth.secret.oidc_client_id | string | `"apikeymanager"` | OIDC CLient ID |

@@ -1,10 +1,6 @@
 # rs-server-cadip
 
-<<<<<<< HEAD
-![Version: 0.1.0-a9](https://img.shields.io/badge/Version-0.1.0--a9-informational?style=flat-square) ![AppVersion: v1.0a9](https://img.shields.io/badge/AppVersion-v1.0a9-informational?style=flat-square)
-=======
 ![Version: 0.1.0-a10](https://img.shields.io/badge/Version-0.1.0--a10-informational?style=flat-square) ![AppVersion: v1.0a10](https://img.shields.io/badge/AppVersion-v1.0a10-informational?style=flat-square)
->>>>>>> origin/develop
 
 RS SERVER CADIP
 
