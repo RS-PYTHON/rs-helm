@@ -13,6 +13,38 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [1.0a10] - 2026-06-02
+
+### Added
+
+- [RSPY-1046](https://github.com/RS-PYTHON/rs-helm/pull/247) : Add Sentinel-1D in rs-sever-cadip and rs-server-prip
+
+### Changed
+
+- bump docker image
+- [PR#249](https://github.com/RS-PYTHON/rs-helm/pull/249) : Robustify secret chart
+
+### Fixed
+
+-[PR#248](https://github.com/RS-PYTHON/rs-helm/pull/248) : Fix bad identation in rs-server-station-secrets
+
+## [1.0a9] - 2026-04-23
+
+### Added
+
+- [RSPY-1041](https://github.com/RS-PYTHON/rs-helm/pull/244) : Add S01SSMSLC product type mapping
+- [RSPY-1012](https://github.com/RS-PYTHON/rs-helm/pull/241) : Improved catalog publication
+- [RSPY-1029](https://github.com/RS-PYTHON/rs-helm/pull/243) : Fix secrets generation for services without authentication
+- [RSPY-1029](https://github.com/RS-PYTHON/rs-helm/pull/242) : Allow to define domains without authentication
+- [PR#238](https://github.com/RS-PYTHON/rs-helm/pull/238) : Updated product type
+- [PR#236](https://github.com/RS-PYTHON/rs-helm/pull/236) : New aux
+- [RSPY-995](https://github.com/RS-PYTHON/rs-helm/pull/237) : Run sonar from project root
+- [PR#235](https://github.com/RS-PYTHON/rs-helm/pull/235) : Pass SonarCloud on project and fix security issues
+
+### Changed
+
+- bump docker image
+
 ## [1.0a8] - 2026-03-27
 
 ### Added

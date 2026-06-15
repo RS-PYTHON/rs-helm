@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-s2a:
+s1d:
   auth:
     type: TokenAuth
     auth_uri: PLACEHOLDER
@@ -39,7 +39,7 @@ s2a:
       productType: IW_RAW__0N
   search:
     type: ODataV4Search
-    api_endpoint: {{ $.Values.app.station.s2a.endpoint }}
+    api_endpoint: {{ $.Values.app.station.s1d.endpoint }}
     need_auth: true
     results_entry: $.value | $
     metadata_mapping:
@@ -147,8 +147,8 @@ s2a:
       - $.platformShortName
       href:
       - null
-      - {{ $.Values.app.station.s2a.endpoint }}({id})/$value
-      downloadLink: {{ $.Values.app.station.s2a.endpoint }}({id})/$value
+      - {{ $.Values.app.station.s1d.endpoint }}({id})/$value
+      downloadLink: {{ $.Values.app.station.s1d.endpoint }}({id})/$value
       title: $.Name
       intersects:
       - null
@@ -221,6 +221,7 @@ s2a:
       sort_by_tpl: '&$orderby={sort_param} {sort_order}'
       sort_param_mapping:
         id: Name
+        prip:id: Id
         file:size: ContentLength
         type: ContentType
         eviction_datetime: EvictionDate
@@ -238,7 +239,7 @@ s2a:
       total_items_nb_key_path: $.total
   download:
     type: HTTPDownload
-    base_uri: {{ $.Values.app.station.s2a.endpoint }}
+    base_uri: {{ $.Values.app.station.s1d.endpoint }}
     metadata_mapping:
       uid: $.Id
-      downloadLink: {{ $.Values.app.station.s2a.endpoint }}({uid})/$value
+      downloadLink: {{ $.Values.app.station.s1d.endpoint }}({uid})/$value

@@ -1,6 +1,10 @@
 # rs-server-cadip
 
+<<<<<<< HEAD
 ![Version: 0.1.0-a9](https://img.shields.io/badge/Version-0.1.0--a9-informational?style=flat-square) ![AppVersion: v1.0a9](https://img.shields.io/badge/AppVersion-v1.0a9-informational?style=flat-square)
+=======
+![Version: 0.1.0-a10](https://img.shields.io/badge/Version-0.1.0--a10-informational?style=flat-square) ![AppVersion: v1.0a10](https://img.shields.io/badge/AppVersion-v1.0a10-informational?style=flat-square)
+>>>>>>> origin/develop
 
 RS SERVER CADIP
 
@@ -34,7 +38,7 @@ RS SERVER CADIP
 | image.name | string | `"rs-server-cadip"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"1.0a8"` | Image version, can be a tag or a digest |
+| image.version | string | `"1.0a10"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
