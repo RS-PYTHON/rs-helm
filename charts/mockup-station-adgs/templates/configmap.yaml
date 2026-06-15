@@ -7267,7 +7267,7 @@ data:
                         "@odata.type": "#OData.CSC.StringAttribute",
                         "Name": "platformSerialIdentifier",
                         "ValueType": "String",
-                        "Value": "{{ $product.serial }}"
+                        "Value": "A"
                     },
                     {
                         "@odata.type": "#OData.CSC.StringAttribute",
@@ -7393,7 +7393,7 @@ data:
                         "@odata.type": "#OData.CSC.StringAttribute",
                         "Name": "platformSerialIdentifier",
                         "ValueType": "String",
-                        "Value": "{{ $product.serial }}"
+                        "Value": "A"
                     },
                     {
                         "@odata.type": "#OData.CSC.StringAttribute",
