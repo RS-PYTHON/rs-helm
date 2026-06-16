@@ -7368,7 +7368,7 @@ data:
             ,{
                 "Id": "{{ printf "%s-%s-%s-%s-%s" (substr 0 8 $productHash) (substr 8 12 $productHash) (substr 12 16 $productHash) (substr 16 20 $productHash) (substr 20 32 $productHash) }}",
                 "Name": "{{ $product.name }}",
-                "S3_path": "s3://{{ $.Values.app.bucketName }}/{{ $.Values.app.bucketPath }}new_aux/{{ $product.name }}",
+                "S3_path": "s3://{{ $.Values.app.bucketName }}/{{ $.Values.app.bucketPath }}new_aux_format/{{ $product.name }}",
                 "ContentType": "application/octet-stream",
                 "ContentLength": "{{ $product.size }}",
                 "OriginDate": "{{ $product.start }}",
