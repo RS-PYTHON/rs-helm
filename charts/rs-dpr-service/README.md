@@ -1,6 +1,6 @@
 # rs-dpr-service
 
-![Version: 0.1.0-a10](https://img.shields.io/badge/Version-0.1.0--a10-informational?style=flat-square) ![AppVersion: v1.0a10](https://img.shields.io/badge/AppVersion-v1.0a10-informational?style=flat-square)
+![Version: 0.1.0-a11](https://img.shields.io/badge/Version-0.1.0--a11-informational?style=flat-square) ![AppVersion: v1.0a11](https://img.shields.io/badge/AppVersion-v1.0a11-informational?style=flat-square)
 
 RS DPR SERVICE
 
