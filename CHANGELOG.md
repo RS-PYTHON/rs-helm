@@ -13,6 +13,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [1.0a11] - 2026-06-18
+
+### Added
+
+- [PR#245](https://github.com/RS-PYTHON/rs-helm/pull/245) : New ADFS for convertion in mockup
+
+### Changed
+
+- bump docker image
+
+### Removed
+
+- [PR#256](https://github.com/RS-PYTHON/rs-helm/pull/256) : Remove PRIP S2A/S2C support
+
 ## [1.0a10] - 2026-06-02
 
 ### Added
