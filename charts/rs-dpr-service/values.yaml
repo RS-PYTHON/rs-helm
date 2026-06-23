@@ -172,8 +172,8 @@ otel:
 
 processors:
   # -- List of DPR processors exposed/enabled by rs-dpr-service.
-  # By default, all known processors are enabled except the mockup.
   enabled:
+    - mockup
     - conv_safe_zarr
     - s1_l0
     - s3_l0
