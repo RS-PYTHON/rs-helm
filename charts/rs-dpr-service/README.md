@@ -1,6 +1,6 @@
 # rs-dpr-service
 
-![Version: 0.1.0-a10](https://img.shields.io/badge/Version-0.1.0--a10-informational?style=flat-square) ![AppVersion: v1.0a10](https://img.shields.io/badge/AppVersion-v1.0a10-informational?style=flat-square)
+![Version: 0.1.0-a11](https://img.shields.io/badge/Version-0.1.0--a11-informational?style=flat-square) ![AppVersion: v1.0a11](https://img.shields.io/badge/AppVersion-v1.0a11-informational?style=flat-square)
 
 RS DPR SERVICE
 
@@ -65,6 +65,7 @@ RS DPR SERVICE
 | probe.startup.periodSeconds | int | `2` | periodSeconds for the liveness probe |
 | probe.startup.port | int | `8000` | Port for the liveness probe |
 | probe.startup.timeoutSeconds | int | `1` | timeoutSeconds for the liveness probe |
+| processors.enabled | list | `["conv_safe_zarr","s1_l0","s3_l0","s1_ard","s3_l1olci","s3_l2olci"]` | List of DPR processors exposed/enabled by rs-dpr-service. By default, all known processors are enabled except the mockup. |
 | replicaCount | int | `1` | Number of replicas for the deployment |
 | resources.limit.cpu | string | `"500m"` | Pod CPU limit |
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
