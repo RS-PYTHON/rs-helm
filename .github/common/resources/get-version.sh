@@ -84,11 +84,14 @@ elif [[ "${GITHUB_REF_TYPE}" == "branch" ]]; then
   else
     IMAGE_PREFIX=${APP_VERSION#v}
     # 0.1a10
-    IMAGE_VERSION=$(gh api "/orgs/${GITHUB_REPOSITORY_OWNER:-RS-PYTHON}/packages/container/rs-server-cadip/versions" \
-      --jq '.[].metadata.container.tags[]' | grep "^${IMAGE_PREFIX}" | grep -v -- '-cache$' | sort -V | tail -n1)
+    ALL_TAGS=$(gh api "/orgs/${GITHUB_REPOSITORY_OWNER:-RS-PYTHON}/packages/container/rs-server-cadip/versions" \
+      --jq '.[].metadata.container.tags[]')
+    IMAGE_VERSION=$(echo "${ALL_TAGS}" | grep "^${IMAGE_PREFIX}" | grep -v -- '-cache$' | sort -V | tail -n1 || true)
     # 0.1a10.post105
     if [[ -z "${IMAGE_VERSION}" ]]; then
       echo "❌ No image found for prefix ${IMAGE_PREFIX} in rs-server-cadip" >&2
+      echo "Available tags:" >&2
+      echo "${ALL_TAGS}" >&2
       exit 1
     fi
   fi
