@@ -84,7 +84,7 @@ elif [[ "${GITHUB_REF_TYPE}" == "branch" ]]; then
   else
     IMAGE_PREFIX=${APP_VERSION#v}
     # 0.1a10
-    ALL_TAGS=$(gh api "/orgs/${GITHUB_REPOSITORY_OWNER:-RS-PYTHON}/packages/container/rs-server-cadip/versions" \
+    ALL_TAGS=$(gh api --paginate "/orgs/${GITHUB_REPOSITORY_OWNER:-RS-PYTHON}/packages/container/rs-server-cadip/versions" \
       --jq '.[].metadata.container.tags[]')
     IMAGE_VERSION=$(echo "${ALL_TAGS}" | grep "^${IMAGE_PREFIX}" | grep -v -- '-cache$' | sort -V | tail -n1 || true)
     # 0.1a10.post105
