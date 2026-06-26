@@ -65,6 +65,7 @@ RS DPR SERVICE
 | probe.startup.periodSeconds | int | `2` | periodSeconds for the liveness probe |
 | probe.startup.port | int | `8000` | Port for the liveness probe |
 | probe.startup.timeoutSeconds | int | `1` | timeoutSeconds for the liveness probe |
+| processors.enabled | list | `["mockup","conv_safe_zarr","s1_l0","s3_l0","s1_ard","s3_l1olci","s3_l2olci"]` | List of DPR processors exposed/enabled by rs-dpr-service. |
 | replicaCount | int | `1` | Number of replicas for the deployment |
 | resources.limit.cpu | string | `"500m"` | Pod CPU limit |
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
