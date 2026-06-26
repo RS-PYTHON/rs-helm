@@ -7267,6 +7267,7 @@ data:
                 (dict "name" "S3A_ADF_OLPRG_20160216T000000_20991231T235959_20240427T201544.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_OLPRG" "start" "2018-06-18T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2026-06-11T14:43:45.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
                 (dict "name" "S3A_ADF_OLEOP_20160216T000000_20991231T235959_20231030T154253.json" "size" "95" "serial" "A" "productType" "ADF_OLEOP" "start" "2016-04-25T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2026-06-12T09:17:26.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-12T00:00:00.000Z")
             }}
+
             {{- range $product := $s3NewAuxiliaryProducts }}
             {{- $productHash := sha256sum $product.name }}
             ,{
