@@ -361,10 +361,10 @@ collections:
 - id: adgs_oper_mpl_orbpre
   station: adgs
   query:
-    productType: MPL_ORBPRE
+    productType: OPER_MPL_ORBPRE
   stac_extensions: []
-  title: MPL_ORBPRE 'adgs' station
-  description: MPL_ORBPRE 'adgs' station
+  title: OPER_MPL_ORBPRE 'adgs' station
+  description: OPER_MPL_ORBPRE 'adgs' station
   license: other
   extent:
     spatial:
@@ -399,10 +399,10 @@ collections:
 - id: adgs_oper_mpl_orbsct
   station: adgs
   query:
-    productType: MPL_ORBSCT
+    productType: OPER_MPL_ORBSCT
   stac_extensions: []
-  title: MPL_ORBSCT 'adgs' station
-  description: MPL_ORBSCT 'adgs' station
+  title: OPER_MPL_ORBSCT 'adgs' station
+  description: OPER_MPL_ORBSCT 'adgs' station
   license: other
   extent:
     spatial:
@@ -703,10 +703,10 @@ collections:
 - id: adgs2_oper_mpl_orbpre
   station: adgs2
   query:
-    productType: MPL_ORBPRE
+    productType: OPER_MPL_ORBPRE
   stac_extensions: []
-  title: MPL_ORBPRE 'adgs2' station
-  description: MPL_ORBPRE 'adgs2' station
+  title: OPER_MPL_ORBPRE 'adgs2' station
+  description: OPER_MPL_ORBPRE 'adgs2' station
   license: other
   extent:
     spatial:
@@ -741,10 +741,10 @@ collections:
 - id: adgs2_oper_mpl_orbsct
   station: adgs2
   query:
-    productType: MPL_ORBSCT
+    productType: OPER_MPL_ORBSCT
   stac_extensions: []
-  title: MPL_ORBSCT 'adgs2' station
-  description: MPL_ORBSCT 'adgs2' station
+  title: OPER_MPL_ORBSCT 'adgs2' station
+  description: OPER_MPL_ORBSCT 'adgs2' station
   license: other
   extent:
     spatial:
