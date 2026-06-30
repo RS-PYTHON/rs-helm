@@ -169,3 +169,14 @@ otel:
   trace_headers: false
   # -- Trace request bodies and response contents with OpenTelemetry ?
   trace_body: false
+
+processors:
+  # -- List of DPR processors exposed/enabled by rs-dpr-service.
+  enabled:
+    - mockup
+    - conv_safe_zarr
+    - s1_l0
+    - s3_l0
+    - s1_ard
+    - s3_l1olci
+    - s3_l2olci
