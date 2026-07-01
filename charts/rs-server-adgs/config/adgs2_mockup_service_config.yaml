@@ -126,6 +126,9 @@ adgs2:
       externalIdss:
       - null
       - $.Id
+      created:
+      - null
+      - $.OriginDate
     free_text_search_operations:
       $filter:
         union: ' OR '
@@ -139,6 +142,7 @@ adgs2:
           - (PublicationDate gt {StartPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StartPublicationDate#to_iso_utc_datetime})
           - (PublicationDate lt {StopPublicationDate#to_iso_utc_datetime} or PublicationDate eq {StopPublicationDate#to_iso_utc_datetime})
           - PublicationDate eq {PublicationDate#to_iso_utc_datetime}
+          - OriginDate eq {OriginDate#to_iso_utc_datetime}
           - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq {attr_ptype})
           - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value in ({attr_ptypes}))
           - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformSerialIdentifier' and att/OData.CSC.StringAttribute/Value eq {platformSerialIdentifier})
