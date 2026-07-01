@@ -7044,71 +7044,6 @@ data:
                 ]
             },
             {
-                "Id": "c4e8a1b2-7d5f-4a3c-8e9f-1b2d3c4a5e6f",
-                "Name": "S3A_OPER_MPL_ORBSCT_20160216T192404_99999999T999999_0002.EOF",
-                "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}test-l0-develop-2/S3_D_TDS_1/AUX/S3A_AX___OSF_AX_20160216T192404_99991231T235959_20170322T163046___________________EUM_O_AL_001.SEN3/S3A_OPER_MPL_ORBSCT_20160216T192404_99999999T999999_0002.EOF",
-                "ContentType": "application/octet-stream",
-                "ContentLength": "0",
-                "OriginDate": "2016-02-16T19:24:04.000Z",
-                "PublicationDate": "2017-03-22T16:30:46.000Z",
-                "EvictionDate": "9999-12-31T23:59:59.000Z",
-                "Checksum": [
-                    {
-                    "Algorithm": "MD5",
-                    "Value": "REPLACE_WITH_MD5",
-                    "ChecksumDate": "2017-03-22T16:30:46.000Z"
-                    }
-                ],
-                "ContentDate": {
-                    "Start": "2016-02-16T19:24:04.000Z",
-                    "End": "9999-12-31T23:59:59.000Z"
-                },
-                "Attributes": [
-                    {
-                    "@odata.type": "#OData.CSC.StringAttribute",
-                    "Name": "platformShortName",
-                    "ValueType": "String",
-                    "Value": "SENTINEL-3"
-                    },
-                    {
-                    "@odata.type": "#OData.CSC.StringAttribute",
-                    "Name": "platformSerialIdentifier",
-                    "ValueType": "String",
-                    "Value": "A"
-                    },
-                    {
-                    "@odata.type": "#OData.CSC.StringAttribute",
-                    "Name": "productType",
-                    "ValueType": "String",
-                    "Value": "AX___OSF_AX"
-                    },
-                    {
-                    "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
-                    "Name": "beginningDateTime",
-                    "ValueType": "DateTimeOffset",
-                    "Value": "2016-02-16T19:24:04.000Z"
-                    },
-                    {
-                    "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
-                    "Name": "endingDateTime",
-                    "ValueType": "DateTimeOffset",
-                    "Value": "9999-12-31T23:59:59.000Z"
-                    },
-                    {
-                    "@odata.type": "#OData.CSC.StringAttribute",
-                    "Name": "processingCenter",
-                    "ValueType": "String",
-                    "Value": "EUMETSAT"
-                    },
-                    {
-                    "@odata.type": "#OData.CSC.StringAttribute",
-                    "Name": "processorVersion",
-                    "ValueType": "String",
-                    "Value": "001"
-                    }
-                ]
-            },
-            {
                 "Id": "avzxpox-99cc-7axa-31af-grid992mseal",
                 "Name": "S1A_OPER_MPL_ORBPRE_20250611T021935_20250618T021934_0001.EOF.zip",
                 "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}test-l0-develop-3/S1A_OPER_MPL_ORBPRE_20250611T021935_20250618T021934_0001.EOF/S1A_OPER_MPL_ORBPRE_20250611T021935_20250618T021934_0001.EOF.zip",
@@ -7178,6 +7113,146 @@ data:
                         "Value": "2025-06-18T00:00:00.000Z"
                     }
                 ]
+            },
+            {
+                "Id": "b5c0a6e1-8437-4e5b-9f21-2dd39adf3011",
+                "Name": "S3B_AX___OSF_AX_20180425T191855_99991231T235959_20251010T143722___________________EUM_O_AL_001.SEN3.zip",
+                "ContentType": "application/octet-stream",
+                "ContentLength": "658",
+                "OriginDate": "2018-04-25T19:18:55.000Z",
+                "PublicationDate": "2018-04-25T19:18:55.000Z",
+                "EvictionDate": "2018-04-25T19:18:55.000Z",
+                "Checksum": [
+                    {
+                        "Algorithm": "MD5",
+                        "Value": "1CD74DAF6CE32A06377E629117350FBD",
+                        "ChecksumDate": "2018-04-25T19:18:55.000Z"
+                    }
+                ],
+                "ContentDate": {
+                    "Start": "2018-04-25T19:18:55.000Z",
+                    "End": "9999-12-31T23:59:59.000Z"
+                },
+                "Attributes": [
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "platformShortName",
+                        "ValueType": "String",
+                        "Value": "SENTINEL-3"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "platformSerialIdentifier",
+                        "ValueType": "String",
+                        "Value": "B"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "productType",
+                        "ValueType": "String",
+                        "Value": "AX___OSF_AX"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "beginningDateTime",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "2018-04-25T19:18:55.000Z"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "endingDateTime",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "9999-12-31T23:59:59.000Z"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "processingCenter",
+                        "ValueType": "String",
+                        "Value": "EUM"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "processorVersion",
+                        "ValueType": "String",
+                        "Value": "3.0"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "processingDate",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "2018-04-25T19:18:55.000Z"
+                    }
+                ]
+            },
+            {
+                "Id": "d9e7f6b2-531c-4890-a8d4-781cb77f4022",
+                "Name": "S3B_AX___FRO_AX_20251005T000000_20251015T000000_20251010T143722___________________EUM_O_AL_001.SEN3.zip",
+                "ContentType": "application/octet-stream",
+                "ContentLength": "653",
+                "OriginDate": "2025-10-05T00:00:00.000Z",
+                "PublicationDate": "2025-10-05T00:00:00.000Z",
+                "EvictionDate": "2025-10-05T00:00:00.000Z",
+                "Checksum": [
+                    {
+                        "Algorithm": "MD5",
+                        "Value": "ACB071FD13A12CE511FE03D353FC8ED3",
+                        "ChecksumDate": "2025-10-05T00:00:00.000Z"
+                    }
+                ],
+                "ContentDate": {
+                    "Start": "2025-10-05T00:00:00.000Z",
+                    "End": "2025-10-15T00:00:00.000Z"
+                },
+                "Attributes": [
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "platformShortName",
+                        "ValueType": "String",
+                        "Value": "SENTINEL-3"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "platformSerialIdentifier",
+                        "ValueType": "String",
+                        "Value": "B"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "productType",
+                        "ValueType": "String",
+                        "Value": "AX___FRO_AX"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "beginningDateTime",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "2025-10-05T00:00:00.000Z"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "endingDateTime",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "2025-10-15T00:00:00.000Z"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "processingCenter",
+                        "ValueType": "String",
+                        "Value": "EUM"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "processorVersion",
+                        "ValueType": "String",
+                        "Value": "3.0"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "processingDate",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "2025-10-05T00:00:00.000Z"
+                    }
+                ]
             }
             {{- $s3AuxiliaryProducts := list
                 (dict "name" "S3A_OL_1_CAL_AX_20211027T000000_20991231T235959_20211029T120000___________________MPC_O_AL_025.SEN3.zip" "size" "1593405" "serial" "A" "productType" "OL_1_CAL_AX" "start" "2021-10-27T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2021-10-29T12:00:00.000Z" "processingCenter" "MPC" "processorVersion" "025" "processingDate" "2021-10-29T00:00:00.000Z")
@@ -7225,7 +7300,7 @@ data:
                 (dict "name" "S3__AX___MF2_AX_20260402T180000_20260403T060000_20260402T061244___________________ECW_O_NR_001.SEN3.zip" "size" "687596264" "serial" "" "productType" "AX___MF2_AX" "start" "2026-04-02T18:00:00.000Z" "end" "2026-04-03T06:00:00.000Z" "publication" "2026-04-02T06:12:44.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-02T00:00:00.000Z")
                 (dict "name" "S3__AX___MF2_AX_20260402T180000_20260403T060000_20260402T175852___________________ECW_O_NR_001.SEN3.zip" "size" "687548136" "serial" "" "productType" "AX___MF2_AX" "start" "2026-04-02T18:00:00.000Z" "end" "2026-04-03T06:00:00.000Z" "publication" "2026-04-02T17:58:52.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-02T00:00:00.000Z")
                 (dict "name" "S3__SR_2_SURFAX_20000101T000000_20991231T235959_20151214T120000___________________MPC_O_AL_001.SEN3.zip" "size" "933126348" "serial" "" "productType" "SR_2_SURFAX" "start" "2000-01-01T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2015-12-14T12:00:00.000Z" "processingCenter" "MPC" "processorVersion" "001" "processingDate" "2015-12-14T00:00:00.000Z")
-                (dict "name" "S3A_AX___FRO_AX_20260411T000000_20260421T000000_20260414T064831___________________EUM_O_AL_001.SEN3.zip" "size" "686384149" "serial" "" "productType" "AX___FRO_AX" "start" "2026-04-11T00:00:00.000Z" "end" "2026-04-21T12:00:00.000Z" "publication" "2026-04-11T00:00:00.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2026-04-11T00:00:00.000Z")
+                (dict "name" "S3A_AX___FRO_AX_20250612T000000_20250622T000000_20250615T064632___________________EUM_O_AL_001.SEN3.zip" "size" "686384149" "serial" "" "productType" "AX___FRO_AX" "start" "2025-06-12T00:00:00.000Z" "end" "2025-06-22T12:00:00.000Z" "publication" "2025-06-12T00:00:00.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2025-06-12T00:00:00.000Z")
                 (dict "name" "S3A_AX___OSF_AX_20160216T192404_99991231T235959_20250724T075944___________________EUM_O_AL_001.SEN3.zip" "size" "684806868" "serial" "" "productType" "AX___OSF_AX" "start" "2016-02-21T06:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2016-02-21T06:00:00.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2016-02-21T06:00:00.000Z")
                 (dict "name" "S3__AX___CLM_AX_20000101T000000_20991231T235959_20151214T120000___________________MPC_O_AL_001.SEN3.zip" "size" "684249496" "serial" "" "productType" "AX___CLM_AX" "start" "2000-01-01T06:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2000-01-01T06:00:00.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2000-01-01T06:00:00.000Z")
                 (dict "name" "S3__AX___LWM_AX_20000101T000000_20991231T235959_20151214T120000___________________MPC_O_AL_001.SEN3.zip" "size" "170363719" "serial" "" "productType" "AX___LWM_AX" "start" "2000-01-01T12:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2000-01-01T12:00:00.000Z" "processingCenter" "ECW" "processorVersion" "001" "processingDate" "2000-01-01T12:00:00.000Z")
@@ -7267,7 +7342,105 @@ data:
                         "@odata.type": "#OData.CSC.StringAttribute",
                         "Name": "platformSerialIdentifier",
                         "ValueType": "String",
-                        "Value": "{{ $product.serial }}"
+                        "Value": "A"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "productType",
+                        "ValueType": "String",
+                        "Value": "{{ $product.productType }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "beginningDateTime",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "{{ $product.start }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "endingDateTime",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "{{ $product.end }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "processingCenter",
+                        "ValueType": "String",
+                        "Value": "{{ $product.processingCenter }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "processorVersion",
+                        "ValueType": "String",
+                        "Value": "{{ $product.processorVersion }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "processingDate",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "{{ $product.processingDate }}"
+                    }
+                ]
+            }
+            {{- end }}
+            {{- $s3NewAuxiliaryProducts := list
+                (dict "name" "S00__ADF_ECMWA_20250612T000000_20250612T180000_20260611T141001.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_ECMWA" "start" "2025-06-12T00:00:00.000Z" "end" "2025-06-12T18:00:00.000Z" "publication" "2026-06-11T14:10:01.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S00__ADF_ECMWA_20250612T000000_20250612T180000_20260611T142519.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_ECMWA" "start" "2025-06-12T00:00:00.000Z" "end" "2025-06-12T18:00:00.000Z" "publication" "2026-06-11T14:25:19.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S00__ADF_ECMWF_20250612T090000_20250613T030000_20260611T133935.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_ECMWF" "start" "2025-06-12T09:00:00.000Z" "end" "2025-06-13T03:00:00.000Z" "publication" "2026-06-11T13:39:35.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S00__ADF_ECMWF_20250612T210000_20250613T150000_20260611T134320.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_ECMWF" "start" "2025-06-12T21:00:00.000Z" "end" "2025-06-13T15:00:00.000Z" "publication" "2026-06-11T13:43:20.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S00__ADF_ECMWF_20260608T090000_20260609T030000_20260611T083556.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_ECMWF" "start" "2026-06-08T09:00:00.000Z" "end" "2026-06-09T03:00:00.000Z" "publication" "2026-06-11T08:35:56.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S00__ADF_ECMWF_20260608T090000_20260609T030000_20260611T090832.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_ECMWF" "start" "2026-06-08T09:00:00.000Z" "end" "2026-06-09T03:00:00.000Z" "publication" "2026-06-11T09:08:32.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S00__ADF_ECMWF_20260608T090000_20260609T030000_20260611T123225.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_ECMWF" "start" "2026-06-08T09:00:00.000Z" "end" "2026-06-09T03:00:00.000Z" "publication" "2026-06-11T12:32:25.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S00__ADF_ECMWF_20260608T210000_20260609T150000_20260611T083952.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_ECMWF" "start" "2026-06-08T21:00:00.000Z" "end" "2026-06-09T15:00:00.000Z" "publication" "2026-06-11T08:39:52.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S00__ADF_ECMWF_20260608T210000_20260609T150000_20260611T091213.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_ECMWF" "start" "2026-06-08T21:00:00.000Z" "end" "2026-06-09T15:00:00.000Z" "publication" "2026-06-11T09:12:13.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S00__ADF_ECMWF_20260608T210000_20260609T150000_20260611T123606.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_ECMWF" "start" "2026-06-08T21:00:00.000Z" "end" "2026-06-09T15:00:00.000Z" "publication" "2026-06-11T12:36:06.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S00__ADF_GETAS_20000101T000000_21000101T000000_20260611T162252.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_GETAS" "start" "2000-01-01T00:00:00.000Z" "end" "2100-01-01T00:00:00.000Z" "publication" "2026-06-11T16:22:52.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S00__ADF_GETAS_20000101T000000_21000101T000000_20260611T162450.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_GETAS" "start" "2000-01-01T00:00:00.000Z" "end" "2100-01-01T00:00:00.000Z" "publication" "2026-06-11T16:24:50.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S00__ADF_GETAS_20000101T000000_21000101T000000_20260611T165546.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_GETAS" "start" "2000-01-01T00:00:00.000Z" "end" "2100-01-01T00:00:00.000Z" "publication" "2026-06-11T16:55:46.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S00__ADF_GETAS_20000101T000000_21000101T000000_20260612T073935.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_GETAS" "start" "2000-01-01T00:00:00.000Z" "end" "2100-01-01T00:00:00.000Z" "publication" "2026-06-12T07:39:35.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-12T00:00:00.000Z")
+                (dict "name" "S00__ADF_GETAS_20000101T000000_21000101T000000_20260612T074121.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_GETAS" "start" "2000-01-01T00:00:00.000Z" "end" "2100-01-01T00:00:00.000Z" "publication" "2026-06-12T07:41:21.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-12T00:00:00.000Z")
+                (dict "name" "S00__ADF_GETAS_20000101T000000_21000101T000000_20260612T074319.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_GETAS" "start" "2000-01-01T00:00:00.000Z" "end" "2100-01-01T00:00:00.000Z" "publication" "2026-06-12T07:43:19.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-12T00:00:00.000Z")
+                (dict "name" "S00__ADF_WATER_20000101T000000_21000101T000000_20260616T160435.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_WATER" "start" "2000-01-01T00:00:00.000Z" "end" "2100-01-01T00:00:00.000Z" "publication" "2026-06-11T16:26:17.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S03A_ADF_OLLUT_20000101T000000_20991231T235959_20260619T150344.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_OLLUT" "start" "2000-01-01T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2026-06-11T15:20:59.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S03A_ADF_OLCAL_20211027T000000_20991231T235959_20260619T150406.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_OLCAL" "start" "2021-10-27T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2026-06-11T14:43:56.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S03A_ADF_OLINS_20201030T120000_20991231T235959_20260619T150419.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_OLINS" "start" "2020-10-30T12:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2026-06-11T14:44:13.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S03A_ADF_OLPRG_20160425T095210_20991231T235959_20260619T150357.zarr.zip" "size" "0" "serial" "A" "productType" "ADF_OLPRG" "start" "2018-06-18T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2026-06-11T14:43:45.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-11T00:00:00.000Z")
+                (dict "name" "S03A_ADF_OLEOP_20160425T103700_20991231T235959_20260619T154151.json" "size" "95" "serial" "A" "productType" "ADF_OLEOP" "start" "2016-04-25T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2026-06-12T09:17:26.000Z" "processingCenter" "ADGS" "processorVersion" "unknown" "processingDate" "2026-06-12T00:00:00.000Z")
+            }}
+            {{- range $product := $s3NewAuxiliaryProducts }}
+            {{- $productHash := sha256sum $product.name }}
+            ,{
+                "Id": "{{ printf "%s-%s-%s-%s-%s" (substr 0 8 $productHash) (substr 8 12 $productHash) (substr 12 16 $productHash) (substr 16 20 $productHash) (substr 20 32 $productHash) }}",
+                "Name": "{{ $product.name }}",
+                "S3_path": "s3://{{ $.Values.app.bucketName }}/{{ $.Values.app.bucketPath }}new_aux_format_zip/{{ $product.name }}",
+                "ContentType": "application/octet-stream",
+                "ContentLength": "{{ $product.size }}",
+                "OriginDate": "{{ $product.start }}",
+                "PublicationDate": "{{ $product.publication }}",
+                "EvictionDate": "{{ $product.end }}",
+                "Checksum": [
+                    {
+                        "Algorithm": "MD5",
+                        "Value": "REPLACE_WITH_MD5",
+                        "ChecksumDate": "{{ $product.publication }}"
+                    }
+                ],
+                "ContentDate": {
+                    "Start": "{{ $product.start }}",
+                    "End": "{{ $product.end }}"
+                },
+                "Attributes": [
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "platformShortName",
+                        "ValueType": "String",
+                        "Value": "SENTINEL-3"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "platformSerialIdentifier",
+                        "ValueType": "String",
+                        "Value": "A"
                     },
                     {
                         "@odata.type": "#OData.CSC.StringAttribute",
