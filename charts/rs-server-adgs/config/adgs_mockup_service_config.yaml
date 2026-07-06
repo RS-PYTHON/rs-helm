@@ -129,6 +129,9 @@ adgs:
       created:
       - null
       - $.OriginDate
+      DatetimeEnd:
+      - null
+      - $.ContentDate.End
     free_text_search_operations:
       $filter:
         union: ' OR '
@@ -152,7 +155,9 @@ adgs:
           - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'processingDate' and att/OData.CSC.StringAttribute/Value eq '{processing:datetime#to_iso_utc_datetime}')
           - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'processingCenter' and att/OData.CSC.StringAttribute/Value eq '{processingCenter#to_iso_utc_datetime}')
           - ContentDate/Start eq {DatetimeStart#to_iso_utc_datetime}
-          - ContentDate/Start gt {Start#to_iso_utc_datetime} and ContentDate/End lt {End#to_iso_utc_datetime}
+          - (ContentDate/Start gt {Start#to_iso_utc_datetime} or ContentDate/Start eq {Start#to_iso_utc_datetime})
+          - (ContentDate/End lt {End#to_iso_utc_datetime} or ContentDate/End eq {End#to_iso_utc_datetime})
+          - ContentDate/End eq {DatetimeEnd#to_iso_utc_datetime}
           - '{t_before}'
           - '{t_after}'
           - '{t_meets}'
