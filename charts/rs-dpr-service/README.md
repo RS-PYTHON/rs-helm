@@ -1,6 +1,6 @@
 # rs-dpr-service
 
-![Version: 0.1.0-a11](https://img.shields.io/badge/Version-0.1.0--a11-informational?style=flat-square) ![AppVersion: v1.0a11](https://img.shields.io/badge/AppVersion-v1.0a11-informational?style=flat-square)
+![Version: 0.1.0-a12](https://img.shields.io/badge/Version-0.1.0--a12-informational?style=flat-square) ![AppVersion: v1.0a12](https://img.shields.io/badge/AppVersion-v1.0a12-informational?style=flat-square)
 
 RS DPR SERVICE
 
@@ -25,7 +25,6 @@ RS DPR SERVICE
 | auth.secret.oidc_client_secret | string | `""` | OIDC Secret used to sync user info from Keycloak |
 | auth.secret.oidc_endpoint | string | `""` | OIDC End Point |
 | auth.secret.oidc_realm | string | `""` | OIDC Realm |
-| dask.gateway_address | string | `"http://traefik-dask-gateway.dask-gateway.svc.cluster.local"` | Dask gateway address |
 | dask.gateway_auth_type | string | `"jupyterhub"` | Dask gateway auth type |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-dpr-service"` | Image name |
