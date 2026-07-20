@@ -16,6 +16,7 @@ RS SERVER CATALOG
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
 | app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
+| app.catalogDeleteMaxRetries | int | `0` | Number of complete S3 cleanup retries before catalog metadata deletion. Default: 0 |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.dataLifecyclePeriod | int | `86400` | Period in seconds between two data lifecycle cleaning tasks. If <0, the task is deactivated. Default: 24 hours |
 | app.docsUrl | string | `"/catalog/api.html"` | URL of FastAPI Swagger UI |
