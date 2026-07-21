@@ -35,6 +35,8 @@ app:
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
 
 dask:
+  # -- Dask gateway address
+  gateway_address: http://traefik-dask-gateway.dask-gateway.svc.cluster.local
   # -- Dask gateway auth type
   gateway_auth_type: jupyterhub
 
