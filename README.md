@@ -45,10 +45,6 @@ A simple mock for LTA station.
 
 A simple mock for PRIP station.
 
-## [mockup-processor-dpr](charts/mockup-processor-dpr/README.md)
-
-A simple mock for DPR processor.
-
 ## [stac-browser](charts/stac-browser/README.md)
 
 A simple chart for the STAC browser.

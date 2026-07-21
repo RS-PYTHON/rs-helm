@@ -1,6 +1,6 @@
 # rs-dpr-service
 
-![Version: 0.1.0-a11](https://img.shields.io/badge/Version-0.1.0--a11-informational?style=flat-square) ![AppVersion: v1.0a11](https://img.shields.io/badge/AppVersion-v1.0a11-informational?style=flat-square)
+![Version: 0.1.0-a12](https://img.shields.io/badge/Version-0.1.0--a12-informational?style=flat-square) ![AppVersion: v1.0a12](https://img.shields.io/badge/AppVersion-v1.0a12-informational?style=flat-square)
 
 RS DPR SERVICE
 
@@ -31,7 +31,7 @@ RS DPR SERVICE
 | image.name | string | `"rs-dpr-service"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"develop"` | Image version, can be a tag or a digest |
+| image.version | string | `"1.0a12"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
@@ -65,7 +65,7 @@ RS DPR SERVICE
 | probe.startup.periodSeconds | int | `2` | periodSeconds for the liveness probe |
 | probe.startup.port | int | `8000` | Port for the liveness probe |
 | probe.startup.timeoutSeconds | int | `1` | timeoutSeconds for the liveness probe |
-| processors.enabled | list | `["mockup","conv_safe_zarr","s1_l0","s3_l0","s1_ard","s3_l1olci","s3_l2olci"]` | List of DPR processors exposed/enabled by rs-dpr-service. |
+| processors.enabled | list | `["conv_safe_zarr","s1_l0","s3_l0","s1_ard","s3_l1olci","s3_l2olci"]` | List of DPR processors exposed/enabled by rs-dpr-service. |
 | replicaCount | int | `1` | Number of replicas for the deployment |
 | resources.limit.cpu | string | `"500m"` | Pod CPU limit |
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
