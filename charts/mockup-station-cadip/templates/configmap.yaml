@@ -10193,19 +10193,6 @@ data:
                 "EvictionDate": "2026-06-30T13:24:40.053Z",
                 "Size": "314571600",
                 "Retransfer": false
-            },
-            {
-                "Id": "03000000-0000-4000-8200-200000000050",
-                "Name": "DCS_03_S3A_20260630132216053997_ch2_DSDB_00050.raw",
-                "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}S3A_20260630132216053997/DCS_03_S3A_20260630132216053997_ch2_DSDB_00050.raw",
-                "SessionId": "S3A_20260630132216053997",
-                "Channel": 2,
-                "BlockNumber": 50,
-                "FinalBlock": true,
-                "PublicationDate": "2026-06-30T13:24:43.053Z",
-                "EvictionDate": "2026-06-30T13:24:43.053Z",
-                "Size": "314571600",
-                "Retransfer": false
             }
         ]
     }
