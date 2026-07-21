@@ -29,6 +29,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 - [RSPY-910](https://github.com/RS-PYTHON/rs-helm/pull/263) : Added ContentDate operations
 
+### Removed
+
+- Removed deprecated chart mockup-processor-dpr
+
 ## [1.0a11] - 2026-06-18
 
 ### Added
