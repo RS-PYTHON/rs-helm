@@ -7253,6 +7253,76 @@ data:
                         "Value": "2025-10-05T00:00:00.000Z"
                     }
                 ]
+            },
+            {
+                "Id": "5aea0187-997301ce-124ec1cf-e73faaf0-533ffc06-0e8037e6-23214f2d-5d958c47",
+                "Name": "s1a-aux-cal.zarr.zip",
+                "ContentType": "application/octet-stream",
+                "ContentLength": "1984208",
+                "OriginDate": "2000-01-01T18:00:00.000Z",
+                "PublicationDate": "2026-07-24T12:00:00.000Z",
+                "EvictionDate": "2026-07-24T12:00:00.000Z",
+                "Checksum": [
+                    {
+                        "Algorithm": "MD5",
+                        "Value": "6731b80dfcb986cc372a1a8b2d0f36d3",
+                        "ChecksumDate": "2026-07-24T12:00:00.000Z"
+                    }
+                ],
+                "ContentDate": {
+                    "Start": "2000-01-01T18:00:00.000Z",
+                    "End": "2099-01-01T18:00:00.000Z"
+                },
+                "Attributes": [
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "platformShortName",
+                        "ValueType": "String",
+                        "Value": "SENTINEL-1"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "platformSerialIdentifier",
+                        "ValueType": "String",
+                        "Value": "A"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "productType",
+                        "ValueType": "String",
+                        "Value": "ADF_CALIB"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "beginningDateTime",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "2000-01-01T18:00:00.000Z"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "endingDateTime",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "2099-01-01T18:00:00.000Z"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "processingCenter",
+                        "ValueType": "String",
+                        "Value": "ECW"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "processorVersion",
+                        "ValueType": "String",
+                        "Value": "001"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "processingDate",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "2026-07-24T12:00:00.000Z"
+                    }
+                ]
             }
             {{- $s3AuxiliaryProducts := list
                 (dict "name" "S3A_OL_1_CAL_AX_20211027T000000_20991231T235959_20211029T120000___________________MPC_O_AL_025.SEN3.zip" "size" "1593405" "serial" "A" "productType" "OL_1_CAL_AX" "start" "2021-10-27T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2021-10-29T12:00:00.000Z" "processingCenter" "MPC" "processorVersion" "025" "processingDate" "2021-10-29T00:00:00.000Z")
