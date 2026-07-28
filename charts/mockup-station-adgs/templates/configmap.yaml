@@ -7257,6 +7257,7 @@ data:
             {
                 "Id": "5aea0187-997301ce-124ec1cf-e73faaf0-533ffc06-0e8037e6-23214f2d-5d958c47",
                 "Name": "s1a-aux-cal.zarr.zip",
+                "S3_path": "s3://{{ $.Values.app.bucketName }}/{{ $.Values.app.bucketPath }}{{ $product.name }}",
                 "ContentType": "application/octet-stream",
                 "ContentLength": "1984208",
                 "OriginDate": "2000-01-01T18:00:00.000Z",
