@@ -76,6 +76,8 @@ spec:
           value: {{ .Values.app.presignedUrlExpirationTime | quote }}
         - name: RSPY_DATA_LIFECYCLE_PERIOD
           value: {{ .Values.app.dataLifecyclePeriod | quote }}
+        - name: RSPY_CATALOG_DELETE_MAX_RETRIES
+          value: {{ .Values.app.catalogDeleteMaxRetries | quote }}
         - name: RSPY_S3_PUBLISH_CHECK_MAX_WORKERS
           value: {{ .Values.app.publishCheckMaxWorkers | quote }}
         - name: APP_HOST

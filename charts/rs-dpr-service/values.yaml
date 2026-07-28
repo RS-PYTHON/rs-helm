@@ -127,7 +127,7 @@ image:
   # -- Image name
   name: rs-dpr-service
   # -- Image version, can be a tag or a digest
-  version: "develop"
+  version: "1.0a12"
   # -- Image pull policy
   PullPolicy: IfNotPresent
 
@@ -171,10 +171,10 @@ otel:
 processors:
   # -- List of DPR processors exposed/enabled by rs-dpr-service.
   enabled:
-    - mockup
     - conv_safe_zarr
     - s1_l0
     - s3_l0
     - s1_ard
     - s3_l1olci
     - s3_l2olci
+    # - mockup

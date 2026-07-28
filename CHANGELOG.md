@@ -13,6 +13,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [1.0a12] - 2026-07-16
+
+### Added
+
+- [RSPY-1100](https://github.com/RS-PYTHON/rs-helm/pull/260) : Tasktable for mockup processor
+- [RSPY-910](https://github.com/RS-PYTHON/rs-helm/pull/259) : Configure the available processors in DPR service helm chart
+- [RSPY-910](https://github.com/RS-PYTHON/rs-helm/pull/262) : Updated dataset
+
+### Changed
+
+- Update container image version
+
+### Fixed
+
+- [RSPY-910](https://github.com/RS-PYTHON/rs-helm/pull/263) : Added ContentDate operations
+
+### Removed
+
+- Removed deprecated chart mockup-processor-dpr
+
 ## [1.0a11] - 2026-06-18
 
 ### Added

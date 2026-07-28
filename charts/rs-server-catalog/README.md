@@ -16,6 +16,7 @@ RS SERVER CATALOG
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Pod affinity |
 | app.catalogBucket | string | `"rs-cluster-catalog"` | Object Storage bucket for the catalog |
+| app.catalogDeleteMaxRetries | int | `0` | Number of complete S3 cleanup retries before catalog metadata deletion. Default: 0 |
 | app.confDir | string | `"/app/conf"` | Config directory for the application |
 | app.dataLifecyclePeriod | int | `86400` | Period in seconds between two data lifecycle cleaning tasks. If <0, the task is deactivated. Default: 24 hours |
 | app.docsUrl | string | `"/catalog/api.html"` | URL of FastAPI Swagger UI |
@@ -44,7 +45,7 @@ RS SERVER CATALOG
 | image.name | string | `"rs-server-catalog"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"develop"` | Image version, can be a tag or a digest |
+| image.version | string | `"1.0a12"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `true` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
