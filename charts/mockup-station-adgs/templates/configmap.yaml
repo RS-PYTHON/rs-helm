@@ -7257,7 +7257,7 @@ data:
             {
                 "Id": "05459797-242634d1-52d0b07a-92697859-fe93754d-abec5ef7-a638fbf8-ff3c615b",
                 "Name": "S1A_OPER_MPL_ORBRES_20250611T021933_20250621T021933_0001.EOF.zip",
-                "S3_path": "s3://{{ $.Values.app.bucketName }}/{{ $.Values.app.bucketPath }}S3auxiliarydata/S1A_OPER_MPL_ORBRES_20250611T021933_20250621T021933_0001.EOF.zip",
+                "S3_path": "s3://{{ $.Values.app.bucketName }}/{{ $.Values.app.bucketPath }}S1A_OPER_MPL_ORBRES_20250611T021933_20250621T021933_0001.EOF.zip",
                 "ContentType": "application/octet-stream",
                 "ContentLength": "1759619",
                 "OriginDate": "2025-06-07T02:19:21.000Z",
@@ -7266,7 +7266,7 @@ data:
                 "Checksum": [
                     {
                         "Algorithm": "MD5",
-                        "Value": "6731b80dfcb986cc372a1a8b2d0f36d3",
+                        "Value": "d9cac77d982a465effb9e109e750f336",
                         "ChecksumDate": "2026-06-27T00:00:00.000Z"
                     }
                 ],
