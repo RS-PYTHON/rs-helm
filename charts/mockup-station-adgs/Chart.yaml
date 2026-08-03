@@ -13,10 +13,10 @@
 # limitations under the License.
 
 apiVersion: v1
-appVersion: "{{APP_VERSION}}"
+appVersion: "0.0.0"
 description: MOCKUP STATION ADGS
 name: mockup-station-adgs
-version: "{{CHART_VERSION}}"
+version: "0.0.0"
 icon: https://raw.githubusercontent.com/RS-PYTHON/RS-PYTHON.github.io/refs/heads/main/assets/logo/logo.jpg
 maintainers:
   - name: RS-PYTHON
