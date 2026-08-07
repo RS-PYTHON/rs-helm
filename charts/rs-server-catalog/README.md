@@ -43,7 +43,7 @@ RS SERVER CATALOG
 | cors.origins | string | `"https://stac-browser-catalog.subdomain.example.com,http://localhost:8080"` | A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser |
 | gatewayapi.enabled | bool | `false` | Enabled/Disable Gateway API |
 | gatewayapi.host | string | `"subdomain.example.com"` | HTTPRoute host name |
-| gatewayapi.parentRefs | list | `[]` | HTTPRoute parentRefs, can either be a ListenerSet or a Gateway Example : parentRefs: - group: gateway.networking.k8s.io   kind: ListenerSet   name: mylistenerset   namespace: envoy-gateway |
+| gatewayapi.parentRefs | list | `[]` | HTTPRoute parentRefs, can either be a ListenerSet or a Gateway Example : parentRefs: - group: gateway.networking.k8s.io   kind: ListenerSet   name: mylistenerset   namespace: processing |
 | gatewayapi.path | list | `[]` | HTTPRoute path for the application Example : path:   - /catalog   - /auth |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-catalog"` | Image name |

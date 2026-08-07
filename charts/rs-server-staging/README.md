@@ -46,7 +46,7 @@ RS SERVER STAGING
 | dask.jupyterhub_api_token | string | `"JUPYTER_API_TOKEN_HERE"` | Jupyter API Token when dask.jupyterhub=jupyterhub |
 | gatewayapi.enabled | bool | `false` | Enabled/Disable Gateway API |
 | gatewayapi.host | string | `"subdomain.example.com"` | HTTPRoute host name |
-| gatewayapi.parentRefs | list | `[]` | HTTPRoute parentRefs, can either be a ListenerSet or a Gateway Example : parentRefs: - group: gateway.networking.k8s.io   kind: ListenerSet   name: mylistenerset   namespace: envoy-gateway |
+| gatewayapi.parentRefs | list | `[]` | HTTPRoute parentRefs, can either be a ListenerSet or a Gateway Example : parentRefs: - group: gateway.networking.k8s.io   kind: ListenerSet   name: mylistenerset   namespace: processing |
 | gatewayapi.path | list | `[]` | HTTPRoute path for the application Example : path:   - /processes   - /jobs |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-staging"` | Image name |
