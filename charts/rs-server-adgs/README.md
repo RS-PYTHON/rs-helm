@@ -30,12 +30,16 @@ RS SERVER ADGS
 | auth.secret.oidc_endpoint | string | `""` | OIDC End Point |
 | auth.secret.oidc_realm | string | `""` | OIDC Realm |
 | cors.origins | string | `"https://stac-browser-auxip.subdomain.example.com,http://localhost:8080"` | A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser |
+| gatewayapi.enabled | bool | `false` | Enabled/Disable Gateway API |
+| gatewayapi.host | string | `"subdomain.example.com"` | HTTPRoute host name |
+| gatewayapi.parentRefs | list | `[]` | HTTPRoute parentRefs, can either be a ListenerSet or a Gateway Example : parentRefs: - group: gateway.networking.k8s.io   kind: ListenerSet   name: mylistenerset   namespace: envoy-gateway |
+| gatewayapi.path | list | `[]` | HTTPRoute path for the application Example : path:   - /adgs   - /auxip |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-adgs"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
 | image.version | string | `"1.0a12"` | Image version, can be a tag or a digest |
-| ingress.enabled | bool | `true` | Enabled/Disable ingress |
+| ingress.enabled | bool | `false` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |

@@ -41,12 +41,16 @@ RS SERVER CATALOG
 | cors.headers | string | `"*"` | If CORS credentials are true and you're using an Authorization header, set this to Content-Type,Authorization. Alternatively, you can allow all headers by setting this to *. |
 | cors.methods | string | `"GET,POST,OPTIONS"` | A list of HTTP methods that should be allowed for cross-origin requests. Defaults to "GET,POST,OPTIONS" |
 | cors.origins | string | `"https://stac-browser-catalog.subdomain.example.com,http://localhost:8080"` | A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser |
+| gatewayapi.enabled | bool | `false` | Enabled/Disable Gateway API |
+| gatewayapi.host | string | `"subdomain.example.com"` | HTTPRoute host name |
+| gatewayapi.parentRefs | list | `[]` | HTTPRoute parentRefs, can either be a ListenerSet or a Gateway Example : parentRefs: - group: gateway.networking.k8s.io   kind: ListenerSet   name: mylistenerset   namespace: envoy-gateway |
+| gatewayapi.path | list | `[]` | HTTPRoute path for the application Example : path:   - /catalog   - /auth |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-catalog"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
 | image.version | string | `"1.0a12"` | Image version, can be a tag or a digest |
-| ingress.enabled | bool | `true` | Enabled/Disable ingress |
+| ingress.enabled | bool | `false` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |

@@ -20,12 +20,16 @@ RS SERVER FRONTEND
 | app.port | int | `8000` | Port for the application |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service (internal) |
+| gatewayapi.enabled | bool | `false` | Enabled/Disable Gateway API |
+| gatewayapi.host | string | `"subdomain.example.com"` | HTTPRoute host name |
+| gatewayapi.parentRefs | list | `[]` | HTTPRoute parentRefs, can either be a ListenerSet or a Gateway Example : parentRefs: - group: gateway.networking.k8s.io   kind: ListenerSet   name: mylistenerset   namespace: envoy-gateway |
+| gatewayapi.path | list | `[]` | HTTPRoute path for the application Example : path:   - /docs |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-frontend"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
 | image.version | string | `"1.0a12"` | Image version, can be a tag or a digest |
-| ingress.enabled | bool | `true` | Enabled/Disable ingress |
+| ingress.enabled | bool | `false` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |
