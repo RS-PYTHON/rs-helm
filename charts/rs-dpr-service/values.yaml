@@ -154,7 +154,7 @@ gatewayapi:
   # parentRefs:
   # - group: gateway.networking.k8s.io
   #   kind: ListenerSet
-  #   name: mygateway
+  #   name: mylistenerset
   #   namespace: envoy-gateway
   parentRefs: []
   # -- HTTPRoute host name
