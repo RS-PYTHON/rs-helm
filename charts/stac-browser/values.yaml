@@ -93,7 +93,7 @@ image:
 
 ingress:
   # -- Enabled/Disable ingress
-  enabled: true
+  enabled: false
   issuer:
     # -- Ingress Issuer type
     type: cluster-issuer
@@ -104,6 +104,25 @@ ingress:
   # -- Ingress path for the application
   # Note that because of bug https://github.com/radiantearth/stac-browser/issues/479 the path is forced to /
   path: /
+
+gatewayapi:
+  # -- Enabled/Disable Gateway API
+  enabled: false
+  # -- HTTPRoute parentRefs, can either be a ListenerSet or a Gateway
+  # Example :
+  # parentRefs:
+  # - group: gateway.networking.k8s.io
+  #   kind: ListenerSet
+  #   name: stac-browser
+  #   namespace: gateway-system
+  parentRefs: []
+  # -- HTTPRoute host name
+  host: subdomain.example.com
+  # -- HTTPRoute path for the application
+  # Example :
+  # path:
+  #   - /
+  path: []
 
 resources:
   request:
