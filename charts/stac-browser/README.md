@@ -25,12 +25,16 @@ STAC BROWSER
 | app.oidc_endpoint | string | `""` | OIDC End Point |
 | app.oidc_realm | string | `""` | OIDC Realm |
 | app.port | int | `8080` | Port for the application |
+| gatewayapi.enabled | bool | `false` | Enabled/Disable Gateway API |
+| gatewayapi.host | string | `"subdomain.example.com"` | HTTPRoute host name |
+| gatewayapi.parentRefs | list | `[]` | HTTPRoute parentRefs, can either be a ListenerSet or a Gateway Example : parentRefs: - group: gateway.networking.k8s.io   kind: ListenerSet   name: stac-browser   namespace: gateway-system |
+| gatewayapi.path | list | `[]` | HTTPRoute path for the application Example : path:   - / |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"stac-browser"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
 | image.version | string | `"sha256:b9c55d13d3bb52e0f2ebdfd532c68cf03d2bde0eac4170f26d29e082b5fcea5d"` | Image version, can be a tag or a digest |
-| ingress.enabled | bool | `true` | Enabled/Disable ingress |
+| ingress.enabled | bool | `false` | Enabled/Disable ingress |
 | ingress.host | string | `"stac-browser.subdomain.example.com"` | Ingress host name. |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
 | ingress.issuer.type | string | `"cluster-issuer"` | Ingress Issuer type |

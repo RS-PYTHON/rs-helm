@@ -83,7 +83,7 @@ image:
 
 ingress:
   # -- Enabled/Disable ingress
-  enabled: true
+  enabled: false
   issuer:
     # -- Ingress Issuer type
     type: cluster-issuer
@@ -93,6 +93,25 @@ ingress:
   host: subdomain.example.com
   # -- Ingress path for the application. Must be the same value as app.docsUrl.
   path: /docs
+
+gatewayapi:
+  # -- Enabled/Disable Gateway API
+  enabled: false
+  # -- HTTPRoute parentRefs, can either be a ListenerSet or a Gateway
+  # Example :
+  # parentRefs:
+  # - group: gateway.networking.k8s.io
+  #   kind: ListenerSet
+  #   name: mylistenerset
+  #   namespace: processing
+  parentRefs: []
+  # -- HTTPRoute host name
+  host: subdomain.example.com
+  # -- HTTPRoute path for the application
+  # Example :
+  # path:
+  #   - /docs
+  path: []
 
 resources:
   request:
