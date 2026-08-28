@@ -87,7 +87,7 @@ image:
   # -- Image name
   name: stac-browser
   # -- Image version, can be a tag or a digest
-  version: sha256:b9c55d13d3bb52e0f2ebdfd532c68cf03d2bde0eac4170f26d29e082b5fcea5d
+  version: v5.0.0
   # -- Image pull policy
   PullPolicy: IfNotPresent
 
