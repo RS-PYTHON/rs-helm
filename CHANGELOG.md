@@ -13,6 +13,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [1.0a13] - 2026-08-28
+
+### Added
+
+- [RSPY-1111](https://github.com/RS-PYTHON/rs-helm/pull/266) : Improve s3 operations
+- [RSPY-1116](https://github.com/RS-PYTHON/rs-helm/pull/271) : Changed charts for contains operator with multiple values
+- [RSPY-1017](https://github.com/RS-PYTHON/rs-helm/pull/270) : Update to S1L0 processor 1.5.0
+- [RSPY-1059](https://github.com/RS-PYTHON/rs-helm/pull/273) : Update to stac-browser 5.0.0
+- [PR#277](https://github.com/RS-PYTHON/rs-helm/pull/277) : Update to Helm 3.21.4
+- [PR#279](https://github.com/RS-PYTHON/rs-helm/pull/279) : Update to seaweedfs 4.43
+- [RSPY-1124](https://github.com/RS-PYTHON/rs-helm/pull/276) : Map search to ContentDate instead of PublicationDate
+- [RSPY-856](https://github.com/RS-PYTHON/rs-helm/pull/274) : Use gateway api
+
+### Changed
+
+- Bump docker image version
+
+### Deprecated
+
+- nginx ingress
+
 ## [1.0a12] - 2026-07-16
 
 ### Added
