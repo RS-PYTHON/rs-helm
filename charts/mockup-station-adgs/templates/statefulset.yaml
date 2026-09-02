@@ -35,6 +35,7 @@ spec:
       labels:
         {{- include "mychart.selectorLabels" . | nindent 8 }}
     spec:
+      automountServiceAccountToken: false
       terminationGracePeriodSeconds: 30
       {{- with .Values.initContainers }}
       initContainers:
