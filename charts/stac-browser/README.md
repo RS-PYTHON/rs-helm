@@ -1,6 +1,6 @@
 # stac-browser
 
-![Version: 0.1.0-a12](https://img.shields.io/badge/Version-0.1.0--a12-informational?style=flat-square) ![AppVersion: v1.0a12](https://img.shields.io/badge/AppVersion-v1.0a12-informational?style=flat-square)
+![Version: 0.1.0-a13](https://img.shields.io/badge/Version-0.1.0--a13-informational?style=flat-square) ![AppVersion: v1.0a13](https://img.shields.io/badge/AppVersion-v1.0a13-informational?style=flat-square)
 
 STAC BROWSER
 
@@ -25,6 +25,9 @@ STAC BROWSER
 | app.oidc_endpoint | string | `""` | OIDC End Point |
 | app.oidc_realm | string | `""` | OIDC Realm |
 | app.port | int | `8080` | Port for the application |
+| env | object | `{}` | Environment variables for the container |
+| envFromSecrets | list | `[]` | Environment variables from secrets to inject into the container |
+| envValueFrom | object | `{}` | Environment variables for the container from configMap |
 | gatewayapi.enabled | bool | `false` | Enabled/Disable Gateway API |
 | gatewayapi.host | string | `"subdomain.example.com"` | HTTPRoute host name |
 | gatewayapi.parentRefs | list | `[]` | HTTPRoute parentRefs, can either be a ListenerSet or a Gateway Example : parentRefs: - group: gateway.networking.k8s.io   kind: ListenerSet   name: stac-browser   namespace: gateway-system |
@@ -51,16 +54,17 @@ STAC BROWSER
 | probe.readiness.periodSeconds | int | `30` | periodSeconds for the readiness probe |
 | probe.readiness.port | int | `8080` | Port for the readiness probe |
 | probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
-| probe.startup:.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
-| probe.startup:.path | string | `"/"` | Path for the liveness probe |
-| probe.startup:.periodSeconds | int | `2` | periodSeconds for the liveness probe |
-| probe.startup:.port | int | `8080` | Port for the liveness probe |
-| probe.startup:.timeoutSeconds | int | `1` | timeoutSeconds for the liveness probe |
+| probe.startup.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
+| probe.startup.path | string | `"/"` | Path for the liveness probe |
+| probe.startup.periodSeconds | int | `2` | periodSeconds for the liveness probe |
+| probe.startup.port | int | `8080` | Port for the liveness probe |
+| probe.startup.timeoutSeconds | int | `1` | timeoutSeconds for the liveness probe |
 | replicaCount | int | `1` | Number of replicas for the deployment |
 | resources.limit.cpu | string | `"500m"` | Pod CPU limit |
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
+| securityContext | object | `{"privileged":false}` | Security context for the container |
 | service.port | int | `8080` | Port for the service |
 | tolerations | list | `[]` | Pod toleration |
 

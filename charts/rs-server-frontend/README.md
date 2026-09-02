@@ -1,6 +1,6 @@
 # rs-server-frontend
 
-![Version: 0.1.0-a12](https://img.shields.io/badge/Version-0.1.0--a12-informational?style=flat-square) ![AppVersion: v1.0a12](https://img.shields.io/badge/AppVersion-v1.0a12-informational?style=flat-square)
+![Version: 0.1.0-a13](https://img.shields.io/badge/Version-0.1.0--a13-informational?style=flat-square) ![AppVersion: v1.0a13](https://img.shields.io/badge/AppVersion-v1.0a13-informational?style=flat-square)
 
 RS SERVER FRONTEND
 
@@ -20,6 +20,9 @@ RS SERVER FRONTEND
 | app.port | int | `8000` | Port for the application |
 | app.uacHomeUrl | string | `"https://apikeymanager.subdomain.example.com/docs"` | URL of the API Key Manager home page (public) |
 | app.uacUrl | string | `"http://apikeymanager.processing.svc.cluster.local:8000/auth/check_key"` | URL of the API Key Manager service (internal) |
+| env | object | `{"FORWARDED_ALLOW_IPS":"10.2.0.0/16"}` | Environment variables for the container |
+| envFromSecrets | list | `[]` | Environment variables from secrets to inject into the container |
+| envValueFrom | object | `{}` | Environment variables for the container from configMap |
 | gatewayapi.enabled | bool | `false` | Enabled/Disable Gateway API |
 | gatewayapi.host | string | `"subdomain.example.com"` | HTTPRoute host name |
 | gatewayapi.parentRefs | list | `[]` | HTTPRoute parentRefs, can either be a ListenerSet or a Gateway Example : parentRefs: - group: gateway.networking.k8s.io   kind: ListenerSet   name: mylistenerset   namespace: processing |
@@ -46,16 +49,17 @@ RS SERVER FRONTEND
 | probe.readiness.periodSeconds | int | `30` | periodSeconds for the readiness probe |
 | probe.readiness.port | int | `8000` | Port for the readiness probe |
 | probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
-| probe.startup:.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
-| probe.startup:.path | string | `"/health"` | Path for the liveness probe |
-| probe.startup:.periodSeconds | int | `2` | periodSeconds for the liveness probe |
-| probe.startup:.port | int | `8000` | Port for the liveness probe |
-| probe.startup:.timeoutSeconds | int | `1` | timeoutSeconds for the liveness probe |
+| probe.startup.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
+| probe.startup.path | string | `"/health"` | Path for the liveness probe |
+| probe.startup.periodSeconds | int | `2` | periodSeconds for the liveness probe |
+| probe.startup.port | int | `8000` | Port for the liveness probe |
+| probe.startup.timeoutSeconds | int | `1` | timeoutSeconds for the liveness probe |
 | replicaCount | int | `1` | Number of replicas for the deployment |
 | resources.limit.cpu | string | `"500m"` | Pod CPU limit |
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
+| securityContext | object | `{"privileged":false}` | Security context for the container |
 | service.port | int | `8080` | Port for the service |
 | stac_browser.urls | string | `"https://stac-browser-auxip.subdomain.example.com;https://stac-browser-cadip.subdomain.example.com;https://stac-browser-prip.subdomain.example.com;https://stac-browser-catalog.subdomain.example.com"` | The list of all STAC Browser URLs |
 | tolerations | list | `[]` | Pod toleration |

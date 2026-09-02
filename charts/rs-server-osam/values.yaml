@@ -102,6 +102,26 @@ tolerations: []
 # -- Pod initContainers
 initContainers: []
 
+# -- Security context for the container
+securityContext:
+  privileged: false
+
+# -- Environment variables for the container
+env:
+  FORWARDED_ALLOW_IPS: 10.2.0.0/16
+
+# -- Environment variables for the container from configMap
+envValueFrom: {}
+# ENV_NAME:
+#   configMapKeyRef:
+#     name: configmap-name
+#     key: value_key
+
+# -- Environment variables from secrets to inject into the container
+envFromSecrets:
+  - name: "{{ .Release.Name }}-auth"
+  - name: "{{ .Release.Name }}-provider-auth"
+  - name: "{{ .Release.Name }}-obs"
 
 obs:
   # -- URL of the object storage service endpoint

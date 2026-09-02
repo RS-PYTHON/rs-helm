@@ -14,28 +14,29 @@
 
 {{- if .Values.gatewayapi }}
 {{- if .Values.gatewayapi.enabled }}
-apiVersion: gateway.networking.k8s.io/v1
-kind: HTTPRoute
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
 metadata:
   name: {{ .Release.Name }}
   namespace: {{ .Values.namespace }}
 spec:
-  hostnames:
-    - {{ .Values.gatewayapi.host }}
-  {{- with .Values.gatewayapi.parentRefs }}
-  parentRefs:
-  {{- toYaml . | nindent 2 }}
-  {{- end }}
-  rules:
-  - backendRefs:
-    - name: {{ $.Release.Name }}
-      port: {{ $.Values.service.port }}
-      kind: Service
-    matches:
-    {{- range .Values.gatewayapi.path }}
-    - path:
-        type: PathPrefix
-        value: {{ . | quote }}
-    {{- end }}
+  targetRefs:
+  - group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: {{ .Release.Name }}
+  cors:
+    allowOrigins:
+    - "*"
+    allowCredentials: true
+    allowMethods:
+    - GET
+    - POST
+    - PUT
+    - DELETE
+    - PATCH
+    allowHeaders:
+    - x-api-key
+    - authorization
+    - content-type
 {{- end }}
 {{- end }}
