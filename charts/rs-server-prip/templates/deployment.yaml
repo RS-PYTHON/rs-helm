@@ -107,8 +107,6 @@ spec:
         - secretRef:
             name: prip-{{ $k }}
         {{- end }}
-        - secretRef:
-            name: {{ .Release.Name }}-auth
         {{- if .Values.envFromSecrets }}
         {{- range .Values.envFromSecrets }}
         - secretRef:
