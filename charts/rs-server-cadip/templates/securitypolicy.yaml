@@ -24,7 +24,6 @@ spec:
   - group: gateway.networking.k8s.io
     kind: HTTPRoute
     name: {{ .Release.Name }}
-    namespace: {{ .Values.namespace }}
   cors:
     allowOrigins:
     - "*"
