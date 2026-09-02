@@ -134,14 +134,14 @@ securityContext:
 
 # -- Environment variables for the pod
 env: {}
-  # ENV_NAME: "ENV_VALUE"
+# ENV_NAME: "ENV_VALUE"
 
 # -- Environment variables for the pod from configMap
 envValueFrom: {}
-  # ENV_NAME:
-  #   configMapKeyRef:
-  #     name: configmap-name
-  #     key: value_key
+# ENV_NAME:
+#   configMapKeyRef:
+#     name: configmap-name
+#     key: value_key
 
 # -- Environment variables for the pod from secrets
 envFromSecrets:

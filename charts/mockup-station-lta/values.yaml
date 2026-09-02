@@ -119,14 +119,14 @@ securityContext:
 
 # -- Environment variables for the container
 env: {}
-  # ENV_NAME: "ENV_VALUE"
+# ENV_NAME: "ENV_VALUE"
 
 # -- Environment variables for the container from configMap
 envValueFrom: {}
-  # ENV_NAME:
-  #   configMapKeyRef:
-  #     name: configmap-name
-  #     key: value_key
+# ENV_NAME:
+#   configMapKeyRef:
+#     name: configmap-name
+#     key: value_key
 
 # -- Environment variables from secrets to inject into the container
 envFromSecrets: []
