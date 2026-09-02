@@ -1,6 +1,6 @@
 # rs-server-osam
 
-![Version: 0.1.0-a12](https://img.shields.io/badge/Version-0.1.0--a12-informational?style=flat-square) ![AppVersion: v1.0a12](https://img.shields.io/badge/AppVersion-v1.0a12-informational?style=flat-square)
+![Version: 0.1.0-a13](https://img.shields.io/badge/Version-0.1.0--a13-informational?style=flat-square) ![AppVersion: v1.0a13](https://img.shields.io/badge/AppVersion-v1.0a13-informational?style=flat-square)
 
 RS Object Storage Access Manager
 
@@ -33,6 +33,9 @@ RS Object Storage Access Manager
 | auth.secret.oidc_client_secret | string | `""` | OIDC Secret used to sync user info from Keycloak |
 | auth.secret.oidc_endpoint | string | `""` | OIDC End Point |
 | auth.secret.oidc_realm | string | `""` | OIDC Realm |
+| env | object | `{"FORWARDED_ALLOW_IPS":"10.2.0.0/16"}` | Environment variables for the container |
+| envFromSecrets | list | `[{"name":"{{ .Release.Name }}-auth"},{"name":"{{ .Release.Name }}-provider-auth"},{"name":"{{ .Release.Name }}-obs"}]` | Environment variables from secrets to inject into the container |
+| envValueFrom | object | `{}` | Environment variables for the container from configMap |
 | gatewayapi.enabled | bool | `false` | Enabled/Disable Gateway API |
 | gatewayapi.host | string | `"subdomain.example.com"` | HTTPRoute host name |
 | gatewayapi.parentRefs | list | `[]` | HTTPRoute parentRefs, can either be a ListenerSet or a Gateway Example : parentRefs: - group: gateway.networking.k8s.io   kind: ListenerSet   name: mylistenerset   namespace: processing |
@@ -80,6 +83,7 @@ RS Object Storage Access Manager
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
+| securityContext | object | `{"privileged":false}` | Security context for the container |
 | service.port | int | `8080` | Port for the service |
 | tempo.endpoint | string | `"http://alloy.monitoring.svc.cluster.local:4317"` | Grafana tempo endpoint. |
 | tolerations | list | `[]` | Pod toleration |

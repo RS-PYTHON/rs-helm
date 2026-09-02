@@ -1,6 +1,6 @@
 # rs-server-catalog
 
-![Version: 0.1.0-a12](https://img.shields.io/badge/Version-0.1.0--a12-informational?style=flat-square) ![AppVersion: v1.0a12](https://img.shields.io/badge/AppVersion-v1.0a12-informational?style=flat-square)
+![Version: 0.1.0-a13](https://img.shields.io/badge/Version-0.1.0--a13-informational?style=flat-square) ![AppVersion: v1.0a13](https://img.shields.io/badge/AppVersion-v1.0a13-informational?style=flat-square)
 
 RS SERVER CATALOG
 
@@ -41,6 +41,9 @@ RS SERVER CATALOG
 | cors.headers | string | `"*"` | If CORS credentials are true and you're using an Authorization header, set this to Content-Type,Authorization. Alternatively, you can allow all headers by setting this to *. |
 | cors.methods | string | `"GET,POST,OPTIONS"` | A list of HTTP methods that should be allowed for cross-origin requests. Defaults to "GET,POST,OPTIONS" |
 | cors.origins | string | `"https://stac-browser-catalog.subdomain.example.com,http://localhost:8080"` | A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser |
+| env | object | `{"FORWARDED_ALLOW_IPS":"10.2.0.0/16"}` | Environment variables for the container |
+| envFromSecrets | list | `[{"name":"{{ .Release.Name }}-postgres"},{"name":"{{ .Release.Name }}-obs"},{"name":"{{ .Release.Name }}-auth"}]` | Environment variables from secrets to inject into the container |
+| envValueFrom | object | `{}` | Environment variables for the container from configMap |
 | gatewayapi.enabled | bool | `false` | Enabled/Disable Gateway API |
 | gatewayapi.host | string | `"subdomain.example.com"` | HTTPRoute host name |
 | gatewayapi.parentRefs | list | `[]` | HTTPRoute parentRefs, can either be a ListenerSet or a Gateway Example : parentRefs: - group: gateway.networking.k8s.io   kind: ListenerSet   name: mylistenerset   namespace: processing |
@@ -88,6 +91,7 @@ RS SERVER CATALOG
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
+| securityContext | object | `{"privileged":false}` | Security context for the container |
 | service.port | int | `8080` | Port for the service |
 | tempo.endpoint | string | `"http://alloy.monitoring.svc.cluster.local:4317"` | Grafana tempo endpoint. |
 | tolerations | list | `[]` | Pod toleration |

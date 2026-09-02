@@ -1,6 +1,6 @@
 # mockup-station-cadip
 
-![Version: 0.1.0-a12](https://img.shields.io/badge/Version-0.1.0--a12-informational?style=flat-square) ![AppVersion: v1.0a12](https://img.shields.io/badge/AppVersion-v1.0a12-informational?style=flat-square)
+![Version: 0.1.0-a13](https://img.shields.io/badge/Version-0.1.0--a13-informational?style=flat-square) ![AppVersion: v1.0a13](https://img.shields.io/badge/AppVersion-v1.0a13-informational?style=flat-square)
 
 MOCKUP STATION CADIP
 
@@ -26,6 +26,9 @@ MOCKUP STATION CADIP
 | app.sessionIDConfigFile | string | `"SPJ.json"` | sessionID configuration file for the application |
 | app.stationName | string | `"cadip"` | Name of the station for the application |
 | app.workDir | string | `"/app"` | Working directory for the application |
+| env | object | `{}` | Environment variables for the container |
+| envFromSecrets | list | `[{"name":"{{ .Release.Name }}-obs"}]` | Environment variables from secrets to inject into the container |
+| envValueFrom | object | `{}` | Environment variables for the container from configMap |
 | helmResourcePolicy | string | `"keep"` | Keep the ressources for PVC and ConfigMap. Default is to keep. |
 | image.PullPolicy | string | `"Always"` | Image pull policy |
 | image.name | string | `"rs-testmeans_cadip-station-mock"` | Image name |
@@ -58,6 +61,7 @@ MOCKUP STATION CADIP
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
+| securityContext | object | `{"privileged":false}` | Security context for the container |
 | service.port | int | `8080` | Port for the service |
 | tolerations | list | `[]` | Pod toleration |
 | volume.accessModes | string | `"ReadWriteOnce"` | AccessMode of the database volume |

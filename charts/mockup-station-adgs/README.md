@@ -1,6 +1,6 @@
 # mockup-station-adgs
 
-![Version: 0.1.0-a12](https://img.shields.io/badge/Version-0.1.0--a12-informational?style=flat-square) ![AppVersion: v1.0a12](https://img.shields.io/badge/AppVersion-v1.0a12-informational?style=flat-square)
+![Version: 0.1.0-a13](https://img.shields.io/badge/Version-0.1.0--a13-informational?style=flat-square) ![AppVersion: v1.0a13](https://img.shields.io/badge/AppVersion-v1.0a13-informational?style=flat-square)
 
 MOCKUP STATION ADGS
 
@@ -22,6 +22,9 @@ MOCKUP STATION ADGS
 | app.confDir | string | `"/opt/adgs/config"` | Config directory for the application |
 | app.port | int | `5000` | Port for the application |
 | app.workDir | string | `"/app"` | Working directory for the application |
+| env | object | `{}` | Environment variables for the pod |
+| envFromSecrets | list | `[{"name":"{{ .Release.Name }}-obs"}]` | Environment variables for the pod from secrets |
+| envValueFrom | object | `{}` | Environment variables for the pod from configMap |
 | helmResourcePolicy | string | `"keep"` | Keep the ressources for PVC and ConfigMap. Default is to keep. |
 | image.PullPolicy | string | `"Always"` | Image pull policy |
 | image.name | string | `"rs-testmeans_adgs-station-mock"` | Image name |
@@ -54,6 +57,7 @@ MOCKUP STATION ADGS
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
 | resources.request.cpu | string | `"100m"` | Pod CPU request |
 | resources.request.ram | string | `"256Mi"` | Pod memory request |
+| securityContext | object | `{"privileged":false}` | Security context for the pod |
 | service.port | int | `8080` | Port for the service |
 | tolerations | list | `[]` | Pod toleration |
 | volume.accessModes | string | `"ReadWriteOnce"` | AccessMode of the database volume |
