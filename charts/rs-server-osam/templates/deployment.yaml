@@ -83,10 +83,6 @@ spec:
           value: {{ .Values.tempo.endpoint }}
         {{- end }}
         {{- end }}
-        - name: S3_ENDPOINT
-          value: {{ .Values.obs.endpoint }}
-        - name: S3_REGION
-          value: {{ .Values.obs.region }}
         - name: BUCKET_CONFIG_FILE_PATH
           value: {{ .Values.app.confDir }}/{{ .Values.app.bucketConfig.bucketConfigFileName }}
         - name: DEFAULT_OSAM_FREQUENCY_SYNC

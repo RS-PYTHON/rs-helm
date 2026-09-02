@@ -124,10 +124,6 @@ spec:
           value: {{ .Values.postgres.port | quote }}
         - name: POSTGRES_DB
           value: {{ .Values.postgres.db }}
-        - name: S3_ENDPOINT
-          value: {{ .Values.obs.endpoint }}
-        - name: S3_REGION
-          value: {{ .Values.obs.region }}
         - name: CORS_ORIGINS
           value: {{ .Values.cors.origins | squote }}
         - name: CORS_METHODS
