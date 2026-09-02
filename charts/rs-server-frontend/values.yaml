@@ -35,7 +35,7 @@ app:
   uacHomeUrl: https://apikeymanager.subdomain.example.com/docs
 
 probe:
-  startup::
+  startup:
     # -- Path for the liveness probe
     path: /health
     # -- Port for the liveness probe
@@ -133,6 +133,25 @@ tolerations: []
 
 # -- Pod initContainers
 initContainers: []
+
+# -- Security context for the container
+securityContext:
+  privileged: false
+
+# -- Environment variables for the container
+env:
+  FORWARDED_ALLOW_IPS: 10.2.0.0/16
+  # ENV_NAME: "ENV_VALUE"
+
+# -- Environment variables for the container from configMap
+envValueFrom: {}
+  # ENV_NAME:
+  #   configMapKeyRef:
+  #     name: configmap-name
+  #     key: value_key
+
+# -- Environment variables from secrets to inject into the container
+envFromSecrets: []
 
 stac_browser:
   # -- The list of all STAC Browser URLs

@@ -127,3 +127,22 @@ tolerations: []
 
 # -- Pod initContainers
 initContainers: []
+
+# -- Security context for the pod
+securityContext:
+  privileged: false
+
+# -- Environment variables for the pod
+env: {}
+  # ENV_NAME: "ENV_VALUE"
+
+# -- Environment variables for the pod from configMap
+envValueFrom: {}
+  # ENV_NAME:
+  #   configMapKeyRef:
+  #     name: configmap-name
+  #     key: value_key
+
+# -- Environment variables for the pod from secrets
+envFromSecrets:
+  - name: "{{ .Release.Name }}-obs"

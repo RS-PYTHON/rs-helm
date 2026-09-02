@@ -17,10 +17,10 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-service-config
   namespace: {{ .Values.namespace }}
-  {{ if .Values.helmResourcePolicy }}
+  {{- if .Values.helmResourcePolicy }}
   annotations:
     helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}
-  {{ end }}
+  {{- end }}
 
 data:
   {{ .Values.app.authConfigFile }}: |-
@@ -45,10 +45,10 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-quality-config
   namespace: {{ .Values.namespace }}
-  {{ if .Values.helmResourcePolicy }}
+  {{- if .Values.helmResourcePolicy }}
   annotations:
     helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}
-  {{ end }}
+  {{- end }}
 
 data:
   {{ .Values.app.qualityConfigFile }}: |-
@@ -109,10 +109,10 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-sessionid-config
   namespace: {{ .Values.namespace }}
-  {{ if .Values.helmResourcePolicy }}
+  {{- if .Values.helmResourcePolicy }}
   annotations:
     helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}
-  {{ end }}
+  {{- end }}
 
 data:
   {{ .Values.app.sessionIDConfigFile }}: |-
@@ -380,10 +380,10 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-catalog-config
   namespace: {{ .Values.namespace }}
-  {{ if .Values.helmResourcePolicy }}
+  {{- if .Values.helmResourcePolicy }}
   annotations:
     helm.sh/resource-policy: {{ .Values.helmResourcePolicy }}
-  {{ end }}
+  {{- end }}
 
 data:
   {{ .Values.app.catalogConfigFile }}: |-

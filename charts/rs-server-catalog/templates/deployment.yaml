@@ -56,20 +56,26 @@ spec:
         - name: web
           protocol: TCP
           containerPort: {{ .Values.app.port }}
-        envFrom:
-        - secretRef:
-            name: {{ .Release.Name }}-obs
-        - secretRef:
-            name: {{ .Release.Name }}-auth
-        - secretRef:
-            name: {{ .Release.Name }}-postgres
         env:
+        {{- if or .Values.env .Values.envValueFrom }}
+        {{- range $key, $value := .Values.env }}
+        - name: "{{ $key }}"
+          value: "{{ $value }}"
+        {{- end }}
+        {{- range $key, $value := .Values.envValueFrom }}
+        - name: {{ $key | quote }}
+          valueFrom:
+            {{- tpl (toYaml $value) $ | nindent 12 }}
+        {{- end }}
+        {{- end }}
         - name: RSPY_UAC_CHECK_URL
           value: {{ .Values.app.uacURL }}
         - name: RSPY_OAUTH2_ATTRIBUTES
           value: {{ .Values.app.oauth2Attributes }}
         - name: RSPY_UAC_HOMEPAGE
           value: {{ .Values.app.uacHomeUrl }}
+        - name: RSPY_DOCS_URL
+          value: {{ .Values.app.docsUrl }}
         - name: RSPY_CATALOG_BUCKET
           value: {{ .Values.app.catalogBucket }}
         - name: RSPY_PRESIGNED_URL_EXPIRATION_TIME
@@ -132,20 +138,30 @@ spec:
           value: {{ .Values.cors.headers | squote }}
         - name: RSPY_HOST_OSAM
           value: {{ .Values.app.endpointOsam }}
-        {{ if .Values.tempo }}
-        {{ if .Values.tempo.endpoint }}
+        {{- if .Values.tempo }}
+        {{- if .Values.tempo.endpoint }}
         - name: TEMPO_ENDPOINT
           value: {{ .Values.tempo.endpoint }}
-        {{ end }}
-        {{ end }}
+        {{- end }}
+        {{- end }}
         - name: OTEL_PYTHON_REQUESTS_TRACE_HEADERS
           value: {{ .Values.otel.trace_headers | quote }}
         - name: OTEL_PYTHON_REQUESTS_TRACE_BODY
           value: {{ .Values.otel.trace_body | quote }}
+        {{- if .Values.envFromSecrets }}
+        envFrom:
+        {{- range .Values.envFromSecrets }}
+        - secretRef:
+            name: {{ tpl .name $ }}
+            optional: {{ .optional | default false }}
+        {{- end }}
+        {{- end }}
+        {{- with .Values.securityContext }}
         securityContext:
-          privileged: false
-        {{ if .Values.probe }}
-        {{ if .Values.probe.startup }}
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- if .Values.probe }}
+        {{- if .Values.probe.startup }}
         startupProbe:
           httpGet:
             path: {{ .Values.probe.startup.path }}
@@ -153,8 +169,8 @@ spec:
           initialDelaySeconds: {{ .Values.probe.startup.initialDelaySeconds }}
           periodSeconds: {{ .Values.probe.startup.periodSeconds }}
           timeoutSeconds: {{ .Values.probe.startup.timeoutSeconds }}
-        {{ end }}
-        {{ if .Values.probe.liveness }}
+        {{- end }}
+        {{- if .Values.probe.liveness }}
         livenessProbe:
           httpGet:
             path: {{ .Values.probe.liveness.path }}
@@ -162,8 +178,8 @@ spec:
           initialDelaySeconds: {{ .Values.probe.liveness.initialDelaySeconds }}
           periodSeconds: {{ .Values.probe.liveness.periodSeconds }}
           timeoutSeconds: {{ .Values.probe.liveness.timeoutSeconds }}
-        {{ end }}
-        {{ if .Values.probe.readiness }}
+        {{- end }}
+        {{- if .Values.probe.readiness }}
         readinessProbe:
           httpGet:
             path: {{ .Values.probe.readiness.path }}
@@ -171,14 +187,14 @@ spec:
           initialDelaySeconds: {{ .Values.probe.readiness.initialDelaySeconds }}
           periodSeconds: {{ .Values.probe.readiness.periodSeconds }}
           timeoutSeconds: {{ .Values.probe.readiness.timeoutSeconds }}
-        {{ end }}
-        {{ end }}
-      {{ if .Values.image }}
-      {{ if .Values.image.imagePullSecrets }}
+        {{- end }}
+        {{- end }}
+      {{- if .Values.image }}
+      {{- if .Values.image.imagePullSecrets }}
       imagePullSecrets:
       - name:  {{ .Values.image.imagePullSecrets }}
-      {{ end }}
-      {{ end }}
+      {{- end }}
+      {{- end }}
       restartPolicy: Always
       securityContext: {}
       {{- with .Values.affinity }}

@@ -159,6 +159,26 @@ tolerations: []
 # -- Pod initContainers
 initContainers: []
 
+# -- Security context for the container
+securityContext:
+  privileged: false
+
+# -- Environment variables for the container
+env:
+  FORWARDED_ALLOW_IPS: 10.2.0.0/16
+  # ENV_NAME: "ENV_VALUE"
+
+# -- Environment variables for the container from configMap
+envValueFrom: {}
+  # ENV_NAME:
+  #   configMapKeyRef:
+  #     name: configmap-name
+  #     key: value_key
+
+# -- Environment variables from secrets to inject into the container
+envFromSecrets:
+  - name: "{{ .Release.Name }}-auth"
+
 cors:
   # -- A list of origins that should be permitted to make cross-origin requests. Needed for STAC Browser
   origins: https://stac-browser-prip.subdomain.example.com,http://localhost:8080

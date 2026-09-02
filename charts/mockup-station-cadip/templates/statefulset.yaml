@@ -71,23 +71,35 @@ spec:
           protocol: TCP
           containerPort: {{ .Values.app.port }}
         env:
-        {{ if .Values.app }}
-        {{ if kindIs "bool" .Values.app.cadipSessionExpand }}
+        {{- if or .Values.env .Values.envValueFrom }}
+        {{- range $key, $value := .Values.env }}
+        - name: "{{ $key }}"
+          value: "{{ $value }}"
+        {{- end }}
+        {{- range $key, $value := .Values.envValueFrom }}
+        - name: {{ $key | quote }}
+          valueFrom:
+            {{- tpl (toYaml $value) $ | nindent 12 }}
+        {{- end }}
+        {{- end }}
+        {{- if and .Values.app (kindIs "bool" .Values.app.cadipSessionExpand) }}
         - name: CADIP_SESSION_EXPAND
-          value: "{{ .Values.app.cadipSessionExpand }}"
-        {{ end }}
-        {{ end }}
-        - name: S3_ENDPOINT
-          value: {{ .Values.obs.endpoint }}
-        - name: S3_REGION
-          value: {{ .Values.obs.region }}
+          value: {{ .Values.app.cadipSessionExpand | quote }}
+        {{- end }}
+        {{- if .Values.envFromSecrets }}
         envFrom:
+        {{- range .Values.envFromSecrets }}
         - secretRef:
-            name: {{ .Release.Name }}-obs
+            name: {{ tpl .name $ }}
+            optional: {{ .optional | default false }}
+        {{- end }}
+        {{- end }}
+        {{- with .Values.securityContext }}
         securityContext:
-          privileged: false
-        {{ if .Values.probe }}
-        {{ if .Values.probe.startup }}
+          {{- toYaml . | nindent 10 }}
+        {{- end }}
+        {{- if .Values.probe }}
+        {{- if .Values.probe.startup }}
         startupProbe:
           httpGet:
             path: {{ .Values.probe.startup.path }}
@@ -95,8 +107,8 @@ spec:
           initialDelaySeconds: {{ .Values.probe.startup.initialDelaySeconds }}
           periodSeconds: {{ .Values.probe.startup.periodSeconds }}
           timeoutSeconds: {{ .Values.probe.startup.timeoutSeconds }}
-        {{ end }}
-        {{ if .Values.probe.liveness }}
+        {{- end }}
+        {{- if .Values.probe.liveness }}
         livenessProbe:
           httpGet:
             path: {{ .Values.probe.liveness.path }}
@@ -104,8 +116,8 @@ spec:
           initialDelaySeconds: {{ .Values.probe.liveness.initialDelaySeconds }}
           periodSeconds: {{ .Values.probe.liveness.periodSeconds }}
           timeoutSeconds: {{ .Values.probe.liveness.timeoutSeconds }}
-        {{ end }}
-        {{ if .Values.probe.readiness }}
+        {{- end }}
+        {{- if .Values.probe.readiness }}
         readinessProbe:
           httpGet:
             path: {{ .Values.probe.readiness.path }}
@@ -113,14 +125,14 @@ spec:
           initialDelaySeconds: {{ .Values.probe.readiness.initialDelaySeconds }}
           periodSeconds: {{ .Values.probe.readiness.periodSeconds }}
           timeoutSeconds: {{ .Values.probe.readiness.timeoutSeconds }}
-        {{ end }}
-        {{ end }}
-      {{ if .Values.image }}
-      {{ if .Values.image.imagePullSecrets }}
+        {{- end }}
+        {{- end }}
+      {{- if .Values.image }}
+      {{- if .Values.image.imagePullSecrets }}
       imagePullSecrets:
       - name:  {{ .Values.image.imagePullSecrets }}
-      {{ end }}
-      {{ end }}
+      {{- end }}
+      {{- end }}
       restartPolicy: Always
       securityContext: {}
       volumes:
