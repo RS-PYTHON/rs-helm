@@ -7604,7 +7604,7 @@ data:
                         "@odata.type": "#OData.CSC.StringAttribute",
                         "Name": "platformSerialIdentifier",
                         "ValueType": "String",
-                        "Value": "A"
+                        "Value": "{{ $product.serial }}"
                     },
                     {
                         "@odata.type": "#OData.CSC.StringAttribute",
