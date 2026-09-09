@@ -141,6 +141,9 @@ gatewayapi:
   #   - /catalog
   #   - /auth
   path: []
+  timeouts:
+    request: 3600s
+    backendRequest: 3600s
 
 resources:
   request:
