@@ -6636,6 +6636,77 @@ data:
                 ]
             },
             {
+                "Id": "b87a1ce4-52d9-4f63-9a8e-0d5c7b2e91f6",
+                "Name": "S1A_OPER_MPL_ORBSCT_20140507T150704_99999999T999999_0026.EOF",
+                "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}S1A_OPER_MPL_ORBSCT_20140507T150704_99999999T999999_0026.EOF",
+                "ContentType": "application/octet-stream",
+                "ContentLength": "31641",
+                "OriginDate": "2014-05-07T00:00:00.000Z",
+                "PublicationDate": "2014-05-07T15:07:04.000Z",
+                "EvictionDate": "2014-05-07T15:07:04.000Z",
+                "Checksum": [
+                    {
+                        "Algorithm": "MD5",
+                        "Value": "cFeaFeAe20df52651743FC8CDdba02DB",
+                        "ChecksumDate": "2014-05-07T00:00:00.000Z"
+                    }
+                ],
+                "ContentDate": {
+                    "Start": "2014-05-07T15:07:04.000Z",
+                    "End": "2014-05-07T15:07:04.000Z"
+                },
+                "Attributes": [
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "platformShortName",
+                        "ValueType": "String",
+                        "Value": "SENTINEL-1"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "platformSerialIdentifier",
+                        "ValueType": "String",
+                        "Value": "A"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "productType",
+                        "ValueType": "String",
+                        "Value": "MPL_TEST_TYPE"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "beginningDateTime",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "2014-05-07T15:07:04.000Z"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "endingDateTime",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "2014-05-07T15:07:04.000Z"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "processingCenter",
+                        "ValueType": "String",
+                        "Value": "FOS"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "processorVersion",
+                        "ValueType": "String",
+                        "Value": "3.0"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "processingDate",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "2014-05-07T00:00:00.000Z"
+                    }
+                ]
+            },
+            {
                 "Id": "f3d6e957-7ff2-44e5-a0cf-d7d2e7f3887f",
                 "Name": "S3A_AX___OSF_AX_20160216T192404_99991231T235959_20240624T085540___________________EUM_O_AL_001.SEN3.zip",
                 "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}S3A_AX___OSF_AX_20160216T192404_99991231T235959_20240624T085540___________________EUM_O_AL_001.SEN3.zip",
