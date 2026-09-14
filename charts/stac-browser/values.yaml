@@ -43,6 +43,8 @@ app:
   SB_socialSharing: email,bsky,mastodon
   # -- maxEntriesPerPage - see https://github.com/radiantearth/stac-browser/pull/563 and https://github.com/radiantearth/stac-browser/releases/tag/v4.0.0
   SB_maxEntriesPerPage: 1000
+  # -- to enable georeferenced COG rendering for items displayed on collection and search-result maps
+  SB_displayOverviewsForChildren: "false"
 
 probe:
   startup::
