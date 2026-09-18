@@ -18,6 +18,7 @@ STAC BROWSER
 | app.SB_allowExternalAccess | string | `"false"` | Allows or disallows loading and browsing external STAC data |
 | app.SB_catalogUrl | string | `"https://subdomain.example.com/catalog/"` | URL of the STAC catalog |
 | app.SB_detectLocaleFromBrowser | string | `"true"` | Detect locale from user |
+| app.SB_displayOverviewsForChildren | string | `"false"` | to enable georeferenced COG rendering for items displayed on collection and search-result maps |
 | app.SB_historyMode | string | `"history"` | Allows search engines to better crawl STAC Browser. Must be set to 'history' for OIDC |
 | app.SB_maxEntriesPerPage | int | `1000` | maxEntriesPerPage - see https://github.com/radiantearth/stac-browser/pull/563 and https://github.com/radiantearth/stac-browser/releases/tag/v4.0.0 |
 | app.SB_socialSharing | string | `"email,bsky,mastodon"` | Social sharing |
