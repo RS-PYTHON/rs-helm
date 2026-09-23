@@ -108,7 +108,7 @@ s2b:
       - $.attr_ptype
       geometry:
       - null
-      - POLYGON EMPTY
+      - $.geometry
       productType:
       - null
       - $.Attributes[?(@.Name=='productType')].Value
@@ -160,17 +160,14 @@ s2b:
       href:
       - null
       - {{ $.Values.app.station.s2b.endpoint }}({id})/$value
-      downloadLink: {{ $.Values.app.station.s2b.endpoint }}({id})/$value
       title: $.Name
-      intersects:
-      - null
-      - $.intersects
       externalIds:
       - null
       - $.Id
       externalIdss:
       - null
       - $.Id
+      eodag:download_link: http://127.0.0.1:5000/Products({id})/$value
     free_text_search_operations:
       $filter:
         union: ' OR '
@@ -197,7 +194,7 @@ s2b:
           - ContentType eq '{ContentType}'
           - ContentType in ({ContentTypes})
           - ProductionType eq '{ProductionType}'
-          - OData.CSC.Intersects(area=geography'SRID=4326;{intersects}')
+          - OData.CSC.Intersects(area=geography'SRID=4326;{geometry}')
           - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value eq {attr_ptype})
           - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'productType' and att/OData.CSC.StringAttribute/Value in ({attr_ptypes}))
           - Attributes/OData.CSC.StringAttribute/any(att:att/Name eq 'platformShortName' and att/OData.CSC.StringAttribute/Value eq {platformShortName#to_upper})
@@ -249,11 +246,13 @@ s2b:
       max_sort_params: 1
     pagination:
       max_items_per_page: 10000
-      next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}&$expand=Attributes'
+      next_page_url_tpl: '{url}?{search}&$top={limit}&$skip={skip}&$expand=Attributes'
       total_items_nb_key_path: $.total
+      next_page_token_key: skip
+      start_page: 0
   download:
     type: HTTPDownload
     base_uri: {{ $.Values.app.station.s2b.endpoint }}
     metadata_mapping:
       uid: $.Id
-      downloadLink: {{ $.Values.app.station.s2b.endpoint }}({uid})/$value
+      eodag:download_link: http://127.0.0.1:5000/Products({uid})/$value
