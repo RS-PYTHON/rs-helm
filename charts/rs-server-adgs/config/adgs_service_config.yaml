@@ -156,7 +156,7 @@ adgs:
               - "{t_intersects}"
     pagination:
       max_items_per_page: 100
-      next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}&$expand=Attributes'
+      next_page_url_tpl: '{url}?{search}&$top={limit}&$skip={skip}&$expand=Attributes'
       total_items_nb_key_path: '$.total'
     sort:
       sort_by_tpl: '&$orderby={sort_param} {sort_order}'
