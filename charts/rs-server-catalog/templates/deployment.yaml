@@ -84,8 +84,14 @@ spec:
           value: "0.0.0.0"
         - name: APP_PORT
           value: "8000"
+        - name: PGUSER
+          value: {{ .Values.postgres.secret.user }}
+        - name: PGPASSWORD
+          value: {{ .Values.postgres.secret.pass }}
         - name: PGHOST
           value: {{ .Values.postgres.host }}
+        - name: PGPORT
+          value: {{ .Values.postgres.port | quote}}
         - name: PGDATABASE
           value: {{ .Values.postgres.db }}
         - name: GDAL_HTTP_MERGE_CONSECUTIVE_RANGES
@@ -112,12 +118,6 @@ spec:
           value: "{{ .Values.app.openApiUrl }}"
         - name: DOCS_URL
           value: "{{ .Values.app.docsUrl }}"
-        - name: POSTGRES_HOST
-          value: {{ .Values.postgres.host }}
-        - name: POSTGRES_PORT
-          value: {{ .Values.postgres.port | quote }}
-        - name: POSTGRES_DB
-          value: {{ .Values.postgres.db }}
         - name: S3_ENDPOINT
           value: {{ .Values.obs.endpoint }}
         - name: S3_REGION
