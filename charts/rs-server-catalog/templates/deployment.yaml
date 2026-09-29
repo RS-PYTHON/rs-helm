@@ -94,6 +94,12 @@ spec:
           value: {{ .Values.postgres.port | quote}}
         - name: PGDATABASE
           value: {{ .Values.postgres.db }}
+        - name: POSTGRES_HOST
+          value: {{ .Values.postgres.host }}
+        - name: POSTGRES_PORT
+          value: {{ .Values.postgres.port | quote }}
+        - name: POSTGRES_DB
+          value: {{ .Values.postgres.db }}
         - name: GDAL_HTTP_MERGE_CONSECUTIVE_RANGES
           value: "YES"
         - name: GDAL_DISABLE_READDIR_ON_OPEN
