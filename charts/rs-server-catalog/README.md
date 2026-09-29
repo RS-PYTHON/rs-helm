@@ -51,7 +51,7 @@ RS SERVER CATALOG
 | image.name | string | `"rs-server-catalog"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"1.0a13"` | Image version, can be a tag or a digest |
+| image.version | string | `"latest"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `false` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
