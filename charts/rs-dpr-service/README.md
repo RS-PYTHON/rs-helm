@@ -68,7 +68,9 @@ RS DPR SERVICE
 | probe.startup.periodSeconds | int | `2` | periodSeconds for the liveness probe |
 | probe.startup.port | int | `8000` | Port for the liveness probe |
 | probe.startup.timeoutSeconds | int | `1` | timeoutSeconds for the liveness probe |
-| processors.enabled | list | `["conv_safe_zarr","s1_l0","s3_l0","s1_ard","s3_l1olci","s3_l2olci"]` | List of DPR processors exposed/enabled by rs-dpr-service. |
+| processors.enabled | list | `["conv_safe_zarr","s1_l0","s3_l0","s1_ard","s3_l1olci","s3_l2olci"]` | List of DPR processors exposed/enabled by rs-dpr-service. Also used to generate, per processor, a dedicated ingress/httproute path pointing at this release, so that a processor exposed by a different release (installed for example as another instance of this chart) is routed correctly. |
+| registry.heartbeatIntervalSeconds | int | `10` | How often (seconds) a running instance refreshes its row in the shared instance registry, used to aggregate GET /dpr/processes across every instance sharing the same PostgreSQL database. |
+| registry.staleAfterSeconds | int | `30` | Number of seconds after which an instance is considered stale (its processors are no longer listed in GET /dpr/processes) if no heartbeat was received. Should be a few times heartbeatIntervalSeconds. |
 | replicaCount | int | `1` | Number of replicas for the deployment |
 | resources.limit.cpu | string | `"500m"` | Pod CPU limit |
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
