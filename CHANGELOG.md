@@ -13,6 +13,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [1.0a14] - 2026-09-29
+
+### Added
+
+- [RSPY-1118](https://github.com/RS-PYTHON/rs-helm/pull/280) : Added S3A_20260630132216053997
+- [RSPY-1145](https://github.com/RS-PYTHON/rs-helm/pull/286) : RSPY1145: S3 L1 OLCI quicklooks
+- [RSPY-1155](https://github.com/RS-PYTHON/rs-helm/pull/282) : feat-rspy1155 Added new aux
+
+### Changed
+
+- [PR#285](https://github.com/RS-PYTHON/rs-helm/pull/285) : Add request and backend request timeout to 3600s
+- [PR#280](https://github.com/RS-PYTHON/rs-helm/pull/284) : Update to seaweedfs 4.46
+
+### Fixed
+
+- [PR#288](https://github.com/RS-PYTHON/rs-helm/pull/288) : Add PostgreSQL environment variables to deployment configuration
+
 ## [1.0a13] - 2026-08-28
 
 ### Added
