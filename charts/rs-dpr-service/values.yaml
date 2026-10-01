@@ -189,7 +189,9 @@ otel:
   trace_body: false
 
 processors:
-  # -- List of DPR processors exposed/enabled by rs-dpr-service.
+  # -- List of DPR processors exposed/enabled by rs-dpr-service. Also used to generate, per processor, a
+  # dedicated ingress/httproute path pointing at this release, so that a processor exposed by a different
+  # release (installed for example as another instance of this chart) is routed correctly.
   enabled:
     - conv_safe_zarr
     - s1_l0
@@ -198,3 +200,11 @@ processors:
     - s3_l1olci
     - s3_l2olci
     # - mockup
+
+registry:
+  # -- How often (seconds) a running instance refreshes its row in the shared instance registry, used to
+  # aggregate GET /dpr/processes across every instance sharing the same PostgreSQL database.
+  heartbeatIntervalSeconds: 10
+  # -- Number of seconds after which an instance is considered stale (its processors are no longer listed
+  # in GET /dpr/processes) if no heartbeat was received. Should be a few times heartbeatIntervalSeconds.
+  staleAfterSeconds: 30

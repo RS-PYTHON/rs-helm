@@ -36,6 +36,27 @@ spec:
         path: {{ . | quote }}
         pathType: Prefix
       {{ end }}
+      {{/*
+      A single rs-dpr-service deployment can be installed several times (several Helm releases), each
+      instance exposing a different subset of processors (see values.processors.enabled). Every release
+      declares the same generic /dpr/processes and /dpr/jobs paths above, so only one release actually
+      serves them (the ingress controller keeps a single rule when paths collide); that's fine for the
+      collection endpoints (GET /dpr/processes is aggregated across instances via the shared instance
+      registry, GET/DELETE /dpr/jobs already share the same database). It is NOT fine for a specific
+      resource: without a dedicated, non-colliding path per processor, GET/POST on a processor exposed by
+      a different release would be routed to the wrong instance and fail with a 404. These extra rules,
+      one per locally enabled processor, route to this release's own Service and always win over the
+      generic /dpr/processes prefix above (longest path prefix wins).
+      */}}
+      {{ range .Values.processors.enabled }}
+      - backend:
+          service:
+            name: {{ $.Release.Name }}
+            port:
+              number: {{ $.Values.service.port }}
+        path: {{ printf "/dpr/processes/%s" . | quote }}
+        pathType: Prefix
+      {{ end }}
   tls:
   - hosts:
     - {{ .Values.ingress.host }}
