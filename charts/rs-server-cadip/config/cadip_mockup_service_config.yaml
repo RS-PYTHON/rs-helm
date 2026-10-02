@@ -42,8 +42,8 @@ cadip:
       Authorization: '{auth_for_token}'
   products:
     S1_SAR_RAW:
-      productType: RAW
       collection: Sentinel1
+      product:type: RAW
   search:
     type: ODataV4Search
     api_endpoint: {{ $.Values.app.station.cadip.endpoint }}/Files
@@ -93,7 +93,6 @@ cadip:
       - null
       - {{ $.Values.app.station.cadip.endpoint }}/Files({id})/$value
       geometry: POLYGON((180 -90, 180 90, -180 90, -180 -90, 180 -90))
-      downloadLink: {{ $.Values.app.station.cadip.endpoint }}/Files({id})/$value
       title: $.Name
       externalIds:
       - null
@@ -101,6 +100,7 @@ cadip:
       externalIdss:
       - null
       - $.Id
+      eodag:download_link: http://127.0.0.1:5000/Files({id})/$value
     free_text_search_operations:
       $filter:
         union: ' OR '
@@ -124,14 +124,16 @@ cadip:
       max_sort_params: 1
     pagination:
       max_items_per_page: 10000
-      next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}'
+      next_page_url_tpl: '{url}?{search}&$top={limit}&$skip={skip}'
       total_items_nb_key_path: $.total
+      next_page_token_key: skip
+      start_page: 0
   download:
     type: HTTPDownload
     base_uri: {{ $.Values.app.station.cadip.endpoint }}/Files
     metadata_mapping:
       uid: $.Id
-      downloadLink: {{ $.Values.app.station.cadip.endpoint }}/Files({uid})/$value
+      eodag:download_link: http://127.0.0.1:5000/Files({uid})/$value
 cadip_session:
   auth:
     type: TokenAuth
@@ -156,8 +158,8 @@ cadip_session:
       Authorization: '{auth_for_token}'
   products:
     S1_SAR_RAW:
-      productType: RAW
       collection: Sentinel1
+      product:type: RAW
   search:
     type: ODataV4Search
     api_endpoint: {{ $.Values.app.station.cadip.endpoint }}/Sessions
@@ -317,11 +319,13 @@ cadip_session:
       max_sort_params: 1
     pagination:
       max_items_per_page: 10000
-      next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}'
+      next_page_url_tpl: '{url}?{search}&$top={limit}&$skip={skip}'
       total_items_nb_key_path: $.total
+      next_page_token_key: skip
+      start_page: 0
   download:
     type: HTTPDownload
     base_uri: {{ $.Values.app.station.cadip.endpoint }}/Sessions
     metadata_mapping:
       uid: $.Id
-      downloadLink: {{ $.Values.app.station.cadip.endpoint }}/Files({uid})/$value
+      eodag:download_link: http://127.0.0.1:5000/Files({uid})/$value

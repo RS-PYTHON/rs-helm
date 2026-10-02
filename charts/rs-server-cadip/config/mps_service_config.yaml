@@ -105,7 +105,7 @@ mps:
 
     pagination:
       max_items_per_page: 100
-      next_page_url_tpl: '{url}?{search}&$top={items_per_page}&$skip={skip}'
+      next_page_url_tpl: '{url}?{search}&$top={limit}&$skip={skip}'
       total_items_nb_key_path: '$.total'
 
     sort:
@@ -270,7 +270,7 @@ mps_session:
 
     pagination:
       max_items_per_page: 100
-      next_page_url_tpl: "{url}?{search}&$top={items_per_page}&$skip={skip}"
+      next_page_url_tpl: "{url}?{search}&$top={limit}&$skip={skip}"
       total_items_nb_key_path: "$.total"
 
     sort:
