@@ -13,6 +13,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+
+## [1.0a15] - 2026-10-22
+
+### Added
+
+- [PR#297](https://github.com/RS-PYTHON/rs-helm/pull/297) : New aux v3
+- [RSPY-1205](https://github.com/RS-PYTHON/rs-helm/pull/292) : RSPY1205: SAT:ACQ_ID
+
+### Changed
+
+- [RSPY-1150](https://github.com/RS-PYTHON/rs-helm/pull/289) : Feat-rspy1150/stac browser version 5.1.0 update
+- [PR#287](https://github.com/RS-PYTHON/rs-helm/pull/287) : Feat rspy1148/update to eodag v4 x
+- [PR#293](https://github.com/RS-PYTHON/rs-helm/pull/293) : Update to Helm 3.22.0
+- [PR#294](https://github.com/RS-PYTHON/rs-helm/pull/294) : Update to seaweedfs 4.48
+- [PR#295](https://github.com/RS-PYTHON/rs-helm/pull/295) : RSPY-954: Update the README
+
+
+### Security
+
+- [RSPY-1229](https://github.com/RS-PYTHON/rs-helm/pull/296) : RSPY-1229: Download and cache the Trivy databases once per day
+
 ## [1.0a14] - 2026-09-29
 
 ### Added
