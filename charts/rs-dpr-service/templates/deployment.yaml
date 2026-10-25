@@ -94,6 +94,10 @@ spec:
           value: {{ .Values.otel.trace_body | quote }}
         - name: DPR_ENABLED_PROCESSORS
           value:  {{ join "," .Values.processors.enabled | quote }}
+        - name: DPR_REGISTRY_HEARTBEAT_SECONDS
+          value: {{ .Values.registry.heartbeatIntervalSeconds | quote }}
+        - name: DPR_REGISTRY_STALE_AFTER_SECONDS
+          value: {{ .Values.registry.staleAfterSeconds | quote }}
         securityContext:
           privileged: false
         {{ if .Values.probe }}

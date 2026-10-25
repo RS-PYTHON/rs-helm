@@ -37,5 +37,11 @@ spec:
         type: PathPrefix
         value: {{ . | quote }}
     {{- end }}
+    {{/* See templates/ingress.yaml for why these per-processor routes are needed. */}}
+    {{- range .Values.processors.enabled }}
+    - path:
+        type: PathPrefix
+        value: {{ printf "/dpr/processes/%s" . | quote }}
+    {{- end }}
 {{ end }}
 {{ end }}
