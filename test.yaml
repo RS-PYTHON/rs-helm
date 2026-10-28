@@ -1,0 +1,85 @@
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: node-role.kubernetes.io/rs_server
+          operator: Exists
+app:
+  uacHomeUrl: https://apikeymanager.dev-rspy-ovh.esa-copernicus.eu/docs
+auth:
+  secret:
+    cookie_secret: zptOwbpJOtRdniJFtiZXjYCjqBBxaYYKuXWnImHSbkGMUNmTViJsRutgroJdFPTA
+    oidc_client_id: apikeymanager
+    oidc_client_secret: eOSUhdhxUPTOtryrkdHytZiinvSBYaIqVkVxgMgXXZXqjDhIZKmDscJTmXSI
+    oidc_endpoint: https://iam.dev-rspy-ovh.esa-copernicus.eu
+    oidc_realm: rspy
+dask:
+  jupyterhub_api_token: acf147c8e28a4d83902544abdde0dcf3
+gatewayapi:
+  enabled: true
+  host: dev-rspy-ovh.esa-copernicus.eu
+  parentRefs:
+  - group: gateway.networking.k8s.io
+    kind: ListenerSet
+    name: root
+    namespace: processing
+  path:
+  - /dpr/processes
+  - /dpr/processes/s1_l0
+  - /dpr/processes/s3_l0
+  - /dpr/processes/s3_olci
+  - /dpr/processes/s3_l1olci
+  - /dpr/processes/s3_l2olci
+  - /dpr/jobs
+  - /dpr/processes/mockup
+  - /dpr/processes/s1_ard
+  - /dpr/processes/conv_safe_zarr
+image:
+  PullPolicy: Always
+  name: rs-dpr-service_py3.13.16-2026.7.1
+  registry: ghcr.io
+  repository: rs-python
+  version: latest
+initContainers:
+- command:
+  - /bin/sh
+  - -c
+  - |
+    until test "$(curl -XGET --silent http://alloy.monitoring.svc.cluster.local:12345/-/ready)" = "Alloy is ready."; do echo Alloy is not ready; sleep 2; done; echo Alloy reached
+  image: alpine/curl:latest
+  name: init-check
+obs:
+  endpoint: https://s3.gra.io.cloud.ovh.net
+  region: gra
+  secret:
+    ak: 6f84a41a4c314b0baed37bd0ad59db47
+    sk: 4979a9fb97bb46aa87f6c5f69e714bec
+postgres:
+  db: pygeoapi
+  port: "5432"
+probe:
+  liveness:
+    path: /_mgmt/ping
+  readiness:
+    path: /_mgmt/ping
+  startup:
+    initialDelaySeconds: 20
+    path: /_mgmt/ping
+    port: 8000
+processors:
+  enabled:
+  - s1_l0
+  - s3_l0
+  - s3_olci
+  - s3_l1olci
+  - s3_l2olci
+  - mockup
+  - conv_safe_zarr
+  - s1_ard
+tempo:
+  endpoint: http://alloy.monitoring.svc.cluster.local:4317
+tolerations:
+- effect: NoSchedule
+  key: role
+  value: rs_server
