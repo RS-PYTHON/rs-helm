@@ -28,6 +28,10 @@ RS DPR SERVICE
 | dask.gateway_auth_type | string | `"jupyterhub"` | Dask gateway auth type |
 | gatewayapi.enabled | bool | `false` | Enabled/Disable Gateway API |
 | gatewayapi.host | string | `"subdomain.example.com"` | HTTPRoute host name |
+| gatewayapi.logStreaming.enabled | bool | `true` | Add a dedicated HTTPRoute rule for the job logs SSE stream, with the Envoy request timeouts disabled |
+| gatewayapi.logStreaming.pathRegex | string | `"^/dpr/jobs/[^/]+/logs$"` | Regular expression matching the logs endpoint |
+| gatewayapi.logStreaming.timeouts.backendRequest | string | `"0s"` | Backend request timeout ("0s" disables it) |
+| gatewayapi.logStreaming.timeouts.request | string | `"0s"` | Overall request timeout ("0s" disables it, required for long-lived streams) |
 | gatewayapi.parentRefs | list | `[]` | HTTPRoute parentRefs, can either be a ListenerSet or a Gateway Example : parentRefs: - group: gateway.networking.k8s.io   kind: ListenerSet   name: mylistenerset   namespace: processing |
 | gatewayapi.path | list | `[]` | HTTPRoute path for the application Example : path:   - /dpr/processes   - /dpr/jobs |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
