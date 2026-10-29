@@ -38,8 +38,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 ### Added
 
 - [RSPY-1118](https://github.com/RS-PYTHON/rs-helm/pull/280) : Added S3A_20260630132216053997
-- [RSPY-1145](https://github.com/RS-PYTHON/rs-helm/pull/286) : RSPY1145: S3 L1 OLCI quicklooks
-- [RSPY-1155](https://github.com/RS-PYTHON/rs-helm/pull/282) : feat-rspy1155 Added new aux
+- [RSPY-1145](https://github.com/RS-PYTHON/rs-helm/pull/286) : S3 L1 OLCI quicklooks
+- [RSPY-1155](https://github.com/RS-PYTHON/rs-helm/pull/282) : Added new aux
 
 ### Changed
 
@@ -210,7 +210,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ### Added
 
-- [RSPY-857](https://github.com/RS-PYTHON/rs-helm/pull/185) : Feat rspy857/endpoint bucket configuration
+- [RSPY-857](https://github.com/RS-PYTHON/rs-helm/pull/185) : endpoint bucket configuration
 - [RSPY-814](https://github.com/RS-PYTHON/rs-helm/pull/180) : EDRS staging
 - [RSPY-808](https://github.com/RS-PYTHON/rs-helm/pull/179) : rs-server-edrs
 - [RSPY-807](https://github.com/RS-PYTHON/rs-helm/pull/175) : edrs mockup
