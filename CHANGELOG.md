@@ -31,7 +31,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ### Security
 
-- [RSPY-1229](https://github.com/RS-PYTHON/rs-helm/pull/296) : Download and cache the Trivy databases once per day
+- [RSPY-1229](https://github.com/RS-PYTHON/rs-helm/pull/296) : RSPY-1229: Download and cache the Trivy databases once per day
 
 ## [1.0a14] - 2026-09-29
 
