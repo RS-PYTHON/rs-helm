@@ -13,22 +13,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
-
 ## [1.0a15] - 2026-10-22
 
 ### Added
 
 - [PR#297](https://github.com/RS-PYTHON/rs-helm/pull/297) : New aux v3
-- [RSPY-1205](https://github.com/RS-PYTHON/rs-helm/pull/292) : RSPY1205: SAT:ACQ_ID
+- [RSPY-1205](https://github.com/RS-PYTHON/rs-helm/pull/292) : SAT:ACQ_ID
 
 ### Changed
 
-- [RSPY-1150](https://github.com/RS-PYTHON/rs-helm/pull/289) : Feat-rspy1150/stac browser version 5.1.0 update
-- [PR#287](https://github.com/RS-PYTHON/rs-helm/pull/287) : Feat rspy1148/update to eodag v4 x
+- [PR#301](https://github.com/RS-PYTHON/rs-helm/pull/301) : rs-dpr-service: disable Envoy request timeouts on the job logs SSE route
+- [RSPY-1150](https://github.com/RS-PYTHON/rs-helm/pull/289) : stac browser version 5.1.0 update
+- [RSPY-1148](https://github.com/RS-PYTHON/rs-helm/pull/287) : update to eodag v4 x
 - [PR#293](https://github.com/RS-PYTHON/rs-helm/pull/293) : Update to Helm 3.22.0
 - [PR#294](https://github.com/RS-PYTHON/rs-helm/pull/294) : Update to seaweedfs 4.48
-- [PR#295](https://github.com/RS-PYTHON/rs-helm/pull/295) : RSPY-954: Update the README
-
+- [RSPY-954](https://github.com/RS-PYTHON/rs-helm/pull/295) : Update the README
 
 ### Security
 
