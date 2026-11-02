@@ -28,13 +28,17 @@ RS DPR SERVICE
 | dask.gateway_auth_type | string | `"jupyterhub"` | Dask gateway auth type |
 | gatewayapi.enabled | bool | `false` | Enabled/Disable Gateway API |
 | gatewayapi.host | string | `"subdomain.example.com"` | HTTPRoute host name |
+| gatewayapi.logStreaming.enabled | bool | `true` | Add a dedicated HTTPRoute rule for the job logs SSE stream, with the Envoy request timeouts disabled |
+| gatewayapi.logStreaming.pathRegex | string | `"^/dpr/jobs/[^/]+/logs$"` | Regular expression matching the logs endpoint |
+| gatewayapi.logStreaming.timeouts.backendRequest | string | `"0s"` | Backend request timeout ("0s" disables it) |
+| gatewayapi.logStreaming.timeouts.request | string | `"0s"` | Overall request timeout ("0s" disables it, required for long-lived streams) |
 | gatewayapi.parentRefs | list | `[]` | HTTPRoute parentRefs, can either be a ListenerSet or a Gateway Example : parentRefs: - group: gateway.networking.k8s.io   kind: ListenerSet   name: mylistenerset   namespace: processing |
 | gatewayapi.path | list | `[]` | HTTPRoute path for the application Example : path:   - /dpr/processes   - /dpr/jobs |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-dpr-service"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"1.0a14"` | Image version, can be a tag or a digest |
+| image.version | string | `"1.0a15"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `false` | Enabled/Disable ingress |
 | ingress.host | string | `"subdomain.example.com"` | Ingress host name |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |

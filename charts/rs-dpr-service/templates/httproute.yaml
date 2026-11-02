@@ -27,6 +27,21 @@ spec:
   {{- toYaml . | nindent 2 }}
   {{- end }}
   rules:
+  {{- if and .Values.gatewayapi.logStreaming .Values.gatewayapi.logStreaming.enabled }}
+  # Log streaming (SSE) endpoint: Envoy's default 15s request timeout would cut the stream.
+  # This rule MUST stay before the generic PathPrefix rule below, which also matches /dpr/jobs/*.
+  - backendRefs:
+    - name: {{ $.Release.Name }}
+      port: {{ $.Values.service.port }}
+      kind: Service
+    matches:
+    - path:
+        type: RegularExpression
+        value: {{ .Values.gatewayapi.logStreaming.pathRegex | quote }}
+    timeouts:
+      request: {{ .Values.gatewayapi.logStreaming.timeouts.request | quote }}
+      backendRequest: {{ .Values.gatewayapi.logStreaming.timeouts.backendRequest | quote }}
+  {{- end }}
   - backendRefs:
     - name: {{ $.Release.Name }}
       port: {{ $.Values.service.port }}

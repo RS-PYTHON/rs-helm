@@ -127,7 +127,7 @@ image:
   # -- Image name
   name: rs-dpr-service
   # -- Image version, can be a tag or a digest
-  version: "1.0a14"
+  version: "1.0a15"
   # -- Image pull policy
   PullPolicy: IfNotPresent
 
@@ -165,6 +165,16 @@ gatewayapi:
   #   - /dpr/processes
   #   - /dpr/jobs
   path: []
+  logStreaming:
+    # -- Add a dedicated HTTPRoute rule for the job logs SSE stream, with the Envoy request timeouts disabled
+    enabled: true
+    # -- Regular expression matching the logs endpoint
+    pathRegex: "^/dpr/jobs/[^/]+/logs$"
+    timeouts:
+      # -- Overall request timeout ("0s" disables it, required for long-lived streams)
+      request: "0s"
+      # -- Backend request timeout ("0s" disables it)
+      backendRequest: "0s"
 
 resources:
   request:
