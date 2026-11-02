@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ### Added
 
+- [PR#298](https://github.com/RS-PYTHON/rs-helm/pull/298) : OL2 aux v3
 - [PR#297](https://github.com/RS-PYTHON/rs-helm/pull/297) : New aux v3
 - [RSPY-1205](https://github.com/RS-PYTHON/rs-helm/pull/292) : SAT:ACQ_ID
 
