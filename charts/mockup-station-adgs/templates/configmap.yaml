@@ -7324,78 +7324,80 @@ data:
                         "Value": "2026-06-27T00:00:00.000Z"
                     }
                 ]
+            }
+            {{/*
+            {
+                "Id": "5aea0187-997301ce-124ec1cf-e73faaf0-533ffc06-0e8037e6-23214f2d-5d958c47",
+                "Name": "s1a-aux-cal.zarr.zip",
+                "S3_path": "s3://{{ $.Values.app.bucketName }}/{{ $.Values.app.bucketPath }}s1a-aux-cal.zarr.zip",
+                "ContentType": "application/octet-stream",
+                "ContentLength": "1984208",
+                "OriginDate": "2000-01-01T18:00:00.000Z",
+                "PublicationDate": "2026-07-24T12:00:00.000Z",
+                "EvictionDate": "2026-07-24T12:00:00.000Z",
+                "Checksum": [
+                    {
+                        "Algorithm": "MD5",
+                        "Value": "6731b80dfcb986cc372a1a8b2d0f36d3",
+                        "ChecksumDate": "2026-07-24T12:00:00.000Z"
+                    }
+                ],
+                "ContentDate": {
+                    "Start": "2000-01-01T18:00:00.000Z",
+                    "End": "2099-01-01T18:00:00.000Z"
+                },
+                "Attributes": [
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "platformShortName",
+                        "ValueType": "String",
+                        "Value": "SENTINEL-1"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "platformSerialIdentifier",
+                        "ValueType": "String",
+                        "Value": "A"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "productType",
+                        "ValueType": "String",
+                        "Value": "ADF_CALIB"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "beginningDateTime",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "2000-01-01T18:00:00.000Z"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "endingDateTime",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "2099-01-01T18:00:00.000Z"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "processingCenter",
+                        "ValueType": "String",
+                        "Value": "ECW"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "processorVersion",
+                        "ValueType": "String",
+                        "Value": "001"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "processingDate",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "2026-07-24T12:00:00.000Z"
+                    }
+                ]
             },
-            # {
-            #     "Id": "5aea0187-997301ce-124ec1cf-e73faaf0-533ffc06-0e8037e6-23214f2d-5d958c47",
-            #     "Name": "s1a-aux-cal.zarr.zip",
-            #     "S3_path": "s3://{{ $.Values.app.bucketName }}/{{ $.Values.app.bucketPath }}s1a-aux-cal.zarr.zip",
-            #     "ContentType": "application/octet-stream",
-            #     "ContentLength": "1984208",
-            #     "OriginDate": "2000-01-01T18:00:00.000Z",
-            #     "PublicationDate": "2026-07-24T12:00:00.000Z",
-            #     "EvictionDate": "2026-07-24T12:00:00.000Z",
-            #     "Checksum": [
-            #         {
-            #             "Algorithm": "MD5",
-            #             "Value": "6731b80dfcb986cc372a1a8b2d0f36d3",
-            #             "ChecksumDate": "2026-07-24T12:00:00.000Z"
-            #         }
-            #     ],
-            #     "ContentDate": {
-            #         "Start": "2000-01-01T18:00:00.000Z",
-            #         "End": "2099-01-01T18:00:00.000Z"
-            #     },
-            #     "Attributes": [
-            #         {
-            #             "@odata.type": "#OData.CSC.StringAttribute",
-            #             "Name": "platformShortName",
-            #             "ValueType": "String",
-            #             "Value": "SENTINEL-1"
-            #         },
-            #         {
-            #             "@odata.type": "#OData.CSC.StringAttribute",
-            #             "Name": "platformSerialIdentifier",
-            #             "ValueType": "String",
-            #             "Value": "A"
-            #         },
-            #         {
-            #             "@odata.type": "#OData.CSC.StringAttribute",
-            #             "Name": "productType",
-            #             "ValueType": "String",
-            #             "Value": "ADF_CALIB"
-            #         },
-            #         {
-            #             "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
-            #             "Name": "beginningDateTime",
-            #             "ValueType": "DateTimeOffset",
-            #             "Value": "2000-01-01T18:00:00.000Z"
-            #         },
-            #         {
-            #             "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
-            #             "Name": "endingDateTime",
-            #             "ValueType": "DateTimeOffset",
-            #             "Value": "2099-01-01T18:00:00.000Z"
-            #         },
-            #         {
-            #             "@odata.type": "#OData.CSC.StringAttribute",
-            #             "Name": "processingCenter",
-            #             "ValueType": "String",
-            #             "Value": "ECW"
-            #         },
-            #         {
-            #             "@odata.type": "#OData.CSC.StringAttribute",
-            #             "Name": "processorVersion",
-            #             "ValueType": "String",
-            #             "Value": "001"
-            #         },
-            #         {
-            #             "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
-            #             "Name": "processingDate",
-            #             "ValueType": "DateTimeOffset",
-            #             "Value": "2026-07-24T12:00:00.000Z"
-            #         }
-            #     ]
-            # },
+            */}}
             {{- $s1CalibrationProducts := list
                 (dict "name" "S1C_AUX_CAL_V20250101T000000_G20260604T132736.SAFE.zip" "size" "0" "serial" "C" "productType" "S01__ADF_CALIB" "start" "2025-01-01T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2026-06-04T13:27:36.000Z" "processingCenter" "unknown" "processorVersion" "unknown" "processingDate" "2026-06-04T13:27:36.000Z")
                 (dict "name" "S1C_AUX_CAL_V20250224T000000_G20260604T132908.SAFE.zip" "size" "0" "serial" "C" "productType" "S01__ADF_CALIB" "start" "2025-02-24T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2026-06-04T13:29:08.000Z" "processingCenter" "unknown" "processorVersion" "unknown" "processingDate" "2026-06-04T13:29:08.000Z")
