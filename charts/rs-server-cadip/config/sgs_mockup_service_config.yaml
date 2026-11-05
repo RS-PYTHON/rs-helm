@@ -300,8 +300,6 @@ sgs_session:
         platform: Satellite
         publicationDate: PublicationDate
         cadip:num_channels: NumChannels
-        cadip:station_id: StationId
-        cadip:station_unit_id: StationUnitId
         sat:absolute_orbit: DownlinkOrbit
         cadip:acquisition_id: AcquisitionId
         cadip:antenna_id: AntennaId
@@ -313,6 +311,7 @@ sgs_session:
         cadip:planned_data_stop: PlannedDataStop
         cadip:downlink_status_ok: DownlinkStatusOK
         cadip:delivery_push_ok: DeliveryPushOK
+        sat:acquisition_station: StationId
       sort_order_mapping:
         ascending: asc
         descending: desc
