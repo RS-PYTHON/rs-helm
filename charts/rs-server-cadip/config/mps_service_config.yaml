@@ -283,7 +283,6 @@ mps_session:
         published: PublicationDate
         platform: Satellite
         cadip:num_channels: NumChannels
-        cadip:station_unit_id: StationUnitId
         sat:absolute_orbit: DownlinkOrbit
         cadip:acquisition_id: AcquisitionId
         cadip:antenna_id: AntennaId
