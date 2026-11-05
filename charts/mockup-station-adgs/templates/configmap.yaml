@@ -7324,8 +7324,7 @@ data:
                         "Value": "2026-06-27T00:00:00.000Z"
                     }
                 ]
-            }
-            {{/*
+            },
             {
                 "Id": "5aea0187-997301ce-124ec1cf-e73faaf0-533ffc06-0e8037e6-23214f2d-5d958c47",
                 "Name": "s1a-aux-cal.zarr.zip",
@@ -7396,8 +7395,7 @@ data:
                         "Value": "2026-07-24T12:00:00.000Z"
                     }
                 ]
-            },
-            */}}
+            }
             {{- $s1CalibrationProducts := list
                 (dict "name" "S1C_AUX_CAL_V20250101T000000_G20260604T132736.SAFE.zip" "size" "0" "serial" "C" "productType" "AUX_CAL" "start" "2026-01-01T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2026-06-04T13:27:36.000Z" "processingCenter" "unknown" "processorVersion" "unknown" "processingDate" "2026-06-04T13:27:36.000Z")
                 (dict "name" "S1C_AUX_CAL_V20250224T000000_G20260604T132908.SAFE.zip" "size" "0" "serial" "C" "productType" "AUX_CAL" "start" "2026-01-01T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2026-06-04T13:29:08.000Z" "processingCenter" "unknown" "processorVersion" "unknown" "processingDate" "2026-06-04T13:29:08.000Z")
