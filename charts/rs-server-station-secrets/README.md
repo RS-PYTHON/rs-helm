@@ -56,6 +56,7 @@ RS SERVER STATION SECRETS
 | app.stations.cdse.authentication.auth_type | string | `"s3"` |  |
 | app.stations.cdse.authentication.secret_key | string | `"example_s3_secret_key"` |  |
 | app.stations.cdse.domain | string | `"eodata.dataspace.copernicus.eu"` |  |
+| app.stations.cdse.max_requests_per_minute | int | `10` |  |
 | app.stations.cdse.service.name | string | `"s3"` |  |
 | app.stations.cdse.service.url | string | `"https://eodata.dataspace.copernicus.eu"` |  |
 | app.stations.ins.authentication.auth_type | string | `"oauth2"` |  |
