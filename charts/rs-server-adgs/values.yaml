@@ -138,6 +138,10 @@ gatewayapi:
   #   - /adgs
   #   - /auxip
   path: []
+  # -- HTTPRoute rule timeouts (Envoy default is 15s)
+  timeouts:
+    request: 300s
+    backendRequest: 300s
 
 resources:
   request:
