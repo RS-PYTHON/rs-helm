@@ -1335,6 +1335,100 @@ data:
                 "Value": "B"
                 }
             ]
+        },
+        {
+            "@odata.mediaContentType": "application/octet-stream",
+            "Id": "8f3b2a1c-4d5e-6f7a-8b9c-0d1e2f3a4b5c",
+            "Name": "CRA_OPER_IRI_L0__DS_2BPS_20261106T165000_A001234_T001_N01.00.tar",
+            "ContentType": "application/octet-stream",
+            "ContentLength": 1120051200,
+            "OriginDate": "2026-11-06T16:50:00Z",
+            "PublicationDate": "2026-11-06T17:15:00.000Z",
+            "ModificationDate": "2026-11-06T17:15:00.000Z",
+            "EvictionDate": "2026-11-13T17:15:00.000Z",
+            "Online": true,
+            "Checksum": [
+                {
+                    "Algorithm": "MD5",
+                    "Value": "913c17d0ecab8929245e1cbee8d667a9",
+                    "ChecksumDate": "2026-11-06T17:00:00Z"
+                }
+            ],
+            "ContentDate": {
+                "Start": "2026-11-06T16:50:00.000000Z",
+                "End": "2026-11-06T16:55:00.000000Z"
+            },
+            "ProductionType": "systematic_production",
+            "Footprint": "geography'SRID=4326;POLYGON((26.095521798619682 -6.33171157341235,27.08824547412565 -6.33249189439771,27.08842766157828 -7.325744468031913,26.093654763694715 -7.324840550633226,26.095521798619682 -6.33171157341235))'",
+            "GeoFootprint": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [26.095521798619682, -6.33171157341235],
+                        [27.08824547412565, -6.33249189439771],
+                        [27.08842766157828, -7.325744468031913],
+                        [26.093654763694715, -7.324840550633226],
+                        [26.095521798619682, -6.33171157341235]
+                    ]
+                ]
+            },
+            "Attributes": [
+                {
+                    "Name": "productType",
+                    "ValueType": "String",
+                    "Value": "IRI_L0__DS"
+                },
+                {
+                    "Name": "processingCenter",
+                    "ValueType": "String",
+                    "Value": "2BPS"
+                },
+                {
+                    "Name": "processingDate",
+                    "ValueType": "DateTimeOffset",
+                    "Value": "2026-11-06T17:00:00Z"
+                },
+                {
+                    "Name": "processorVersion",
+                    "ValueType": "String",
+                    "Value": "01.00"
+                },
+                {
+                    "Name": "orbitNumber",
+                    "ValueType": "Integer",
+                    "Value": 1234
+                },
+                {
+                    "Name": "beginningDateTime",
+                    "ValueType": "DateTimeOffset",
+                    "Value": "2026-11-06T16:50:00.000000Z"
+                },
+                {
+                    "Name": "endingDateTime",
+                    "ValueType": "DateTimeOffset",
+                    "Value": "2026-11-06T16:55:00.000000Z"
+                },
+                {
+                    "Name": "coordinates",
+                    "ValueType": "String",
+                    "Value": "26.095521798619682 -6.33171157341235,27.08824547412565 -6.33249189439771,27.08842766157828 -7.325744468031913,26.093654763694715 -7.324840550633226,26.095521798619682 -6.33171157341235"
+                },
+                {
+                    "Name": "instrumentShortName",
+                    "ValueType": "String",
+                    "Value": "IRI"
+                },
+                {
+                    "Name": "platformShortName",
+                    "ValueType": "String",
+                    "Value": "CRISTAL"
+                },
+                {
+                    "Name": "platformSerialIdentifier",
+                    "ValueType": "String",
+                    "Value": "A"
+                }
+            ]
         }
         ]
     }
