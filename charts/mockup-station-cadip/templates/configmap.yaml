@@ -10929,11 +10929,11 @@ data:
                 "EvictionDate": "2026-10-30T08:36:00.000Z",
                 "Size": "42885164",
                 "Retransfer": false
-            }
+            },
             {
                 "Id": "c62d1e42-62d3-49ee-bf77-77034fc82ab0",
                 "Name": "DCS_04_CRA_20261028043132010080_ch2_DSDB_00001.raw",
-                "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}CRA_20261028043132010080/DCS_04_CRA_20261028043132010080_ch2_DSDB_82ab0.raw",
+                "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}CRA_20261028043132010080/DCS_04_CRA_20261028043132010080_ch2_DSDB_00001.raw",
                 "SessionId": "CRA_20261028043132010080",
                 "Channel": 2,
                 "BlockNumber": 1,
@@ -10943,10 +10943,10 @@ data:
                 "Size": "42885164",
                 "Retransfer": false
             },
-            {
+            {   
                 "Id": "10f39a9a-5425-4782-9d41-2042b00d9162",
                 "Name": "DCS_04_CRA_20261029043132010080_ch2_DSDB_00002.raw",
-                "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}CRA_20261029043132010080/DCS_04_CRA_20261028043132010080_ch2_DSDB_d9162.raw",
+                "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}CRA_20261029043132010080/DCS_04_CRA_20261028043132010080_ch2_DSDB_00002.raw",
                 "SessionId": "CRA_20261029043132010080",
                 "Channel": 2,
                 "BlockNumber": 1,
@@ -10959,7 +10959,7 @@ data:
             {
                 "Id": "f0e1c3b4-5d6a-4e2b-9f8c-1a2b3c4d5e6f",
                 "Name": "DCS_04_CRA_20261030043132010080_ch2_DSDB_00003.raw",
-                "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}CRA_20261030043132010080/DCS_04_CRA_20261028043132010080_ch2_DSDB_f0e1.raw",
+                "S3_path": "s3://{{ .Values.app.bucketName }}/{{ .Values.app.bucketPath }}CRA_20261030043132010080/DCS_04_CRA_20261028043132010080_ch2_DSDB_00003.raw",
                 "SessionId": "CRA_20261030043132010080",
                 "Channel": 2,
                 "BlockNumber": 1,
