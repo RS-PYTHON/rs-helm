@@ -7740,5 +7740,84 @@ data:
                 ]
             }
             {{- end }}
+            {{- $cristalProducts := list
+                (dict "name" "CRA_AX___L0CFG_AX_20261106T000000_20991231T235959_20261106T165000___________________ESA_O_AL_001.SEN3.zip" "size" "4500" "serial" "A" "productType" "cri_adf_l0cfg" "start" "2026-11-06T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2026-11-06T17:00:00.000Z" "processingCenter" "ESA" "processorVersion" "01.00" "processingDate" "2026-11-06T16:50:00.000Z")
+                (dict "name" "CRA_AX___PKTID_AX_20261106T000000_20991231T235959_20261106T165000___________________ESA_O_AL_001.SEN3.zip" "size" "8200" "serial" "A" "productType" "cri_adf_pktid" "start" "2026-11-06T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2026-11-06T17:00:00.000Z" "processingCenter" "ESA" "processorVersion" "01.00" "processingDate" "2026-11-06T16:50:00.000Z")
+                (dict "name" "CRA_AX___LEAPS_AX_20261106T000000_20991231T235959_20261106T165000___________________ESA_O_AL_001.SEN3.zip" "size" "1050" "serial" "A" "productType" "cri_adf_leaps" "start" "2026-11-06T00:00:00.000Z" "end" "2099-12-31T23:59:59.000Z" "publication" "2026-11-06T17:00:00.000Z" "processingCenter" "ESA" "processorVersion" "01.00" "processingDate" "2026-11-06T16:50:00.000Z")
+            }}
+            {{- range $product := $cristalProducts }}
+            {{- $productHash := sha256sum $product.name }}
+            ,{
+                "Id": "{{ printf "%s-%s-%s-%s-%s" (substr 0 8 $productHash) (substr 8 12 $productHash) (substr 12 16 $productHash) (substr 16 20 $productHash) (substr 20 32 $productHash) }}",
+                "Name": "{{ $product.name }}",
+                "S3_path": "s3://{{ $.Values.app.bucketName }}/{{ $.Values.app.bucketPath }}cristal_aux/{{ $product.name }}",
+                "ContentType": "application/octet-stream",
+                "ContentLength": "{{ $product.size }}",
+                "OriginDate": "{{ $product.start }}",
+                "PublicationDate": "{{ $product.publication }}",
+                "EvictionDate": "{{ $product.end }}",
+                "Checksum": [
+                    {
+                        "Algorithm": "MD5",
+                        "Value": "ACB071FD13A12CE511FE03D353FC8ED3",
+                        "ChecksumDate": "{{ $product.publication }}"
+                    }
+                ],
+                "ContentDate": {
+                    "Start": "{{ $product.start }}",
+                    "End": "{{ $product.end }}"
+                },
+                "Attributes": [
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "platformShortName",
+                        "ValueType": "String",
+                        "Value": "CRISTAL"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "platformSerialIdentifier",
+                        "ValueType": "String",
+                        "Value": "{{ $product.serial }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "productType",
+                        "ValueType": "String",
+                        "Value": "{{ $product.productType }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "beginningDateTime",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "{{ $product.start }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "endingDateTime",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "{{ $product.end }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "processingCenter",
+                        "ValueType": "String",
+                        "Value": "{{ $product.processingCenter }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.StringAttribute",
+                        "Name": "processorVersion",
+                        "ValueType": "String",
+                        "Value": "{{ $product.processorVersion }}"
+                    },
+                    {
+                        "@odata.type": "#OData.CSC.DateTimeOffsetAttribute",
+                        "Name": "processingDate",
+                        "ValueType": "DateTimeOffset",
+                        "Value": "{{ $product.processingDate }}"
+                    }
+                ]
+            }
+            {{- end }}
         ]
     }
