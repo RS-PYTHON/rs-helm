@@ -33,6 +33,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 ### Security
 
 - [RSPY-1229](https://github.com/RS-PYTHON/rs-helm/pull/296) : RSPY-1229: Download and cache the Trivy databases once per day
+## [Unreleased]
+
+### Added
+
+- Route process-scoped DPR job log streams to the instance serving each configured process, rewriting them to the
+  service's `/dpr/jobs` endpoint.
 
 ## [1.0a14] - 2026-09-29
 
