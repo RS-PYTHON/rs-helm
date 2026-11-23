@@ -13,6 +13,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 >- **Fixed** for any bug fixes.
 >- **Security** in case of vulnerabilities.
 
+## [1.0a16] - 2026-11-23
+
+### Added
+
+- [RSPY1134](https://github.com/RS-PYTHON/rs-helm/pull/303⁠) : RSPY1134: New S01AUX_CAL
+- [RSPY-1037](https://github.com/RS-PYTHON/rs-helm/pull/306⁠) : - Add missing max_requests_per_minute for CDSE
+
+
+- [RSPY-1217](https://github.com/RS-PYTHON/rs-helm/pull/309⁠) : RSPY-1217: CQL2 IN
+- [RSPY-1251](https://github.com/RS-PYTHON/rs-helm/pull/308⁠) : feat-RSPY-1251/Add-cristal-in-the-system: add cristal in system
+
+### Fixed
+
+- [PR#305⁠](https://github.com/RS-PYTHON/rs-helm/pull/305⁠) : fix(adgs): restore productType key in collection queries
+- [PR#310⁠](https://github.com/RS-PYTHON/rs-helm/pull/310⁠) : fix(rs-dpr-service): use latest image tag instead of last
+- [PR#311](https://github.com/RS-PYTHON/rs-helm/pull/311): fix(mockup-cadip): fix missing comma and S3_path filenames for CRISTAL
+
 ## [1.0a15] - 2026-10-22
 
 ### Added
