@@ -41,6 +41,28 @@ spec:
     timeouts:
       request: {{ .Values.gatewayapi.logStreaming.timeouts.request | quote }}
       backendRequest: {{ .Values.gatewayapi.logStreaming.timeouts.backendRequest | quote }}
+  {{- range $path := .Values.gatewayapi.path }}
+  {{- if hasPrefix "/dpr/processes/" $path }}
+  # Route process-scoped logs to the instance serving this process and rewrite to the DPR API path.
+  - backendRefs:
+    - name: {{ $.Release.Name }}
+      port: {{ $.Values.service.port }}
+      kind: Service
+    matches:
+    - path:
+        type: PathPrefix
+        value: {{ printf "%s/jobs" $path | quote }}
+    filters:
+    - type: URLRewrite
+      urlRewrite:
+        path:
+          type: ReplacePrefixMatch
+          replacePrefixMatch: /dpr/jobs
+    timeouts:
+      request: {{ $.Values.gatewayapi.logStreaming.timeouts.request | quote }}
+      backendRequest: {{ $.Values.gatewayapi.logStreaming.timeouts.backendRequest | quote }}
+  {{- end }}
+  {{- end }}
   {{- end }}
   - backendRefs:
     - name: {{ $.Release.Name }}
