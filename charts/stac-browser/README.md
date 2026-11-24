@@ -34,7 +34,7 @@ STAC BROWSER
 | image.name | string | `"stac-browser"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
 | image.repository | string | `"rs-python"` | Image repository |
-| image.version | string | `"v5.1.0"` | Image version, can be a tag or a digest |
+| image.version | string | `"v5.2.0"` | Image version, can be a tag or a digest |
 | ingress.enabled | bool | `false` | Enabled/Disable ingress |
 | ingress.host | string | `"stac-browser.subdomain.example.com"` | Ingress host name. |
 | ingress.issuer.name | string | `"letsencrypt-prod"` | Ingress Issuer name |
@@ -52,11 +52,11 @@ STAC BROWSER
 | probe.readiness.periodSeconds | int | `30` | periodSeconds for the readiness probe |
 | probe.readiness.port | int | `8080` | Port for the readiness probe |
 | probe.readiness.timeoutSeconds | int | `5` | timeoutSeconds for the readiness probe |
-| probe.startup:.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
-| probe.startup:.path | string | `"/"` | Path for the liveness probe |
-| probe.startup:.periodSeconds | int | `2` | periodSeconds for the liveness probe |
-| probe.startup:.port | int | `8080` | Port for the liveness probe |
-| probe.startup:.timeoutSeconds | int | `1` | timeoutSeconds for the liveness probe |
+| probe.startup.initialDelaySeconds | int | `0` | InitialDelaySeconds for the liveness probe |
+| probe.startup.path | string | `"/"` | Path for the liveness probe |
+| probe.startup.periodSeconds | int | `2` | periodSeconds for the liveness probe |
+| probe.startup.port | int | `8080` | Port for the liveness probe |
+| probe.startup.timeoutSeconds | int | `1` | timeoutSeconds for the liveness probe |
 | replicaCount | int | `1` | Number of replicas for the deployment |
 | resources.limit.cpu | string | `"500m"` | Pod CPU limit |
 | resources.limit.ram | string | `"1000Mi"` | Pod memory limit |
