@@ -19,7 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 - [RSPY1134](https://github.com/RS-PYTHON/rs-helm/pull/303⁠) : RSPY1134: New S01AUX_CAL
 - [RSPY-1037](https://github.com/RS-PYTHON/rs-helm/pull/306⁠) : Add missing max_requests_per_minute for CDSE
-- [PR#312⁠](https://github.com/RS-PYTHON/rs-helm/pull/312⁠) : Add route process-scoped logs - #312⁠
+- [PR#312⁠](https://github.com/RS-PYTHON/rs-helm/pull/312⁠) : Add route process-scoped logs
 - [RSPY-1217](https://github.com/RS-PYTHON/rs-helm/pull/309⁠) : RSPY-1217: CQL2 IN
 - [RSPY-1251](https://github.com/RS-PYTHON/rs-helm/pull/308⁠) : feat-RSPY-1251/Add-cristal-in-the-system: add cristal in system
 
