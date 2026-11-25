@@ -34,6 +34,7 @@ RS SERVER ADGS
 | gatewayapi.host | string | `"subdomain.example.com"` | HTTPRoute host name |
 | gatewayapi.parentRefs | list | `[]` | HTTPRoute parentRefs, can either be a ListenerSet or a Gateway Example : parentRefs: - group: gateway.networking.k8s.io   kind: ListenerSet   name: mylistenerset   namespace: processing |
 | gatewayapi.path | list | `[]` | HTTPRoute path for the application Example : path:   - /adgs   - /auxip |
+| gatewayapi.timeouts | object | `{"backendRequest":"300s","request":"300s"}` | HTTPRoute rule timeouts (Envoy default is 15s) |
 | image.PullPolicy | string | `"IfNotPresent"` | Image pull policy |
 | image.name | string | `"rs-server-adgs"` | Image name |
 | image.registry | string | `"ghcr.io"` | Image registry |
