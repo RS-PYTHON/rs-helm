@@ -1,6 +1,6 @@
 # rs-server-adgs
 
-![Version: 0.1.0-a15](https://img.shields.io/badge/Version-0.1.0--a15-informational?style=flat-square) ![AppVersion: v1.0a15](https://img.shields.io/badge/AppVersion-v1.0a15-informational?style=flat-square)
+![Version: 0.1.0-a16](https://img.shields.io/badge/Version-0.1.0--a16-informational?style=flat-square) ![AppVersion: v1.0a16](https://img.shields.io/badge/AppVersion-v1.0a16-informational?style=flat-square)
 
 RS SERVER ADGS
 
